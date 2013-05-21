@@ -1,0 +1,126 @@
+<!-- Theme Customizer -->
+<div id="EnlighterJSThemeCustomizer">
+
+	<h2><?php _e('Theme Customizer'); ?></h2>
+	<p>Leave fields blank to force basic theme styles</p>
+
+<!-- Basic Theme -->
+<table class="form-table">
+	<tr valign="top">
+	<th scope="row">Basic Theme (will be extended)</th>
+        <td>
+        <select name="enlighter-customThemeBase" id="enlighter-customThemeBase">
+		<?php		
+		foreach ($themes as $key=>$value){
+			$selected = ($this->_config['customThemeBase'] == $value) ? 'selected="selected"' : '';
+			if ($value!='wpcustom'){
+				echo '<option value="'.$value.'" '.$selected.'>'.$key.'</option>';
+			}
+		}
+		?> 
+        </select>
+         <input type="button" value="<?php _e('Load Theme styles'); ?>" id="enlighter_loadBasicTheme" class="button button-primary" /> 
+        </td>
+        </tr>
+</table>
+<!-- //Basic Theme -->
+
+
+<h3>Font Styles</h3>
+
+<!-- Theme Font Styles -->
+<table class="form-table">
+	<?php 
+		// font family
+		$sUtil->displayInput('Font-Family', 'customFontFamily', 'e.g. Monaco, Courier, Monospace', '', true);
+	
+		// font size
+		$sUtil->displayInput('Font-Size', 'customFontSize', 'e.g. 12px, 1.2em, 11pt', '', true);
+		
+		// line height
+		$sUtil->displayInput('Line height', 'customLineHeight', 'e.g. 16px, 1.5em', '', true);
+		
+		// font color
+		$sUtil->displayInput('Font-Color', 'customFontColor', 'e.g. #000000, #ff00c1', 'EnlighterJSColorChooser"', true);
+	?>
+</table>
+<!-- // Theme Font  Styles -->
+
+<h3>Line Number Styles</h3>
+
+<!-- Theme Linenumber Font Styles -->
+<table class="form-table">
+	<?php 
+		// linenumber font family
+		$sUtil->displayInput('Font-Family', 'customLinenumberFontFamily', 'e.g. Monaco, Courier, Monospace', '', true);
+		
+		// linenumber font size
+		$sUtil->displayInput('Font-Size', 'customLinenumberFontSize', 'e.g. 10px, 1.2em, 11pt', '', true);
+		
+		// linenumber line height
+		$sUtil->displayInput('Line height', 'customLinenumberLineHeight', 'e.g. 15px, 1.5em', '', true);
+		
+		// linenumber font color
+		$sUtil->displayInput('Font-Color', 'customLinenumberFontColor', 'e.g. #000000, #ff00c1', 'EnlighterJSColorChooser"', true);
+	?>
+</table>
+<!-- // Theme Linenumber Font Styles -->
+
+<h3>Token Styles</h3>
+<?php 
+	
+		foreach ($customStyleKeys as $key => $value){
+			?>
+<!-- Token Styles [<?php echo $value ?>] -->
+<table class="form-table">
+	<tr valign="top">
+	<th scope="row"><?php _e($key); ?></th>
+	<td>
+Text: <input style="width: 75px;background-color: <?php echo get_option('enlighter-custom-color-'.$value) ?>" name="enlighter-custom-color-<?php echo $value ?>" id="enlighter-custom-color-<?php echo $value ?>" type="text" value="<?php echo get_option('enlighter-custom-color-'.$value) ?>" class="text EnlighterJSColorChooser" />
+Background: <input style="width: 75px;background-color: <?php echo get_option('enlighter-custom-bgcolor-'.$value) ?>" name="enlighter-custom-bgcolor-<?php echo $value ?>" id="enlighter-custom-bgcolor-<?php echo $value ?>" type="text" value="<?php echo get_option('enlighter-custom-bgcolor-'.$value) ?>" class="text EnlighterJSColorChooser" />
+	
+    <select name="enlighter-custom-fontstyle-<?php echo $value ?>" id="enlighter-custom-fontstyle-<?php echo $value ?>">
+	<?php
+	$cssKeys = array(
+		'Normal Style' => 'normal',
+		'Bold Style' => 'bold',
+		'Italic Style' => 'italic',
+		'Bold+Italic Style' => 'bolditalic'	
+	);
+	
+	foreach ($cssKeys as $cssName=>$cssValue){
+		$selected = (get_option('enlighter-custom-fontstyle-'.$value) == $cssValue) ? 'selected="selected"' : '';
+		echo '<option value="'.$cssValue.'" '.$selected.'>'.$cssName.'</option>';
+	}
+	?> 
+	</select>
+        
+	<select name="enlighter-custom-decoration-<?php echo $value ?>" id="enlighter-custom-decoration-<?php echo $value ?>">
+	<?php
+	$cssKeys = array(
+		'No Decoration' => 'normal',
+		'Underline' => 'underline',
+		'Overline' => 'overline',
+		'Line through' => 'through'
+	);
+	
+	foreach ($cssKeys as $cssName=>$cssValue){
+		$selected = (get_option('enlighter-custom-decoration-'.$value) == $cssValue) ? 'selected="selected"' : '';
+		echo '<option value="'.$cssValue.'" '.$selected.'>'.$cssName.'</option>';
+	}
+	?> 
+	</select>   
+	</td>
+	</tr>
+</table>
+<!-- // Token Styles [<?php echo $value ?>] -->				
+				
+				
+				<?php 
+			
+		}
+	
+	?>
+
+</div>
+	
