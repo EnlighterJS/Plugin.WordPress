@@ -162,9 +162,9 @@ The most easy way to use Enlighter is to wrap your code, which should be highlig
 	[js theme="" group="" tab=""] YOUR CODE [/js]
 
 **Attributes**
-*theme (optional) - defines the theme that should used, will overwrite the settings-page values
-*group (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together). Note: when using [codegroup] tags this attribute will be generated automaically - you don't have to set it!
-*tab (optional) - set the name of the tab-pane, if not defined the language will be used as title
+* theme (optional) - defines the theme that should used, will overwrite the settings-page values
+* group (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together). Note: when using [codegroup] tags this attribute will be generated automaically - you don't have to set it!
+* tab (optional) - set the name of the tab-pane, if not defined the language will be used as title
 
 ### Codegroup-Shortcode
 
@@ -202,8 +202,8 @@ You can also use EnlighterJS to display a set of different codes within a tab-pa
 	[codegroup theme=""] [js tab=""]...[/js] [css]...[/css] ... [/codegroup]
 
 **Attributes**
-*theme (optional) - defines the theme that should used, will overwrite the settings-page values
-*tab (optional) - set the name of the tab-pane, if not defined the language name will be used as title
+* theme (optional) - defines the theme that should used, will overwrite the settings-page values
+* tab (optional) - set the name of the tab-pane, if not defined the language name will be used as title
 
 ### Generic-Shortcode
 
@@ -217,7 +217,7 @@ If you're using other plugins which uses also language-shortcodes, you can use t
 	[enlighter language="" theme="" group="" tab=""] YOUR CODE [/enlighter]
 
 **Attributes**
-*language (optional) - specify the language which should used, if not defined values from the settings-page are used
-*theme (optional) - defines the theme that should used, will overwrite the settings-page values
-*group (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)
-*tab (optional) - set the name of the tab-pane, if not defined the language name will be used as title
+* language (optional) - specify the language which should used, if not defined values from the settings-page are used
+* theme (optional) - defines the theme that should used, will overwrite the settings-page values
+* group (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)
+* tab (optional) - set the name of the tab-pane, if not defined the language name will be used as title
