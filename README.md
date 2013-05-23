@@ -69,7 +69,7 @@ Legacy Example
 --------------
 It's also possible to use the plugin with legacy shortcode
 
-	[enlighter language="js"]
+	[enlighter lang="js"]
 	window.addEvent('domready', function(){
 		// display string on console
 		console.info('Hello Enlighter');
@@ -209,15 +209,15 @@ You can also use EnlighterJS to display a set of different codes within a tab-pa
 
 If you're using other plugins which uses also language-shortcodes, you can use the enlighter with generic shortcode. The generic shortcode got directly transformed to a
 **Example**
-	[enlighter language="js"]
+	[enlighter lang="js"]
 	var x = new EnligherJS.Helper($$('pre'));
 	[/enligher]
 
 **Syntax**
-	[enlighter language="" theme="" group="" tab=""] YOUR CODE [/enlighter]
+	[enlighter lang="" theme="" group="" tab=""] YOUR CODE [/enlighter]
 
 **Attributes**
-* language (optional) - specify the language which should used, if not defined values from the settings-page are used
+* lang (optional) - specify the language which should used, if not defined values from the settings-page are used
 * theme (optional) - defines the theme that should used, will overwrite the settings-page values
 * group (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)
 * tab (optional) - set the name of the tab-pane, if not defined the language name will be used as title
