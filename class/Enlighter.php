@@ -66,7 +66,8 @@ class Enlighter{
 		'SQL' => 'sql',
 		'XML' => 'xml',
 		'C' => 'c',
-		'C++' => 'cpp'
+		'C++' => 'cpp',
+		'NSIS' => 'nsis'	
 	);
 	
 	// list of supported themes

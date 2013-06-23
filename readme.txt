@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, mootools, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -95,6 +95,7 @@ It's also possible to use the plugin with legacy shortcode
 * C
 * C++
 * SQL
+* NSIS
  
 === Compatibility ===
 
@@ -152,6 +153,10 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 
 == Changelog ==
 
-= 1.0 =
+= 1.2 =
+* Added EnlighterJS 1.5.1
+* Added language support for NSIS (Nullsoft Scriptable Install System)
+
+= 1.1 =
 * First public release
 * Includes EnligherJS 1.4

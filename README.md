@@ -95,6 +95,7 @@ Supported Languages (build-in)
 * C
 * C++
 * SQL
+* NSIS
  
 Compatibility
 -------------
