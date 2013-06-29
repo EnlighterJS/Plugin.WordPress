@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, mootools, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -151,7 +151,13 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 5. Theme Customizer - General styles
 6. Theme Customizer - Language Token styling
 
+
 == Changelog ==
+
+= 1.3 =
+* Bugfix: CSS Selector got ignored when using metadata-based initialization (all "pre"-tags are highlighted)
+* Added EnlighterJS 1.6
+* Added "RAW" language - code is not highlighted/parsed
 
 = 1.2 =
 * Added EnlighterJS 1.5.1

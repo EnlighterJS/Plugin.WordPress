@@ -38,7 +38,8 @@ class Enlighter_ResourceLoader{
 				'data-theme' => $this->_config['defaultTheme'],
 				'data-indent' => $this->_config['indent'],
 				'data-compiler' => $this->_config['compiler'],
-				'data-altlines' => $this->_config['altLines']
+				'data-altlines' => $this->_config['altLines'],
+				'data-selector' =>  $this->_config['selector']
 		));
 		echo "\n";
 	}
