@@ -96,6 +96,24 @@ Supported Languages (build-in)
 * C++
 * SQL
 * NSIS
+
+Language Shortcode list
+-----------------------
+* [css]
+* [html]
+* [java]
+* [js]
+* [md]
+* [php]
+* [python]
+* [ruby]
+* [shell]
+* [sql]
+* [xml]
+* [c]
+* [cpp]
+* [nsis]
+* [raw] 
  
 Compatibility
 -------------

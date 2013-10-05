@@ -2,8 +2,8 @@
 Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, mootools, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
 Requires at least: 3.5
-Tested up to: 3.5.1
-Stable tag: 1.3
+Tested up to: 3.6.1
+Stable tag: 1.4
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -96,6 +96,23 @@ It's also possible to use the plugin with legacy shortcode
 * C++
 * SQL
 * NSIS
+
+= Language Shortcode list =
+* [css]
+* [html]
+* [java]
+* [js]
+* [md]
+* [php]
+* [python]
+* [ruby]
+* [shell]
+* [sql]
+* [xml]
+* [c]
+* [cpp]
+* [nsis]
+* [raw] 
  
 === Compatibility ===
 
@@ -153,6 +170,11 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 
 
 == Changelog ==
+
+= 1.4 =
+* Added EnlighterJS 1.7
+* Added Language-Aliases for use with generic shortcode
+* Fix: CSS Hotfix for bad linenumbers in Chrome @see http://wordpress.org/support/topic/bad-line-numbers-in-chrome?replies=3 - thanks to **cdonts**
 
 = 1.3 =
 * Bugfix: CSS Selector got ignored when using metadata-based initialization (all "pre"-tags are highlighted)

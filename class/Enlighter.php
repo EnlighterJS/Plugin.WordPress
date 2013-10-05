@@ -150,8 +150,8 @@ class Enlighter{
 			}
 
 			// load frontend css+js
-			add_action('wp_enqueue_scripts', array($this->_resourceLoader, 'appendCSS'));
-			add_action('wp_enqueue_scripts', array($this->_resourceLoader, 'appendJS'));
+			add_action('wp_enqueue_scripts', array($this->_resourceLoader, 'appendCSS'), 50);
+			add_action('wp_enqueue_scripts', array($this->_resourceLoader, 'appendJS'), 50);
 			
 			// display frontend config (as javascript or metadata)
 			if ($this->_config['configType']=='meta'){
