@@ -31,10 +31,16 @@ ol.wpcustomEnlighterJS li{
 	background-color: #2D2522;
 }
 ol.wpcustomEnlighterJS li.hoverEnabled:hover{
-	background-color: #423F43;
+	background-color: $(HOVER_BG_COLOR);
 	border: none;
 	border-left: 2px solid #939393;
 }
+
+/* special line highlight color */
+ol.wpcustomEnlighterJS li.specialline {
+	background-color: $(HIGHLIGHT_BG_COLOR);
+}
+
 pre.wpcustomEnlighterJS {
 	background-color: #2D2522;
 }

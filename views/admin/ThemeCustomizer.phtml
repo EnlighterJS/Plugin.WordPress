@@ -1,7 +1,7 @@
 <!-- Theme Customizer -->
 <div id="EnlighterJSThemeCustomizer">
-
 	<h2><?php _e('Theme Customizer'); ?></h2>
+	<div class="EnlighterBlockcontent">
 	<p>Leave fields blank to force basic theme styles</p>
 
 <!-- Basic Theme -->
@@ -66,6 +66,20 @@
 </table>
 <!-- // Theme Linenumber Font Styles -->
 
+<h3>Special Styles</h3>
+
+<!-- Theme Special Styles -->
+<table class="form-table">
+	<?php 
+		// line highlight background color
+		$sUtil->displayInput('Line highlighting Color', 'customLineHighlightColor', 'e.g. #000000, #ff00c1', 'EnlighterJSColorChooser"', true);
+		
+		// line hover background color
+		$sUtil->displayInput('Line hover Color', 'customLineHoverColor', 'e.g. #f0f0ff', 'EnlighterJSColorChooser"', true);
+	?>
+</table>
+<!-- // Theme Special Styles -->
+
 <h3>Token Styles</h3>
 <?php 
 	
@@ -121,6 +135,6 @@ Background: <input style="width: 75px;background-color: <?php echo get_option('e
 		}
 	
 	?>
-
+</div>
 </div>
 	

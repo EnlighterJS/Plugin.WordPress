@@ -113,6 +113,14 @@ class Enlighter_ThemeGenerator{
 		
 		$cssTPL->assign('LINESTYLE', $linestyles);
 		
+		// special styles
+		if (($o = get_option('enlighter-customLineHighlightColor')) != false){
+			$cssTPL->assign('HIGHLIGHT_BG_COLOR', $o);
+		}
+		if (($o = get_option('enlighter-customLineHoverColor')) != false){
+			$cssTPL->assign('HOVER_BG_COLOR', $o);
+		}
+		
 		// store file
 		$cssTPL->store(ENLIGHTER_PLUGIN_PATH.'/cache/EnlighterJS.custom.css');
 	}

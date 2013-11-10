@@ -21,6 +21,15 @@ ol.wpcustomEnlighterJS, ol.wpcustomEnlighterJS li {
 	$(FONTSTYLE)
 }
 
+/* special line highlight color */
+ol.wpcustomEnlighterJS li.specialline {
+	background-color: $(HIGHLIGHT_BG_COLOR);
+}
+
+ol.wpcustomEnlighterJS li.hoverEnabled:hover{
+	background-color: $(HOVER_BG_COLOR);
+}
+
 /* theme symbol styles */
 .wpcustomEnlighterJS .de1 { $(DE1) }
 .wpcustomEnlighterJS .de2 { $(DE2) }

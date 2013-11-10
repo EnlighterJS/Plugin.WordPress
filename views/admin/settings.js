@@ -55,6 +55,12 @@
 			jQuery('#enlighter-customLinenumberLineHeight').val(ThemeStyles[theme].linenumbers[2]);
 			setElementColor('#enlighter-customLinenumberFontColor', ThemeStyles[theme].linenumbers[3]);
 			
+			// set special styles
+			jQuery('#enlighter-customLineHighlightColor').val(ThemeStyles[theme].special.highlightColor);
+			setElementColor('#enlighter-customLineHighlightColor', ThemeStyles[theme].special.highlightColor);
+			jQuery('#enlighter-customLineHoverColor').val(ThemeStyles[theme].special.hoverColor);
+			setElementColor('#enlighter-customLineHoverColor', ThemeStyles[theme].special.hoverColor);
+			
 			// set token styles
 			jQuery.each(ThemeStyles[theme].tokens, function(key, value){
 				// foreground color
@@ -91,6 +97,12 @@
 			
 			/* font family, font-size, line-height, font-color */
 			'linenumbers': [null, '10px', null, '#939393'],
+			
+			/* special stykes */
+			'special': {
+				hoverColor: '#F4F8FC',
+				highlightColor: '#F4F8FC'
+			},
 						
 			'tokens': {
 				/* foreground color, text style, text line style, background color */
@@ -117,6 +129,10 @@
 		'git': {
 			'sourcefont': ['Courier, Monospace', '12px', '16px', '#000000'],
 			'linenumbers': [null, '10px', null,  '#939393'],
+			'special': {
+				hoverColor: '#ffffcc',
+				highlightColor: '#fffff2'
+			},
 			'tokens': {
 				'kw1': ['#000000', 'bold', null, null],
 				'kw2': ['#0086b3', null, null, null],
@@ -141,6 +157,10 @@
 		'mocha': {
 			'sourcefont': ['Monaco, Courier, Monospace', '12px', '16px', '#f8f8f8'],
 			'linenumbers': [null, '10px', null, '#939393'],
+			'special': {
+				hoverColor: '#423F43',
+				highlightColor: '#423F43'
+			},
 			'tokens': {
 				'kw1': ['#CDA869', null, null, null],
 				'kw2': ['#CACD69', null, null, null],
@@ -165,6 +185,10 @@
 		'panic': {
 			'sourcefont': ['Monaco, Courier, Monospace', '12px', '16px', '#000000'],
 			'linenumbers': [null, '10px', null, '#939393'],
+			'special': {
+				hoverColor: '#F4F8FC',
+				highlightColor: '#F4F8FC'
+			},
 			'tokens': {
 				'kw1': ['#9F0050', null, null, null],
 				'kw2': ['#9F0050', null, null, null],
@@ -189,6 +213,10 @@
 		'tutti': {
 			'sourcefont': ['Monaco, Courier, Monospace', '12px', '16px', '#000000'],
 			'linenumbers': [null, '10px', null, '#939393'],
+			'special': {
+				hoverColor: '#F4F8FC',
+				highlightColor: '#F4F8FC'
+			},
 			'tokens': {
 				'kw1': ['#8600c9', null, null, null],
 				'kw2': ['#3a1d72', 'bold', null, null],
@@ -213,6 +241,10 @@
 		'twilight': {
 			'sourcefont': ['Monaco, Courier, Monospace', '12px', '16px', '#f8f8f8'],
 			'linenumbers': [null, '10px', null, '#939393'],
+			'special': {
+				hoverColor: '#202021',
+				highlightColor: '#202021'
+			},
 			'tokens': {
 				'kw1': ['#CDA869', null, null, null],
 				'kw2': ['#F9EE98', null, null, null],

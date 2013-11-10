@@ -102,6 +102,10 @@ class Enlighter_ResourceLoader{
 		// colorpicker css
 		wp_register_style('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/css/colorpicker.css'));
 		wp_enqueue_style('enlighter-jquery-colorpicker');
+		
+		// settings css
+		wp_register_style('enlighter-settings', plugins_url('/enlighter/views/admin/settings.css'));
+		wp_enqueue_style('enlighter-settings');
 	}
 	
 	public function appendAdminJS(){

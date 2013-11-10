@@ -1,7 +1,7 @@
 <?php
 /**
 	Enlighter Class
-	Version: 1.0
+	Version: 1.5
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://www.a3non.org/go/enlighterjs
@@ -49,7 +49,10 @@ class Enlighter{
 		'customLinenumberFontFamily' => 'Monaco, Courier, Monospace',
 		'customLinenumberFontSize' => '10px',
 		'customLinenumberLineHeight' => '15px',
-		'customLinenumberFontColor' => '#000000'
+		'customLinenumberFontColor' => '#000000',
+		'customLineHighlightColor' => '#f0f0ff',
+		'customLineHoverColor' => '#f0f0ff',		
+		'wpAutoPFilterPriority' => '12'	
 	);
 	
 	// list of micro shortcodes (supported languages)
@@ -158,6 +161,12 @@ class Enlighter{
 				add_action('wp_head', array($this->_resourceLoader, 'appendMetadataConfig'));
 			}else{
 				add_action('wp_head', array($this->_resourceLoader, 'appendJavascriptConfig'));
+			}
+			
+			// change wpauto filter priority ?
+			if ($this->_config['wpAutoPFilterPriority']!='default'){
+				remove_filter('the_content', 'wpautop');
+				add_filter('the_content', 'wpautop' , 12);
 			}
 		}
 	}

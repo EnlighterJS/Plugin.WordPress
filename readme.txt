@@ -2,8 +2,8 @@
 Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, mootools, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
 Requires at least: 3.5
-Tested up to: 3.6.1
-Stable tag: 1.4
+Tested up to: 3.7.1
+Stable tag: 1.5
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -11,7 +11,7 @@ Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
 
 == Description ==
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools based [EnlighterJS](http://www.a3non.org/go/enlighterjs) to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://www.a3non.org/go/enlighterjs) to provide a beautiful code-appearance.
 Using it can be as simple as adding a shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes without any css knowlegde!
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
 A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.html "EnligherJS Theme Demo")
@@ -32,6 +32,13 @@ A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.
 Highlight javascript code (theme defined on your settings page)
 
 	[js]
+	window.addEvent('domready', function(){
+		console.info('Hello Enlighter');
+	});	
+	[/js]
+
+= Point out special lines of code =
+	[js highlight="2"]
 	window.addEvent('domready', function(){
 		console.info('Hello Enlighter');
 	});	
@@ -114,9 +121,9 @@ It's also possible to use the plugin with legacy shortcode
 * [nsis]
 * [raw] 
  
-=== Compatibility ===
+== Compatibility ==
 
-All browsers supported by MooTools and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
+All browsers supported by MooTools (enabled Javascript required) and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
 Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go/enlighterjs) is based on [MooTools Javascript Framework](http://mootools.net/)) should work together with jQuery in [noConflict Mode](http://docs.jquery.com/Using_jQuery_with_Other_Libraries) - when you are using jQuery within your Wordpress Theme/Page you have to take care of it!
 
 * Chrome 10+
@@ -143,6 +150,13 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 = How can i enable the Theme-Customizer ? =
 To enable the Theme-Customizer you have to select the theme named *Custom* as default theme. The Theme-Customizer will appear immediately.
 
+= Is it possible to point out special lines of code ? =
+Yes! since version 1.5 all shortcodes support the attribute ``highlight``.
+Example - highlight the lines 2,3,4,8 of the codeblock
+	[js highlight="2-4,8"]
+	....some code..
+	[/js]
+	
 = Are the uncompressed EnlighterJS Javasscript and CSS sources available ? =
 The complete EnlighterJS project can be found on [GitHub](https://github.com/AndiDittrich/EnlighterJS "EnligherJS Project")
 
@@ -167,9 +181,16 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 4. Options Page - Advanced Settings
 5. Theme Customizer - General styles
 6. Theme Customizer - Language Token styling
-
+7. Special options for use with a CDN (Content Delivery Network)
 
 == Changelog ==
+
+= 1.5 =
+* Bugfix: The plugin now modifies the priotiry of ``wpautop`` filter to avoid unrequested linebreaks (**optionally** - you can turn it off on the settings page) @see https://github.com/AndiDittrich/WordPress.Enlighter/issues/2 - thanks to **ankitpokhrel**
+* Added EnlighterJS 1.8
+* Added line based marking to point special lines - just add the attribute ``highlight="1,2-5,9"`` to the shortcode to mark line 1,2,3,4,5,9. The line-color is configurable within the ThemeCustomizer - feature requested on WordPress.org Forum
+* Added the ability to set custom hover colors within the ThemeCustomizer as well as custom line highlighting colors
+* Improved settings page, new design
 
 = 1.4 =
 * Added EnlighterJS 1.7

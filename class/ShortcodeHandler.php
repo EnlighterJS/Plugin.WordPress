@@ -79,7 +79,8 @@ class Enlighter_ShortcodeHandler{
 						'theme' => $this->_config['defaultTheme'],
 						'lang' => $this->_config['defaultLanguage'],
 						'group' => false,
-						'tab' => false
+						'tab' => false,
+						'highlight' => ''
 				), $shortcodeAttributes);
 	
 		// html "pre"-tag attributes
@@ -87,6 +88,7 @@ class Enlighter_ShortcodeHandler{
 				'data-enlighter-language' => $tagname,
 				'data-enlighter-theme' => $shortcodeAttributes['theme'],
 				'data-enlighter-title' => $shortcodeAttributes['tab'],
+				'data-enlighter-highlight' => $shortcodeAttributes['highlight'],
 				'class' => 'EnlighterJSRAW'
 		);
 	
@@ -115,7 +117,8 @@ class Enlighter_ShortcodeHandler{
 						'theme' => $this->_config['defaultTheme'],
 						'lang' => $this->_config['defaultLanguage'],
 						'group' => false,
-						'tab' => false
+						'tab' => false,
+						'highlight' => ''
 				), $shortcodeAttributes);
 	
 		// html "pre"-tag attributes
@@ -123,6 +126,7 @@ class Enlighter_ShortcodeHandler{
 				'data-enlighter-language' => $shortcodeAttributes['lang'],
 				'data-enlighter-theme' => $shortcodeAttributes['theme'],
 				'data-enlighter-title' => $shortcodeAttributes['tab'],
+				'data-enlighter-highlight' => $shortcodeAttributes['highlight'],
 				'class' => 'EnlighterJSRAW'
 		);
 	
@@ -167,6 +171,13 @@ class Enlighter_ShortcodeHandler{
 	 * @param String $content
 	 */
 	private function removeWpAutoP($content){
-		return str_replace(array('<br />', '<p>', '</p>'), array('', '', "\n"), $content);
+		// wpautop priority changed ?
+		if ($this->_config['wpAutoPFilterPriority']!='default'){
+			// no modification needed
+			return $content;
+		}else{
+			// fallback: remove added tags - will work on most cases
+			return str_replace(array('<br />', '<p>', '</p>'), array('', '', "\n"), $content);
+		}
 	}
 }
