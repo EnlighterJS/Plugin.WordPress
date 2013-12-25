@@ -15,37 +15,36 @@
 	
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED');
+namespace Enlighter;
 
-
-class Enlighter_ThemeGenerator{
+class ThemeGenerator{
 	
 	// update cache/generate dynamic css
-	public static function updateCache($config, $styleKeys){
+	public static function generateCSS($settingsUtil, $styleKeys){
 		// custom theme selected ?
-		if ($config['defaultTheme'] != 'wpcustom'){
+		if ($settingsUtil->getOption('defaultTheme') != 'wpcustom'){
 			return;
 		}
 		
 		// load css template
-		$cssTPL = new Enlighter_SimpleTemplate(ENLIGHTER_PLUGIN_PATH.'/views/css/'.$config['customThemeBase'].'.css');
+		$cssTPL = new SimpleTemplate(ENLIGHTER_PLUGIN_PATH.'/views/css/'.$settingsUtil->getOption('customThemeBase').'.css');
 		
 		// generate token styles
 		foreach ($styleKeys as $key=>$tokenname){
 			$styles = '';
 			
 			// text color overwrite available ?
-			if (($o = get_option('enlighter-custom-color-'.$tokenname)) != false){
+			if (($o = $settingsUtil->getOption('custom-color-'.$tokenname)) != false){
 				$styles .= 'color: '.$o.';';
 			}
 			
 			// bg color overwrite available ?
-			if (($o = get_option('enlighter-custom-bgcolor-'.$tokenname)) != false){
+			if (($o = $settingsUtil->getOption('custom-bgcolor-'.$tokenname)) != false){
 				$styles .= 'background-color: '.$o.';';
 			}
 			
 			// style overwrite available ?
-			if (($o = get_option('enlighter-custom-fontstyle-'.$tokenname)) != false){
+			if (($o = $settingsUtil->getOption('custom-fontstyle-'.$tokenname)) != false){
 				switch ($o){
 					case 'bold':
 						$styles .= 'font-weight: bold;';
@@ -60,7 +59,7 @@ class Enlighter_ThemeGenerator{
 			}
 			
 			// decoration overwrite available ?
-			if (($o = get_option('enlighter-custom-decoration-'.$tokenname)) != false){
+			if (($o = $settingsUtil->getOption('custom-decoration-'.$tokenname)) != false){
 				switch ($o){
 					case 'overline':
 						$styles .= 'text-decoration: overline;';
@@ -80,16 +79,16 @@ class Enlighter_ThemeGenerator{
 		
 		// generate font styles
 		$fontstyles = '';
-		if (($o = get_option('enlighter-customFontFamily')) != false){
+		if (($o = $settingsUtil->getOption('customFontFamily')) != false){
 			$fontstyles .= 'font-family: '.$o.';';
 		}
-		if (($o = get_option('enlighter-customFontSize')) != false){
+		if (($o = $settingsUtil->getOption('customFontSize')) != false){
 			$fontstyles .= 'font-size: '.$o.';';
 		}
-		if (($o = get_option('enlighter-customLineHeight')) != false){
+		if (($o = $settingsUtil->getOption('customLineHeight')) != false){
 			$fontstyles .= 'line-height: '.$o.';';
 		}
-		if (($o = get_option('enlighter-customFontColor')) != false){
+		if (($o = $settingsUtil->getOption('customFontColor')) != false){
 			$fontstyles .= 'color: '.$o.';';
 		}
 		
@@ -98,26 +97,26 @@ class Enlighter_ThemeGenerator{
 		
 		// generate line styles
 		$linestyles = '';
-		if (($o = get_option('enlighter-customLinenumberFontFamily')) != false){
+		if (($o = $settingsUtil->getOption('customLinenumberFontFamily')) != false){
 			$linestyles .= 'font-family: '.$o.';';
 		}
-		if (($o = get_option('enlighter-customLinenumberFontSize')) != false){
+		if (($o = $settingsUtil->getOption('customLinenumberFontSize')) != false){
 			$linestyles .= 'font-size: '.$o.';';
 		}
-		if (($o = get_option('enlighter-customLinenumberLineHeight')) != false){
+		if (($o = $settingsUtil->getOption('customLinenumberLineHeight')) != false){
 			$linestyles .= 'line-height: '.$o.';';
 		}
-		if (($o = get_option('enlighter-customLinenumberFontColor')) != false){
+		if (($o = $settingsUtil->getOption('customLinenumberFontColor')) != false){
 			$linestyles .= 'color: '.$o.';';
 		}		
 		
 		$cssTPL->assign('LINESTYLE', $linestyles);
 		
 		// special styles
-		if (($o = get_option('enlighter-customLineHighlightColor')) != false){
+		if (($o = $settingsUtil->getOption('customLineHighlightColor')) != false){
 			$cssTPL->assign('HIGHLIGHT_BG_COLOR', $o);
 		}
-		if (($o = get_option('enlighter-customLineHoverColor')) != false){
+		if (($o = $settingsUtil->getOption('customLineHoverColor')) != false){
 			$cssTPL->assign('HOVER_BG_COLOR', $o);
 		}
 		

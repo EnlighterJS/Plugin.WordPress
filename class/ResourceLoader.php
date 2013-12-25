@@ -15,23 +15,22 @@
 	
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED');
+namespace Enlighter;
 
-
-class Enlighter_ResourceLoader{
+class ResourceLoader{
 		
 	// stores the plugin config
 	private $_config;
 	
-	public function __construct($config){
+	public function __construct($settingssUtil){
 		// store local plugin config
-		$this->_config = $config;
+		$this->_config = $settingssUtil->getOptions();
 	}
 	
 	// append metadata based config
 	public function appendMetadataConfig(){
 		// generates a config based metatag
-		echo Enlighter_HtmlUtil::generateTag('meta', array(
+		echo HtmlUtil::generateTag('meta', array(
 				'name' => 'EnlighterJS',
 				'content' => 'Advanced javascript based syntax highlighting',
 				'data-language' => $this->_config['defaultLanguage'],
@@ -89,6 +88,13 @@ class Enlighter_ResourceLoader{
 			wp_register_script('mootools-google-cdn', '//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js');
 			wp_enqueue_script('mootools-google-cdn');
 		}
+		
+		// include mootools from cloudfare cdn ?
+		if ($this->_config['mootoolsSource'] == 'cdnjs'){
+			// include local mootools hosted by cloudfares's cdn
+			wp_register_script('mootools-cloudfare-cdn', '//cdnjs.cloudflare.com/ajax/libs/mootools/1.4.5/mootools-core-full-nocompat-yc.js');
+			wp_enqueue_script('mootools-cloudfare-cdn');
+		}
 	
 		// only include EnlighterJS js if enabled
 		if ($this->_config['embedEnlighterJS']){
@@ -103,8 +109,14 @@ class Enlighter_ResourceLoader{
 		wp_register_style('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/css/colorpicker.css'));
 		wp_enqueue_style('enlighter-jquery-colorpicker');
 		
+		// new UI ?
+		if (version_compare(get_bloginfo('version'), '3.8', '>=')) {
+			wp_register_style('enlighter-settings', plugins_url('/enlighter/resources/admin/settings38.css'));
+		}else{
+			wp_register_style('enlighter-settings', plugins_url('/enlighter/resources/admin/settings37.css'));
+		}
+		
 		// settings css
-		wp_register_style('enlighter-settings', plugins_url('/enlighter/views/admin/settings.css'));
 		wp_enqueue_style('enlighter-settings');
 	}
 	
@@ -114,7 +126,7 @@ class Enlighter_ResourceLoader{
 		wp_enqueue_script('enlighter-jquery-colorpicker');
 		
 		// settings init script
-		wp_register_script('enlighter-settings-init', plugins_url('/enlighter/views/admin/settings.js'), array('jquery'));
+		wp_register_script('enlighter-settings-init', plugins_url('/enlighter/resources/admin/settings.js'), array('jquery'));
 		wp_enqueue_script('enlighter-settings-init');
 	}
 	

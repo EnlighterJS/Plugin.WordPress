@@ -15,22 +15,50 @@
 	
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED');
+namespace Enlighter;
 
-
-class Enlighter_SettingsUtil{
+class SettingsUtil{
 	
-	// stores the plugin config
-	private $_config;
+	// local config storage
+	private $_config = array();
 	
 	// stores options prefix
 	private $_optionsPrefix;
 	
-	public function __construct($config, $prefix){
-		// store local plugin config
-		$this->_config = $config;
-		
+	// initialize global plugin config
+	public function __construct($prefix, $defaultConfig=array()){
+		// store settings prefix
 		$this->_optionsPrefix = $prefix;
+	
+		// load plugin config
+		foreach ($defaultConfig as $key=>$value){
+			// get option by key
+			$this->_config[$key] = get_option($this->_optionsPrefix.$key, $value);
+		}
+	}
+	
+	// register settings
+	public function registerSettings(){
+		// register settings
+		foreach ($this->_config as $key=>$value){
+			register_setting($this->_optionsPrefix.'settings-group', $this->_optionsPrefix.$key);
+		}
+	}
+	
+	// update option
+	public function setOption($key, $value){
+		update_option($this->_optionsPrefix.$key, $value);
+		$this->_config[$key] = $value;
+	}
+	
+	// fetch option by key
+	public function getOption($key){
+		return $this->_config[$key];
+	}
+	
+	// fetch all plugin options as array
+	public function getOptions(){
+		return $this->_config;
 	}
 	
 	/**
@@ -40,75 +68,68 @@ class Enlighter_SettingsUtil{
 	 */
 	public function displayCheckbox($title, $optionName){
 		?>
-<!-- SETTING [<?php echo $optionName ?>] -->		
-<table class="form-table">
-        <tr valign="top">
-        <th scope="row"><?php _e($title); ?></th>
-        <td>
-		<?php
-	if ($this->_config[$optionName]){ 
-		$checked = ' checked="checked" '; 
-	}
-	echo '<input '.$checked.' name="'.$this->_optionsPrefix.$optionName.'" type="checkbox" value="1" />';
-?>        
-        </td>
-        </tr>
-</table>		
-		<?php 
-	}
-	
-	/**
-	 * Generates a selectform  based on settings-name
-	 * @param String $title
-	 * @param String $optionName
-	 * @param Array $values
-	 */
-	public function displaySelect($title, $optionName, $values){
-		?>
-<!-- SETTING [<?php echo $optionName ?>] -->			
-<table class="form-table">
-	<tr valign="top">
-	<th scope="row"><?php _e($title); ?></th>
-        <td>
-        <select name="<?php echo $this->_optionsPrefix.$optionName ?>" id="<?php echo $this->_optionsPrefix.$optionName ?>">
-		<?php
-		
-		foreach ($values as $key=>$value){
-			$selected = ($this->_config[$optionName] == $value) ? 'selected="selected"' : '';
-			echo '<option value="'.$value.'" '.$selected.'>'.$key.'</option>';
+	<!-- SETTING [<?php echo $optionName ?>] -->
+	<div class="EnlighterSetting">	
+		<div class="EnlighterSettingTitle"><?php echo esc_html($title); ?></div>
+		<div class="EnlighterSettingItem">
+			<?php
+		$checked = '';	
+		if ($this->_config[$optionName]){ 
+			$checked = ' checked="checked" '; 
 		}
-		?> 
-        </select>       
-        </td>
-        </tr>
-</table>
-		<?php
-	}
-	
-	/**
-	 * Generates a input-form
-	 * @param String $title
-	 * @param String $optionName
-	 * @param String $label
-	 */
-	public function displayInput($title, $optionName, $label, $cssClass='', $rowOnly=false){
-		
-	if (!$rowOnly){
-		echo '<table class="form-table">';
-	}
+		echo '<input '.$checked.' name="'.$this->_optionsPrefix.$optionName.'" type="checkbox" value="1" />';
 	?>
-	<tr valign="top">
-		<th scope="row"><?php _e($title); ?></th>
-		<td>
-		<input id="<?php echo $this->_optionsPrefix.$optionName; ?>" name="<?php echo $this->_optionsPrefix.$optionName;?>" type="text" value="<?php echo $this->_config[$optionName] ?>" class="text <?php echo $cssClass; ?>" />
-		<label for="<?php echo $this->_optionsPrefix.$optionName; ?>"><?php _e($label); ?></label>
-        </td>
-	</tr>
-	    
-	<?php	
-	if (!$rowOnly){
-		echo '</table>';
-	}
-	}
-	
+		</div>
+		<div class="EnlighterSettingClear"></div>
+	</div>
+			<?php 
+		}
+		
+		/**
+		 * Generates a selectform  based on settings-name
+		 * @param String $title
+		 * @param String $optionName
+		 * @param Array $values
+		 */
+		public function displaySelect($title, $optionName, $values){
+			?>
+	<!-- SETTING [<?php echo $optionName ?>] -->			
+	<div class="EnlighterSetting">	
+		<div class="EnlighterSettingTitle"><?php echo esc_html($title); ?></div>
+		<div class="EnlighterSettingItem">
+	        <select name="<?php echo $this->_optionsPrefix.$optionName ?>" id="<?php echo $this->_optionsPrefix.$optionName ?>">
+			<?php
+			
+			foreach ($values as $key=>$value){
+				$selected = ($this->_config[$optionName] == $value) ? 'selected="selected"' : '';
+				echo '<option value="'.$value.'" '.$selected.'>'. esc_html($key).'</option>';
+			}
+			?> 
+	        </select>       
+		</div>
+		<div class="EnlighterSettingClear"></div>
+	</div>
+			<?php
+		}
+		
+		/**
+		 * Generates a input-form
+		 * @param String $title
+		 * @param String $optionName
+		 * @param String $label
+		 */
+		public function displayInput($title, $optionName, $label, $cssClass=''){
+		?>	
+	<div class="EnlighterSetting">
+		<div class="EnlighterSettingTitle"><?php echo esc_html($title); ?></div>
+		<div class="EnlighterSettingItem">
+			<input id="<?php echo $this->_optionsPrefix.$optionName; ?>" name="<?php echo $this->_optionsPrefix.$optionName;?>" type="text" value="<?php echo esc_attr($this->_config[$optionName]); ?>" class="text <?php echo $cssClass; ?>" />
+			<label for="<?php echo $this->_optionsPrefix.$optionName; ?>"><?php echo esc_html($label); ?></label>
+	   	</div>
+	   	<div class="EnlighterSettingClear"></div>
+	</div>
+	      <?php
+		}
 }
+
+?>

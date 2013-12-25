@@ -1,18 +1,22 @@
-Enlighter WordPress Plugin
-==========================
+# Enlighter - Customizable Syntax Highlighter #
+Contributors: Andi Dittrich
+Tags: syntax highlighting, javascript, code, coding, mootools, jquery, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
+Requires at least: 3.5
+Tested up to: 3.8
+Stable tag: 1.6
+License: MIT X11-License
+License URI: http://opensource.org/licenses/MIT
 
 Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
 
-Description
------------
+## Description ##
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools based [EnlighterJS](http://www.a3non.org/go/enlighterjs) to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://www.a3non.org/go/enlighterjs) to provide a beautiful code-appearance.
 Using it can be as simple as adding a shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes without any css knowlegde!
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
 A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.html "EnligherJS Theme Demo")
 
-Plugin Features
----------------
+### Plugin Features ###
 * Support for all common used languages
 * Theme Customizer
 * Easy to use through the use of Shortcodes
@@ -24,8 +28,7 @@ Plugin Features
 * Integrated CSS file caching (suitable for high traffic sites)
 * EnlighterJS is written in MooTools. Requires version 1.4+
 
-Quickstart Example
-------------------
+### Quickstart Example ###
 Highlight javascript code (theme defined on your settings page)
 
 	[js]
@@ -34,8 +37,14 @@ Highlight javascript code (theme defined on your settings page)
 	});	
 	[/js]
 
-Codegroup Example
------------------
+### Point out special lines of code ###
+	[js highlight="2"]
+	window.addEvent('domready', function(){
+		console.info('Hello Enlighter');
+	});	
+	[/js]
+
+### Codegroup Example ###
 Display multiple codes within a tab-pane. You can define a custom tab-pane title for each snippet if you want.
 
 	[codegroup]
@@ -65,8 +74,7 @@ Display multiple codes within a tab-pane. You can define a custom tab-pane title
 		[/css]	
 	[/codegroup]
 
-Legacy Example
---------------
+### Legacy Example ###
 It's also possible to use the plugin with legacy shortcode
 
 	[enlighter lang="js"]
@@ -80,8 +88,7 @@ It's also possible to use the plugin with legacy shortcode
 	[/enlighter]
 
 
-Supported Languages (build-in)
-------------------------------
+### Supported Languages (build-in) ###
 * HTML
 * CSS (Level 1, 2, 3)
 * XML
@@ -97,8 +104,7 @@ Supported Languages (build-in)
 * SQL
 * NSIS
 
-Language Shortcode list
------------------------
+### Language Shortcode list ###
 * [css]
 * [html]
 * [java]
@@ -115,10 +121,9 @@ Language Shortcode list
 * [nsis]
 * [raw] 
  
-Compatibility
--------------
+## Compatibility ##
 
-All browsers supported by MooTools and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
+All browsers supported by MooTools (enabled Javascript required) and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
 Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go/enlighterjs) is based on [MooTools Javascript Framework](http://mootools.net/)) should work together with jQuery in [noConflict Mode](http://docs.jquery.com/Using_jQuery_with_Other_Libraries) - when you are using jQuery within your Wordpress Theme/Page you have to take care of it!
 
 * Chrome 10+
@@ -127,8 +132,7 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 * Firefox 2+
 * Opera 9+
     
-Installation
-------------
+## Installation ##
 
 ### System requirements ###
 * PHP 5
@@ -141,102 +145,85 @@ Installation
 4. Goto to the Enlighter settings page and select the default theme which should be used.
 5. That's it! You're done. You can now enter the following code into a post or page to highlight code (e.g. javascript): `[js]var enlighter = new EnlighterJS({});[/js]`
 
-Frequently Asked Questions
---------------------------
-### How can i enable the Theme-Customizer ?
+## Frequently Asked Questions ##
+
+### How can i enable the Theme-Customizer ? ###
 To enable the Theme-Customizer you have to select the theme named *Custom* as default theme. The Theme-Customizer will appear immediately.
 
-### Are the uncompressed EnlighterJS Javasscript and CSS sources available ?
+### Is it possible to point out special lines of code ? ###
+Yes! since version 1.5 all shortcodes support the attribute ``highlight``.
+Example - highlight the lines 2,3,4,8 of the codeblock
+	[js highlight="2-4,8"]
+	....some code..
+	[/js]
+	
+### Are the uncompressed EnlighterJS Javasscript and CSS sources available ? ###
 The complete EnlighterJS project can be found on [GitHub](https://github.com/AndiDittrich/EnlighterJS "EnligherJS Project")
 
-### Can i add custom Themes ?
+### Can i add custom Themes ? ###
 Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify the standard theme (*Sources/Themes/Standard.css*). On the Enlighter options page you have to select the theme *standard* and disable the automatic inclusion of the enlighter css files. Finally you have to include the modified css files on you own.
 
-### I'am already using MooTools and my page throws Javascript-Errors
+### I'am already using MooTools and my page throws Javascript-Errors ###
 If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
 **Note:** EnlighterJS requires MooTools > 1.4
 
-### My page will not pass the W3C Validator when using Enligher
+### My page will not pass the W3C Validator when using Enligher ###
 The W3C Validator will throw an warning when using *metadata based config* as initialization method, because of the unknown metatag-name *EnlighterJS*. To avoid this warning you can select **Script based config** on the `settings page -> advanced -> initialization method` - instead of a metatag EnlighterJS will be initialized with some javascript code injected into your page.
 
-### I miss some features / I found a bug
+### I miss some features / I found a bug ###
 Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 
+## Screenshots ##
 
-Usage
------
+1. CSS highlighting Example (GIT Theme)
+2. Tab-Pane Example (multiple languages)
+3. Options Page - Appearance Settings
+4. Options Page - Advanced Settings
+5. Theme Customizer - General styles
+6. Theme Customizer - Language Token styling
+7. Special options for use with a CDN (Content Delivery Network)
 
-### Language-Shortcodes
+## Changelog ##
 
-The most easy way to use Enlighter is to wrap your code, which should be highlighted, in a language-shortcode tag.
-**Example**
-	[js]
-	var x = new EnligherJS.Helper($$('pre'));
-	[/js]
+### 1.7 ###
+* Added EnlighterJS 1.9
+* Added support for Inline-Syntax-Highlighting - feature requested on WordPress.org Forum
 
-**Language-Shortcode List**
-	[css] [html] [java] [js] [md] [php] [python] [ruby] [shell] [sql] [xml] [c] [cpp] 
+### 1.6 ###
+* Added: Support for new WordPress 3.8 UI design
+* Added: CDNJS Service (Cloudfare) as CDN provider for MooTools @see http://cdnjs.com/
+* Added: **I18n** (Internationalization) support (settings page)
+* Added: I18n generation tools
+* Added: POT file for additional translations
+* Added: German translation (de_DE)
+* PHP Namespaces used to isolate plugin (PHP >= 5.3 required!)
+* Improved Plugin backend structure
+* Changed: Admin CSS+JS files are moved to ``resources/admin/``
+* Changed: Replaced table layout of settings page
+* Bugfix: "Load Theme styles" selects wrong items as default style
+* Bugfix: ColorPicker elements doesn't get initialized
 
-**Syntax**
-	[js theme="" group="" tab=""] YOUR CODE [/js]
+### 1.5 ###
+* Bugfix: The plugin now modifies the priotiry of ``wpautop`` filter to avoid unrequested linebreaks (**optionally** - you can turn it off on the settings page) @see https://github.com/AndiDittrich/WordPress.Enlighter/issues/2 - thanks to **ankitpokhrel**
+* Added EnlighterJS 1.8
+* Added line based marking to point special lines - just add the attribute ``highlight="1,2-5,9"`` to the shortcode to mark line 1,2,3,4,5,9. The line-color is configurable within the ThemeCustomizer - feature requested on WordPress.org Forum
+* Added the ability to set custom hover colors within the ThemeCustomizer as well as custom line highlighting colors
+* Improved settings page, new design
 
-**Attributes**
-* theme (optional) - defines the theme that should used, will overwrite the settings-page values
-* group (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together). Note: when using [codegroup] tags this attribute will be generated automaically - you don't have to set it!
-* tab (optional) - set the name of the tab-pane, if not defined the language will be used as title
+### 1.4 ###
+* Added EnlighterJS 1.7
+* Added Language-Aliases for use with generic shortcode
+* Fix: CSS Hotfix for bad linenumbers in Chrome @see http://wordpress.org/support/topic/bad-line-numbers-in-chrome?replies=3 - thanks to **cdonts**
 
-### Codegroup-Shortcode
+### 1.3 ###
+* Bugfix: CSS Selector got ignored when using metadata-based initialization (all "pre"-tags are highlighted)
+* Added EnlighterJS 1.6
+* Added "RAW" language - code is not highlighted/parsed
 
-You can also use EnlighterJS to display a set of different codes within a tab-pane
-**Example**
-	
-	[codegroup]
-	 	[js tab="Javascript Message"]
-		window.addEvent('domready', function(){
-			// display string on console
-			console.info('Hello Enlighter');
-			
-			// show element
-			$('#myelement').show();
-		});	
-		[/js]
-		
-		[html]
-		<div id="myelement">
-		INITIALIZATION START
-		</div>		
-		[/html]
-		
-		[css tab="Styling"]
-		#myelement{
-			color: #cc2222;
-			padding: 15px;
-			font-size: 20px;
-			text-align: center;		
-		}		
-		[/css]	
-	[/codegroup]
+### 1.2 ###
+* Added EnlighterJS 1.5.1
+* Added language support for NSIS (Nullsoft Scriptable Install System)
 
-**Syntax**
-	[codegroup theme=""] [js tab=""]...[/js] [css]...[/css] ... [/codegroup]
-
-**Attributes**
-* theme (optional) - defines the theme that should used, will overwrite the settings-page values
-* tab (optional) - set the name of the tab-pane, if not defined the language name will be used as title
-
-### Generic-Shortcode
-
-If you're using other plugins which uses also language-shortcodes, you can use the enlighter with generic shortcode. The generic shortcode got directly transformed to a
-**Example**
-	[enlighter lang="js"]
-	var x = new EnligherJS.Helper($$('pre'));
-	[/enligher]
-
-**Syntax**
-	[enlighter lang="" theme="" group="" tab=""] YOUR CODE [/enlighter]
-
-**Attributes**
-* lang (optional) - specify the language which should used, if not defined values from the settings-page are used
-* theme (optional) - defines the theme that should used, will overwrite the settings-page values
-* group (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)
-* tab (optional) - set the name of the tab-pane, if not defined the language name will be used as title
+### 1.1 ###
+* First public release
+* Includes EnligherJS 1.4

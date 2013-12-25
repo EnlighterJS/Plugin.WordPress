@@ -1,9 +1,9 @@
 === Enlighter - Customizable Syntax Highlighter ===
 Contributors: Andi Dittrich
-Tags: syntax highlighting, javascript, code, coding, mootools, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
+Tags: syntax highlighting, javascript, code, coding, mootools, jquery, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
 Requires at least: 3.5
-Tested up to: 3.7.1
-Stable tag: 1.5
+Tested up to: 3.8
+Stable tag: 1.6
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -184,6 +184,24 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 7. Special options for use with a CDN (Content Delivery Network)
 
 == Changelog ==
+
+= 1.7 =
+* Added EnlighterJS 1.9
+* Added support for Inline-Syntax-Highlighting - feature requested on WordPress.org Forum
+
+= 1.6 =
+* Added: Support for new WordPress 3.8 UI design
+* Added: CDNJS Service (Cloudfare) as CDN provider for MooTools @see http://cdnjs.com/
+* Added: **I18n** (Internationalization) support (settings page)
+* Added: I18n generation tools
+* Added: POT file for additional translations
+* Added: German translation (de_DE)
+* PHP Namespaces used to isolate plugin (PHP >= 5.3 required!)
+* Improved Plugin backend structure
+* Changed: Admin CSS+JS files are moved to ``resources/admin/``
+* Changed: Replaced table layout of settings page
+* Bugfix: "Load Theme styles" selects wrong items as default style
+* Bugfix: ColorPicker elements doesn't get initialized
 
 = 1.5 =
 * Bugfix: The plugin now modifies the priotiry of ``wpautop`` filter to avoid unrequested linebreaks (**optionally** - you can turn it off on the settings page) @see https://github.com/AndiDittrich/WordPress.Enlighter/issues/2 - thanks to **ankitpokhrel**

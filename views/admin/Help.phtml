@@ -1,39 +1,39 @@
 <div id="EnlighterHelp" style="display: none;">
-<p>Just insert an enlighter shortcode with the code to highlight into your posts/pages - That`s it!</p>
+<p><?php _e('Just insert an enlighter shortcode with the code to highlight into your posts/pages - That`s it!', 'enlighter'); ?></p>
 
-<h2>Language-Shortcodes</h2>
-<p>The most easy way to use Enlighter is to wrap your code, which should be highlighted, in a language-shortcode tag.</p>
+<h2><?php _e('Language-Shortcodes', 'enlighter'); ?></h2>
+<p><?php _e('The most easy way to use Enlighter is to wrap your code, which should be highlighted, in a language-shortcode tag.', 'enlighter'); ?></p>
 
-<h4>Example</h4>
+<h4><?php _e('Example', 'enlighter'); ?></h4>
 <pre>[js]
 var x = new EnligherJS.Helper($$('pre'));
 [/js]</pre>
 
-<h4>Language-Shortcode List</h4>
+<h4><?php _e('Language-Shortcode List', 'enlighter'); ?></h4>
 <pre><?php 
-	foreach ($langs as $d=>$l){ 
+	foreach ($this->_supportedLanguageKeys as $d=>$l){ 
 		echo '[', $l, '] '; 
 	}?>
 </pre>
 
-<h4>Syntax</h4>
-<code>[js theme="" group="" tab="" highlight=""] YOUR CODE [/js]</code>
+<h4><?php _e('Syntax', 'enlighter'); ?></h4>
+<code>[js theme="" group="" tab="" highlight=""] <?php _e('YOUR CODE', 'enlighter'); ?> [/js]</code>
 
-<h4>Attributes</h4>
+<h4><?php _e('Attributes', 'enlighter'); ?></h4>
 <ul style="padding-left: 10px">
-	<li><strong>theme</strong> (optional) - defines the theme that should used, will overwrite the settings-page values</li>
-	<li><strong>group</strong> (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together). <br />
-		Note: when using [codegroup] tags this attribute will be generated automaically - you don't have to set it!
+	<li><strong>theme</strong> <?php _e('(optional) - defines the theme that should used, will overwrite the settings-page values', 'enlighter'); ?></li>
+	<li><strong>group</strong> <?php _e('(optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)', 'enlighter'); ?> <br />
+		<?php _e('Note: when using [codegroup] tags this attribute will be generated automaically - you don`t have to set it!', 'enlighter'); ?>
 	</li>
-	<li><strong>tab</strong> (optional) - set the name of the tab-pane, if not defined the language will be used as title</li>
-	<li><strong>highlight</strong> (optional) - defines a set of lines which are pointed out (ranges are supported). <br />
-		e.g. <code>highlight="1,2-4,20"</code> to highlight lines 1,2,3,4,20
+	<li><strong>tab</strong> <?php _e('(optional) - set the name of the tab-pane, if not defined the language will be used as title', 'enlighter'); ?></li>
+	<li><strong>highlight</strong> <?php _e('(optional) - defines a set of lines which are pointed out (ranges are supported).', 'enlighter'); ?> <br />
+		<?php _e('e.g.', 'enlighter'); ?> <code>highlight="1,2-4,20"</code> <?php _e('to highlight lines 1,2,3,4,20', 'enlighter'); ?>
 	</li>
 </ul>
 
-<h2>Codegroup-Shortcode</h2>
-<p>You can also use EnlighterJS to display a set of different codes within a tab-pane</p>
-<h4>Example</h4>
+<h2><?php _e('Codegroup-Shortcode', 'enlighter'); ?></h2>
+<p><?php _e('You can also use EnlighterJS to display a set of different codes within a tab-pane', 'enlighter'); ?></p>
+<h4><?php _e('Example', 'enlighter'); ?></h4>
 <pre>
 [codegroup]
  	[js tab="Javascript Message"]
@@ -63,35 +63,35 @@ var x = new EnligherJS.Helper($$('pre'));
 [/codegroup]
 </pre>
 
-<h4>Syntax</h4>
+<h4><?php _e('Syntax', 'enlighter'); ?></h4>
 <code>[codegroup theme=""] [js tab=""]...[/js] [css]...[/css] ... [/codegroup]</code>
 
-<h4>Attributes</h4>
+<h4><?php _e('Attributes', 'enlighter'); ?></h4>
 <ul style="padding-left: 10px">
-	<li><strong>theme</strong> (optional) - defines the theme that should used, will overwrite the settings-page values</li>
-	<li><strong>tab</strong> (optional) - set the name of the tab-pane, if not defined the language name will be used as title</li>
+	<li><strong>theme</strong> <?php _e('(optional) - defines the theme that should used, will overwrite the settings-page values', 'enlighter'); ?></li>
+	<li><strong>tab</strong> <?php _e('(optional) - set the name of the tab-pane, if not defined the language name will be used as title', 'enlighter'); ?></li>
 </ul>
 
-<h2>Generic-Shortcode</h2>
-<p>If you're using other plugins which uses also language-shortcodes, you can use the enlighter with generic shortcode. The generic shortcode got directly transformed to a </p>
+<h2><?php _e('Generic-Shortcode', 'enlighter'); ?></h2>
+<p><?php _e('If you`re using other plugins which uses also language-shortcodes, you can use the enlighter with generic shortcode.', 'enlighter'); ?></p>
 
-<h4>Example</h4>
+<h4><?php _e('Example', 'enlighter'); ?></h4>
 <pre>[enlighter lang="js"]
 var x = new EnligherJS.Helper($$('pre'));
 [/enligher]
 </pre>
 
-<h4>Syntax</h4>
-<code>[enlighter lang="" theme="" group="" tab="" highlight=""] YOUR CODE [/enlighter]</code>
+<h4><?php _e('Syntax', 'enlighter'); ?></h4>
+<code>[enlighter lang="" theme="" group="" tab="" highlight=""] <?php _e('YOUR CODE', 'enlighter'); ?> [/enlighter]</code>
 
-<h4>Attributes</h4>
+<h4><?php _e('Attributes', 'enlighter'); ?></h4>
 <ul style="padding-left: 10px">
-	<li><strong>lang</strong> (optional) - specify the language which should used, if not defined values from the settings-page are used</li>
-	<li><strong>theme</strong> (optional) - defines the theme that should used, will overwrite the settings-page values</li>
-	<li><strong>group</strong> (optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)</li>
-	<li><strong>tab</strong> (optional) - set the name of the tab-pane, if not defined the language name will be used as title</li>
-	<li><strong>highlight</strong> (optional) - defines a set of lines which are pointed out (ranges are supported). <br />
-		e.g. <code>highlight="1,2-4,20"</code> to highlight lines 1,2,3,4,20
+	<li><strong>lang</strong> <?php _e('(optional) - specify the language which should used, if not defined values from the settings-page are used', 'enlighter'); ?></li>
+	<li><strong>theme</strong> <?php _e('(optional) - defines the theme that should used, will overwrite the settings-page values', 'enlighter'); ?></li>
+	<li><strong>group</strong> <?php _e('(optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)', 'enlighter'); ?></li>
+	<li><strong>tab</strong> <?php _e('(optional) - set the name of the tab-pane, if not defined the language name will be used as title', 'enlighter'); ?></li>
+	<li><strong>highlight</strong> <?php _e('(optional) - defines a set of lines which are pointed out (ranges are supported).', 'enlighter'); ?><br />
+		<?php _e('e.g.', 'enlighter'); ?> <code>highlight="1,2-4,20"</code> <?php _e('to highlight lines 1,2,3,4,20', 'enlighter'); ?>
 	</li>
 </ul>
 

@@ -15,10 +15,9 @@
 	
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED');
+namespace Enlighter;
 
-
-class Enlighter_ShortcodeHandler{
+class ShortcodeHandler{
 	
 	// stores the plugin config
 	private $_config;
@@ -29,9 +28,9 @@ class Enlighter_ShortcodeHandler{
 	// currently active codegroup
 	private $_activeCodegroup;
 	
-	public function __construct($config, $registeredShortcodes){
+	public function __construct($settingsUtil, $registeredShortcodes){
 		// store local plugin config
-		$this->_config = $config;
+		$this->_config = $settingsUtil->getOptions();
 		
 		// store registered shortcodes
 		$this->_registeredShortcodes = $registeredShortcodes;
@@ -146,7 +145,7 @@ class Enlighter_ShortcodeHandler{
 	 */
 	private function generateCodeblock($attributes, $content){
 		// generate "pre" wrapped html output
-		$html = Enlighter_HtmlUtil::generateTag('pre', $attributes, false);
+		$html = HtmlUtil::generateTag('pre', $attributes, false);
 		
 		// remove automatic generated html editor tags (from wpautop())
 		$content = $this->removeWpAutoP($content);

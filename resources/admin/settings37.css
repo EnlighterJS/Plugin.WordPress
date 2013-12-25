@@ -1,0 +1,56 @@
+.EnlighterBlockcontent{
+	padding: 5px 10px 10px 10px;
+	margin: 0px 0px 20px 0px;
+	border: solid 1px #e0e0e0;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+.EnlighterBlockcontent h4{
+	color: #0074a2;
+	displa: block;
+	border-bottom: dotted 2px #c0c0c0;
+}
+.EnlighterBlockcontent img{
+	padding-left: 15px;
+}
+.EnlighterCustomSettingItem{
+	float: left;
+}
+.EnlighterCustomSettingItem label{
+	hieght: 30px;
+	line-height: 30px;
+	padding: 0px 5px 0px 0px;
+}
+.EnlighterCustomSettingItem input[type="text"]{
+	margin: 0px 20px 0px 0px;
+	width: 100px;
+}
+.EnlighterCustomSettingItem select{
+	margin: 0px 20px 0px 0px;
+}
+
+.EnlighterSetting{
+	display: block;
+	padding: 5px 10px 5px 15px;
+}
+.EnlighterSettingTitle{
+	float: left;
+	width: 250px;
+	font-weight: bold;
+	hieght: 30px;
+	line-height: 30px;
+}
+.EnlighterSettingItem{
+	float: left;
+}
+.EnlighterSettingClear{
+	clear: left;
+}
+.EnlighterTRUE{
+	font-weight: bold;
+	color: #7ad03a;
+}
+.EnlighterFALSE{
+	font-weight: bold;
+	color: #d03a3a;
+}

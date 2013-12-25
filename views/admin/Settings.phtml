@@ -20,17 +20,17 @@
 
 <div class="wrap">
 <div id="icon-options-general" class="icon32"><br /></div>
-<h2><?php _e('Enlighter - Advanced javascript based syntax highlighting'); ?></h2>
+<h2><?php _e('Enlighter - Advanced javascript based syntax highlighting', 'enlighter'); ?></h2>
 
 <!-- Breadcrumb -->
 <?php add_thickbox(); ?>
 <div id='setting-error-settings_updated' class='updated settings-error'> 
-<p><strong>Enlighter related: </strong>
-	<a href="#TB_inline?height=500&width=800&inlineId=EnlighterHelp" class="thickbox" rel="Enlighter Help">View Help</a> | 
-	<a href="https://github.com/AndiDittrich/EnlighterJS">EnlighterJS on GitHub</a> | 
-	<a href="http://wordpress.org/plugins/enlighter/">Enlighter on WordPress.org</a> | 
-	<a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues">Report a Bug</a> |
-	<a href="http://static.andidittrich.de/EnlighterJS/Demo.html">Theme Demo</a>
+<p><strong><?php _e('Enlighter related: ', 'enlighter'); ?></strong>
+	<a href="#TB_inline?height=500&width=800&inlineId=EnlighterHelp" class="thickbox" rel="Enlighter Help"><?php _e('View Help', 'enlighter'); ?></a> | 
+	<a href="https://github.com/AndiDittrich/EnlighterJS"><?php _e('EnlighterJS on GitHub', 'enlighter'); ?></a> | 
+	<a href="http://wordpress.org/plugins/enlighter/"><?php _e('Enlighter on WordPress.org', 'enlighter'); ?></a> | 
+	<a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues"><?php _e('Report a Bug', 'enlighter'); ?></a> |
+	<a href="http://static.andidittrich.de/EnlighterJS/Demo.html"><?php _e('Theme Demo', 'enlighter'); ?></a>
 </p>
 </div>
 
@@ -42,28 +42,28 @@
     <?php settings_fields('enlighter-settings-group' ); ?>
     
 	<!-- appearance !-->
-    <h2><?php _e('Appearance'); ?></h2>
+    <h3><?php _e('Appearance'); ?></h3>
     <div class="EnlighterBlockcontent">
-	    <p><?php _e('You can specify the default language and theme as well as the some output styles. If you want to customize themes, choose the default theme option "custom"');?><br />
-	    <?php _e('The indent-option will replace each tab at the beginning of a line with a selectable number of space-characters'); ?></p>
+	    <p><?php _e('You can specify the default language and theme as well as the some output styles. If you want to customize themes, choose the default theme option "custom"', 'enlighter');?><br />
+	    <?php _e('The indent-option will replace each tab at the beginning of a line with a selectable number of space-characters', 'enlighter'); ?></p>
 	
 	    <!-- Theme -->
-		<?php $sUtil->displaySelect('Default Theme', 'defaultTheme', $themes); ?>
+		<?php $this->_settingsUtility->displaySelect(__('Default Theme', 'enlighter'), 'defaultTheme', $this->_suppportedThemes); ?>
 	    
 	    <!-- Language -->
-		<?php $sUtil->displaySelect('Default Language', 'defaultLanguage', array_merge($langs, array('Generic highlighting' => 'standard'))); ?>
+		<?php $this->_settingsUtility->displaySelect(__('Default Language', 'enlighter'), 'defaultLanguage', array_merge($this->_supportedLanguageKeys, array(__('Generic highlighting', 'enlighter') => 'standard'))); ?>
 	
 		<!-- Output Style -->
-		<?php $sUtil->displaySelect('Output-Style', 'compiler', array('List (with line-numbers, ordered list)' => 'List', 'Inline (without line-numbers, pre-tag)' => 'Inline')); ?>
+		<?php $this->_settingsUtility->displaySelect(__('Output-Style', 'enlighter'), 'compiler', array(__('List (with line-numbers, ordered list)', 'enlighter') => 'List', __('Inline (without line-numbers, pre-tag)', 'enlighter') => 'Inline')); ?>
 	    
 	    <!-- Indent -->
-	    <?php $sUtil->displaySelect('Code-Indent', 'indent', array('Default (use tabs)' => -1, '1 Space' => 1, '2 Spaces' => 2, '3 Spaces' => 3, '4 Spaces' => 4, '5 Spaces' => 5, '6 Spaces' => 6, '7 Spaces' => 7, '8 Spaces' => 8, '9 Spaces' => 9, '10 Spaces' =>10, '11 Spaces' => 11, '12 Spaces' =>12, '13 Spaces' => 13, '14 Spaces' => 14, '15 Spaces' => 15)); ?>
+	    <?php $this->_settingsUtility->displaySelect(__('Code-Indent', 'enlighter'), 'indent', array(__('Default (use tabs)', 'enlighter') => -1, __('1 Space', 'enlighter') => 1, '2 '.__('Spaces', 'enlighter') => 2, '3 '.__('Spaces', 'enlighter') => 3, '4 '.__('Spaces', 'enlighter') => 4, '5 '.__('Spaces', 'enlighter') => 5, '6 '.__('Spaces', 'enlighter') => 6, '7 '.__('Spaces', 'enlighter') => 7, '8 '.__('Spaces', 'enlighter') => 8, '9 '.__('Spaces', 'enlighter') => 9, '10 '.__('Spaces', 'enlighter') =>10, '11 '.__('Spaces', 'enlighter') => 11, '12 '.__('Spaces', 'enlighter') =>12, '13 '.__('Spaces', 'enlighter') => 13, '14 '.__('Spaces', 'enlighter') => 14, '15 '.__('Spaces', 'enlighter') => 15)); ?>
 	    
 	    <!-- Mouseover -->
-		<?php $sUtil->displaySelect('Mouseover on codelines', 'altLines', array('Enabled' => 'hoverEnabled', 'Disabled' => '')); ?>
+		<?php $this->_settingsUtility->displaySelect(__('Mouseover on codelines', 'enlighter'), 'altLines', array(__('Enabled', 'enlighter') => 'hoverEnabled', __('Disabled', 'enlighter') => '')); ?>
 		
 		<!-- enable langugae shortcodes !-->
-		<?php $sUtil->displaySelect('Language Shortcodes', 'languageShortcode', array('Enabled' => 'enabled', 'Disabled' => '')); ?>
+		<?php $this->_settingsUtility->displaySelect(__('Language Shortcodes', 'enlighter'), 'languageShortcode', array(__('Enabled', 'enlighter') => 'enabled', __('Disabled', 'enlighter') => '')); ?>
 	</div>
 	
 	<!-- THEME CUSTOMIZER -->
@@ -71,46 +71,51 @@
 	<!-- // THEME CUSTOMIZER -->
 	
 	<!-- CDN SETTINGS -->
-	<h2><?php _e('CDN (Content Delivery Network)'); ?></h2>
+	<h3><?php _e('CDN (Content Delivery Network)', 'enlighter'); ?></h3>
 	<div class="EnlighterBlockcontent">		
-		<p>These options might be required when using a Content-Delivery-Network (CDN) or another server/location which outsources your CSS+Javascript files. <br />
-		In this case you have to manually include EnlighterJS.js, EnlighterJS.css and the MooTools Framework into your page!<br />
-		Custom styles, generated with the ThemeCustomizer are <a href="<?php echo plugins_url('/enlighter/cache/EnlighterJS.custom.css') ?>">available here</a> (enlighter/cache/EnlighterJS.custom.css).</p>
+		<p><?php _e('These options might be required when using a Content-Delivery-Network (CDN) or another server/location which outsources your CSS+Javascript files.', 'enlighter'); ?> <br />
+		<?php _e('In this case you have to manually include EnlighterJS.js, EnlighterJS.css and the MooTools Framework into your page!', 'enlighter'); ?><br />
+		<?php _e('Custom styles, generated with the ThemeCustomizer are', 'enlighter'); ?> <a href="<?php echo plugins_url('/enlighter/cache/EnlighterJS.custom.css') ?>"><?php _e('available here', 'enlighter'); ?></a> (enlighter/cache/EnlighterJS.custom.css).</p>
 		
 		<!-- embed css !-->
-		<?php $sUtil->displayCheckbox('Include Enlighter-CSS', 'embedEnlighterCSS') ?>
+		<?php $this->_settingsUtility->displayCheckbox(__('Include Enlighter-CSS', 'enlighter'), 'embedEnlighterCSS') ?>
 	
 		<!-- embed JS !-->
-		<?php $sUtil->displayCheckbox('Include Enlighter-Javascript', 'embedEnlighterJS'); ?>
+		<?php $this->_settingsUtility->displayCheckbox(__('Include Enlighter-Javascript', 'enlighter'), 'embedEnlighterJS'); ?>
 	
 		<!-- embed MooTools !-->
-		<?php $sUtil->displaySelect('MooTools Framework Source', 'mootoolsSource', array('Your WordPress Site' => 'local', 'Google CDN' => 'google', 'Not include' => 'none')); ?>
+		<?php $this->_settingsUtility->displaySelect(__('MooTools Framework Source', 'enlighter'), 'mootoolsSource', array(__('Your WordPress Site', 'enlighter') => 'local', __('Google CDN', 'enlighter') => 'google', __('CDNJS (Cloudfare)', 'enlighter') => 'cdnjs', __('Not include', 'enlighter') => 'none')); ?>
 	</div>
 	
 	<!-- ADVANCED SETTINGS -->
-	<h2><?php _e('Advanced'); ?></h2>
-	<p><strong><?php _e('Warning: These options are for advanced users only!'); ?></strong></p>
+	<h3><?php _e('Advanced Options', 'enlighter'); ?></h3>
+	<p><strong><?php _e('Warning: These options are for advanced users only!', 'enlighter'); ?></strong></p>
 
 	<div class="EnlighterBlockcontent">
 
 		<!-- Change wpautop filter priority !-->    
-	    <h3><?php _e('"WpAutoP" Filter Priority'); ?></h3>
-	    <p><?php _e('The processing priority of the wpautop filter. Normally the filter will be applied before shortcode is handled and will maybe crash your code-appearance by adding linebreaks and p/br tags.'); ?><br />
-	    <?php _e('The Enlighter-Plugin changes the priority of the filter by default to 12 - this means it will be applied <strong>after</strong> shortcodes are processed by WordPress. <strong>It may can influence other plugins.</strong>'); ?>
+	    <h4><?php _e('"WpAutoP" Filter Priority', 'enlighter'); ?></h4>
+	    <p><?php _e('The processing priority of the wpautop filter. Normally the filter will be applied before shortcode is handled and will maybe crash your code-appearance by adding linebreaks and p/br tags.', 'enlighter'); ?><br />
+	    <?php _e('The Enlighter-Plugin changes the priority of the filter by default to 12 - this means it will be applied <strong>after</strong> shortcodes are processed by WordPress. <strong>It may can influence other plugins.</strong>', 'enlighter'); ?>
 	    </p>
-		<?php $sUtil->displaySelect('Filter-Priority', 'wpAutoPFilterPriority', array('Default (no changes)' => 'default', 'Priority 12 (after shortcode)' => '12')); ?>
+		<?php $this->_settingsUtility->displaySelect(__('Filter-Priority', 'enlighter'), 'wpAutoPFilterPriority', array(__('Default (no changes)', 'enlighter') => 'default', __('Priority 12 (after shortcode)', 'enlighter') => '12')); ?>
 		
 	    <!-- advanced css selector !-->
-	    <h3><?php _e('CSS Selector'); ?></h3>
-	    <p><?php _e('The selector is used to match all generated pre-tags. Normally pre.EnlighterJSRAW should be perfect (all pre-tags generated by the plugin will be highlighted)'); ?></p>
-	    <p><?php _e('<strong>Default: </strong>pre.EnlighterJSRAW'); ?></p>
-	    <?php $sUtil->displayInput('CSS Selector', 'selector', 'The CSS selector used to match generated HTML Tags'); ?>
+	    <h4><?php _e('CSS Selector', 'enlighter'); ?></h4>
+	    <p><?php _e('The selector is used to match all generated pre-tags. Normally pre.EnlighterJSRAW should be perfect (all pre-tags generated by the plugin will be highlighted)', 'enlighter'); ?></p>
+	    <p><?php _e('<strong>Default: </strong>pre.EnlighterJSRAW', 'enlighter'); ?></p>
+	    <?php $this->_settingsUtility->displayInput(__('CSS Selector', 'enlighter'), 'selector', __('The CSS selector used to match generated HTML Tags', 'enlighter')); ?>
 	    
 	    <!-- config type !-->    
-	    <h3><?php _e('Initialization method'); ?></h3>
-		<p><?php _e('EnlighterJS needs to be "initialized" with a special metadata-tag or some startup-codes within a script-tag. Which method should be used ? (metadata based config will not pass the W3C Validator check)'); ?></p>
-		<p><?php _e('<strong>Default: </strong>Metadata based config'); ?></p>
-		<?php $sUtil->displaySelect('Initialization Method', 'configType', array('Metadata based config' => 'meta', 'Script based config' => 'script')); ?>
+	    <h4><?php _e('Initialization Method', 'enlighter'); ?></h4>
+		<p><?php _e('EnlighterJS needs to be "initialized" with a special metadata-tag or some startup-codes within a script-tag. Which method should be used ? (metadata based config will not pass the W3C Validator check)', 'enlighter'); ?></p>
+		<p><?php _e('<strong>Default: </strong>Metadata based config', 'enlighter'); ?></p>
+		<?php $this->_settingsUtility->displaySelect(__('Initialization Method', 'enlighter'), 'configType', array(__('Metadata based config', 'enlighter') => 'meta', __('Script based config', 'enlighter') => 'script')); ?>
+	
+		<!-- I18n -->
+		<h4><?php _e('I18n (Internationalization)', 'enlighter'); ?></h4>
+		<p><?php _e('Should the plugin load language files (if available) to translate the settings page ?', 'enlighter'); ?></p>
+		<?php $this->_settingsUtility->displayCheckbox(__('Enable I18n', 'enlighter'), 'enableTranslation'); ?>
 	</div>
 	
 	<!-- submit !-->
@@ -118,6 +123,6 @@
 
 </form>
 
-<h2><?php _e('Credits') ?></h2>
-<p><a href="http://www.a3non.org/go/enlighterjs">EnlighterJS</a> is developed by <a href="http://andidittrich.de">Andi Dittrich</a>. It's release under the MIT X11 License. Includes: <a href="http://www.eyecon.ro/colorpicker/">Colorpicker</a> by <a href="http://www.eyecon.ro">Stefan Petre</a> - MIT/GPL License</p>
+<h3><?php _e('Credits', 'enlighter') ?></h3>
+<p><a href="http://www.a3non.org/go/enlighterjs">EnlighterJS</a> <?php _e('is developed by', 'enlighter'); ?> <a href="http://andidittrich.de">Andi Dittrich</a>. <?php _e('It`s released under the terms of the MIT X11 License.', 'enlighter'); ?> <?php _e('Includes:', 'enlighter'); ?> <a href="http://www.eyecon.ro/colorpicker/">Colorpicker</a> <?php _e('by', 'enlighter'); ?> <a href="http://www.eyecon.ro">Stefan Petre</a> - MIT/GPL <?php _e('License', 'enlighter'); ?></p>
 </div>

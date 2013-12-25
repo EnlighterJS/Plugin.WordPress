@@ -1,140 +1,157 @@
 <!-- Theme Customizer -->
 <div id="EnlighterJSThemeCustomizer">
-	<h2><?php _e('Theme Customizer'); ?></h2>
+	<h3><?php _e('Theme Customizer', 'enlighter'); ?></h3>
 	<div class="EnlighterBlockcontent">
-	<p>Leave fields blank to force basic theme styles</p>
+	<p><?php _e('Leave fields blank to force basic theme styles', 'enlighter'); ?></p>
 
 <!-- Basic Theme -->
-<table class="form-table">
-	<tr valign="top">
-	<th scope="row">Basic Theme (will be extended)</th>
-        <td>
-        <select name="enlighter-customThemeBase" id="enlighter-customThemeBase">
-		<?php		
-		foreach ($themes as $key=>$value){
-			$selected = ($this->_config['customThemeBase'] == $value) ? 'selected="selected"' : '';
+	<div class="EnlighterSetting">
+		<div class="EnlighterSettingTitle"><?php _e('Basic Theme (will be extended)', 'enlighter'); ?></div>
+		<div class="EnlighterCustomSettingItem">
+		<select name="enlighter-customThemeBase" id="enlighter-customThemeBase">
+		<?php 
+		foreach ($this->_suppportedThemes as $key=>$value){
+			$selected = ($this->_settingsUtility->getOption('customThemeBase') == $value) ? 'selected="selected"' : '';
 			if ($value!='wpcustom'){
 				echo '<option value="'.$value.'" '.$selected.'>'.$key.'</option>';
 			}
 		}
-		?> 
-        </select>
-         <input type="button" value="<?php _e('Load Theme styles'); ?>" id="enlighter_loadBasicTheme" class="button button-primary" /> 
-        </td>
-        </tr>
-</table>
-<!-- //Basic Theme -->
-
-
-<h3>Font Styles</h3>
+		?>	
+		</select>
+		<input type="button" value="<?php _e('Load Theme styles', 'enlighter');?> " id="enlighter_loadBasicTheme" class="button button-primary" />
+		</div>
+		<div class="EnlighterSettingClear"></div>
+	</div>
+<!-- //Basic Theme -->	
 
 <!-- Theme Font Styles -->
-<table class="form-table">
+<h4><?php _e('Font Styles', 'enlighter'); ?></h4>
 	<?php 
 		// font family
-		$sUtil->displayInput('Font-Family', 'customFontFamily', 'e.g. Monaco, Courier, Monospace', '', true);
+		$this->_settingsUtility->displayInput(__('Font-Family', 'enlighter'), 'customFontFamily', __('e.g. Monaco, Courier, Monospace', 'enlighter'), '', true);
 	
 		// font size
-		$sUtil->displayInput('Font-Size', 'customFontSize', 'e.g. 12px, 1.2em, 11pt', '', true);
+		$this->_settingsUtility->displayInput(__('Font-Size', 'enlighter'), 'customFontSize', __('e.g. 12px, 1.2em, 11pt', 'enlighter'), '', true);
 		
 		// line height
-		$sUtil->displayInput('Line height', 'customLineHeight', 'e.g. 16px, 1.5em', '', true);
+		$this->_settingsUtility->displayInput(__('Line height', 'enlighter'), 'customLineHeight', __('e.g. 16px, 1.5em', 'enlighter'), '', true);
 		
 		// font color
-		$sUtil->displayInput('Font-Color', 'customFontColor', 'e.g. #000000, #ff00c1', 'EnlighterJSColorChooser"', true);
+		$this->_settingsUtility->displayInput(__('Font-Color', 'enlighter'), 'customFontColor', __('e.g. #000000, #ff00c1', 'enlighter'), 'EnlighterJSColorChooser"', true);
 	?>
-</table>
-<!-- // Theme Font  Styles -->
-
-<h3>Line Number Styles</h3>
+<!-- // Theme Font Styles -->
 
 <!-- Theme Linenumber Font Styles -->
-<table class="form-table">
+<h4><?php _e('Line Number Styles', 'enlighter'); ?></h4>
 	<?php 
 		// linenumber font family
-		$sUtil->displayInput('Font-Family', 'customLinenumberFontFamily', 'e.g. Monaco, Courier, Monospace', '', true);
+		$this->_settingsUtility->displayInput(__('Font-Family', 'enlighter'), 'customLinenumberFontFamily', __('e.g. Monaco, Courier, Monospace', 'enlighter'), '', true);
 		
 		// linenumber font size
-		$sUtil->displayInput('Font-Size', 'customLinenumberFontSize', 'e.g. 10px, 1.2em, 11pt', '', true);
+		$this->_settingsUtility->displayInput(__('Font-Size', 'enlighter'), 'customLinenumberFontSize', __('e.g. 10px, 1.2em, 11pt', 'enlighter'), '', true);
 		
 		// linenumber line height
-		$sUtil->displayInput('Line height', 'customLinenumberLineHeight', 'e.g. 15px, 1.5em', '', true);
+		$this->_settingsUtility->displayInput(__('Line height', 'enlighter'), 'customLinenumberLineHeight', __('e.g. 15px, 1.5em', 'enlighter'), '', true);
 		
 		// linenumber font color
-		$sUtil->displayInput('Font-Color', 'customLinenumberFontColor', 'e.g. #000000, #ff00c1', 'EnlighterJSColorChooser"', true);
+		$this->_settingsUtility->displayInput(__('Font-Color', 'enlighter'), 'customLinenumberFontColor', __('e.g. #000000, #ff00c1', 'enlighter'), 'EnlighterJSColorChooser"', true);
 	?>
 </table>
 <!-- // Theme Linenumber Font Styles -->
 
-<h3>Special Styles</h3>
-
 <!-- Theme Special Styles -->
-<table class="form-table">
+<h4><?php _e('Special Styles', 'enlighter'); ?></h4>
 	<?php 
 		// line highlight background color
-		$sUtil->displayInput('Line highlighting Color', 'customLineHighlightColor', 'e.g. #000000, #ff00c1', 'EnlighterJSColorChooser"', true);
+		$this->_settingsUtility->displayInput(__('Line highlighting Color', 'enlighter'), 'customLineHighlightColor', __('e.g. #000000, #ff00c1', 'enlighter'), 'EnlighterJSColorChooser"', true);
 		
 		// line hover background color
-		$sUtil->displayInput('Line hover Color', 'customLineHoverColor', 'e.g. #f0f0ff', 'EnlighterJSColorChooser"', true);
+		$this->_settingsUtility->displayInput(__('Line hover Color', 'enlighter'), 'customLineHoverColor', __('e.g. #f0f0ff', 'enlighter'), 'EnlighterJSColorChooser"', true);
 	?>
-</table>
 <!-- // Theme Special Styles -->
 
-<h3>Token Styles</h3>
+<!-- Theme Token Styles -->
+<h4><?php _e('Token Styles', 'enlighter'); ?></h4>
 <?php 
 	
-		foreach ($customStyleKeys as $key => $value){
-			?>
-<!-- Token Styles [<?php echo $value ?>] -->
-<table class="form-table">
-	<tr valign="top">
-	<th scope="row"><?php _e($key); ?></th>
-	<td>
-Text: <input style="width: 75px;background-color: <?php echo get_option('enlighter-custom-color-'.$value) ?>" name="enlighter-custom-color-<?php echo $value ?>" id="enlighter-custom-color-<?php echo $value ?>" type="text" value="<?php echo get_option('enlighter-custom-color-'.$value) ?>" class="text EnlighterJSColorChooser" />
-Background: <input style="width: 75px;background-color: <?php echo get_option('enlighter-custom-bgcolor-'.$value) ?>" name="enlighter-custom-bgcolor-<?php echo $value ?>" id="enlighter-custom-bgcolor-<?php echo $value ?>" type="text" value="<?php echo get_option('enlighter-custom-bgcolor-'.$value) ?>" class="text EnlighterJSColorChooser" />
-	
-    <select name="enlighter-custom-fontstyle-<?php echo $value ?>" id="enlighter-custom-fontstyle-<?php echo $value ?>">
-	<?php
-	$cssKeys = array(
-		'Normal Style' => 'normal',
-		'Bold Style' => 'bold',
-		'Italic Style' => 'italic',
-		'Bold+Italic Style' => 'bolditalic'	
+	// description table of all customizable styles
+	$customStyles = array(
+		'kw1' => __('Keyword(Type1)', 'enlighter'),
+		'kw2' => __('Keyword(Type2)', 'enlighter'),
+		'kw3' => __('Keyword(Type3)', 'enlighter'),
+		'kw4' => __('Keyword(Type4)', 'enlighter'),
+		'co1' => __('Slash-StyleComments', 'enlighter'),
+		'co2' => __('Multiline-StyleComments', 'enlighter'),
+		'st0' => __('Strings(Type1)', 'enlighter'),
+		'st1' => __('Strings(Type2)', 'enlighter'),
+		'st2' => __('Strings(Type3)', 'enlighter'),
+		'nu0' => __('Number', 'enlighter'),
+		'me0' => __('Method(Type1)', 'enlighter'),
+		'me1' => __('Method(Type2)', 'enlighter'),
+		'br0' => __('Bracket', 'enlighter'),
+		'sy0' => __('Symbol', 'enlighter'),
+		'es0' => __('EscapeSymbol', 'enlighter'),
+		're0' => __('Regex', 'enlighter'),
+		'de1' => __('StartDelimiter', 'enlighter'),
+		'de2' => __('StopDelimiter', 'enlighter')
 	);
 	
-	foreach ($cssKeys as $cssName=>$cssValue){
-		$selected = (get_option('enlighter-custom-fontstyle-'.$value) == $cssValue) ? 'selected="selected"' : '';
-		echo '<option value="'.$cssValue.'" '.$selected.'>'.$cssName.'</option>';
-	}
-	?> 
-	</select>
-        
-	<select name="enlighter-custom-decoration-<?php echo $value ?>" id="enlighter-custom-decoration-<?php echo $value ?>">
-	<?php
-	$cssKeys = array(
-		'No Decoration' => 'normal',
-		'Underline' => 'underline',
-		'Overline' => 'overline',
-		'Line through' => 'through'
+	$textDecorationOptions = array(
+		'normal' 	=> __('No Decoration', 'enlighter'),
+		'underline' => __('Underline', 'enlighter'),
+		'overline'	=> __('Overline', 'enlighter'),
+		'through'	=> __('Line through', 'enlighter') 
 	);
 	
-	foreach ($cssKeys as $cssName=>$cssValue){
-		$selected = (get_option('enlighter-custom-decoration-'.$value) == $cssValue) ? 'selected="selected"' : '';
-		echo '<option value="'.$cssValue.'" '.$selected.'>'.$cssName.'</option>';
-	}
-	?> 
-	</select>   
-	</td>
-	</tr>
-</table>
-<!-- // Token Styles [<?php echo $value ?>] -->				
-				
-				
-				<?php 
-			
+	$textStyleOptions = array(
+		'normal'	=> __('Normal Style', 'enlighter'),
+		'bold'		=> __('Bold Style', 'enlighter'),
+		'italic'	=> __('Italic Style', 'enlighter'),
+		'bolditalic' => __('Bold+Italic Style', 'enlighter') 
+	);
+	
+	// generate token style options
+	foreach ($this->_customStyleKeys as $style){
+		// get description
+		$description = $customStyles[$style];
+		
+		echo '<!-- Token Style [ ', esc_html($description), '] -->';
+		echo '<div class="EnlighterSetting">';
+		echo '<div class="EnlighterSettingTitle">', esc_html($description), '</div>';
+		echo '<div class="EnlighterCustomSettingItem">';
+		
+		// text colors
+		echo '<label for="enlighter-custom-color-', $style, '">', __('Text:', 'enlighter'), '</label>';
+		echo '<input name="enlighter-custom-color-', $style, '" id="enlighter-custom-color-', $style,'" type="text" value="', $this->_settingsUtility->getOption('custom-color-'.$style), '" class="text EnlighterJSColorChooser" />';
+
+		// background colors
+		echo '<label for="enlighter-custom-bgcolor-', $style, '">', __('Background:', 'enlighter'), '</label>';
+		echo '<input name="enlighter-custom-bgcolor-', $style, '" id="enlighter-custom-bgcolor-', $style,'" type="text" value="', $this->_settingsUtility->getOption('custom-bgcolor-'.$style), '" class="text EnlighterJSColorChooser" />';
+
+
+		// font style
+		echo '<select name="enlighter-custom-fontstyle-', $style, '" id="enlighter-custom-fontstyle-', $style, '">';		
+		foreach ($textStyleOptions as $cssValue => $cssText){
+			$selected = ($this->_settingsUtility->getOption('custom-fontstyle-'.$style) == $cssValue) ? 'selected="selected"' : '';
+			echo '<option value="', $cssValue, '" ', $selected, '>', $cssText, '</option>';
 		}
-	
-	?>
-</div>
+		echo '</select>';
+        
+		// font decoration
+		echo '<select name="enlighter-custom-decoration-', $style, '" id="enlighter-custom-decoration-', $style, '">';
+		foreach ($textDecorationOptions as $cssValue => $cssText){
+			$selected = ($this->_settingsUtility->getOption('custom-decoration-'.$style) == $cssValue) ? 'selected="selected"' : '';
+			echo '<option value="', $cssValue, '" ', $selected, '>', $cssText, '</option>';
+		}
+		echo '</select>';
+		
+		// block end
+		echo '</div><div class="EnlighterSettingClear"></div></div>';
+		echo '<!-- // Token Style [ ', esc_html($description), '] -->';
+	}
+?>
+
+<!-- // Theme Token Styles -->
+	</div>
 </div>
 	

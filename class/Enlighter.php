@@ -1,7 +1,7 @@
 <?php
 /**
 	Enlighter Class
-	Version: 1.5
+	Version: 1.6
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://www.a3non.org/go/enlighterjs
@@ -15,8 +15,6 @@
 	
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED');
-
 
 class Enlighter{
 	// singleton instance
@@ -28,8 +26,11 @@ class Enlighter{
 	// resource loader instamce
 	private $_resourceLoader;
 	
+	// settings utility instance
+	private $_settingsUtility;
+	
 	// enlighter config keys with default values
-	private $_config = array(
+	private $_defaultConfig = array(
 		'embedEnlighterCSS' => true,
 		'embedEnlighterJS' => true,
 		'mootoolsSource' => 'local',
@@ -52,7 +53,8 @@ class Enlighter{
 		'customLinenumberFontColor' => '#000000',
 		'customLineHighlightColor' => '#f0f0ff',
 		'customLineHoverColor' => '#f0f0ff',		
-		'wpAutoPFilterPriority' => '12'	
+		'wpAutoPFilterPriority' => '12',
+		'enableTranslation' => true	
 	);
 	
 	// list of micro shortcodes (supported languages)
@@ -87,24 +89,24 @@ class Enlighter{
 	
 	// list of all customizable styles
 	private $_customStyleKeys = array(
-		'Keyword (Type1) Color' => 'kw1',
-		'Keyword (Type2) Color' => 'kw2',
-		'Keyword (Type3) Color' => 'kw3',
-		'Keyword (Type4) Color' => 'kw4',
-		'Slash-Style Comments Color' => 'co1',
-		'Multiline-Style Comments Color' => 'co2',
-		'Strings (Type1) Color' => 'st0',
-		'Strings (Type2) Color' => 'st1',
-		'Strings (Type3) Color' => 'st2',
-		'Number Color' => 'nu0',
-		'Method (Type1) Color' => 'me0',
-		'Method (Type2) Color' => 'me1',
-		'Bracket Color' => 'br0',
-		'Symbol Color' => 'sy0',
-		'Escape Symbol Color' => 'es0',
-		'Regex Color' => 're0',
-		'Start Delimiter Color' => 'de1',
-		'Stop Delimiter Color' => 'de2'
+		'kw1', //'Keyword(Type1)Color', 'enlighter'),
+		'kw2', //'Keyword(Type2)Color', 'enlighter'),
+		'kw3', //'Keyword(Type3)Color', 'enlighter'),
+		'kw4', //'Keyword(Type4)Color', 'enlighter'),
+		'co1', //'Slash-StyleCommentsColor', 'enlighter'),
+		'co2', //'Multiline-StyleCommentsColor', 'enlighter'),
+		'st0', //'Strings(Type1)Color', 'enlighter'),
+		'st1', //'Strings(Type2)Color', 'enlighter'),
+		'st2', //'Strings(Type3)Color', 'enlighter'),
+		'nu0', //'NumberColor', 'enlighter'),
+		'me0', //'Method(Type1)Color', 'enlighter'),
+		'me1', //'Method(Type2)Color', 'enlighter'),
+		'br0', //'BracketColor', 'enlighter'),
+		'sy0', //'SymbolColor', 'enlighter'),
+		'es0', //'EscapeSymbolColor', 'enlighter'),
+		're0', //'RegexColor', 'enlighter'),
+		'de1', //'StartDelimiterColor', 'enlighter'),
+		'de2'  //'StopDelimiterColor', 'enlighter')
 	);
 	
 	// static entry/initialize singleton instance
@@ -123,30 +125,39 @@ class Enlighter{
 	}
 	
 	public function __construct(){
+		// generate theme customizers config keys
+		foreach ($this->_customStyleKeys as $key){
+			$this->_defaultConfig['custom-color-'.$key] = '';
+			$this->_defaultConfig['custom-bgcolor-'.$key] = '';
+			$this->_defaultConfig['custom-fontstyle-'.$key] = '';
+			$this->_defaultConfig['custom-decoration-'.$key] = '';
+		}
 		
-		// load enlighter config
-		$this->loadConfig();
+		// create new settings utility class
+		$this->_settingsUtility = new Enlighter\SettingsUtil('enlighter-', $this->_defaultConfig);
+
+		// load language files
+		if ($this->_settingsUtility->getOption('enableTranslation')){
+			load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
+		}
 		
 		// create new resource loader
-		$this->_resourceLoader = new Enlighter_ResourceLoader($this->_config);
+		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility);
 		
 		// frontend or admin area ?
 		if (is_admin()){
-			// load language files
-			load_plugin_textdomain('enlighter', null, basename(dirname(__FILE__)).'/lang');
-			
 			// add admin menu handler
 			add_action('admin_menu', array($this, 'setupBackend'));
 		}else{
 			// create new shortcode handler, register all used shortcodes
-			$this->_shortcodeHandler = new Enlighter_ShortcodeHandler($this->_config, array_merge($this->_supportedLanguageKeys, array('enlighter', 'codegroup')));
+			$this->_shortcodeHandler = new Enlighter\ShortcodeHandler($this->_settingsUtility, array_merge($this->_supportedLanguageKeys, array('enlighter', 'codegroup')));
 			
 			// add shotcode handlers
 			add_shortcode('enlighter', array($this->_shortcodeHandler, 'genericShortcodeHandler'));
 			add_shortcode('codegroup', array($this->_shortcodeHandler, 'codegroupShortcodeHandler'));
 			
 			// enable language shortcodes ?
-			if ($this->_config['languageShortcode']=='enabled'){
+			if ($this->_settingsUtility->getOption('languageShortcode')=='enabled'){
 				foreach ($this->_supportedLanguageKeys as $lang){
 					add_shortcode($lang, array($this->_shortcodeHandler, 'microShortcodeHandler'));
 				}
@@ -157,14 +168,14 @@ class Enlighter{
 			add_action('wp_enqueue_scripts', array($this->_resourceLoader, 'appendJS'), 50);
 			
 			// display frontend config (as javascript or metadata)
-			if ($this->_config['configType']=='meta'){
+			if ($this->_settingsUtility->getOption('configType')=='meta'){
 				add_action('wp_head', array($this->_resourceLoader, 'appendMetadataConfig'));
 			}else{
 				add_action('wp_head', array($this->_resourceLoader, 'appendJavascriptConfig'));
 			}
 			
 			// change wpauto filter priority ?
-			if ($this->_config['wpAutoPFilterPriority']!='default'){
+			if ($this->_settingsUtility->getOption('wpAutoPFilterPriority')!='default'){
 				remove_filter('the_content', 'wpautop');
 				add_filter('the_content', 'wpautop' , 12);
 			}
@@ -173,57 +184,25 @@ class Enlighter{
 	
 	public function setupBackend(){
 		// add options page
-		$optionsPage = add_options_page(__('Enlighter - Advanced javascript based syntax highlighting'), __('Enlighter'), 'administrator', __FILE__, array($this, 'settingsPage'));
+		$optionsPage = add_options_page(__('Enlighter - Advanced javascript based syntax highlighting', 'enlighter'), __('Enlighter', 'enlighter'), 'administrator', __FILE__, array($this, 'settingsPage'));
 		
 		// load jquery stuff
 		add_action('admin_print_scripts-'.$optionsPage, array($this->_resourceLoader, 'appendAdminJS'));
 		add_action('admin_print_styles-'.$optionsPage, array($this->_resourceLoader, 'appendAdminCSS'));
 		
 		// call register settings function
-		add_action('admin_init', array($this, 'registerSettings'));
+		add_action('admin_init', array($this->_settingsUtility, 'registerSettings'));
 	}
 	
 	// options page
 	public function settingsPage(){
 		// well...is there no action hook for updating settings in wp ?
 		if (isset($_GET['settings-updated'])){
-			Enlighter_ThemeGenerator::updateCache($this->_config, $this->_customStyleKeys);
+			Enlighter\ThemeGenerator::generateCSS($this->_settingsUtility, $this->_customStyleKeys);
 		}
-		
-		// create settings utility - based on local config
-		$sUtil = new Enlighter_SettingsUtil($this->_config, 'enlighter-');
-		
-		// "extract" config arrays
-		$langs = $this->_supportedLanguageKeys;
-		$themes = $this->_suppportedThemes;
-		$customStyleKeys = $this->_customStyleKeys;
-		
+				
 		// include admin page
 		include(ENLIGHTER_PLUGIN_PATH.'/views/admin/Settings.phtml');
-	}
-	
-	// register settings
-	public function registerSettings(){
-		// register settings
-		foreach ($this->_config as $key=>$value){
-			register_setting('enlighter-settings-group', 'enlighter-'.$key);
-		}
-		
-		// register custom style keys
-		foreach ($this->_customStyleKeys as $key=>$value){
-			register_setting('enlighter-settings-group', 'enlighter-custom-color-'.$value);
-			register_setting('enlighter-settings-group', 'enlighter-custom-bgcolor-'.$value);
-			register_setting('enlighter-settings-group', 'enlighter-custom-fontstyle-'.$value);
-			register_setting('enlighter-settings-group', 'enlighter-custom-decoration-'.$value);
-		}
-	}
-	
-	// load options
-	private function loadConfig(){
-		foreach ($this->_config as $key=>$value){
-			// get option by key
-			$this->_config[$key] = get_option('enlighter-'.$key, $value);
-		}
 	}
 	
 }

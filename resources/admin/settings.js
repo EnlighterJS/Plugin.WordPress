@@ -15,6 +15,16 @@
 				jQuery(this).ColorPickerSetColor(this.value);
 			}
 		});
+		// initialize colors
+		jQuery('.EnlighterJSColorChooser').each(function(){
+			// get element color value
+			var color = jQuery(this).val();
+			
+			// color available ?
+			if (color.length > 0){
+				jQuery(this).css('background-color', color);
+			}
+		});
 
 		// advanced color settings
 		jQuery('#enlighter-defaultTheme').change(function(){
@@ -34,6 +44,7 @@
 		/**
 		 * THEME CUSTOMIZER
 		 */
+		
 		jQuery('#enlighter_loadBasicTheme').click(function(){
 			// get selected theme
 			var theme = jQuery('#enlighter-customThemeBase').val().trim();
@@ -68,9 +79,10 @@
 				
 				// background color
 				setElementColor('#enlighter-custom-bgcolor-' + key, value[3]);
-				
-				jQuery('#enlighter-custom-fontstyle-' + key).val(value[1]);			
-				jQuery('#enlighter-custom-decoration-' + key).val(value[2]);
+
+				// change dropdown selection if value is set
+				jQuery('#enlighter-custom-fontstyle-' + key).val((value[1] ? value[1] : 'normal'));				
+				jQuery('#enlighter-custom-decoration-' + key).val((value[2] ? value[1] : 'normal'));
 			});
 
 		});

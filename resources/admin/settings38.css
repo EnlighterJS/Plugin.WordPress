@@ -1,0 +1,61 @@
+/**
+ * Settings Page Design for WordPress >= v3.8
+*/
+.EnlighterBlockcontent{
+	padding: 5px 10px 10px 15px;
+	margin: 0px 0px 20px 0px;
+	background-color: #fff;
+	border-left: 4px solid #333c45;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	max-width: 1500px;
+}
+.EnlighterBlockcontent h4{
+	color: #0074a2;
+	displa: block;
+	border-bottom: dotted 2px #c0c0c0;
+}
+.EnlighterBlockcontent img{
+	padding-left: 15px;
+}
+.EnlighterCustomSettingItem{
+	float: left;
+}
+.EnlighterCustomSettingItem label{
+	hieght: 30px;
+	line-height: 30px;
+	padding: 0px 5px 0px 0px;
+}
+.EnlighterCustomSettingItem input[type="text"]{
+	margin: 0px 20px 0px 0px;
+	width: 100px;
+}
+.EnlighterCustomSettingItem select{
+	margin: 0px 20px 0px 0px;
+}
+
+.EnlighterSetting{
+	display: block;
+	padding: 5px 10px 5px 15px;
+}
+.EnlighterSettingTitle{
+	float: left;
+	width: 250px;
+	font-weight: bold;
+	hieght: 30px;
+	line-height: 30px;
+}
+.EnlighterSettingItem{
+	float: left;
+}
+.EnlighterSettingClear{
+	clear: left;
+}
+.EnlighterTRUE{
+	font-weight: bold;
+	color: #7ad03a;
+}
+.EnlighterFALSE{
+	font-weight: bold;
+	color: #d03a3a;
+}
