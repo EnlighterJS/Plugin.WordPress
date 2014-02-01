@@ -1,7 +1,7 @@
 <?php
 /**
 	Enlighter Class
-	Version: 1.6
+	Version: 1.7
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://www.a3non.org/go/enlighterjs
@@ -184,7 +184,7 @@ class Enlighter{
 	
 	public function setupBackend(){
 		// add options page
-		$optionsPage = add_options_page(__('Enlighter - Advanced javascript based syntax highlighting', 'enlighter'), __('Enlighter', 'enlighter'), 'administrator', __FILE__, array($this, 'settingsPage'));
+		$optionsPage = add_options_page(__('Enlighter - Advanced javascript based syntax highlighting', 'enlighter'), 'Enlighter', 'administrator', __FILE__, array($this, 'settingsPage'));
 		
 		// load jquery stuff
 		add_action('admin_print_scripts-'.$optionsPage, array($this->_resourceLoader, 'appendAdminJS'));

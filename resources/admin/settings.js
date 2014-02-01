@@ -1,6 +1,9 @@
 (function(){
 	// initialize
 	jQuery(document).ready(function($){
+		// initialize tooltipps
+		// jQuery(document).tooltip();
+		
 		/**
 		 * THEME COLORIZER - COLORPICKER
 		 */

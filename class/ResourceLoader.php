@@ -121,6 +121,9 @@ class ResourceLoader{
 	}
 	
 	public function appendAdminJS(){
+		// load tooltipps
+		//wp_enqueue_script('jquery-ui-tooltip', array('jquery'));
+		
 		// colorpicker js
 		wp_register_script('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/js/colorpicker.js'), array('jquery'));
 		wp_enqueue_script('enlighter-jquery-colorpicker');

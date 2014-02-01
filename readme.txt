@@ -2,8 +2,8 @@
 Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, mootools, jquery, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 1.6
+Tested up to: 3.8.1
+Stable tag: 1.7
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -186,8 +186,7 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 == Changelog ==
 
 = 1.7 =
-* Added EnlighterJS 1.9
-* Added support for Inline-Syntax-Highlighting - feature requested on WordPress.org Forum
+* Added: Environment Pre-Check (PHP 5.3 requirement!)
 
 = 1.6 =
 * Added: Support for new WordPress 3.8 UI design

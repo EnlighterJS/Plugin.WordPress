@@ -66,7 +66,7 @@ class SettingsUtil{
 	 * @param unknown_type $title
 	 * @param unknown_type $optionName
 	 */
-	public function displayCheckbox($title, $optionName){
+	public function displayCheckbox($title, $optionName, $description=''){
 		?>
 	<!-- SETTING [<?php echo $optionName ?>] -->
 	<div class="EnlighterSetting">	
@@ -77,7 +77,7 @@ class SettingsUtil{
 		if ($this->_config[$optionName]){ 
 			$checked = ' checked="checked" '; 
 		}
-		echo '<input '.$checked.' name="'.$this->_optionsPrefix.$optionName.'" type="checkbox" value="1" />';
+		echo '<input '.$checked.' name="'.$this->_optionsPrefix.$optionName.'" type="checkbox" value="1" title="', esc_attr($description),'" />';
 	?>
 		</div>
 		<div class="EnlighterSettingClear"></div>

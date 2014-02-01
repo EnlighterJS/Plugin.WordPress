@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enlighter  1.6\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
-"POT-Creation-Date: 2013-12-25 19:06:56+00:00\n"
-"PO-Revision-Date: 2013-12-25 20:08+0100\n"
+"POT-Creation-Date: 2014-02-01 13:57:34+00:00\n"
+"PO-Revision-Date: 2014-02-01 14:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -13,13 +13,33 @@ msgstr ""
 "X-Generator: Poedit 1.6.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: views/admin/Settings.phtml:23
+#: views/admin/Settings.phtml:22
 msgid "Enlighter - Advanced javascript based syntax highlighting"
 msgstr "Enlighter - Javascript basierte Quelltext-Visualisierung"
 
-#: class/Enlighter.php:187
-msgid "Enlighter"
-msgstr "Enlighter"
+#: views/admin/Settings.phtml:27
+msgid "Enlighter related: "
+msgstr "Nützliches:"
+
+#: views/admin/EnvironmentError.phtml:27
+msgid "EnlighterJS on GitHub"
+msgstr "EnlighterJS auf GitHub"
+
+#: views/admin/Settings.phtml:30
+msgid "Enlighter on WordPress.org"
+msgstr "Enlighter auf WordPress.org"
+
+#: views/admin/Settings.phtml:31
+msgid "Report a Bug"
+msgstr "Ein Problem melden"
+
+#: views/admin/Settings.phtml:32
+msgid "Theme Demo"
+msgstr "Design Beispiele"
+
+#: views/admin/EnvironmentError.phtml:35
+msgid "Environment Error"
+msgstr "Systemfehler"
 
 #: views/admin/Help.phtml:2
 msgid ""
@@ -155,34 +175,18 @@ msgstr ""
 "Standardsprache aus den Einstellungen verwendet"
 
 #: views/admin/Settings.phtml:28
-msgid "Enlighter related: "
-msgstr "Nützliches:"
-
-#: views/admin/Settings.phtml:29
 msgid "View Help"
 msgstr "Hilfe anzeigen"
 
-#: views/admin/Settings.phtml:30
-msgid "EnlighterJS on GitHub"
-msgstr "EnlighterJS auf GitHub"
+#: views/admin/Settings.phtml:29
+msgid "Enlighter on GitHub"
+msgstr "Enlighter auf GitHub"
 
-#: views/admin/Settings.phtml:31
-msgid "Enlighter on WordPress.org"
-msgstr "Enlighter auf WordPress.org"
-
-#: views/admin/Settings.phtml:32
-msgid "Report a Bug"
-msgstr "Ein Problem melden"
-
-#: views/admin/Settings.phtml:33
-msgid "Theme Demo"
-msgstr "Design Beispiele"
-
-#: views/admin/Settings.phtml:45
+#: views/admin/Settings.phtml:44
 msgid "Appearance"
 msgstr "Aussehen"
 
-#: views/admin/Settings.phtml:47
+#: views/admin/Settings.phtml:46
 msgid ""
 "You can specify the default language and theme as well as the some output "
 "styles. If you want to customize themes, choose the default theme option "
@@ -192,7 +196,7 @@ msgstr ""
 "visualisierungs Optionen angepasst werden. Zum Verwenden des Design-Editors "
 "muss als Design \"custom\" ausgewählt werden."
 
-#: views/admin/Settings.phtml:48
+#: views/admin/Settings.phtml:47
 msgid ""
 "The indent-option will replace each tab at the beginning of a line with a "
 "selectable number of space-characters"
@@ -200,67 +204,67 @@ msgstr ""
 "Durch das Plugin können Tabulatoren am Begin jeder Zeile durch eine "
 "definierbare Anzahl an Leerzeichen ersetzt werden."
 
-#: views/admin/Settings.phtml:51
+#: views/admin/Settings.phtml:50
 msgid "Default Theme"
 msgstr "Standard Design"
 
-#: views/admin/Settings.phtml:54
+#: views/admin/Settings.phtml:53
 msgid "Default Language"
 msgstr "Standard Sprache"
 
-#: views/admin/Settings.phtml:54
+#: views/admin/Settings.phtml:53
 msgid "Generic highlighting"
 msgstr "Standard Visualisierung"
 
-#: views/admin/Settings.phtml:57
+#: views/admin/Settings.phtml:56
 msgid "Output-Style"
 msgstr "Ausgabe Stil"
 
-#: views/admin/Settings.phtml:57
+#: views/admin/Settings.phtml:56
 msgid "List (with line-numbers, ordered list)"
 msgstr "Liste (mit Zeilennummern)"
 
-#: views/admin/Settings.phtml:57
+#: views/admin/Settings.phtml:56
 msgid "Inline (without line-numbers, pre-tag)"
 msgstr "Direkt (ohne Zeilennummern)"
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "Code-Indent"
 msgstr "Code Einrückung"
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "Default (use tabs)"
 msgstr "Keine Änderungen (Tabulatoren werden verwendet)"
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "1 Space"
 msgstr "1 Leerzeichen"
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "Spaces"
 msgstr "Leerzeichen"
 
-#: views/admin/Settings.phtml:63
+#: views/admin/Settings.phtml:62
 msgid "Mouseover on codelines"
 msgstr "Mouseover Zeileneffekt"
 
-#: views/admin/Settings.phtml:63 views/admin/Settings.phtml:66
+#: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: views/admin/Settings.phtml:63 views/admin/Settings.phtml:66
+#: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: views/admin/Settings.phtml:66
+#: views/admin/Settings.phtml:65
 msgid "Language Shortcodes"
 msgstr "Sprachkürzel"
 
-#: views/admin/Settings.phtml:74
+#: views/admin/Settings.phtml:73
 msgid "CDN (Content Delivery Network)"
 msgstr "CDN (Content Delivery Network)"
 
-#: views/admin/Settings.phtml:76
+#: views/admin/Settings.phtml:75
 msgid ""
 "These options might be required when using a Content-Delivery-Network (CDN) "
 "or another server/location which outsources your CSS+Javascript files."
@@ -269,7 +273,7 @@ msgstr ""
 "(CDN) oder eine andere Methode verwendet wird, welche die CSS und Javascript "
 "Dateien auslagert bzw. einbindet."
 
-#: views/admin/Settings.phtml:77
+#: views/admin/Settings.phtml:76
 msgid ""
 "In this case you have to manually include EnlighterJS.js, EnlighterJS.css "
 "and the MooTools Framework into your page!"
@@ -277,55 +281,55 @@ msgstr ""
 "In diesem Fall müssen die Dateien EnlighterJS.js, EnlighterJS.css und das "
 "MooTools Framework manuell in die Webseite eingebunden werden."
 
-#: views/admin/Settings.phtml:78
+#: views/admin/Settings.phtml:77
 msgid "Custom styles, generated with the ThemeCustomizer are"
 msgstr "Das angepasste Design bzw. die CSS Datei ist"
 
-#: views/admin/Settings.phtml:78
+#: views/admin/Settings.phtml:77
 msgid "available here"
 msgstr "hier verfügbar"
 
-#: views/admin/Settings.phtml:81
+#: views/admin/Settings.phtml:80
 msgid "Include Enlighter-CSS"
 msgstr "Enlighter-CSS einbinden"
 
-#: views/admin/Settings.phtml:84
+#: views/admin/Settings.phtml:83
 msgid "Include Enlighter-Javascript"
 msgstr "Enlighter-Javascript einbinden"
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "MooTools Framework Source"
 msgstr "MooTools Framework Quelle"
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "Your WordPress Site"
 msgstr "Diese WordPress Webseite"
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "Google CDN"
 msgstr "Google CDN"
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "CDNJS (Cloudfare)"
 msgstr "CDNJS (Cloudfare)"
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "Not include"
 msgstr "Nicht einbinden"
 
-#: views/admin/Settings.phtml:91
+#: views/admin/Settings.phtml:90
 msgid "Advanced Options"
 msgstr "Erweiterte Einstellungen"
 
-#: views/admin/Settings.phtml:92
+#: views/admin/Settings.phtml:91
 msgid "Warning: These options are for advanced users only!"
 msgstr "Achtung: Diese Optionen sind nur für fortgeschritte Nutzer!"
 
-#: views/admin/Settings.phtml:97
+#: views/admin/Settings.phtml:96
 msgid "\"WpAutoP\" Filter Priority"
 msgstr "\"WpAutoP\" Filter Reihenfolge"
 
-#: views/admin/Settings.phtml:98
+#: views/admin/Settings.phtml:97
 msgid ""
 "The processing priority of the wpautop filter. Normally the filter will be "
 "applied before shortcode is handled and will maybe crash your code-"
@@ -335,7 +339,7 @@ msgstr ""
 "vor der Verarbeitung von Shortcodes ausgeführt, wodurch dieser jedoch "
 "ungewollte Zeilenumbrüche in den anzuzeigenden Quelltext einfügt."
 
-#: views/admin/Settings.phtml:99
+#: views/admin/Settings.phtml:98
 msgid ""
 "The Enlighter-Plugin changes the priority of the filter by default to 12 - "
 "this means it will be applied <strong>after</strong> shortcodes are "
@@ -346,23 +350,23 @@ msgstr ""
 "<strong>Achtung: Diese Einstellung kann unter Umständen das Verhalten "
 "anderer Plugins beeinflussen!</strong>"
 
-#: views/admin/Settings.phtml:101
+#: views/admin/Settings.phtml:100
 msgid "Filter-Priority"
 msgstr "Filter Prioritäten"
 
-#: views/admin/Settings.phtml:101
+#: views/admin/Settings.phtml:100
 msgid "Default (no changes)"
 msgstr "Standard (keine Änderung)"
 
-#: views/admin/Settings.phtml:101
+#: views/admin/Settings.phtml:100
 msgid "Priority 12 (after shortcode)"
 msgstr "Priorität 12 (nach WordPress Shortcode)"
 
-#: views/admin/Settings.phtml:104 views/admin/Settings.phtml:107
+#: views/admin/Settings.phtml:103 views/admin/Settings.phtml:106
 msgid "CSS Selector"
 msgstr "CSS Selektor"
 
-#: views/admin/Settings.phtml:105
+#: views/admin/Settings.phtml:104
 msgid ""
 "The selector is used to match all generated pre-tags. Normally pre."
 "EnlighterJSRAW should be perfect (all pre-tags generated by the plugin will "
@@ -372,19 +376,19 @@ msgstr ""
 "Standardmäßig wird hierzu pre.EnlighterJSRAW verwendet (alle durch Shortcode "
 "generierten pre-Tags)"
 
-#: views/admin/Settings.phtml:106
+#: views/admin/Settings.phtml:105
 msgid "<strong>Default: </strong>pre.EnlighterJSRAW"
 msgstr "<strong>Standard: </strong>pre.EnlighterJSRAW"
 
-#: views/admin/Settings.phtml:107
+#: views/admin/Settings.phtml:106
 msgid "The CSS selector used to match generated HTML Tags"
 msgstr "Zum Finden der generierten HTML Tags verwendeter CSS Selektor"
 
-#: views/admin/Settings.phtml:110 views/admin/Settings.phtml:113
+#: views/admin/Settings.phtml:109 views/admin/Settings.phtml:112
 msgid "Initialization Method"
 msgstr "Initialisierung"
 
-#: views/admin/Settings.phtml:111
+#: views/admin/Settings.phtml:110
 msgid ""
 "EnlighterJS needs to be \"initialized\" with a special metadata-tag or some "
 "startup-codes within a script-tag. Which method should be used ? (metadata "
@@ -393,54 +397,50 @@ msgstr ""
 "EnlighterJS muss durch eine Metadaten Angabe oder eingebettetes Javascript "
 "\"initialisiert\" werden. Welches Verfahren soll verwendet werden ?"
 
-#: views/admin/Settings.phtml:112
+#: views/admin/Settings.phtml:111
 msgid "<strong>Default: </strong>Metadata based config"
 msgstr "<strong>Standard: </strong>Metadaten basierte Konfiguration"
 
-#: views/admin/Settings.phtml:113
+#: views/admin/Settings.phtml:112
 msgid "Metadata based config"
 msgstr "Metadaten basiert"
 
-#: views/admin/Settings.phtml:113
+#: views/admin/Settings.phtml:112
 msgid "Script based config"
 msgstr "Javascript im Kopfbereich einfügen"
 
-#: views/admin/Settings.phtml:116
+#: views/admin/Settings.phtml:115
 msgid "I18n (Internationalization)"
 msgstr "I18n (Internationalisierung)"
 
-#: views/admin/Settings.phtml:117
+#: views/admin/Settings.phtml:116
 msgid ""
 "Should the plugin load language files (if available) to translate the "
 "settings page ?"
 msgstr "Sollen verfügbare Übersetzungen geladen und angezeigt werden ?"
 
-#: views/admin/Settings.phtml:118
+#: views/admin/Settings.phtml:117
 msgid "Enable I18n"
 msgstr "Sprachunterstützung aktivieren"
 
-#: views/admin/Settings.phtml:126
-msgid "Credits"
-msgstr "Entwickler"
-
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "is developed by"
 msgstr "wird entwickelt von"
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "It`s released under the terms of the MIT X11 License."
 msgstr ""
 "Das Plugin ist unter den Bedingungen der MIT X11 Lizenz veröffentlicht."
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "Includes:"
 msgstr "Enthält:"
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "by"
 msgstr "von"
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "License"
 msgstr "Lizenz"
 
@@ -640,6 +640,12 @@ msgstr "Text:"
 #: views/admin/ThemeCustomizer.phtml:128
 msgid "Background:"
 msgstr "Hintergrund:"
+
+#~ msgid "Enlighter"
+#~ msgstr "Enlighter"
+
+#~ msgid "Credits"
+#~ msgstr "Entwickler"
 
 #~ msgid "Initialization method"
 #~ msgstr "Initialisierung"

@@ -2,19 +2,39 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2013-12-25 19:14:45+00:00\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2014-02-01 13:57:34+00:00\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  1.6\n"
+"Project-Id-Version: Enlighter  1.7\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
-#: views/admin/Settings.phtml:23
+#: views/admin/Settings.phtml:22
 msgid "Enlighter - Advanced javascript based syntax highlighting"
 msgstr ""
 
-#: class/Enlighter.php:187
-msgid "Enlighter"
+#: views/admin/Settings.phtml:27
+msgid "Enlighter related: "
+msgstr ""
+
+#: views/admin/EnvironmentError.phtml:27
+msgid "EnlighterJS on GitHub"
+msgstr ""
+
+#: views/admin/Settings.phtml:30
+msgid "Enlighter on WordPress.org"
+msgstr ""
+
+#: views/admin/Settings.phtml:31
+msgid "Report a Bug"
+msgstr ""
+
+#: views/admin/Settings.phtml:32
+msgid "Theme Demo"
+msgstr ""
+
+#: views/admin/EnvironmentError.phtml:35
+msgid "Environment Error"
 msgstr ""
 
 #: views/admin/Help.phtml:2
@@ -105,246 +125,226 @@ msgid "(optional) - specify the language which should used, if not defined value
 msgstr ""
 
 #: views/admin/Settings.phtml:28
-msgid "Enlighter related: "
-msgstr ""
-
-#: views/admin/Settings.phtml:29
 msgid "View Help"
 msgstr ""
 
-#: views/admin/Settings.phtml:30
-msgid "EnlighterJS on GitHub"
+#: views/admin/Settings.phtml:29
+msgid "Enlighter on GitHub"
 msgstr ""
 
-#: views/admin/Settings.phtml:31
-msgid "Enlighter on WordPress.org"
-msgstr ""
-
-#: views/admin/Settings.phtml:32
-msgid "Report a Bug"
-msgstr ""
-
-#: views/admin/Settings.phtml:33
-msgid "Theme Demo"
-msgstr ""
-
-#: views/admin/Settings.phtml:45
+#: views/admin/Settings.phtml:44
 msgid "Appearance"
 msgstr ""
 
-#: views/admin/Settings.phtml:47
+#: views/admin/Settings.phtml:46
 msgid "You can specify the default language and theme as well as the some output styles. If you want to customize themes, choose the default theme option \"custom\""
 msgstr ""
 
-#: views/admin/Settings.phtml:48
+#: views/admin/Settings.phtml:47
 msgid "The indent-option will replace each tab at the beginning of a line with a selectable number of space-characters"
 msgstr ""
 
-#: views/admin/Settings.phtml:51
+#: views/admin/Settings.phtml:50
 msgid "Default Theme"
 msgstr ""
 
-#: views/admin/Settings.phtml:54
+#: views/admin/Settings.phtml:53
 msgid "Default Language"
 msgstr ""
 
-#: views/admin/Settings.phtml:54
+#: views/admin/Settings.phtml:53
 msgid "Generic highlighting"
 msgstr ""
 
-#: views/admin/Settings.phtml:57
+#: views/admin/Settings.phtml:56
 msgid "Output-Style"
 msgstr ""
 
-#: views/admin/Settings.phtml:57
+#: views/admin/Settings.phtml:56
 msgid "List (with line-numbers, ordered list)"
 msgstr ""
 
-#: views/admin/Settings.phtml:57
+#: views/admin/Settings.phtml:56
 msgid "Inline (without line-numbers, pre-tag)"
 msgstr ""
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "Code-Indent"
 msgstr ""
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "Default (use tabs)"
 msgstr ""
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "1 Space"
 msgstr ""
 
-#: views/admin/Settings.phtml:60
+#: views/admin/Settings.phtml:59
 msgid "Spaces"
 msgstr ""
 
-#: views/admin/Settings.phtml:63
+#: views/admin/Settings.phtml:62
 msgid "Mouseover on codelines"
 msgstr ""
 
-#: views/admin/Settings.phtml:63 views/admin/Settings.phtml:66
+#: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
 msgid "Enabled"
 msgstr ""
 
-#: views/admin/Settings.phtml:63 views/admin/Settings.phtml:66
+#: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
 msgid "Disabled"
 msgstr ""
 
-#: views/admin/Settings.phtml:66
+#: views/admin/Settings.phtml:65
 msgid "Language Shortcodes"
 msgstr ""
 
-#: views/admin/Settings.phtml:74
+#: views/admin/Settings.phtml:73
 msgid "CDN (Content Delivery Network)"
 msgstr ""
 
-#: views/admin/Settings.phtml:76
+#: views/admin/Settings.phtml:75
 msgid "These options might be required when using a Content-Delivery-Network (CDN) or another server/location which outsources your CSS+Javascript files."
 msgstr ""
 
-#: views/admin/Settings.phtml:77
+#: views/admin/Settings.phtml:76
 msgid "In this case you have to manually include EnlighterJS.js, EnlighterJS.css and the MooTools Framework into your page!"
 msgstr ""
 
-#: views/admin/Settings.phtml:78
+#: views/admin/Settings.phtml:77
 msgid "Custom styles, generated with the ThemeCustomizer are"
 msgstr ""
 
-#: views/admin/Settings.phtml:78
+#: views/admin/Settings.phtml:77
 msgid "available here"
 msgstr ""
 
-#: views/admin/Settings.phtml:81
+#: views/admin/Settings.phtml:80
 msgid "Include Enlighter-CSS"
 msgstr ""
 
-#: views/admin/Settings.phtml:84
+#: views/admin/Settings.phtml:83
 msgid "Include Enlighter-Javascript"
 msgstr ""
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "MooTools Framework Source"
 msgstr ""
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "Your WordPress Site"
 msgstr ""
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "Google CDN"
 msgstr ""
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "CDNJS (Cloudfare)"
 msgstr ""
 
-#: views/admin/Settings.phtml:87
+#: views/admin/Settings.phtml:86
 msgid "Not include"
 msgstr ""
 
-#: views/admin/Settings.phtml:91
+#: views/admin/Settings.phtml:90
 msgid "Advanced Options"
 msgstr ""
 
-#: views/admin/Settings.phtml:92
+#: views/admin/Settings.phtml:91
 msgid "Warning: These options are for advanced users only!"
 msgstr ""
 
-#: views/admin/Settings.phtml:97
+#: views/admin/Settings.phtml:96
 msgid "\"WpAutoP\" Filter Priority"
 msgstr ""
 
-#: views/admin/Settings.phtml:98
+#: views/admin/Settings.phtml:97
 msgid "The processing priority of the wpautop filter. Normally the filter will be applied before shortcode is handled and will maybe crash your code-appearance by adding linebreaks and p/br tags."
 msgstr ""
 
-#: views/admin/Settings.phtml:99
+#: views/admin/Settings.phtml:98
 msgid "The Enlighter-Plugin changes the priority of the filter by default to 12 - this means it will be applied <strong>after</strong> shortcodes are processed by WordPress. <strong>It may can influence other plugins.</strong>"
 msgstr ""
 
-#: views/admin/Settings.phtml:101
+#: views/admin/Settings.phtml:100
 msgid "Filter-Priority"
 msgstr ""
 
-#: views/admin/Settings.phtml:101
+#: views/admin/Settings.phtml:100
 msgid "Default (no changes)"
 msgstr ""
 
-#: views/admin/Settings.phtml:101
+#: views/admin/Settings.phtml:100
 msgid "Priority 12 (after shortcode)"
 msgstr ""
 
-#: views/admin/Settings.phtml:104 views/admin/Settings.phtml:107
+#: views/admin/Settings.phtml:103 views/admin/Settings.phtml:106
 msgid "CSS Selector"
 msgstr ""
 
-#: views/admin/Settings.phtml:105
+#: views/admin/Settings.phtml:104
 msgid "The selector is used to match all generated pre-tags. Normally pre.EnlighterJSRAW should be perfect (all pre-tags generated by the plugin will be highlighted)"
 msgstr ""
 
-#: views/admin/Settings.phtml:106
+#: views/admin/Settings.phtml:105
 msgid "<strong>Default: </strong>pre.EnlighterJSRAW"
 msgstr ""
 
-#: views/admin/Settings.phtml:107
+#: views/admin/Settings.phtml:106
 msgid "The CSS selector used to match generated HTML Tags"
 msgstr ""
 
-#: views/admin/Settings.phtml:110 views/admin/Settings.phtml:113
+#: views/admin/Settings.phtml:109 views/admin/Settings.phtml:112
 msgid "Initialization Method"
 msgstr ""
 
-#: views/admin/Settings.phtml:111
+#: views/admin/Settings.phtml:110
 msgid "EnlighterJS needs to be \"initialized\" with a special metadata-tag or some startup-codes within a script-tag. Which method should be used ? (metadata based config will not pass the W3C Validator check)"
 msgstr ""
 
-#: views/admin/Settings.phtml:112
+#: views/admin/Settings.phtml:111
 msgid "<strong>Default: </strong>Metadata based config"
 msgstr ""
 
-#: views/admin/Settings.phtml:113
+#: views/admin/Settings.phtml:112
 msgid "Metadata based config"
 msgstr ""
 
-#: views/admin/Settings.phtml:113
+#: views/admin/Settings.phtml:112
 msgid "Script based config"
 msgstr ""
 
-#: views/admin/Settings.phtml:116
+#: views/admin/Settings.phtml:115
 msgid "I18n (Internationalization)"
 msgstr ""
 
-#: views/admin/Settings.phtml:117
+#: views/admin/Settings.phtml:116
 msgid "Should the plugin load language files (if available) to translate the settings page ?"
 msgstr ""
 
-#: views/admin/Settings.phtml:118
+#: views/admin/Settings.phtml:117
 msgid "Enable I18n"
 msgstr ""
 
-#: views/admin/Settings.phtml:126
-msgid "Credits"
-msgstr ""
-
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "is developed by"
 msgstr ""
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "It`s released under the terms of the MIT X11 License."
 msgstr ""
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "Includes:"
 msgstr ""
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "by"
 msgstr ""
 
-#: views/admin/Settings.phtml:127
+#: views/admin/Settings.phtml:125
 msgid "License"
 msgstr ""
 

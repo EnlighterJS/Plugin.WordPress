@@ -3,7 +3,7 @@
 	Plugin Name: Enlighter - Javascript based syntax highlighting
 	Plugin URI: http://www.a3non.org/go/enlighterjs
 	Description: Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor.
-	Version: 1.6
+	Version: 1.7
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	License: MIT X11-License
@@ -22,19 +22,34 @@
 */
 
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '1.6');
+define('ENLIGHTER_VERSION', '1.7');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
 
-// load classes
-require_once(ENLIGHTER_PLUGIN_PATH.'/class/Enlighter.php');	
-require_once(ENLIGHTER_PLUGIN_PATH.'/class/HtmlUtil.php');
-require_once(ENLIGHTER_PLUGIN_PATH.'/class/SettingsUtil.php');
-require_once(ENLIGHTER_PLUGIN_PATH.'/class/ShortcodeHandler.php');
-require_once(ENLIGHTER_PLUGIN_PATH.'/class/ResourceLoader.php');
-require_once(ENLIGHTER_PLUGIN_PATH.'/class/SimpleTemplate.php');
-require_once(ENLIGHTER_PLUGIN_PATH.'/class/ThemeGenerator.php');
+// check php version
+if (version_compare(phpversion(), '5.3', '>=')){
+	// load classes
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/Enlighter.php');	
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/HtmlUtil.php');
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/SettingsUtil.php');
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/ShortcodeHandler.php');
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/ResourceLoader.php');
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/SimpleTemplate.php');
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/ThemeGenerator.php');
+	
+	// run enlighter
+	Enlighter::run();
+}else{
+	// add admin menu handler
+	add_action('admin_menu', 'Enlighter_SetupEnvironmentError');
+}
 
-// run enlighter
-Enlighter::run();
-
+// error options page setup
+function Enlighter_SetupEnvironmentError(){
+	// add options page
+	add_options_page('Enlighter | Syntax Highlighter', 'Enlighter', 'administrator', __FILE__, 'Enlighter_EnvironmentError');
+}
+// options page
+function Enlighter_EnvironmentError(){
+	include(ENLIGHTER_PLUGIN_PATH.'/views/admin/EnvironmentError.phtml');
+}
 ?>
