@@ -1,87 +1,87 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Enlighter  1.6\n"
+"Project-Id-Version: Enlighter  1.7\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
-"POT-Creation-Date: 2014-02-02 22:12:24+00:00\n"
-"PO-Revision-Date: 2014-02-02 23:14+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2014-02-03 16:46:10+00:00\n"
+"PO-Revision-Date: 2014-02-13 14:09+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
 "Language-Team: \n"
-"Language: de_DE\n"
+"Language: sr_RS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: views/admin/Settings.phtml:22
 msgid "Enlighter - Advanced javascript based syntax highlighting"
-msgstr "Enlighter - Javascript basierte Quelltext-Visualisierung"
+msgstr "Enlighter - Unapredjeni javascript baziran na obeleženoj sintaksi"
 
 #: views/admin/Settings.phtml:27
 msgid "Enlighter related: "
-msgstr "Nützliches:"
+msgstr "Enlighter povezan sa:"
 
 #: views/admin/EnvironmentError.phtml:27
 msgid "EnlighterJS on GitHub"
-msgstr "EnlighterJS auf GitHub"
+msgstr "EnlighterJS na GitHub"
 
 #: views/admin/Settings.phtml:30
 msgid "Enlighter on WordPress.org"
-msgstr "Enlighter auf WordPress.org"
+msgstr "Enlighter na WordPress.org"
 
 #: views/admin/Settings.phtml:31
 msgid "Report a Bug"
-msgstr "Ein Problem melden"
+msgstr "Prijaviti Bug"
 
 #: views/admin/Settings.phtml:32
 msgid "Theme Demo"
-msgstr "Design Beispiele"
+msgstr "Tema Demo-a"
 
 #: views/admin/EnvironmentError.phtml:35
 msgid "Environment Error"
-msgstr "Systemfehler"
+msgstr "Greška sredine"
 
 #: views/admin/Help.phtml:2
 msgid ""
 "Just insert an enlighter shortcode with the code to highlight into your "
 "posts/pages - That`s it!"
 msgstr ""
-"Füge einfach deinen Quelltext in einen enlighter shortcode ein - Das wars!"
+"Samo unesite enlighter skraćenicu sa kodom da obečežite vaše postove-"
+"stranice  - To je sve!"
 
 #: views/admin/Help.phtml:4
 msgid "Language-Shortcodes"
-msgstr "Sprachkürzel"
+msgstr "Jezici-Skraćenice"
 
 #: views/admin/Help.phtml:5
 msgid ""
 "The most easy way to use Enlighter is to wrap your code, which should be "
 "highlighted, in a language-shortcode tag."
 msgstr ""
-"Der einfachste Weg deinen Quelltext zu visualisieren, besteht dadrin diesen "
-"mit einem Enlighter Sprachkürzel zu umgeben."
+"Najlakši način da koristite Enlighter je da uvijete vaš kod, koji će biti "
+"označen, na jezik-skraćenica tag."
 
 #: views/admin/Help.phtml:7 views/admin/Help.phtml:36
 #: views/admin/Help.phtml:78
 msgid "Example"
-msgstr "Beispiel"
+msgstr "Primer"
 
 #: views/admin/Help.phtml:12
 msgid "Language-Shortcode List"
-msgstr "Sprachkürzel Liste (Shortcode)"
+msgstr "jezik-skraćenica lista"
 
 #: views/admin/Help.phtml:19 views/admin/Help.phtml:66
 #: views/admin/Help.phtml:84
 msgid "Syntax"
-msgstr "Syntax"
+msgstr "Sintaksa"
 
 #: views/admin/Help.phtml:20 views/admin/Help.phtml:85
 msgid "YOUR CODE"
-msgstr "DEIN CODE"
+msgstr "VAŠ KOD"
 
 #: views/admin/Help.phtml:22 views/admin/Help.phtml:69
 #: views/admin/Help.phtml:87
 msgid "Attributes"
-msgstr "Attribute"
+msgstr "Atributi"
 
 #: views/admin/Help.phtml:24 views/admin/Help.phtml:71
 #: views/admin/Help.phtml:90
@@ -89,102 +89,99 @@ msgid ""
 "(optional) - defines the theme that should used, will overwrite the settings-"
 "page values"
 msgstr ""
-"(optional) - definiert explizit ein Design welches für diesen Quelltext "
-"verwendet werden soll - Standardeinstellungen werden dabei überschrieben"
+"( opciono ) - definiše temu koja bi trebalo da se koristi ,  prekritiće "
+"vrednosti podešavanja - stranica"
 
 #: views/admin/Help.phtml:25 views/admin/Help.phtml:91
 msgid ""
 "(optional) - the group identifier if code-grouping is used (elements with "
 "matching identifiers will be grouped together)"
 msgstr ""
-"(optional) - der Name der Quelltext-Gruppe (Elemente mit gleichen Namen "
-"werden als Tabs nebeneinander angezeigt)"
+"( opciono ) - identifikator grupe , ako se koristi kod - grupisanje "
+"( elementi sa sličnim identifikatorima će biti grupisani zajedno )"
 
 #: views/admin/Help.phtml:26
 msgid ""
 "Note: when using [codegroup] tags this attribute will be generated "
 "automaically - you don`t have to set it!"
 msgstr ""
-"Hinweis: bei der Verwendung von Codegruppen (codegroup-shortcode) wird "
-"dieses Attribute automatisch generiert - d.h. es muss nicht manuell "
-"angegeben werden!"
+"Napomena : kada koristite [ codegroup ] tagove ovo atribut će biti generisan "
+"automatski - ne morati da ga postavite !"
 
 #: views/admin/Help.phtml:28
 msgid ""
 "(optional) - set the name of the tab-pane, if not defined the language will "
 "be used as title"
 msgstr ""
-"(optional)) - definiert den Namen des jeweiligen Tabs - sollte dieser nicht "
-"definiert werden wird die verwendete Sprache als Titel benutzt (z.B. HTML)"
+"( opciono ) - podesite ime tab - oknu , ako ne definišete jezik će se "
+"koristiti kao naslov"
 
 #: views/admin/Help.phtml:29 views/admin/Help.phtml:93
 msgid ""
 "(optional) - defines a set of lines which are pointed out (ranges are "
 "supported)."
 msgstr ""
-"(optional) - definiert Zeilen die gesondert hervorgehoben werden sollen."
+"( opciono ) - definiše skup rečenica koje su naglašene ( opsezi su podržani )"
 
 #: views/admin/Help.phtml:30 views/admin/Help.phtml:94
 msgid "e.g."
-msgstr "z.B."
+msgstr "pr."
 
 #: views/admin/Help.phtml:30 views/admin/Help.phtml:94
 msgid "to highlight lines 1,2,3,4,20"
-msgstr "um die Zeilen 1,2,3,4,20 hervorzuheben"
+msgstr "obeležne rečenice 1,2,3,4,20"
 
 #: views/admin/Help.phtml:34
 msgid "Codegroup-Shortcode"
-msgstr "Quelltext-Gruppen-Shortcode"
+msgstr "Grupni kod-Skraćenca"
 
 #: views/admin/Help.phtml:35
 msgid ""
 "You can also use EnlighterJS to display a set of different codes within a "
 "tab-pane"
 msgstr ""
-"Mit Enlighter ist es außerdem möglich mehrere Quelltexte in einem Tab-"
-"Fenster darzustellen."
+"Takodje možete da koristite EnlighterJS da prikažete različite kodove unutar "
+"taba"
 
 #: views/admin/Help.phtml:72 views/admin/Help.phtml:92
 msgid ""
 "(optional) - set the name of the tab-pane, if not defined the language name "
 "will be used as title"
 msgstr ""
-"(optional)) - definiert den Namen des jeweiligen Tabs - sollte dieser nicht "
-"definiert werden wird die verwendete Sprache als Titel benutzt (z.B. HTML)"
+"( opciono ) - podesite ime na tab - oknu , ako nije definisano ime jezika će "
+"se koristiti kao naslov"
 
 #: views/admin/Help.phtml:75
 msgid "Generic-Shortcode"
-msgstr "Generischer-Shortcode"
+msgstr "Genrična-Skraćenica"
 
 #: views/admin/Help.phtml:76
 msgid ""
 "If you`re using other plugins which uses also language-shortcodes, you can "
 "use the enlighter with generic shortcode."
 msgstr ""
-"Für den Fall das andere Plugins verwendet werden sollten, die wie das "
-"Enlighter Plugin die Sprachkürzel ([php], [html], etc.) benutzen, kann "
-"Enlighter mit dem generischen Shortcode verwendet werden."
+"Ako koristite druge pluginove koji takođe koriste jezik-skraćenice , možete "
+"koristiti enlighter sa generičkom skraćenicom"
 
 #: views/admin/Help.phtml:89
 msgid ""
 "(optional) - specify the language which should used, if not defined values "
 "from the settings-page are used"
 msgstr ""
-"(optional) - definiert die Sprache als welche der Quelltext interpretiert "
-"werden soll - sollte diese nicht angegeben werden, so wird die "
-"Standardsprache aus den Einstellungen verwendet"
+"( opciono ) - navedite jezik koji bi trebalo da se koristi , ako se ne "
+"definiše koristiće se vrednosti iz podešavanja stranice"
 
 #: views/admin/Settings.phtml:28
 msgid "View Help"
-msgstr "Hilfe anzeigen"
+msgstr "Pregledati pomoć"
 
 #: views/admin/Settings.phtml:29
 msgid "Enlighter on GitHub"
-msgstr "Enlighter auf GitHub"
+msgstr "Enlighter on GitHub"
 
 #: views/admin/Settings.phtml:44
 msgid "Appearance"
-msgstr "Aussehen"
+msgstr "Izgled"
 
 #: views/admin/Settings.phtml:46
 msgid ""
@@ -192,73 +189,73 @@ msgid ""
 "styles. If you want to customize themes, choose the default theme option "
 "\"custom\""
 msgstr ""
-"Hier können die Standardsprache, Standarddesigns sowie einige "
-"visualisierungs Optionen angepasst werden. Zum Verwenden des Design-Editors "
-"muss als Design \"custom\" ausgewählt werden."
+"Možete da odredite podrazumevani jezik i temu , kao i neke izlazne stilove . "
+"Ako želite da prilagodite teme , izaberete opciju  podrazumevanu temu \" "
+"custom \""
 
 #: views/admin/Settings.phtml:47
 msgid ""
 "The indent-option will replace each tab at the beginning of a line with a "
 "selectable number of space-characters"
 msgstr ""
-"Durch das Plugin können Tabulatoren am Begin jeder Zeile durch eine "
-"definierbare Anzahl an Leerzeichen ersetzt werden."
+"Indent-opcija će zameniti svaki tab na početku linije sa selektivnim brojem "
+"karaktera prostora "
 
 #: views/admin/Settings.phtml:50
 msgid "Default Theme"
-msgstr "Standard Design"
+msgstr "Default Theme"
 
 #: views/admin/Settings.phtml:53
 msgid "Default Language"
-msgstr "Standard Sprache"
+msgstr "Default jezik"
 
 #: views/admin/Settings.phtml:53
 msgid "Generic highlighting"
-msgstr "Standard Visualisierung"
+msgstr "Generično obeležavanje"
 
 #: views/admin/Settings.phtml:56
 msgid "Output-Style"
-msgstr "Ausgabe Stil"
+msgstr "Output-Stil"
 
 #: views/admin/Settings.phtml:56
 msgid "List (with line-numbers, ordered list)"
-msgstr "Liste (mit Zeilennummern)"
+msgstr "Lista (sa brojevima rečenica, naručena lista)"
 
 #: views/admin/Settings.phtml:56
 msgid "Inline (without line-numbers, pre-tag)"
-msgstr "Direkt (ohne Zeilennummern)"
+msgstr "Inline (bez brojeva rečenica, pre-tag)"
 
 #: views/admin/Settings.phtml:59
 msgid "Code-Indent"
-msgstr "Code Einrückung"
+msgstr "Kod-Indent"
 
 #: views/admin/Settings.phtml:59
 msgid "Default (use tabs)"
-msgstr "Keine Änderungen (Tabulatoren werden verwendet)"
+msgstr "Default (koristi tabove)"
 
 #: views/admin/Settings.phtml:59
 msgid "1 Space"
-msgstr "1 Leerzeichen"
+msgstr "1 prostor"
 
 #: views/admin/Settings.phtml:59
 msgid "Spaces"
-msgstr "Leerzeichen"
+msgstr "Prostori"
 
 #: views/admin/Settings.phtml:62
 msgid "Mouseover on codelines"
-msgstr "Mouseover Zeileneffekt"
+msgstr "Mišem preko linija"
 
 #: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
 msgid "Enabled"
-msgstr "Aktiviert"
+msgstr "Omogućeno"
 
 #: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
 msgid "Disabled"
-msgstr "Deaktiviert"
+msgstr "Onemogućeno"
 
 #: views/admin/Settings.phtml:65
 msgid "Language Shortcodes"
-msgstr "Sprachkürzel"
+msgstr "Skraćenica jezika"
 
 #: views/admin/Settings.phtml:73
 msgid "CDN (Content Delivery Network)"
@@ -269,41 +266,40 @@ msgid ""
 "These options might be required when using a Content-Delivery-Network (CDN) "
 "or another server/location which outsources your CSS+Javascript files."
 msgstr ""
-"Diese Einstellungen können notwendig sein, wenn ein Content-Delivery-Network "
-"(CDN) oder eine andere Methode verwendet wird, welche die CSS und Javascript "
-"Dateien auslagert bzw. einbindet."
+"Ove opcije mogu biti tražene prilikom upotrebe Content-Delivery-Network "
+"(CDN) ili drugih server/lokacija vaših CSS+Javascript fajlova."
 
 #: views/admin/Settings.phtml:76
 msgid ""
 "In this case you have to manually include EnlighterJS.js, EnlighterJS.css "
 "and the MooTools Framework into your page!"
 msgstr ""
-"In diesem Fall müssen die Dateien EnlighterJS.js, EnlighterJS.css und das "
-"MooTools Framework manuell in die Webseite eingebunden werden."
+"U ovom slučaju morate ručno da uključite EnlighterJS.js, EnlighterJS.css i "
+"MooTools Framework na vašu stranicu!"
 
 #: views/admin/Settings.phtml:77
 msgid "Custom styles, generated with the ThemeCustomizer are"
-msgstr "Das angepasste Design bzw. die CSS Datei ist"
+msgstr "Custom stilovi, generisani sa ThemeCustomizer su"
 
 #: views/admin/Settings.phtml:77
 msgid "available here"
-msgstr "hier verfügbar"
+msgstr "dostupni ovde"
 
 #: views/admin/Settings.phtml:80
 msgid "Include Enlighter-CSS"
-msgstr "Enlighter-CSS einbinden"
+msgstr "Uključiti Enlighter-CSS"
 
 #: views/admin/Settings.phtml:83
 msgid "Include Enlighter-Javascript"
-msgstr "Enlighter-Javascript einbinden"
+msgstr "Uključiti Enlighter-Javascript"
 
 #: views/admin/Settings.phtml:86
 msgid "MooTools Framework Source"
-msgstr "MooTools Framework Quelle"
+msgstr "MooTools Framework Source"
 
 #: views/admin/Settings.phtml:86
 msgid "Your WordPress Site"
-msgstr "Diese WordPress Webseite"
+msgstr "Vaš WordPress Sajt"
 
 #: views/admin/Settings.phtml:86
 msgid "Google CDN"
@@ -315,19 +311,19 @@ msgstr "CDNJS (Cloudfare)"
 
 #: views/admin/Settings.phtml:86
 msgid "Not include"
-msgstr "Nicht einbinden"
+msgstr "Nije uključeno"
 
 #: views/admin/Settings.phtml:90
 msgid "Advanced Options"
-msgstr "Erweiterte Einstellungen"
+msgstr "Unapredjene opcije"
 
 #: views/admin/Settings.phtml:91
 msgid "Warning: These options are for advanced users only!"
-msgstr "Achtung: Diese Optionen sind nur für fortgeschritte Nutzer!"
+msgstr "Upozorenje : Ove opcije su samo za napredne korisnike !"
 
 #: views/admin/Settings.phtml:96
 msgid "\"WpAutoP\" Filter Priority"
-msgstr "\"WpAutoP\" Filter Reihenfolge"
+msgstr "\"WpAutoP\" Filter Prioritet"
 
 #: views/admin/Settings.phtml:97
 msgid ""
@@ -335,9 +331,9 @@ msgid ""
 "applied before shortcode is handled and will maybe crash your code-"
 "appearance by adding linebreaks and p/br tags."
 msgstr ""
-"Die Verarbeitungs-Reihenfolge des wpautop Filters. Normalerweise wird dieser "
-"vor der Verarbeitung von Shortcodes ausgeführt, wodurch dieser jedoch "
-"ungewollte Zeilenumbrüche in den anzuzeigenden Quelltext einfügt."
+"Prioritet obrada wpautop filter.Normalno filter će biti primenjen pre nego "
+"što se skraćenice vrše i možda će srušiti vaš izgled koda dodavanjem "
+"linebreaks i P / br tagove ."
 
 #: views/admin/Settings.phtml:98
 msgid ""
@@ -345,22 +341,21 @@ msgid ""
 "this means it will be applied <strong>after</strong> shortcodes are "
 "processed by WordPress. <strong>It may can influence other plugins.</strong>"
 msgstr ""
-"Das Plugin ändert standardmäßig die Reihenfolge des Filters auf 12 - d.h. "
-"der Filter wird nach dem Ausführen von Shortcodes ausgeführt. "
-"<strong>Achtung: Diese Einstellung kann unter Umständen das Verhalten "
-"anderer Plugins beeinflussen!</strong>"
+"Enlighter - Plugin menja prioritet filtera standardno 12 - to znači da će "
+"biti primenjene <strong>posle</strong>  skraćenice koje obrađuje WordPress . "
+"<strong> To može da utiče na druge pluginove </strong> ."
 
 #: views/admin/Settings.phtml:100
 msgid "Filter-Priority"
-msgstr "Filter Prioritäten"
+msgstr "Filter-Priority"
 
 #: views/admin/Settings.phtml:100
 msgid "Default (no changes)"
-msgstr "Standard (keine Änderung)"
+msgstr "Default (nema promena)"
 
 #: views/admin/Settings.phtml:100
 msgid "Priority 12 (after shortcode)"
-msgstr "Priorität 12 (nach WordPress Shortcode)"
+msgstr "Prioriet 12 (posle skraćenice)"
 
 #: views/admin/Settings.phtml:103 views/admin/Settings.phtml:106
 msgid "CSS Selector"
@@ -372,21 +367,21 @@ msgid ""
 "EnlighterJSRAW should be perfect (all pre-tags generated by the plugin will "
 "be highlighted)"
 msgstr ""
-"Der Selektor wird verwendet um alle generierten HTML pre-Tags zu finden. "
-"Standardmäßig wird hierzu pre.EnlighterJSRAW verwendet (alle durch Shortcode "
-"generierten pre-Tags)"
+"Selektor se koristi da bi odgovarao svim generisanim pre-tagovima. Normalno "
+"pre.Enlighter JSRAW bi trebao da bude savršen ( svi pre-tags generisani od "
+"strane plugina će biti obeleženi )"
 
 #: views/admin/Settings.phtml:105
 msgid "<strong>Default: </strong>pre.EnlighterJSRAW"
-msgstr "<strong>Standard: </strong>pre.EnlighterJSRAW"
+msgstr "<strong>Default: </strong>pre.EnlighterJSRAW"
 
 #: views/admin/Settings.phtml:106
 msgid "The CSS selector used to match generated HTML Tags"
-msgstr "Zum Finden der generierten HTML Tags verwendeter CSS Selektor"
+msgstr "CSS selektor korišćen za HTML Tags"
 
 #: views/admin/Settings.phtml:109 views/admin/Settings.phtml:112
 msgid "Initialization Method"
-msgstr "Initialisierung"
+msgstr "Metod inicijalizacije"
 
 #: views/admin/Settings.phtml:110
 msgid ""
@@ -394,216 +389,217 @@ msgid ""
 "startup-codes within a script-tag. Which method should be used ? (metadata "
 "based config will not pass the W3C Validator check)"
 msgstr ""
-"EnlighterJS muss durch eine Metadaten Angabe oder eingebettetes Javascript "
-"\"initialisiert\" werden. Welches Verfahren soll verwendet werden ?"
+"EnlighterJS treba da bude  \" inicijalizovan \" sa posebnim meta podaci - "
+"tag ili neki startup- kodovima u okviru skripte - taga . Koji metod treba "
+"koristiti ? ( konfiguracija bazirana na metapodacima neće proći W3C "
+"Validator proveru)"
 
 #: views/admin/Settings.phtml:111
 msgid "<strong>Default: </strong>Metadata based config"
-msgstr "<strong>Standard: </strong>Metadaten basierte Konfiguration"
+msgstr "<strong>Default: </strong>Metadata bazirana konfiguracija"
 
 #: views/admin/Settings.phtml:112
 msgid "Metadata based config"
-msgstr "Metadaten basiert"
+msgstr "Konfiguracija bazirana na metapodacima "
 
 #: views/admin/Settings.phtml:112
 msgid "Script based config"
-msgstr "Javascript im Kopfbereich einfügen"
+msgstr "Konfiguracija bazirana na skriptu"
 
 #: views/admin/Settings.phtml:115
 msgid "I18n (Internationalization)"
-msgstr "I18n (Internationalisierung)"
+msgstr "I18n (Internacionalizacija)"
 
 #: views/admin/Settings.phtml:116
 msgid ""
 "Should the plugin load language files (if available) to translate the "
 "settings page ?"
-msgstr "Sollen verfügbare Übersetzungen geladen und angezeigt werden ?"
+msgstr ""
+"Da li bi trebala plugin da učita jezičke fajlove(ako je dostupno) d bi "
+"prevela stranicu sa postavkama?"
 
 #: views/admin/Settings.phtml:117
 msgid "Enable I18n"
-msgstr "Sprachunterstützung aktivieren"
+msgstr "Omogući I18n"
 
 #: views/admin/Settings.phtml:120
 msgid "TinyMCE Integration (Visual Editor)"
-msgstr "TinyMCE Integration (Visueller Editor)"
+msgstr ""
 
 #: views/admin/Settings.phtml:121
 msgid ""
 "Enlighter can directly integrated into the Visual-Editor by adding "
 "Preformatted styles for each supported language."
 msgstr ""
-"Enlighter kann direkt in den Visuellen Editor (TinyMCE) integriert werden, "
-"indem spezielle Stile/Formatierungen (für jede Sprache) hinzugefügt werden."
 
 #: views/admin/Settings.phtml:122
 msgid "Enable Integration"
-msgstr "Visuelles Editieren aktivieren"
+msgstr ""
 
 #: views/admin/Settings.phtml:130
 msgid "is developed by"
-msgstr "wird entwickelt von"
+msgstr "programirano od strane"
 
 #: views/admin/Settings.phtml:130
 msgid "It`s released under the terms of the MIT X11 License."
-msgstr ""
-"Das Plugin ist unter den Bedingungen der MIT X11 Lizenz veröffentlicht."
+msgstr "Objavljeno pod MIT X11 dozvolom"
 
 #: views/admin/Settings.phtml:130
 msgid "Includes:"
-msgstr "Enthält:"
+msgstr "Uključuje:"
 
 #: views/admin/Settings.phtml:130
 msgid "by"
-msgstr "von"
+msgstr "od strane"
 
 #: views/admin/Settings.phtml:130
 msgid "License"
-msgstr "Lizenz"
+msgstr "Licenca"
 
 #: views/admin/ThemeCustomizer.phtml:3
 msgid "Theme Customizer"
-msgstr "Design Editor"
+msgstr " Customizer teme"
 
 #: views/admin/ThemeCustomizer.phtml:5
 msgid "Leave fields blank to force basic theme styles"
-msgstr "Bei leeren Felden werden die Standardeinstellungen verwendet"
+msgstr "Ostaviti prazna polja da bi se oformila osnovni stilovi tema"
 
 #: views/admin/ThemeCustomizer.phtml:9
 msgid "Basic Theme (will be extended)"
-msgstr "Basis Design (wird angepasst)"
+msgstr "Ossnovna tema (će biti proširena)"
 
 #: views/admin/ThemeCustomizer.phtml:21
 msgid "Load Theme styles"
-msgstr "Designvorlage laden"
+msgstr "Učitaj stil teme"
 
 #: views/admin/ThemeCustomizer.phtml:28
 msgid "Font Styles"
-msgstr "Schrift Stil"
+msgstr "Stilovi fontova"
 
 #: views/admin/ThemeCustomizer.phtml:31 views/admin/ThemeCustomizer.phtml:48
 msgid "Font-Family"
-msgstr "Schriftart"
+msgstr "Font-porodica"
 
 #: views/admin/ThemeCustomizer.phtml:31 views/admin/ThemeCustomizer.phtml:48
 msgid "e.g. Monaco, Courier, Monospace"
-msgstr "z.B. Monaco, Courier, Monospace"
+msgstr "pr. Monaco, Courier, Monospace"
 
 #: views/admin/ThemeCustomizer.phtml:34 views/admin/ThemeCustomizer.phtml:51
 msgid "Font-Size"
-msgstr "Schriftgröße"
+msgstr "Veličina fonta"
 
 #: views/admin/ThemeCustomizer.phtml:34
 msgid "e.g. 12px, 1.2em, 11pt"
-msgstr "z.B. 12px, 1.2em, 11pt"
+msgstr "e.g. 12px, 1.2em, 11pt"
 
 #: views/admin/ThemeCustomizer.phtml:37 views/admin/ThemeCustomizer.phtml:54
 msgid "Line height"
-msgstr "Zeilenhöhe"
+msgstr "Visina rečenice"
 
 #: views/admin/ThemeCustomizer.phtml:37
 msgid "e.g. 16px, 1.5em"
-msgstr "z.B. 16px, 1.5em"
+msgstr "e.g. 16px, 1.5em"
 
 #: views/admin/ThemeCustomizer.phtml:40 views/admin/ThemeCustomizer.phtml:57
 msgid "Font-Color"
-msgstr "Schriftfarbe"
+msgstr "Boja fonta"
 
 #: views/admin/ThemeCustomizer.phtml:40 views/admin/ThemeCustomizer.phtml:57
 #: views/admin/ThemeCustomizer.phtml:66
 msgid "e.g. #000000, #ff00c1"
-msgstr "z.B. #000000, #ff00c1"
+msgstr "e.g. #000000, #ff00c1"
 
 #: views/admin/ThemeCustomizer.phtml:45
 msgid "Line Number Styles"
-msgstr "Zeilennummer Stile"
+msgstr "Stilovi brojeva rečenica"
 
 #: views/admin/ThemeCustomizer.phtml:51
 msgid "e.g. 10px, 1.2em, 11pt"
-msgstr "z.B. 10px, 1.2em, 11pt"
+msgstr "e.g. 10px, 1.2em, 11pt"
 
 #: views/admin/ThemeCustomizer.phtml:54
 msgid "e.g. 15px, 1.5em"
-msgstr "z.B. 15px, 1.5em"
+msgstr "e.g. 15px, 1.5em"
 
 #: views/admin/ThemeCustomizer.phtml:63
 msgid "Special Styles"
-msgstr "Spezielle Stile"
+msgstr "Specijalni stilovi"
 
 #: views/admin/ThemeCustomizer.phtml:66
 msgid "Line highlighting Color"
-msgstr "Zeilenfarbe (hervorgehoben)"
+msgstr "boja obeležene rečenice"
 
 #: views/admin/ThemeCustomizer.phtml:69
 msgid "Line hover Color"
-msgstr "Zeilenfarbe (mouseover)"
+msgstr " hover boja rečenice"
 
 #: views/admin/ThemeCustomizer.phtml:69
 msgid "e.g. #f0f0ff"
-msgstr "z.B. #f0f0ff"
+msgstr "e.g. #f0f0ff"
 
 #: views/admin/ThemeCustomizer.phtml:74
 msgid "Token Styles"
-msgstr "Segment Stile"
+msgstr "Token Stilovi"
 
 #: views/admin/ThemeCustomizer.phtml:79
 msgid "Keyword(Type1)"
-msgstr "Schlüsselwort (Typ1)"
+msgstr "Ključna reč(Tip1)"
 
 #: views/admin/ThemeCustomizer.phtml:80
 msgid "Keyword(Type2)"
-msgstr "Schlüsselwort (Typ2)"
+msgstr "Ključna reč(Tip2)"
 
 #: views/admin/ThemeCustomizer.phtml:81
 msgid "Keyword(Type3)"
-msgstr "Schlüsselwort (Typ3)"
+msgstr "Ključna reč(Tip3)"
 
 #: views/admin/ThemeCustomizer.phtml:82
 msgid "Keyword(Type4)"
-msgstr "Schlüsselwort (Typ4)"
+msgstr "Ključna reč(Tip4)"
 
 #: views/admin/ThemeCustomizer.phtml:83
 msgid "Slash-StyleComments"
-msgstr "Einzilige Kommentare"
+msgstr "Slash-Stil komentara"
 
 #: views/admin/ThemeCustomizer.phtml:84
 msgid "Multiline-StyleComments"
-msgstr "Mehrzeilige Kommentare"
+msgstr "Multiline-Stil komentara"
 
 #: views/admin/ThemeCustomizer.phtml:85
 msgid "Strings(Type1)"
-msgstr "Zeichenkette (Typ1)"
+msgstr "Stringovi(Tip1)"
 
 #: views/admin/ThemeCustomizer.phtml:86
 msgid "Strings(Type2)"
-msgstr "Zeichenkette (Typ2)"
+msgstr "Stringovi(Tip2)"
 
 #: views/admin/ThemeCustomizer.phtml:87
 msgid "Strings(Type3)"
-msgstr "Zeichenkette (Typ3)"
+msgstr "Stringovi(Tip3)"
 
 #: views/admin/ThemeCustomizer.phtml:88
 msgid "Number"
-msgstr "Zahlen"
+msgstr "Broj"
 
 #: views/admin/ThemeCustomizer.phtml:89
 msgid "Method(Type1)"
-msgstr "Methoden (Typ1)"
+msgstr "Metod(Tip1)"
 
 #: views/admin/ThemeCustomizer.phtml:90
 msgid "Method(Type2)"
-msgstr "Methoden (Typ2)"
+msgstr "Metod(Tip2)"
 
 #: views/admin/ThemeCustomizer.phtml:91
 msgid "Bracket"
-msgstr "Klammer"
+msgstr "Zagrada"
 
 #: views/admin/ThemeCustomizer.phtml:92
 msgid "Symbol"
-msgstr "Symbol"
+msgstr "Simbol"
 
 #: views/admin/ThemeCustomizer.phtml:93
 msgid "EscapeSymbol"
-msgstr "Escape-Zeichen"
+msgstr "EscapeSymbol"
 
 #: views/admin/ThemeCustomizer.phtml:94
 msgid "Regex"
@@ -611,57 +607,48 @@ msgstr "Regex"
 
 #: views/admin/ThemeCustomizer.phtml:95
 msgid "StartDelimiter"
-msgstr "Start-Trennzeichen"
+msgstr "StartDelimiter"
 
 #: views/admin/ThemeCustomizer.phtml:96
 msgid "StopDelimiter"
-msgstr "Stop-Trennzeichen"
+msgstr "StopDelimiter"
 
 #: views/admin/ThemeCustomizer.phtml:100
 msgid "No Decoration"
-msgstr "Keine Hervorhebung"
+msgstr "Bez dekoracije"
 
 #: views/admin/ThemeCustomizer.phtml:101
 msgid "Underline"
-msgstr "Unterstrichen"
+msgstr "Ispod linije"
 
 #: views/admin/ThemeCustomizer.phtml:102
 msgid "Overline"
-msgstr "Überstrichen"
+msgstr "Preko linije"
 
 #: views/admin/ThemeCustomizer.phtml:103
 msgid "Line through"
-msgstr "Durchgestrichen"
+msgstr "Linija kroz"
 
 #: views/admin/ThemeCustomizer.phtml:107
 msgid "Normal Style"
-msgstr "Normal"
+msgstr "Normalan Stil"
 
 #: views/admin/ThemeCustomizer.phtml:108
 msgid "Bold Style"
-msgstr "Fett"
+msgstr "Bold Stil"
 
 #: views/admin/ThemeCustomizer.phtml:109
 msgid "Italic Style"
-msgstr "Kursiv"
+msgstr "Italic Stil"
 
 #: views/admin/ThemeCustomizer.phtml:110
 msgid "Bold+Italic Style"
-msgstr "Fett+Kursiv"
+msgstr "Bold+Italic Stil"
 
 #: views/admin/ThemeCustomizer.phtml:124
 msgid "Text:"
-msgstr "Text:"
+msgstr "Tekst:"
 
 #: views/admin/ThemeCustomizer.phtml:128
 msgid "Background:"
-msgstr "Hintergrund:"
-
-#~ msgid "Enlighter"
-#~ msgstr "Enlighter"
-
-#~ msgid "Credits"
-#~ msgstr "Entwickler"
-
-#~ msgid "Initialization method"
-#~ msgstr "Initialisierung"
+msgstr "Pozadina:"

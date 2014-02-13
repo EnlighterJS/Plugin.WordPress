@@ -104,6 +104,21 @@ class ResourceLoader{
 		}
 	}
 	
+	public function appendTinyMceCSS($mce_css){
+		// append custom TinyMCE styles to editor stylelist
+		if (empty($mce_css)){
+			return plugins_url('/enlighter/resources/admin/TinyMCE.css');
+		}else{
+			return $mce_css .= ','.plugins_url('/enlighter/resources/admin/TinyMCE.css');
+		}
+	}
+	
+	public function appendTinyMceJS($mce_plugins){
+		// TinyMCE plugin js
+		$mce_plugins['enlighter'] = plugins_url('/enlighter/resources/admin/TinyMCE.js');
+		return $mce_plugins;
+	}
+	
 	public function appendAdminCSS(){
 		// colorpicker css
 		wp_register_style('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/css/colorpicker.css'));

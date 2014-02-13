@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-02-01 13:57:34+00:00\n"
+"POT-Creation-Date: 2014-02-03 16:46:10+00:00\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  1.7\n"
+"Project-Id-Version: Enlighter  1.8\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -328,23 +328,35 @@ msgstr ""
 msgid "Enable I18n"
 msgstr ""
 
-#: views/admin/Settings.phtml:125
+#: views/admin/Settings.phtml:120
+msgid "TinyMCE Integration (Visual Editor)"
+msgstr ""
+
+#: views/admin/Settings.phtml:121
+msgid "Enlighter can directly integrated into the Visual-Editor by adding Preformatted styles for each supported language."
+msgstr ""
+
+#: views/admin/Settings.phtml:122
+msgid "Enable Integration"
+msgstr ""
+
+#: views/admin/Settings.phtml:130
 msgid "is developed by"
 msgstr ""
 
-#: views/admin/Settings.phtml:125
+#: views/admin/Settings.phtml:130
 msgid "It`s released under the terms of the MIT X11 License."
 msgstr ""
 
-#: views/admin/Settings.phtml:125
+#: views/admin/Settings.phtml:130
 msgid "Includes:"
 msgstr ""
 
-#: views/admin/Settings.phtml:125
+#: views/admin/Settings.phtml:130
 msgid "by"
 msgstr ""
 
-#: views/admin/Settings.phtml:125
+#: views/admin/Settings.phtml:130
 msgid "License"
 msgstr ""
 

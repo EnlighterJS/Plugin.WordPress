@@ -1,0 +1,72 @@
+/**
+ * TinyMCE Styles for use with Enlighter
+*/
+code.EnlighterJSRAW{
+	background-color: #f1feff !important;
+	border: dotted 1px #4d79a1 !important;
+	padding: 2px 5px 2px 5px;
+}
+pre.EnlighterJSRAW{
+	background-color: #f1feff !important;
+	border: dotted 1px #4d79a1 !important;
+	border-left: solid 4px #4d79a1 !important;
+	padding: 5px 10px 5px 10px;
+}
+
+/* Add Language Name */
+pre.EnlighterJSRAW:before{
+	display: block;
+	width: 100px;
+	content: "";
+	height: 10px;
+	padding: 0px 0px 15px 0px;
+	font-weight: bold;
+	color: #4d79a1;	
+}
+
+/* Language Descriptions */
+pre.EnlighterJSRAW[data-enlighter-language="php"]:before{
+	content: "Enlighter: PHP";
+}
+pre.EnlighterJSRAW[data-enlighter-language="html"]:before{
+	content: "Enlighter: HTML";
+}
+pre.EnlighterJSRAW[data-enlighter-language="css"]:before{
+	content: "Enlighter: CSS";
+}
+pre.EnlighterJSRAW[data-enlighter-language="xml"]:before{
+	content: "Enlighter: XML";
+}
+pre.EnlighterJSRAW[data-enlighter-language="java"]:before{
+	content: "Enlighter: Java";
+}
+pre.EnlighterJSRAW[data-enlighter-language="js"]:before{
+	content: "Enlighter: Javascript";
+}
+pre.EnlighterJSRAW[data-enlighter-language="md"]:before{
+	content: "Enlighter: Markdown";
+}
+pre.EnlighterJSRAW[data-enlighter-language="python"]:before{
+	content: "Enlighter: Python";
+}
+pre.EnlighterJSRAW[data-enlighter-language="ruby"]:before{
+	content: "Enlighter: Ruby";
+}
+pre.EnlighterJSRAW[data-enlighter-language="shell"]:before{
+	content: "Enlighter: Shell/Bash";
+}
+pre.EnlighterJSRAW[data-enlighter-language="sql"]:before{
+	content: "Enlighter: SQL";
+}
+pre.EnlighterJSRAW[data-enlighter-language="c"]:before{
+	content: "Enlighter: C";
+}
+pre.EnlighterJSRAW[data-enlighter-language="cpp"]:before{
+	content: "Enlighter: C++";
+}
+pre.EnlighterJSRAW[data-enlighter-language="nsis"]:before{
+	content: "Enlighter: NSIS";
+}
+pre.EnlighterJSRAW[data-enlighter-language="raw"]:before{
+	content: "Enlighter: RAW";
+}

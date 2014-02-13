@@ -1,13 +1,13 @@
 <?php
 /**
 	Enlighter Class
-	Version: 1.7
+	Version: 1.8
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://www.a3non.org/go/enlighterjs
 	License: MIT X11-License
 	
-	Copyright (c) 2013, Andi Dittrich
+	Copyright (c) 2013-2014, Andi Dittrich
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 	
@@ -54,13 +54,14 @@ class Enlighter{
 		'customLineHighlightColor' => '#f0f0ff',
 		'customLineHoverColor' => '#f0f0ff',		
 		'wpAutoPFilterPriority' => '12',
-		'enableTranslation' => true	
+		'enableTranslation' => true,
+		'enableTinyMceIntegration' => true	
 	);
 	
 	// list of micro shortcodes (supported languages)
 	private $_supportedLanguageKeys = array(
-		'Cascading Style Sheets (CSS)' => 'css',
-		'Hypertext Markup Language (HTML)' => 'html',
+		'CSS (Cascading Style Sheets)' => 'css',
+		'HTML (Hypertext Markup Language)' => 'html',
 		'Java' => 'java',
 		'Javascript' => 'js',
 		'Markdown' => 'md',
@@ -148,6 +149,17 @@ class Enlighter{
 		if (is_admin()){
 			// add admin menu handler
 			add_action('admin_menu', array($this, 'setupBackend'));
+			
+			// initialize TinyMCE modifications
+			if ($this->_settingsUtility->getOption('enableTinyMceIntegration')){
+				$editor = new Enlighter\TinyMCE($this->_settingsUtility, $this->_supportedLanguageKeys);
+
+				// load tinyMCE styles
+				add_filter('mce_css', array($this->_resourceLoader, 'appendTinyMceCSS'));
+				
+				// load tinyMCE enlighter plugin
+				// add_filter('mce_external_plugins', array($this->_resourceLoader, 'appendTinyMceJS'));
+			}			
 		}else{
 			// create new shortcode handler, register all used shortcodes
 			$this->_shortcodeHandler = new Enlighter\ShortcodeHandler($this->_settingsUtility, array_merge($this->_supportedLanguageKeys, array('enlighter', 'codegroup')));

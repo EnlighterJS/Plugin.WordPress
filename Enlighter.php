@@ -3,12 +3,12 @@
 	Plugin Name: Enlighter - Javascript based syntax highlighting
 	Plugin URI: http://www.a3non.org/go/enlighterjs
 	Description: Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor.
-	Version: 1.7
+	Version: 1.8
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	License: MIT X11-License
 	
-	Copyright (c) 2013, Andi Dittrich
+	Copyright (c) 2013-2014, Andi Dittrich
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 	
@@ -22,7 +22,7 @@
 */
 
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '1.7');
+define('ENLIGHTER_VERSION', '1.8');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
 
 // check php version
@@ -35,6 +35,7 @@ if (version_compare(phpversion(), '5.3', '>=')){
 	require_once(ENLIGHTER_PLUGIN_PATH.'/class/ResourceLoader.php');
 	require_once(ENLIGHTER_PLUGIN_PATH.'/class/SimpleTemplate.php');
 	require_once(ENLIGHTER_PLUGIN_PATH.'/class/ThemeGenerator.php');
+	require_once(ENLIGHTER_PLUGIN_PATH.'/class/TinyMCE.php');
 	
 	// run enlighter
 	Enlighter::run();

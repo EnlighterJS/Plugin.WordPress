@@ -1,9 +1,9 @@
 === Enlighter - Customizable Syntax Highlighter ===
 Contributors: Andi Dittrich
-Tags: syntax highlighting, javascript, code, coding, mootools, jquery, customizable, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
+Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 1.7
+Stable tag: 1.8
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -12,14 +12,15 @@ Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
 == Description ==
 
 Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://www.a3non.org/go/enlighterjs) to provide a beautiful code-appearance.
-Using it can be as simple as adding a shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes without any css knowlegde!
+Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
 A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.html "EnligherJS Theme Demo")
 
 = Plugin Features =
 * Support for all common used languages
 * Theme Customizer
-* Easy to use through the use of Shortcodes
+* Visual-Editor (TinyMCE) Integration
+* Easy to use Text-Editor mode through the use of Shortcodes
 * Advanced configuration options (e.g. CDN usage) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
 * Outputs in various formats like ordered lists or inline. Choose the method that works best for you.
@@ -28,7 +29,7 @@ A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.
 * Integrated CSS file caching (suitable for high traffic sites)
 * EnlighterJS is written in MooTools. Requires version 1.4+
 
-= Quickstart Example =
+= Shortcode Quickstart Example =
 Highlight javascript code (theme defined on your settings page)
 
 	[js]
@@ -38,11 +39,23 @@ Highlight javascript code (theme defined on your settings page)
 	[/js]
 
 = Point out special lines of code =
+**Shortcode Style**
+Just add the `highlight` attribute with the lines you wish to point out
+
 	[js highlight="2"]
 	window.addEvent('domready', function(){
 		console.info('Hello Enlighter');
 	});	
 	[/js]
+	
+**Visual Editor**
+You have to edit the generated html tag by switching to Text-Mode
+
+	<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-highlight="2">
+		window.addEvent('domready', function(){
+			console.info('Hello Enlighter');
+		});
+	</pre>	
 
 = Codegroup Example =
 Display multiple codes within a tab-pane. You can define a custom tab-pane title for each snippet if you want.
@@ -75,7 +88,7 @@ Display multiple codes within a tab-pane. You can define a custom tab-pane title
 	[/codegroup]
 
 = Legacy Example =
-It's also possible to use the plugin with legacy shortcode
+It's also possible to use the plugin with legacy shortcode (disabled language shortcodes)
 
 	[enlighter lang="js"]
 	window.addEvent('domready', function(){
@@ -88,38 +101,27 @@ It's also possible to use the plugin with legacy shortcode
 	[/enlighter]
 
 
-= Supported Languages (build-in) =
-* HTML
-* CSS (Level 1, 2, 3)
-* XML
-* Javascript
-* Java
-* Markdown
-* PHP
-* Python
-* Ruby
-* Shellscript
-* C
-* C++
-* SQL
-* NSIS
+= Supported Languages (build-in) + Shortcodes =
+* **HTML** [html]
+* **CSS** (Level 1, 2, 3) [css]
+* **XML** [xml]
+* **Javascript** [js]
+* **Java** [java]
+* **Markdown** [md]
+* **PHP** [php]
+* **Python** [python]
+* **Ruby** [ruby]
+* **Shellscript** [shell]
+* **C** [c]
+* **C++** [cpp]
+* **SQL** [sql]
+* **NSIS** [nsis]
+* **RAW Code** [raw]
 
-= Language Shortcode list =
-* [css]
-* [html]
-* [java]
-* [js]
-* [md]
-* [php]
-* [python]
-* [ruby]
-* [shell]
-* [sql]
-* [xml]
-* [c]
-* [cpp]
-* [nsis]
-* [raw] 
+= Available Translations (I18n) =
+* **English** (default)
+* **German** (de_DE by Andi Dittrich)
+* **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
 == Compatibility ==
 
@@ -143,19 +145,22 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 2. Upload the complete `enlighter` folder to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Goto to the Enlighter settings page and select the default theme which should be used.
-5. That's it! You're done. You can now enter the following code into a post or page to highlight code (e.g. javascript): `[js]var enlighter = new EnlighterJS({});[/js]`
+5. That's it! You're done. You can select an editor style for your codefragment or enter the following code into a post or page to highlight it (e.g. javascript): `[js]var enlighter = new EnlighterJS({});[/js]` 
 
 == Frequently Asked Questions ==
+
+= I can't see any style options within the Visual-Editor-Toolbar =
+You have to enable the full toolbar by clicking on the **Show/Hide Kitchen Sink** button (last icon on the toolbar)
+
+= Should i use Shortcode`s or the Visual-Editor Integration ? =
+The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
 
 = How can i enable the Theme-Customizer ? =
 To enable the Theme-Customizer you have to select the theme named *Custom* as default theme. The Theme-Customizer will appear immediately.
 
 = Is it possible to point out special lines of code ? =
 Yes! since version 1.5 all shortcodes support the attribute ``highlight``.
-Example - highlight the lines 2,3,4,8 of the codeblock
-	[js highlight="2-4,8"]
-	....some code..
-	[/js]
+Shortcode Example: highlight the lines 2,3,4,8 of the codeblock `[js highlight="2-4,8"]....some code..[/js]`
 	
 = Are the uncompressed EnlighterJS Javasscript and CSS sources available ? =
 The complete EnlighterJS project can be found on [GitHub](https://github.com/AndiDittrich/EnlighterJS "EnligherJS Project")
@@ -176,14 +181,21 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 == Screenshots ==
 
 1. CSS highlighting Example (GIT Theme)
-2. Tab-Pane Example (multiple languages)
+2. Visual Editor Integration
 3. Options Page - Appearance Settings
 4. Options Page - Advanced Settings
 5. Theme Customizer - General styles
 6. Theme Customizer - Language Token styling
 7. Special options for use with a CDN (Content Delivery Network)
+8. Tab-Pane Example (multiple languages)
 
 == Changelog ==
+
+= 1.8 =
+* Added: Visual-Editor (TinyMCE) Integration (**optionally** - you can turn it off on the settings page)
+* Added: Serbo-Croatian Translation sr_RS (Thank`s to Borisa Djuraskovic from webhostinghub.com)
+* Bugfix: Visual-Editor integration will avoid auto-whitespace-removing issues
+* Improved: Added new Screenshots
 
 = 1.7 =
 * Added: Environment Pre-Check (PHP 5.3 requirement!)
@@ -226,3 +238,9 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 = 1.1 =
 * First public release
 * Includes EnligherJS 1.4
+
+
+== Upgrade Notice ==
+
+= 1.8 =
+Added Visual-Editor (TinyMCE) Integration (will avoid auto-whitespace-removing issues)
