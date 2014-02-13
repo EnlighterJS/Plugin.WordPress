@@ -19,7 +19,7 @@ A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.
 ### Plugin Features ###
 * Support for all common used languages
 * Theme Customizer
-* Full Visual-Editor (TinyMCE) Integration
+* Visual-Editor (TinyMCE) Integration
 * Easy to use Text-Editor mode through the use of Shortcodes
 * Advanced configuration options (e.g. CDN usage) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
@@ -39,11 +39,23 @@ Highlight javascript code (theme defined on your settings page)
 	[/js]
 
 ### Point out special lines of code ###
+**Shortcode Style**
+Just add the `highlight` attribute with the lines you wish to point out
+
 	[js highlight="2"]
 	window.addEvent('domready', function(){
 		console.info('Hello Enlighter');
 	});	
 	[/js]
+	
+**Visual Editor**
+You have to edit the generated html tag by switching to Text-Mode
+
+	<pre class###"EnlighterJSRAW" data-enlighter-language="js" data-enlighter-highlight###"2">
+		window.addEvent('domready', function(){
+			console.info('Hello Enlighter');
+		});
+	</pre>	
 
 ### Codegroup Example ###
 Display multiple codes within a tab-pane. You can define a custom tab-pane title for each snippet if you want.
@@ -89,38 +101,27 @@ It's also possible to use the plugin with legacy shortcode (disabled language sh
 	[/enlighter]
 
 
-### Supported Languages (build-in) ###
-* HTML
-* CSS (Level 1, 2, 3)
-* XML
-* Javascript
-* Java
-* Markdown
-* PHP
-* Python
-* Ruby
-* Shellscript
-* C
-* C++
-* SQL
-* NSIS
+### Supported Languages (build-in) + Shortcodes ###
+* **HTML** [html]
+* **CSS** (Level 1, 2, 3) [css]
+* **XML** [xml]
+* **Javascript** [js]
+* **Java** [java]
+* **Markdown** [md]
+* **PHP** [php]
+* **Python** [python]
+* **Ruby** [ruby]
+* **Shellscript** [shell]
+* **C** [c]
+* **C++** [cpp]
+* **SQL** [sql]
+* **NSIS** [nsis]
+* **RAW Code** [raw]
 
-### Language Shortcode list ###
-* [css]
-* [html]
-* [java]
-* [js]
-* [md]
-* [php]
-* [python]
-* [ruby]
-* [shell]
-* [sql]
-* [xml]
-* [c]
-* [cpp]
-* [nsis]
-* [raw] 
+### Available Translations (I18n) ###
+* **English** (default)
+* **German** (de_DE by Andi Dittrich)
+* **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
 ## Compatibility ##
 
@@ -149,7 +150,7 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 ## Frequently Asked Questions ##
 
 ### I can't see any style options within the Visual-Editor-Toolbar ###
-You have to enable the full toolbar by clicking on the **Shot/Hide Kitchen Sink** button (last icon on the toolbar)
+You have to enable the full toolbar by clicking on the **Show/Hide Kitchen Sink** button (last icon on the toolbar)
 
 ### Should i use Shortcode`s or the Visual-Editor Integration ? ###
 The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
@@ -192,7 +193,8 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 
 ### 1.8 ###
 * Added: Visual-Editor (TinyMCE) Integration (**optionally** - you can turn it off on the settings page)
-* Bugfix: Visual-Editor integration will avoid auto-whitespace-removing problems
+* Added: Serbo-Croatian Translation sr_RS (Thank`s to Borisa Djuraskovic from webhostinghub.com)
+* Bugfix: Visual-Editor integration will avoid auto-whitespace-removing issues
 * Improved: Added new Screenshots
 
 ### 1.7 ###
@@ -236,3 +238,9 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 ### 1.1 ###
 * First public release
 * Includes EnligherJS 1.4
+
+
+## Upgrade Notice ##
+
+### 1.8 ###
+Added Visual-Editor (TinyMCE) Integration (will avoid auto-whitespace-removing issues)
