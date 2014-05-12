@@ -1,9 +1,10 @@
 === Enlighter - Customizable Syntax Highlighter ===
 Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
+Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.5
-Tested up to: 3.8.1
-Stable tag: 1.8
+Tested up to: 3.9.1
+Stable tag: 2.0
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -11,7 +12,7 @@ Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
 
 == Description ==
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://www.a3non.org/go/enlighterjs) to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://andidittrich.de/go/enlighterjs) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
 A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.html "EnligherJS Theme Demo")
@@ -19,6 +20,7 @@ A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.
 = Plugin Features =
 * Support for all common used languages
 * Theme Customizer
+* Inline Syntax Highlighting
 * Visual-Editor (TinyMCE) Integration
 * Easy to use Text-Editor mode through the use of Shortcodes
 * Advanced configuration options (e.g. CDN usage) are available within the options page.
@@ -27,7 +29,7 @@ A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
-* EnlighterJS is written in MooTools. Requires version 1.4+
+* EnlighterJS is written in MooTools. Requires MooTools v1.4+ (included) and enabled javascript
 
 = Shortcode Quickstart Example =
 Highlight javascript code (theme defined on your settings page)
@@ -37,6 +39,11 @@ Highlight javascript code (theme defined on your settings page)
 		console.info('Hello Enlighter');
 	});	
 	[/js]
+
+= Inline Syntax Highlighting with Shortcode =
+
+	Lorem ipsum dolor sit amet, [js]window.alert('Hello World');[/js] consetetur sadipscing elitr,
+	sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 
 = Point out special lines of code =
 **Shortcode Style**
@@ -123,6 +130,10 @@ It's also possible to use the plugin with legacy shortcode (disabled language sh
 * **German** (de_DE by Andi Dittrich)
 * **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
+= Related Links =
+* Enlighter Plugin on [GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
+* [EnlighterJS Documentation](http://andidittrich.de/go/enlighters)
+
 == Compatibility ==
 
 All browsers supported by MooTools (enabled Javascript required) and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
@@ -152,6 +163,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 = I can't see any style options within the Visual-Editor-Toolbar =
 You have to enable the full toolbar by clicking on the **Show/Hide Kitchen Sink** button (last icon on the toolbar)
 
+= Inline Styles are missing within the Visual Editor =
+This feature requires WordPress 3.9 (new TinyMCE Version) - but you can still use shortcodes for inline highlighting! 
+
 = Should i use Shortcode`s or the Visual-Editor Integration ? =
 The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
 
@@ -166,7 +180,7 @@ Shortcode Example: highlight the lines 2,3,4,8 of the codeblock `[js highlight="
 The complete EnlighterJS project can be found on [GitHub](https://github.com/AndiDittrich/EnlighterJS "EnligherJS Project")
 
 = Can i add custom Themes ? =
-Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify the standard theme (*Sources/Themes/Standard.css*). On the Enlighter options page you have to select the theme *standard* and disable the automatic inclusion of the enlighter css files. Finally you have to include the modified css files on you own.
+Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify one of the standard themes.
 
 = I'am already using MooTools and my page throws Javascript-Errors =
 If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
@@ -176,7 +190,7 @@ If you are already using MooTools on your page, you have to disable the automati
 The W3C Validator will throw an warning when using *metadata based config* as initialization method, because of the unknown metatag-name *EnlighterJS*. To avoid this warning you can select **Script based config** on the `settings page -> advanced -> initialization method` - instead of a metatag EnlighterJS will be initialized with some javascript code injected into your page.
 
 = I miss some features / I found a bug =
-Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
+Write a message to Andi Dittrich (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 
 == Screenshots ==
 
@@ -190,6 +204,24 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 8. Tab-Pane Example (multiple languages)
 
 == Changelog ==
+
+= 2.0 =
+* Added EnlighterJS 2.1
+* Added Inline-Syntax-Highlighting
+* Added new Theme "Enlighter"
+* Added Inline-Highlighting support to the Visual-Editor
+* Added setting "Show Linenumbers"
+* Added shortcode attribute "linenumbers" the force the visibility for each codeblock - feature requested on [GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/1)
+* Added shortcode attribute "offset" to set the start-index of line-number-counting - feature requested on [WordPress Forums](http://wordpress.org/support/topic/feature-request-initial-start-line-number?replies=2)
+* Added Inline-CSS-Selector setting
+* Added an optional "raw-code-button" as well as customization options for the appearing Raw-Code-Panel
+* Added build-script to generate Theme-Templates required by the ThemeCustomizer directly from the CSS files
+* Added seperate token settings for "font-style" and "font-weight"
+* Improved Theme-Generator: only one CSS file is included instead of two
+* Moved option "Language Shortcodes" to "Advanced Options"
+* Removed setting "Output-Style" (replaced by Show-Linenumbers)
+* Removed waste Theme-Customizer setting "Line Number Styles -> Line height"
+* Bugfix: "Loading Theme Style" doesn't set "text-decoration" corretly
 
 = 1.8 =
 * Added: Visual-Editor (TinyMCE) Integration (**optionally** - you can turn it off on the settings page)
@@ -241,6 +273,9 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or ope
 
 
 == Upgrade Notice ==
+
+= 2.0 =
+Added Inline-Syntax-Highlighting as well as some other cool feature - please go to the settings page and click "Apply Settings"
 
 = 1.8 =
 Added Visual-Editor (TinyMCE) Integration (will avoid auto-whitespace-removing issues)

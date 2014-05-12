@@ -1,10 +1,10 @@
 <?php
 /**
 	TinyMCE Editor Addons
-	Version: 1.0
+	Version: 1.2
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
-	Plugin URI: http://www.a3non.org/go/enlighterjs
+	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
 	Copyright (c) 2014, Andi Dittrich
@@ -35,8 +35,14 @@ class TinyMCE{
 		// add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
 		add_filter('mce_buttons_2', array($this, 'activateStyleButton'), 101);
 		
-		// add filter to add custom formats - low priority to avoid conflicts with other plugins which try to overwrite the settings
-		add_filter('tiny_mce_before_init', array($this, 'insertFormats'), 101);
+		// TinyMCE 3 or 4 ?
+		if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
+			// add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
+			add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);			
+		}else{
+			// add filter to add custom formats (backward compatibility)
+			add_filter('tiny_mce_before_init', array($this, 'insertFormats3'), 101);			
+		}
 	}
 	
 	
@@ -50,7 +56,7 @@ class TinyMCE{
 	}
 	
 	// callback function to filter the MCE settings
-	public function insertFormats($tinyMceConfigData){
+	public function insertFormats4($tinyMceConfigData){
 		// new style formats
 		$styles = array();
 		
@@ -59,50 +65,96 @@ class TinyMCE{
 			$styles = json_decode($tinyMceConfigData['style_formats']);
 		}
 		
+		// valid html tgas
+		if (isset($tinyMceConfigData['valid_children'])){
+			$tinyMceConfigData['valid_children'] .= '-code[code]';
+		}else{
+			$tinyMceConfigData['valid_children'] = '-code[code]';
+		}
+		
+		// create new "Enlighter Codeblocks" item
+		$blockstyles = array();
+		
 		// add all supported languages as Enlighter Style
-		foreach ($this->_supportedLanguageKeys as $name => $lang){
-				
+		foreach ($this->_supportedLanguageKeys as $name => $lang){				
 			// define new enlighter style formats
-			$styles[] =	array(
-					'title' => 'Enlighter: '.$name,
+			$blockstyles[] = array(
+					'title' => ''.$name,
 					'block' => 'pre',
 					'classes' => 'EnlighterJSRAW',
 					'wrapper' => false,
-					'selector' => 'pre.EnlighterJSRAW',
 					'attributes' => array(
 						'data-enlighter-language' => $lang
 					)
 			);
-			/*
-			// define new enlighter style formats
-			$styles[] =	array(
-					'title' => 'Enlighter (Inline): '.$name,
-					'inline' => 'code',
-					'classes' => 'EnlighterJSRAW',
-					'wrapper' => false,
-					'selector' => 'code.EnlighterJSRAW',
-					'attributes' => array(
-							'data-enlighter-language' => $lang
-					)
-			);
-			*/
 		}
-	
-		// add code blockformat
-		/*
-		if (isset($tinyMceConfigData['theme_advanced_blockformats'])){
-			if (strpos('code', $tinyMceConfigData['theme_advanced_blockformats'])===false){
-				$tinyMceConfigData['theme_advanced_blockformats'] .= 'code';
+		
+		// add block styles
+		$styles[] = array(
+			'title' => __('Enlighter Codeblocks', 'enlighter'),
+			'items' => $blockstyles				
+		);
+		
+		// inline highlighting enabled ?
+		if ($this->_config['enableInlineHighlighting']){
+			$inlinestyles = array();
+			
+			foreach ($this->_supportedLanguageKeys as $name => $lang){
+				// define new enlighter inline style formats
+				$inlinestyles[] =	array(
+						'title' => ''.$name,
+						'inline' => 'code',
+						'classes' => 'EnlighterJSRAW',
+						'wrapper' => false,
+						'selector' => '',
+						'attributes' => array(
+								'data-enlighter-language' => $lang
+						)
+				);
 			}
-		}else{
-			$tinyMceConfigData['theme_advanced_blockformats']= 'p,address,pre,code,h1,h2,h3,h4,h5,h6';
+			
+			// add inline styles
+			$styles[] = array(
+					'title' => __('Enlighter Inline', 'enlighter'),
+					'items' => $inlinestyles
+			);
 		}
-		*/
+		
+		// dont overwrite all settings
+		$tinyMceConfigData['style_formats_merge'] = true;
 		
 		// apply modified style data
 		$tinyMceConfigData['style_formats'] = json_encode($styles);
 		return $tinyMceConfigData;
 	}
+	
+	// old enlighter formats (< WordPress 3.9) - NO INLINE FORMATS
+	public function insertFormats3($tinyMceConfigData){
+		// new style formats
+		$styles = array();
+	
+		// style formats already defined ?
+		if (isset($tinyMceConfigData['style_formats'])){
+			$styles = json_decode($tinyMceConfigData['style_formats']);
+		}
 
+		// add all supported languages as Enlighter Style
+		foreach ($this->_supportedLanguageKeys as $name => $lang){
+			// define new enlighter style formats
+			$styles[] = array(
+					'title' => 'Enlighter '.$name,
+					'block' => 'pre',
+					'classes' => 'EnlighterJSRAW',
+					'wrapper' => false,
+					'attributes' => array(
+							'data-enlighter-language' => $lang
+					)
+			);
+		}
+	
+		// apply modified style data
+		$tinyMceConfigData['style_formats'] = json_encode($styles);
+		return $tinyMceConfigData;
+	}
 	
 }

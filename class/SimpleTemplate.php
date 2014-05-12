@@ -1,13 +1,13 @@
 <?php
 /**
 	Dynamic CSS Generator
-	Version: 1.0
+	Version: 1.2
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
-	Plugin URI: http://www.a3non.org/go/enlighterjs
+	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
-	Copyright (c) 2010-2013, Andi Dittrich
+	Copyright (c) 2010-2014, Andi Dittrich
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 	
@@ -38,12 +38,12 @@ class SimpleTemplate{
 	}
 	
 	// store rendered css file
-	public function store($filename){
+	public function store($filename, $prepend='', $append=''){
 		// render tpl
 		$renderedTPL = $this->render();
 		
 		// store
-		file_put_contents($filename, $renderedTPL);
+		file_put_contents($filename, $prepend.$renderedTPL.$append);
 	}
 	
 	// return tpl

@@ -11,12 +11,14 @@ pre.EnlighterJSRAW{
 	border: dotted 1px #4d79a1 !important;
 	border-left: solid 4px #4d79a1 !important;
 	padding: 5px 10px 5px 10px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 
 /* Add Language Name */
 pre.EnlighterJSRAW:before{
 	display: block;
-	width: 100px;
+	width: 200px;
 	content: "";
 	height: 10px;
 	padding: 0px 0px 15px 0px;

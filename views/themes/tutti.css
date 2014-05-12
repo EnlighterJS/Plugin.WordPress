@@ -1,0 +1,40 @@
+
+.wpcustomEnlighterJSTabPane .controls li{
+	background-color: #ffffff;
+}
+.wpcustomEnlighterJSTabPane .controls .selected, .wpcustomEnlighterJSTabPane .controls .selected:hover, .wpcustomEnlighterJSTabPane .controls li:hover{
+	background-color: #F4F8FC;
+}
+.wpcustomEnlighterJS {
+	color: #000000;
+}
+ol.wpcustomEnlighterJS {
+	background-color: #fbfbfb;
+	list-style-type: decimal;
+}
+ul.wpcustomEnlighterJS {
+	background-color: #fbfbfb;
+}
+ol.wpcustomEnlighterJS li, ul.wpcustomEnlighterJS li{
+	border: none;
+	line-height: 16px;
+}
+ol.wpcustomEnlighterJS li:hover, ul.wpcustomEnlighterJS li:hover{
+	color: #000000;
+}
+ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover{
+	background-color: #F4F8FC;
+	border: none;
+}
+/* special line highlight color */
+ol.wpcustomEnlighterJS li.specialline, ul.wpcustomEnlighterJS li.specialline  {
+	background-color: #F4F8FC;
+}
+/** Symbol styles */
+/* Raw Code Pane */
+.wpcustomEnlighterJSWrapper pre{
+	background-color: #ffffff;
+	font-size: 12px;
+	color: #000000;
+	line-height: 16px;
+}

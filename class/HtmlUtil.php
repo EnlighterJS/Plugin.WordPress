@@ -4,7 +4,7 @@
 	Version: 1.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
-	Plugin URI: http://www.a3non.org/go/enlighterjs
+	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
 	Copyright (c) 2013, Andi Dittrich

@@ -2,6 +2,8 @@
  * TinyMCE Enlighter Plugin - Converts Shortcodes and Pre Tags between Visual and Text Modes
  */
 (function(){
+		
+	/*
 	// store current mode to lock content events
 	var _mode = null;
 	
@@ -43,4 +45,5 @@
 		console.log("switchto: ", _mode);
 		this.go(id, _mode);
 	});
+	*/
 })();

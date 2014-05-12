@@ -1,13 +1,13 @@
 <?php
 /**
 	Enlighter Class
-	Version: 1.0
+	Version: 2.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
-	Plugin URI: http://www.a3non.org/go/enlighterjs
+	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
-	Copyright (c) 2013, Andi Dittrich
+	Copyright (c) 2013-2014, Andi Dittrich
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 	
@@ -27,7 +27,7 @@ class ThemeGenerator{
 		}
 		
 		// load css template
-		$cssTPL = new SimpleTemplate(ENLIGHTER_PLUGIN_PATH.'/views/css/'.$settingsUtil->getOption('customThemeBase').'.css');
+		$cssTPL = new SimpleTemplate(ENLIGHTER_PLUGIN_PATH.'/views/WpCustomTheme.css');
 		
 		// generate token styles
 		foreach ($styleKeys as $key=>$tokenname){
@@ -77,6 +77,7 @@ class ThemeGenerator{
 			$cssTPL->assign(strtoupper($tokenname), $styles);
 		}
 		
+		// ========= FONT STYLES ======================
 		// generate font styles
 		$fontstyles = '';
 		if (($o = $settingsUtil->getOption('customFontFamily')) != false){
@@ -95,6 +96,7 @@ class ThemeGenerator{
 		// assign font styles
 		$cssTPL->assign('FONTSTYLE', $fontstyles);
 		
+		// ========= LINE STYLES ======================
 		// generate line styles
 		$linestyles = '';
 		if (($o = $settingsUtil->getOption('customLinenumberFontFamily')) != false){
@@ -103,15 +105,13 @@ class ThemeGenerator{
 		if (($o = $settingsUtil->getOption('customLinenumberFontSize')) != false){
 			$linestyles .= 'font-size: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customLinenumberLineHeight')) != false){
-			$linestyles .= 'line-height: '.$o.';';
-		}
 		if (($o = $settingsUtil->getOption('customLinenumberFontColor')) != false){
 			$linestyles .= 'color: '.$o.';';
 		}		
 		
 		$cssTPL->assign('LINESTYLE', $linestyles);
 		
+		// ========= SPECIAL STYLES ======================
 		// special styles
 		if (($o = $settingsUtil->getOption('customLineHighlightColor')) != false){
 			$cssTPL->assign('HIGHLIGHT_BG_COLOR', $o);
@@ -120,8 +120,36 @@ class ThemeGenerator{
 			$cssTPL->assign('HOVER_BG_COLOR', $o);
 		}
 		
-		// store file
-		$cssTPL->store(ENLIGHTER_PLUGIN_PATH.'/cache/EnlighterJS.custom.css');
+		// ========= RAW STYLES ======================
+		// generate raw styles
+		$rawstyles = '';
+		if (($o = $settingsUtil->getOption('customRawFontFamily')) != false){
+			$rawstyles .= 'font-family: '.$o.';';
+		}
+		if (($o = $settingsUtil->getOption('customRawFontSize')) != false){
+			$rawstyles .= 'font-size: '.$o.';';
+		}
+		if (($o = $settingsUtil->getOption('customRawLineHeight')) != false){
+			$rawstyles .= 'line-height: '.$o.';';
+		}
+		if (($o = $settingsUtil->getOption('customRawFontColor')) != false){
+			$rawstyles .= 'color: '.$o.';';
+		}
+		if (($o = $settingsUtil->getOption('customRawBackgroundColor')) != false){
+			$rawstyles .= 'background-color: '.$o.';';
+		}
+		
+		// assign font styles
+		$cssTPL->assign('RAWSTYLE', $rawstyles);
+		
+		// load EnlighterJS base
+		$enlighterJSBaseCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.yui.css');
+		
+		// load theme base
+		$enlighterJSThemeCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/views/themes/'.$settingsUtil->getOption('customThemeBase').'.css');
+		
+		// store file, prepend base styles
+		$cssTPL->store(ENLIGHTER_PLUGIN_PATH.'/cache/EnlighterJS.custom.css', $enlighterJSBaseCss.$enlighterJSThemeCss);
 	}
 	
 }

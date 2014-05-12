@@ -1,28 +1,6 @@
-/*
----
-description: MacRabbit Espresso inspired theme.
-generator: Enlighter WordPress-Plugin
-license: MIT-style
-
-authors:
-- Jose Prado
-- Andi Dittrich
-
-...
-*/
-.wpcustomEnlighterJSTabPane .controls li{
-	background-color: #ffffff;
-}
-.wpcustomEnlighterJSTabPane .controls .selected, .wpcustomEnlighterJSTabPane .controls .selected:hover, .wpcustomEnlighterJSTabPane .controls li:hover{
-	background-color: #F4F8FC;
-}
-
-ol.wpcustomEnlighterJS li:hover{
-	color: #000000;
-}
-ol.wpcustomEnlighterJS li.hoverEnabled:hover{
+/* hover color */
+ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover{
 	background-color: $(HOVER_BG_COLOR);
-	border: none;
 }
 
 /* special line highlight color */
@@ -30,23 +8,17 @@ ol.wpcustomEnlighterJS li.specialline {
 	background-color: $(HIGHLIGHT_BG_COLOR);
 }
 
-/* LIST specific styles */
-ol.wpcustomEnlighterJS, ol.wpcustomEnlighterJS li {
-	background-color: #fbfbfb;
-	list-style-type: decimal;
+/* base styles */
+ol.wpcustomEnlighterJS, ol.wpcustomEnlighterJS li, ul.wpcustomEnlighterJS, ul.wpcustomEnlighterJS li{
 	$(LINESTYLE)
 }
-ol.wpcustomEnlighterJS li{
-	border: none;
-	line-height: 16px;
-	$(LINESTYLE)
-}
+
 /* default symbol style */
-.wpcustomEnlighterJS span {
+.wpcustomEnlighterJS span{
 	$(FONTSTYLE)
 }
 
-/* theme symbol styles */
+/* Symbol styles */
 .wpcustomEnlighterJS .de1 { $(DE1) }
 .wpcustomEnlighterJS .de2 { $(DE2) }
 .wpcustomEnlighterJS .kw1 { $(KW1) }
@@ -65,3 +37,10 @@ ol.wpcustomEnlighterJS li{
 .wpcustomEnlighterJS .sy0 { $(SY0) }
 .wpcustomEnlighterJS .es0 { $(ES0) }
 .wpcustomEnlighterJS .re0 { $(RE0) }
+
+.wpcustomEnlighterJSRawButton::AFTER{
+	content: 'Toggle RAW Code';
+}
+.wpcustomEnlighterJSWrapper pre{
+	$(RAWSTYLE)
+}

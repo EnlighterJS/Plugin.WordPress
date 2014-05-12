@@ -2,15 +2,23 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-02-13 14:51:40+00:00\n"
+"POT-Creation-Date: 2014-05-12 12:08:17+00:00\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  1.8\n"
+"Project-Id-Version: Enlighter  2.0\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
 #: views/admin/Settings.phtml:22
 msgid "Enlighter - Advanced javascript based syntax highlighting"
+msgstr ""
+
+#: class/TinyMCE.php:87
+msgid "Enlighter Codeblocks"
+msgstr ""
+
+#: class/TinyMCE.php:112
+msgid "Enlighter Inline"
 msgstr ""
 
 #: views/admin/Settings.phtml:27
@@ -49,7 +57,7 @@ msgstr ""
 msgid "The most easy way to use Enlighter is to wrap your code, which should be highlighted, in a language-shortcode tag."
 msgstr ""
 
-#: views/admin/Help.phtml:7 views/admin/Help.phtml:36 views/admin/Help.phtml:78
+#: views/admin/Help.phtml:7 views/admin/Help.phtml:38 views/admin/Help.phtml:80
 msgid "Example"
 msgstr ""
 
@@ -57,26 +65,26 @@ msgstr ""
 msgid "Language-Shortcode List"
 msgstr ""
 
-#: views/admin/Help.phtml:19 views/admin/Help.phtml:66
-#: views/admin/Help.phtml:84
+#: views/admin/Help.phtml:19 views/admin/Help.phtml:68
+#: views/admin/Help.phtml:86
 msgid "Syntax"
 msgstr ""
 
-#: views/admin/Help.phtml:20 views/admin/Help.phtml:85
+#: views/admin/Help.phtml:20 views/admin/Help.phtml:87
 msgid "YOUR CODE"
 msgstr ""
 
-#: views/admin/Help.phtml:22 views/admin/Help.phtml:69
-#: views/admin/Help.phtml:87
+#: views/admin/Help.phtml:22 views/admin/Help.phtml:71
+#: views/admin/Help.phtml:89
 msgid "Attributes"
 msgstr ""
 
-#: views/admin/Help.phtml:24 views/admin/Help.phtml:71
-#: views/admin/Help.phtml:90
+#: views/admin/Help.phtml:24 views/admin/Help.phtml:73
+#: views/admin/Help.phtml:92
 msgid "(optional) - defines the theme that should used, will overwrite the settings-page values"
 msgstr ""
 
-#: views/admin/Help.phtml:25 views/admin/Help.phtml:91
+#: views/admin/Help.phtml:25 views/admin/Help.phtml:93
 msgid "(optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)"
 msgstr ""
 
@@ -88,39 +96,47 @@ msgstr ""
 msgid "(optional) - set the name of the tab-pane, if not defined the language will be used as title"
 msgstr ""
 
-#: views/admin/Help.phtml:29 views/admin/Help.phtml:93
+#: views/admin/Help.phtml:29 views/admin/Help.phtml:95
 msgid "(optional) - defines a set of lines which are pointed out (ranges are supported)."
 msgstr ""
 
-#: views/admin/Help.phtml:30 views/admin/Help.phtml:94
+#: views/admin/Help.phtml:30 views/admin/Help.phtml:96
 msgid "e.g."
 msgstr ""
 
-#: views/admin/Help.phtml:30 views/admin/Help.phtml:94
+#: views/admin/Help.phtml:30 views/admin/Help.phtml:96
 msgid "to highlight lines 1,2,3,4,20"
 msgstr ""
 
-#: views/admin/Help.phtml:34
+#: views/admin/Help.phtml:32 views/admin/Help.phtml:98
+msgid "(optional) - set the line-numbering offset (starts at 1 by default)"
+msgstr ""
+
+#: views/admin/Help.phtml:33 views/admin/Help.phtml:99
+msgid "(optional) - show/hide linenumbers (true/false)"
+msgstr ""
+
+#: views/admin/Help.phtml:36
 msgid "Codegroup-Shortcode"
 msgstr ""
 
-#: views/admin/Help.phtml:35
+#: views/admin/Help.phtml:37
 msgid "You can also use EnlighterJS to display a set of different codes within a tab-pane"
 msgstr ""
 
-#: views/admin/Help.phtml:72 views/admin/Help.phtml:92
+#: views/admin/Help.phtml:74 views/admin/Help.phtml:94
 msgid "(optional) - set the name of the tab-pane, if not defined the language name will be used as title"
 msgstr ""
 
-#: views/admin/Help.phtml:75
+#: views/admin/Help.phtml:77
 msgid "Generic-Shortcode"
 msgstr ""
 
-#: views/admin/Help.phtml:76
+#: views/admin/Help.phtml:78
 msgid "If you`re using other plugins which uses also language-shortcodes, you can use the enlighter with generic shortcode."
 msgstr ""
 
-#: views/admin/Help.phtml:89
+#: views/admin/Help.phtml:91
 msgid "(optional) - specify the language which should used, if not defined values from the settings-page are used"
 msgstr ""
 
@@ -157,15 +173,11 @@ msgid "Generic highlighting"
 msgstr ""
 
 #: views/admin/Settings.phtml:56
-msgid "Output-Style"
+msgid "Show Linenumbers"
 msgstr ""
 
 #: views/admin/Settings.phtml:56
-msgid "List (with line-numbers, ordered list)"
-msgstr ""
-
-#: views/admin/Settings.phtml:56
-msgid "Inline (without line-numbers, pre-tag)"
+msgid "Hide Linenumbers"
 msgstr ""
 
 #: views/admin/Settings.phtml:59
@@ -188,16 +200,24 @@ msgstr ""
 msgid "Mouseover on codelines"
 msgstr ""
 
-#: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
+#: views/admin/Settings.phtml:62
 msgid "Enabled"
 msgstr ""
 
-#: views/admin/Settings.phtml:62 views/admin/Settings.phtml:65
+#: views/admin/Settings.phtml:62
 msgid "Disabled"
 msgstr ""
 
 #: views/admin/Settings.phtml:65
-msgid "Language Shortcodes"
+msgid "Raw-Codebutton"
+msgstr ""
+
+#: views/admin/Settings.phtml:65
+msgid "Show"
+msgstr ""
+
+#: views/admin/Settings.phtml:65
+msgid "Hide"
 msgstr ""
 
 #: views/admin/Settings.phtml:73
@@ -280,12 +300,12 @@ msgstr ""
 msgid "Priority 12 (after shortcode)"
 msgstr ""
 
-#: views/admin/Settings.phtml:103 views/admin/Settings.phtml:106
+#: views/admin/Settings.phtml:103
 msgid "CSS Selector"
 msgstr ""
 
 #: views/admin/Settings.phtml:104
-msgid "The selector is used to match all generated pre-tags. Normally pre.EnlighterJSRAW should be perfect (all pre-tags generated by the plugin will be highlighted)"
+msgid "The selectors are used to match all generated tags. Normally pre.EnlighterJSRAW/code.EnlighterJSRAW should be perfect (all tags which are generated by the plugin will be highlighted)"
 msgstr ""
 
 #: views/admin/Settings.phtml:105
@@ -293,70 +313,110 @@ msgid "<strong>Default: </strong>pre.EnlighterJSRAW"
 msgstr ""
 
 #: views/admin/Settings.phtml:106
-msgid "The CSS selector used to match generated HTML Tags"
+msgid "Block CSS Selector"
 msgstr ""
 
-#: views/admin/Settings.phtml:109 views/admin/Settings.phtml:112
+#: views/admin/Settings.phtml:106
+msgid "The CSS selector used to match generated block code"
+msgstr ""
+
+#: views/admin/Settings.phtml:108
+msgid "<strong>Default: </strong>code.EnlighterJSRAW"
+msgstr ""
+
+#: views/admin/Settings.phtml:109
+msgid "Inline CSS Selector"
+msgstr ""
+
+#: views/admin/Settings.phtml:109
+msgid "The CSS selector used to match generated inline code"
+msgstr ""
+
+#: views/admin/Settings.phtml:112 views/admin/Settings.phtml:115
 msgid "Initialization Method"
 msgstr ""
 
-#: views/admin/Settings.phtml:110
+#: views/admin/Settings.phtml:113
 msgid "EnlighterJS needs to be \"initialized\" with a special metadata-tag or some startup-codes within a script-tag. Which method should be used ? (metadata based config will not pass the W3C Validator check)"
 msgstr ""
 
-#: views/admin/Settings.phtml:111
+#: views/admin/Settings.phtml:114
 msgid "<strong>Default: </strong>Metadata based config"
 msgstr ""
 
-#: views/admin/Settings.phtml:112
+#: views/admin/Settings.phtml:115
 msgid "Metadata based config"
 msgstr ""
 
-#: views/admin/Settings.phtml:112
+#: views/admin/Settings.phtml:115
 msgid "Script based config"
 msgstr ""
 
-#: views/admin/Settings.phtml:115
+#: views/admin/Settings.phtml:118
 msgid "I18n (Internationalization)"
 msgstr ""
 
-#: views/admin/Settings.phtml:116
+#: views/admin/Settings.phtml:119
 msgid "Should the plugin load language files (if available) to translate the settings page ?"
 msgstr ""
 
-#: views/admin/Settings.phtml:117
+#: views/admin/Settings.phtml:120
 msgid "Enable I18n"
 msgstr ""
 
-#: views/admin/Settings.phtml:120
+#: views/admin/Settings.phtml:123
+msgid "Inline Syntax Highlighting"
+msgstr ""
+
+#: views/admin/Settings.phtml:124
+msgid "Should shortcodes without linebreaks insinde handled as inline-code ?"
+msgstr ""
+
+#: views/admin/Settings.phtml:125
+msgid "Enable Inline Syntax Highlighting"
+msgstr ""
+
+#: views/admin/Settings.phtml:128
+msgid "Language Shortcodes"
+msgstr ""
+
+#: views/admin/Settings.phtml:129
+msgid "Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!"
+msgstr ""
+
+#: views/admin/Settings.phtml:130
+msgid "Enable Language Shortcodes"
+msgstr ""
+
+#: views/admin/Settings.phtml:134
 msgid "TinyMCE Integration (Visual Editor)"
 msgstr ""
 
-#: views/admin/Settings.phtml:121
+#: views/admin/Settings.phtml:135
 msgid "Enlighter can directly integrated into the Visual-Editor by adding Preformatted styles for each supported language."
 msgstr ""
 
-#: views/admin/Settings.phtml:122
+#: views/admin/Settings.phtml:136
 msgid "Enable Integration"
 msgstr ""
 
-#: views/admin/Settings.phtml:130
+#: views/admin/Settings.phtml:144
 msgid "is developed by"
 msgstr ""
 
-#: views/admin/Settings.phtml:130
+#: views/admin/Settings.phtml:144
 msgid "It`s released under the terms of the MIT X11 License."
 msgstr ""
 
-#: views/admin/Settings.phtml:130
+#: views/admin/Settings.phtml:144
 msgid "Includes:"
 msgstr ""
 
-#: views/admin/Settings.phtml:130
+#: views/admin/Settings.phtml:144
 msgid "by"
 msgstr ""
 
-#: views/admin/Settings.phtml:130
+#: views/admin/Settings.phtml:144
 msgid "License"
 msgstr ""
 
@@ -381,35 +441,39 @@ msgid "Font Styles"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:31 views/admin/ThemeCustomizer.phtml:48
+#: views/admin/ThemeCustomizer.phtml:63
 msgid "Font-Family"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:31 views/admin/ThemeCustomizer.phtml:48
+#: views/admin/ThemeCustomizer.phtml:63
 msgid "e.g. Monaco, Courier, Monospace"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:34 views/admin/ThemeCustomizer.phtml:51
+#: views/admin/ThemeCustomizer.phtml:66
 msgid "Font-Size"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:34
+#: views/admin/ThemeCustomizer.phtml:34 views/admin/ThemeCustomizer.phtml:66
 msgid "e.g. 12px, 1.2em, 11pt"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:37 views/admin/ThemeCustomizer.phtml:54
+#: views/admin/ThemeCustomizer.phtml:37 views/admin/ThemeCustomizer.phtml:69
 msgid "Line height"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:37
+#: views/admin/ThemeCustomizer.phtml:37 views/admin/ThemeCustomizer.phtml:69
 msgid "e.g. 16px, 1.5em"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:40 views/admin/ThemeCustomizer.phtml:57
+#: views/admin/ThemeCustomizer.phtml:40 views/admin/ThemeCustomizer.phtml:54
+#: views/admin/ThemeCustomizer.phtml:72
 msgid "Font-Color"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:40 views/admin/ThemeCustomizer.phtml:57
-#: views/admin/ThemeCustomizer.phtml:66
+#: views/admin/ThemeCustomizer.phtml:40 views/admin/ThemeCustomizer.phtml:54
+#: views/admin/ThemeCustomizer.phtml:72 views/admin/ThemeCustomizer.phtml:83
 msgid "e.g. #000000, #ff00c1"
 msgstr ""
 
@@ -421,138 +485,146 @@ msgstr ""
 msgid "e.g. 10px, 1.2em, 11pt"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:54
-msgid "e.g. 15px, 1.5em"
+#: views/admin/ThemeCustomizer.phtml:60
+msgid "RAW Font Styles"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:63
-msgid "Special Styles"
+#: views/admin/ThemeCustomizer.phtml:75
+msgid "Background-Color"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:66
-msgid "Line highlighting Color"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:69
-msgid "Line hover Color"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:69
-msgid "e.g. #f0f0ff"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:74
-msgid "Token Styles"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:79
-msgid "Keyword(Type1)"
+#: views/admin/ThemeCustomizer.phtml:75
+msgid "e.g. #ffffff"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:80
-msgid "Keyword(Type2)"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:81
-msgid "Keyword(Type3)"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:82
-msgid "Keyword(Type4)"
+msgid "Special Styles"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:83
-msgid "Slash-StyleComments"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:84
-msgid "Multiline-StyleComments"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:85
-msgid "Strings(Type1)"
+msgid "Line highlighting Color"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:86
-msgid "Strings(Type2)"
+msgid "Line hover Color"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:87
-msgid "Strings(Type3)"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:88
-msgid "Number"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:89
-msgid "Method(Type1)"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:90
-msgid "Method(Type2)"
+#: views/admin/ThemeCustomizer.phtml:86
+msgid "e.g. #f0f0ff"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:91
-msgid "Bracket"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:92
-msgid "Symbol"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:93
-msgid "EscapeSymbol"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:94
-msgid "Regex"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:95
-msgid "StartDelimiter"
+msgid "Token Styles"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:96
-msgid "StopDelimiter"
+msgid "Keyword(Type1)"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:97
+msgid "Keyword(Type2)"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:98
+msgid "Keyword(Type3)"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:99
+msgid "Keyword(Type4)"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:100
-msgid "No Decoration"
+msgid "Slash-StyleComments"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:101
-msgid "Underline"
+msgid "Multiline-StyleComments"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:102
-msgid "Overline"
+msgid "Strings(Type1)"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:103
-msgid "Line through"
+msgid "Strings(Type2)"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:104
+msgid "Strings(Type3)"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:105
+msgid "Number"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:106
+msgid "Method(Type1)"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:107
-msgid "Normal Style"
+msgid "Method(Type2)"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:108
-msgid "Bold Style"
+msgid "Bracket"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:109
-msgid "Italic Style"
+msgid "Symbol"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:110
-msgid "Bold+Italic Style"
+msgid "EscapeSymbol"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:111
+msgid "Regex"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:112
+msgid "StartDelimiter"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:113
+msgid "StopDelimiter"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:117
+msgid "No Decoration"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:118
+msgid "Underline"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:119
+msgid "Overline"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:120
+msgid "Line through"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:124
+msgid "Normal Style"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:125
+msgid "Bold Style"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:126
+msgid "Italic Style"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:127
+msgid "Bold+Italic Style"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:141
 msgid "Text:"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:128
+#: views/admin/ThemeCustomizer.phtml:145
 msgid "Background:"
 msgstr ""

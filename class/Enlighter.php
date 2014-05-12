@@ -1,10 +1,10 @@
 <?php
 /**
 	Enlighter Class
-	Version: 1.8
+	Version: 2.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
-	Plugin URI: http://www.a3non.org/go/enlighterjs
+	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
 	Copyright (c) 2013-2014, Andi Dittrich
@@ -35,27 +35,39 @@ class Enlighter{
 		'embedEnlighterJS' => true,
 		'mootoolsSource' => 'local',
 		'configType' => 'meta',
-		'defaultTheme' => 'standard',
-		'defaultLanguage' => 'standard',
-		'languageShortcode' => 'enabled',
+		'defaultTheme' => 'enlighter',
+		'defaultLanguage' => 'generic',
+		'languageShortcode' => true,
 		'indent' => -1,
-		'compiler' => 'List',
-		'altLines' => 'hover',
+		'linenumbers' => 'true',
+		'hoverClass' => 'hoverEnabled',
 		'selector' => 'pre.EnlighterJSRAW',
+		'selectorInline' => 'code.EnlighterJSRAW',
+
 		'customThemeBase' => 'standard',
 		'customFontFamily' => 'Monaco, Courier, Monospace',
 		'customFontSize' => '12px',
 		'customLineHeight' => '16px',
 		'customFontColor' => '#000000',
+
 		'customLinenumberFontFamily' => 'Monaco, Courier, Monospace',
 		'customLinenumberFontSize' => '10px',
-		'customLinenumberLineHeight' => '15px',
 		'customLinenumberFontColor' => '#000000',
+
 		'customLineHighlightColor' => '#f0f0ff',
-		'customLineHoverColor' => '#f0f0ff',		
+		'customLineHoverColor' => '#f0f0ff',
+
+		'customRawFontFamily' => 'Monaco, Courier, Monospace',
+		'customRawFontSize' => '12px',
+		'customRawLineHeight' => '16px',
+		'customRawFontColor' => '#000000',
+		'customRawBackgroundColor' => '#000000',
+			
 		'wpAutoPFilterPriority' => '12',
 		'enableTranslation' => true,
-		'enableTinyMceIntegration' => true	
+		'enableTinyMceIntegration' => true,
+		'rawcodebutton' => 'false',
+		'enableInlineHighlighting' => true
 	);
 	
 	// list of micro shortcodes (supported languages)
@@ -74,15 +86,17 @@ class Enlighter{
 		'C' => 'c',
 		'C++' => 'cpp',
 		'NSIS' => 'nsis',
-		'RAW' => 'raw'		
+		'RAW' => 'raw',
+		'No Highlighting' => 'no-highlight'	
 	);
 	
 	// list of supported themes
 	private $_suppportedThemes = array(
-		'Standard' => 'standard',
+		'Enlighter' => 'enlighter',
 		'Custom' => 'wpcustom',
 		'Git' => 'git',
 		'Mocha' => 'mocha',
+		'MooTools' => 'mootools',
 		'Panic' => 'panic',	
 		'Tutti' => 'tutti',
 		'Twilight' => 'twilight'					
@@ -145,6 +159,9 @@ class Enlighter{
 		// create new resource loader
 		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility);
 		
+		// update cache on upgrade
+		// add_action('upgrader_post_install', array($this, 'onPostUpgrade'), 10, 3);
+		
 		// frontend or admin area ?
 		if (is_admin()){
 			// add admin menu handler
@@ -169,7 +186,7 @@ class Enlighter{
 			add_shortcode('codegroup', array($this->_shortcodeHandler, 'codegroupShortcodeHandler'));
 			
 			// enable language shortcodes ?
-			if ($this->_settingsUtility->getOption('languageShortcode')=='enabled'){
+			if ($this->_settingsUtility->getOption('languageShortcode')){
 				foreach ($this->_supportedLanguageKeys as $lang){
 					add_shortcode($lang, array($this->_shortcodeHandler, 'microShortcodeHandler'));
 				}

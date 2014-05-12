@@ -1,0 +1,17 @@
+
+/* theme symbol styles */
+/* Raw Code Pane */
+.wpcustomEnlighterJSWrapper pre{
+	line-height: 16px;
+}
+.wpcustomEnlighterJSWrapper .EnlighterJSRawButton{
+	padding: 3px 10px 3px 10px;
+	margin: 0px 5px 0px 5px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	border: solid 0px #ffffff;
+	color: #000000;
+}
+.wpcustomEnlighterJSWrapper .EnlighterJSRawButton:hover{
+	background-color: #e5e5e5;
+}

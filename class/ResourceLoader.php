@@ -4,10 +4,10 @@
 	Version: 1.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
-	Plugin URI: http://www.a3non.org/go/enlighterjs
+	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
-	Copyright (c) 2013, Andi Dittrich
+	Copyright (c) 2013-2014, Andi Dittrich
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 	
@@ -36,9 +36,11 @@ class ResourceLoader{
 				'data-language' => $this->_config['defaultLanguage'],
 				'data-theme' => $this->_config['defaultTheme'],
 				'data-indent' => $this->_config['indent'],
-				'data-compiler' => $this->_config['compiler'],
-				'data-altlines' => $this->_config['altLines'],
-				'data-selector' =>  $this->_config['selector']
+				'data-hover' => $this->_config['hoverClass'],
+				'data-selector-block' =>  $this->_config['selector'],
+				'data-selector-inline' =>  $this->_config['selectorInline'],
+				'data-linenumbers' => $this->_config['linenumbers'],
+				'data-rawcodebutton' => $this->_config['rawcodebutton']
 		));
 		echo "\n";
 	}
@@ -46,29 +48,47 @@ class ResourceLoader{
 	// append javascript based config
 	public function appendJavascriptConfig(){
 		// generate a config based js tag
-		echo '<script type="text/javascript">', "\n";
-		echo 'window.addEvent(\'domready\', function(){', "\n";;
-		echo 'new EnlighterJS.Helper($$(\'', $this->_config['selector'], "'), {\n";
-		echo 'language: \'', $this->_config['defaultLanguage'], "',\n";
-		echo 'theme: \'', $this->_config['defaultTheme'], "',\n";
-		echo 'indent: ', $this->_config['indent'], ",\n";
-		echo 'compiler: \'', $this->_config['compiler'], "',\n";
-		echo 'altLines: \'', $this->_config['altLines'], "'\n";
-		echo "});});</script>\n";
+		echo '<script type="text/javascript">';
+		echo 'window.addEvent(\'domready\', function(){';
+		echo 'EnlighterJS.Util.Helper(document.getElements(\'', $this->_config['selector'] ,'\'), ';
+		echo json_encode(array(
+			'renderer' => 'Block',	
+			'language' => $this->_config['defaultLanguage'],
+			'theme' => $this->_config['defaultTheme'],
+			'indent' => intval($this->_config['indent']),
+			'hover' => $this->_config['hoverClass'],
+			'showLinenumbers' => ($this->_config['linenumbers']==='true'),
+			'rawButton' => 	($this->_config['rawcodebutton'] !== 'false'),
+			'grouping' => true
+		));
+		echo ');';
+		echo 'EnlighterJS.Util.Helper(document.getElements(\'', $this->_config['selectorInline'] ,'\'), ';
+		echo json_encode(array(
+				'renderer' => 'Inline',
+				'language' => $this->_config['defaultLanguage'],
+				'theme' => $this->_config['defaultTheme'],
+				'indent' => intval($this->_config['indent']),
+				'hover' => $this->_config['hoverClass'],
+				'showLinenumbers' => ($this->_config['linenumbers']==='true'),
+				'rawButton' => 	($this->_config['rawcodebutton'] !== 'false'),
+				'grouping' => false
+		));
+		echo ');';
+		echo "});</script>\n";
 	}
 	
 	// append css
 	public function appendCSS(){
 		// only include css if enabled
 		if ($this->_config['embedEnlighterCSS']){
-			// include local css file
-			wp_register_style('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.yui.css'));
-			wp_enqueue_style('enlighter-local');
-			
 			// include generated css ?
 			if ($this->_config['defaultTheme']=='wpcustom'){
-				wp_register_style('enlighter-wpcustom', plugins_url('/enlighter/cache/EnlighterJS.custom.css'), array('enlighter-local'));
-				wp_enqueue_style('enlighter-wpcustom');				
+				wp_register_style('enlighter-wpcustom', plugins_url('/enlighter/cache/EnlighterJS.custom.css'));
+				wp_enqueue_style('enlighter-wpcustom');
+			}else{
+				// include standard css file ?
+				wp_register_style('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.yui.css'));
+				wp_enqueue_style('enlighter-local');
 			}
 		}
 	}
@@ -143,8 +163,12 @@ class ResourceLoader{
 		wp_register_script('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/js/colorpicker.js'), array('jquery'));
 		wp_enqueue_script('enlighter-jquery-colorpicker');
 		
+		// theme data
+		wp_register_script('enlighter-themes', plugins_url('/enlighter/resources/admin/ThemeStyles.js'));
+		wp_enqueue_script('enlighter-themes');
+		
 		// settings init script
-		wp_register_script('enlighter-settings-init', plugins_url('/enlighter/resources/admin/settings.js'), array('jquery'));
+		wp_register_script('enlighter-settings-init', plugins_url('/enlighter/resources/admin/EnlighterSettings.js'), array('jquery', 'enlighter-themes'));
 		wp_enqueue_script('enlighter-settings-init');
 	}
 	

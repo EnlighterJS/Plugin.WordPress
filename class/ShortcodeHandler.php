@@ -4,7 +4,7 @@
 	Version: 1.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
-	Plugin URI: http://www.a3non.org/go/enlighterjs
+	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
 	Copyright (c) 2013, Andi Dittrich
@@ -51,7 +51,7 @@ class ShortcodeHandler{
 		$htmlAttributes = array(
 				'data-enlighter-theme' => $shortcodeAttributes['theme'],
 				'class' => 'EnlighterJSRAW',
-				'data-enlighter-group' => 'EnlighterCodegroup_'.uniqid()
+				'data-enlighter-group' => uniqid()
 		);
 	
 		// assign html attrivutes
@@ -75,77 +75,85 @@ class ShortcodeHandler{
 		// default attribute settings
 		$shortcodeAttributes = shortcode_atts(
 				array(
-						'theme' => $this->_config['defaultTheme'],
-						'lang' => $this->_config['defaultLanguage'],
+						'theme' => null,
 						'group' => false,
-						'tab' => false,
-						'highlight' => ''
+						'tab' => null,
+						'highlight' => null,
+						'offset' => null,
+						'linenumbers' => null
 				), $shortcodeAttributes);
-	
-		// html "pre"-tag attributes
+
+		// html tag standard attributes
 		$htmlAttributes = array(
-				'data-enlighter-language' => $tagname,
-				'data-enlighter-theme' => $shortcodeAttributes['theme'],
-				'data-enlighter-title' => $shortcodeAttributes['tab'],
-				'data-enlighter-highlight' => $shortcodeAttributes['highlight'],
+				'data-enlighter-language' => trim($tagname),
 				'class' => 'EnlighterJSRAW'
 		);
-	
-		// grouping enabled ?
-		if ($shortcodeAttributes['group']){
-			$htmlAttributes['data-enlighter-group'] = $shortcodeAttributes['group'];
-		}
 		
-		// codegroup active ?
-		if ($this->_activeCodegroup != NULL){
-			// overwrite settings
-			$htmlAttributes['data-enlighter-theme'] = $this->_activeCodegroup['data-enlighter-theme'];
-			$htmlAttributes['class'] = $this->_activeCodegroup['class'];
-			$htmlAttributes['data-enlighter-group'] = $this->_activeCodegroup['data-enlighter-group'];
+		// force theme ?
+		if ($shortcodeAttributes['theme']){
+			$htmlAttributes['data-enlighter-theme'] = trim($shortcodeAttributes['theme']);
 		}
-	
-		// generate html output
-		return $this->generateCodeblock($htmlAttributes, $content);
+				
+		// handle as inline code ?
+		if ($this->_config['enableInlineHighlighting'] && strpos($content, "\n") === false){
+			// generate html output
+			return $this->generateCodeblock($htmlAttributes, $content, 'code');
+			
+		// linebreaks found -> block code	
+		}else{
+			// highlight specific lines of code ?
+			if ($shortcodeAttributes['highlight']){
+				$htmlAttributes['data-enlighter-highlight'] = trim($shortcodeAttributes['highlight']);
+			}
+			
+			// line offset ?
+			if ($shortcodeAttributes['offset']){
+				$htmlAttributes['data-enlighter-lineoffset'] = intval($shortcodeAttributes['offset']);
+			}
+			
+			// force linenumber visibility ?
+			if ($shortcodeAttributes['linenumbers']){
+				$htmlAttributes['data-enlighter-linenumbers'] = (strtolower($shortcodeAttributes['linenumbers']) === 'true' ? 'true' : 'false');
+			}
+			
+			// tab-name available ?
+			if ($shortcodeAttributes['tab']){
+				$htmlAttributes['data-enlighter-tab'] = trim($shortcodeAttributes['tab']);
+			}
+			
+			// codegroup active ?
+			if ($this->_activeCodegroup != NULL){
+				// overwrite settings
+				$htmlAttributes['data-enlighter-group'] = $this->_activeCodegroup['data-enlighter-group'];
+			}else{
+				// manual grouping ?
+				if ($shortcodeAttributes['group']){
+					$htmlAttributes['data-enlighter-group'] = trim($shortcodeAttributes['group']);
+				}
+			}
+			
+			// generate html output
+			return $this->generateCodeblock($htmlAttributes, $content);
+		}
 	}
 	
 	// handle wp shortcode [enlighter ..] ... [/enlighter] - generic handling
 	public function genericShortcodeHandler($shortcodeAttributes=NULL, $content='', $tagname=''){
-		// default attribute settings
-		$shortcodeAttributes = shortcode_atts(
-				array(
-						'theme' => $this->_config['defaultTheme'],
-						'lang' => $this->_config['defaultLanguage'],
-						'group' => false,
-						'tab' => false,
-						'highlight' => ''
-				), $shortcodeAttributes);
+		// default language
+		$language = (isset($shortcodeAttributes['lang']) ? $shortcodeAttributes['lang'] : $this->_config['defaultLanguage']);
 	
-		// html "pre"-tag attributes
-		$htmlAttributes = array(
-				'data-enlighter-language' => $shortcodeAttributes['lang'],
-				'data-enlighter-theme' => $shortcodeAttributes['theme'],
-				'data-enlighter-title' => $shortcodeAttributes['tab'],
-				'data-enlighter-highlight' => $shortcodeAttributes['highlight'],
-				'class' => 'EnlighterJSRAW'
-		);
-	
-		// grouping enabled ?
-		if ($shortcodeAttributes['group']){
-			$htmlAttributes['data-enlighter-group'] = $shortcodeAttributes['group'];
-		}
-	
-		// generate html output
-		return $this->generateCodeblock($htmlAttributes, $content);
+		// run micro shortcode handler with given language key
+		return $this->microShortcodeHandler($shortcodeAttributes, $content, $language);
 	}
 	
 	/**
-	 * Generate HTML output (code within "pre"-tag including options)
+	 * Generate HTML output (code within "pre"/"code"-tag including options)
 	 * @param Array $attributes
 	 * @param String $content
 	 */
-	private function generateCodeblock($attributes, $content){
+	private function generateCodeblock($attributes, $content, $tagname = 'pre'){
 		// generate "pre" wrapped html output
-		$html = HtmlUtil::generateTag('pre', $attributes, false);
+		$html = HtmlUtil::generateTag($tagname, $attributes, false);
 		
 		// remove automatic generated html editor tags (from wpautop())
 		$content = $this->removeWpAutoP($content);
@@ -154,7 +162,7 @@ class ShortcodeHandler{
 		$content = htmlspecialchars($content, ENT_COMPAT | ENT_XHTML, 'UTF-8', false);
 				
 		// add closing tag
-		return $html.$content.'</pre>';
+		return $html.$content.'</'.$tagname.'>';
 	}
 
 	/**
