@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-05-12 12:08:17+00:00\n"
+"POT-Creation-Date: 2014-05-17 21:39:30+00:00\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  2.0\n"
+"Project-Id-Version: Enlighter  2.1\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -13,11 +13,11 @@ msgstr ""
 msgid "Enlighter - Advanced javascript based syntax highlighting"
 msgstr ""
 
-#: class/TinyMCE.php:87
+#: class/TinyMCE.php:94
 msgid "Enlighter Codeblocks"
 msgstr ""
 
-#: class/TinyMCE.php:112
+#: class/TinyMCE.php:118
 msgid "Enlighter Inline"
 msgstr ""
 

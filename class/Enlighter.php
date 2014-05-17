@@ -1,7 +1,7 @@
 <?php
 /**
 	Enlighter Class
-	Version: 2.0
+	Version: 2.1
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -85,6 +85,7 @@ class Enlighter{
 		'XML' => 'xml',
 		'C' => 'c',
 		'C++' => 'cpp',
+		'C#' => 'csharp',	
 		'NSIS' => 'nsis',
 		'RAW' => 'raw',
 		'No Highlighting' => 'no-highlight'	

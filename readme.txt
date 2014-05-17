@@ -1,10 +1,10 @@
 === Enlighter - Customizable Syntax Highlighter ===
 Contributors: Andi Dittrich
-Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, ruby, shell, java, python, sql
+Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 2.0
+Stable tag: 2.1
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -112,7 +112,7 @@ It's also possible to use the plugin with legacy shortcode (disabled language sh
 * **HTML** [html]
 * **CSS** (Level 1, 2, 3) [css]
 * **XML** [xml]
-* **Javascript** [js]
+* **Javascript** [js, javascript]
 * **Java** [java]
 * **Markdown** [md]
 * **PHP** [php]
@@ -121,9 +121,11 @@ It's also possible to use the plugin with legacy shortcode (disabled language sh
 * **Shellscript** [shell]
 * **C** [c]
 * **C++** [cpp]
+* **C#** [csharp]
 * **SQL** [sql]
 * **NSIS** [nsis]
 * **RAW Code** [raw]
+* **Unhighlighted Code** [no-highlight]
 
 = Available Translations (I18n) =
 * **English** (default)
@@ -131,7 +133,7 @@ It's also possible to use the plugin with legacy shortcode (disabled language sh
 * **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
 = Related Links =
-* Enlighter Plugin on [GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
+* [Enlighter Plugin on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
 * [EnlighterJS Documentation](http://andidittrich.de/go/enlighters)
 
 == Compatibility ==
@@ -204,6 +206,11 @@ Write a message to Andi Dittrich (andi DOT dittrich AT a3non DOT O R G) or open 
 8. Tab-Pane Example (multiple languages)
 
 == Changelog ==
+
+= 2.1 =
+* Added EnlighterJS 2.2
+* Added language support for C# (csharp) [provided by Joshua Maag](https://github.com/joshmaag)
+* Bugfix: Indentation of first line got lost - thanks to [cdonts](http://wordpress.org/support/topic/no-indentation-in-the-first-line?replies=2)
 
 = 2.0 =
 * Added EnlighterJS 2.1
