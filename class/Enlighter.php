@@ -1,7 +1,7 @@
 <?php
 /**
 	Enlighter Class
-	Version: 2.1
+	Version: 2.2
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -140,7 +140,21 @@ class Enlighter{
 		return self::$__instance;
 	}
 	
+	// get available languages
+	public static function getAvailableLanguages(){
+		return self::getInstance()->_supportedLanguageKeys;
+	}
+	
+	// get available themes
+	public static function getAvailableThemes(){
+		return self::getInstance()->_suppportedThemes;
+	}
+	
 	public function __construct(){
+		// filter themes & languages
+		$this->_suppportedThemes = apply_filters('enlighter_themes', $this->_suppportedThemes);
+		$this->_supportedLanguageKeys = apply_filters('enlighter_languages', $this->_supportedLanguageKeys);
+		
 		// generate theme customizers config keys
 		foreach ($this->_customStyleKeys as $key){
 			$this->_defaultConfig['custom-color-'.$key] = '';
@@ -175,8 +189,14 @@ class Enlighter{
 				// load tinyMCE styles
 				add_filter('mce_css', array($this->_resourceLoader, 'appendTinyMceCSS'));
 				
-				// load tinyMCE enlighter plugin
-				// add_filter('mce_external_plugins', array($this->_resourceLoader, 'appendTinyMceJS'));
+				// TinyMCE 4 Integration
+				if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
+					// load tinyMCE enlighter plugin
+					add_filter('mce_external_plugins', array($this->_resourceLoader, 'appendTinyMceJS'));
+					
+					// load global EnlighterJS options
+					add_action('admin_print_scripts', array($this->_resourceLoader, 'appendInlineAdminJS'));
+				}
 			}			
 		}else{
 			// create new shortcode handler, register all used shortcodes

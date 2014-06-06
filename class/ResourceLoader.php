@@ -172,5 +172,17 @@ class ResourceLoader{
 		wp_enqueue_script('enlighter-settings-init');
 	}
 	
+	public function appendInlineAdminJS(){
+		// GLobal Admin Enlighter config
+		echo '<script type="text/javascript">';
+		echo 'var Enlighter = {languages: ', json_encode(\Enlighter::getAvailableLanguages());
+		echo ', themes: ', json_encode(\Enlighter::getAvailableThemes());
+		echo ', config: {theme: "', $this->_config['defaultTheme'], '"';
+		echo ', language: "',  $this->_config['defaultLanguage'], '"';
+		echo ', linenumbers: ',  $this->_config['linenumbers'];
+		echo ', indent: ', intval($this->_config['indent']);
+		echo '}};</script>';
+	}
+	
 	
 }

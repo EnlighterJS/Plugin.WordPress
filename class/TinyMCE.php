@@ -33,7 +33,8 @@ class TinyMCE{
 		$this->_supportedLanguageKeys = $languageKeys;
 		
 		// add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
-		add_filter('mce_buttons_2', array($this, 'activateStyleButton'), 101);
+		add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
+		add_filter('mce_buttons', array($this, 'addButtons1'), 101);
 		
 		// TinyMCE 3 or 4 ?
 		if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
@@ -45,9 +46,18 @@ class TinyMCE{
 		}
 	}
 	
+	// insert "code insert dialog button"
+	public function addButtons1($buttons){
+		// Enlighter insert already available ?
+		if (!in_array('EnlighterInsert', $buttons)){
+			$buttons[] = 'EnlighterInsert';
+			$buttons[] = 'EnlighterEdit';
+		}
+		return $buttons;
+	}
 	
 	// insert styleselect menu into the $buttons array
-	public function activateStyleButton($buttons){
+	public function addButtons2($buttons){
 		// styleselect menu already enabled ?
 		if (!in_array('styleselect', $buttons)){
 			array_unshift($buttons, 'styleselect');
@@ -125,6 +135,10 @@ class TinyMCE{
 		
 		// apply modified style data
 		$tinyMceConfigData['style_formats'] = json_encode($styles);
+		
+		// remove tabfocus plugin
+		//$tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
+		
 		return $tinyMceConfigData;
 	}
 	
