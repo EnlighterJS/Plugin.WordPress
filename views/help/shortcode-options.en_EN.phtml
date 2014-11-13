@@ -1,0 +1,18 @@
+<p><strong><?php _e('Language-Shortcode-Syntax', 'enlighter'); ?>: </strong><code>[js theme="" group="" tab="" highlight="" offset="" linenumbers=""] <?php _e('YOUR CODE', 'enlighter'); ?> [/js]</code></p>
+
+<p><strong><?php _e('Legacy-Syntax', 'enlighter'); ?>: </strong><code>[enlighter language="" theme="" group="" tab="" highlight="" offset="" linenumbers=""] <?php _e('YOUR CODE', 'enlighter'); ?> [/js]</code></p>
+
+<p><strong><?php _e('Attributes', 'enlighter'); ?></strong></p>
+<p><ul style="padding-left: 10px">
+	<li><strong>language</strong> <?php _e('(optional) - the language used to highlight the code - only required for legacy shortcode - will overwrite the settings-page values', 'enlighter'); ?></li>
+	<li><strong>theme</strong> <?php _e('(optional) - defines the theme that should used, will overwrite the settings-page values', 'enlighter'); ?></li>
+	<li><strong>group</strong> <?php _e('(optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)', 'enlighter'); ?> <br />
+		<?php _e('Note: when using [codegroup] tags this attribute will be generated automaically - you don`t have to set it!', 'enlighter'); ?>
+	</li>
+	<li><strong>tab</strong> <?php _e('(optional) - set the name of the tab-pane, if not defined the language will be used as title', 'enlighter'); ?></li>
+	<li><strong>highlight</strong> <?php _e('(optional) - defines a set of lines which are pointed out (ranges are supported).', 'enlighter'); ?> <br />
+		<?php _e('e.g.', 'enlighter'); ?> <code>highlight="1,2-4,20"</code> <?php _e('to highlight lines 1,2,3,4,20', 'enlighter'); ?>
+	</li>
+	<li><strong>offset</strong> <?php _e('(optional) - set the line-numbering offset (starts at 1 by default)', 'enlighter'); ?></li>
+	<li><strong>linenumbers</strong> <?php _e('(optional) - show/hide linenumbers (true/false)', 'enlighter'); ?></li>
+</ul></p>

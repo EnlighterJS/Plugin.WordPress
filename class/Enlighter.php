@@ -1,7 +1,8 @@
 <?php
+
 /**
 	Enlighter Class
-	Version: 2.2
+	Version: 2.3
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -29,16 +30,26 @@ class Enlighter{
 	// settings utility instance
 	private $_settingsUtility;
 	
+	// theme genrator instance
+	private $_themeGenerator;
+	
+	// cahce manager instance
+	private $_cacheManager;
+	
+	// theme loader/manager
+	private $_themeManager;
+	
 	// enlighter config keys with default values
 	private $_defaultConfig = array(
 		'embedEnlighterCSS' => true,
 		'embedEnlighterJS' => true,
+		'embedExternalThemes' => true,	
 		'mootoolsSource' => 'local',
-		'configType' => 'meta',
+		'jsType' => 'inline-head',	
 		'defaultTheme' => 'enlighter',
 		'defaultLanguage' => 'generic',
 		'languageShortcode' => true,
-		'indent' => -1,
+		'indent' => 2,
 		'linenumbers' => 'true',
 		'hoverClass' => 'hoverEnabled',
 		'selector' => 'pre.EnlighterJSRAW',
@@ -63,10 +74,13 @@ class Enlighter{
 		'customRawFontColor' => '#000000',
 		'customRawBackgroundColor' => '#000000',
 			
-		'wpAutoPFilterPriority' => '12',
+		'wpAutoPFilterPriority' => 'default',
 		'enableTranslation' => true,
 		'enableTinyMceIntegration' => true,
-		'rawcodebutton' => 'false',
+		'rawButton' => true,
+		'windowButton' => true,
+		'infoButton' => true,
+		'rawcodeDoubleclick' => false,
 		'enableInlineHighlighting' => true
 	);
 	
@@ -87,21 +101,28 @@ class Enlighter{
 		'C++' => 'cpp',
 		'C#' => 'csharp',	
 		'NSIS' => 'nsis',
+		'Diff' => 'diff',	
 		'RAW' => 'raw',
-		'No Highlighting' => 'no-highlight'	
+		'No Highlighting' => 'no-highlight',
+		'Generic Highlighting' => 'generic'	
 	);
 	
 	// list of supported themes
-	private $_suppportedThemes = array(
-		'Enlighter' => 'enlighter',
-		'Custom' => 'wpcustom',
-		'Git' => 'git',
-		'Mocha' => 'mocha',
-		'MooTools' => 'mootools',
-		'Panic' => 'panic',	
-		'Tutti' => 'tutti',
-		'Twilight' => 'twilight'					
+	private $_supportedThemes = array(
+		'Enlighter' => true,
+		'Beyond' => true,
+		'Classic' => true,
+		'Eclipse' => true,
+		'Git' => true,
+		'Mocha' => true,
+		'MooTools' => true,
+		'Panic' => true,	
+		'Tutti' => true,
+		'Twilight' => true	
 	);
+	
+	// list of user themes
+	private $_userThemes = array();
 	
 	// list of all customizable styles
 	private $_customStyleKeys = array(
@@ -147,13 +168,10 @@ class Enlighter{
 	
 	// get available themes
 	public static function getAvailableThemes(){
-		return self::getInstance()->_suppportedThemes;
+		return array_merge(self::getInstance()->_supportedThemes, self::getInstance()->_themeManager->getUserThemes());
 	}
 	
 	public function __construct(){
-		// filter themes & languages
-		$this->_suppportedThemes = apply_filters('enlighter_themes', $this->_suppportedThemes);
-		$this->_supportedLanguageKeys = apply_filters('enlighter_languages', $this->_supportedLanguageKeys);
 		
 		// generate theme customizers config keys
 		foreach ($this->_customStyleKeys as $key){
@@ -165,6 +183,12 @@ class Enlighter{
 		
 		// create new settings utility class
 		$this->_settingsUtility = new Enlighter\SettingsUtil('enlighter-', $this->_defaultConfig);
+		
+		// create new cache manager instance
+		$this->_cacheManager = new Enlighter\CacheManager($this->_settingsUtility);
+		
+		// loader to fetch user themes
+		$this->_themeManager = new Enlighter\ThemeManager($this->_cacheManager);
 
 		// load language files
 		if ($this->_settingsUtility->getOption('enableTranslation')){
@@ -172,32 +196,21 @@ class Enlighter{
 		}
 		
 		// create new resource loader
-		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility);
+		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_themeManager);
 		
-		// update cache on upgrade
-		// add_action('upgrader_post_install', array($this, 'onPostUpgrade'), 10, 3);
-		
+		// create new theme generator instance
+		$this->_themeGenerator = new Enlighter\ThemeGenerator($this->_settingsUtility, $this->_cacheManager);
+
 		// frontend or admin area ?
 		if (is_admin()){
 			// add admin menu handler
 			add_action('admin_menu', array($this, 'setupBackend'));
 			
-			// initialize TinyMCE modifications
-			if ($this->_settingsUtility->getOption('enableTinyMceIntegration')){
-				$editor = new Enlighter\TinyMCE($this->_settingsUtility, $this->_supportedLanguageKeys);
+			// load backend css+js + tinymce
+			$this->_resourceLoader->backend($this->_supportedLanguageKeys);		
 
-				// load tinyMCE styles
-				add_filter('mce_css', array($this->_resourceLoader, 'appendTinyMceCSS'));
-				
-				// TinyMCE 4 Integration
-				if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
-					// load tinyMCE enlighter plugin
-					add_filter('mce_external_plugins', array($this->_resourceLoader, 'appendTinyMceJS'));
-					
-					// load global EnlighterJS options
-					add_action('admin_print_scripts', array($this->_resourceLoader, 'appendInlineAdminJS'));
-				}
-			}			
+			// force theme cache reload
+			$this->_themeManager->forceReload();
 		}else{
 			// create new shortcode handler, register all used shortcodes
 			$this->_shortcodeHandler = new Enlighter\ShortcodeHandler($this->_settingsUtility, array_merge($this->_supportedLanguageKeys, array('enlighter', 'codegroup')));
@@ -212,17 +225,22 @@ class Enlighter{
 					add_shortcode($lang, array($this->_shortcodeHandler, 'microShortcodeHandler'));
 				}
 			}
-
-			// load frontend css+js
-			add_action('wp_enqueue_scripts', array($this->_resourceLoader, 'appendCSS'), 50);
-			add_action('wp_enqueue_scripts', array($this->_resourceLoader, 'appendJS'), 50);
 			
-			// display frontend config (as javascript or metadata)
-			if ($this->_settingsUtility->getOption('configType')=='meta'){
-				add_action('wp_head', array($this->_resourceLoader, 'appendMetadataConfig'));
-			}else{
-				add_action('wp_head', array($this->_resourceLoader, 'appendJavascriptConfig'));
+			// include generated css ? - cached file available ?
+			if ($this->_settingsUtility->getOption('defaultTheme')=='wpcustom' && !$this->_themeGenerator->isCached()){
+				$this->_themeGenerator->generateCSS($this->_customStyleKeys);
 			}
+			
+			// create new js config generator
+			$jsConfigGenerator = new Enlighter\ConfigGenerator($this->_settingsUtility, $this->_cacheManager);
+			
+			// include generated js config ? - cached file available ?
+			if ($this->_settingsUtility->getOption('jsType')=='external' && !$jsConfigGenerator->isCached()){
+				$jsConfigGenerator->generate();
+			}
+			
+			// load frontend css+js			
+			$this->_resourceLoader->frontend($jsConfigGenerator);
 			
 			// change wpauto filter priority ?
 			if ($this->_settingsUtility->getOption('wpAutoPFilterPriority')!='default'){
@@ -233,26 +251,49 @@ class Enlighter{
 	}
 	
 	public function setupBackend(){
-		// add options page
-		$optionsPage = add_options_page(__('Enlighter - Advanced javascript based syntax highlighting', 'enlighter'), 'Enlighter', 'administrator', __FILE__, array($this, 'settingsPage'));
-		
-		// load jquery stuff
-		add_action('admin_print_scripts-'.$optionsPage, array($this->_resourceLoader, 'appendAdminJS'));
-		add_action('admin_print_styles-'.$optionsPage, array($this->_resourceLoader, 'appendAdminCSS'));
-		
-		// call register settings function
-		add_action('admin_init', array($this->_settingsUtility, 'registerSettings'));
+		if (current_user_can('manage_options')){
+			// add options page
+			$optionsPage = add_options_page(__('Enlighter - Customizable Syntax Highlighter', 'enlighter'), 'Enlighter', 'administrator', __FILE__, array($this, 'settingsPage'));
+			
+			// load jquery stuff
+			add_action('admin_print_scripts-'.$optionsPage, array($this->_resourceLoader, 'appendAdminJS'));
+			add_action('admin_print_styles-'.$optionsPage, array($this->_resourceLoader, 'appendAdminCSS'));
+			
+			// call register settings function
+			add_action('admin_init', array($this->_settingsUtility, 'registerSettings'));
+			
+			// contextual help
+			$ch = new Enlighter\ContextualHelp($this->_settingsUtility);
+			add_filter('load-'.$optionsPage, array($ch, 'contextualHelp'));
+		}
 	}
 	
 	// options page
 	public function settingsPage(){
 		// well...is there no action hook for updating settings in wp ?
 		if (isset($_GET['settings-updated'])){
-			Enlighter\ThemeGenerator::generateCSS($this->_settingsUtility, $this->_customStyleKeys);
+			$this->_cacheManager->clearCache();
+			$this->_themeGenerator->generateCSS($this->_customStyleKeys);
+		}
+		
+		// permission fix request ?
+		if (isset($_GET['cache-permission-fix'])){
+			$this->_cacheManager->autosetPermissions();
+		}
+		
+		// generate the theme list
+		$themeList = array(
+			'WPCustom' => 'wpcustom'
+		);
+		foreach ($this->_supportedThemes as $t => $v){
+			$themeList[$t] = strtolower($t);
+		}
+		foreach ($this->_themeManager->getUserThemes() as $t => $source){
+			$themeList[$t.'/ext'] = strtolower($t);
 		}
 				
 		// include admin page
-		include(ENLIGHTER_PLUGIN_PATH.'/views/admin/Settings.phtml');
+		include(ENLIGHTER_PLUGIN_PATH.'/views/admin/SettingsPage.phtml');
 	}
 	
 }

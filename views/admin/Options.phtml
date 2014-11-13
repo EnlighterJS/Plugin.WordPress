@@ -1,0 +1,42 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- CDN SETTINGS -->
+<div class="postbox">
+	<h3 class="hndle"><span><?php _e('Resources &amp; CDN (Content Delivery Network)', 'enlighter'); ?></span></h3>
+	<div class="inside EnlighterBlockcontent">
+	
+	<p><?php _e('These options might be required when using a Content-Delivery-Network (CDN) or another server/location which outsources your CSS+Javascript files.', 'enlighter'); ?> <br />
+	<?php _e('In this case you have to manually include EnlighterJS.js, EnlighterJS.css and the MooTools Framework into your page!', 'enlighter'); ?><br />
+	<?php _e('Custom styles, generated with the ThemeCustomizer are', 'enlighter'); ?> <a href="<?php echo plugins_url('/enlighter/cache/EnlighterJS.custom.css') ?>"><?php _e('available here', 'enlighter'); ?></a> (enlighter/cache/EnlighterJS.custom.css).</p>
+	
+	<!-- embed css !-->
+	<?php $this->_settingsUtility->displayCheckbox(__('Include Enlighter-CSS', 'enlighter'), 'embedEnlighterCSS') ?>
+
+	<!-- embed JS !-->
+	<?php $this->_settingsUtility->displayCheckbox(__('Include Enlighter-Javascript', 'enlighter'), 'embedEnlighterJS'); ?>
+
+	<!-- embed external css !-->
+	<h4><?php _e('External Themes', 'enlighter'); ?></h4>
+	<p><?php _e('Custom/external themes located into your themes directory can be automatically loaded.', 'enlighter'); ?></p>
+	<?php $this->_settingsUtility->displayCheckbox(__('Include External Themes', 'enlighter'), 'embedExternalThemes'); ?>
+	
+	<!-- embed MooTools !-->
+	<h4><?php _e('MooTools Framework Source', 'enlighter'); ?></h4>
+	<p><?php _e('The required MooTools-Framework can be hosted by a public CDN provider or by your own.', 'enlighter'); ?></p>
+	<?php $this->_settingsUtility->displaySelect(__('MooTools Framework Source', 'enlighter'), 'mootoolsSource', array(__('Your WordPress Site', 'enlighter') => 'local', __('Google CDN', 'enlighter') => 'google', __('CDNJS (Cloudfare)', 'enlighter') => 'cdnjs', __('Not include', 'enlighter') => 'none')); ?>
+
+	<!-- Inline/External JS Settings -->
+	<h4><?php _e('Initialization', 'enlighter'); ?></h4>
+	<p><?php _e('Select the source/location of Enlighter`s initialization script.', 'enlighter'); ?></p>
+	<?php $this->_settingsUtility->displaySelect(__('JS Config', 'enlighter'), 'jsType', array(__('Not include', 'enlighter') => 'none', __('External File using <script src=""...>', 'enlighter') => 'external', __('Inline within wp_footer', 'enlighter') => 'inline-footer', __('Inline within wp_head', 'enlighter') => 'inline-head')); ?> 
+
+	<h4><?php _e('CDN Location Info', 'enlighter'); ?></h4>
+	<p><?php _e('List of available CDN locations used by Enlighter.', 'enlighter'); ?></p>
+	<ul>
+		<li>MooTools-Local: <code><?php echo Enlighter\ResourceLoader::$cdnLocations['mootools-local']; ?></code></li>
+		<li>MooTools-Google: <code><?php echo Enlighter\ResourceLoader::$cdnLocations['mootools-google']; ?></code></li>
+		<li>MooTools-CDNJS: <code><?php echo Enlighter\ResourceLoader::$cdnLocations['mootools-cdnjs']; ?></code></li>
+	</ul>
+	
+	</div>
+</div>

@@ -13,7 +13,7 @@ require_once('util/spyc-yaml/Spyc.php');
 $outputDir = $argv[1].'/';
 
 $themes = array(
-	'Enlighter', 'Git', 'Mocha', 'MooTools', 'Panic', 'Tutti', 'Twilight'
+	'Enlighter', 'Git', 'Mocha', 'MooTools', 'Panic', 'Tutti', 'Twilight', 'Beyond', 'Classic', 'Eclipse'
 );
 
 // github fetching url

@@ -79,6 +79,9 @@ pre.EnlighterJSRAW[data-enlighter-language="nsis"]:before{
 pre.EnlighterJSRAW[data-enlighter-language="raw"]:before{
 	content: "Enlighter: RAW";
 }
+pre.EnlighterJSRAW[data-enlighter-language="diff"]:before{
+	content: "Enlighter: DIFF";
+}
 
 /* Enlighter Codeblock Toolbar */
 #EnlighterToolbar{

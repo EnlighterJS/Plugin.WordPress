@@ -2,7 +2,7 @@
 /**
 	Descriptionn: Enlighter Error Page
 	Plugin URI: http://andidittrich.de/go/enlighterjs
-	Version: 1.7
+	Version: 2.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	License: MIT X11-License
@@ -17,33 +17,37 @@
 */
 ?>
 <?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+<!-- EnligherSettings:wrap -->
+<div class="wrap" id="EnlighterSettings">
 
-<div class="wrap">
-<h2><?php _e('Enlighter - Advanced javascript based syntax highlighting', 'enlighter'); ?></h2>
+<!-- Main Title -->
+<h2 class="maintitle"><?php _e('Enlighter - Customizable Syntax Highlighter', 'enlighter'); ?></h2>
 
-<!-- Breadcrumb -->
-<div id='setting-error-settings_updated' class='updated settings-error'> 
-<p><strong><?php _e('Enlighter related: ', 'enlighter'); ?></strong>
-	<a href="https://github.com/AndiDittrich/EnlighterJS"><?php _e('EnlighterJS on GitHub', 'enlighter'); ?></a> | 
-	<a href="http://wordpress.org/plugins/enlighter/"><?php _e('Enlighter on WordPress.org', 'enlighter'); ?></a> | 
-	<a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues"><?php _e('Report a Bug', 'enlighter'); ?></a> |
-	<a href="http://static.andidittrich.de/EnlighterJS/Demo.html"><?php _e('Theme Demo', 'enlighter'); ?></a>
-</p>
-</div>
+<style type="text/css">
+	#EnlighterEnvironmentError{
+		width: 400px !important;
+		height: 200px !important;
+		margin: 5% auto 0% auto !important;
+		padding: 10px;
+		border: solid 1px #e5e5e5;
+		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.04);
+		background-color: #ffffff;
+	}
+</style>
 
-<!-- System Info -->
-<h3><?php _e('Environment Error'); ?></h3>
-<div id='setting-error-settings_updated' class='updated settings-error'> 
-    <ul> 
+<!-- Error Message -->
+<div id="EnlighterEnvironmentError">
+	<h2><?php _e('Environment Error'); ?></h2>
+	<ul> 
     	<?php 
     	// PHP version
-    	if (version_compare(phpversion(), '5.3', '>=')){
-    		echo '<li>PHP Version: <strong style="color: #00cc00">', phpversion() , '</strong></li>';
-    	}else{
-    		echo '<li>PHP Version: <strong style="color: #cc0a00">', phpversion() ,'</strong> <strong>(PHP >= 5.3 is required to run this plugin)</strong></li>';
-    		echo '<li>Please upgrade your PHP installation</li>';
-    	}
+   		echo '<li>Installed PHP Version: <strong style="color: #cc0a00">', phpversion() ,'</strong><br /> <strong>(PHP >= 5.3 is required to run this plugin)</strong></li>';
+   		echo '<li>Please upgrade your PHP installation</li>';
     	?>
     </ul>	
 </div>
+
+
 </div>
+<!-- // EnligherSettings:wrap -->
+<div class="clear"></div>

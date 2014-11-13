@@ -1,0 +1,16 @@
+<p><?php _e('Just insert an enlighter shortcode with the code to highlight into your posts/pages - That`s it!', 'enlighter'); ?></p>
+<p><?php _e('The most easy way to use Enlighter is to wrap your code, which should be highlighted, in a language-shortcode tag.', 'enlighter'); ?></p>
+
+<p>
+	<strong><?php _e('Example', 'enlighter'); ?></strong>
+	<code>[js]var x = new EnligherJS.Helper($$('pre'));[/js]</code>
+</p>
+
+<h4><?php _e('Language-Shortcode List', 'enlighter'); ?></h4>
+<pre><?php 
+	$langs = Enlighter::getAvailableLanguages();
+	foreach ($langs as $d=>$l){ 
+		echo '[', $l, '] '; 
+	}
+	?>
+</pre>

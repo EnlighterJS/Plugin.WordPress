@@ -1,0 +1,22 @@
+<p><?php _e('If you`re using other plugins which uses also language-shortcodes, you can use the enlighter with generic shortcode.', 'enlighter'); ?></p>
+
+<p><strong><?php _e('Example', 'enlighter'); ?></strong></p>
+<p><pre>[enlighter lang="js"]
+var x = new EnligherJS.Helper($$('pre'));
+[/enligher]
+</pre></p>
+
+<p><strong><?php _e('Syntax', 'enlighter'); ?>: </strong><code>[enlighter lang="" theme="" group="" tab="" highlight=""] <?php _e('YOUR CODE', 'enlighter'); ?> [/enlighter]</code></p>
+
+<p><strong><?php _e('Attributes', 'enlighter'); ?></strong></p>
+<p><ul style="padding-left: 10px">
+	<li><strong>lang</strong> <?php _e('(optional) - specify the language which should used, if not defined values from the settings-page are used', 'enlighter'); ?></li>
+	<li><strong>theme</strong> <?php _e('(optional) - defines the theme that should used, will overwrite the settings-page values', 'enlighter'); ?></li>
+	<li><strong>group</strong> <?php _e('(optional) - the group identifier if code-grouping is used (elements with matching identifiers will be grouped together)', 'enlighter'); ?></li>
+	<li><strong>tab</strong> <?php _e('(optional) - set the name of the tab-pane, if not defined the language name will be used as title', 'enlighter'); ?></li>
+	<li><strong>highlight</strong> <?php _e('(optional) - defines a set of lines which are pointed out (ranges are supported).', 'enlighter'); ?><br />
+		<?php _e('e.g.', 'enlighter'); ?> <code>highlight="1,2-4,20"</code> <?php _e('to highlight lines 1,2,3,4,20', 'enlighter'); ?>
+	</li>
+	<li><strong>offset</strong> <?php _e('(optional) - set the line-numbering offset (starts at 1 by default)', 'enlighter'); ?></li>
+	<li><strong>linenumbers</strong> <?php _e('(optional) - show/hide linenumbers (true/false)', 'enlighter'); ?></li>
+</ul></p>

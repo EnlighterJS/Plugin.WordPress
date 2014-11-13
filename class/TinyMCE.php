@@ -25,9 +25,9 @@ class TinyMCE{
 	// plugin supported languages
 	private $_supportedLanguageKeys;
 	
-	public function __construct($settingssUtil, $languageKeys){
+	public function __construct($config, $languageKeys){
 		// store local plugin config
-		$this->_config = $settingssUtil->getOptions();
+		$this->_config = $config;
 		
 		// store languages
 		$this->_supportedLanguageKeys = $languageKeys;

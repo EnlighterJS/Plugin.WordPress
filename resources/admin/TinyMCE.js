@@ -4,7 +4,7 @@ name: EnlighterJS.TinyMCE
 description: TinyMCE Editor Plugin for WordPress
 
 license: MIT-Style X11 License
-version: 1.0
+version: 1.2
 
 authors:
   - Andi Dittrich
@@ -16,6 +16,7 @@ provides: [Enlighter]
 ...
 */
 (function(){
+
 	// register plugin
 	tinymce.PluginManager.add('enlighter', function(editor, url){
 		// enlighter settings button (menubar)
@@ -23,7 +24,7 @@ provides: [Enlighter]
 		
 		// generate language values
 		var languageValues = [{
-			text: 'Default-Setting',
+			text: 'Default (Global-Settings)',
 			value: null
 		}];
 		tinymce.each(Enlighter.languages, function(value, key){
@@ -35,13 +36,13 @@ provides: [Enlighter]
 		
 		// generate theme values
 		var themeValues = [{
-			text: 'Default-Setting',
+			text: 'Default (Global-Settings)',
 			value: null
 		}];
 		tinymce.each(Enlighter.themes, function(value, key){
 			themeValues.push({
 				text : key,
-				value : value
+				value : key.toLowerCase()
 			});
 		});
 
@@ -61,7 +62,32 @@ provides: [Enlighter]
 						name : 'lang',
 						label : 'Language',
 						values : languageValues
-					}, {
+					},
+					{
+						type : 'listbox',
+						name : 'mode',
+						label : 'Mode',
+						values : [
+						    {text: 'Block-Code', value: 'block'},
+						    {text: 'Inline-Code', value: 'inline'}
+						],
+						value: 'block'
+					},				
+					{
+						type : 'checkbox',
+						name : 'indentation',
+						label : 'Left-Align Indentation',
+						checked: (Enlighter.config.indent > 0),
+						disabled: (Enlighter.config.indent < 0)
+					},				
+					{
+						type : 'checkbox',
+						name : 'addspaces',
+						label : 'Surround with spaces',
+						checked: false,
+						disabled: false
+					}, 
+					{
 						type : 'textbox',
 						name : 'code',
 						label : 'Sourcecode',
@@ -69,8 +95,58 @@ provides: [Enlighter]
 						minHeight : 200
 					}],
 					onsubmit : function(e){
+						// get code - replace windows style linebreaks
+						var code = e.data.code.replace(/\r\n/gmi, '\n');
+						
+						// inline or block code ?
+						var tag = (e.data.mode == 'inline' ? 'code' : 'pre');
+						
+						// modify code indent
+						if (e.data.mode == 'block' && e.data.indentation){
+							// match all tabs
+							code = code.replace(/^(\t*)/gim, function(match, p1, offset, string){
+								// replace n tabs with n*newIndent spaces
+								return (new Array(Enlighter.config.indent * p1.length + 1)).join(' ');
+							});
+							
+							var minIndentation = 99999;
+							
+							// get minimal indentation
+							var lines = code.split('\n');
+							for (var i=0;i<lines.length;i++){
+								var l = lines[i];
+
+								// non-empty line ?
+								if (l.replace(/\s*/, '').length > 0){
+									var k = l.match(/^( *)/gmi);
+									
+									// indentation found ?
+									if (k && k.length == 1){
+										minIndentation = Math.min(k[0].length, minIndentation);
+										
+									// no identation offset dectected	
+									}else{
+										minIndentation = 0;
+										break;
+									}
+								}
+							}
+														
+							// remove indent ?
+							if (minIndentation > 0 && minIndentation < 99999){
+								var pattern = new RegExp('^( ){' + minIndentation + '}', 'gmi');
+								code = code.replace(pattern, '');
+							}
+						}
+						
+						// entities encoding
+						code =  tinymce.html.Entities.encodeAllRaw(code);
+						
+						// surrund with spaces ?
+						var sp = (e.data.addspaces ? '&nbsp;' : '');
+						
 						// Insert codeblock into editors current position when the window form is "submitted"
-						editor.insertContent('<pre class="EnlighterJSRAW" data-enlighter-language="' + e.data.lang + '">' + e.data.code + '</pre>');
+						editor.insertContent(sp + '<' + tag + ' class="EnlighterJSRAW" data-enlighter-language="' + e.data.lang + '">' + code + '</' + tag + '>' + sp);
 					}
 				});
 			}
@@ -100,7 +176,7 @@ provides: [Enlighter]
 					label : 'Theme',
 					values : themeValues,
 					value: settings.theme
-				},
+				},				
 				{
 					type : 'checkbox',
 					name : 'linenums',
@@ -168,56 +244,6 @@ provides: [Enlighter]
 			
 			onclick: showSettings
 		});
-
-		/*
-		// tab + tab-shift Indent/Outdent Events
-		editor.on('keydown', function(e){
-			// get current node
-			var node = editor.selection.getNode();
-			
-			// enlighter element ?
-			if (!isEnlighterCodeblock(node)){
-				return;
-			}
-
-			// tab pressed ?
-			if (e.keyCode == 9){
-				// disable default events 
-				e.preventDefault();
-				e.stopImmediatePropagation();
-				e.stopPropagation();
-				
-				// get content
-				var txt = '';
-				for (var i=0;i<editor.selection.getNode().childNodes.length;i++){
-					txt += editor.selection.getNode().childNodes[i].nodeValue;
-				}
-
-				// get lines
-				var lines = txt.split("\n");
-				var stxt = editor.selection.getContent();
-				
-				// range indent mode ?
-				if (stxt.length > 0){
-					
-				
-				// indent single line	
-				}else{
-					// tab/shift combo pressed ? - OUTDENT
-					if (e.shiftKey){
-						console.log("Outdent");
-
-						var pos = getCursorPosition();
-						console.log(pos);
-						
-					// tab pressed - INDENT
-					}else{
-						editor.insertContent("&#09;");
-					}
-				}				
-			}
-		});
-		*/
 		
 		// set the enlighter settings of the current node
 		function setEnlighterSettings(settings){
@@ -368,37 +394,6 @@ provides: [Enlighter]
 			if (tb){
 				editor.dom.remove(tb);
 			}
-		}
-		
-		// utlity
-		function getCursorPosition(){
-	        //set a bookmark so we can return to the current position after we reset the content later
-	        var bm = editor.selection.getBookmark(0);    
-
-	        // select bookmark element
-	        var bme = editor.dom.select('[data-mce-type=bookmark]');
-
-	        //put the cursor in front of that element
-	        editor.selection.select(bme[0]);
-	        editor.selection.collapse();
-
-	        //add in my special span to get the index...
-	        //we won't be able to use the bookmark element for this because each browser will put id and class attributes in different orders.
-	        var positionString = '<span id="_shadow_cursor"></span>';
-	        editor.selection.setContent(positionString);
-
-	        //get the content with the special span but without the bookmark meta tag
-	        var content = editor.getContent({format: "html"});
-	        
-	        //find the index of the span we placed earlier
-	        var index = content.indexOf(positionString);
-
-	        //remove my special span from the content
-	        editor.dom.remove('_shadow_cursor', false);            
-
-	        //move back to the bookmark
-	        editor.selection.moveToBookmark(bm);
-	        return index;
 		}
 	});
 })();

@@ -52,8 +52,11 @@ ol.wpcustomEnlighterJS li.specialline, ul.wpcustomEnlighterJS li.specialline {
 	color: #f8f8f8;
 	line-height: 20px;
 }
-.wpcustomEnlighterJSWrapper .EnlighterJSRawButton{
-	color: #f8f8f8;
-	background-color: #202021;
-	border: solid 0px #202021;
+/* Tab Pane */
+.wpcustomEnlighterJSWrapper .EnlighterJSToolbar > a{
+	border-radius: 0px;
+	opacity: 0.8;
+}
+.wpcustomEnlighterJSWrapper .EnlighterJSToolbar > a:hover{
+	opacity: 1.0;
 }

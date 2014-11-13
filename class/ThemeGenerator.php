@@ -19,10 +19,24 @@ namespace Enlighter;
 
 class ThemeGenerator{
 	
+	private $_cachePath;
+	private $_cacheFilename;
+	private $_settings;
+	
+	public function __construct($settingsUtil, $cacheManager){
+		$this->_settings = $settingsUtil;
+		$this->_config = $settingsUtil->getOptions();
+		$this->_cacheFile = $cacheManager->getCachePath().'EnlighterJS.custom.css';
+	}
+
+	public function isCached(){
+		return file_exists($this->_cacheFile);
+	}
+	
 	// update cache/generate dynamic css
-	public static function generateCSS($settingsUtil, $styleKeys){
+	public function generateCSS($styleKeys){
 		// custom theme selected ?
-		if ($settingsUtil->getOption('defaultTheme') != 'wpcustom'){
+		if ($this->_settings->getOption('defaultTheme') != 'wpcustom'){
 			return;
 		}
 		
@@ -34,17 +48,17 @@ class ThemeGenerator{
 			$styles = '';
 			
 			// text color overwrite available ?
-			if (($o = $settingsUtil->getOption('custom-color-'.$tokenname)) != false){
+			if (($o = $this->_settings->getOption('custom-color-'.$tokenname)) != false){
 				$styles .= 'color: '.$o.';';
 			}
 			
 			// bg color overwrite available ?
-			if (($o = $settingsUtil->getOption('custom-bgcolor-'.$tokenname)) != false){
+			if (($o = $this->_settings->getOption('custom-bgcolor-'.$tokenname)) != false){
 				$styles .= 'background-color: '.$o.';';
 			}
 			
 			// style overwrite available ?
-			if (($o = $settingsUtil->getOption('custom-fontstyle-'.$tokenname)) != false){
+			if (($o = $this->_settings->getOption('custom-fontstyle-'.$tokenname)) != false){
 				switch ($o){
 					case 'bold':
 						$styles .= 'font-weight: bold;';
@@ -59,7 +73,7 @@ class ThemeGenerator{
 			}
 			
 			// decoration overwrite available ?
-			if (($o = $settingsUtil->getOption('custom-decoration-'.$tokenname)) != false){
+			if (($o = $this->_settings->getOption('custom-decoration-'.$tokenname)) != false){
 				switch ($o){
 					case 'overline':
 						$styles .= 'text-decoration: overline;';
@@ -80,16 +94,16 @@ class ThemeGenerator{
 		// ========= FONT STYLES ======================
 		// generate font styles
 		$fontstyles = '';
-		if (($o = $settingsUtil->getOption('customFontFamily')) != false){
+		if (($o = $this->_settings->getOption('customFontFamily')) != false){
 			$fontstyles .= 'font-family: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customFontSize')) != false){
+		if (($o = $this->_settings->getOption('customFontSize')) != false){
 			$fontstyles .= 'font-size: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customLineHeight')) != false){
+		if (($o = $this->_settings->getOption('customLineHeight')) != false){
 			$fontstyles .= 'line-height: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customFontColor')) != false){
+		if (($o = $this->_settings->getOption('customFontColor')) != false){
 			$fontstyles .= 'color: '.$o.';';
 		}
 		
@@ -99,13 +113,13 @@ class ThemeGenerator{
 		// ========= LINE STYLES ======================
 		// generate line styles
 		$linestyles = '';
-		if (($o = $settingsUtil->getOption('customLinenumberFontFamily')) != false){
+		if (($o = $this->_settings->getOption('customLinenumberFontFamily')) != false){
 			$linestyles .= 'font-family: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customLinenumberFontSize')) != false){
+		if (($o = $this->_settings->getOption('customLinenumberFontSize')) != false){
 			$linestyles .= 'font-size: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customLinenumberFontColor')) != false){
+		if (($o = $this->_settings->getOption('customLinenumberFontColor')) != false){
 			$linestyles .= 'color: '.$o.';';
 		}		
 		
@@ -113,29 +127,29 @@ class ThemeGenerator{
 		
 		// ========= SPECIAL STYLES ======================
 		// special styles
-		if (($o = $settingsUtil->getOption('customLineHighlightColor')) != false){
+		if (($o = $this->_settings->getOption('customLineHighlightColor')) != false){
 			$cssTPL->assign('HIGHLIGHT_BG_COLOR', $o);
 		}
-		if (($o = $settingsUtil->getOption('customLineHoverColor')) != false){
+		if (($o = $this->_settings->getOption('customLineHoverColor')) != false){
 			$cssTPL->assign('HOVER_BG_COLOR', $o);
 		}
 		
 		// ========= RAW STYLES ======================
 		// generate raw styles
 		$rawstyles = '';
-		if (($o = $settingsUtil->getOption('customRawFontFamily')) != false){
+		if (($o = $this->_settings->getOption('customRawFontFamily')) != false){
 			$rawstyles .= 'font-family: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customRawFontSize')) != false){
+		if (($o = $this->_settings->getOption('customRawFontSize')) != false){
 			$rawstyles .= 'font-size: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customRawLineHeight')) != false){
+		if (($o = $this->_settings->getOption('customRawLineHeight')) != false){
 			$rawstyles .= 'line-height: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customRawFontColor')) != false){
+		if (($o = $this->_settings->getOption('customRawFontColor')) != false){
 			$rawstyles .= 'color: '.$o.';';
 		}
-		if (($o = $settingsUtil->getOption('customRawBackgroundColor')) != false){
+		if (($o = $this->_settings->getOption('customRawBackgroundColor')) != false){
 			$rawstyles .= 'background-color: '.$o.';';
 		}
 		
@@ -146,10 +160,10 @@ class ThemeGenerator{
 		$enlighterJSBaseCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.yui.css');
 		
 		// load theme base
-		$enlighterJSThemeCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/views/themes/'.$settingsUtil->getOption('customThemeBase').'.css');
+		$enlighterJSThemeCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/views/themes/'.$this->_settings->getOption('customThemeBase').'.css');
 		
 		// store file, prepend base styles
-		$cssTPL->store(ENLIGHTER_PLUGIN_PATH.'/cache/EnlighterJS.custom.css', $enlighterJSBaseCss.$enlighterJSThemeCss);
+		$cssTPL->store($this->_cacheFile, $enlighterJSBaseCss.$enlighterJSThemeCss);
 	}
 	
 }

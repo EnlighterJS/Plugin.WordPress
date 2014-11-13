@@ -2,9 +2,9 @@
 Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql
 Donate link: http://andidittrich.de/go/enlighterjs
-Requires at least: 3.5
-Tested up to: 3.9.1
-Stable tag: 2.1
+Requires at least: 3.8
+Tested up to: 4.0
+Stable tag: 2.3
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -15,13 +15,13 @@ Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
 Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://andidittrich.de/go/enlighterjs) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-A theme demo can be found [here](http://static.andidittrich.de/EnlighterJS/Demo.html "EnligherJS Theme Demo")
+A theme demo can be found [here](http://enlighterjs.andidittrich.de/Themes.html "EnligherJS Theme Demo")
 
 ### Plugin Features ###
 * Support for all common used languages
 * Theme Customizer
 * Inline Syntax Highlighting
-* Visual-Editor (TinyMCE) Integration
+* **Full** Visual-Editor (TinyMCE) Integration
 * Easy to use Text-Editor mode through the use of Shortcodes
 * Advanced configuration options (e.g. CDN usage) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
@@ -150,8 +150,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 ## Installation ##
 
 ### System requirements ###
-* PHP 5
+* PHP 5.3, including `json` functions
 * Webbrowser with enabled Javscript (required for highlighting)
+* Accessable cache directory (`/wp-content/plugins/enlighter/cache/`) when using the **ThemeCustomizer** or external Init scripts
 
 ### Installation ###
 1. Download the .zip file of the plugin and extract the content
@@ -162,8 +163,14 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 
 ## Frequently Asked Questions ##
 
+### I am using shortcodes and random p/br tags are added to my code ###
+This problem is caused by WordPress' `wpAutoP` filter - to fix this issue, go to "Enlighter Settings -> Advanced -> WpAutoP Filter Priority" and change this value to "Priority 12 (after shortcode). For cross-plugin-compatibility this feature is disabled by default.
+
 ### I can't see any style options within the Visual-Editor-Toolbar ###
 You have to enable the full toolbar by clicking on the **Show/Hide Kitchen Sink** button (last icon on the toolbar)
+
+### When using the ThemeCustomizer the Code appears in plain-text ###
+The cache-directory `wp-content/plugins/enlighter/cache` have to be writeable, the generated stylesheet will be stored there. Set the directory permission (chmod) to `0644` or `0777`
 
 ### Inline Styles are missing within the Visual Editor ###
 This feature requires WordPress 3.9 (new TinyMCE Version) - but you can still use shortcodes for inline highlighting! 
@@ -188,24 +195,61 @@ Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](htt
 If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
 **Note:** EnlighterJS requires MooTools > 1.4
 
-### My page will not pass the W3C Validator when using Enligher ###
-The W3C Validator will throw an warning when using *metadata based config* as initialization method, because of the unknown metatag-name *EnlighterJS*. To avoid this warning you can select **Script based config** on the `settings page -> advanced -> initialization method` - instead of a metatag EnlighterJS will be initialized with some javascript code injected into your page.
+### Security Vulnerabilities ###
+In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
 
 ### I miss some features / I found a bug ###
-Write a message to Andi Dittrich (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
+Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 
 ## Screenshots ##
 
 1. CSS highlighting Example (GIT Theme)
 2. Visual Editor Integration
-3. Options Page - Appearance Settings
-4. Options Page - Advanced Settings
-5. Theme Customizer - General styles
-6. Theme Customizer - Language Token styling
-7. Special options for use with a CDN (Content Delivery Network)
-8. Tab-Pane Example (multiple languages)
+3. Visual Editor Code Settings
+4. Visual Editor Inline/Block Formats
+5. Options Page - Appearance Settings
+6. Options Page - Advanced Settings
+7. Theme Customizer - General styles
+8. Theme Customizer - Language Token styling
+9. Special options for use with a CDN (Content Delivery Network)
+10. Tab-Pane Example (multiple languages)
 
 ## Changelog ##
+
+### 2.3 ###
+* Added insert-option for "Align-Left-Indentation" - all leading tabs got replaced by spaces and the minimum indent is removed from each line - this is a usefull feature when pasting code-snippets (the "Code-Indent" option has to be set to n-Spaces!)
+* Added insert-option "block/inline" to easily insert inline code - feature requested on [WordPress Forums](http://wordpress.org/support/topic/code-indent-removed-by-wordpress-editor?replies=9#post-5652635)
+* Added cache-directory check to ensure that it's writeable as well as a `Autofix` function which automatically set's the permissions of the cache-directory on user request (+w for user + group).
+* Added Language-Type "generic" to selection menu
+** Added EnlighterJS 2.3
+* Added Theme "Classic"
+* Added Theme "Eclipse"
+* Added Theme "Beyond"
+* Added Language "Diff" for changelogs
+* Added: License Informations to settings-page footer
+* Added: Info of available CDN locations (full url)
+* Added: Additional user-role check (administrator + `manage_options` required)
+* Added: [Contextual Help](http://codex.wordpress.org/Adding_Contextual_Help_to_Administration_Menus) based help/usage/informations
+* Added: Checks the availability of the EnlighterJS library before initializing - this will avoid errors caused by missing scripts
+* Added: Option to include the required javscript config as external file, within wp_footer or wp_head
+* Added: Support for external/custom EnlighterJS Themes - feature requested on [WordPress Forums](https://wordpress.org/support/topic/install-new-theme-2)
+* Updated MooTools (local+CDN) to v1.5.1
+* Removed Setting "Config-Type" - Javascript based initialization is now used
+* Changed the `wpAutoP` filter priority back to 10 as default (no changes) - this will [avoid conflicts with other plugins](https://wordpress.org/support/view/plugin-reviews/enlighter?filter=2) - in case you are using shortcodes, you should set it to 12
+* Changed: some setting keys got renamed, especially the toolbar buttons - please check your settings
+* Bugfix: Theme-Customizers CSS cache got removed on plugin upgrade - added automatical CSS recreation/cache check
+* Bugfix: Entities didn't got escaped by using the "Code Insert Dialog" - thank's to [nextchi on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/6) and [Mathias on WordPress Forums](https://wordpress.org/support/topic/html-indention-not-working-as-it-should)
+* New settings page - now matches WordPress corporate UI style
+* Removed WordPress <= 3.7 compatibility mode/legacy UI style
+* Bugfix: Added some missing I18n namespaces
+* Many internal changes/improvements
+
+### 2.2 ###
+* Added "Code Insert Dialog" to avoid copy-auto-formatting issues - feature requested on [WordPress Forums](http://wordpress.org/support/topic/code-indent-removed-by-wordpress-editor?replies=9#post-5652635)
+* Added "Enlighter Settings Button" to control the Enlighter Settings (highlight, show-linenumbers, ..) directly from the Visual-Editor - just click into a codeblock and the button will appear (requires WordPress >=3.9)
+* Added Enlighter Toolbar Menu-Buttons
+* New Visual-Editor integration style
+* Bugfix: Added missing codeblock-name for "C#"
 
 ### 2.1 ###
 * Added EnlighterJS 2.2
@@ -280,6 +324,9 @@ Write a message to Andi Dittrich (andi DOT dittrich AT a3non DOT O R G) or open 
 
 
 ## Upgrade Notice ##
+
+### 2.2 ###
+Full Visual-Editor (TinyMCE4) Integration including codeblock-settings (WordPress >= 3.9 required)
 
 ### 2.0 ###
 Added Inline-Syntax-Highlighting as well as some other cool feature - please go to the settings page and click "Apply Settings"

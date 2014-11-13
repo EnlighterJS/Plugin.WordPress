@@ -10,14 +10,66 @@ requires:
 ...
 */
 (function(themeData){
+	// fetch console object
+	var c = window.console || {};
+	
 	// initialize
-	jQuery(document).ready(function($){
+	jQuery(document).ready(function(){
+		// show developer message
+		if (c.info){
+			c.info('You like to look under the hood? Enlighter is OpenSource, you are welcome to contribute! https://github.com/AndiDittrich/WordPress.Enlighter');
+		}
+		
 		// initialize tooltipps
 		// jQuery(document).tooltip();
 		
-		/**
-		 * THEME COLORIZER - COLORPICKER
-		 */
+		// hide update message
+		// --------------------------------------------------------
+		var msg = jQuery('#setting-error-settings_updated');
+		if (msg){
+			msg.delay(1500).fadeOut(500);
+		}
+		
+		// Tabs/Sections
+		// --------------------------------------------------------
+		// try to restore last tab
+		var lastActiveTab = jQuery.cookie('enlighter-tab');
+		
+		// container actions
+		var currentTab = (lastActiveTab ? jQuery("#EnlighterTabNav a[data-tab='" + lastActiveTab + "']") : jQuery('#EnlighterTabNav a:first-child'));
+		jQuery('#EnlighterTabNav a').each(function(){
+			// get current element
+			var el = jQuery(this);
+			
+			// hide content container
+			jQuery('#' + el.attr('data-tab')).hide();
+			
+			// click event
+			el.click(function(){
+				// remove highlight
+				currentTab.removeClass('nav-tab-active');
+				
+				// hide container
+				jQuery('#' + currentTab.attr('data-tab')).hide();
+				
+				// store current active tab
+				currentTab = el;
+				currentTab.addClass('nav-tab-active');
+				
+				// show container
+				jQuery('#' + currentTab.attr('data-tab')).show();
+				
+				// store current tab as cookie - 1 day lifetime
+				jQuery.cookie('enlighter-tab', currentTab.attr('data-tab'), { expires: 1 });
+			});
+		});
+		
+		// show first container
+		currentTab.click();
+		
+		// show navbar
+		jQuery('#EnlighterTabNav').show();
+		
 		// colorpicker
 		jQuery('.EnlighterJSColorChooser').ColorPicker({
 			onSubmit : function(hsb, hex, rgb, el){
@@ -46,14 +98,12 @@ requires:
 
 			// display section only in custom mode !
 			if (value == 'wpcustom'){
-				jQuery('#EnlighterJSThemeCustomizer').show();
+				jQuery('#EnlighterTabhandleThemeCustomizer').show();
 			}else{
-				jQuery('#EnlighterJSThemeCustomizer').hide();
+				jQuery('#EnlighterTabhandleThemeCustomizer').hide();
 			}
-		});
+		}).change();
 
-		// initially trigger event
-		jQuery('#enlighter-defaultTheme').change();
 
 		/**
 		 * THEME CUSTOMIZER
@@ -61,7 +111,7 @@ requires:
 		
 		jQuery('#enlighter_loadBasicTheme').click(function(){
 			// get selected theme
-			var theme = jQuery('#enlighter-customThemeBase').val().trim();
+			var theme = jQuery('#enlighter-customThemeBase').val().trim().toLowerCase();
 			
 			// theme data avialable ?
 			if (!themeData[theme]){
