@@ -338,10 +338,12 @@ provides: [Enlighter]
 			}
 			
 			// show hide edit menu button
-			if (isEnlighterCode(node)){
-				editMenuButton.disabled(false);
-			}else{
-				editMenuButton.disabled(true);
+			if (editMenuButton){
+				if (isEnlighterCode(node)){
+					editMenuButton.disabled(false);
+				}else{
+					editMenuButton.disabled(true);
+				}
 			}
         });
 		
