@@ -3,8 +3,8 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 2.3
+Tested up to: 4.1
+Stable tag: 2.4
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -221,6 +221,11 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 10. Tab-Pane Example (multiple languages)
 
 == Changelog ==
+
+= 2.4 =
+* Bugfix: With disabled option "Show Linenumbers" the Visual Editor Plugin will crash the TinyMCE Editor - [Thanks to ryansnowden on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/7)
+* Bugifx: In case of a missconfigured WordPress installation (disabling the `admin_print_scripts` hook), the Visual-Editor-Plugin will crash the TinyMCE editor - [Thanks to Nikodemsky on WordPress Forums](https://wordpress.org/support/topic/switching-between-visualtext-editor-is-broken-loading-code)
+* Bugfix: Closed possible XSS vector within the HTML generator (authenticated users who **can edit** content were able to inject html code) - this is not a security issue because such users can insert HTML code by default.
 
 = 2.3 =
 * Added insert-option for "Align-Left-Indentation" - all leading tabs got replaced by spaces and the minimum indent is removed from each line - this is a usefull feature when pasting code-snippets (the "Code-Indent" option has to be set to n-Spaces!)

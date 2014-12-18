@@ -159,7 +159,7 @@ class ShortcodeHandler{
 		$content = $this->removeWpAutoP($content);
 		
 		// strip specialchars
-		$content = htmlspecialchars($content, ENT_COMPAT | ENT_XHTML, 'UTF-8', false);
+		$content = esc_html($content);//htmlspecialchars($content, ENT_COMPAT | ENT_XHTML, 'UTF-8', false);
 				
 		// add closing tag
 		return $html.$content.'</'.$tagname.'>';

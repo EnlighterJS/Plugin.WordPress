@@ -21,11 +21,11 @@ class HtmlUtil{
 	
 	public static function generateTag($name, $htmlAttributes = array(), $selfClosing=true){
 		// generate tag start
-		$html = '<'.$name;
+		$html = '<'.strtolower($name);
 		
 		// generate html attributes
 		foreach ($htmlAttributes as $key=>$value){
-			$html .= ' '.$key.'="'.$value.'"';
+			$html .= ' '.esc_attr($key).'="'.esc_attr($value).'"';
 		}
 		
 		// generate closing bracket

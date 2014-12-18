@@ -16,9 +16,19 @@ provides: [Enlighter]
 ...
 */
 (function(){
-
+	// fetch console object
+	var c = window.console || {};
+	
 	// register plugin
 	tinymce.PluginManager.add('enlighter', function(editor, url){
+		// check for global Enlighter config availbility
+		if (typeof Enlighter == 'undefined'){
+			if (c.log){
+				console.log('No Enlighter config found');
+			}
+			return;
+		}
+		
 		// enlighter settings button (menubar)
 		var editMenuButton = null;
 		

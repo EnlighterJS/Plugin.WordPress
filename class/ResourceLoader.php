@@ -77,7 +77,7 @@ class ResourceLoader{
 				add_filter('mce_external_plugins', array($this, 'appendTinyMceJS'));
 					
 				// load global EnlighterJS options
-				add_action('admin_print_scripts', array($this, 'appendInlineAdminJS'));
+				add_action('admin_print_scripts', array($this, 'appendInlineTinyMCEConfig'));
 			}
 		}
 	}
@@ -199,16 +199,22 @@ class ResourceLoader{
 		wp_enqueue_script('enlighter-settings');
 	}
 	
-	public function appendInlineAdminJS(){
+	public function appendInlineTinyMCEConfig(){
+		// create config object
+		$config = array(
+			'languages' => \Enlighter::getAvailableLanguages(),
+			'themes' => \Enlighter::getAvailableThemes(),
+			'config' => array(
+				'theme' => $this->_config['defaultTheme'],
+				'language' => $this->_config['defaultLanguage'],
+				'linenumbers' => ($this->_config['linenumbers'] ? true : false),
+				'indent' => intval($this->_config['indent'])			
+			)
+		);
+		
 		// GLobal Admin Enlighter config
 		echo '<script type="text/javascript">/* <![CDATA[ */';
-		echo 'var Enlighter = {languages: ', json_encode(\Enlighter::getAvailableLanguages());
-		echo ', themes: ', json_encode(\Enlighter::getAvailableThemes());
-		echo ', config: {theme: "', $this->_config['defaultTheme'], '"';
-		echo ', language: "',  $this->_config['defaultLanguage'], '"';
-		echo ', linenumbers: ',  $this->_config['linenumbers'];
-		echo ', indent: ', intval($this->_config['indent']);
-		echo '}};/* ]]> */</script>';
+		echo 'var Enlighter = ', json_encode($config), ';/* ]]> */</script>';
 	}
 	
 	
