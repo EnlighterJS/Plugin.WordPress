@@ -22,6 +22,9 @@ class ResourceLoader{
 	// js config generator
 	private $_jsConfigGenerator;
 	
+	// available language keys
+	private $_languageKeys;
+	
 	// stores the plugin config
 	private $_config;
 	
@@ -31,9 +34,12 @@ class ResourceLoader{
 	// list of external themes
 	private $_themeManager;
 	
-	public function __construct($settingssUtil, $themeManager){
+	public function __construct($settingssUtil, $themeManager, $languageKeys){
 		// store local plugin config
 		$this->_config = $settingssUtil->getOptions();
+		
+		// store language keys
+		$this->_languageKeys = $languageKeys;
 		
 		// local theme manager instance (required for external themes)
 		$this->_themeManager = $themeManager;
@@ -60,25 +66,48 @@ class ResourceLoader{
 		}else if ($this->_config['jsType'] == 'inline-footer'){			
 			add_action('wp_footer', array($this, 'appendJavascriptConfig'));
 		}
+		
+		// initialize Frontend TinyMCE modifications
+		if ($this->_config['enableFrontendTinyMceIntegration'] && version_compare(get_bloginfo('version'), '3.9', '>=') ){
+			add_action('init', array($this, 'frontendTinyMCE'));
+		}
+	}
+	
+	public function frontendTinyMCE(){
+		// check frontend user priviliges
+		$canEdit = is_user_logged_in() && current_user_can('edit_posts') && current_user_can('edit_pages');
+		
+		if (!$canEdit){
+			return;
+		}
+		
+		// apply editor modifications
+		$editor = new TinyMCE($this->_config, $this->_languageKeys);
+		
+		// load tinyMCE styles
+		add_filter('mce_css', array($this, 'appendTinyMceCSS'));
+		
+		// load tinyMCE enlighter plugin
+		add_filter('mce_external_plugins', array($this, 'appendTinyMceJS'));
+			
+		// add frontend init script
+		add_action('wp_head', array($this, 'appendInlineTinyMCEConfig'));
 	}
 	
 	// initialize the backend
-	public function backend($languageKeys){
+	public function backend(){
 		// initialize TinyMCE modifications
-		if ($this->_config['enableTinyMceIntegration']){
-			$editor = new TinyMCE($this->_config, $languageKeys);
+		if ($this->_config['enableTinyMceIntegration'] && version_compare(get_bloginfo('version'), '3.9', '>=')){
+			$editor = new TinyMCE($this->_config, $this->_languageKeys);
 		
 			// load tinyMCE styles
 			add_filter('mce_css', array($this, 'appendTinyMceCSS'));
-		
-			// TinyMCE 4 Integration
-			if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
-				// load tinyMCE enlighter plugin
-				add_filter('mce_external_plugins', array($this, 'appendTinyMceJS'));
-					
-				// load global EnlighterJS options
-				add_action('admin_print_scripts', array($this, 'appendInlineTinyMCEConfig'));
-			}
+
+			// load tinyMCE enlighter plugin
+			add_filter('mce_external_plugins', array($this, 'appendTinyMceJS'));
+				
+			// load global EnlighterJS options
+			add_action('admin_print_scripts', array($this, 'appendInlineTinyMCEConfig'));
 		}
 	}
 	

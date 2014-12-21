@@ -4,7 +4,7 @@ name: EnlighterJS.TinyMCE
 description: TinyMCE Editor Plugin for WordPress
 
 license: MIT-Style X11 License
-version: 1.2
+version: 1.3
 
 authors:
   - Andi Dittrich

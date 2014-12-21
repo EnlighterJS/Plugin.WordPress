@@ -69,7 +69,7 @@ class ObjectCache{
 	 * Store cache
 	 */
 	public function store(){
-		if ($this->_filename !== null && $this->_isModified === true){
+		if ($this->_filename !== null && $this->_isModified === true && is_writable(dirname($this->_filename))){
 			file_put_contents($this->_filename, '<?php return '.var_export($this->_storage, true).'; ?>');
 		}
 	}

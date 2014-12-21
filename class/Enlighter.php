@@ -2,7 +2,7 @@
 
 /**
 	Enlighter Class
-	Version: 2.3
+	Version: 2.4
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -77,6 +77,7 @@ class Enlighter{
 		'wpAutoPFilterPriority' => 'default',
 		'enableTranslation' => true,
 		'enableTinyMceIntegration' => true,
+		'enableFrontendTinyMceIntegration' => false,
 		'rawButton' => true,
 		'windowButton' => true,
 		'infoButton' => true,
@@ -196,7 +197,7 @@ class Enlighter{
 		}
 		
 		// create new resource loader
-		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_themeManager);
+		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_themeManager, $this->_supportedLanguageKeys);
 		
 		// create new theme generator instance
 		$this->_themeGenerator = new Enlighter\ThemeGenerator($this->_settingsUtility, $this->_cacheManager);
@@ -207,7 +208,7 @@ class Enlighter{
 			add_action('admin_menu', array($this, 'setupBackend'));
 			
 			// load backend css+js + tinymce
-			$this->_resourceLoader->backend($this->_supportedLanguageKeys);		
+			$this->_resourceLoader->backend();		
 
 			// force theme cache reload
 			$this->_themeManager->forceReload();

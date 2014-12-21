@@ -2,7 +2,7 @@
 Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql
 Donate link: http://andidittrich.de/go/enlighterjs
-Requires at least: 3.8
+Requires at least: 3.9
 Tested up to: 4.1
 Stable tag: 2.4
 License: MIT X11-License
@@ -21,7 +21,7 @@ A theme demo can be found [here](http://enlighterjs.andidittrich.de/Themes.html 
 * Support for all common used languages
 * Theme Customizer
 * Inline Syntax Highlighting
-* **Full** Visual-Editor (TinyMCE) Integration
+* **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
 * Easy to use Text-Editor mode through the use of Shortcodes
 * Advanced configuration options (e.g. CDN usage) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
@@ -197,6 +197,9 @@ The complete EnlighterJS project can be found on [GitHub](https://github.com/And
 = Can i add custom Themes ? =
 Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify one of the standard themes. Finally create a directory named `enlighter` into your WordPress theme and put the css file into it.
 
+= There are no Enlighter features visible within the Frontend Editor =
+You have to enable the frontend editing function: `Enlighter Settings Page -> Advanced -> TinyMCE Integration (Visual Editor) -> Enable Frontend Integration`. This feature also requires a logged-in user with `edit_posts` and/or `edit_pages` [privileges](http://codex.wordpress.org/Function_Reference/current_user_can) and is only available for the `wp_editor` function - no thrid party editors are supported!
+
 = I'am already using MooTools and my page throws Javascript-Errors =
 If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
 **Note:** EnlighterJS requires MooTools > 1.4
@@ -219,11 +222,15 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 8. Theme Customizer - Language Token styling
 9. Special options for use with a CDN (Content Delivery Network)
 10. Tab-Pane Example (multiple languages)
+11. Frontend Editing using wp_editor feature
 
 == Changelog ==
 
 = 2.4 =
 * Added: Compatibility to the [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) Plugin
+* Added: Frontend Visual Editor Integration using the [wp_editor](http://codex.wordpress.org/Function_Reference/wp_editor) feature - requested on [WordPress Forums](https://wordpress.org/support/topic/inserting-button-to-frontend-tinymce)
+* Added: Additional check to the ObjectCache to ensure that it's writeable whe
+* Removed: WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 (TinyMCE 4)
 * Hardened the Enlighter TinyMCE Plugin 
 * Bugfix: With disabled option "Show Linenumbers" the Visual Editor Plugin will crash the TinyMCE Editor - [Thanks to ryansnowden on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/7)
 * Bugifx: In case of a missconfigured WordPress installation (disabling the `admin_print_scripts` hook), the Visual-Editor-Plugin will crash the TinyMCE editor - [Thanks to Nikodemsky on WordPress Forums](https://wordpress.org/support/topic/switching-between-visualtext-editor-is-broken-loading-code)
@@ -337,6 +344,9 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 
 
 == Upgrade Notice ==
+
+= 2.4 =
+Removed WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 including TinyMCE 4
 
 = 2.2 =
 Full Visual-Editor (TinyMCE4) Integration including codeblock-settings (WordPress >= 3.9 required)

@@ -36,13 +36,10 @@ class TinyMCE{
 		add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
 		add_filter('mce_buttons', array($this, 'addButtons1'), 101);
 		
-		// TinyMCE 3 or 4 ?
+		// TinyMCE 4 required !
 		if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
 			// add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
 			add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);			
-		}else{
-			// add filter to add custom formats (backward compatibility)
-			add_filter('tiny_mce_before_init', array($this, 'insertFormats3'), 101);			
 		}
 	}
 	
@@ -140,35 +137,5 @@ class TinyMCE{
 		//$tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
 		
 		return $tinyMceConfigData;
-	}
-	
-	// old enlighter formats (< WordPress 3.9) - NO INLINE FORMATS
-	public function insertFormats3($tinyMceConfigData){
-		// new style formats
-		$styles = array();
-	
-		// style formats already defined ?
-		if (isset($tinyMceConfigData['style_formats'])){
-			$styles = json_decode($tinyMceConfigData['style_formats']);
-		}
-
-		// add all supported languages as Enlighter Style
-		foreach ($this->_supportedLanguageKeys as $name => $lang){
-			// define new enlighter style formats
-			$styles[] = array(
-					'title' => 'Enlighter '.$name,
-					'block' => 'pre',
-					'classes' => 'EnlighterJSRAW',
-					'wrapper' => false,
-					'attributes' => array(
-							'data-enlighter-language' => $lang
-					)
-			);
-		}
-	
-		// apply modified style data
-		$tinyMceConfigData['style_formats'] = json_encode($styles);
-		return $tinyMceConfigData;
-	}
-	
+	}	
 }
