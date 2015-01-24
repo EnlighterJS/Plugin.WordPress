@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 2.4
+Stable tag: 2.5
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -19,17 +19,17 @@ A theme demo can be found [here](http://enlighterjs.andidittrich.de/Themes.html 
 
 = Plugin Features =
 * Support for all common used languages
-* Theme Customizer
+* Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
 * **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
 * Easy to use Text-Editor mode through the use of Shortcodes
-* Advanced configuration options (e.g. CDN usage) are available within the options page.
+* Advanced configuration options (CDN usage, ..) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
 * Outputs in various formats like ordered lists or inline. Choose the method that works best for you.
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
-* EnlighterJS is written in MooTools. Requires MooTools v1.4+ (included) and enabled javascript
+* EnlighterJS is written in MooTools. Requires MooTools v1.4+ (included) and client enabled javascript
 
 = Shortcode Quickstart Example =
 Highlight javascript code (theme defined on your settings page)
@@ -223,8 +223,15 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 9. Special options for use with a CDN (Content Delivery Network)
 10. Tab-Pane Example (multiple languages)
 11. Frontend Editing using wp_editor feature
+12. Theme Customizer - Live Preview-Mode
 
 == Changelog ==
+
+### 2.5 ###
+* Added LIVE Preview-Mode to the Theme-Customizer (requires a browser with enabled pop-up windows)
+* Added Preview-Mode screenshot
+* Renamed: MooTools js file to `mootools-core-yc.js` (removed the version string)
+* Updated: the pot/language files
 
 = 2.4 =
 * Added: Compatibility to the [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) Plugin

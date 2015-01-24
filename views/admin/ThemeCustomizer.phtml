@@ -6,8 +6,12 @@
 	<div class="inside EnlighterBlockcontent">
 
 	<p><?php _e('Leave fields blank to force basic theme styles', 'enlighter'); ?></p>
+	
+	<p><input type="button" value="<?php _e('Open Live Preview', 'enlighter');?> " id="enlighter_themePreviewMode" class="button button-primary" data-url="<?php echo plugins_url('/enlighter/views/admin/ThemePreview.html'); ?>" /></p>
 
+	
 <!-- Basic Theme -->
+<h4><?php _e('Theme Base', 'enlighter'); ?></h4>	
 	<div class="EnlighterSetting">
 		<div class="EnlighterSettingTitle"><?php _e('Basic Theme (will be extended)', 'enlighter'); ?></div>
 		<div class="EnlighterCustomSettingItem">

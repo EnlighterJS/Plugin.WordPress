@@ -70,6 +70,50 @@ requires:
 		// show navbar
 		jQuery('#EnlighterTabNav').show();
 		
+		// Live Preview Mode
+		// --------------------------------------------------------
+		var previewWindow = null;
+		jQuery('#enlighter_themePreviewMode').click(function(){
+			// window active ?
+			if (previewWindow && !previewWindow.closed){
+				previewWindow.focus();
+			
+			// create new window
+			}else{
+				// get url
+				var u = jQuery(this).attr('data-url');
+				
+				// create a new window
+				previewWindow = window.open(u, null, "width=800, height=800");
+			}			
+		});
+		
+		// live preview update
+		window.setInterval(function(){
+			// window available and loaded?
+			if (!previewWindow || previewWindow.closed || !previewWindow.window.ThemePreview){
+				return;
+			}
+			
+			// fetch data
+			var rawData = jQuery('#EnlighterSettings input, #EnlighterSettings select').serializeArray();
+			var data = {};
+			
+			// convert to object
+			jQuery.each(rawData, function(i, el){
+				// enlighetr settings ?
+				var n = (el.name.substring(0, 10) == 'enlighter-') ? el.name.substring(10) : el.name;
+				
+				data[n] = el.value;
+			});
+						
+			// push settings to preview engine
+			previewWindow.window.ThemePreview.update(data);
+			
+		}, 800);
+		
+		// Color Selection
+		// --------------------------------------------------------
 		// colorpicker
 		jQuery('.EnlighterJSColorChooser').ColorPicker({
 			onSubmit : function(hsb, hex, rgb, el){
