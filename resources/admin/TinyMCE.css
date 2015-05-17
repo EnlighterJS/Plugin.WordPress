@@ -82,6 +82,12 @@ pre.EnlighterJSRAW[data-enlighter-language="raw"]:before{
 pre.EnlighterJSRAW[data-enlighter-language="diff"]:before{
 	content: "Enlighter: DIFF";
 }
+pre.EnlighterJSRAW[data-enlighter-language="ini"]:before{
+    content: "Enlighter: Ini/Conf";
+}
+pre.EnlighterJSRAW[data-enlighter-language="avrasm"]:before{
+    content: "Enlighter: AVR Assembler";
+}
 
 /* Enlighter Codeblock Toolbar */
 #EnlighterToolbar{

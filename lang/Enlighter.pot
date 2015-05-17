@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2015-01-24 00:05:11+00:00\n"
+"POT-Creation-Date: 2015-05-17 13:09:15+00:00\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  2.5\n"
+"Project-Id-Version: Enlighter  2.6\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -31,6 +31,14 @@ msgstr ""
 
 #: views/admin/SettingsPage.phtml:34
 msgid "Enlighter - Customizable Syntax Highlighter"
+msgstr ""
+
+#: class/Enlighter.php:281
+msgid "Settings"
+msgstr ""
+
+#: class/Enlighter.php:282
+msgid "News & Updates"
 msgstr ""
 
 #: class/TinyMCE.php:101

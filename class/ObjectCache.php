@@ -27,10 +27,7 @@ class ObjectCache{
 	
 	// name of the cache file
 	private $_filename = null;
-	
-	// cache type (php and json are supported)
-	private $_cacheType = 'php';
-	
+
 	// cahce data availabe ?
 	private $_dataAvailable = false;
 	
@@ -56,7 +53,6 @@ class ObjectCache{
 	
 	/**
 	 * Load given file into internal storage
-	 * @param unknown $filename
 	 */
 	public function load(){
 		if (is_file($this->_filename) || is_readable($this->_filename)){

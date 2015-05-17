@@ -47,7 +47,7 @@ class ResourceLoader{
 		// initialize cdn locations
 		self::$cdnLocations['mootools-local'] = plugins_url('/enlighter/resources/mootools-core-yc.js');
 		self::$cdnLocations['mootools-google'] = '//ajax.googleapis.com/ajax/libs/mootools/1.5.1/mootools-yui-compressed.js';
-		self::$cdnLocations['mootools-cdnjs'] = '//cdnjs.cloudflare.com/ajax/libs/mootools/1.5.0/mootools-core-full-nocompat.min.js';
+		self::$cdnLocations['mootools-cdnjs'] = '//cdnjs.cloudflare.com/ajax/libs/mootools/1.5.1/mootools-core-full-nocompat.min.js';
 	}
 	
 	// initialzize the frontend
@@ -114,9 +114,7 @@ class ResourceLoader{
 	// append javascript based config
 	public function appendJavascriptConfig(){
 		// generate a config based js tag
-		echo '<script type="text/javascript">/* <![CDATA[ */';
-		echo $this->_jsConfigGenerator->getJSConfig();
-		echo "/* ]]> */</script>\n";
+		echo '<script type="text/javascript">/* <![CDATA[ */', $this->_jsConfigGenerator->getJSConfig(), "/* ]]> */</script>\n";
 	}
 	
 	// append css
@@ -129,7 +127,7 @@ class ResourceLoader{
 				wp_enqueue_style('enlighter-wpcustom');
 			}else{
 				// include standard css file ?
-				wp_register_style('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.yui.css'));
+				wp_register_style('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.css'));
 				wp_enqueue_style('enlighter-local');
 			}
 		}
@@ -170,7 +168,7 @@ class ResourceLoader{
 		// only include EnlighterJS js if enabled
 		if ($this->_config['embedEnlighterJS']){
 			// include local css file
-			wp_register_script('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.yui.js'));
+			wp_register_script('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.js'));
 			wp_enqueue_script('enlighter-local');
 		}
 		

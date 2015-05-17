@@ -20,8 +20,7 @@ namespace Enlighter;
 class ThemeManager{
 	
 	private $_cache;
-	private $_url;
-	
+
 	public function __construct($cacheManager){
 		// initialize object caache
 		$this->_cache = new ObjectCache($cacheManager->getCachePath().'userthemes.cache.php');

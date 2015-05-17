@@ -2,7 +2,7 @@
 
 /**
 	Enlighter Class
-	Version: 2.5
+	Version: 2.6
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -104,6 +104,8 @@ class Enlighter{
 		'NSIS' => 'nsis',
 		'Diff' => 'diff',	
 		'RAW' => 'raw',
+		'Avr Assembler' => 'avrasm',
+		'Ini/Conf Syntax' => 'ini',
 		'No Highlighting' => 'no-highlight',
 		'Generic Highlighting' => 'generic'	
 	);
@@ -256,6 +258,9 @@ class Enlighter{
 			// add options page
 			$optionsPage = add_options_page(__('Enlighter - Customizable Syntax Highlighter', 'enlighter'), 'Enlighter', 'administrator', __FILE__, array($this, 'settingsPage'));
 			
+			// add links
+			add_filter('plugin_row_meta', array($this, 'addPluginPageLinks'), 10, 2);
+
 			// load jquery stuff
 			add_action('admin_print_scripts-'.$optionsPage, array($this->_resourceLoader, 'appendAdminJS'));
 			add_action('admin_print_styles-'.$optionsPage, array($this->_resourceLoader, 'appendAdminCSS'));
@@ -267,6 +272,17 @@ class Enlighter{
 			$ch = new Enlighter\ContextualHelp($this->_settingsUtility);
 			add_filter('load-'.$optionsPage, array($ch, 'contextualHelp'));
 		}
+	}
+	
+	// links on the plugin page
+	public function addPluginPageLinks($links, $file){
+		// current plugin ?
+		if ($file == 'enlighter/Enlighter.php'){
+			$links[] = '<a href="'.admin_url('options-general.php?page='.plugin_basename(__FILE__)).'">'.__('Settings', 'enlighter').'</a>';
+			$links[] = '<a href="https://twitter.com/andidittrich">'.__('News & Updates', 'enlighter').'</a>';
+		}
+		
+		return $links;
 	}
 	
 	// options page

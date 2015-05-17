@@ -7,7 +7,7 @@
 	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
-	Copyright (c) 2013-2014, Andi Dittrich
+	Copyright (c) 2013-2015, Andi Dittrich
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 	
@@ -19,8 +19,6 @@ namespace Enlighter;
 
 class ThemeGenerator{
 	
-	private $_cachePath;
-	private $_cacheFilename;
 	private $_settings;
 	
 	public function __construct($settingsUtil, $cacheManager){
@@ -157,7 +155,7 @@ class ThemeGenerator{
 		$cssTPL->assign('RAWSTYLE', $rawstyles);
 		
 		// load EnlighterJS base
-		$enlighterJSBaseCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.yui.css');
+		$enlighterJSBaseCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.min.css');
 		
 		// load theme base
 		$enlighterJSThemeCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/views/themes/'.$this->_settings->getOption('customThemeBase').'.css');
