@@ -13,6 +13,9 @@
     	
     	// enlighter version
     	echo '<li>', __('Enlighter Plugin Version:', 'enlighter'), ' <span class="EnlighterTRUE">', ENLIGHTER_VERSION, '</span></li>';
+
+        // enlighterjs version
+        echo '<li>', __('EnlighterJS Version:', 'enlighter'), ' <span class="EnlighterTRUE">', self::getEnlighterJSVersion(), '</span></li>';
     	
     	// plugin cache path writeable ?
     	if ($this->_cacheManager->isCacheAccessable()){

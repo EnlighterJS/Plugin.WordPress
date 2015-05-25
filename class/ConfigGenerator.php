@@ -46,7 +46,11 @@ class ConfigGenerator{
 				'infoButton' => 		($this->_config['infoButton'] ? true : false),
 				'windowButton' => 		($this->_config['windowButton'] ? true : false),
 				'rawcodeDoubleclick' => ($this->_config['rawcodeDoubleclick'] ? true : false),
-				'grouping' => true
+				'grouping' => true,
+                'cryptex' => array(
+                        'enabled' => ($this->_config['cryptexEnabled'] ? true : false),
+                        'email' =>  $this->_config['cryptexFallbackEmail']
+                )
 		));
 		$c .= ');});';
 		

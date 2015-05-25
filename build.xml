@@ -3,26 +3,28 @@
 <project name="Enlighter" default="build" basedir=".">
 
 	<!-- Plugin Test -->
-	<target name="build">
+	<target name="build" depends="potgen, readme">
 		<copy todir="C:\Development\htdocs\wordpress\wp-content\plugins\enlighter" overwrite="true">
 			<fileset dir="." />
 		</copy>
 		<copy todir="C:\Development\htdocs\wordpress2\wp-content\plugins\enlighter" overwrite="true">
 			<fileset dir="." />
 		</copy>
-	</target>	
-	
-	<!-- WordPress -> GitHub readme transformation !-->
-	<target name="readme">
-		<!-- just dublicate it !-->
-		<copy file="readme.txt" tofile="README.md"/>
-	
-		<!-- replace headings !-->
-		<replaceregexp file="README.md" match="===(.*)===" replace="#\1#" byline="true"	/>
-		<replaceregexp file="README.md" match="==(.*)==" replace="##\1##" byline="true"	/>
-		<replaceregexp file="README.md" match="=(.*)=" replace="###\1###" byline="true"	/>
-	</target>	
-	
+	</target>
+
+    <!-- GitHub readme + changes => WordPress transformation !-->
+    <target name="readme">
+        <!-- merge readme + changes !-->
+        <concat destfile="readme.txt" append="false">
+            <filelist files="README.md, FAQ.md, CHANGES.md"/>
+        </concat>
+
+        <!-- replace headings !-->
+        <replaceregexp file="readme.txt" match="^###(.*)###" replace="=\1=" byline="true"	/>
+        <replaceregexp file="readme.txt" match="^##(.*)##" replace="==\1==" byline="true"	/>
+        <replaceregexp file="readme.txt" match="^#(.*)#" replace="===\1===" byline="true"	/>
+    </target>
+
 	<!-- POT file generation !-->
 	<target name="potgen">
 		<exec executable="php.exe"><arg value="util/GeneratePOT.php" /></exec>

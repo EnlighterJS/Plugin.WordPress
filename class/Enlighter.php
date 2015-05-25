@@ -2,7 +2,7 @@
 
 /**
 	Enlighter Class
-	Version: 2.6
+	Version: 2.7
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -82,7 +82,10 @@ class Enlighter{
 		'windowButton' => true,
 		'infoButton' => true,
 		'rawcodeDoubleclick' => false,
-		'enableInlineHighlighting' => true
+		'enableInlineHighlighting' => true,
+
+        'cryptexEnabled' => true,
+        'cryptexFallbackEmail' => 'mail@example.tld'
 	);
 	
 	// list of micro shortcodes (supported languages)
@@ -208,6 +211,9 @@ class Enlighter{
 		if (is_admin()){
 			// add admin menu handler
 			add_action('admin_menu', array($this, 'setupBackend'));
+
+            // add plugin upgrade notification
+            add_action('in_plugin_update_message-enlighter/Enlighter.php', array($this, 'showUpgradeNotification'), 10, 2);
 			
 			// load backend css+js + tinymce
 			$this->_resourceLoader->backend();		
@@ -312,5 +318,27 @@ class Enlighter{
 		// include admin page
 		include(ENLIGHTER_PLUGIN_PATH.'/views/admin/SettingsPage.phtml');
 	}
-	
+
+    // gets the current EnlighterJS version from js file
+    public static function getEnlighterJSVersion(){
+        $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.min.js');
+
+        // extract version
+        $r = preg_match('#^[\S\s]+ (\d.\d.\d)#U', $content, $matches);
+
+        // valid result ?
+        if ($r!==1){
+            return 'NaN';
+        }else{
+            return $matches[1];
+        }
+    }
+
+    public function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
+        // check "upgrade_notice"
+        if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
+            echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong> ';
+            echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
+       }
+    }
 }

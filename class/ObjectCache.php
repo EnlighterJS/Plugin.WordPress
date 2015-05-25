@@ -55,7 +55,7 @@ class ObjectCache{
 	 * Load given file into internal storage
 	 */
 	public function load(){
-		if (is_file($this->_filename) || is_readable($this->_filename)){
+		if (is_file($this->_filename) && is_readable($this->_filename)){
 			$this->_storage = require($this->_filename);
 			$this->_dataAvailable = true;
 		}
@@ -112,7 +112,7 @@ class ObjectCache{
 	
 	// clear cache
 	public function clear(){
-		if (is_file($this->_filename) || is_writable($this->_filename)){
+		if (is_file($this->_filename) && is_writable($this->_filename)){
 			unlink($this->_filename);
 		}
 		

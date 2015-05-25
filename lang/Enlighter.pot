@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2015-05-17 13:09:15+00:00\n"
+"POT-Creation-Date: 2015-05-25 12:14:12+00:00\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  2.6\n"
+"Project-Id-Version: Enlighter  2.7\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Enlighter - Customizable Syntax Highlighter"
 msgstr ""
 
-#: class/Enlighter.php:281
+#: class/Enlighter.php:287
 msgid "Settings"
 msgstr ""
 
-#: class/Enlighter.php:282
+#: class/Enlighter.php:288
 msgid "News & Updates"
 msgstr ""
 
@@ -217,23 +217,23 @@ msgstr ""
 msgid "RawCode on dbclick"
 msgstr ""
 
-#: views/admin/Appearance.phtml:33
+#: views/admin/Appearance.phtml:32
 msgid "Button Toolbar"
 msgstr ""
 
-#: views/admin/Appearance.phtml:34
+#: views/admin/Appearance.phtml:33
 msgid "Enable/Disable specific toolbar buttons."
 msgstr ""
 
-#: views/admin/Appearance.phtml:37
+#: views/admin/Appearance.phtml:36
 msgid "Raw-Codebutton"
 msgstr ""
 
-#: views/admin/Appearance.phtml:40
+#: views/admin/Appearance.phtml:39
 msgid "Window-button (new Window)"
 msgstr ""
 
-#: views/admin/Appearance.phtml:43
+#: views/admin/Appearance.phtml:42
 msgid "Info-button"
 msgstr ""
 
@@ -333,6 +333,38 @@ msgstr ""
 msgid "List of available CDN locations used by Enlighter."
 msgstr ""
 
+#: views/admin/Options.phtml:46
+msgid "Cryptex Email Obfuscation Plugin"
+msgstr ""
+
+#: views/admin/Options.phtml:49
+msgid "These options are related to the <a href=\"https://wordpress.org/plugins/cryptex/\" target=\"_blank\">Cryptex Email Address Obfuscation plugin</a>. It can protect Email Adresses within your highlighted sourcecode."
+msgstr ""
+
+#: views/admin/Options.phtml:50
+msgid "Requires Cryptex 5.0 with enabled hyperlinks."
+msgstr ""
+
+#: views/admin/Options.phtml:53
+msgid "Cryptex"
+msgstr ""
+
+#: views/admin/Options.phtml:56
+msgid "Enable Cryptex Support"
+msgstr ""
+
+#: views/admin/Options.phtml:59
+msgid "The default Email address which will be shown if the hyperlinks are disabled into the cryptex plugin "
+msgstr ""
+
+#: views/admin/Options.phtml:60
+msgid "Fallback EMail Address"
+msgstr ""
+
+#: views/admin/Options.phtml:60
+msgid "can be any kind of text"
+msgstr ""
+
 #: views/admin/Related.phtml:4
 msgid "Enlighter Related"
 msgstr ""
@@ -394,27 +426,31 @@ msgstr ""
 msgid "Enlighter Plugin Version:"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:19 views/admin/SystemInfo.phtml:21
+#: views/admin/SystemInfo.phtml:18
+msgid "EnlighterJS Version:"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:22 views/admin/SystemInfo.phtml:24
 msgid "Cache writeable"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:19
+#: views/admin/SystemInfo.phtml:22
 msgid "true"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:21
+#: views/admin/SystemInfo.phtml:24
 msgid "false"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:26 views/admin/SystemInfo.phtml:28
+#: views/admin/SystemInfo.phtml:29 views/admin/SystemInfo.phtml:31
 msgid "JSON Extension"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:26
+#: views/admin/SystemInfo.phtml:29
 msgid "installed"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:28
+#: views/admin/SystemInfo.phtml:31
 msgid "not installed"
 msgstr ""
 

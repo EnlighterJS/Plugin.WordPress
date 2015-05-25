@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 2.6
+Stable tag: 2.7
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -150,6 +150,40 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 4. Goto to the Enlighter settings page and select the default theme which should be used.
 5. That's it! You're done. You can select an editor style for your codefragment or enter the following code into a post or page to highlight it (e.g. javascript): `[js]var enlighter = new EnlighterJS({});[/js]` 
 
+== Screenshots ==
+
+1. HTML highlighting Example (Enlighter Theme)
+2. Visual Editor Integration
+3. Visual Editor Code Settings
+4. Visual Editor Inline/Block Formats
+5. Options Page - Appearance Settings
+6. Options Page - Advanced Settings
+7. Theme Customizer - General styles
+8. Theme Customizer - Language Token styling
+9. Special options for use with a CDN (Content Delivery Network)
+10. Tab-Pane Example (multiple languages)
+11. Frontend Editing using wp_editor feature
+12. Theme Customizer - Live Preview-Mode
+
+== Upgrade Notice ==
+
+= 2.6 =
+Renamed the EnlighterJS files to `EnlighterJS.min.css` and `EnlighterJS.min.js`. In case you have applied custom modifications these changes may broke your setup and you need to change it!
+Added [EnlighterJS v2.5](http://enlighterjs.andidittrich.de/) with some optimization.
+
+= 2.4 =
+Removed WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 including TinyMCE 4
+
+= 2.2 =
+Full Visual-Editor (TinyMCE4) Integration including codeblock-settings (WordPress >= 3.9 required)
+
+= 2.0 =
+Added Inline-Syntax-Highlighting as well as some other cool feature - please go to the settings page and click "Apply Settings"
+
+= 1.8 =
+Added Visual-Editor (TinyMCE) Integration (will avoid auto-whitespace-removing issues)
+
+
 == Frequently Asked Questions ==
 
 = I am using shortcodes and random p/br tags are added to my code =
@@ -195,23 +229,16 @@ In case you found a security issue in this plugin - please write a message **dir
 
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
-
-== Screenshots ==
-
-1. HTML highlighting Example (Enlighter Theme)
-2. Visual Editor Integration
-3. Visual Editor Code Settings
-4. Visual Editor Inline/Block Formats
-5. Options Page - Appearance Settings
-6. Options Page - Advanced Settings
-7. Theme Customizer - General styles
-8. Theme Customizer - Language Token styling
-9. Special options for use with a CDN (Content Delivery Network)
-10. Tab-Pane Example (multiple languages)
-11. Frontend Editing using wp_editor feature
-12. Theme Customizer - Live Preview-Mode
-
 == Changelog ==
+
+= 2.7 =
+* Added: [EnlighterJS v2.6.0](http://enlighterjs.andidittrich.de/)
+* Added: Native JSON highlighting support
+* Added: Support for the [Cryptex Email Obfuscation](https://wordpress.org/plugins/cryptex/) plugin (>= v5.0) - email addresses within highlighted code can now protected too
+* Added: Plugin Upgrade notifications for upcoming major releases to the admins plugin page
+* Bugfix: The contextual help link was not "full" selectable (covered by the tab nav)
+* Bugfix: ObjectCache file existent check failed (triggers a php warning  `unlink(...) No such file or directory ..`
+* The `readme.txt` (WordPress plugin repository) is generated from the markdown file `README.md`, `FAQ.md` and `CHANGES.md` (GitHub style)
 
 = 2.6 =
 * Added: Settings page link to the plugin page (metadata row)
@@ -345,22 +372,3 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 = 1.1 =
 * First public release
 * Includes EnligherJS 1.4
-
-
-== Upgrade Notice ==
-
-= 2.6 =
-Renamed the EnlighterJS files to `EnlighterJS.min.css` and `EnlighterJS.min.js`. In case you have applied custom modifications these changes may broke your setup and you need to change it!
-Added [EnlighterJS v2.5](http://enlighterjs.andidittrich.de/) with some optimization.
-
-= 2.4 =
-Removed WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 including TinyMCE 4
-
-= 2.2 =
-Full Visual-Editor (TinyMCE4) Integration including codeblock-settings (WordPress >= 3.9 required)
-
-= 2.0 =
-Added Inline-Syntax-Highlighting as well as some other cool feature - please go to the settings page and click "Apply Settings"
-
-= 1.8 =
-Added Visual-Editor (TinyMCE) Integration (will avoid auto-whitespace-removing issues)
