@@ -1,4 +1,7 @@
 
+.wpcustomEnlighterJS, .wpcustomEnlighterJSWrapper{
+    font-family: Monaco, Courier, monospace;
+}
 .wpcustomEnlighterJSTabPane .controls li{
 	background-color: #303030;
 	font-size: 12px;
@@ -35,7 +38,7 @@ ol.wpcustomEnlighterJS li, ul.wpcustomEnlighterJS li{
 	line-height: 19px;
 	background-color: #141414;
 }
-ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover{
+ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnabled li:hover{
 	background-color: #202021;
 	border: none;
 	border-left: 1px solid #939393;

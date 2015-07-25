@@ -2,7 +2,7 @@
 
 /**
 	Enlighter Class
-	Version: 2.7
+	Version: 2.8
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -84,8 +84,10 @@ class Enlighter{
 		'rawcodeDoubleclick' => false,
 		'enableInlineHighlighting' => true,
 
-        'cryptexEnabled' => true,
-        'cryptexFallbackEmail' => 'mail@example.tld'
+        'cryptexEnabled' => false,
+        'cryptexFallbackEmail' => 'mail@example.tld',
+
+		'webfontsSourceCodePro' => false
 	);
 	
 	// list of micro shortcodes (supported languages)
@@ -103,9 +105,12 @@ class Enlighter{
 		'XML' => 'xml',
 		'C' => 'c',
 		'C++' => 'cpp',
-		'C#' => 'csharp',	
+		'C#' => 'csharp',
+		'RUST' => 'rust',
+		'Matlab' => 'matlab',
 		'NSIS' => 'nsis',
-		'Diff' => 'diff',	
+		'Diff' => 'diff',
+		'VHDL' => 'vhdl',
 		'RAW' => 'raw',
 		'Avr Assembler' => 'avrasm',
 		'Ini/Conf Syntax' => 'ini',
@@ -114,11 +119,15 @@ class Enlighter{
 	);
 	
 	// list of supported themes
+	// Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Git Mocha MooTools Panic Tutti Twilight
 	private $_supportedThemes = array(
 		'Enlighter' => true,
+		'Godzilla' => true,
 		'Beyond' => true,
 		'Classic' => true,
+		'MooTwo' => true,
 		'Eclipse' => true,
+		'Droide' => true,
 		'Git' => true,
 		'Mocha' => true,
 		'MooTools' => true,

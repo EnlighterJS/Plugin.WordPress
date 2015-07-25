@@ -1,10 +1,10 @@
 === Enlighter - Customizable Syntax Highlighter ===
 Contributors: Andi Dittrich
-Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql
+Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 2.7
+Stable tag: 2.8
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -12,10 +12,10 @@ Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
 
 == Description ==
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://andidittrich.de/go/enlighterjs) to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.andidittrich.de) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-[Theme Demo](http://enlighterjs.andidittrich.de/Themes.html "EnligherJS Theme Demo") - [Language Examples](http://enlighterjs.andidittrich.de/html.html "EnlighterJS Language Example")
+[Theme Demo](http://enlighterjs.andidittrich.de/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.andidittrich.de/Language.Javascript.html "EnlighterJS Language Example")
 
 = Plugin Features =
 * Support for all common used languages
@@ -31,30 +31,32 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Integrated CSS file caching (suitable for high traffic sites)
 * EnlighterJS is written in MooTools. Requires MooTools v1.4+ (included) and client enabled javascript
 
-= Supported Languages (build-in) + Shortcodes =
+= Supported Languages (build-in) =
 Click to view Language/Theme Examples
 
-* **HTML** [html](http://enlighterjs.andidittrich.de/html.html)
-* **CSS** (Level 1, 2, 3) [css](http://enlighterjs.andidittrich.de/css.html)
-* **XML** [xml](http://enlighterjs.andidittrich.de/xml.html)
-* **Javascript** [js, javascript](http://enlighterjs.andidittrich.de/javascript.html)
-* **JSON** [json](http://enlighterjs.andidittrich.de/json.html)
-* **Java** [java](http://enlighterjs.andidittrich.de/java.html)
-* **Markdown** [md](http://enlighterjs.andidittrich.de/markdown.html)
-* **PHP** [php](http://enlighterjs.andidittrich.de/php.html)
-* **Python** [python](http://enlighterjs.andidittrich.de/python.html)
-* **Ruby** [ruby](http://enlighterjs.andidittrich.de/ruby.html)
-* **Shellscript** [shell]
-* **C** [c](http://enlighterjs.andidittrich.de/c.html)
-* **C++** [cpp](http://enlighterjs.andidittrich.de/cpp.html)
-* **C#** [csharp](http://enlighterjs.andidittrich.de/csharp.html)
-* **SQL** [sql](http://enlighterjs.andidittrich.de/sql.html)
-* **NSIS** [nsis](http://enlighterjs.andidittrich.de/nsis.html)
-* **DIFF** [diff](http://enlighterjs.andidittrich.de/diff.html)
-* **AVR-Assembler** [avrasm](http://enlighterjs.andidittrich.de/avrasm.html)
-* **Ini/Conf** [ini](http://enlighterjs.andidittrich.de/ini.html)
-* **RAW Code** [raw](http://enlighterjs.andidittrich.de/raw.html)
-* **Unhighlighted Code** [no-highlight](http://enlighterjs.andidittrich.de/nohighlight.html)
+* [AVR Assembler](http://enlighterjs.andidittrich.de/Language.AVRASM.html)
+* [C](http://enlighterjs.andidittrich.de/Language.C.html)
+* [CSS](http://enlighterjs.andidittrich.de/Language.CSS.html)
+* [C#](http://enlighterjs.andidittrich.de/Language.CSharp.html)
+* [C++](http://enlighterjs.andidittrich.de/Language.Cpp.html)
+* [Diff](http://enlighterjs.andidittrich.de/Language.Diff.html)
+* [HTML](http://enlighterjs.andidittrich.de/Language.HTML.html)
+* [Ini](http://enlighterjs.andidittrich.de/Language.Ini.html)
+* [JSON](http://enlighterjs.andidittrich.de/Language.JSON.html)
+* [Java](http://enlighterjs.andidittrich.de/Language.Java.html)
+* [Javascript](http://enlighterjs.andidittrich.de/Language.Javascript.html)
+* [MarkDown](http://enlighterjs.andidittrich.de/Language.MarkDown.html)
+* [Matlab](http://enlighterjs.andidittrich.de/Language.Matlab.html)
+* [NSIS](http://enlighterjs.andidittrich.de/Language.NSIS.html)
+* [PHP](http://enlighterjs.andidittrich.de/Language.PHP.html)
+* [Python](http://enlighterjs.andidittrich.de/Language.Python.html)
+* [RAW](http://enlighterjs.andidittrich.de/Language.RAW.html)
+* [Ruby](http://enlighterjs.andidittrich.de/Language.Ruby.html)
+* [Rust](http://enlighterjs.andidittrich.de/Language.Rust.html)
+* [SQL](http://enlighterjs.andidittrich.de/Language.SQL.html)
+* [Shell](http://enlighterjs.andidittrich.de/Language.Shell.html)
+* [VHDL](http://enlighterjs.andidittrich.de/Language.VHDL.html)
+* [XML](http://enlighterjs.andidittrich.de/Language.XML.html)
 
 = Shortcode Quickstart Example =
 Highlight javascript code (theme defined on your settings page)
@@ -186,6 +188,12 @@ Added Visual-Editor (TinyMCE) Integration (will avoid auto-whitespace-removing i
 
 == Frequently Asked Questions ==
 
+= Can i use Enlighter togehter with Crayon ? =
+No, you can't use Enlighter together with the Crayon Syntax highlighter because it may take over the Enlighter elements.
+
+= Should i use Shortcode`s or the Visual-Editor Integration ? =
+If possible, use the VisualEditpr mode! The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
+
 = I am using shortcodes and random p/br tags are added to my code =
 This problem is caused by WordPress' `wpAutoP` filter - to fix this issue, go to "Enlighter Settings -> Advanced -> WpAutoP Filter Priority" and change this value to "Priority 12 (after shortcode). For cross-plugin-compatibility this feature is disabled by default.
 
@@ -200,9 +208,6 @@ The cache-directory `wp-content/plugins/enlighter/cache` have to be writeable, t
 
 = Inline Styles are missing within the Visual Editor =
 This feature requires WordPress 3.9 (new TinyMCE Version) - but you can still use shortcodes for inline highlighting! 
-
-= Should i use Shortcode`s or the Visual-Editor Integration ? =
-The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
 
 = How can i enable the Theme-Customizer ? =
 To enable the Theme-Customizer you have to select the theme named *Custom* as default theme. The Theme-Customizer will appear immediately.
@@ -230,6 +235,29 @@ In case you found a security issue in this plugin - please write a message **dir
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
+
+= 2.8 =
+* Added: [EnlighterJS v2.7.0](http://enlighterjs.andidittrich.de/)
+* Added: [Rust](http://www.rust-lang.org/) language support - feature requested on [GitHub](https://github.com/AndiDittrich/EnlighterJS/issues/7)
+* Added: [VHDL](http://en.wikipedia.org/wiki/VHDL) language support
+* Added: [Matlab](http://en.wikipedia.org/wiki/MATLAB) language support
+* Added: New Shell/Bash language engine
+* Added: New PHP language engine
+* Added: New CSS language engine - some styles have changed!
+* Added: Shell script example
+* Added: "MooTwo" theme inspired by the mootools.net website
+* Added: "Godzilla" theme inspired by the MDN
+* Added: "Droide" theme
+* Added: New EnlighterJS Info Button (Toolbar)
+* Added: New Tokenizer Engine which increases the rendering performance by nearly **700%**
+* Bugfix: Wrong highlighting class used for SQL comments
+* Changed: Smart Tokenizer Engine is used instead of the old Lazy Bruteforce matching
+* Changed: All Fonts of the modern Themes are replaced by "Source Code Pro" as default
+* Changed: Classic Themes `kw3` color switched with `kw4`
+* Changed: The *hover* css-class is now added to the outer `ol,ul` container instead of each `li` line - all themes have been adapted 
+* Changed: Inline gif imaages are used for the button toolbar instead of png images (size optimization)
+* Many performance improvements
+* Reduced the CSS and JS file-size by massive sourcecode optimizations (43kB JS; 28KB CSS; including all Themes and Languages!)
 
 = 2.7 =
 * Added: [EnlighterJS v2.6.0](http://enlighterjs.andidittrich.de/)

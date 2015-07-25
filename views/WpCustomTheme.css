@@ -1,5 +1,5 @@
 /* hover color */
-ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover{
+ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnabled li:hover{
 	background-color: $(HOVER_BG_COLOR);
 }
 

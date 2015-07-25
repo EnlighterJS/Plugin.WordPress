@@ -81,7 +81,7 @@ var _tp = new Class({
 		});
 		
 		// ========= SPECIAL STYLES ======================
-		this.addCSSRule('ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover', {
+		this.addCSSRule('ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnabled li:hover', {
 			'background-color': s.customLineHoverColor
 		});
 		this.addCSSRule('ol.wpcustomEnlighterJS li.specialline', {

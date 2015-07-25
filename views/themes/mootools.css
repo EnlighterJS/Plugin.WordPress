@@ -1,4 +1,7 @@
 
+.wpcustomEnlighterJS, .wpcustomEnlighterJSWrapper{
+    font-family: Monaco, Courier, monospace;
+}
 /* line styles */
 ol.wpcustomEnlighterJS li, ul.wpcustomEnlighterJS li {
 	border-top: 1px solid #fff;
@@ -8,7 +11,7 @@ ol.wpcustomEnlighterJS li{
 	border-left: 1px solid #939393;
 }
 /* hover effect */
-ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover{
+ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnabled li:hover{
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
 	background-color: #F4F8FC;

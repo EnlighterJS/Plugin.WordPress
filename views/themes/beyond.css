@@ -1,8 +1,4 @@
 
-/* default styles */
-.wpcustomEnlighterJS, .wpcustomEnlighterJSWrapper {
-	font-family: Menlo, Monaco, Consolas, "Source Code Pro", "Courier New", Monospace;
-}
 /* Inline specific styles */
 span.wpcustomEnlighterJS{
 	border-radius: 3px;
@@ -41,7 +37,7 @@ ol.wpcustomEnlighterJS li.specialline, ul.wpcustomEnlighterJS li.specialline {
 	background-color: #ffffff;
 }
 /* hover effect */
-ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover {
+ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnabled li:hover {
 	background-color: #ffffff;
 	border: solid 0px #ffffff;
 	color: #444444;
@@ -67,7 +63,6 @@ ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEna
 	color: #286491;
 	font-weight: bold;
 	background-color: #ffffff;
-	font-family: Consolas, "Source Code Pro", "Courier New", Monospace;
 	cursor: pointer;
 }
 .wpcustomEnlighterJSTabPane .controls li:hover {

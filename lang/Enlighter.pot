@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2015-05-25 12:14:12+00:00\n"
+"POT-Creation-Date: 2015-07-25 20:15:30+00:00\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  2.7\n"
+"Project-Id-Version: Enlighter  2.8\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -29,15 +29,15 @@ msgstr ""
 msgid "External Themes"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:34
+#: views/admin/SettingsPage.phtml:35
 msgid "Enlighter - Customizable Syntax Highlighter"
 msgstr ""
 
-#: class/Enlighter.php:287
+#: class/Enlighter.php:296
 msgid "Settings"
 msgstr ""
 
-#: class/Enlighter.php:288
+#: class/Enlighter.php:297
 msgid "News & Updates"
 msgstr ""
 
@@ -378,35 +378,39 @@ msgid "Theme Customizer"
 msgstr ""
 
 #: views/admin/SettingsPage.phtml:29
-msgid "Options"
+msgid "Webfonts"
 msgstr ""
 
 #: views/admin/SettingsPage.phtml:30
+msgid "Options"
+msgstr ""
+
+#: views/admin/SettingsPage.phtml:31
 msgid "Advanced"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:35
+#: views/admin/SettingsPage.phtml:36
 msgid "Select the content you want to highlight and Enlighter takes care of the rest."
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:98
+#: views/admin/SettingsPage.phtml:103
 msgid "is developed by"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:99
+#: views/admin/SettingsPage.phtml:104
 msgid "It`s released under the terms of the %s. "
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:99
+#: views/admin/SettingsPage.phtml:104
 msgid "MIT X11 License"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:100 views/admin/SettingsPage.phtml:101
-#: views/admin/SettingsPage.phtml:102
+#: views/admin/SettingsPage.phtml:105 views/admin/SettingsPage.phtml:106
+#: views/admin/SettingsPage.phtml:107
 msgid "License"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:101 views/admin/SettingsPage.phtml:102
+#: views/admin/SettingsPage.phtml:106 views/admin/SettingsPage.phtml:107
 msgid "by"
 msgstr ""
 
@@ -665,4 +669,24 @@ msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:150
 msgid "Background:"
+msgstr ""
+
+#: views/admin/Webfonts.phtml:5
+msgid "Webfonts Loader"
+msgstr ""
+
+#: views/admin/Webfonts.phtml:9
+msgid "Some Enlighter Themes uses modern fonts which may not available for your users by default."
+msgstr ""
+
+#: views/admin/Webfonts.phtml:11
+msgid "To provide the best visual experience, it`s possible to load the missing fonts automatically using <a href=\"https://www.google.com/fonts\">Google Webfonts</a>."
+msgstr ""
+
+#: views/admin/Webfonts.phtml:15
+msgid "Fonts"
+msgstr ""
+
+#: views/admin/Webfonts.phtml:16
+msgid "Source Code Pro"
 msgstr ""

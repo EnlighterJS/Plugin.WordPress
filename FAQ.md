@@ -1,6 +1,12 @@
 
 ## Frequently Asked Questions ##
 
+### Can i use Enlighter togehter with Crayon ? ###
+No, you can't use Enlighter together with the Crayon Syntax highlighter because it may take over the Enlighter elements.
+
+### Should i use Shortcode`s or the Visual-Editor Integration ? ###
+If possible, use the VisualEditpr mode! The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
+
 ### I am using shortcodes and random p/br tags are added to my code ###
 This problem is caused by WordPress' `wpAutoP` filter - to fix this issue, go to "Enlighter Settings -> Advanced -> WpAutoP Filter Priority" and change this value to "Priority 12 (after shortcode). For cross-plugin-compatibility this feature is disabled by default.
 
@@ -15,9 +21,6 @@ The cache-directory `wp-content/plugins/enlighter/cache` have to be writeable, t
 
 ### Inline Styles are missing within the Visual Editor ###
 This feature requires WordPress 3.9 (new TinyMCE Version) - but you can still use shortcodes for inline highlighting! 
-
-### Should i use Shortcode`s or the Visual-Editor Integration ? ###
-The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
 
 ### How can i enable the Theme-Customizer ? ###
 To enable the Theme-Customizer you have to select the theme named *Custom* as default theme. The Theme-Customizer will appear immediately.

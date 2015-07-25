@@ -1,4 +1,7 @@
 
+.wpcustomEnlighterJS, .wpcustomEnlighterJSWrapper{
+    font-family: Monaco, Courier, monospace;
+}
 .wpcustomEnlighterJSTabPane .controls li{
 	background-color: #ffffff;
 }
@@ -23,11 +26,9 @@ ol.wpcustomEnlighterJS li, ul.wpcustomEnlighterJS li{
 	border: none;
 	line-height: 16px;
 }
-ol.wpcustomEnlighterJS li:hover, ul.wpcustomEnlighterJS li:hover{
-	color: #000000;
-}
-ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover{
+ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnabled li:hover{
 	background-color: #F4F8FC;
+    color: #000000;
 	border: none;
 }
 /* special line highlight color */

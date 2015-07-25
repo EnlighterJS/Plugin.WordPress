@@ -6,7 +6,6 @@ ol.wpcustomEnlighterJS, ul.wpcustomEnlighterJS{
 /* borders on top&botton */
 .wpcustomEnlighterJS, .wpcustomEnlighterJSWrapper pre{
 	border: 1px solid #e8e8e2;
-	font-family: Consolas, "Source Code Pro", "Courier New", Monospace;
 }
 ol.wpcustomEnlighterJS li, ul.wpcustomEnlighterJS li{
 	border: none;
@@ -25,7 +24,7 @@ span.wpcustomEnlighterJS{
 	border: none;
 }
 /* hover color */
-ol.wpcustomEnlighterJS li.hoverEnabled:hover, ul.wpcustomEnlighterJS li.hoverEnabled:hover{
+ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnabled li:hover{
 	border: none;
 	border-left: solid 4px #52ce52;
 	background-color: #ddf0dd;
@@ -36,8 +35,9 @@ ol.wpcustomEnlighterJS li.specialline, ul.wpcustomEnlighterJS li.specialline {
 	border-left-color: #3fa03f;
 }
 /* non leading zero */
-ol.wpcustomEnlighterJS {
-	list-style-type: decimal;
+ol.wpcustomEnlighterJS li {
+    color: #000000;
+    list-style-type: decimal;
 }
 .wpcustomEnlighterJS span{
 	font-size: 15px;
@@ -67,7 +67,6 @@ ol.wpcustomEnlighterJS {
 .wpcustomEnlighterJSTabPane .controls li{
 	border-radius: 0px;
 	font-size: 15px;
-	font-family: Consolas, "Source Code Pro", "Courier New", Monospace;
 	background-color: transparent;
 	line-height: 20px;
 	padding: 5px 10px 5px 10px;

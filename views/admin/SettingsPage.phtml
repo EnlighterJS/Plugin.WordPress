@@ -26,6 +26,7 @@
 <h2 class="nav-tab-wrapper" id="EnlighterTabNav">
 	<a data-tab="EnlighterTabAppearance" class="nav-tab"><?php _e('Appearance', 'enlighter'); ?></a>
 	<a data-tab="EnlighterTabThemeCustomizer" class="nav-tab" id="EnlighterTabhandleThemeCustomizer"><?php _e('Theme Customizer', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabWebfonts" class="nav-tab"><?php _e('Webfonts', 'enlighter'); ?></a>
 	<a data-tab="EnlighterTabOptions" class="nav-tab"><?php _e('Options', 'enlighter'); ?></a>
 	<a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
 </h2>
@@ -62,6 +63,10 @@ if (!$this->_cacheManager->isCacheAccessable()){
 		<div id="EnlighterTabThemeCustomizer">
 		<?php require ('ThemeCustomizer.phtml'); ?>
 		</div>
+
+        <div id="EnlighterTabWebfonts">
+            <?php require ('Webfonts.phtml'); ?>
+        </div>
 		
 		<div id="EnlighterTabOptions">
 		<?php require ('Options.phtml'); ?>

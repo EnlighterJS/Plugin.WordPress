@@ -140,6 +140,12 @@ class ResourceLoader{
 				wp_enqueue_style('enlighter-external-'.strtolower($theme));
 			}
 		}
+
+		// google webfonts "source code pro"
+		if ($this->_config['webfontsSourceCodePro']){
+			wp_register_style('webfonts-sourcecodepro', '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700');
+			wp_enqueue_style('webfonts-sourcecodepro');
+		}
 	}
 	
 	// append js

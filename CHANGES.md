@@ -1,5 +1,28 @@
 ## Changelog ##
 
+### 2.8 ###
+* Added: [EnlighterJS v2.7.0](http://enlighterjs.andidittrich.de/)
+* Added: [Rust](http://www.rust-lang.org/) language support - feature requested on [GitHub](https://github.com/AndiDittrich/EnlighterJS/issues/7)
+* Added: [VHDL](http://en.wikipedia.org/wiki/VHDL) language support
+* Added: [Matlab](http://en.wikipedia.org/wiki/MATLAB) language support
+* Added: New Shell/Bash language engine
+* Added: New PHP language engine
+* Added: New CSS language engine - some styles have changed!
+* Added: Shell script example
+* Added: "MooTwo" theme inspired by the mootools.net website
+* Added: "Godzilla" theme inspired by the MDN
+* Added: "Droide" theme
+* Added: New EnlighterJS Info Button (Toolbar)
+* Added: New Tokenizer Engine which increases the rendering performance by nearly **700%**
+* Bugfix: Wrong highlighting class used for SQL comments
+* Changed: Smart Tokenizer Engine is used instead of the old Lazy Bruteforce matching
+* Changed: All Fonts of the modern Themes are replaced by "Source Code Pro" as default
+* Changed: Classic Themes `kw3` color switched with `kw4`
+* Changed: The *hover* css-class is now added to the outer `ol,ul` container instead of each `li` line - all themes have been adapted 
+* Changed: Inline gif imaages are used for the button toolbar instead of png images (size optimization)
+* Many performance improvements
+* Reduced the CSS and JS file-size by massive sourcecode optimizations (43kB JS; 28KB CSS; including all Themes and Languages!)
+
 ### 2.7 ###
 * Added: [EnlighterJS v2.6.0](http://enlighterjs.andidittrich.de/)
 * Added: Native JSON highlighting support

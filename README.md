@@ -1,10 +1,10 @@
 # Enlighter - Customizable Syntax Highlighter #
 Contributors: Andi Dittrich
-Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql
+Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 2.7
+Stable tag: 2.8
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -12,10 +12,10 @@ Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
 
 ## Description ##
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://andidittrich.de/go/enlighterjs) to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.andidittrich.de) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-[Theme Demo](http://enlighterjs.andidittrich.de/Themes.html "EnligherJS Theme Demo") - [Language Examples](http://enlighterjs.andidittrich.de/html.html "EnlighterJS Language Example")
+[Theme Demo](http://enlighterjs.andidittrich.de/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.andidittrich.de/Language.Javascript.html "EnlighterJS Language Example")
 
 ### Plugin Features ###
 * Support for all common used languages
@@ -31,30 +31,32 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Integrated CSS file caching (suitable for high traffic sites)
 * EnlighterJS is written in MooTools. Requires MooTools v1.4+ (included) and client enabled javascript
 
-### Supported Languages (build-in) + Shortcodes ###
+### Supported Languages (build-in) ###
 Click to view Language/Theme Examples
 
-* **HTML** [html](http://enlighterjs.andidittrich.de/html.html)
-* **CSS** (Level 1, 2, 3) [css](http://enlighterjs.andidittrich.de/css.html)
-* **XML** [xml](http://enlighterjs.andidittrich.de/xml.html)
-* **Javascript** [js, javascript](http://enlighterjs.andidittrich.de/javascript.html)
-* **JSON** [json](http://enlighterjs.andidittrich.de/json.html)
-* **Java** [java](http://enlighterjs.andidittrich.de/java.html)
-* **Markdown** [md](http://enlighterjs.andidittrich.de/markdown.html)
-* **PHP** [php](http://enlighterjs.andidittrich.de/php.html)
-* **Python** [python](http://enlighterjs.andidittrich.de/python.html)
-* **Ruby** [ruby](http://enlighterjs.andidittrich.de/ruby.html)
-* **Shellscript** [shell]
-* **C** [c](http://enlighterjs.andidittrich.de/c.html)
-* **C++** [cpp](http://enlighterjs.andidittrich.de/cpp.html)
-* **C#** [csharp](http://enlighterjs.andidittrich.de/csharp.html)
-* **SQL** [sql](http://enlighterjs.andidittrich.de/sql.html)
-* **NSIS** [nsis](http://enlighterjs.andidittrich.de/nsis.html)
-* **DIFF** [diff](http://enlighterjs.andidittrich.de/diff.html)
-* **AVR-Assembler** [avrasm](http://enlighterjs.andidittrich.de/avrasm.html)
-* **Ini/Conf** [ini](http://enlighterjs.andidittrich.de/ini.html)
-* **RAW Code** [raw](http://enlighterjs.andidittrich.de/raw.html)
-* **Unhighlighted Code** [no-highlight](http://enlighterjs.andidittrich.de/nohighlight.html)
+* [AVR Assembler](http://enlighterjs.andidittrich.de/Language.AVRASM.html)
+* [C](http://enlighterjs.andidittrich.de/Language.C.html)
+* [CSS](http://enlighterjs.andidittrich.de/Language.CSS.html)
+* [C#](http://enlighterjs.andidittrich.de/Language.CSharp.html)
+* [C++](http://enlighterjs.andidittrich.de/Language.Cpp.html)
+* [Diff](http://enlighterjs.andidittrich.de/Language.Diff.html)
+* [HTML](http://enlighterjs.andidittrich.de/Language.HTML.html)
+* [Ini](http://enlighterjs.andidittrich.de/Language.Ini.html)
+* [JSON](http://enlighterjs.andidittrich.de/Language.JSON.html)
+* [Java](http://enlighterjs.andidittrich.de/Language.Java.html)
+* [Javascript](http://enlighterjs.andidittrich.de/Language.Javascript.html)
+* [MarkDown](http://enlighterjs.andidittrich.de/Language.MarkDown.html)
+* [Matlab](http://enlighterjs.andidittrich.de/Language.Matlab.html)
+* [NSIS](http://enlighterjs.andidittrich.de/Language.NSIS.html)
+* [PHP](http://enlighterjs.andidittrich.de/Language.PHP.html)
+* [Python](http://enlighterjs.andidittrich.de/Language.Python.html)
+* [RAW](http://enlighterjs.andidittrich.de/Language.RAW.html)
+* [Ruby](http://enlighterjs.andidittrich.de/Language.Ruby.html)
+* [Rust](http://enlighterjs.andidittrich.de/Language.Rust.html)
+* [SQL](http://enlighterjs.andidittrich.de/Language.SQL.html)
+* [Shell](http://enlighterjs.andidittrich.de/Language.Shell.html)
+* [VHDL](http://enlighterjs.andidittrich.de/Language.VHDL.html)
+* [XML](http://enlighterjs.andidittrich.de/Language.XML.html)
 
 ### Shortcode Quickstart Example ###
 Highlight javascript code (theme defined on your settings page)
