@@ -10,6 +10,9 @@
 		<copy todir="C:\Development\htdocs\wordpress2\wp-content\plugins\enlighter" overwrite="true">
 			<fileset dir="." />
 		</copy>
+        <copy todir="C:\Development\htdocs\wordpress_rc\wp-content\plugins\enlighter" overwrite="true">
+            <fileset dir="." />
+        </copy>
 	</target>
 
     <!-- GitHub readme + changes => WordPress transformation !-->

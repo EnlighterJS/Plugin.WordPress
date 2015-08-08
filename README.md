@@ -3,12 +3,12 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.9
-Tested up to: 4.2
-Stable tag: 2.8
+Tested up to: 4.3
+Stable tag: 2.9
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
-Simple post syntax-highlighted code using the EnlighterJS MooTools Plugin.
+Simple post syntax-highlighted code using the EnlighterJS Javascript Plugin.
 
 ## Description ##
 
@@ -18,18 +18,16 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 [Theme Demo](http://enlighterjs.andidittrich.de/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.andidittrich.de/Language.Javascript.html "EnlighterJS Language Example")
 
 ### Plugin Features ###
-* Support for all common used languages
+* Support for all common used languages including powerful generic highlighting
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
 * **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
 * Easy to use Text-Editor mode through the use of Shortcodes
 * Advanced configuration options (CDN usage, ..) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
-* Outputs in various formats like ordered lists or inline. Choose the method that works best for you.
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
-* EnlighterJS is written in MooTools. Requires MooTools v1.4+ (included) and client enabled javascript
 
 ### Supported Languages (build-in) ###
 Click to view Language/Theme Examples
@@ -40,6 +38,7 @@ Click to view Language/Theme Examples
 * [C#](http://enlighterjs.andidittrich.de/Language.CSharp.html)
 * [C++](http://enlighterjs.andidittrich.de/Language.Cpp.html)
 * [Diff](http://enlighterjs.andidittrich.de/Language.Diff.html)
+* [Generic](http://enlighterjs.andidittrich.de/Language.Generic.html)
 * [HTML](http://enlighterjs.andidittrich.de/Language.HTML.html)
 * [Ini](http://enlighterjs.andidittrich.de/Language.Ini.html)
 * [JSON](http://enlighterjs.andidittrich.de/Language.JSON.html)
@@ -168,6 +167,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 12. Theme Customizer - Live Preview-Mode
 
 ## Upgrade Notice ##
+
+### 2.9 ###
+Bugfix Release (TinyMCE and EnlighterJS Core)
 
 ### 2.6 ###
 Renamed the EnlighterJS files to `EnlighterJS.min.css` and `EnlighterJS.min.js`. In case you have applied custom modifications these changes may broke your setup and you need to change it!

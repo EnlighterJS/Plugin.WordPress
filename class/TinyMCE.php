@@ -69,7 +69,7 @@ class TinyMCE{
 		
 		// style formats already defined ?
 		if (isset($tinyMceConfigData['style_formats'])){
-			$styles = json_decode($tinyMceConfigData['style_formats']);
+			$styles = json_decode($tinyMceConfigData['style_formats'], true);
 		}
 		
 		// valid html tgas

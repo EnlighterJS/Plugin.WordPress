@@ -1,5 +1,12 @@
 ## Changelog ##
 
+### 2.9 ###
+* Added: [EnlighterJS v2.9](http://enlighterjs.andidittrich.de/)
+* Bugfix: Under some special conditions the tokenizer repeats the last sequence of a codeblock - thanks to [Kalydon](https://github.com/AndiDittrich/EnlighterJS/issues/8) and [dan-j on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/13)
+* Bugfix: TinyMCE Editor plugin didn't work in some special cases (use of other editor plugin) - [Thanks to esumit on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/12)
+* Bugfix: the final character of highlighted code got removed by the tokenizer engine in case it's a text token - thanks to [dan-j on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/15)
+* Bugfix: Generic highlighting was accidentally removed from EnlighterJS 
+
 ### 2.8 ###
 * Added: [EnlighterJS v2.7.0](http://enlighterjs.andidittrich.de/)
 * Added: [Rust](http://www.rust-lang.org/) language support - feature requested on [GitHub](https://github.com/AndiDittrich/EnlighterJS/issues/7)
