@@ -150,39 +150,42 @@ class ResourceLoader{
 	
 	// append js
 	public function appendJS(){
+		// determine if the tag should be in head or footer
+        	$in_footer = ($this->_config['jsType'] == 'inline-footer');
+		
 		// include mootools from local source ?
 		if ($this->_config['mootoolsSource'] == 'local'){
 			// include local mootools
 			wp_register_script('mootools-local', self::$cdnLocations['mootools-local']);
-			wp_enqueue_script('mootools-local');
+			wp_enqueue_script('mootools-local', false, array(), false, $in_footer);
 		}
 	
 		// include mootools from google cdn ?
 		if ($this->_config['mootoolsSource'] == 'google'){
 			// include local mootools hosted by google's cdn
 			wp_register_script('mootools-google-cdn', self::$cdnLocations['mootools-google']);
-			wp_enqueue_script('mootools-google-cdn');
+			wp_enqueue_script('mootools-google-cdn', false, array(), false, $in_footer);
 		}
 		
 		// include mootools from cloudfare cdn ?
 		if ($this->_config['mootoolsSource'] == 'cdnjs'){
 			// include local mootools hosted by cloudfares's cdn
 			wp_register_script('mootools-cloudfare-cdn', self::$cdnLocations['mootools-cdnjs']);
-			wp_enqueue_script('mootools-cloudfare-cdn');
+			wp_enqueue_script('mootools-cloudfare-cdn', false, array(), false, $in_footer);
 		}
 	
 		// only include EnlighterJS js if enabled
 		if ($this->_config['embedEnlighterJS']){
 			// include local css file
 			wp_register_script('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.js'));
-			wp_enqueue_script('enlighter-local');
+			wp_enqueue_script('enlighter-local', false, array(), false, $in_footer);
 		}
 		
 		// only include EnlighterJS config if enabled
 		if ($this->_config['jsType'] == 'external'){
 			// include local css file
 			wp_register_script('enlighter-config', plugins_url('/enlighter/cache/EnlighterJS.init.js'), array('enlighter-local'));
-			wp_enqueue_script('enlighter-config');
+			wp_enqueue_script('enlighter-config', false, array(), false, $in_footer);
 		}
 	}
 	
