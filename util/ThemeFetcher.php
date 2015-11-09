@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 /**
  * Extracts CSS settings from themes and convert it into Javascript
@@ -6,17 +7,19 @@
  * @license MIT Style X11 License
  */
 
+// change to current dir
+chdir(__DIR__);
+
 // yaml parser
-require_once('util/spyc-yaml/Spyc.php');
+require_once('spyc-yaml/Spyc.php');
 
 // get output dir
-$outputDir = $argv[1].'/';
+$outputDir = '../views/themes/';
 
-$themes = explode(' ', 'Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Git Mocha MooTools Panic Tutti Twilight');
+$themes = explode(' ', 'Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Minimal Atomic Git Mocha MooTools Panic Tutti Twilight');
 
 // github fetching url
-//$gitHubURL = 'https://raw.githubusercontent.com/AndiDittrich/EnlighterJS/master/Source/Themes/';
-$gitHubURL = 'file:///C:/Development/Javascript/EnlighterJS/Source/Themes/';
+$gitHubURL = 'https://raw.githubusercontent.com/AndiDittrich/EnlighterJS/master/Source/Themes/';
 
 // js Theme Template
 $ThemeStyles = array();
@@ -81,7 +84,7 @@ foreach ($themes as $theme){
 }
 
 // store ThemeStyles
-file_put_contents('resources/admin/ThemeStyles.js', '/* AUTO GENERATED FILE - DO NOT EDIT*/var Enlighter_ThemeStyles = '.json_encode($ThemeStyles).';');
+file_put_contents('../resources/admin/ThemeStyles.js', '/* AUTO GENERATED FILE - DO NOT EDIT*/var Enlighter_ThemeStyles = '.json_encode($ThemeStyles).';');
 
 
 function parseCssRules($cssData){

@@ -2,7 +2,7 @@
 
 /**
 	Enlighter Class
-	Version: 2.8
+	Version: 2.10
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs
@@ -87,7 +87,9 @@ class Enlighter{
         'cryptexEnabled' => false,
         'cryptexFallbackEmail' => 'mail@example.tld',
 
-		'webfontsSourceCodePro' => false
+		'webfontsSourceCodePro' => false,
+        'webfontsDroidSansMono' => false,
+        'webfontsInconsolata' => false
 	);
 	
 	// list of micro shortcodes (supported languages)
@@ -96,6 +98,7 @@ class Enlighter{
 		'HTML (Hypertext Markup Language)' => 'html',
 		'Java' => 'java',
 		'Javascript' => 'js',
+        'JSON' => 'json',
 		'Markdown' => 'md',
 		'PHP' => 'php',
 		'Python' => 'python',
@@ -107,13 +110,16 @@ class Enlighter{
 		'C++' => 'cpp',
 		'C#' => 'csharp',
 		'RUST' => 'rust',
+        'LUA' => 'lua',
 		'Matlab' => 'matlab',
 		'NSIS' => 'nsis',
 		'Diff' => 'diff',
 		'VHDL' => 'vhdl',
-		'RAW' => 'raw',
-		'Avr Assembler' => 'avrasm',
+		'Avr Assembly' => 'avrasm',
+        'Generic Assembly' => 'asm',
+        'Squirrel' => 'squirrel',
 		'Ini/Conf Syntax' => 'ini',
+        'RAW Code' => 'raw',
 		'No Highlighting' => 'no-highlight',
 		'Generic Highlighting' => 'generic'	
 	);
@@ -128,6 +134,8 @@ class Enlighter{
 		'MooTwo' => true,
 		'Eclipse' => true,
 		'Droide' => true,
+        'Minimal' => true,
+        'Atomic' => true,
 		'Git' => true,
 		'Mocha' => true,
 		'MooTools' => true,

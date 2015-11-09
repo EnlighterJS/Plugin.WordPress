@@ -1,10 +1,10 @@
 # Enlighter - Customizable Syntax Highlighter #
 Contributors: Andi Dittrich
-Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config
+Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://andidittrich.de/go/enlighterjs
 Requires at least: 3.9
 Tested up to: 4.3
-Stable tag: 2.9
+Stable tag: 2.10
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -32,11 +32,13 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 ### Supported Languages (build-in) ###
 Click to view Language/Theme Examples
 
-* [AVR Assembler](http://enlighterjs.andidittrich.de/Language.AVRASM.html)
+* [AVR Assembly](http://enlighterjs.andidittrich.de/Language.AVRASM.html)
+* [Generic Assembly](http://enlighterjs.andidittrich.de/Language.Assembly.html)
 * [C](http://enlighterjs.andidittrich.de/Language.C.html)
 * [CSS](http://enlighterjs.andidittrich.de/Language.CSS.html)
 * [C#](http://enlighterjs.andidittrich.de/Language.CSharp.html)
 * [C++](http://enlighterjs.andidittrich.de/Language.Cpp.html)
+* [Cython](http://enlighterjs.andidittrich.de/Language.Cython.html)
 * [Diff](http://enlighterjs.andidittrich.de/Language.Diff.html)
 * [Generic](http://enlighterjs.andidittrich.de/Language.Generic.html)
 * [HTML](http://enlighterjs.andidittrich.de/Language.HTML.html)
@@ -44,6 +46,7 @@ Click to view Language/Theme Examples
 * [JSON](http://enlighterjs.andidittrich.de/Language.JSON.html)
 * [Java](http://enlighterjs.andidittrich.de/Language.Java.html)
 * [Javascript](http://enlighterjs.andidittrich.de/Language.Javascript.html)
+* [LUA](http://enlighterjs.andidittrich.de/Language.LUA.html)
 * [MarkDown](http://enlighterjs.andidittrich.de/Language.MarkDown.html)
 * [Matlab](http://enlighterjs.andidittrich.de/Language.Matlab.html)
 * [NSIS](http://enlighterjs.andidittrich.de/Language.NSIS.html)
@@ -53,6 +56,7 @@ Click to view Language/Theme Examples
 * [Ruby](http://enlighterjs.andidittrich.de/Language.Ruby.html)
 * [Rust](http://enlighterjs.andidittrich.de/Language.Rust.html)
 * [SQL](http://enlighterjs.andidittrich.de/Language.SQL.html)
+* [Squirrel](http://enlighterjs.andidittrich.de/Language.Squirrel.html)
 * [Shell](http://enlighterjs.andidittrich.de/Language.Shell.html)
 * [VHDL](http://enlighterjs.andidittrich.de/Language.VHDL.html)
 * [XML](http://enlighterjs.andidittrich.de/Language.XML.html)

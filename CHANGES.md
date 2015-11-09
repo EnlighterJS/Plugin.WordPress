@@ -1,5 +1,16 @@
 ## Changelog ##
 
+### 2.10 ##
+* Added: [EnlighterJS v2.10.0](http://enlighterjs.andidittrich.de/)
+* Added: [Cython](http://cython.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/14)
+* Added: [Squirrel](http://www.squirrel-lang.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/16)
+* Added: [General Assembly Language support](https://en.wikipedia.org/wiki/Assembly_language) - feature requested on [GitHub](https://github.com/AndiDittrich/EnlighterJS/issues/12)
+* Added: [LUA](http://www.lua.org/) Language support
+* Added: Minimal Theme (bright, high contrast)
+* Added: Atomic Theme (dark, colorful)
+* Added: missing AVR Assembly features (used [AVR-1022](www.atmel.com/Images/doc1022.pdf) reference) 
+* Bugfix: removed `console.log` debugging output from tokenizer
+
 ### 2.9 ###
 * Added: [EnlighterJS v2.9](http://enlighterjs.andidittrich.de/)
 * Bugfix: Under some special conditions the tokenizer repeats the last sequence of a codeblock - thanks to [Kalydon](https://github.com/AndiDittrich/EnlighterJS/issues/8) and [dan-j on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/13)
