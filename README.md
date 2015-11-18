@@ -1,7 +1,7 @@
 # Enlighter - Customizable Syntax Highlighter #
 Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
-Donate link: http://andidittrich.de/go/enlighterjs
+Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.3
 Stable tag: 2.10
@@ -12,10 +12,10 @@ Simple post syntax-highlighted code using the EnlighterJS Javascript Plugin.
 
 ## Description ##
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.andidittrich.de) to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.org) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-[Theme Demo](http://enlighterjs.andidittrich.de/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.andidittrich.de/Language.Javascript.html "EnlighterJS Language Example")
+[Theme Demo](http://enlighterjs.org/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
 
 ### Plugin Features ###
 * Support for all common used languages including powerful generic highlighting
@@ -32,34 +32,34 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 ### Supported Languages (build-in) ###
 Click to view Language/Theme Examples
 
-* [AVR Assembly](http://enlighterjs.andidittrich.de/Language.AVRASM.html)
-* [Generic Assembly](http://enlighterjs.andidittrich.de/Language.Assembly.html)
-* [C](http://enlighterjs.andidittrich.de/Language.C.html)
-* [CSS](http://enlighterjs.andidittrich.de/Language.CSS.html)
-* [C#](http://enlighterjs.andidittrich.de/Language.CSharp.html)
-* [C++](http://enlighterjs.andidittrich.de/Language.Cpp.html)
-* [Cython](http://enlighterjs.andidittrich.de/Language.Cython.html)
-* [Diff](http://enlighterjs.andidittrich.de/Language.Diff.html)
-* [Generic](http://enlighterjs.andidittrich.de/Language.Generic.html)
-* [HTML](http://enlighterjs.andidittrich.de/Language.HTML.html)
-* [Ini](http://enlighterjs.andidittrich.de/Language.Ini.html)
-* [JSON](http://enlighterjs.andidittrich.de/Language.JSON.html)
-* [Java](http://enlighterjs.andidittrich.de/Language.Java.html)
-* [Javascript](http://enlighterjs.andidittrich.de/Language.Javascript.html)
-* [LUA](http://enlighterjs.andidittrich.de/Language.LUA.html)
-* [MarkDown](http://enlighterjs.andidittrich.de/Language.MarkDown.html)
-* [Matlab](http://enlighterjs.andidittrich.de/Language.Matlab.html)
-* [NSIS](http://enlighterjs.andidittrich.de/Language.NSIS.html)
-* [PHP](http://enlighterjs.andidittrich.de/Language.PHP.html)
-* [Python](http://enlighterjs.andidittrich.de/Language.Python.html)
-* [RAW](http://enlighterjs.andidittrich.de/Language.RAW.html)
-* [Ruby](http://enlighterjs.andidittrich.de/Language.Ruby.html)
-* [Rust](http://enlighterjs.andidittrich.de/Language.Rust.html)
-* [SQL](http://enlighterjs.andidittrich.de/Language.SQL.html)
-* [Squirrel](http://enlighterjs.andidittrich.de/Language.Squirrel.html)
-* [Shell](http://enlighterjs.andidittrich.de/Language.Shell.html)
-* [VHDL](http://enlighterjs.andidittrich.de/Language.VHDL.html)
-* [XML](http://enlighterjs.andidittrich.de/Language.XML.html)
+* [AVR Assembly](http://enlighterjs.org/Language.AVRASM.html)
+* [Generic Assembly](http://enlighterjs.org/Language.Assembly.html)
+* [C](http://enlighterjs.org/Language.C.html)
+* [CSS](http://enlighterjs.org/Language.CSS.html)
+* [C#](http://enlighterjs.org/Language.CSharp.html)
+* [C++](http://enlighterjs.org/Language.Cpp.html)
+* [Cython](http://enlighterjs.org/Language.Cython.html)
+* [Diff](http://enlighterjs.org/Language.Diff.html)
+* [Generic](http://enlighterjs.org/Language.Generic.html)
+* [HTML](http://enlighterjs.org/Language.HTML.html)
+* [Ini](http://enlighterjs.org/Language.Ini.html)
+* [JSON](http://enlighterjs.org/Language.JSON.html)
+* [Java](http://enlighterjs.org/Language.Java.html)
+* [Javascript](http://enlighterjs.org/Language.Javascript.html)
+* [LUA](http://enlighterjs.org/Language.LUA.html)
+* [MarkDown](http://enlighterjs.org/Language.MarkDown.html)
+* [Matlab](http://enlighterjs.org/Language.Matlab.html)
+* [NSIS](http://enlighterjs.org/Language.NSIS.html)
+* [PHP](http://enlighterjs.org/Language.PHP.html)
+* [Python](http://enlighterjs.org/Language.Python.html)
+* [RAW](http://enlighterjs.org/Language.RAW.html)
+* [Ruby](http://enlighterjs.org/Language.Ruby.html)
+* [Rust](http://enlighterjs.org/Language.Rust.html)
+* [SQL](http://enlighterjs.org/Language.SQL.html)
+* [Squirrel](http://enlighterjs.org/Language.Squirrel.html)
+* [Shell](http://enlighterjs.org/Language.Shell.html)
+* [VHDL](http://enlighterjs.org/Language.VHDL.html)
+* [XML](http://enlighterjs.org/Language.XML.html)
 
 ### Shortcode Quickstart Example ###
 Highlight javascript code (theme defined on your settings page)
@@ -128,7 +128,7 @@ Please keep in mind that not all translations are up to date. You are welcome to
  
 ### Related Links ###
 * [Enlighter Plugin on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
-* [EnlighterJS Documentation](http://andidittrich.de/go/enlighterjs)
+* [EnlighterJS Documentation](http://enlighterjs.org)
 
 ## Compatibility ##
 
@@ -177,7 +177,7 @@ Bugfix Release (TinyMCE and EnlighterJS Core)
 
 ### 2.6 ###
 Renamed the EnlighterJS files to `EnlighterJS.min.css` and `EnlighterJS.min.js`. In case you have applied custom modifications these changes may broke your setup and you need to change it!
-Added [EnlighterJS v2.5](http://enlighterjs.andidittrich.de/) with some optimization.
+Added [EnlighterJS v2.5](http://enlighterjs.org/) with some optimization.
 
 ### 2.4 ###
 Removed WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 including TinyMCE 4

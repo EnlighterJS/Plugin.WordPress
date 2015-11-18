@@ -33,6 +33,9 @@ class ResourceLoader{
 	
 	// list of external themes
 	private $_themeManager;
+
+    // javascript position
+    private $_jsInFooter = false;
 	
 	public function __construct($settingssUtil, $themeManager, $languageKeys){
 		// store local plugin config
@@ -43,6 +46,9 @@ class ResourceLoader{
 		
 		// local theme manager instance (required for external themes)
 		$this->_themeManager = $themeManager;
+
+        // get javascript position
+        $this->_jsInFooter = ($this->_config['jsPosition'] == 'footer');
 		
 		// initialize cdn locations
 		self::$cdnLocations['mootools-local'] = plugins_url('/enlighter/resources/mootools-core-yc.js');
@@ -58,13 +64,15 @@ class ResourceLoader{
 		add_action('wp_enqueue_scripts', array($this, 'appendCSS'), 50);
 		add_action('wp_enqueue_scripts', array($this, 'appendJS'), 50);
 			
-		// display frontend config
-		if ($this->_config['jsType'] == 'inline-head'){
-			add_action('wp_head', array($this, 'appendJavascriptConfig'));
+		// display frontend config - backward compatible to v2.9
+		if ($this->_config['jsType'] != 'external' && $this->_config['jsType'] != 'none'){
 
-		// footer location ?
-		}else if ($this->_config['jsType'] == 'inline-footer'){			
-			add_action('wp_footer', array($this, 'appendJavascriptConfig'));
+            // header or footer location ? set priority to 30 to print scripts after enqueued one (20)
+            if ($this->_jsInFooter){
+                add_action('wp_footer', array($this, 'appendJavascriptConfig'), 30);
+            }else{
+                add_action('wp_head', array($this, 'appendJavascriptConfig'), 30);
+            }
 		}
 		
 		// initialize Frontend TinyMCE modifications
@@ -123,28 +131,38 @@ class ResourceLoader{
 		if ($this->_config['embedEnlighterCSS']){
 			// include generated css ?
 			if ($this->_config['defaultTheme']=='wpcustom'){
-				wp_register_style('enlighter-wpcustom', plugins_url('/enlighter/cache/EnlighterJS.custom.css'));
-				wp_enqueue_style('enlighter-wpcustom');
+                wp_enqueue_style('enlighter-wpcustom', plugins_url('/enlighter/cache/EnlighterJS.custom.css'), array(), ENLIGHTER_VERSION);
 			}else{
 				// include standard css file ?
-				wp_register_style('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.css'));
-				wp_enqueue_style('enlighter-local');
+                wp_enqueue_style('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.css'), array(), ENLIGHTER_VERSION);
 			}
 		}
 		
 		// load user themes ?
-		if ($this->_config['embedExternalThemes']){
-			// embed available external themes
-			foreach ($this->_themeManager->getUserThemes() as $theme => $sources){
-				wp_register_style('enlighter-external-'.strtolower($theme), $sources[1]);
-				wp_enqueue_style('enlighter-external-'.strtolower($theme));
-			}
-		}
+		if ($this->_config['embedExternalThemes']) {
+            // embed available external themes
+            foreach ($this->_themeManager->getUserThemes() as $theme => $sources) {
+                wp_enqueue_style('enlighter-external-' . strtolower($theme), $sources[1], array(), ENLIGHTER_VERSION);
+            }
+        }
 
-		// google webfonts "source code pro"
-		if ($this->_config['webfontsSourceCodePro']){
-			wp_register_style('webfonts-sourcecodepro', '//fonts.googleapis.com/css?family=Source+Code+Pro:400,700');
-			wp_enqueue_style('webfonts-sourcecodepro');
+        // list of google webfonts to load
+        $webfontList = array();
+
+        // get all available webfonts
+        $webfonts = GoogleWebfontResources::getMonospaceFonts();
+
+        // load enabled fonts
+        foreach ($webfonts as $name => $font){
+            $fid = preg_replace('/[^A-Za-z0-9]/', '', $name);
+            if ($this->_config['webfonts'.$fid]){
+                $webfontList[] = $font;
+            }
+        }
+
+		// load webfonts ?
+		if (count($webfontList) > 0){
+            wp_enqueue_style('enlighter-webfonts', '//fonts.googleapis.com/css?family=' . implode('|', $webfontList));
 		}
 	}
 	
@@ -153,36 +171,31 @@ class ResourceLoader{
 		// include mootools from local source ?
 		if ($this->_config['mootoolsSource'] == 'local'){
 			// include local mootools
-			wp_register_script('mootools-local', self::$cdnLocations['mootools-local']);
-			wp_enqueue_script('mootools-local');
+            wp_enqueue_script('mootools-local', self::$cdnLocations['mootools-local'], array(), false, $this->_jsInFooter);
 		}
 	
 		// include mootools from google cdn ?
 		if ($this->_config['mootoolsSource'] == 'google'){
 			// include local mootools hosted by google's cdn
-			wp_register_script('mootools-google-cdn', self::$cdnLocations['mootools-google']);
-			wp_enqueue_script('mootools-google-cdn');
+            wp_enqueue_script('mootools-google-cdn', self::$cdnLocations['mootools-google'], array(), false, $this->_jsInFooter);
 		}
 		
 		// include mootools from cloudfare cdn ?
 		if ($this->_config['mootoolsSource'] == 'cdnjs'){
 			// include local mootools hosted by cloudfares's cdn
-			wp_register_script('mootools-cloudfare-cdn', self::$cdnLocations['mootools-cdnjs']);
-			wp_enqueue_script('mootools-cloudfare-cdn');
+            wp_enqueue_script('mootools-cloudfare-cdn', self::$cdnLocations['mootools-cdnjs'], array(), false, $this->_jsInFooter);
 		}
 	
 		// only include EnlighterJS js if enabled
 		if ($this->_config['embedEnlighterJS']){
 			// include local css file
-			wp_register_script('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.js'));
-			wp_enqueue_script('enlighter-local');
+            wp_enqueue_script('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.js'), array(), ENLIGHTER_VERSION, $this->_jsInFooter);
 		}
 		
 		// only include EnlighterJS config if enabled
 		if ($this->_config['jsType'] == 'external'){
 			// include local css file
-			wp_register_script('enlighter-config', plugins_url('/enlighter/cache/EnlighterJS.init.js'), array('enlighter-local'));
-			wp_enqueue_script('enlighter-config');
+            wp_enqueue_script('enlighter-config', plugins_url('/enlighter/cache/EnlighterJS.init.js'), array('enlighter-local'), ENLIGHTER_VERSION, $this->_jsInFooter);
 		}
 	}
 	
@@ -191,7 +204,7 @@ class ResourceLoader{
 		if (empty($mce_css)){
 			return plugins_url('/enlighter/resources/admin/TinyMCE.css');
 		}else{
-			return $mce_css .= ','.plugins_url('/enlighter/resources/admin/TinyMCE.css');
+			return $mce_css . ','.plugins_url('/enlighter/resources/admin/TinyMCE.css');
 		}
 	}
 	
@@ -203,33 +216,24 @@ class ResourceLoader{
 	
 	public function appendAdminCSS(){
 		// colorpicker css
-		wp_register_style('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/css/colorpicker.css'));
-		wp_enqueue_style('enlighter-jquery-colorpicker');
-		
+        wp_enqueue_style('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/css/colorpicker.css'), array(), ENLIGHTER_VERSION);
+
 		// new UI styles
-		wp_register_style('enlighter-settings', plugins_url('/enlighter/resources/admin/EnlighterSettings.css'));
-		wp_enqueue_style('enlighter-settings');
+        wp_enqueue_style('enlighter-settings', plugins_url('/enlighter/resources/admin/EnlighterSettings.css'), array(), ENLIGHTER_VERSION);
 	}
 	
 	public function appendAdminJS(){
-		// load tooltipps
-		//wp_enqueue_script('jquery-ui-tooltip', array('jquery'));
-		
 		// colorpicker js
-		wp_register_script('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/js/colorpicker.js'), array('jquery'));
-		wp_enqueue_script('enlighter-jquery-colorpicker');
+        wp_enqueue_script('enlighter-jquery-colorpicker', plugins_url('/enlighter/extern/colorpicker/js/colorpicker.js'), array('jquery'), ENLIGHTER_VERSION);
 
 		// jquery cookies
-		wp_register_script('enlighter-jquery-cookies', plugins_url('/enlighter/extern/jquery.cookie/jquery.cookie.js'), array('jquery'));
-		wp_enqueue_script('enlighter-jquery-cookies');
-		
+        wp_enqueue_script('enlighter-jquery-cookies', plugins_url('/enlighter/extern/jquery.cookie/jquery.cookie.js'), array('jquery'), ENLIGHTER_VERSION);
+
 		// theme data
-		wp_register_script('enlighter-themes', plugins_url('/enlighter/resources/admin/ThemeStyles.js'));
-		wp_enqueue_script('enlighter-themes');
-		
+        wp_enqueue_script('enlighter-themes', plugins_url('/enlighter/resources/admin/ThemeStyles.js'), array(), ENLIGHTER_VERSION);
+
 		// settings init script
-		wp_register_script('enlighter-settings', plugins_url('/enlighter/resources/admin/EnlighterSettings.js'), array('jquery',  'enlighter-jquery-cookies', 'enlighter-jquery-colorpicker', 'enlighter-themes'));
-		wp_enqueue_script('enlighter-settings');
+        wp_enqueue_script('enlighter-settings', plugins_url('/enlighter/resources/admin/EnlighterSettings.js'), array('jquery',  'enlighter-jquery-cookies', 'enlighter-jquery-colorpicker', 'enlighter-themes'), ENLIGHTER_VERSION);
 	}
 	
 	public function appendInlineTinyMCEConfig(){

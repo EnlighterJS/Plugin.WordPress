@@ -45,7 +45,8 @@ class Enlighter{
 		'embedEnlighterJS' => true,
 		'embedExternalThemes' => true,	
 		'mootoolsSource' => 'local',
-		'jsType' => 'inline-head',	
+		'jsType' => 'inline',
+        'jsPosition' => 'header',
 		'defaultTheme' => 'enlighter',
 		'defaultLanguage' => 'generic',
 		'languageShortcode' => true,
@@ -85,11 +86,7 @@ class Enlighter{
 		'enableInlineHighlighting' => true,
 
         'cryptexEnabled' => false,
-        'cryptexFallbackEmail' => 'mail@example.tld',
-
-		'webfontsSourceCodePro' => false,
-        'webfontsDroidSansMono' => false,
-        'webfontsInconsolata' => false
+        'cryptexFallbackEmail' => 'mail@example.tld'
 	);
 	
 	// list of micro shortcodes (supported languages)
@@ -136,6 +133,7 @@ class Enlighter{
 		'Droide' => true,
         'Minimal' => true,
         'Atomic' => true,
+        'Rowhammer' => true,
 		'Git' => true,
 		'Mocha' => true,
 		'MooTools' => true,
@@ -203,6 +201,13 @@ class Enlighter{
 			$this->_defaultConfig['custom-fontstyle-'.$key] = '';
 			$this->_defaultConfig['custom-decoration-'.$key] = '';
 		}
+
+        // generate webfont config keys
+        $webfonts = \Enlighter\GoogleWebfontResources::getMonospaceFonts();
+        foreach ($webfonts as $name => $font){
+            $fid = preg_replace('/[^A-Za-z0-9]/', '', $name);
+            $this->_defaultConfig['webfonts'.$fid] = false;
+        }
 		
 		// create new settings utility class
 		$this->_settingsUtility = new Enlighter\SettingsUtil('enlighter-', $this->_defaultConfig);
@@ -282,7 +287,8 @@ class Enlighter{
 			$optionsPage = add_options_page(__('Enlighter - Customizable Syntax Highlighter', 'enlighter'), 'Enlighter', 'administrator', __FILE__, array($this, 'settingsPage'));
 			
 			// add links
-			add_filter('plugin_row_meta', array($this, 'addPluginPageLinks'), 10, 2);
+            add_filter('plugin_action_links', array($this, 'addPluginPageSettingsLink'), 10, 2);
+			add_filter('plugin_row_meta', array($this, 'addPluginMetaLinks'), 10, 2);
 
 			// load jquery stuff
 			add_action('admin_print_scripts-'.$optionsPage, array($this->_resourceLoader, 'appendAdminJS'));
@@ -297,16 +303,26 @@ class Enlighter{
 		}
 	}
 	
-	// links on the plugin page
-	public function addPluginPageLinks($links, $file){
+	// links to the plugin website & author's twitter channel ()
+	public function addPluginMetaLinks($links, $file){
 		// current plugin ?
 		if ($file == 'enlighter/Enlighter.php'){
-			$links[] = '<a href="'.admin_url('options-general.php?page='.plugin_basename(__FILE__)).'">'.__('Settings', 'enlighter').'</a>';
-			$links[] = '<a href="https://twitter.com/andidittrich">'.__('News & Updates', 'enlighter').'</a>';
+			$links[] = '<a target="_blank" href="https://twitter.com/andidittrich">'.__('News & Updates', 'enlighter').'</a>';
+            $links[] = '<a target="_blank" href="http://enlighterjs.org">'.__('EnlighterJS Website', 'enlighter').'</a>';
 		}
 		
 		return $links;
 	}
+
+    // links on the plugin page
+    public function addPluginPageSettingsLink($links, $file){
+        // current plugin ?
+        if ($file == 'enlighter/Enlighter.php'){
+            $links[] = '<a href="'.admin_url('options-general.php?page='.plugin_basename(__FILE__)).'">'.__('Settings', 'enlighter').'</a>';
+        }
+
+        return $links;
+    }
 	
 	// options page
 	public function settingsPage(){
@@ -331,6 +347,9 @@ class Enlighter{
 		foreach ($this->_themeManager->getUserThemes() as $t => $source){
 			$themeList[$t.'/ext'] = strtolower($t);
 		}
+
+        // get webfont list
+        $webfonts = \Enlighter\GoogleWebfontResources::getMonospaceFonts();
 				
 		// include admin page
 		include(ENLIGHTER_PLUGIN_PATH.'/views/admin/SettingsPage.phtml');
@@ -341,7 +360,7 @@ class Enlighter{
         $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.min.js');
 
         // extract version
-        $r = preg_match('#^[\S\s]+ (\d.\d.\d)#U', $content, $matches);
+        $r = preg_match('#^[\S\s]+ (\d.\d+.\d+)#U', $content, $matches);
 
         // valid result ?
         if ($r!==1){

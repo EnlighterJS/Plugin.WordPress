@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Enlighter" default="build" basedir=".">
+<project name="Enlighter" default="devcopy" basedir=".">
 
-	<!-- Plugin Test -->
-	<target name="build" depends="potgen, readme">
-		<copy todir="C:\Development\htdocs\wordpress\wp-content\plugins\enlighter" overwrite="true">
-			<fileset dir="." />
-		</copy>
-		<copy todir="C:\Development\htdocs\wordpress2\wp-content\plugins\enlighter" overwrite="true">
-			<fileset dir="." />
-		</copy>
-        <copy todir="C:\Development\htdocs\wordpress_rc\wp-content\plugins\enlighter" overwrite="true">
+    <target name="full" depends="potgen, readme, webfonts, themes, devcopy" />
+
+	<!-- Plugin Test - DEVELOPMENT ONLY -->
+	<target name="devcopy">
+        <!-- Credentials, Host Settings !-->
+        <loadproperties srcFile=".credentials/account.conf" prefix="dev" />
+
+        <!-- transfer deploy plugin !-->
+        <echo message="Uploading files" />
+
+        <scp todir="${dev.user}@${dev.host}:${dev.path}" trust="true" port="${dev.port}" keyfile="${user.home}/${dev.keyfile}" >
             <fileset dir="." />
-        </copy>
+        </scp>
 	</target>
 
     <!-- GitHub readme + changes => WordPress transformation !-->
@@ -30,9 +32,14 @@
 
 	<!-- POT file generation !-->
 	<target name="potgen">
-		<exec executable="php.exe"><arg value="util/GeneratePOT.php" /></exec>
+		<exec executable="php"><arg value="util/GeneratePOT.php" /></exec>
 	</target>
-	
+
+    <!-- Webfonts code generation !-->
+    <target name="webfonts">
+        <exec executable="php"><arg value="util/WebfontsGenerator.php" /></exec>
+    </target>
+
 	<!-- Theme Fetching !-->
 	<target name="themes">
 		<!-- Cleanup Dir -->
@@ -40,7 +47,7 @@
 		<mkdir dir="views/themes"/>
 		
 		<!-- Run Theme Fetcher !-->
-		<exec executable="php.exe">
+		<exec executable="php">
 			<arg value="util/ThemeFetcher.php" />
 			<arg value="views/themes" />
 		</exec>

@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2015-08-08 14:46:35+00:00\n"
+"POT-Creation-Date: 2015-11-18 22:04:06+00:00\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  2.9\n"
+"Project-Id-Version: Enlighter  2.10\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -33,12 +33,16 @@ msgstr ""
 msgid "Enlighter - Customizable Syntax Highlighter"
 msgstr ""
 
-#: class/Enlighter.php:296
-msgid "Settings"
+#: class/Enlighter.php:310
+msgid "News & Updates"
 msgstr ""
 
-#: class/Enlighter.php:297
-msgid "News & Updates"
+#: class/Enlighter.php:311
+msgid "EnlighterJS Website"
+msgstr ""
+
+#: class/Enlighter.php:321
+msgid "Settings"
 msgstr ""
 
 #: class/TinyMCE.php:101
@@ -182,7 +186,7 @@ msgid "Global Settings"
 msgstr ""
 
 #: views/admin/Appearance.phtml:15
-msgid "Default Theme"
+msgid "Theme"
 msgstr ""
 
 #: views/admin/Appearance.phtml:18
@@ -310,7 +314,7 @@ msgid "Select the source/location of Enlighter`s initialization script."
 msgstr ""
 
 #: views/admin/Options.phtml:31
-msgid "JS Config"
+msgid "Enlighter Config"
 msgstr ""
 
 #: views/admin/Options.phtml:31
@@ -318,50 +322,62 @@ msgid "External File using <script src=\"\"...>"
 msgstr ""
 
 #: views/admin/Options.phtml:31
-msgid "Inline within wp_footer"
+msgid "Inline within header/footer"
 msgstr ""
 
-#: views/admin/Options.phtml:31
-msgid "Inline within wp_head"
+#: views/admin/Options.phtml:34 views/admin/Options.phtml:36
+msgid "Javascript Position"
 msgstr ""
 
-#: views/admin/Options.phtml:33
+#: views/admin/Options.phtml:35
+msgid "Related Javascript files/inline scripts can be added to the footer (wp_footer) or header (wp_head)."
+msgstr ""
+
+#: views/admin/Options.phtml:36
+msgid "Header within wp_head"
+msgstr ""
+
+#: views/admin/Options.phtml:36
+msgid "Footer within wp_footer"
+msgstr ""
+
+#: views/admin/Options.phtml:38
 msgid "CDN Location Info"
 msgstr ""
 
-#: views/admin/Options.phtml:34
+#: views/admin/Options.phtml:39
 msgid "List of available CDN locations used by Enlighter."
 msgstr ""
 
-#: views/admin/Options.phtml:46
+#: views/admin/Options.phtml:51
 msgid "Cryptex Email Obfuscation Plugin"
 msgstr ""
 
-#: views/admin/Options.phtml:49
+#: views/admin/Options.phtml:54
 msgid "These options are related to the <a href=\"https://wordpress.org/plugins/cryptex/\" target=\"_blank\">Cryptex Email Address Obfuscation plugin</a>. It can protect Email Adresses within your highlighted sourcecode."
 msgstr ""
 
-#: views/admin/Options.phtml:50
+#: views/admin/Options.phtml:55
 msgid "Requires Cryptex 5.0 with enabled hyperlinks."
 msgstr ""
 
-#: views/admin/Options.phtml:53
+#: views/admin/Options.phtml:58
 msgid "Cryptex"
 msgstr ""
 
-#: views/admin/Options.phtml:56
+#: views/admin/Options.phtml:61
 msgid "Enable Cryptex Support"
 msgstr ""
 
-#: views/admin/Options.phtml:59
+#: views/admin/Options.phtml:64
 msgid "The default Email address which will be shown if the hyperlinks are disabled into the cryptex plugin "
 msgstr ""
 
-#: views/admin/Options.phtml:60
+#: views/admin/Options.phtml:65
 msgid "Fallback EMail Address"
 msgstr ""
 
-#: views/admin/Options.phtml:60
+#: views/admin/Options.phtml:65
 msgid "can be any kind of text"
 msgstr ""
 
@@ -483,39 +499,39 @@ msgid "Font Styles"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:36 views/admin/ThemeCustomizer.phtml:53
-#: views/admin/ThemeCustomizer.phtml:68
+#: views/admin/ThemeCustomizer.phtml:67
 msgid "Font-Family"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:36 views/admin/ThemeCustomizer.phtml:53
-#: views/admin/ThemeCustomizer.phtml:68
+#: views/admin/ThemeCustomizer.phtml:67
 msgid "e.g. Monaco, Courier, Monospace"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:39 views/admin/ThemeCustomizer.phtml:56
-#: views/admin/ThemeCustomizer.phtml:71
+#: views/admin/ThemeCustomizer.phtml:70
 msgid "Font-Size"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:39 views/admin/ThemeCustomizer.phtml:71
+#: views/admin/ThemeCustomizer.phtml:39 views/admin/ThemeCustomizer.phtml:70
 msgid "e.g. 12px, 1.2em, 11pt"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:42 views/admin/ThemeCustomizer.phtml:74
+#: views/admin/ThemeCustomizer.phtml:42 views/admin/ThemeCustomizer.phtml:73
 msgid "Line height"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:42 views/admin/ThemeCustomizer.phtml:74
+#: views/admin/ThemeCustomizer.phtml:42 views/admin/ThemeCustomizer.phtml:73
 msgid "e.g. 16px, 1.5em"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:45 views/admin/ThemeCustomizer.phtml:59
-#: views/admin/ThemeCustomizer.phtml:77
+#: views/admin/ThemeCustomizer.phtml:76
 msgid "Font-Color"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:45 views/admin/ThemeCustomizer.phtml:59
-#: views/admin/ThemeCustomizer.phtml:77 views/admin/ThemeCustomizer.phtml:88
+#: views/admin/ThemeCustomizer.phtml:76 views/admin/ThemeCustomizer.phtml:87
 msgid "e.g. #000000, #ff00c1"
 msgstr ""
 
@@ -527,147 +543,147 @@ msgstr ""
 msgid "e.g. 10px, 1.2em, 11pt"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:65
+#: views/admin/ThemeCustomizer.phtml:64
 msgid "RAW Font Styles"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:80
+#: views/admin/ThemeCustomizer.phtml:79
 msgid "Background-Color"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:80
+#: views/admin/ThemeCustomizer.phtml:79
 msgid "e.g. #ffffff"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:85
+#: views/admin/ThemeCustomizer.phtml:84
 msgid "Special Styles"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:88
+#: views/admin/ThemeCustomizer.phtml:87
 msgid "Line highlighting Color"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:91
+#: views/admin/ThemeCustomizer.phtml:90
 msgid "Line hover Color"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:91
+#: views/admin/ThemeCustomizer.phtml:90
 msgid "e.g. #f0f0ff"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:96
+#: views/admin/ThemeCustomizer.phtml:95
 msgid "Token Styles"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:101
+#: views/admin/ThemeCustomizer.phtml:100
 msgid "Keyword(Type1)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:102
+#: views/admin/ThemeCustomizer.phtml:101
 msgid "Keyword(Type2)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:103
+#: views/admin/ThemeCustomizer.phtml:102
 msgid "Keyword(Type3)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:104
+#: views/admin/ThemeCustomizer.phtml:103
 msgid "Keyword(Type4)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:105
+#: views/admin/ThemeCustomizer.phtml:104
 msgid "Slash-StyleComments"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:106
+#: views/admin/ThemeCustomizer.phtml:105
 msgid "Multiline-StyleComments"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:107
+#: views/admin/ThemeCustomizer.phtml:106
 msgid "Strings(Type1)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:108
+#: views/admin/ThemeCustomizer.phtml:107
 msgid "Strings(Type2)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:109
+#: views/admin/ThemeCustomizer.phtml:108
 msgid "Strings(Type3)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:110
+#: views/admin/ThemeCustomizer.phtml:109
 msgid "Number"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:111
+#: views/admin/ThemeCustomizer.phtml:110
 msgid "Method(Type1)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:112
+#: views/admin/ThemeCustomizer.phtml:111
 msgid "Method(Type2)"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:113
+#: views/admin/ThemeCustomizer.phtml:112
 msgid "Bracket"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:114
+#: views/admin/ThemeCustomizer.phtml:113
 msgid "Symbol"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:115
+#: views/admin/ThemeCustomizer.phtml:114
 msgid "EscapeSymbol"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:116
+#: views/admin/ThemeCustomizer.phtml:115
 msgid "Regex"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:117
+#: views/admin/ThemeCustomizer.phtml:116
 msgid "StartDelimiter"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:118
+#: views/admin/ThemeCustomizer.phtml:117
 msgid "StopDelimiter"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:122
+#: views/admin/ThemeCustomizer.phtml:121
 msgid "No Decoration"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:123
+#: views/admin/ThemeCustomizer.phtml:122
 msgid "Underline"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:124
+#: views/admin/ThemeCustomizer.phtml:123
 msgid "Overline"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:125
+#: views/admin/ThemeCustomizer.phtml:124
 msgid "Line through"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:129
+#: views/admin/ThemeCustomizer.phtml:128
 msgid "Normal Style"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:130
+#: views/admin/ThemeCustomizer.phtml:129
 msgid "Bold Style"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:131
+#: views/admin/ThemeCustomizer.phtml:130
 msgid "Italic Style"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:132
+#: views/admin/ThemeCustomizer.phtml:131
 msgid "Bold+Italic Style"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:146
+#: views/admin/ThemeCustomizer.phtml:145
 msgid "Text:"
 msgstr ""
 
-#: views/admin/ThemeCustomizer.phtml:150
+#: views/admin/ThemeCustomizer.phtml:149
 msgid "Background:"
 msgstr ""
 
@@ -683,10 +699,14 @@ msgstr ""
 msgid "To provide the best visual experience, it`s possible to load the missing fonts automatically using <a href=\"https://www.google.com/fonts\">Google Webfonts</a>."
 msgstr ""
 
-#: views/admin/Webfonts.phtml:15
-msgid "Fonts"
+#: views/admin/Webfonts.phtml:12
+msgid "The following fonts are used by Enlighter`s build-in themes:"
 msgstr ""
 
-#: views/admin/Webfonts.phtml:16
-msgid "Source Code Pro"
+#: views/admin/Webfonts.phtml:22
+msgid "Monospace Webfonts"
+msgstr ""
+
+#: views/admin/Webfonts.phtml:23
+msgid "Only regular, italic, bold, bold-italic variants are loaded!"
 msgstr ""

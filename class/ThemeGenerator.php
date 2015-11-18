@@ -158,7 +158,7 @@ class ThemeGenerator{
 		$enlighterJSBaseCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.min.css');
 		
 		// load theme base
-		$enlighterJSThemeCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/views/themes/'.$this->_settings->getOption('customThemeBase').'.css');
+		$enlighterJSThemeCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/views/themes/'.strtolower($this->_settings->getOption('customThemeBase')).'.css');
 		
 		// store file, prepend base styles
 		$cssTPL->store($this->_cacheFile, $enlighterJSBaseCss.$enlighterJSThemeCss);

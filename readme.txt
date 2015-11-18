@@ -1,10 +1,10 @@
 === Enlighter - Customizable Syntax Highlighter ===
 Contributors: Andi Dittrich
-Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config
-Donate link: http://andidittrich.de/go/enlighterjs
+Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
+Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.3
-Stable tag: 2.9
+Stable tag: 2.10
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -12,10 +12,10 @@ Simple post syntax-highlighted code using the EnlighterJS Javascript Plugin.
 
 == Description ==
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.andidittrich.de) to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.org) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-[Theme Demo](http://enlighterjs.andidittrich.de/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.andidittrich.de/Language.Javascript.html "EnlighterJS Language Example")
+[Theme Demo](http://enlighterjs.org/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
 
 = Plugin Features =
 * Support for all common used languages including powerful generic highlighting
@@ -32,30 +32,34 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 = Supported Languages (build-in) =
 Click to view Language/Theme Examples
 
-* [AVR Assembler](http://enlighterjs.andidittrich.de/Language.AVRASM.html)
-* [C](http://enlighterjs.andidittrich.de/Language.C.html)
-* [CSS](http://enlighterjs.andidittrich.de/Language.CSS.html)
-* [C#](http://enlighterjs.andidittrich.de/Language.CSharp.html)
-* [C++](http://enlighterjs.andidittrich.de/Language.Cpp.html)
-* [Diff](http://enlighterjs.andidittrich.de/Language.Diff.html)
-* [Generic](http://enlighterjs.andidittrich.de/Language.Generic.html)
-* [HTML](http://enlighterjs.andidittrich.de/Language.HTML.html)
-* [Ini](http://enlighterjs.andidittrich.de/Language.Ini.html)
-* [JSON](http://enlighterjs.andidittrich.de/Language.JSON.html)
-* [Java](http://enlighterjs.andidittrich.de/Language.Java.html)
-* [Javascript](http://enlighterjs.andidittrich.de/Language.Javascript.html)
-* [MarkDown](http://enlighterjs.andidittrich.de/Language.MarkDown.html)
-* [Matlab](http://enlighterjs.andidittrich.de/Language.Matlab.html)
-* [NSIS](http://enlighterjs.andidittrich.de/Language.NSIS.html)
-* [PHP](http://enlighterjs.andidittrich.de/Language.PHP.html)
-* [Python](http://enlighterjs.andidittrich.de/Language.Python.html)
-* [RAW](http://enlighterjs.andidittrich.de/Language.RAW.html)
-* [Ruby](http://enlighterjs.andidittrich.de/Language.Ruby.html)
-* [Rust](http://enlighterjs.andidittrich.de/Language.Rust.html)
-* [SQL](http://enlighterjs.andidittrich.de/Language.SQL.html)
-* [Shell](http://enlighterjs.andidittrich.de/Language.Shell.html)
-* [VHDL](http://enlighterjs.andidittrich.de/Language.VHDL.html)
-* [XML](http://enlighterjs.andidittrich.de/Language.XML.html)
+* [AVR Assembly](http://enlighterjs.org/Language.AVRASM.html)
+* [Generic Assembly](http://enlighterjs.org/Language.Assembly.html)
+* [C](http://enlighterjs.org/Language.C.html)
+* [CSS](http://enlighterjs.org/Language.CSS.html)
+* [C#](http://enlighterjs.org/Language.CSharp.html)
+* [C++](http://enlighterjs.org/Language.Cpp.html)
+* [Cython](http://enlighterjs.org/Language.Cython.html)
+* [Diff](http://enlighterjs.org/Language.Diff.html)
+* [Generic](http://enlighterjs.org/Language.Generic.html)
+* [HTML](http://enlighterjs.org/Language.HTML.html)
+* [Ini](http://enlighterjs.org/Language.Ini.html)
+* [JSON](http://enlighterjs.org/Language.JSON.html)
+* [Java](http://enlighterjs.org/Language.Java.html)
+* [Javascript](http://enlighterjs.org/Language.Javascript.html)
+* [LUA](http://enlighterjs.org/Language.LUA.html)
+* [MarkDown](http://enlighterjs.org/Language.MarkDown.html)
+* [Matlab](http://enlighterjs.org/Language.Matlab.html)
+* [NSIS](http://enlighterjs.org/Language.NSIS.html)
+* [PHP](http://enlighterjs.org/Language.PHP.html)
+* [Python](http://enlighterjs.org/Language.Python.html)
+* [RAW](http://enlighterjs.org/Language.RAW.html)
+* [Ruby](http://enlighterjs.org/Language.Ruby.html)
+* [Rust](http://enlighterjs.org/Language.Rust.html)
+* [SQL](http://enlighterjs.org/Language.SQL.html)
+* [Squirrel](http://enlighterjs.org/Language.Squirrel.html)
+* [Shell](http://enlighterjs.org/Language.Shell.html)
+* [VHDL](http://enlighterjs.org/Language.VHDL.html)
+* [XML](http://enlighterjs.org/Language.XML.html)
 
 = Shortcode Quickstart Example =
 Highlight javascript code (theme defined on your settings page)
@@ -124,7 +128,7 @@ Please keep in mind that not all translations are up to date. You are welcome to
  
 = Related Links =
 * [Enlighter Plugin on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
-* [EnlighterJS Documentation](http://andidittrich.de/go/enlighterjs)
+* [EnlighterJS Documentation](http://enlighterjs.org)
 
 == Compatibility ==
 
@@ -173,7 +177,7 @@ Bugfix Release (TinyMCE and EnlighterJS Core)
 
 = 2.6 =
 Renamed the EnlighterJS files to `EnlighterJS.min.css` and `EnlighterJS.min.js`. In case you have applied custom modifications these changes may broke your setup and you need to change it!
-Added [EnlighterJS v2.5](http://enlighterjs.andidittrich.de/) with some optimization.
+Added [EnlighterJS v2.5](http://enlighterjs.org/) with some optimization.
 
 = 2.4 =
 Removed WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 including TinyMCE 4
@@ -238,8 +242,34 @@ In case you found a security issue in this plugin - please write a message **dir
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
 
+==# 2.10 ==
+* Added: [EnlighterJS v2.10.0](http://enlighterjs.org/)
+* Added: [Cython](http://cython.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/14)
+* Added: [Squirrel](http://www.squirrel-lang.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/16)
+* Added: [General Assembly Language support](https://en.wikipedia.org/wiki/Assembly_language) - feature requested on [GitHub](https://github.com/AndiDittrich/EnlighterJS/issues/12)
+* Added: [LUA](http://www.lua.org/) Language support
+* Added: Minimal Theme (bright, high contrast)
+* Added: Atomic Theme (dark, colorful)
+* Added: Rowhammer Theme (light)
+* Added: missing AVR Assembly features (used [AVR-1022](www.atmel.com/Images/doc1022.pdf) reference) 
+* Added: Universal Google Webfonts loader: Droid Sans Mono, Inconsolata .. (all available monospace fonts, Nov 2015)
+* Added: option to control the global script position (header/footer) of related javascript files - features requested on [GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/17)
+* Added: link to the official [EnlighterJS Website](http://enlighterjs.org) to the plugin overview page
+* Added: ENLIGHTER_VERSION string to all related js/css resources
+* Changed: moved settins page link on the plugin overview page to the action links (left column)
+* Changed: the editor font-size is set to **0.7em** and the font-family is changed to "Source Code Pro"
+* Renamed: Webfonts style name changed to `enlighter-webfonts`
+* Removed: option to control the initialization script position (replaced by an additional global script position option)
+* Removed: calls to `wp_register_style` and `wp_register_script` - instead the `wp_enqueue_` methods are used directly
+* Bugfix: removed some incorrect html attribute quotes within the settings page
+* Bugfix: removed unused html table tag from the settings page
+* Bugfix: removed `console.log` debugging output from tokenizer
+* Bugfix: in some cases the ThemeCustomizer cannot load the base css files (theme name not transformed to lowercase)
+* Bugfix: an empty paragraph is added after each codeblock in the VisualEditor-Mode (permits users to add content after the codeblock)
+* Bugfix: copy&paste within a Enlighter codeblock had spilt the block into multiple parts (VisualEditor-Mode)
+
 = 2.9 =
-* Added: [EnlighterJS v2.9](http://enlighterjs.andidittrich.de/)
+* Added: [EnlighterJS v2.9](http://enlighterjs.org/)
 * Bugfix: Under some special conditions the tokenizer repeats the last sequence of a codeblock - thanks to [Kalydon](https://github.com/AndiDittrich/EnlighterJS/issues/8) and [dan-j on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/13)
 * Bugfix: TinyMCE Editor plugin didn't work in some special cases (use of other editor plugin) - [Thanks to esumit on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/12)
 * Bugfix: the final character of highlighted code got removed by the tokenizer engine in case it's a text token - thanks to [dan-j on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/15)
@@ -373,7 +403,7 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 
 = 1.6 =
 * Added: Support for new WordPress 3.8 UI design
-* Added: CDNJS Service (Cloudfare) as CDN provider for MooTools @see http://cdnjs.com/
+* Added: CDNJS Service (Cloudflare) as CDN provider for MooTools @see http://cdnjs.com/
 * Added: **I18n** (Internationalization) support (settings page)
 * Added: I18n generation tools
 * Added: POT file for additional translations
@@ -408,4 +438,4 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 
 = 1.1 =
 * First public release
-* Includes EnligherJS 1.4
+* Includes EnlighterJS 1.4

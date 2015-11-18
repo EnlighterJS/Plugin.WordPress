@@ -16,7 +16,7 @@ require_once('spyc-yaml/Spyc.php');
 // get output dir
 $outputDir = '../views/themes/';
 
-$themes = explode(' ', 'Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Minimal Atomic Git Mocha MooTools Panic Tutti Twilight');
+$themes = explode(' ', 'Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Minimal Atomic Rowhammer Git Mocha MooTools Panic Tutti Twilight');
 
 // github fetching url
 $gitHubURL = 'https://raw.githubusercontent.com/AndiDittrich/EnlighterJS/master/Source/Themes/';

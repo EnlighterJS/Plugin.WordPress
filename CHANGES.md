@@ -1,18 +1,33 @@
 ## Changelog ##
 
 ### 2.10 ##
-* Added: [EnlighterJS v2.10.0](http://enlighterjs.andidittrich.de/)
+* Added: [EnlighterJS v2.10.0](http://enlighterjs.org/)
 * Added: [Cython](http://cython.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/14)
 * Added: [Squirrel](http://www.squirrel-lang.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/16)
 * Added: [General Assembly Language support](https://en.wikipedia.org/wiki/Assembly_language) - feature requested on [GitHub](https://github.com/AndiDittrich/EnlighterJS/issues/12)
 * Added: [LUA](http://www.lua.org/) Language support
 * Added: Minimal Theme (bright, high contrast)
 * Added: Atomic Theme (dark, colorful)
+* Added: Rowhammer Theme (light)
 * Added: missing AVR Assembly features (used [AVR-1022](www.atmel.com/Images/doc1022.pdf) reference) 
+* Added: Universal Google Webfonts loader: Droid Sans Mono, Inconsolata .. (all available monospace fonts, Nov 2015)
+* Added: option to control the global script position (header/footer) of related javascript files - features requested on [GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/17)
+* Added: link to the official [EnlighterJS Website](http://enlighterjs.org) to the plugin overview page
+* Added: ENLIGHTER_VERSION string to all related js/css resources
+* Changed: moved settins page link on the plugin overview page to the action links (left column)
+* Changed: the editor font-size is set to **0.7em** and the font-family is changed to "Source Code Pro"
+* Renamed: Webfonts style name changed to `enlighter-webfonts`
+* Removed: option to control the initialization script position (replaced by an additional global script position option)
+* Removed: calls to `wp_register_style` and `wp_register_script` - instead the `wp_enqueue_` methods are used directly
+* Bugfix: removed some incorrect html attribute quotes within the settings page
+* Bugfix: removed unused html table tag from the settings page
 * Bugfix: removed `console.log` debugging output from tokenizer
+* Bugfix: in some cases the ThemeCustomizer cannot load the base css files (theme name not transformed to lowercase)
+* Bugfix: an empty paragraph is added after each codeblock in the VisualEditor-Mode (permits users to add content after the codeblock)
+* Bugfix: copy&paste within a Enlighter codeblock had spilt the block into multiple parts (VisualEditor-Mode)
 
 ### 2.9 ###
-* Added: [EnlighterJS v2.9](http://enlighterjs.andidittrich.de/)
+* Added: [EnlighterJS v2.9](http://enlighterjs.org/)
 * Bugfix: Under some special conditions the tokenizer repeats the last sequence of a codeblock - thanks to [Kalydon](https://github.com/AndiDittrich/EnlighterJS/issues/8) and [dan-j on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/13)
 * Bugfix: TinyMCE Editor plugin didn't work in some special cases (use of other editor plugin) - [Thanks to esumit on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/12)
 * Bugfix: the final character of highlighted code got removed by the tokenizer engine in case it's a text token - thanks to [dan-j on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/15)
@@ -146,7 +161,7 @@
 
 ### 1.6 ###
 * Added: Support for new WordPress 3.8 UI design
-* Added: CDNJS Service (Cloudfare) as CDN provider for MooTools @see http://cdnjs.com/
+* Added: CDNJS Service (Cloudflare) as CDN provider for MooTools @see http://cdnjs.com/
 * Added: **I18n** (Internationalization) support (settings page)
 * Added: I18n generation tools
 * Added: POT file for additional translations
@@ -181,4 +196,4 @@
 
 ### 1.1 ###
 * First public release
-* Includes EnligherJS 1.4
+* Includes EnlighterJS 1.4

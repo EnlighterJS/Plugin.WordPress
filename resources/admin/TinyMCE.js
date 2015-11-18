@@ -4,32 +4,54 @@ name: EnlighterJS.TinyMCE
 description: TinyMCE Editor Plugin for WordPress
 
 license: MIT-Style X11 License
-version: 1.3
+version: 1.4
 
 authors:
   - Andi Dittrich
   
 requires:
-  - EnlighterJS/2.2
+  - EnlighterJS/2.10.0
 
 provides: [Enlighter]
 ...
 */
-(function(){
+(function(_tinymce){
 	// fetch console object
 	var c = window.console || {};
-	
-	// register plugin
-	tinymce.PluginManager.add('enlighter', function(editor, url){
-		// check for global Enlighter config availbility
+
+    // register plugin
+	_tinymce.PluginManager.add('enlighter', function(editor, url){
+		// check for global Enlighter config availability
 		if (typeof Enlighter == 'undefined'){
 			if (c.log){
 				console.log('No Enlighter config found');
 			}
 			return;
 		}
-		
-		// enlighter settings button (menubar)
+
+        // is a enlighter node (pre element) selected/focused ?
+        var enlighterNodeActive = false;
+
+        // listen on editor paste events
+        editor.on('PastePreProcess', function(e) {
+            // paste event within an enlighter codeblock ?
+            if (enlighterNodeActive) {
+                // remove outer pre tags
+                // avoids the creation of additional pre sections within the editor pane when pasting into an active section
+                e.content = e.content
+                    .replace(/^\s*<pre(.*?)>([\s\S]+)<\/pre>\s*$/gi, '$2')
+
+                    // keep linebreaks
+                    .replace(/\n/g, '<BR/>')
+
+                    // keep indentation
+                    .replace(/ /g, '&nbsp;');
+            }
+        });
+
+        console.log(editor);
+
+        // enlighter settings button (menubar)
 		var editMenuButton = null;
 		
 		// generate language values
@@ -37,7 +59,7 @@ provides: [Enlighter]
 			text: 'Default (Global-Settings)',
 			value: null
 		}];
-		tinymce.each(Enlighter.languages, function(value, key){
+		_tinymce.each(Enlighter.languages, function(value, key){
 			languageValues.push({
 				text : key,
 				value : value
@@ -49,7 +71,7 @@ provides: [Enlighter]
 			text: 'Default (Global-Settings)',
 			value: null
 		}];
-		tinymce.each(Enlighter.themes, function(value, key){
+		_tinymce.each(Enlighter.themes, function(value, key){
 			themeValues.push({
 				text : key,
 				value : key.toLowerCase()
@@ -150,13 +172,13 @@ provides: [Enlighter]
 						}
 						
 						// entities encoding
-						code =  tinymce.html.Entities.encodeAllRaw(code);
+						code =  _tinymce.html.Entities.encodeAllRaw(code);
 						
-						// surrund with spaces ?
+						// surround with spaces ?
 						var sp = (e.data.addspaces ? '&nbsp;' : '');
 						
 						// Insert codeblock into editors current position when the window form is "submitted"
-						editor.insertContent(sp + '<' + tag + ' class="EnlighterJSRAW" data-enlighter-language="' + e.data.lang + '">' + code + '</' + tag + '>' + sp);
+						editor.insertContent(sp + '<' + tag + ' class="EnlighterJSRAW" data-enlighter-language="' + e.data.lang + '">' + code + '</' + tag + '>' + sp + '<p></p>');
 					}
 				});
 			}
@@ -332,10 +354,12 @@ provides: [Enlighter]
 			
 			// show hide codeblock toolbar
 			if (isEnlighterCodeblock(node)){
-				showToolbar(node);				
-			}else{
-				hideToolbar();				
-			}
+				showToolbar(node);
+                enlighterNodeActive = true;
+   			}else{
+				hideToolbar();
+                enlighterNodeActive = false;
+    		}
 			
 			// show hide edit menu button
 			if (editMenuButton){
@@ -408,4 +432,4 @@ provides: [Enlighter]
 			}
 		}
 	});
-})();
+})(tinymce);
