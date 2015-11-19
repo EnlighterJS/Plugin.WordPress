@@ -2,7 +2,7 @@
 
 /**
 	Enlighter Class
-	Version: 2.10
+	Version: 2.11
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
 	Plugin URI: http://andidittrich.de/go/enlighterjs

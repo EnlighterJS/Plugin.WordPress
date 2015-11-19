@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.3
-Stable tag: 2.10
+Stable tag: 2.11
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -171,6 +171,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 12. Theme Customizer - Live Preview-Mode
 
 ## Upgrade Notice ##
+
+### 2.11 ##
+Bugfix Release (initialization may fail when upgrading to 2.10)
 
 ### 2.9 ###
 Bugfix Release (TinyMCE and EnlighterJS Core)

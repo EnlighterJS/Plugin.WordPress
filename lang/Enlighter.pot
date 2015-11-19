@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2015-11-18 22:04:06+00:00\n"
+"POT-Creation-Date: 2015-11-19 21:19:50+00:00\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  2.10\n"
+"Project-Id-Version: Enlighter  2.11\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -318,11 +318,11 @@ msgid "Enlighter Config"
 msgstr ""
 
 #: views/admin/Options.phtml:31
-msgid "External File using <script src=\"\"...>"
+msgid "Inline within header/footer"
 msgstr ""
 
 #: views/admin/Options.phtml:31
-msgid "Inline within header/footer"
+msgid "External File using <script src=\"\"...>"
 msgstr ""
 
 #: views/admin/Options.phtml:34 views/admin/Options.phtml:36

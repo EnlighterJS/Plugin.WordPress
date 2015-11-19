@@ -28,7 +28,7 @@
 	<!-- Inline/External JS Settings -->
 	<h4><?php _e('Initialization', 'enlighter'); ?></h4>
 	<p><?php _e('Select the source/location of Enlighter`s initialization script.', 'enlighter'); ?></p>
-	<?php $this->_settingsUtility->displaySelect(__('Enlighter Config', 'enlighter'), 'jsType', array(__('Not include', 'enlighter') => 'none', __('External File using <script src=""...>', 'enlighter') => 'external', __('Inline within header/footer', 'enlighter') => 'inline')); ?>
+	<?php $this->_settingsUtility->displaySelect(__('Enlighter Config', 'enlighter'), 'jsType', array(__('Inline within header/footer', 'enlighter') => 'inline', __('External File using <script src=""...>', 'enlighter') => 'external', __('Not include', 'enlighter') => 'none')); ?>
 
     <!-- Script Position -->
     <h4><?php _e('Javascript Position', 'enlighter'); ?></h4>

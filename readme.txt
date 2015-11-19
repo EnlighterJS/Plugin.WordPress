@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.3
-Stable tag: 2.10
+Stable tag: 2.11
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -172,6 +172,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 
 == Upgrade Notice ==
 
+==# 2.11 ==
+Bugfix Release (initialization may fail when upgrading to 2.10)
+
 = 2.9 =
 Bugfix Release (TinyMCE and EnlighterJS Core)
 
@@ -242,7 +245,10 @@ In case you found a security issue in this plugin - please write a message **dir
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
 
-==# 2.10 ==
+= 2.11 =
+* Bugfix: the default option of "Enlighter Config" is now set to "inline" - this may avoid highlighting when upgrading to 2.10 - I apologize for the inconvenience - thanks to [ciambellino on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/21)
+
+= 2.10 =
 * Added: [EnlighterJS v2.10.0](http://enlighterjs.org/)
 * Added: [Cython](http://cython.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/14)
 * Added: [Squirrel](http://www.squirrel-lang.org/) Language support - thanks to [DevynCJohnson on GitHub](https://github.com/AndiDittrich/EnlighterJS/pull/16)
