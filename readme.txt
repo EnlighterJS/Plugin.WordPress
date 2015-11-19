@@ -172,7 +172,7 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 
 == Upgrade Notice ==
 
-==# 2.11 ==
+= 2.11 =
 Bugfix Release (initialization may fail when upgrading to 2.10)
 
 = 2.9 =
