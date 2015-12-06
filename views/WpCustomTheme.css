@@ -4,7 +4,7 @@ ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnable
 }
 
 /* special line highlight color */
-ol.wpcustomEnlighterJS li.specialline {
+ol.wpcustomEnlighterJS li.specialline, ul.wpcustomEnlighterJS li.specialline{
 	background-color: $(HIGHLIGHT_BG_COLOR);
 }
 
