@@ -2,6 +2,8 @@
 
 ### 2.12 ###
 * Bugfix: Theme Customizer was not able to modify the special-line-highlighting-color of codeblocks **without** line-numbers - thanks to [CraigMcKenna on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/24)
+* Bugfix: MooTools < 1.5.1 [#2705](https://github.com/mootools/mootools-core/pull/2705) will throw the javascript error `The specified value "t" is not a valid email address` - [updated to v1.5.2](http://mootools.net/blog/2015/09/13/mootools-1-5-2-release) - thanks to [
+lots0logs on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/25)
 
 ### 2.11 ###
 * Bugfix: the default option of "Enlighter Config" is now set to "inline" - this may avoid highlighting when upgrading to 2.10 - I apologize for the inconvenience - thanks to [ciambellino on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/21)

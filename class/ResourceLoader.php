@@ -52,8 +52,8 @@ class ResourceLoader{
 		
 		// initialize cdn locations
 		self::$cdnLocations['mootools-local'] = plugins_url('/enlighter/resources/mootools-core-yc.js');
-		self::$cdnLocations['mootools-google'] = '//ajax.googleapis.com/ajax/libs/mootools/1.5.1/mootools-yui-compressed.js';
-		self::$cdnLocations['mootools-cdnjs'] = '//cdnjs.cloudflare.com/ajax/libs/mootools/1.5.1/mootools-core-full-nocompat.min.js';
+		self::$cdnLocations['mootools-google'] = '//ajax.googleapis.com/ajax/libs/mootools/1.5.2/mootools.min.js';
+		self::$cdnLocations['mootools-cdnjs'] = '//cdnjs.cloudflare.com/ajax/libs/mootools/1.5.2/mootools-core.min.js';
 	}
 	
 	// initialzize the frontend
