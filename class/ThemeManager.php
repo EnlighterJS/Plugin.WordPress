@@ -7,7 +7,7 @@
 	Plugin URI: http://andidittrich.de/go/enlighterjs
 	License: MIT X11-License
 	
-	Copyright (c) 2014, Andi Dittrich
+	Copyright (c) 2014-2016, Andi Dittrich
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 	
@@ -19,21 +19,25 @@ namespace Enlighter;
 
 class ThemeManager{
 	
-	private $_cache;
+	private $_cachedData = null;
 
 	public function __construct($cacheManager){
 		// initialize object caache
-		$this->_cache = new ObjectCache($cacheManager->getCachePath().'userthemes.cache.php');
+		//$this->_cache = new ObjectCache($cacheManager->getCachePath().'userthemes.cache.php');
+
+        // try to load cached data
+        $this->_cachedData = get_transient('enlighter_userthemes');
 	}
 	
 	// drop cache content and remove cache file
 	public function forceReload(){
-		$this->_cache->clear();
+		//$this->_cache->clear();
+        delete_transient('enlighter_userthemes');
 	}
 	
 	public function getUserThemes(){
 		// cached data available ?
-		if (!$this->_cache->isCachedDataAvailable()){
+		if ($this->_cachedData === false){
 			// get template directories
 			$childDir = get_stylesheet_directory();
 			$themeDir = get_template_directory();
@@ -46,11 +50,13 @@ class ThemeManager{
 				$themeFiles = array_merge($themeFiles, $this->getCssFilesFromDirectory($childDir, get_stylesheet_directory_uri()));	
 			}
 			
-			// store data
-			$this->_cache->setData($themeFiles);
+			// store data; 1day cache expire
+            set_transient('enlighter_userthemes', $themeFiles, DAY_IN_SECONDS);
+            $this->_cachedData = $themeFiles;
+			//$this->_cache->setData($themeFiles);
 		}
 				
-		return $this->_cache->getData();
+		return $this->_cachedData;
 	}
 	
 	private function getCssFilesFromDirectory($dir, $uri){
