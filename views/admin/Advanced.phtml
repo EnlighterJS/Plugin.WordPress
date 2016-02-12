@@ -10,8 +10,9 @@
 
 	<!-- Change wpautop filter priority !-->    
     <h4><?php _e('"WpAutoP" Filter Priority', 'enlighter'); ?></h4>
+    <p><?php _e('<strong>Deprecated:</strong> This feature will be removed in the future, because the new LowLevel Shortcode Handler will avoid wpautop rendering issues!', 'enlighter'); ?></p>
     <p><?php _e('The processing priority of the wpautop filter. Normally the filter will be applied before shortcode is handled and will maybe crash your code-appearance by adding linebreaks and p/br tags.', 'enlighter'); ?><br />
-    <?php _e('The Enlighter-Plugin changes the priority of the filter by default to 12 - this means it will be applied <strong>after</strong> shortcodes are processed by WordPress. <strong>It may can influence other plugins.</strong>', 'enlighter'); ?>
+    <?php _e('The Enlighter-Plugin <strong>does not</strong> change the priority of the filter by default.<strong>It may can influence other plugins.</strong>', 'enlighter'); ?>
     </p>
 	<?php $this->_settingsUtility->displaySelect(__('Filter-Priority', 'enlighter'), 'wpAutoPFilterPriority', array(__('Default (no changes)', 'enlighter') => 'default', __('Priority 12 (after shortcode)', 'enlighter') => '12')); ?>
 	
@@ -33,12 +34,6 @@
 	<h4><?php _e('Inline Syntax Highlighting', 'enlighter'); ?></h4>
 	<p><?php _e('Should shortcodes without linebreaks insinde handled as inline-code ?', 'enlighter'); ?></p>
 	<?php $this->_settingsUtility->displayCheckbox(__('Enable Inline Syntax Highlighting', 'enlighter'), 'enableInlineHighlighting'); ?>
-	
-	<!-- Langugae Shortcodes -->
-	<h4><?php _e('Language Shortcodes', 'enlighter'); ?></h4>
-	<p><?php _e('Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!', 'enlighter'); ?></p>
-	<?php $this->_settingsUtility->displayCheckbox(__('Enable Language Shortcodes', 'enlighter'), 'languageShortcode'); ?>
-	
 
 	<!-- TinyMCE Integration -->
 	<h4><?php _e('TinyMCE Integration (Visual Editor)', 'enlighter'); ?></h4>

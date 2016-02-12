@@ -17,7 +17,7 @@
 */
 namespace Enlighter;
 
-class ShortcodeHandler{
+class LegacyShortcodeHandler{
 	
 	// stores the plugin config
 	private $_config;
@@ -28,15 +28,26 @@ class ShortcodeHandler{
 	// currently active codegroup
 	private $_activeCodegroup;
 	
-	public function __construct($settingsUtil, $registeredShortcodes){
+	public function __construct($settingsUtil, $languageShortcodes){
 		// store local plugin config
 		$this->_config = $settingsUtil->getOptions();
 		
 		// store registered shortcodes
-		$this->_registeredShortcodes = $registeredShortcodes;
+		$this->_registeredShortcodes = array_merge($languageShortcodes, array('enlighter', 'codegroup'));
 		
 		// add texturize filter
 		add_filter('no_texturize_shortcodes', array($this, 'texturizeHandler'));
+
+        // add shotcode handlers
+        add_shortcode('enlighter', array($this, 'genericShortcodeHandler'));
+        add_shortcode('codegroup', array($this, 'codegroupShortcodeHandler'));
+
+        // enable language shortcodes ?
+        if ($this->_config['languageShortcode']){
+            foreach ($languageShortcodes as $lang){
+                add_shortcode($lang, array($this, 'microShortcodeHandler'));
+            }
+        }
 	}
 	
 	// handle codegroups
@@ -148,8 +159,6 @@ class ShortcodeHandler{
 	
 	/**
 	 * Generate HTML output (code within "pre"/"code"-tag including options)
-	 * @param Array $attributes
-	 * @param String $content
 	 */
 	private function generateCodeblock($attributes, $content, $tagname = 'pre'){
 		// generate "pre" wrapped html output
@@ -167,7 +176,6 @@ class ShortcodeHandler{
 
 	/**
 	 * Removes wordpress auto-texturize handler from used shortcodes
-	 * @param Array $shortcodes
 	 */
 	public function texturizeHandler($shortcodes) {
 		return array_merge($shortcodes, $this->_registeredShortcodes);
@@ -175,7 +183,6 @@ class ShortcodeHandler{
 	
 	/**
 	 * Removes automatic generated html editor tags (from wpautop()) and restores linebreaks
-	 * @param String $content
 	 */
 	private function removeWpAutoP($content){
 		// wpautop priority changed ?

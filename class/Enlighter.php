@@ -43,13 +43,15 @@ class Enlighter{
 	private $_defaultConfig = array(
 		'embedEnlighterCSS' => true,
 		'embedEnlighterJS' => true,
-		'embedExternalThemes' => true,	
+		'embedExternalThemes' => true,
+
 		'mootoolsSource' => 'local',
 		'jsType' => 'inline',
         'jsPosition' => 'header',
 		'defaultTheme' => 'enlighter',
 		'defaultLanguage' => 'generic',
 		'languageShortcode' => true,
+        'shortcodeMode' => 'modern',
 		'indent' => 2,
 		'linenumbers' => 'true',
 		'hoverClass' => 'hoverEnabled',
@@ -243,20 +245,20 @@ class Enlighter{
 			// force theme cache reload
 			$this->_themeManager->forceReload();
 		}else{
-			// create new shortcode handler, register all used shortcodes
-			$this->_shortcodeHandler = new Enlighter\ShortcodeHandler($this->_settingsUtility, array_merge($this->_supportedLanguageKeys, array('enlighter', 'codegroup')));
-			
-			// add shotcode handlers
-			add_shortcode('enlighter', array($this->_shortcodeHandler, 'genericShortcodeHandler'));
-			add_shortcode('codegroup', array($this->_shortcodeHandler, 'codegroupShortcodeHandler'));
-			
-			// enable language shortcodes ?
-			if ($this->_settingsUtility->getOption('languageShortcode')){
-				foreach ($this->_supportedLanguageKeys as $lang){
-					add_shortcode($lang, array($this->_shortcodeHandler, 'microShortcodeHandler'));
-				}
-			}
-			
+
+            // legacy (WordPress based) shortcode handling ?
+            if ($this->_settingsUtility->getOption('shortcodeMode') == 'legacy') {
+                // create new shortcode handler, register all used shortcodes
+                $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $this->_supportedLanguageKeys);
+
+            // shortcode handling disabled ?
+            }else if ($this->_settingsUtility->getOption('shortcodeMode') == 'disabled'){
+
+            // default - custom shortcode handling
+            }else{
+                $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $this->_supportedLanguageKeys);
+            }
+
 			// include generated css ? - cached file available ?
 			if ($this->_settingsUtility->getOption('defaultTheme')=='wpcustom' && !$this->_themeGenerator->isCached()){
 				$this->_themeGenerator->generateCSS($this->_customStyleKeys);
@@ -370,6 +372,7 @@ class Enlighter{
         }
     }
 
+    // plugin upgrade notification
     public function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
         // check "upgrade_notice"
         if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
