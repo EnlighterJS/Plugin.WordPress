@@ -31,6 +31,16 @@
 			echo '<li>', __('JSON Extension', 'enlighter'),': <span class="EnlighterFALSE">', __('not installed', 'enlighter'), '</span></li>';
 		}
 
+        // shortcode processor type
+        $shortcodeProcessorType = $this->_settingsUtility->getOption('shortcodeMode');
+        if ($shortcodeProcessorType == 'disabled'){
+            echo '<li>', __('Shortcode Processor', 'enlighter'),': <span class="EnlighterFALSE">', __('disabled', 'enlighter'), '</span></li>';
+        }else if ($shortcodeProcessorType == 'legacy'){
+            echo '<li>', __('Shortcode Processor', 'enlighter'),': <span class="EnlighterTRUE">', __('WordPress internal', 'enlighter'), '</span></li>';
+        }else{
+            echo '<li>', __('Shortcode Processor', 'enlighter'),': <span class="EnlighterTRUE">', __('Enlighter low-level', 'enlighter'), '</span></li>';
+        }
+
     	?>
    </ul>	
 

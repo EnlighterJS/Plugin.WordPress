@@ -4,6 +4,7 @@
 * Added: New robust and fault-tolerant `LowLevel Shortcode Handler` to avoid issues with wpautop filter and unescaped html characters (text mode)
 * Added: Option to disable Enlighter shortcodes
 * Added: Option to use the old/legacy Shortcode handler 
+* Added: Shortcode Processor state to the SystemInformation sidebar
 * Bugfix: Theme Customizer was not able to modify the special-line-highlighting-color of codeblocks **without** line-numbers - thanks to [CraigMcKenna on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/24)
 * Bugfix: MooTools < 1.5.1 [#2705](https://github.com/mootools/mootools-core/pull/2705) will throw the javascript error `The specified value "t" is not a valid email address` - [updated to v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release) - thanks to [
 lots0logs on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/25)
