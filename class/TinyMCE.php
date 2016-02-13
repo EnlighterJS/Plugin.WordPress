@@ -24,24 +24,38 @@ class TinyMCE{
 	
 	// plugin supported languages
 	private $_supportedLanguageKeys;
+
+    // cache manager
+    private $_cacheManager;
 	
-	public function __construct($config, $languageKeys){
+	public function __construct($settingsUtil, $languageKeys, $cacheManager){
 		// store local plugin config
-		$this->_config = $config;
+		$this->_config = $settingsUtil->getOptions();
 		
 		// store languages
 		$this->_supportedLanguageKeys = $languageKeys;
-		
-		// add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
-		add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
-		add_filter('mce_buttons', array($this, 'addButtons1'), 101);
-		
-		// TinyMCE 4 required !
-		if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
-			// add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
-			add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);			
-		}
+
+        // store cache manager
+        $this->_cacheManager = $cacheManager;
+
+        // css cached ? otherwise regenerate it
+        if (!file_exists($this->_cacheManager->getCachePath() . 'TinyMCE.css')){
+            $this->generateCSS();
+        }
 	}
+
+    // run integration
+    public function integrate(){
+        // add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
+        add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
+        add_filter('mce_buttons', array($this, 'addButtons1'), 101);
+
+        // TinyMCE 4 required !
+        if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
+            // add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
+            add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);
+        }
+    }
 	
 	// insert "code insert dialog button"
 	public function addButtons1($buttons){
@@ -137,5 +151,36 @@ class TinyMCE{
 		//$tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
 		
 		return $tinyMceConfigData;
-	}	
+	}
+
+    // generate the editor css
+    public function generateCSS(){
+        // load base styles
+        $styles = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/admin/TinyMCE.css');
+
+        // inline editor styles
+        $customizer = array(
+            'font-family:' . $this->_config['editorFontFamily'] . ' !important',
+            'font-size:' . $this->_config['editorFontSize'] . ' !important',
+            'line-height:' . $this->_config['editorLineHeight'] . ' !important',
+            'color:' . $this->_config['editorFontColor'] . ' !important',
+            'background-color:' . $this->_config['editorBackgroundColor'] . ' !important',
+        );
+
+        // Custom TinyMCE Styling
+        $styles .= 'code.EnlighterJSRAW, pre.EnlighterJSRAW{' . implode(';', $customizer) . '}</style>';
+
+        // generate language titles
+        foreach ($this->_supportedLanguageKeys as $name => $lang){
+            $styles .= 'pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before{content: "Enlighter: '. $name .'"}';
+        }
+
+        // Automatic Editor width
+        if ($this->_config['editorAutowidth']){
+            $styles .= '.mceContentBody { max-width: none !important;}';
+        }
+
+        // store generated styles
+        file_put_contents($this->_cacheManager->getCachePath() . 'TinyMCE.css', $styles);
+    }
 }

@@ -38,6 +38,9 @@ class Enlighter{
 	
 	// theme loader/manager
 	private $_themeManager;
+
+    // visual editor integration
+    private $_tinymce;
 	
 	// enlighter config keys with default values
 	private $_defaultConfig = array(
@@ -57,6 +60,13 @@ class Enlighter{
 		'hoverClass' => 'hoverEnabled',
 		'selector' => 'pre.EnlighterJSRAW',
 		'selectorInline' => 'code.EnlighterJSRAW',
+
+        'editorFontFamily' => '"Source Code Pro", "Liberation Mono", "Courier New", Courier, monospace',
+        'editorFontSize' => '0.7em',
+        'editorLineHeight' => '0.9em',
+        'editorFontColor' => '#000000',
+        'editorBackgroundColor' => '#f9f9f9',
+        'editorAutowidth' => false,
 
 		'customThemeBase' => 'standard',
 		'customFontFamily' => 'Monaco, Courier, Monospace',
@@ -220,13 +230,16 @@ class Enlighter{
 		// loader to fetch user themes
 		$this->_themeManager = new Enlighter\ThemeManager($this->_cacheManager);
 
+        // visual editor integration
+        $this->_tinymce = new Enlighter\TinyMCE($this->_settingsUtility, $this->_supportedLanguageKeys, $this->_cacheManager);
+
 		// load language files
 		if ($this->_settingsUtility->getOption('enableTranslation')){
 			load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
 		}
 		
 		// create new resource loader
-		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_themeManager, $this->_supportedLanguageKeys);
+		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_themeManager, $this->_supportedLanguageKeys, $this->_tinymce);
 		
 		// create new theme generator instance
 		$this->_themeGenerator = new Enlighter\ThemeGenerator($this->_settingsUtility, $this->_cacheManager);
@@ -332,6 +345,7 @@ class Enlighter{
 		if (isset($_GET['settings-updated'])){
 			$this->_cacheManager->clearCache();
 			$this->_themeGenerator->generateCSS($this->_customStyleKeys);
+            $this->_tinymce->generateCSS();
 		}
 		
 		// permission fix request ?

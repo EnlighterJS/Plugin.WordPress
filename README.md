@@ -28,6 +28,8 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
+* Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
+* Webfont Loader to add missing Monospace Fonts to your website
 
 ### Supported Languages (build-in) ###
 Click to view Language/Theme Examples
@@ -171,6 +173,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 12. Theme Customizer - Live Preview-Mode
 
 ## Upgrade Notice ##
+
+### 2.12 ###
+New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Options -> Shortcode
 
 ### 2.11 ###
 Bugfix Release (initialization may fail when upgrading to 2.10)

@@ -37,6 +37,10 @@ class CacheManager{
 	public function clearCache(){
 		// cache dir
 		$this->rmdir($this->_cachePath);
+
+        // store last settings update time (unique hash to avoid caching)
+        $hash = substr(sha1(microtime(true) . uniqid()), 0, 10);
+        update_option('enlighter-settingsupdate-hash', $hash, true);
 	}
 	
 	public function autosetPermissions(){
@@ -52,7 +56,7 @@ class CacheManager{
 		// change permissions
 		chmod($this->_cachePath, $mode);
 	}
-	
+
 	public function isCacheAccessable(){
 		return is_writeable($this->_cachePath);
 	}

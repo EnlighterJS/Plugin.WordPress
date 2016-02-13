@@ -36,8 +36,14 @@ class ResourceLoader{
 
     // javascript position
     private $_jsInFooter = false;
+
+    // tinymce editor
+    private $_tinymce;
+
+    // update hash
+    private $_uhash;
 	
-	public function __construct($settingssUtil, $themeManager, $languageKeys){
+	public function __construct($settingssUtil, $themeManager, $languageKeys, $tinymce){
 		// store local plugin config
 		$this->_config = $settingssUtil->getOptions();
 		
@@ -47,8 +53,14 @@ class ResourceLoader{
 		// local theme manager instance (required for external themes)
 		$this->_themeManager = $themeManager;
 
+        // store tinymce editor instance
+        $this->_tinymce = $tinymce;
+
         // get javascript position
         $this->_jsInFooter = ($this->_config['jsPosition'] == 'footer');
+
+        // get last update hash
+        $this->_uhash = get_option('enlighter-settingsupdate-hash', '0A0B0C');
 		
 		// initialize cdn locations
 		self::$cdnLocations['mootools-local'] = plugins_url('/enlighter/resources/mootools-core-yc.js');
@@ -90,7 +102,7 @@ class ResourceLoader{
 		}
 		
 		// apply editor modifications
-		$editor = new TinyMCE($this->_config, $this->_languageKeys);
+        $this->_tinymce->integrate();
 		
 		// load tinyMCE styles
 		add_filter('mce_css', array($this, 'appendTinyMceCSS'));
@@ -106,7 +118,7 @@ class ResourceLoader{
 	public function backend(){
 		// initialize TinyMCE modifications
 		if ($this->_config['enableTinyMceIntegration'] && version_compare(get_bloginfo('version'), '3.9', '>=')){
-			$editor = new TinyMCE($this->_config, $this->_languageKeys);
+            $this->_tinymce->integrate();
 		
 			// load tinyMCE styles
 			add_filter('mce_css', array($this, 'appendTinyMceCSS'));
@@ -131,7 +143,7 @@ class ResourceLoader{
 		if ($this->_config['embedEnlighterCSS']){
 			// include generated css ?
 			if ($this->_config['defaultTheme']=='wpcustom'){
-                wp_enqueue_style('enlighter-wpcustom', plugins_url('/enlighter/cache/EnlighterJS.custom.css'), array(), ENLIGHTER_VERSION);
+                wp_enqueue_style('enlighter-wpcustom', plugins_url('/enlighter/cache/EnlighterJS.custom.css'), array(), $this->_uhash);
 			}else{
 				// include standard css file ?
                 wp_enqueue_style('enlighter-local', plugins_url('/enlighter/resources/EnlighterJS.min.css'), array(), ENLIGHTER_VERSION);
@@ -195,16 +207,21 @@ class ResourceLoader{
 		// only include EnlighterJS config if enabled
 		if ($this->_config['jsType'] == 'external'){
 			// include local css file
-            wp_enqueue_script('enlighter-config', plugins_url('/enlighter/cache/EnlighterJS.init.js'), array('enlighter-local'), ENLIGHTER_VERSION, $this->_jsInFooter);
+            wp_enqueue_script('enlighter-config', plugins_url('/enlighter/cache/EnlighterJS.init.js'), array('enlighter-local'), $this->_uhash, $this->_jsInFooter);
 		}
 	}
 	
 	public function appendTinyMceCSS($mce_css){
-		// append custom TinyMCE styles to editor stylelist
+        // add hash from last settings update to force a cache update
+        $url = plugins_url('/enlighter/cache/TinyMCE.css?' . $this->_uhash);
+
+        // other styles loaded ?
 		if (empty($mce_css)){
-			return plugins_url('/enlighter/resources/admin/TinyMCE.css');
-		}else{
-			return $mce_css . ','.plugins_url('/enlighter/resources/admin/TinyMCE.css');
+			return $url;
+
+        // append custom TinyMCE styles to editor stylelist
+        }else{
+			return $mce_css . ','.$url;
 		}
 	}
 	

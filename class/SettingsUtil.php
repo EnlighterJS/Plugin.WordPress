@@ -50,6 +50,13 @@ class SettingsUtil{
 		update_option($this->_optionsPrefix.$key, $value);
 		$this->_config[$key] = $value;
 	}
+
+    // update options
+    public function setOptions($values){
+        foreach ($values as $key => $value){
+            update_option($this->_optionsPrefix.$key, $value);
+        }
+    }
 	
 	// fetch option by key
 	public function getOption($key){

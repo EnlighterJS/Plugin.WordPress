@@ -27,12 +27,13 @@
 	<a data-tab="EnlighterTabAppearance" class="nav-tab"><?php _e('Appearance', 'enlighter'); ?></a>
 	<a data-tab="EnlighterTabThemeCustomizer" class="nav-tab" id="EnlighterTabhandleThemeCustomizer"><?php _e('Theme Customizer', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabWebfonts" class="nav-tab"><?php _e('Webfonts', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabEditor" class="nav-tab"><?php _e('Editor', 'enlighter'); ?></a>
 	<a data-tab="EnlighterTabOptions" class="nav-tab"><?php _e('Options', 'enlighter'); ?></a>
 	<a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
 </h2>
 
 <!-- Main Title -->
-<h2 class="maintitle"><?php _e('Enlighter - Customizable Syntax Highlighter', 'enlighter'); ?></h2>
+<h1 class="maintitle"><?php _e('Enlighter - Customizable Syntax Highlighter', 'enlighter'); ?></h1>
 <p><?php _e('Select the content you want to highlight and Enlighter takes care of the rest.', 'enlighter'); ?></p>
 
 <?php 
@@ -67,7 +68,11 @@ if (!$this->_cacheManager->isCacheAccessable()){
         <div id="EnlighterTabWebfonts">
             <?php require ('Webfonts.phtml'); ?>
         </div>
-		
+
+        <div id="EnlighterTabEditor">
+            <?php require ('Editor.phtml'); ?>
+        </div>
+
 		<div id="EnlighterTabOptions">
 		<?php require ('Options.phtml'); ?>
 		</div>

@@ -29,15 +29,4 @@
 	<h4><?php _e('I18n (Internationalization)', 'enlighter'); ?></h4>
 	<p><?php _e('Should the plugin load language files (if available) to translate the settings page ?', 'enlighter'); ?></p>
 	<?php $this->_settingsUtility->displayCheckbox(__('Enable I18n', 'enlighter'), 'enableTranslation'); ?>
-	
-	<!-- Inline Highlighting -->
-	<h4><?php _e('Inline Syntax Highlighting', 'enlighter'); ?></h4>
-	<p><?php _e('Should shortcodes without linebreaks insinde handled as inline-code ?', 'enlighter'); ?></p>
-	<?php $this->_settingsUtility->displayCheckbox(__('Enable Inline Syntax Highlighting', 'enlighter'), 'enableInlineHighlighting'); ?>
-
-	<!-- TinyMCE Integration -->
-	<h4><?php _e('TinyMCE Integration (Visual Editor)', 'enlighter'); ?></h4>
-	<p><?php _e('Enlighter can directly integrated into the Visual-Editor by adding Preformatted styles for each supported language.', 'enlighter'); ?></p>
-	<?php $this->_settingsUtility->displayCheckbox(__('Enable Backend Integration', 'enlighter'), 'enableTinyMceIntegration'); ?>
-	<?php $this->_settingsUtility->displayCheckbox(__('Enable Frontend Integration', 'enlighter'), 'enableFrontendTinyMceIntegration'); ?>		
 </div></div>

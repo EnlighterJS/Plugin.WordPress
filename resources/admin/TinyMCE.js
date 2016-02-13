@@ -49,8 +49,6 @@ provides: [Enlighter]
             }
         });
 
-        console.log(editor);
-
         // enlighter settings button (menubar)
 		var editMenuButton = null;
 		
@@ -420,7 +418,8 @@ provides: [Enlighter]
 			// show toolbar and set positon
 			editor.dom.setStyles(toolbar, {
 				top: rect.y,
-				left: rect.x
+				left: rect.x,
+                width: rect.w
 			});
 		}
 

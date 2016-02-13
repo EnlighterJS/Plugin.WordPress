@@ -30,7 +30,7 @@
 	float: left;
 	width: 250px;
 	font-weight: bold;
-	hieght: 30px;
+	height: 30px;
 	line-height: 30px;
 }
 
@@ -41,7 +41,7 @@
 	float: left;
 }
 .EnlighterCustomSettingItem label{
-	hieght: 30px;
+	height: 30px;
 	line-height: 30px;
 	padding: 0px 5px 0px 0px;
 }
@@ -101,7 +101,7 @@
 /* Footer
 -------------------------------- */
 #EnlighterSettings .credits{
-	font-color: #333333;
+	color: #333333;
 	font-style: italic;
 }
 

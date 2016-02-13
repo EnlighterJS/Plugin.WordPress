@@ -148,6 +148,17 @@ requires:
 			}
 		}).change();
 
+        /**
+         * Editor Customization
+         */
+        jQuery('#enlighter_editorstylesDefault').click(function(){
+            // set font styles
+            jQuery('#enlighter-editorFontFamily').val('"Source Code Pro", "Liberation Mono", "Courier New", Courier, monospace');
+            jQuery('#enlighter-editorFontSize').val('0.7em');
+            jQuery('#enlighter-editorLineHeight').val('1.4em');
+            setElementColor('#enlighter-editorFontColor', '#565b60');
+            setElementColor('#enlighter-editorBackgroundColor', '#f7f7f7');
+        });
 
 		/**
 		 * THEME CUSTOMIZER

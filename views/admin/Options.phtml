@@ -56,6 +56,12 @@
         <p><?php _e('Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displayCheckbox(__('Enable Language Shortcodes', 'enlighter'), 'languageShortcode'); ?>
 
+        <!-- Inline Highlighting -->
+        <h4><?php _e('Inline Syntax Highlighting', 'enlighter'); ?></h4>
+        <p><?php _e('Should shortcodes without linebreaks insinde handled as inline-code ?', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Inline Syntax Highlighting', 'enlighter'), 'enableInlineHighlighting'); ?>
+
+
         <h4><?php _e('Shortcode Processing', 'enlighter'); ?></h4>
         <p><?php _e('WordPress provides a build-in Shortcode-API to process shortcodes used by third-party plugins. This function may can cause issues when using it in Text-Editor-Mode with unescaped html characters - especially when posting source-code!', 'enlighter'); ?><br />
         <?php _e('To avoid such issues, Enlighter provides its own, fault tolerant, Shortcode processor (only affects Enlighter shortcodes!).', 'enlighter'); ?><br />

@@ -51,7 +51,7 @@ ol.wpcustomEnlighterJS.hoverEnabled li:hover, ul.wpcustomEnlighterJS.hoverEnable
 }
 /* special line highlight color */
 ol.wpcustomEnlighterJS li.specialline, ul.wpcustomEnlighterJS li.specialline {
-    background-color: #282e36;
+    background-color: #392d3b;
 }
 /* Tab Pane */
 .wpcustomEnlighterJSTabPane .controls{

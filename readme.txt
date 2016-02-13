@@ -3,8 +3,8 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.3
-Stable tag: 2.11
+Tested up to: 4.4
+Stable tag: 2.12
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -28,6 +28,8 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
+* Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
+* Webfont Loader to add missing Monospace Fonts to your website
 
 = Supported Languages (build-in) =
 Click to view Language/Theme Examples
@@ -172,6 +174,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 
 == Upgrade Notice ==
 
+= 2.12 =
+New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Options -> Shortcode
+
 = 2.11 =
 Bugfix Release (initialization may fail when upgrading to 2.10)
 
@@ -210,10 +215,10 @@ This problem is caused by WordPress' `wpAutoP` filter - to fix this issue, go to
 You have to enable the full toolbar by clicking on the **Show/Hide Kitchen Sink** button (last icon on the toolbar)
 
 = I get an "file permission" php error in my blog =
-The directory `/wp-content/plugins/enlighter/cache/` must be writeable - the generated css files as well as some cached content will be stored there for performance reasons. Try to set chmod to `0644` or `0770`
+The directory `/wp-content/plugins/enlighter/cache/` must be writable - the generated css files as well as some cached content will be stored there for performance reasons. Try to set chmod to `0644` or `0770`
 
 = When using the ThemeCustomizer the Code appears in plain-text =
-The cache-directory `wp-content/plugins/enlighter/cache` have to be writeable, the generated stylesheet will be stored there. Set the directory permission (chmod) to `0644` or `0777`
+The cache-directory `wp-content/plugins/enlighter/cache` have to be writable, the generated stylesheet will be stored there. Set the directory permission (chmod) to `0644` or `0777`
 
 = Inline Styles are missing within the Visual Editor =
 This feature requires WordPress 3.9 (new TinyMCE Version) - but you can still use shortcodes for inline highlighting! 
@@ -232,7 +237,7 @@ The complete EnlighterJS project can be found on [GitHub](https://github.com/And
 Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify one of the standard themes. Finally create a directory named `enlighter` into your WordPress theme and put the css file into it.
 
 = There are no Enlighter features visible within the Frontend Editor =
-You have to enable the frontend editing function: `Enlighter Settings Page -> Advanced -> TinyMCE Integration (Visual Editor) -> Enable Frontend Integration`. This feature also requires a logged-in user with `edit_posts` and/or `edit_pages` [privileges](http://codex.wordpress.org/Function_Reference/current_user_can) and is only available for the `wp_editor` function - no thrid party editors are supported!
+You have to enable the frontend editing function: `Enlighter Settings Page -> Advanced -> TinyMCE Integration (Visual Editor) -> Enable Frontend Integration`. This feature also requires a logged-in user with `edit_posts` and/or `edit_pages` [privileges](http://codex.wordpress.org/Function_Reference/current_user_can) and is only available for the `wp_editor` function - no third party editors are supported!
 
 = I'am already using MooTools and my page throws Javascript-Errors =
 If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
@@ -244,6 +249,19 @@ In case you found a security issue in this plugin - please write a message **dir
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
+
+= 2.12-BETA =
+* Added: New robust and fault-tolerant `LowLevel Shortcode Handler` to avoid issues with wpautop filter and unescaped html characters (text mode)
+* Added: Option to disable Enlighter shortcodes
+* Added: Option to use the old/legacy Shortcode handler 
+* Added: Shortcode Processor state to the SystemInformation sidebar
+* Bugfix: Theme Customizer was not able to modify the special-line-highlighting-color of codeblocks **without** line-numbers - thanks to [CraigMcKenna on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/24)
+* Bugfix: MooTools < 1.5.1 [#2705](https://github.com/mootools/mootools-core/pull/2705) will throw the javascript error `The specified value "t" is not a valid email address` - [updated to v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release) - thanks to [
+lots0logs on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/25)
+* Changed: Moved Language Shortcode options from advanced settings to standard options
+* Replaced: the low-level PHP based ObjectCache by the [WordPress Transient API](https://codex.wordpress.org/Transients_API)
+* Dependencies: Updated MooTools to [v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release)
+* Deprecated: The "WpAutoP" Filter Priority setting will be removed in the future - the new LowLevel Shortcode Handler will avoid wpautop issues!
 
 = 2.11 =
 * Bugfix: the default option of "Enlighter Config" is now set to "inline" - this may avoid highlighting when upgrading to 2.10 - I apologize for the inconvenience - thanks to [ciambellino on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/21)
