@@ -1,11 +1,12 @@
 /**
- * TinyMCE Styles for use with Enlighter
+ * TinyMCE Editor Styles for use with Enlighter
 */
 code.EnlighterJSRAW{
-	border: dotted 1px #4d79a1 !important;
-	border-left: solid 4px #4d79a1 !important;
+    border: dotted 1px #e5e5e5;
+	border-left: solid 4px #23282d !important;
 	padding: 3px 5px 3px 5px;
-	background-color: #f9f9f9;
+    background-color: #f7f7f7;
+    color: #565b60;
     font-family: "Source Code Pro", "Liberation Mono", "Courier New", Courier, monospace;
     font-size: 0.7em;
 }

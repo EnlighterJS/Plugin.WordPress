@@ -40,12 +40,25 @@ class LowlLevelShortcodeProcessor{
             $this->_languageTags .= '|' . implode('|', $languageShortcodes);
         }
 
-		// add content filter to first position - replaces all enlighter shortcodes with placeholders
-		add_filter('the_content', array($this, 'stripCodeFragments'), 0, 1);
+        // set "the_content" as default filter target
+        $this->registerFilterTarget('the_content');
+	}
+
+    public function registerFilterTarget($name){
+        // add content filter to first position - replaces all enlighter shortcodes with placeholders
+        add_filter($name, array($this, 'stripCodeFragments'), 0, 1);
 
         // add restore filter to the end of filter chain - placeholders are replaced with rendered html
-        add_filter('the_content', array($this, 'renderFragments'), 9998, 1);
-	}
+        add_filter($name, array($this, 'renderFragments'), 9998, 1);
+    }
+
+    // run shortcode directly (may required for external usage - NOT used by Enlighter)
+    public function doShortcode($content){
+        $content = $this->stripCodeFragments($content);
+        $content = $this->findShortcodes($content);
+
+        return $content;
+    }
 
     private function getShortcodeRegex($shortcodes){
         // opening tag based on enabled shortcodes

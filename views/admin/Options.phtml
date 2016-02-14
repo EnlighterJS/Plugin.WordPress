@@ -46,36 +46,13 @@
 	</div>
 </div>
 
-<!-- Shortcode Processing -->
-<div class="postbox">
-    <h3 class="hndle"><span><?php _e('Shortcodes', 'enlighter'); ?></span></h3>
-    <div class="inside EnlighterBlockcontent">
-
-        <!-- Langugae Shortcodes -->
-        <h4><?php _e('Language Shortcodes', 'enlighter'); ?></h4>
-        <p><?php _e('Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable Language Shortcodes', 'enlighter'), 'languageShortcode'); ?>
-
-        <!-- Inline Highlighting -->
-        <h4><?php _e('Inline Syntax Highlighting', 'enlighter'); ?></h4>
-        <p><?php _e('Should shortcodes without linebreaks insinde handled as inline-code ?', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable Inline Syntax Highlighting', 'enlighter'), 'enableInlineHighlighting'); ?>
-
-
-        <h4><?php _e('Shortcode Processing', 'enlighter'); ?></h4>
-        <p><?php _e('WordPress provides a build-in Shortcode-API to process shortcodes used by third-party plugins. This function may can cause issues when using it in Text-Editor-Mode with unescaped html characters - especially when posting source-code!', 'enlighter'); ?><br />
-        <?php _e('To avoid such issues, Enlighter provides its own, fault tolerant, Shortcode processor (only affects Enlighter shortcodes!).', 'enlighter'); ?><br />
-        <?php _e('If you do not need shortcodes (use the Visual-Editor-Integration instead) it is possible to disable the shortcode processing for performance reasons.', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displaySelect(__('Processor', 'enlighter'), 'shortcodeMode', array(__('Enlighter Low-Level (default)', 'enlighter') => 'modern', __('Legacy (WordPress based)', 'enlighter') => 'legacy', __('Disable Shortcodes', 'enlighter') => 'disabled')); ?>
-    </div>
-</div>
 
 <!-- Cryptex -->
 <div class="postbox">
     <h3 class="hndle"><span><?php _e('Cryptex Email Obfuscation Plugin', 'enlighter'); ?></span></h3>
     <div class="inside EnlighterBlockcontent">
 
-        <p><?php _e('These options are related to the <a href="https://wordpress.org/plugins/cryptex/" target="_blank">Cryptex Email Address Obfuscation plugin</a>. It can protect Email Adresses within your highlighted sourcecode.', 'enlighter'); ?><br />
+        <p><?php _e('These options are related to the <a href="https://wordpress.org/plugins/cryptex/" target="_blank">Cryptex E-Mail Address Obfuscation plugin</a>. It can protect E-Mail Addresses within your highlighted sourcecode.', 'enlighter'); ?><br />
             <strong><?php _e('Requires Cryptex 5.0 with enabled hyperlinks.', 'enlighter'); ?></strong>
         </p>
 

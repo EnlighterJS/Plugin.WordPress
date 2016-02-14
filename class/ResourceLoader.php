@@ -129,6 +129,8 @@ class ResourceLoader{
 			// load global EnlighterJS options
 			add_action('admin_print_scripts', array($this, 'appendInlineTinyMCEConfig'));
 		}
+
+        add_action('admin_print_footer_scripts', array($this, 'appendInlineEditorConfig'));
 	}
 	
 	// append javascript based config
@@ -227,7 +229,7 @@ class ResourceLoader{
 	
 	public function appendTinyMceJS($mce_plugins){
 		// TinyMCE plugin js
-		$mce_plugins['enlighter'] = plugins_url('/enlighter/resources/admin/TinyMCE.js');
+		$mce_plugins['enlighter'] = plugins_url('/enlighter/resources/editor/TinyMCE.js');
 		return $mce_plugins;
 	}
 	
@@ -254,22 +256,22 @@ class ResourceLoader{
 	}
 	
 	public function appendInlineTinyMCEConfig(){
-		// create config object
-		$config = array(
-			'languages' => \Enlighter::getAvailableLanguages(),
-			'themes' => \Enlighter::getAvailableThemes(),
-			'config' => array(
-				'theme' => $this->_config['defaultTheme'],
-				'language' => $this->_config['defaultLanguage'],
-				'linenumbers' => ($this->_config['linenumbers'] ? true : false),
-				'indent' => intval($this->_config['indent'])			
-			)
-		);
-		
-		// GLobal Admin Enlighter config
-		echo '<script type="text/javascript">/* <![CDATA[ */';
-		echo 'var Enlighter = ', json_encode($config), ';/* ]]> */</script>';
+		// Global Admin Enlighter config
+		echo '<script type="text/javascript">/* <![CDATA[ */var Enlighter = ', json_encode($this->_tinymce->getPluginConfig()), ';/* ]]> */</script>';
 	}
+
+    // quick-tags
+    public function appendInlineEditorConfig(){
+        $buffer = '';
+        $num = 150;
+
+        foreach (\Enlighter::getAvailableLanguages() as $name => $lang){
+            $num++;
+            $buffer .= "QTags.addButton( 'enlighter-$lang', '$lang', '<pre class=\"EnlighterJSRAW\" data-enlighter-language=\"$lang\">', '</pre>', null, '$name', $num);";
+        }
+
+        echo '<script type="text/javascript">/* <![CDATA[ */ if (typeof QTags != "undefined"){', $buffer, '};/* ]]> */</script>';
+    }
 	
 	
 }

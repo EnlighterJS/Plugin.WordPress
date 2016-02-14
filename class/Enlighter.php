@@ -67,6 +67,7 @@ class Enlighter{
         'editorFontColor' => '#000000',
         'editorBackgroundColor' => '#f9f9f9',
         'editorAutowidth' => false,
+        'editorQuicktagMode' => 'html',
 
 		'customThemeBase' => 'standard',
 		'customFontFamily' => 'Monaco, Courier, Monospace',

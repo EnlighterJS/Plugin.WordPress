@@ -156,7 +156,7 @@ class TinyMCE{
     // generate the editor css
     public function generateCSS(){
         // load base styles
-        $styles = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/admin/TinyMCE.css');
+        $styles = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/editor/TinyMCE.css');
 
         // inline editor styles
         $customizer = array(
@@ -182,5 +182,19 @@ class TinyMCE{
 
         // store generated styles
         file_put_contents($this->_cacheManager->getCachePath() . 'TinyMCE.css', $styles);
+    }
+
+    public function getPluginConfig(){
+        // create config object
+        return array(
+            'languages' => \Enlighter::getAvailableLanguages(),
+            'themes' => \Enlighter::getAvailableThemes(),
+            'config' => array(
+                'theme' => $this->_config['defaultTheme'],
+                'language' => $this->_config['defaultLanguage'],
+                'linenumbers' => ($this->_config['linenumbers'] ? true : false),
+                'indent' => intval($this->_config['indent'])
+            )
+        );
     }
 }

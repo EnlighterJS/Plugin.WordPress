@@ -5,17 +5,18 @@
 * Added: Visual Editor Customization
 * Added: Option to disable Enlighter shortcodes
 * Added: Option to use the old/legacy Shortcode handler 
-* Added: Shortcode Processor state to the SystemInformation sidebar
-* Added: Unique Hash to all cached resources to force cache-update on file-change
+* Added: Shortcode Processor info to the SystemInformation sidebar
+* Added: Unique Hash to all cached resources to force cache-update on file-change/setting-update
 * Added: Option to cancel WordPress Editor width limit (set to auto)
 * Bugfix: Theme Customizer was not able to modify the special-line-highlighting-color of codeblocks **without** line-numbers - thanks to [CraigMcKenna on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/24)
 * Bugfix: MooTools <= 1.5.1 [#2705](https://github.com/mootools/mootools-core/pull/2705) will throw the javascript error `The specified value "t" is not a valid email address` - [updated to v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release) - thanks to [lots0logs on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/25)
 * Bugfix: Removed TinyMCE debugging output (written to console)
 * Bugfix: The Edit Icon is now dynamically positioned based on editor width
-* Changed: Moved Language Shortcode options from advanced settings to standard options
-* Changed: Moved TinyMCE Editor options from advanced settings to editor options
+* Changed: Moved Language Shortcode options from advanced settings to editing section
+* Changed: Moved TinyMCE Editor options from advanced settings to editing options
 * Changed: The Visual Editor Code-block appearance (modernized)
-* Changed: Language Title in the Visual Editor Box is dynamically generated
+* Changed: Language Titles in the Visual Editor Box are dynamically generated
+* Changed: Internal file structure (editor resources)
 * Replaced: the low-level PHP based ObjectCache by the [WordPress Transient API](https://codex.wordpress.org/Transients_API)
 * Dependencies: Updated MooTools to [v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release)
 * Deprecated: The "WpAutoP" Filter Priority setting will be removed in the future - the new LowLevel Shortcode Handler will avoid wpautop issues!

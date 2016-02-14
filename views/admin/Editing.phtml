@@ -1,0 +1,84 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- Visual Editor -->
+<div class="postbox">
+	<h3 class="hndle"><span><?php _e('Visual Editor (TinyMCE 4)', 'enlighter'); ?></span></h3>
+	<div class="inside EnlighterBlockcontent">
+
+        <!-- TinyMCE Integration -->
+        <h4><?php _e('Visual Editor Integration', 'enlighter'); ?></h4>
+        <p><?php _e('Enlighter provides a full Visual Editor integration. You can turn it off if you only want to use shortcodes.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Backend Integration', 'enlighter'), 'enableTinyMceIntegration'); ?>
+
+        <p><?php _e('Do you want to use the Visual Editor extensions in your frontend (website) ? May required for frontend editing plugins.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Frontend Integration', 'enlighter'), 'enableFrontendTinyMceIntegration'); ?>
+
+        <!-- TinyMCE Tweaks -->
+        <h4><?php _e('Visual Editor Tweaks', 'enlighter'); ?></h4>
+        <p><?php _e('WordPress Limits the Editor-Width to ~600px. You can disable this limit - might be useful for posting source-code!', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Automatic Width (max)', 'enlighter'), 'editorAutowidth'); ?>
+
+
+        <!-- Codeblock Font Styles -->
+        <h4><?php _e('Code-Block Styles', 'enlighter'); ?></h4>
+        <p><?php _e('It is also possible to influence the code-block styles of the Visual-Editor. Maybe you like another background color or font-family.', 'enlighter'); ?></p>
+
+
+        <?php
+        // font family
+        $this->_settingsUtility->displayInput(__('Font-Family', 'enlighter'), 'editorFontFamily', __('e.g. "Source Code Pro", "Liberation Mono", "Courier New", Courier, monospace', 'enlighter'), '', true);
+
+        // font size
+        $this->_settingsUtility->displayInput(__('Font-Size', 'enlighter'), 'editorFontSize', __('e.g. 0.7em', 'enlighter'), '', true);
+
+        // line height
+        $this->_settingsUtility->displayInput(__('Line height', 'enlighter'), 'editorLineHeight', __('e.g. 1.4em', 'enlighter'), '', true);
+
+        // font color
+        $this->_settingsUtility->displayInput(__('Font-Color', 'enlighter'), 'editorFontColor', __('e.g. #565b60', 'enlighter'), 'EnlighterJSColorChooser', true);
+
+        // background color
+        $this->_settingsUtility->displayInput(__('Background-Color', 'enlighter'), 'editorBackgroundColor', __('e.g. #f7f7f7', 'enlighter'), 'EnlighterJSColorChooser', true);
+        ?>
+
+        <input type="button" value="<?php _e('Restore defaults', 'enlighter');?> " id="enlighter_editorstylesDefault" class="button button-primary" />
+
+    </div>
+</div>
+
+<!-- Text Editor -->
+<div class="postbox">
+    <h3 class="hndle"><span><?php _e('Text/HTML Editor', 'enlighter'); ?></span></h3>
+    <div class="inside EnlighterBlockcontent">
+        <!-- Quicktags -->
+        <h4><?php _e('QuickTags', 'enlighter'); ?></h4>
+        <p><?php _e('QuickTags are used to simplify the editing process when working in text/html mode. A bunch of QuickTags (all registered languages) can be added to the Text/HTML Editor Toolbar.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displaySelect(__('QuickTag Mode', 'enlighter'), 'editorQuicktagMode', array(__('Print HTML Tags (default)', 'enlighter') => 'html', __('Print Shortcode Tags', 'enlighter') => 'shortcode', __('Disable QuickTags', 'enlighter') => 'disabled')); ?>
+    </div>
+</div>
+
+
+<!-- Shortcode Processing -->
+<div class="postbox">
+    <h3 class="hndle"><span><?php _e('Shortcodes', 'enlighter'); ?></span></h3>
+    <div class="inside EnlighterBlockcontent">
+
+        <!-- Langugae Shortcodes -->
+        <h4><?php _e('Language Shortcodes', 'enlighter'); ?></h4>
+        <p><?php _e('Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Language Shortcodes', 'enlighter'), 'languageShortcode'); ?>
+
+        <!-- Inline Highlighting -->
+        <h4><?php _e('Inline Syntax Highlighting', 'enlighter'); ?></h4>
+        <p><?php _e('Should shortcodes without linebreaks insinde handled as inline-code ?', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Inline Syntax Highlighting', 'enlighter'), 'enableInlineHighlighting'); ?>
+
+
+        <h4><?php _e('Shortcode Processing', 'enlighter'); ?></h4>
+        <p><?php _e('WordPress provides a build-in Shortcode-API to process shortcodes used by third-party plugins. This function may can cause issues when using it in Text-Editor-Mode with unescaped html characters - especially when posting source-code!', 'enlighter'); ?>
+            <?php _e('To avoid such issues, Enlighter provides its own, fault tolerant, Shortcode processor (only affects Enlighter shortcodes!).', 'enlighter'); ?><br />
+            <?php _e('If you do not need shortcodes (use the Visual-Editor-Integration instead) it is possible to disable the shortcode processing for performance reasons.', 'enlighter'); ?></p>
+        <p><?php _e('<strong>Notice</strong>: the LowLevel Shortcode Processor is only added to <a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a> filter hook - it is <strong>not invoked</strong> by the <a href="https://developer.wordpress.org/reference/functions/do_shortcode/">do_shortcode</a> function! If you need shortcode processing in other content section, you should consider to use the legacy version.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displaySelect(__('Processor', 'enlighter'), 'shortcodeMode', array(__('Enlighter Low-Level (default)', 'enlighter') => 'modern', __('Legacy (WordPress based)', 'enlighter') => 'legacy', __('Disable Shortcodes', 'enlighter') => 'disabled')); ?>
+    </div>
+</div>
