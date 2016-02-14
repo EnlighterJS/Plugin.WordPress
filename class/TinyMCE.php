@@ -46,14 +46,19 @@ class TinyMCE{
 
     // run integration
     public function integrate(){
-        // add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
-        add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
+        // primary buttons (edit, insert) of the Visual Editor integration
         add_filter('mce_buttons', array($this, 'addButtons1'), 101);
 
-        // TinyMCE 4 required !
-        if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
-            // add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
-            add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);
+        // add preformatted styles ?
+        if ($this->_config['editorAddStyleFormats']){
+            // add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
+            add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
+
+            // TinyMCE 4 required !
+            if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
+                // add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
+                add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);
+            }
         }
     }
 	
@@ -193,7 +198,9 @@ class TinyMCE{
                 'theme' => $this->_config['defaultTheme'],
                 'language' => $this->_config['defaultLanguage'],
                 'linenumbers' => ($this->_config['linenumbers'] ? true : false),
-                'indent' => intval($this->_config['indent'])
+                'indent' => intval($this->_config['indent']),
+                'quicktagMode' => $this->_config['editorQuicktagMode'],
+                'languageShortcode' => ($this->_config['languageShortcode'] ? true : false)
             )
         );
     }

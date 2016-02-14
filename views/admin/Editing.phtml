@@ -14,10 +14,12 @@
         <?php $this->_settingsUtility->displayCheckbox(__('Enable Frontend Integration', 'enlighter'), 'enableFrontendTinyMceIntegration'); ?>
 
         <!-- TinyMCE Tweaks -->
-        <h4><?php _e('Visual Editor Tweaks', 'enlighter'); ?></h4>
+        <h4><?php _e('Tweaks', 'enlighter'); ?></h4>
         <p><?php _e('WordPress Limits the Editor-Width to ~600px. You can disable this limit - might be useful for posting source-code!', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displayCheckbox(__('Automatic Width (max)', 'enlighter'), 'editorAutowidth'); ?>
 
+        <p><?php _e('In addition to the code-insert button, Enlighter can add a set formats to the editor.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Add Editor Formats', 'enlighter'), 'editorAddStyleFormats'); ?>
 
         <!-- Codeblock Font Styles -->
         <h4><?php _e('Code-Block Styles', 'enlighter'); ?></h4>

@@ -68,6 +68,7 @@ class Enlighter{
         'editorBackgroundColor' => '#f9f9f9',
         'editorAutowidth' => false,
         'editorQuicktagMode' => 'html',
+        'editorAddStyleFormats' => true,
 
 		'customThemeBase' => 'standard',
 		'customFontFamily' => 'Monaco, Courier, Monospace',
@@ -300,8 +301,8 @@ class Enlighter{
 	public function setupBackend(){
 		if (current_user_can('manage_options')){
 			// add options page
-			$optionsPage = add_options_page(__('Enlighter - Customizable Syntax Highlighter', 'enlighter'), 'Enlighter', 'administrator', __FILE__, array($this, 'settingsPage'));
-			
+			$optionsPage = add_menu_page(__('Enlighter - Customizable Syntax Highlighter', 'enlighter'), 'Enlighter', 'administrator', 'Enlighter', array($this, 'settingsPage'), 'dashicons-editor-code');
+
 			// add links
             add_filter('plugin_action_links', array($this, 'addPluginPageSettingsLink'), 10, 2);
 			add_filter('plugin_row_meta', array($this, 'addPluginMetaLinks'), 10, 2);
@@ -334,7 +335,7 @@ class Enlighter{
     public function addPluginPageSettingsLink($links, $file){
         // current plugin ?
         if ($file == 'enlighter/Enlighter.php'){
-            $links[] = '<a href="'.admin_url('options-general.php?page='.plugin_basename(__FILE__)).'">'.__('Settings', 'enlighter').'</a>';
+            $links[] = '<a href="'.admin_url('admin.php?page=Enlighter').'">'.__('Settings', 'enlighter').'</a>';
         }
 
         return $links;
