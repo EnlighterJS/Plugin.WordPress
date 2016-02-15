@@ -54,7 +54,8 @@
     <div class="inside EnlighterBlockcontent">
         <!-- Quicktags -->
         <h4><?php _e('QuickTags', 'enlighter'); ?></h4>
-        <p><?php _e('QuickTags are used to simplify the editing process when working in text/html mode. A bunch of QuickTags (all registered languages) can be added to the Text/HTML Editor Toolbar.', 'enlighter'); ?></p>
+        <p><?php _e('QuickTags are used to simplify the editing process when working in text/html mode. A bunch of QuickTags (all registered languages) can be added to the Text/HTML Editor Toolbar.', 'enlighter'); ?><br />
+        <?php _e('HTML Tags are fully compatible with the Visual Editor Mode.', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displaySelect(__('QuickTag Mode', 'enlighter'), 'editorQuicktagMode', array(__('Print HTML Tags (default)', 'enlighter') => 'html', __('Print Shortcode Tags', 'enlighter') => 'shortcode', __('Disable QuickTags', 'enlighter') => 'disabled')); ?>
     </div>
 </div>
