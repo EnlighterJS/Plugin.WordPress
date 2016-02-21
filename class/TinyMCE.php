@@ -26,9 +26,10 @@ class TinyMCE{
 	private $_supportedLanguageKeys;
 
     // cache manager
+    private $_cacheFilename = 'TinyMCE.css';
     private $_cacheManager;
 	
-	public function __construct($settingsUtil, $languageKeys, $cacheManager){
+	public function __construct($settingsUtil, $cacheManager, $languageKeys){
 		// store local plugin config
 		$this->_config = $settingsUtil->getOptions();
 		
@@ -39,26 +40,33 @@ class TinyMCE{
         $this->_cacheManager = $cacheManager;
 
         // css cached ? otherwise regenerate it
-        if (!file_exists($this->_cacheManager->getCachePath() . 'TinyMCE.css')){
+        if (!$this->_cacheManager->fileExists('TinyMCE.css')){
             $this->generateCSS();
         }
 	}
 
     // run integration
     public function integrate(){
+        // TinyMCE 4 required !
+        if (!version_compare(get_bloginfo('version'), '3.9', '>=')) {
+            return;
+        }
         // primary buttons (edit, insert) of the Visual Editor integration
         add_filter('mce_buttons', array($this, 'addButtons1'), 101);
 
-        // add preformatted styles ?
+        // load tinyMCE styles
+        add_filter('mce_css', array($this, 'loadEditorCSS'));
+
+        // load tinyMCE enlighter plugin
+        add_filter('mce_external_plugins', array($this, 'loadPlugin'));
+
+        // add pre-formatted styles ?
         if ($this->_config['editorAddStyleFormats']){
             // add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
             add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
 
-            // TinyMCE 4 required !
-            if (version_compare(get_bloginfo('version'), '3.9', '>=')) {
-                // add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
-                add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);
-            }
+            // add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
+            add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);
         }
     }
 	
@@ -74,7 +82,7 @@ class TinyMCE{
 	
 	// insert styleselect menu into the $buttons array
 	public function addButtons2($buttons){
-		// styleselect menu already enabled ?
+		// style-select menu already enabled ?
 		if (!in_array('styleselect', $buttons)){
 			array_unshift($buttons, 'styleselect');
 		}
@@ -186,22 +194,26 @@ class TinyMCE{
         }
 
         // store generated styles
-        file_put_contents($this->_cacheManager->getCachePath() . 'TinyMCE.css', $styles);
+        $this->_cacheManager->writeFile($this->_cacheFilename, $styles);
     }
 
-    public function getPluginConfig(){
-        // create config object
-        return array(
-            'languages' => \Enlighter::getAvailableLanguages(),
-            'themes' => \Enlighter::getAvailableThemes(),
-            'config' => array(
-                'theme' => $this->_config['defaultTheme'],
-                'language' => $this->_config['defaultLanguage'],
-                'linenumbers' => ($this->_config['linenumbers'] ? true : false),
-                'indent' => intval($this->_config['indent']),
-                'quicktagMode' => $this->_config['editorQuicktagMode'],
-                'languageShortcode' => ($this->_config['languageShortcode'] ? true : false)
-            )
-        );
+    public function loadEditorCSS($mce_css){
+        // add hash from last settings update to force a cache update
+        $url = $this->_cacheManager->getCacheFileUrl('TinyMCE.css');
+
+        // other styles loaded ?
+        if (empty($mce_css)){
+            return $url;
+
+            // append custom TinyMCE styles to editor stylelist
+        }else{
+            return $mce_css . ','.$url;
+        }
+    }
+
+    public function loadPlugin($mce_plugins){
+        // TinyMCE plugin js
+        $mce_plugins['enlighter'] = plugins_url('/enlighter/resources/editor/TinyMCE.js');
+        return $mce_plugins;
     }
 }

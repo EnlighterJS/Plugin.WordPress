@@ -1,6 +1,6 @@
 ## Changelog ##
 
-### 2.12-BETA ###
+### 3.0-BETA1 ###
 * Added: New robust and fault-tolerant `LowLevel Shortcode Handler` to avoid issues with wpautop filter and unescaped html characters (text mode)
 * Added: Visual Editor Customization
 * Added: Option to disable Enlighter shortcodes
@@ -20,6 +20,8 @@
 * Changed: Language Titles in the Visual Editor Box are dynamically generated
 * Changed: Internal file structure (editor resources)
 * Changed: The Menu Slug/URL from `options-general.php?page=enlighter/class/Enlighter.php` to `admin.php?page=Enlighter` - direct, custom links to the settings page **require an update** !
+* Changed: Editor Config is renamed to `Enlighter_EditorConfig`
+* Changed: New Resource Manager structure is used
 * Replaced: the low-level PHP based ObjectCache by the [WordPress Transient API](https://codex.wordpress.org/Transients_API)
 * Dependencies: Updated MooTools to [v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release)
 * Deprecated: The "WpAutoP" Filter Priority setting will be removed in the future - the new LowLevel Shortcode Handler will avoid wpautop issues!

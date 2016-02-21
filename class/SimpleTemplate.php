@@ -36,16 +36,7 @@ class SimpleTemplate{
 	public function assign($key, $value){
 		$this->_cssVars['$('.$key.')'] = $value;
 	}
-	
-	// store rendered css file
-	public function store($filename, $prepend='', $append=''){
-		// render tpl
-		$renderedTPL = $this->render();
-		
-		// store
-		file_put_contents($filename, $prepend.$renderedTPL.$append);
-	}
-	
+
 	// return tpl
 	public function render(){
 		// replace key/value pairs
@@ -56,9 +47,4 @@ class SimpleTemplate{
 		
 		return $tplData;
 	}
-	
-	
-	
 }
-
-?>

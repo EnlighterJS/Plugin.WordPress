@@ -24,12 +24,34 @@ class CacheManager{
 	
 	// cache url (public accessable)
 	private $_cacheUrl;
+
+    // update hash
+    private $_uhash;
 	
 	public function __construct($settingsUtil){
 		// default cache
 		$this->_cachePath = ENLIGHTER_PLUGIN_PATH.'/cache/';
 		$this->_cacheUrl = plugins_url('/enlighter/cache/');
+
+        // get last update hash
+        $this->_uhash = get_option('enlighter-settingsupdate-hash', '0A0B0C');
 	}
+
+    // file_put_contents wrapper
+    public function writeFile($filename, $content){
+        // cache directory available ?
+        if (!is_dir($this->_cachePath)){
+            mkdir($this->_cachePath);
+        }
+
+        // write file - prepend absolute cache path
+        file_put_contents($this->_cachePath . $filename, $content);
+    }
+
+    // caches file available ?
+    public function fileExists($filename){
+        return file_exists($this->_cachePath . $filename);
+    }
 
 	/**
 	 * drop cache items
@@ -68,9 +90,14 @@ class CacheManager{
 	public function getCacheUrl(){
 		return $this->_cacheUrl;
 	}
+
+    // generate a url based on plugin_url with current cache hash
+    public function getCacheFileUrl($filename){
+        return plugins_url('/enlighter/cache/'. $filename .'?' . $this->_uhash);
+    }
 	
 	/**
-	 * Remove all files within the given directoy (non recursive)
+	 * Remove all files within the given directory (non recursive)
 	 */ 
 	private function rmdir($dir){
 		// remove cached files

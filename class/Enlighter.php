@@ -29,19 +29,13 @@ class Enlighter{
 	
 	// settings utility instance
 	private $_settingsUtility;
-	
-	// theme genrator instance
-	private $_themeGenerator;
-	
+
 	// cahce manager instance
 	private $_cacheManager;
 	
 	// theme loader/manager
 	private $_themeManager;
 
-    // visual editor integration
-    private $_tinymce;
-	
 	// enlighter config keys with default values
 	private $_defaultConfig = array(
 		'embedEnlighterCSS' => true,
@@ -158,37 +152,37 @@ class Enlighter{
 	
 	// list of user themes
 	private $_userThemes = array();
-	
-	// list of all customizable styles
-	private $_customStyleKeys = array(
-		'kw1', //'Keyword(Type1)Color', 'enlighter'),
-		'kw2', //'Keyword(Type2)Color', 'enlighter'),
-		'kw3', //'Keyword(Type3)Color', 'enlighter'),
-		'kw4', //'Keyword(Type4)Color', 'enlighter'),
-		'co1', //'Slash-StyleCommentsColor', 'enlighter'),
-		'co2', //'Multiline-StyleCommentsColor', 'enlighter'),
-		'st0', //'Strings(Type1)Color', 'enlighter'),
-		'st1', //'Strings(Type2)Color', 'enlighter'),
-		'st2', //'Strings(Type3)Color', 'enlighter'),
-		'nu0', //'NumberColor', 'enlighter'),
-		'me0', //'Method(Type1)Color', 'enlighter'),
-		'me1', //'Method(Type2)Color', 'enlighter'),
-		'br0', //'BracketColor', 'enlighter'),
-		'sy0', //'SymbolColor', 'enlighter'),
-		'es0', //'EscapeSymbolColor', 'enlighter'),
-		're0', //'RegexColor', 'enlighter'),
-		'de1', //'StartDelimiterColor', 'enlighter'),
-		'de2'  //'StopDelimiterColor', 'enlighter')
-	);
-	
-	// static entry/initialize singleton instance
+
+    // list of all customizable styles
+    private $_customStyleKeys = array(
+        'kw1', //'Keyword(Type1)Color', 'enlighter'),
+        'kw2', //'Keyword(Type2)Color', 'enlighter'),
+        'kw3', //'Keyword(Type3)Color', 'enlighter'),
+        'kw4', //'Keyword(Type4)Color', 'enlighter'),
+        'co1', //'Slash-StyleCommentsColor', 'enlighter'),
+        'co2', //'Multiline-StyleCommentsColor', 'enlighter'),
+        'st0', //'Strings(Type1)Color', 'enlighter'),
+        'st1', //'Strings(Type2)Color', 'enlighter'),
+        'st2', //'Strings(Type3)Color', 'enlighter'),
+        'nu0', //'NumberColor', 'enlighter'),
+        'me0', //'Method(Type1)Color', 'enlighter'),
+        'me1', //'Method(Type2)Color', 'enlighter'),
+        'br0', //'BracketColor', 'enlighter'),
+        'sy0', //'SymbolColor', 'enlighter'),
+        'es0', //'EscapeSymbolColor', 'enlighter'),
+        're0', //'RegexColor', 'enlighter'),
+        'de1', //'StartDelimiterColor', 'enlighter'),
+        'de2'  //'StopDelimiterColor', 'enlighter')
+    );
+
+    // static entry/initialize singleton instance
 	public static function run(){
 		Enlighter::getInstance();
 	}
 	
 	// get singelton instance
 	public static function getInstance(){
-		// check if singelton instance is avaible
+		// check if singelton instance is available
 		if (self::$__instance==null){
 			// create new instance if not
 			self::$__instance = new self();
@@ -232,33 +226,27 @@ class Enlighter{
 		// loader to fetch user themes
 		$this->_themeManager = new Enlighter\ThemeManager($this->_cacheManager);
 
-        // visual editor integration
-        $this->_tinymce = new Enlighter\TinyMCE($this->_settingsUtility, $this->_supportedLanguageKeys, $this->_cacheManager);
-
 		// load language files
 		if ($this->_settingsUtility->getOption('enableTranslation')){
 			load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
 		}
 		
 		// create new resource loader
-		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_themeManager, $this->_supportedLanguageKeys, $this->_tinymce);
-		
-		// create new theme generator instance
-		$this->_themeGenerator = new Enlighter\ThemeGenerator($this->_settingsUtility, $this->_cacheManager);
+		$this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_cacheManager, $this->_themeManager, $this->_supportedLanguageKeys, $this->_customStyleKeys);
 
-		// frontend or admin area ?
+		// frontend or dashboard area ?
 		if (is_admin()){
 			// add admin menu handler
 			add_action('admin_menu', array($this, 'setupBackend'));
 
             // add plugin upgrade notification
             add_action('in_plugin_update_message-enlighter/Enlighter.php', array($this, 'showUpgradeNotification'), 10, 2);
-			
-			// load backend css+js + tinymce
-			$this->_resourceLoader->backend();		
 
 			// force theme cache reload
 			$this->_themeManager->forceReload();
+
+            // editor
+            $this->_resourceLoader->backendEditor();
 		}else{
 
             // legacy (WordPress based) shortcode handling ?
@@ -274,22 +262,9 @@ class Enlighter{
                 $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $this->_supportedLanguageKeys);
             }
 
-			// include generated css ? - cached file available ?
-			if ($this->_settingsUtility->getOption('defaultTheme')=='wpcustom' && !$this->_themeGenerator->isCached()){
-				$this->_themeGenerator->generateCSS($this->_customStyleKeys);
-			}
-			
-			// create new js config generator
-			$jsConfigGenerator = new Enlighter\ConfigGenerator($this->_settingsUtility, $this->_cacheManager);
-			
-			// include generated js config ? - cached file available ?
-			if ($this->_settingsUtility->getOption('jsType')=='external' && !$jsConfigGenerator->isCached()){
-				$jsConfigGenerator->generate();
-			}
-			
-			// load frontend css+js			
-			$this->_resourceLoader->frontend($jsConfigGenerator);
-			
+            // frontend resources & extensions
+            add_action('init', array($this, 'setupFrontend'));
+
 			// change wpauto filter priority ?
 			if ($this->_settingsUtility->getOption('wpAutoPFilterPriority')!='default'){
 				remove_filter('the_content', 'wpautop');
@@ -297,6 +272,17 @@ class Enlighter{
 			}
 		}
 	}
+
+    public function setupFrontend(){
+        // load frontend css+js resources
+        $this->_resourceLoader->frontendEnlighter();
+
+        // check frontend user privileges
+        $canEdit = is_user_logged_in() && current_user_can('edit_posts') && current_user_can('edit_pages');
+        if ($canEdit){
+            $this->_resourceLoader->frontendEditor();
+        }
+    }
 	
 	public function setupBackend(){
 		if (current_user_can('manage_options')){
@@ -307,10 +293,9 @@ class Enlighter{
             add_filter('plugin_action_links', array($this, 'addPluginPageSettingsLink'), 10, 2);
 			add_filter('plugin_row_meta', array($this, 'addPluginMetaLinks'), 10, 2);
 
-			// load jquery stuff
-			add_action('admin_print_scripts-'.$optionsPage, array($this->_resourceLoader, 'appendAdminJS'));
-			add_action('admin_print_styles-'.$optionsPage, array($this->_resourceLoader, 'appendAdminCSS'));
-			
+            // settings page resources
+            add_filter('load-'.$optionsPage, array($this->_resourceLoader, 'backendSettings'));
+
 			// call register settings function
 			add_action('admin_init', array($this->_settingsUtility, 'registerSettings'));
 			
@@ -319,7 +304,7 @@ class Enlighter{
 			add_filter('load-'.$optionsPage, array($ch, 'contextualHelp'));
 		}
 	}
-	
+
 	// links to the plugin website & author's twitter channel ()
 	public function addPluginMetaLinks($links, $file){
 		// current plugin ?
@@ -346,8 +331,6 @@ class Enlighter{
 		// well...is there no action hook for updating settings in wp ?
 		if (isset($_GET['settings-updated'])){
 			$this->_cacheManager->clearCache();
-			$this->_themeGenerator->generateCSS($this->_customStyleKeys);
-            $this->_tinymce->generateCSS();
 		}
 		
 		// permission fix request ?

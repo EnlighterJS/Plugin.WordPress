@@ -15,14 +15,14 @@ requires:
 provides: [Enlighter]
 ...
 */
-(function(_tinymce){
+(function(_tinymce, _enlighter){
 	// fetch console object
 	var c = window.console || {};
 
     // register plugin
 	_tinymce.PluginManager.add('enlighter', function(editor, url){
 		// check for global Enlighter config availability
-		if (typeof Enlighter == 'undefined'){
+		if (typeof _enlighter == 'undefined'){
 			if (c.log){
 				console.log('No Enlighter config found');
 			}
@@ -57,7 +57,7 @@ provides: [Enlighter]
 			text: 'Default (Global-Settings)',
 			value: null
 		}];
-		_tinymce.each(Enlighter.languages, function(value, key){
+		_tinymce.each(_enlighter.languages, function(value, key){
 			languageValues.push({
 				text : key,
 				value : value
@@ -69,7 +69,7 @@ provides: [Enlighter]
 			text: 'Default (Global-Settings)',
 			value: null
 		}];
-		_tinymce.each(Enlighter.themes, function(value, key){
+		_tinymce.each(_enlighter.themes, function(value, key){
 			themeValues.push({
 				text : key,
 				value : key.toLowerCase()
@@ -107,8 +107,8 @@ provides: [Enlighter]
 						type : 'checkbox',
 						name : 'indentation',
 						label : 'Left-Align Indentation',
-						checked: (Enlighter.config.indent > 0),
-						disabled: (Enlighter.config.indent < 0)
+						checked: (_enlighter.config.indent > 0),
+						disabled: (_enlighter.config.indent < 0)
 					},				
 					{
 						type : 'checkbox',
@@ -136,7 +136,7 @@ provides: [Enlighter]
 							// match all tabs
 							code = code.replace(/^(\t*)/gim, function(match, p1, offset, string){
 								// replace n tabs with n*newIndent spaces
-								return (new Array(Enlighter.config.indent * p1.length + 1)).join(' ');
+								return (new Array(_enlighter.config.indent * p1.length + 1)).join(' ');
 							});
 							
 							var minIndentation = 99999;
@@ -311,7 +311,7 @@ provides: [Enlighter]
 			setAttb('title');
 			
 			// show linenumbers
-			if (settings.linenumbers == Enlighter.config.linenumbers){
+			if (settings.linenumbers == _enlighter.config.linenumbers){
 				// default value
 				node.removeAttribute('data-enlighter-linenumbers');
 			}else{
@@ -336,7 +336,7 @@ provides: [Enlighter]
 			// generate config
 			return {
 				language: node.getAttribute('data-enlighter-language'),
-				linenumbers: (ln == null ? Enlighter.config.linenumbers : (ln=='true')),
+				linenumbers: (ln == null ? _enlighter.config.linenumbers : (ln=='true')),
 				highlight: node.getAttribute('data-enlighter-highlight'),
 				lineoffset: node.getAttribute('data-enlighter-lineoffset'),
 				theme: node.getAttribute('data-enlighter-theme'),
@@ -431,4 +431,4 @@ provides: [Enlighter]
 			}
 		}
 	});
-})(tinymce);
+})(tinymce, Enlighter_EditorConfig);

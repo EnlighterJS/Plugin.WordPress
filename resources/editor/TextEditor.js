@@ -1,6 +1,6 @@
 /*!
 ---
-name: Enlighter.TextEditor
+name: _enlighter.TextEditor
 description: Text/HTML Editor Plugin for WordPress
 
 license: MIT-Style X11 License
@@ -17,26 +17,28 @@ requires:
 // domready wrapper
 jQuery(function(jq){
 
+    var _enlighter = Enlighter_EditorConfig;
+
     // dependencies loaded ?
-    if (typeof Enlighter == 'undefined' || typeof QTags == 'undefined'){
+    if (typeof _enlighter == 'undefined' || typeof QTags == 'undefined'){
         return;
     }
 
     // add quicktags ?
-    if (Enlighter.config.quicktagMode != 'disabled'){
+    if (_enlighter.config.quicktagMode != 'disabled'){
 
         var position = 200;
 
         // iterate over all available languages
-        jq.each(Enlighter.languages, function(name, slug){
+        jq.each(_enlighter.languages, function(name, slug){
             // increment position
             position++;
 
             // Shortcode Mode - Legacy
-            if (Enlighter.config.quicktagMode == 'shortcode'){
+            if (_enlighter.config.quicktagMode == 'shortcode'){
 
                 // language shortcode enabled ?
-                if (Enlighter.config.languageShortcode){
+                if (_enlighter.config.languageShortcode){
                     QTags.addButton('enlighter-' + slug, slug, '[' + slug + ']', '[/'  + slug + ']', null, name, position);
 
                 // legacy shortcode

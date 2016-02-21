@@ -20,24 +20,27 @@ namespace Enlighter;
 class ThemeGenerator{
 	
 	private $_settings;
-	
-	public function __construct($settingsUtil, $cacheManager){
+    private $_cacheFilename = 'EnlighterJS.custom.css';
+    private $_cacheManager = null;
+
+	public function __construct($settingsUtil, $cacheManager, $customStyleKeys){
 		$this->_settings = $settingsUtil;
-		$this->_config = $settingsUtil->getOptions();
-		$this->_cacheFile = $cacheManager->getCachePath().'EnlighterJS.custom.css';
+        $this->_cacheManager = $cacheManager;
+
+        // custom theme selected ?
+        if ($this->_settings->getOption('defaultTheme') == 'wpcustom' && !$this->isCached()){
+            // regenerate cache file
+            $this->generateCSS($customStyleKeys);
+        }
 	}
 
-	public function isCached(){
-		return file_exists($this->_cacheFile);
-	}
-	
+    public function isCached(){
+        return $this->_cacheManager->fileExists($this->_cacheFilename);
+    }
+
 	// update cache/generate dynamic css
 	public function generateCSS($styleKeys){
-		// custom theme selected ?
-		if ($this->_settings->getOption('defaultTheme') != 'wpcustom'){
-			return;
-		}
-		
+
 		// load css template
 		$cssTPL = new SimpleTemplate(ENLIGHTER_PLUGIN_PATH.'/views/WpCustomTheme.css');
 		
@@ -161,7 +164,7 @@ class ThemeGenerator{
 		$enlighterJSThemeCss = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/views/themes/'.strtolower($this->_settings->getOption('customThemeBase')).'.css');
 		
 		// store file, prepend base styles
-		$cssTPL->store($this->_cacheFile, $enlighterJSBaseCss.$enlighterJSThemeCss);
+        $this->_cacheManager->writeFile($this->_cacheFilename, $enlighterJSBaseCss . $enlighterJSThemeCss . $cssTPL->render());
 	}
 	
 }

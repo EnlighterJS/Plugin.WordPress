@@ -22,9 +22,6 @@ class ThemeManager{
 	private $_cachedData = null;
 
 	public function __construct($cacheManager){
-		// initialize object caache
-		//$this->_cache = new ObjectCache($cacheManager->getCachePath().'userthemes.cache.php');
-
         // try to load cached data
         $this->_cachedData = get_transient('enlighter_userthemes');
 	}
@@ -53,7 +50,6 @@ class ThemeManager{
 			// store data; 1day cache expire
             set_transient('enlighter_userthemes', $themeFiles, DAY_IN_SECONDS);
             $this->_cachedData = $themeFiles;
-			//$this->_cache->setData($themeFiles);
 		}
 				
 		return $this->_cachedData;
