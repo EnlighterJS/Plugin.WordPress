@@ -23,6 +23,7 @@
 * Changed: The Menu Slug/URL from `options-general.php?page=enlighter/class/Enlighter.php` to `admin.php?page=Enlighter` - direct, custom links to the settings page **require an update** !
 * Changed: Editor Config object is renamed to `Enlighter_EditorConfig`
 * Changed: New Resource Manager structure is used
+* Changed: Cached files are observed and re-generated if missing
 * Replaced: the low-level PHP based ObjectCache by the [WordPress Transient API](https://codex.wordpress.org/Transients_API)
 * Dependencies: Updated MooTools to [v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release)
 * Deprecated: The "WpAutoP" Filter Priority setting will be removed in the future - the new LowLevel Shortcode Handler will avoid wpautop issues!

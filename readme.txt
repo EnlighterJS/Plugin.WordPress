@@ -263,6 +263,7 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 * Bugfix: MooTools <= 1.5.1 [#2705](https://github.com/mootools/mootools-core/pull/2705) will throw the javascript error `The specified value "t" is not a valid email address` - [updated to v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release) - thanks to [lots0logs on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/25)
 * Bugfix: Removed TinyMCE debugging output (written to console)
 * Bugfix: The Edit Icon (Visual Editor) is now dynamically positioned based on editor width
+* Bugfix: Foreground Color of Theme-Customizers color elements is changed dynamically based on the background color brightness
 * Changed: Moved the Enlighter Settings Page to the Top-Level of WordPress Administration Menu
 * Changed: Moved Language Shortcode options from advanced settings to editing section
 * Changed: Moved TinyMCE Editor options from advanced settings to editing options
@@ -272,6 +273,7 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 * Changed: The Menu Slug/URL from `options-general.php?page=enlighter/class/Enlighter.php` to `admin.php?page=Enlighter` - direct, custom links to the settings page **require an update** !
 * Changed: Editor Config object is renamed to `Enlighter_EditorConfig`
 * Changed: New Resource Manager structure is used
+* Changed: Cached files are observed and re-generated if missing
 * Replaced: the low-level PHP based ObjectCache by the [WordPress Transient API](https://codex.wordpress.org/Transients_API)
 * Dependencies: Updated MooTools to [v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release)
 * Deprecated: The "WpAutoP" Filter Priority setting will be removed in the future - the new LowLevel Shortcode Handler will avoid wpautop issues!

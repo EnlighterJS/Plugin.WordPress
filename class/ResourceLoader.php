@@ -45,7 +45,7 @@ class ResourceLoader{
 
     // theme generator
     private $_themeGenerator;
-	
+
 	public function __construct($settingssUtil, $cacheManager, $themeManager, $languageKeys, $customStyleKeys){
 		// store local plugin config
 		$this->_config = $settingssUtil->getOptions();
