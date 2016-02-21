@@ -52,5 +52,14 @@
 			<arg value="views/themes" />
 		</exec>
 	</target>
+
+    <!-- Static Code Check !-->
+    <target name="lint">
+        <apply executable="php">
+            <arg value="-l"/>
+
+            <fileset dir="." includes="**/*.php" excludes="util/**"/>
+        </apply>
+    </target>
 	
 </project>

@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.4
-Stable tag: 2.12
+Stable tag: 3.0
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -15,7 +15,7 @@ Simple post syntax-highlighted code using the EnlighterJS Javascript Plugin.
 Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.org) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-[Theme Demo](http://enlighterjs.org/Theme.Enlighter.html "EnligherJS Theme Browser") - [Language Examples](http://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
+[Theme Demo](http://enlighterjs.org/Theme.Enlighter.html "EnlighterJS Theme Browser") - [Language Examples](http://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
 
 ### Plugin Features ###
 * Support for all common used languages including powerful generic highlighting
@@ -147,7 +147,7 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 
 ### System requirements ###
 * PHP 5.3, including `json` functions
-* Webbrowser with enabled Javscript (required for highlighting)
+* Webbrowser with enabled Javascript (required for highlighting)
 * Accessable cache directory (`/wp-content/plugins/enlighter/cache/`)
 
 ### Installation ###
@@ -174,8 +174,8 @@ Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go
 
 ## Upgrade Notice ##
 
-### 2.12 ###
-New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Options -> Shortcode
+### 3.0 ###
+New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Editing -> Shortcode
 
 ### 2.11 ###
 Bugfix Release (initialization may fail when upgrading to 2.10)
