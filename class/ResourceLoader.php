@@ -140,7 +140,7 @@ class ResourceLoader{
         // settings init script
         wp_enqueue_script('enlighter-settings',
             plugins_url('/enlighter/resources/admin/EnlighterSettings.js'),
-            array('jquery',  'enlighter-jquery-cookies', 'enlighter-jquery-colorpicker', 'enlighter-themes'),
+            array('jquery', 'jquery-color', 'enlighter-jquery-cookies', 'enlighter-jquery-colorpicker', 'enlighter-themes'),
             ENLIGHTER_VERSION);
     }
 

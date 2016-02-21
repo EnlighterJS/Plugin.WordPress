@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2016-02-12 16:19:19+00:00\n"
+"POT-Creation-Date: 2016-02-21 22:31:30+00:00\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  2.12-BETA4\n"
+"Project-Id-Version: Enlighter  3.0-BETA1\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
-#: views/admin/Options.phtml:51
+#: views/admin/Editing.phtml:66
 msgid "Shortcodes"
 msgstr ""
 
@@ -29,7 +29,7 @@ msgstr ""
 msgid "External Themes"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:35
+#: views/admin/SettingsPage.phtml:36
 msgid "Enlighter - Customizable Syntax Highlighter"
 msgstr ""
 
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: class/TinyMCE.php:101
+#: class/TinyMCE.php:128
 msgid "Enlighter Codeblocks"
 msgstr ""
 
-#: class/TinyMCE.php:125
+#: class/TinyMCE.php:152
 msgid "Enlighter Inline"
 msgstr ""
 
@@ -133,34 +133,6 @@ msgstr ""
 msgid "Enable I18n"
 msgstr ""
 
-#: views/admin/Advanced.phtml:34
-msgid "Inline Syntax Highlighting"
-msgstr ""
-
-#: views/admin/Advanced.phtml:35
-msgid "Should shortcodes without linebreaks insinde handled as inline-code ?"
-msgstr ""
-
-#: views/admin/Advanced.phtml:36
-msgid "Enable Inline Syntax Highlighting"
-msgstr ""
-
-#: views/admin/Advanced.phtml:39
-msgid "TinyMCE Integration (Visual Editor)"
-msgstr ""
-
-#: views/admin/Advanced.phtml:40
-msgid "Enlighter can directly integrated into the Visual-Editor by adding Preformatted styles for each supported language."
-msgstr ""
-
-#: views/admin/Advanced.phtml:41
-msgid "Enable Backend Integration"
-msgstr ""
-
-#: views/admin/Advanced.phtml:42
-msgid "Enable Frontend Integration"
-msgstr ""
-
 #: views/admin/SettingsPage.phtml:27
 msgid "Appearance"
 msgstr ""
@@ -231,6 +203,197 @@ msgstr ""
 
 #: views/admin/Appearance.phtml:42
 msgid "Info-button"
+msgstr ""
+
+#: views/admin/Editing.phtml:5
+msgid "Visual Editor (TinyMCE 4)"
+msgstr ""
+
+#: views/admin/Editing.phtml:9
+msgid "Visual Editor Integration"
+msgstr ""
+
+#: views/admin/Editing.phtml:10
+msgid "Enlighter provides a full Visual Editor integration. You can turn it off if you only want to use shortcodes."
+msgstr ""
+
+#: views/admin/Editing.phtml:11
+msgid "Enable Backend Integration"
+msgstr ""
+
+#: views/admin/Editing.phtml:13
+msgid "Do you want to use the Visual Editor extensions in your frontend (website) ? May required for frontend editing plugins."
+msgstr ""
+
+#: views/admin/Editing.phtml:14
+msgid "Enable Frontend Integration"
+msgstr ""
+
+#: views/admin/Editing.phtml:17
+msgid "Tweaks"
+msgstr ""
+
+#: views/admin/Editing.phtml:18
+msgid "WordPress Limits the Editor-Width to ~600px. You can disable this limit - might be useful for posting source-code!"
+msgstr ""
+
+#: views/admin/Editing.phtml:19
+msgid "Automatic Width (max)"
+msgstr ""
+
+#: views/admin/Editing.phtml:21
+msgid "In addition to the code-insert button, Enlighter can add a set formats to the editor."
+msgstr ""
+
+#: views/admin/Editing.phtml:22
+msgid "Add Editor Formats"
+msgstr ""
+
+#: views/admin/Editing.phtml:25
+msgid "Code-Block Styles"
+msgstr ""
+
+#: views/admin/Editing.phtml:26
+msgid "It is also possible to influence the code-block styles of the Visual-Editor. Maybe you like another background color or font-family."
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:36 views/admin/ThemeCustomizer.phtml:53
+#: views/admin/ThemeCustomizer.phtml:67
+msgid "Font-Family"
+msgstr ""
+
+#: views/admin/Editing.phtml:31
+msgid "e.g. \"Source Code Pro\", \"Liberation Mono\", \"Courier New\", Courier, monospace"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:39 views/admin/ThemeCustomizer.phtml:56
+#: views/admin/ThemeCustomizer.phtml:70
+msgid "Font-Size"
+msgstr ""
+
+#: views/admin/Editing.phtml:34
+msgid "e.g. 0.7em"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:42 views/admin/ThemeCustomizer.phtml:73
+msgid "Line height"
+msgstr ""
+
+#: views/admin/Editing.phtml:37
+msgid "e.g. 1.4em"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:45 views/admin/ThemeCustomizer.phtml:59
+#: views/admin/ThemeCustomizer.phtml:76
+msgid "Font-Color"
+msgstr ""
+
+#: views/admin/Editing.phtml:40
+msgid "e.g. #565b60"
+msgstr ""
+
+#: views/admin/ThemeCustomizer.phtml:79
+msgid "Background-Color"
+msgstr ""
+
+#: views/admin/Editing.phtml:43
+msgid "e.g. #f7f7f7"
+msgstr ""
+
+#: views/admin/Editing.phtml:46
+msgid "Restore defaults"
+msgstr ""
+
+#: views/admin/Editing.phtml:53
+msgid "Text/HTML Editor"
+msgstr ""
+
+#: views/admin/Editing.phtml:56
+msgid "QuickTags"
+msgstr ""
+
+#: views/admin/Editing.phtml:57
+msgid "QuickTags are used to simplify the editing process when working in text/html mode. A bunch of QuickTags (all registered languages) can be added to the Text/HTML Editor Toolbar."
+msgstr ""
+
+#: views/admin/Editing.phtml:58
+msgid "HTML Tags are fully compatible with the Visual Editor Mode."
+msgstr ""
+
+#: views/admin/Editing.phtml:59
+msgid "QuickTag Mode"
+msgstr ""
+
+#: views/admin/Editing.phtml:59
+msgid "Print HTML Tags (default)"
+msgstr ""
+
+#: views/admin/Editing.phtml:59
+msgid "Print Shortcode Tags"
+msgstr ""
+
+#: views/admin/Editing.phtml:59
+msgid "Disable QuickTags"
+msgstr ""
+
+#: views/admin/Editing.phtml:70
+msgid "Language Shortcodes"
+msgstr ""
+
+#: views/admin/Editing.phtml:71
+msgid "Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!"
+msgstr ""
+
+#: views/admin/Editing.phtml:72
+msgid "Enable Language Shortcodes"
+msgstr ""
+
+#: views/admin/Editing.phtml:75
+msgid "Inline Syntax Highlighting"
+msgstr ""
+
+#: views/admin/Editing.phtml:76
+msgid "Should shortcodes without linebreaks insinde handled as inline-code ?"
+msgstr ""
+
+#: views/admin/Editing.phtml:77
+msgid "Enable Inline Syntax Highlighting"
+msgstr ""
+
+#: views/admin/Editing.phtml:80
+msgid "Shortcode Processing"
+msgstr ""
+
+#: views/admin/Editing.phtml:81
+msgid "WordPress provides a build-in Shortcode-API to process shortcodes used by third-party plugins. This function may can cause issues when using it in Text-Editor-Mode with unescaped html characters - especially when posting source-code!"
+msgstr ""
+
+#: views/admin/Editing.phtml:82
+msgid "To avoid such issues, Enlighter provides its own, fault tolerant, Shortcode processor (only affects Enlighter shortcodes!)."
+msgstr ""
+
+#: views/admin/Editing.phtml:83
+msgid "If you do not need shortcodes (use the Visual-Editor-Integration instead) it is possible to disable the shortcode processing for performance reasons."
+msgstr ""
+
+#: views/admin/Editing.phtml:84
+msgid "<strong>Notice</strong>: the LowLevel Shortcode Processor is only added to <a href=\"https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content\">the_content</a> filter hook - it is <strong>not invoked</strong> by the <a href=\"https://developer.wordpress.org/reference/functions/do_shortcode/\">do_shortcode</a> function! If you need shortcode processing in other content section, you should consider to use the legacy version."
+msgstr ""
+
+#: views/admin/Editing.phtml:85
+msgid "Processor"
+msgstr ""
+
+#: views/admin/Editing.phtml:85
+msgid "Enlighter Low-Level (default)"
+msgstr ""
+
+#: views/admin/Editing.phtml:85
+msgid "Legacy (WordPress based)"
+msgstr ""
+
+#: views/admin/Editing.phtml:85
+msgid "Disable Shortcodes"
 msgstr ""
 
 #: views/admin/EnvironmentError.phtml:40
@@ -341,79 +504,35 @@ msgstr ""
 msgid "List of available CDN locations used by Enlighter."
 msgstr ""
 
-#: views/admin/Options.phtml:55
-msgid "Language Shortcodes"
-msgstr ""
-
-#: views/admin/Options.phtml:56
-msgid "Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!"
-msgstr ""
-
-#: views/admin/Options.phtml:57
-msgid "Enable Language Shortcodes"
-msgstr ""
-
-#: views/admin/Options.phtml:59
-msgid "Shortcode Processing"
-msgstr ""
-
-#: views/admin/Options.phtml:60
-msgid "WordPress provides a build-in Shortcode-API to process shortcodes used by third-party plugins. This function may can cause issues when using it in Text-Editor-Mode with unescaped html characters - especially when posting source-code!"
-msgstr ""
-
-#: views/admin/Options.phtml:61
-msgid "To avoid such issues, Enlighter provides its own, fault tolerant, Shortcode processor (only affects Enlighter shortcodes!)."
-msgstr ""
-
-#: views/admin/Options.phtml:62
-msgid "If you do not need shortcodes (use the Visual-Editor-Integration instead) it is possible to disable the shortcode processing for performance reasons."
-msgstr ""
-
-#: views/admin/Options.phtml:63
-msgid "Processor"
-msgstr ""
-
-#: views/admin/Options.phtml:63
-msgid "Enlighter Low-Level (default)"
-msgstr ""
-
-#: views/admin/Options.phtml:63
-msgid "Legacy (WordPress based)"
-msgstr ""
-
-#: views/admin/Options.phtml:63
-msgid "Disable Shortcodes"
-msgstr ""
-
-#: views/admin/Options.phtml:69
+#: views/admin/Options.phtml:52
 msgid "Cryptex Email Obfuscation Plugin"
 msgstr ""
 
-#: views/admin/Options.phtml:72
-msgid "These options are related to the <a href=\"https://wordpress.org/plugins/cryptex/\" target=\"_blank\">Cryptex Email Address Obfuscation plugin</a>. It can protect Email Adresses within your highlighted sourcecode."
+#: views/admin/Options.phtml:55
+msgid "These options are related to the <a href=\"https://wordpress.org/plugins/cryptex/\" target=\"_blank\">Cryptex E-Mail Address Obfuscation plugin</a>. It can protect E-Mail Addresses within your highlighted sourcecode."
 msgstr ""
 
-#: views/admin/Options.phtml:73
+#: views/admin/Options.phtml:56
 msgid "Requires Cryptex 5.0 with enabled hyperlinks."
 msgstr ""
 
-#: views/admin/Options.phtml:76
+#: views/admin/Options.phtml:59
 msgid "Cryptex"
 msgstr ""
 
-#: views/admin/Options.phtml:79
+#: views/admin/Options.phtml:62
 msgid "Enable Cryptex Support"
 msgstr ""
 
-#: views/admin/Options.phtml:82
+#: views/admin/Options.phtml:65
 msgid "The default Email address which will be shown if the hyperlinks are disabled into the cryptex plugin "
 msgstr ""
 
-#: views/admin/Options.phtml:83
+#: views/admin/Options.phtml:66
 msgid "Fallback EMail Address"
 msgstr ""
 
-#: views/admin/Options.phtml:83
+#: views/admin/Options.phtml:66
 msgid "can be any kind of text"
 msgstr ""
 
@@ -430,39 +549,43 @@ msgid "Theme Customizer"
 msgstr ""
 
 #: views/admin/SettingsPage.phtml:29
-msgid "Webfonts"
+msgid "Editing"
 msgstr ""
 
 #: views/admin/SettingsPage.phtml:30
-msgid "Options"
+msgid "Webfonts"
 msgstr ""
 
 #: views/admin/SettingsPage.phtml:31
+msgid "Options"
+msgstr ""
+
+#: views/admin/SettingsPage.phtml:32
 msgid "Advanced"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:36
+#: views/admin/SettingsPage.phtml:37
 msgid "Select the content you want to highlight and Enlighter takes care of the rest."
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:103
+#: views/admin/SettingsPage.phtml:108
 msgid "is developed by"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:104
+#: views/admin/SettingsPage.phtml:109
 msgid "It`s released under the terms of the %s. "
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:104
+#: views/admin/SettingsPage.phtml:109
 msgid "MIT X11 License"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:105 views/admin/SettingsPage.phtml:106
-#: views/admin/SettingsPage.phtml:107
+#: views/admin/SettingsPage.phtml:110 views/admin/SettingsPage.phtml:111
+#: views/admin/SettingsPage.phtml:112
 msgid "License"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:106 views/admin/SettingsPage.phtml:107
+#: views/admin/SettingsPage.phtml:111 views/admin/SettingsPage.phtml:112
 msgid "by"
 msgstr ""
 
@@ -553,17 +676,7 @@ msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:36 views/admin/ThemeCustomizer.phtml:53
 #: views/admin/ThemeCustomizer.phtml:67
-msgid "Font-Family"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:36 views/admin/ThemeCustomizer.phtml:53
-#: views/admin/ThemeCustomizer.phtml:67
 msgid "e.g. Monaco, Courier, Monospace"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:39 views/admin/ThemeCustomizer.phtml:56
-#: views/admin/ThemeCustomizer.phtml:70
-msgid "Font-Size"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:39 views/admin/ThemeCustomizer.phtml:70
@@ -571,16 +684,7 @@ msgid "e.g. 12px, 1.2em, 11pt"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:42 views/admin/ThemeCustomizer.phtml:73
-msgid "Line height"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:42 views/admin/ThemeCustomizer.phtml:73
 msgid "e.g. 16px, 1.5em"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:45 views/admin/ThemeCustomizer.phtml:59
-#: views/admin/ThemeCustomizer.phtml:76
-msgid "Font-Color"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:45 views/admin/ThemeCustomizer.phtml:59
@@ -598,10 +702,6 @@ msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:64
 msgid "RAW Font Styles"
-msgstr ""
-
-#: views/admin/ThemeCustomizer.phtml:79
-msgid "Background-Color"
 msgstr ""
 
 #: views/admin/ThemeCustomizer.phtml:79

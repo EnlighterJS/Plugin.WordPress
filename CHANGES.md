@@ -6,13 +6,14 @@
 * Added: Option to disable Enlighter shortcodes
 * Added: Option to use the old/legacy Shortcode handler 
 * Added: Shortcode Processor info to the SystemInformation sidebar
-* Added: Unique Hash to all cached resources to force cache-update on file-change/setting-update
+* Added: Unique Hash to all cached resources to force cache-update on file-change/settings-update
 * Added: Option to cancel WordPress Editor width limit (set to auto)
 * Added: [QuickTags](https://codex.wordpress.org/Quicktags_API) to the Text/HTML Editor
 * Bugfix: Theme Customizer was not able to modify the special-line-highlighting-color of codeblocks **without** line-numbers - thanks to [CraigMcKenna on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/24)
 * Bugfix: MooTools <= 1.5.1 [#2705](https://github.com/mootools/mootools-core/pull/2705) will throw the javascript error `The specified value "t" is not a valid email address` - [updated to v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release) - thanks to [lots0logs on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/25)
 * Bugfix: Removed TinyMCE debugging output (written to console)
-* Bugfix: The Edit Icon is now dynamically positioned based on editor width
+* Bugfix: The Edit Icon (Visual Editor) is now dynamically positioned based on editor width
+* Bugfix: Foreground Color of Theme-Customizers color elements is changed dynamically based on the background color brightness
 * Changed: Moved the Enlighter Settings Page to the Top-Level of WordPress Administration Menu
 * Changed: Moved Language Shortcode options from advanced settings to editing section
 * Changed: Moved TinyMCE Editor options from advanced settings to editing options
@@ -20,7 +21,7 @@
 * Changed: Language Titles in the Visual Editor Box are dynamically generated
 * Changed: Internal file structure (editor resources)
 * Changed: The Menu Slug/URL from `options-general.php?page=enlighter/class/Enlighter.php` to `admin.php?page=Enlighter` - direct, custom links to the settings page **require an update** !
-* Changed: Editor Config is renamed to `Enlighter_EditorConfig`
+* Changed: Editor Config object is renamed to `Enlighter_EditorConfig`
 * Changed: New Resource Manager structure is used
 * Replaced: the low-level PHP based ObjectCache by the [WordPress Transient API](https://codex.wordpress.org/Transients_API)
 * Dependencies: Updated MooTools to [v1.6.0](http://mootools.net/blog/2016/01/14/mootools-1-6-0-release)
