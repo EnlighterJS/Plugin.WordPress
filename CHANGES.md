@@ -1,6 +1,6 @@
 ## Changelog ##
 
-### 3.0-BETA1 ###
+### 3.0 ###
 * Added: New robust and fault-tolerant `LowLevel Shortcode Handler` to avoid issues with wpautop filter and unescaped html characters (text mode)
 * Added: Visual Editor Customization
 * Added: Option to disable Enlighter shortcodes
