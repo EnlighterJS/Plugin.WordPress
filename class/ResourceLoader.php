@@ -294,5 +294,15 @@ class ResourceLoader{
                 $this->_uhash,
                 $this->_jsInFooter);
 		}
+
+        // jetpack InfiniteScroll Extension enabled ?
+        if ($this->_config['extJetpackInfiniteScroll']){
+            // include local css file
+            wp_enqueue_script('enlighter-jetpack-infinitescroll',
+                plugins_url('/enlighter/resources/plugin/JetpackInfiniteScroll.js'),
+                array('enlighter-local'),
+                $this->_uhash,
+                $this->_jsInFooter);
+        }
 	}
 }

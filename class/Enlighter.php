@@ -94,7 +94,9 @@ class Enlighter{
 		'enableInlineHighlighting' => true,
 
         'cryptexEnabled' => false,
-        'cryptexFallbackEmail' => 'mail@example.tld'
+        'cryptexFallbackEmail' => 'mail@example.tld',
+
+        'extJetpackInfiniteScroll' => false
 	);
 	
 	// list of micro shortcodes (supported languages)

@@ -28,7 +28,8 @@
 	<a data-tab="EnlighterTabThemeCustomizer" class="nav-tab" id="EnlighterTabhandleThemeCustomizer"><?php _e('Theme Customizer', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabEditing" class="nav-tab"><?php _e('Editing', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabWebfonts" class="nav-tab"><?php _e('Webfonts', 'enlighter'); ?></a>
-	<a data-tab="EnlighterTabOptions" class="nav-tab"><?php _e('Options', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabExtensions" class="nav-tab"><?php _e('Extensions', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabOptions" class="nav-tab"><?php _e('Options', 'enlighter'); ?></a>
 	<a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
 </h2>
 
@@ -71,6 +72,10 @@ if (!$this->_cacheManager->isCacheAccessable()){
 
         <div id="EnlighterTabEditing">
             <?php require ('Editing.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabExtensions">
+            <?php require ('Extensions.phtml'); ?>
         </div>
 
 		<div id="EnlighterTabOptions">
