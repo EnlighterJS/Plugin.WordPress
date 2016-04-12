@@ -1,36 +1,36 @@
 <?php
 /**
-	LowlLevel Shortcode handler to avoid issues with uescaped html or wpautop
-	Version: 1.0
-	Author: Andi Dittrich
-	Author URI: http://andidittrich.de
-	Plugin URI: http://andidittrich.de/go/enlighterjs
-	License: MIT X11-License
-	
-	Copyright (c) 2016, Andi Dittrich
+    LowlLevel Shortcode handler to avoid issues with uescaped html or wpautop
+    Version: 1.0
+    Author: Andi Dittrich
+    Author URI: http://andidittrich.de
+    Plugin URI: http://andidittrich.de/go/enlighterjs
+    License: MIT X11-License
+    
+    Copyright (c) 2016, Andi Dittrich
 
-	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-	
-	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-	
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 namespace Enlighter;
 
 class LowlLevelShortcodeProcessor{
-	
-	// stores the plugin config
-	private $_config;
-	
-	// store registered shortcodes
-	private $_languageTags;
+    
+    // stores the plugin config
+    private $_config;
+    
+    // store registered shortcodes
+    private $_languageTags;
 
     // cached code content
     private $_codeFragments = array();
 
-	public function __construct($settingsUtil, $languageShortcodes){
-		// store local plugin config
-		$this->_config = $settingsUtil->getOptions();
+    public function __construct($settingsUtil, $languageShortcodes){
+        // store local plugin config
+        $this->_config = $settingsUtil->getOptions();
 
         // default shortcodes
         $this->_languageTags = 'enlighter';
@@ -42,7 +42,7 @@ class LowlLevelShortcodeProcessor{
 
         // set "the_content" as default filter target
         $this->registerFilterTarget('the_content');
-	}
+    }
 
     public function registerFilterTarget($name){
         // add content filter to first position - replaces all enlighter shortcodes with placeholders
@@ -155,56 +155,56 @@ class LowlLevelShortcodeProcessor{
         return $content;
     }
 
-	// process shortcode attributes and generate html
-	private function renderFragment($fragment){
-		// default attribute settings
-		$shortcodeAttributes = shortcode_atts(
-				array(
-						'theme' => null,
-						'group' => false,
-						'tab' => null,
-						'highlight' => null,
-						'offset' => null,
-						'linenumbers' => null
-				), $fragment['attb']);
+    // process shortcode attributes and generate html
+    private function renderFragment($fragment){
+        // default attribute settings
+        $shortcodeAttributes = shortcode_atts(
+                array(
+                        'theme' => null,
+                        'group' => false,
+                        'tab' => null,
+                        'highlight' => null,
+                        'offset' => null,
+                        'linenumbers' => null
+                ), $fragment['attb']);
 
-		// html tag standard attributes
-		$htmlAttributes = array(
-				'data-enlighter-language' => $fragment['lang'],
-				'class' => 'EnlighterJSRAW'
-		);
-		
-		// force theme ?
-		if ($shortcodeAttributes['theme']){
-			$htmlAttributes['data-enlighter-theme'] = trim($shortcodeAttributes['theme']);
-		}
-				
-		// handle as inline code ?
-		if ($this->_config['enableInlineHighlighting'] && strpos($fragment['code'], "\n") === false){
-			// generate html output
-			return $this->generateCodeblock($htmlAttributes, $fragment['code'], 'code');
-			
-		// linebreaks found -> block code	
-		}else{
-			// highlight specific lines of code ?
-			if ($shortcodeAttributes['highlight']){
-				$htmlAttributes['data-enlighter-highlight'] = trim($shortcodeAttributes['highlight']);
-			}
-			
-			// line offset ?
-			if ($shortcodeAttributes['offset']){
-				$htmlAttributes['data-enlighter-lineoffset'] = intval($shortcodeAttributes['offset']);
-			}
-			
-			// force linenumber visibility ?
-			if ($shortcodeAttributes['linenumbers']){
-				$htmlAttributes['data-enlighter-linenumbers'] = (strtolower($shortcodeAttributes['linenumbers']) === 'true' ? 'true' : 'false');
-			}
-			
-			// tab-name available ?
-			if ($shortcodeAttributes['tab']){
-				$htmlAttributes['data-enlighter-tab'] = trim($shortcodeAttributes['tab']);
-			}
+        // html tag standard attributes
+        $htmlAttributes = array(
+                'data-enlighter-language' => $fragment['lang'],
+                'class' => 'EnlighterJSRAW'
+        );
+        
+        // force theme ?
+        if ($shortcodeAttributes['theme']){
+            $htmlAttributes['data-enlighter-theme'] = trim($shortcodeAttributes['theme']);
+        }
+                
+        // handle as inline code ?
+        if ($this->_config['enableInlineHighlighting'] && strpos($fragment['code'], "\n") === false){
+            // generate html output
+            return $this->generateCodeblock($htmlAttributes, $fragment['code'], 'code');
+            
+        // linebreaks found -> block code    
+        }else{
+            // highlight specific lines of code ?
+            if ($shortcodeAttributes['highlight']){
+                $htmlAttributes['data-enlighter-highlight'] = trim($shortcodeAttributes['highlight']);
+            }
+            
+            // line offset ?
+            if ($shortcodeAttributes['offset']){
+                $htmlAttributes['data-enlighter-lineoffset'] = intval($shortcodeAttributes['offset']);
+            }
+            
+            // force linenumber visibility ?
+            if ($shortcodeAttributes['linenumbers']){
+                $htmlAttributes['data-enlighter-linenumbers'] = (strtolower($shortcodeAttributes['linenumbers']) === 'true' ? 'true' : 'false');
+            }
+            
+            // tab-name available ?
+            if ($shortcodeAttributes['tab']){
+                $htmlAttributes['data-enlighter-tab'] = trim($shortcodeAttributes['tab']);
+            }
 
             // auto grouping ?
             if ($fragment['group']){
@@ -214,24 +214,24 @@ class LowlLevelShortcodeProcessor{
             }else if ($shortcodeAttributes['group']){
                 $htmlAttributes['data-enlighter-group'] = trim($shortcodeAttributes['group']);
             }
-			
-			// generate html output
-			return $this->generateCodeblock($htmlAttributes, $fragment['code']);
-		}
-	}
+            
+            // generate html output
+            return $this->generateCodeblock($htmlAttributes, $fragment['code']);
+        }
+    }
 
-	
-	/**
-	 * Generate HTML output (code within "pre"/"code"-tag including options)
-	 */
-	private function generateCodeblock($attributes, $content, $tagname = 'pre'){
-		// generate "pre" wrapped html output
-		$html = HtmlUtil::generateTag($tagname, $attributes, false);
+    
+    /**
+     * Generate HTML output (code within "pre"/"code"-tag including options)
+     */
+    private function generateCodeblock($attributes, $content, $tagname = 'pre'){
+        // generate "pre" wrapped html output
+        $html = HtmlUtil::generateTag($tagname, $attributes, false);
 
-		// strip specialchars
-		$content = esc_html($content);
-				
-		// add closing tag
-		return $html.$content.'</'.$tagname.'>';
-	}
+        // strip specialchars
+        $content = esc_html($content);
+                
+        // add closing tag
+        return $html.$content.'</'.$tagname.'>';
+    }
 }
