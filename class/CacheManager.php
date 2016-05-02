@@ -91,11 +91,6 @@ class CacheManager{
         return $this->_cacheUrl;
     }
 
-    // generate a url based on plugin_url with current cache hash
-    public function getCacheFileUrl($filename){
-        return $this->_cacheUrl . $filename .'?' . $this->_uhash;
-    }
-    
     /**
      * Remove all files within the given directory (non recursive)
      */ 

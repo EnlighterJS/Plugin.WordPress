@@ -248,6 +248,7 @@ provides: [Enlighter]
 				}],
 				
 				onsubmit : function(e){
+
 					// apply the enlighter specific node attributes to the current selected node
 					setEnlighterSettings({
 						language: e.data.language,
@@ -277,9 +278,10 @@ provides: [Enlighter]
 		
 		// set the enlighter settings of the current node
 		function setEnlighterSettings(settings){
+
 			// get current node
 			var node = editor.selection.getNode();
-			
+
 			// enlighter element ?
 			if (!isEnlighterCode(node)){
 				return;
@@ -405,7 +407,8 @@ provides: [Enlighter]
 				'contenteditable': false
 			});
 			toolbar.appendChild(button);
-			editor.dom.bind(toolbar, 'mousedown', function(){
+			editor.dom.bind(toolbar, 'mousedown', function(e){
+                e.stopPropagation();
 				showSettings();
 			});
 			
@@ -414,8 +417,8 @@ provides: [Enlighter]
 			
 			// get bounding content rect for absolute positioning
 			var rect = editor.dom.getRect(boundingNode);
-			
-			// show toolbar and set positon
+
+			// show toolbar and set position
 			editor.dom.setStyles(toolbar, {
 				top: rect.y,
 				left: rect.x,

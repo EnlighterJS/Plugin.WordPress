@@ -72,9 +72,28 @@ class ResourceLoader{
         $this->_themeGenerator = new ThemeGenerator($settingsUtil, $cacheManager, $customStyleKeys);
 
         // initialize cdn locations
-        self::$cdnLocations['mootools-local'] = plugins_url('/enlighter/resources/mootools-core-yc.js');
+        self::$cdnLocations['mootools-local'] = 'mootools-core-yc.js';
         self::$cdnLocations['mootools-google'] = '//ajax.googleapis.com/ajax/libs/mootools/1.6.0/mootools.min.js';
         self::$cdnLocations['mootools-cdnjs'] = '//cdnjs.cloudflare.com/ajax/libs/mootools/1.6.0/mootools-core.min.js';
+    }
+
+    // local wrapper
+    private function enqueueStyle($name, $filename, $dependencies = array(), $version = ENLIGHTER_VERSION){
+        $url = ResourceManager::getResourceUrl($filename);
+
+        // trigger wordpress script loader
+        if ($url) {
+            wp_enqueue_style($name, $url, $dependencies, $version);
+        }
+    }
+
+    private function enqueueScript($name, $filename, $dependencies = array(), $version = ENLIGHTER_VERSION){
+        $url = ResourceManager::getResourceUrl($filename);
+
+        // trigger wordpress script loader
+        if ($url){
+            wp_enqueue_script($name, $url, $dependencies, $version, $this->_jsInFooter);
+        }
     }
 
     // Load the Frontend Editor Resources
@@ -108,40 +127,23 @@ class ResourceLoader{
 
     public function appendAdminResources(){
         // colorpicker css
-        wp_enqueue_style('enlighter-jquery-colorpicker',
-            plugins_url('/enlighter/extern/colorpicker/css/colorpicker.css'),
-            array(),
-            ENLIGHTER_VERSION);
+        $this->enqueueStyle('enlighter-jquery-colorpicker', 'extern/colorpicker/css/colorpicker.css');
 
         // new UI styles
-        wp_enqueue_style('enlighter-settings',
-            plugins_url('/enlighter/resources/admin/EnlighterSettings.css'),
-            array(),
-            ENLIGHTER_VERSION);
+        $this->enqueueStyle('enlighter-settings', 'admin/EnlighterSettings.css');
 
         // colorpicker js
-        wp_enqueue_script('enlighter-jquery-colorpicker',
-            plugins_url('/enlighter/extern/colorpicker/js/colorpicker.js'),
-            array('jquery'),
-            ENLIGHTER_VERSION);
+        $this->enqueueScript('enlighter-jquery-colorpicker', 'extern/colorpicker/js/colorpicker.js', array('jquery'));
 
         // jquery cookies
-        wp_enqueue_script('enlighter-jquery-cookies',
-            plugins_url('/enlighter/extern/jquery.cookie/jquery.cookie.js'),
-            array('jquery'),
-            ENLIGHTER_VERSION);
+        $this->enqueueScript('enlighter-jquery-cookies', 'extern/jquery.cookie/jquery.cookie.js', array('jquery'));
 
         // theme data
-        wp_enqueue_script('enlighter-themes',
-            plugins_url('/enlighter/resources/admin/ThemeStyles.js'),
-            array(),
-            ENLIGHTER_VERSION);
+        $this->enqueueScript('enlighter-themes', 'admin/ThemeStyles.js');
 
         // settings init script
-        wp_enqueue_script('enlighter-settings',
-            plugins_url('/enlighter/resources/admin/EnlighterSettings.js'),
-            array('jquery', 'jquery-color', 'enlighter-jquery-cookies', 'enlighter-jquery-colorpicker', 'enlighter-themes'),
-            ENLIGHTER_VERSION);
+        $this->enqueueScript('enlighter-settings', 'admin/EnlighterSettings.js',
+            array('jquery', 'jquery-color', 'enlighter-jquery-cookies', 'enlighter-jquery-colorpicker', 'enlighter-themes'));
     }
 
     // append the Enlighter Editor/Settings Config
@@ -156,10 +158,7 @@ class ResourceLoader{
 
     public function appendEditorJS(){
         // text editor plugin
-        wp_enqueue_script('enlighter-texteditor',
-            plugins_url('/enlighter/resources/editor/TextEditor.js'),
-            array('jquery'),
-            ENLIGHTER_VERSION);
+        $this->enqueueScript('enlighter-texteditor', 'editor/TextEditor.js', array('jquery'));
     }
 
     // initialzize the frontend
@@ -197,17 +196,11 @@ class ResourceLoader{
         if ($this->_config['embedEnlighterCSS']){
             // include generated css ?
             if ($this->_config['defaultTheme']=='wpcustom'){
-                wp_enqueue_style('enlighter-wpcustom',
-                    plugins_url('/enlighter/cache/EnlighterJS.custom.css'),
-                    array(),
-                    $this->_uhash);
+                $this->enqueueStyle('enlighter-wpcustom', 'cache/EnlighterJS.custom.css', array(), $this->_uhash);
 
             }else{
                 // include standard css file ?
-                wp_enqueue_style('enlighter-local',
-                    plugins_url('/enlighter/resources/EnlighterJS.min.css'),
-                    array(),
-                    ENLIGHTER_VERSION);
+                $this->enqueueStyle('enlighter-local', 'EnlighterJS.min.css');
             }
         }
         
@@ -215,10 +208,7 @@ class ResourceLoader{
         if ($this->_config['embedExternalThemes']) {
             // embed available external themes
             foreach ($this->_themeManager->getUserThemes() as $theme => $sources) {
-                wp_enqueue_style('enlighter-external-' . strtolower($theme),
-                    $sources[1],
-                    array(),
-                    ENLIGHTER_VERSION);
+                $this->enqueueStyle('enlighter-external-' . strtolower($theme), $sources[1]);
             }
         }
 
@@ -238,8 +228,7 @@ class ResourceLoader{
 
         // load webfonts ?
         if (count($webfontList) > 0){
-            wp_enqueue_style('enlighter-webfonts',
-                '//fonts.googleapis.com/css?family=' . implode('|', $webfontList));
+            $this->enqueueStyle('enlighter-webfonts', '//fonts.googleapis.com/css?family=' . implode('|', $webfontList));
         }
     }
     
@@ -248,61 +237,37 @@ class ResourceLoader{
         // include mootools from local source ?
         if ($this->_config['mootoolsSource'] == 'local'){
             // include local mootools
-            wp_enqueue_script('mootools-local',
-                self::$cdnLocations['mootools-local'],
-                array(),
-                false,
-                $this->_jsInFooter);
+            $this->enqueueScript('mootools-local', self::$cdnLocations['mootools-local'], array(), false);
         }
     
         // include mootools from google cdn ?
         if ($this->_config['mootoolsSource'] == 'google'){
             // include local mootools hosted by google's cdn
-            wp_enqueue_script('mootools-google-cdn',
-                self::$cdnLocations['mootools-google'],
-                array(),
-                false,
-                $this->_jsInFooter);
+            $this->enqueueScript('mootools-google-cdn', self::$cdnLocations['mootools-google'], array(), false);
         }
         
         // include mootools from cloudfare cdn ?
         if ($this->_config['mootoolsSource'] == 'cdnjs'){
             // include local mootools hosted by cloudfares's cdn
-            wp_enqueue_script('mootools-cloudfare-cdn',
-                self::$cdnLocations['mootools-cdnjs'],
-                array(),
-                false,
-                $this->_jsInFooter);
+            $this->enqueueScript('mootools-cloudfare-cdn', self::$cdnLocations['mootools-cdnjs'], array(), false);
         }
     
         // only include EnlighterJS js if enabled
         if ($this->_config['embedEnlighterJS']){
             // include local css file
-            wp_enqueue_script('enlighter-local',
-                plugins_url('/enlighter/resources/EnlighterJS.min.js'),
-                array(),
-                ENLIGHTER_VERSION,
-                $this->_jsInFooter);
+            $this->enqueueScript('enlighter-local', 'EnlighterJS.min.js');
         }
         
         // only include EnlighterJS config if enabled
         if ($this->_config['jsType'] == 'external'){
             // include local css file
-            wp_enqueue_script('enlighter-config',
-                plugins_url('/enlighter/cache/EnlighterJS.init.js'),
-                array('enlighter-local'),
-                $this->_uhash,
-                $this->_jsInFooter);
+            $this->enqueueScript('enlighter-config', 'cache/EnlighterJS.init.js', array('enlighter-local'), $this->_uhash);
         }
 
         // jetpack InfiniteScroll Extension enabled ?
         if ($this->_config['extJetpackInfiniteScroll']){
             // include local css file
-            wp_enqueue_script('enlighter-jetpack-infinitescroll',
-                plugins_url('/enlighter/resources/plugin/JetpackInfiniteScroll.js'),
-                array('enlighter-local'),
-                $this->_uhash,
-                $this->_jsInFooter);
+            $this->enqueueScript('enlighter-jetpack-infinitescroll', 'plugin/JetpackInfiniteScroll.js', array('enlighter-local'),$this->_uhash);
         }
     }
 }

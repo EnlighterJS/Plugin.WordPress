@@ -3,8 +3,8 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.4
-Stable tag: 3.0
+Tested up to: 4.5
+Stable tag: 3.1
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -34,7 +34,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 ### Supported Languages (build-in) ###
 Click to view Language/Theme Examples
 
-* [AVR Assembly](http://enlighterjs.org/Language.AVRASM.html)
+* [AVR Assembly](http://enlighterjs.org/Language.AVR-Assembly.html)
 * [Generic Assembly](http://enlighterjs.org/Language.Assembly.html)
 * [C](http://enlighterjs.org/Language.C.html)
 * [CSS](http://enlighterjs.org/Language.CSS.html)
@@ -135,7 +135,7 @@ Please keep in mind that not all translations are up to date. You are welcome to
 ## Compatibility ##
 
 All browsers supported by MooTools (enabled Javascript required) and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
-Generally Enlighter (which javascript part [EnlighterJS](http://www.a3non.org/go/enlighterjs) is based on [MooTools Javascript Framework](http://mootools.net/)) should work together with jQuery in [noConflict Mode](http://docs.jquery.com/Using_jQuery_with_Other_Libraries) - when you are using jQuery within your Wordpress Theme/Page you have to take care of it!
+Generally Enlighter (which javascript part [EnlighterJS](http://enlighterjs.org) is based on [MooTools Javascript Framework](http://mootools.net/)) should work together with jQuery in [noConflict Mode](http://docs.jquery.com/Using_jQuery_with_Other_Libraries) - when you are using jQuery within your Wordpress Theme/Page you have to take care of it!
 
 * Chrome 10+
 * Safari 5+

@@ -203,7 +203,7 @@ class LowlLevelShortcodeProcessor{
             
             // tab-name available ?
             if ($shortcodeAttributes['tab']){
-                $htmlAttributes['data-enlighter-tab'] = trim($shortcodeAttributes['tab']);
+                $htmlAttributes['data-enlighter-title'] = trim($shortcodeAttributes['tab']);
             }
 
             // auto grouping ?

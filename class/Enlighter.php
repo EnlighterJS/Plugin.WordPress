@@ -96,7 +96,9 @@ class Enlighter{
         'cryptexEnabled' => false,
         'cryptexFallbackEmail' => 'mail@example.tld',
 
-        'extJetpackInfiniteScroll' => false
+        'extJetpackInfiniteScroll' => false,
+
+        'bbpresShortcode' => false
     );
     
     // list of micro shortcodes (supported languages)
@@ -201,8 +203,6 @@ class Enlighter{
     public static function getAvailableThemes(){
         return array_merge(self::getInstance()->_supportedThemes, self::getInstance()->_themeManager->getUserThemes());
     }
-
-
     
     public function __construct(){
         
