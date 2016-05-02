@@ -35,71 +35,6 @@ class Enlighter{
     // theme loader/manager
     private $_themeManager;
 
-    // enlighter config keys with default values
-    private $_defaultConfig = array(
-        'embedEnlighterCSS' => true,
-        'embedEnlighterJS' => true,
-        'embedExternalThemes' => true,
-
-        'mootoolsSource' => 'local',
-        'jsType' => 'inline',
-        'jsPosition' => 'header',
-        'defaultTheme' => 'enlighter',
-        'defaultLanguage' => 'generic',
-        'languageShortcode' => true,
-        'shortcodeMode' => 'modern',
-        'indent' => 2,
-        'linenumbers' => 'true',
-        'hoverClass' => 'hoverEnabled',
-        'selector' => 'pre.EnlighterJSRAW',
-        'selectorInline' => 'code.EnlighterJSRAW',
-
-        'editorFontFamily' => '"Source Code Pro", "Liberation Mono", "Courier New", Courier, monospace',
-        'editorFontSize' => '0.7em',
-        'editorLineHeight' => '0.9em',
-        'editorFontColor' => '#000000',
-        'editorBackgroundColor' => '#f9f9f9',
-        'editorAutowidth' => false,
-        'editorQuicktagMode' => 'html',
-        'editorAddStyleFormats' => true,
-
-        'customThemeBase' => 'standard',
-        'customFontFamily' => 'Monaco, Courier, Monospace',
-        'customFontSize' => '12px',
-        'customLineHeight' => '16px',
-        'customFontColor' => '#000000',
-
-        'customLinenumberFontFamily' => 'Monaco, Courier, Monospace',
-        'customLinenumberFontSize' => '10px',
-        'customLinenumberFontColor' => '#000000',
-
-        'customLineHighlightColor' => '#f0f0ff',
-        'customLineHoverColor' => '#f0f0ff',
-
-        'customRawFontFamily' => 'Monaco, Courier, Monospace',
-        'customRawFontSize' => '12px',
-        'customRawLineHeight' => '16px',
-        'customRawFontColor' => '#000000',
-        'customRawBackgroundColor' => '#000000',
-            
-        'wpAutoPFilterPriority' => 'default',
-        'enableTranslation' => true,
-        'enableTinyMceIntegration' => true,
-        'enableFrontendTinyMceIntegration' => false,
-        'rawButton' => true,
-        'windowButton' => true,
-        'infoButton' => true,
-        'rawcodeDoubleclick' => false,
-        'enableInlineHighlighting' => true,
-
-        'cryptexEnabled' => false,
-        'cryptexFallbackEmail' => 'mail@example.tld',
-
-        'extJetpackInfiniteScroll' => false,
-
-        'bbpresShortcode' => false
-    );
-    
     // list of micro shortcodes (supported languages)
     private $_supportedLanguageKeys = array(
         'CSS (Cascading Style Sheets)' => 'css',
@@ -145,23 +80,8 @@ class Enlighter{
 
     public function _wp_init(){
 
-        // generate theme customizers config keys
-        foreach (Enlighter\ThemeGenerator::getCustomStyleKeys() as $key){
-            $this->_defaultConfig['custom-color-'.$key] = '';
-            $this->_defaultConfig['custom-bgcolor-'.$key] = '';
-            $this->_defaultConfig['custom-fontstyle-'.$key] = '';
-            $this->_defaultConfig['custom-decoration-'.$key] = '';
-        }
-
-        // generate webfont config keys
-        $webfonts = \Enlighter\GoogleWebfontResources::getMonospaceFonts();
-        foreach ($webfonts as $name => $font){
-            $fid = preg_replace('/[^A-Za-z0-9]/', '', $name);
-            $this->_defaultConfig['webfonts'.$fid] = false;
-        }
-        
         // create new settings utility class
-        $this->_settingsUtility = new Enlighter\SettingsUtil('enlighter-', $this->_defaultConfig);
+        $this->_settingsUtility = new Enlighter\SettingsUtil('enlighter-', \Enlighter\PluginConfig::getDefaults());
         
         // create new cache manager instance
         $this->_cacheManager = new Enlighter\CacheManager($this->_settingsUtility);
@@ -220,7 +140,7 @@ class Enlighter{
         }
 
         // trigger init hook
-        do_action('enlighter_init');
+        do_action('enlighter_init', $this);
     }
 
     // enable EnlighterJS html attributes for Authors and Contributors
@@ -360,10 +280,6 @@ class Enlighter{
             echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
        }
     }
-
-
-
-
 
     public function _wp_plugin_activate(){
 
