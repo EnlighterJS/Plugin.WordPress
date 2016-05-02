@@ -23,7 +23,7 @@ class ThemeManager{
 
     // list of supported themes
     // Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Git Mocha MooTools Panic Tutti Twilight
-    private $_supportedThemes = array(
+    private static $_supportedThemes = array(
         'Enlighter' => true,
         'Godzilla' => true,
         'Beyond' => true,
@@ -55,7 +55,7 @@ class ThemeManager{
 
     // fetch the build-in theme list (EnlighterJS)
     public function getBuildInThemes(){
-        return $this->_supportedThemes;
+        return self::$_supportedThemes;
     }
 
     // get a list of all available themes (build-in + user)
@@ -66,7 +66,7 @@ class ThemeManager{
         );
 
         // add build-in themes
-        foreach ($this->_supportedThemes as $t => $v){
+        foreach (self::$_supportedThemes as $t => $v){
             $themeList[$t] = strtolower($t);
         }
 

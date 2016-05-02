@@ -18,8 +18,7 @@
 */
 
 class Enlighter{
-    // singleton instance
-    private static $__instance;
+
     
     // shortcode handler instance
     private $_shortcodeHandler;
@@ -133,21 +132,6 @@ class Enlighter{
         'Generic Highlighting' => 'generic'    
     );
 
-
-    // static entry/initialize singleton instance
-    public static function run(){
-        Enlighter::getInstance();
-    }
-    
-    // get singelton instance
-    public static function getInstance(){
-        // check if singelton instance is available
-        if (self::$__instance==null){
-            // create new instance if not
-            self::$__instance = new self();
-        }
-        return self::$__instance;
-    }
     
     // get available languages
     public static function getAvailableLanguages(){
@@ -158,9 +142,9 @@ class Enlighter{
     public static function getAvailableThemes(){
         return array_merge(self::getInstance()->_themeManager->getBuildInThemes(), self::getInstance()->_themeManager->getUserThemes());
     }
-    
-    public function __construct(){
-        
+
+    public function _wp_init(){
+
         // generate theme customizers config keys
         foreach (Enlighter\ThemeGenerator::getCustomStyleKeys() as $key){
             $this->_defaultConfig['custom-color-'.$key] = '';
@@ -225,7 +209,8 @@ class Enlighter{
             }
 
             // frontend resources & extensions
-            add_action('init', array($this, 'setupFrontend'));
+            $this->setupFrontend();
+            //add_action('init', array($this, 'setupFrontend'));
 
             // change wpauto filter priority ?
             if ($this->_settingsUtility->getOption('wpAutoPFilterPriority')!='default'){
@@ -233,6 +218,9 @@ class Enlighter{
                 add_filter('the_content', 'wpautop' , 12);
             }
         }
+
+        // trigger init hook
+        do_action('enlighter_init');
     }
 
     // enable EnlighterJS html attributes for Authors and Contributors
@@ -372,4 +360,38 @@ class Enlighter{
             echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
        }
     }
+
+
+
+
+
+    public function _wp_plugin_activate(){
+
+    }
+
+    public function _wp_plugin_deactivate(){
+
+    }
+
+//!WP::SKELETON
+    // static entry/initialize singleton instance
+    public static function run($pluginName){
+        // check if singleton instance is available
+        if (self::$__instance==null){
+            // create new instance if not
+            $i = self::$__instance = new self();
+
+            // register plugin related hooks
+            register_activation_hook($pluginName, array($i, '_wp_plugin_activate'));
+            register_deactivation_hook($pluginName, array($i, '_wp_plugin_deactivate'));
+            add_action('init', array($i, '_wp_init'));
+        }
+    }
+
+    // singleton instance
+    private static $__instance;
+    public static function getInstance(){
+        return self::$__instance;
+    }
+//!!WP::SKELETON
 }
