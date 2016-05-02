@@ -17,7 +17,7 @@
 		<div class="EnlighterCustomSettingItem">
 		<select name="enlighter-customThemeBase" id="enlighter-customThemeBase">
 		<?php 
-		foreach ($this->_supportedThemes as $value=>$e){
+		foreach ($this->_themeManager->getBuildInThemes() as $value=>$e){
 			$selected = ($this->_settingsUtility->getOption('customThemeBase') == $value) ? 'selected="selected"' : '';
 			echo '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
 		}
@@ -132,7 +132,7 @@
 	);
 	
 	// generate token style options
-	foreach ($this->_customStyleKeys as $style){
+	foreach (Enlighter\ThemeGenerator::getCustomStyleKeys() as $style){
 		// get description
 		$description = $customStyles[$style];
 		

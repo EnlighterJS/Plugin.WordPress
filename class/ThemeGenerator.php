@@ -23,14 +23,36 @@ class ThemeGenerator{
     private $_cacheFilename = 'EnlighterJS.custom.css';
     private $_cacheManager = null;
 
-    public function __construct($settingsUtil, $cacheManager, $customStyleKeys){
+    // list of all customizable styles
+    private static $_customStyleKeys = array(
+        'kw1', //'Keyword(Type1)Color', 'enlighter'),
+        'kw2', //'Keyword(Type2)Color', 'enlighter'),
+        'kw3', //'Keyword(Type3)Color', 'enlighter'),
+        'kw4', //'Keyword(Type4)Color', 'enlighter'),
+        'co1', //'Slash-StyleCommentsColor', 'enlighter'),
+        'co2', //'Multiline-StyleCommentsColor', 'enlighter'),
+        'st0', //'Strings(Type1)Color', 'enlighter'),
+        'st1', //'Strings(Type2)Color', 'enlighter'),
+        'st2', //'Strings(Type3)Color', 'enlighter'),
+        'nu0', //'NumberColor', 'enlighter'),
+        'me0', //'Method(Type1)Color', 'enlighter'),
+        'me1', //'Method(Type2)Color', 'enlighter'),
+        'br0', //'BracketColor', 'enlighter'),
+        'sy0', //'SymbolColor', 'enlighter'),
+        'es0', //'EscapeSymbolColor', 'enlighter'),
+        're0', //'RegexColor', 'enlighter'),
+        'de1', //'StartDelimiterColor', 'enlighter'),
+        'de2'  //'StopDelimiterColor', 'enlighter')
+    );
+
+    public function __construct($settingsUtil, $cacheManager){
         $this->_settings = $settingsUtil;
         $this->_cacheManager = $cacheManager;
 
         // custom theme selected ?
         if ($this->_settings->getOption('defaultTheme') == 'wpcustom' && !$this->isCached()){
             // regenerate cache file
-            $this->generateCSS($customStyleKeys);
+            $this->generateCSS();
         }
     }
 
@@ -38,14 +60,18 @@ class ThemeGenerator{
         return $this->_cacheManager->fileExists($this->_cacheFilename);
     }
 
+    public static function getCustomStyleKeys(){
+        return self::$_customStyleKeys;
+    }
+
     // update cache/generate dynamic css
-    public function generateCSS($styleKeys){
+    public function generateCSS(){
 
         // load css template
         $cssTPL = new SimpleTemplate(ENLIGHTER_PLUGIN_PATH.'/views/WpCustomTheme.css');
         
         // generate token styles
-        foreach ($styleKeys as $key=>$tokenname){
+        foreach (self::$_customStyleKeys as $key=>$tokenname){
             $styles = '';
             
             // text color overwrite available ?

@@ -46,7 +46,7 @@ class ResourceLoader{
     // theme generator
     private $_themeGenerator;
 
-    public function __construct($settingsUtil, $cacheManager, $themeManager, $languageKeys, $customStyleKeys){
+    public function __construct($settingsUtil, $cacheManager, $themeManager, $languageKeys){
         // store local plugin config
         $this->_config = $settingsUtil->getOptions();
 
@@ -69,7 +69,7 @@ class ResourceLoader{
         $this->_jsConfigGenerator = new ConfigGenerator($settingsUtil, $cacheManager);
 
         // create new theme generator instance
-        $this->_themeGenerator = new ThemeGenerator($settingsUtil, $cacheManager, $customStyleKeys);
+        $this->_themeGenerator = new ThemeGenerator($settingsUtil, $cacheManager);
 
         // initialize cdn locations
         self::$cdnLocations['mootools-local'] = 'mootools-core-yc.js';

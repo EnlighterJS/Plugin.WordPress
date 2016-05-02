@@ -21,6 +21,27 @@ class ThemeManager{
     
     private $_cachedData = null;
 
+    // list of supported themes
+    // Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Git Mocha MooTools Panic Tutti Twilight
+    private $_supportedThemes = array(
+        'Enlighter' => true,
+        'Godzilla' => true,
+        'Beyond' => true,
+        'Classic' => true,
+        'MooTwo' => true,
+        'Eclipse' => true,
+        'Droide' => true,
+        'Minimal' => true,
+        'Atomic' => true,
+        'Rowhammer' => true,
+        'Git' => true,
+        'Mocha' => true,
+        'MooTools' => true,
+        'Panic' => true,
+        'Tutti' => true,
+        'Twilight' => true
+    );
+
     public function __construct($cacheManager){
         // try to load cached data
         $this->_cachedData = get_transient('enlighter_userthemes');
@@ -30,6 +51,31 @@ class ThemeManager{
     public function forceReload(){
         //$this->_cache->clear();
         delete_transient('enlighter_userthemes');
+    }
+
+    // fetch the build-in theme list (EnlighterJS)
+    public function getBuildInThemes(){
+        return $this->_supportedThemes;
+    }
+
+    // get a list of all available themes (build-in + user)
+    public function getThemeList(){
+        // generate the theme list
+        $themeList = array(
+            'WPCustom' => 'wpcustom'
+        );
+
+        // add build-in themes
+        foreach ($this->_supportedThemes as $t => $v){
+            $themeList[$t] = strtolower($t);
+        }
+
+        // add external user themes with prefix
+        foreach ($this->getUserThemes() as $t => $source){
+            $themeList[$t.'/ext'] = strtolower($t);
+        }
+
+        return $themeList;
     }
     
     public function getUserThemes(){

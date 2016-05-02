@@ -132,52 +132,7 @@ class Enlighter{
         'No Highlighting' => 'no-highlight',
         'Generic Highlighting' => 'generic'    
     );
-    
-    // list of supported themes
-    // Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Git Mocha MooTools Panic Tutti Twilight
-    private $_supportedThemes = array(
-        'Enlighter' => true,
-        'Godzilla' => true,
-        'Beyond' => true,
-        'Classic' => true,
-        'MooTwo' => true,
-        'Eclipse' => true,
-        'Droide' => true,
-        'Minimal' => true,
-        'Atomic' => true,
-        'Rowhammer' => true,
-        'Git' => true,
-        'Mocha' => true,
-        'MooTools' => true,
-        'Panic' => true,    
-        'Tutti' => true,
-        'Twilight' => true    
-    );
-    
-    // list of user themes
-    private $_userThemes = array();
 
-    // list of all customizable styles
-    private $_customStyleKeys = array(
-        'kw1', //'Keyword(Type1)Color', 'enlighter'),
-        'kw2', //'Keyword(Type2)Color', 'enlighter'),
-        'kw3', //'Keyword(Type3)Color', 'enlighter'),
-        'kw4', //'Keyword(Type4)Color', 'enlighter'),
-        'co1', //'Slash-StyleCommentsColor', 'enlighter'),
-        'co2', //'Multiline-StyleCommentsColor', 'enlighter'),
-        'st0', //'Strings(Type1)Color', 'enlighter'),
-        'st1', //'Strings(Type2)Color', 'enlighter'),
-        'st2', //'Strings(Type3)Color', 'enlighter'),
-        'nu0', //'NumberColor', 'enlighter'),
-        'me0', //'Method(Type1)Color', 'enlighter'),
-        'me1', //'Method(Type2)Color', 'enlighter'),
-        'br0', //'BracketColor', 'enlighter'),
-        'sy0', //'SymbolColor', 'enlighter'),
-        'es0', //'EscapeSymbolColor', 'enlighter'),
-        're0', //'RegexColor', 'enlighter'),
-        'de1', //'StartDelimiterColor', 'enlighter'),
-        'de2'  //'StopDelimiterColor', 'enlighter')
-    );
 
     // static entry/initialize singleton instance
     public static function run(){
@@ -201,13 +156,13 @@ class Enlighter{
     
     // get available themes
     public static function getAvailableThemes(){
-        return array_merge(self::getInstance()->_supportedThemes, self::getInstance()->_themeManager->getUserThemes());
+        return array_merge(self::getInstance()->_themeManager->getBuildInThemes(), self::getInstance()->_themeManager->getUserThemes());
     }
     
     public function __construct(){
         
         // generate theme customizers config keys
-        foreach ($this->_customStyleKeys as $key){
+        foreach (Enlighter\ThemeGenerator::getCustomStyleKeys() as $key){
             $this->_defaultConfig['custom-color-'.$key] = '';
             $this->_defaultConfig['custom-bgcolor-'.$key] = '';
             $this->_defaultConfig['custom-fontstyle-'.$key] = '';
@@ -236,7 +191,7 @@ class Enlighter{
         }
         
         // create new resource loader
-        $this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_cacheManager, $this->_themeManager, $this->_supportedLanguageKeys, $this->_customStyleKeys);
+        $this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_cacheManager, $this->_themeManager, $this->_supportedLanguageKeys);
 
         // enable EnlighterJS html attributes for Author's and Contributor's
         add_filter('wp_kses_allowed_html', array($this, 'ksesAllowHtmlCodeAttributes'), 100, 2);
@@ -372,7 +327,7 @@ class Enlighter{
         if (isset($_GET['cache-permission-fix'])){
             $this->_cacheManager->autosetPermissions();
         }
-        
+        /*
         // generate the theme list
         $themeList = array(
             'WPCustom' => 'wpcustom'
@@ -382,7 +337,10 @@ class Enlighter{
         }
         foreach ($this->_themeManager->getUserThemes() as $t => $source){
             $themeList[$t.'/ext'] = strtolower($t);
-        }
+        }*/
+
+        // fetch the theme list
+        $themeList = $this->_themeManager->getThemeList();
 
         // get webfont list
         $webfonts = \Enlighter\GoogleWebfontResources::getMonospaceFonts();
