@@ -19,7 +19,6 @@
 
 class Enlighter{
 
-    
     // shortcode handler instance
     private $_shortcodeHandler;
     
@@ -75,7 +74,10 @@ class Enlighter{
     
     // get available themes
     public static function getAvailableThemes(){
-        return array_merge(self::getInstance()->_themeManager->getBuildInThemes(), self::getInstance()->_themeManager->getUserThemes());
+        $themes = self::getInstance()->_themeManager->getThemes();
+
+        // run filter to enable user specific themes
+        return apply_filter('enlighter_themes', $themes);
     }
 
     public function _wp_init(){
@@ -130,7 +132,6 @@ class Enlighter{
 
             // frontend resources & extensions
             $this->setupFrontend();
-            //add_action('init', array($this, 'setupFrontend'));
 
             // change wpauto filter priority ?
             if ($this->_settingsUtility->getOption('wpAutoPFilterPriority')!='default'){
@@ -235,17 +236,6 @@ class Enlighter{
         if (isset($_GET['cache-permission-fix'])){
             $this->_cacheManager->autosetPermissions();
         }
-        /*
-        // generate the theme list
-        $themeList = array(
-            'WPCustom' => 'wpcustom'
-        );
-        foreach ($this->_supportedThemes as $t => $v){
-            $themeList[$t] = strtolower($t);
-        }
-        foreach ($this->_themeManager->getUserThemes() as $t => $source){
-            $themeList[$t.'/ext'] = strtolower($t);
-        }*/
 
         // fetch the theme list
         $themeList = $this->_themeManager->getThemeList();

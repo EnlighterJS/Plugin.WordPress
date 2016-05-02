@@ -53,6 +53,11 @@ class ThemeManager{
         delete_transient('enlighter_userthemes');
     }
 
+    // get a list of all available themes
+    public function getThemes(){
+        return array_merge($this->getBuildInThemes(), $this->getUserThemes());
+    }
+
     // fetch the build-in theme list (EnlighterJS)
     public function getBuildInThemes(){
         return self::$_supportedThemes;

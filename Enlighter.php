@@ -31,6 +31,7 @@ if (version_compare(phpversion(), '5.3', '>=')){
     // load classes
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/Enlighter.php');    
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/HtmlUtil.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/class/PluginConfig.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/SettingsUtil.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/LegacyShortcodeHandler.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/LowlLevelShortcodeProcessor.php');
