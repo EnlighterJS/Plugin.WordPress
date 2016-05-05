@@ -28,56 +28,20 @@ class Enlighter{
     // settings utility instance
     private $_settingsUtility;
 
-    // cahce manager instance
+    // cache manager instance
     private $_cacheManager;
     
     // theme loader/manager
     private $_themeManager;
 
-    // list of micro shortcodes (supported languages)
-    private $_supportedLanguageKeys = array(
-        'CSS (Cascading Style Sheets)' => 'css',
-        'HTML (Hypertext Markup Language)' => 'html',
-        'Java' => 'java',
-        'Javascript' => 'js',
-        'JSON' => 'json',
-        'Markdown' => 'md',
-        'PHP' => 'php',
-        'Python' => 'python',
-        'Ruby' => 'ruby',
-        'Shell Script' => 'shell',
-        'SQL' => 'sql',
-        'XML' => 'xml',
-        'C' => 'c',
-        'C++' => 'cpp',
-        'C#' => 'csharp',
-        'RUST' => 'rust',
-        'LUA' => 'lua',
-        'Matlab' => 'matlab',
-        'NSIS' => 'nsis',
-        'Diff' => 'diff',
-        'VHDL' => 'vhdl',
-        'Avr Assembly' => 'avrasm',
-        'Generic Assembly' => 'asm',
-        'Squirrel' => 'squirrel',
-        'Ini/Conf Syntax' => 'ini',
-        'RAW Code' => 'raw',
-        'No Highlighting' => 'no-highlight',
-        'Generic Highlighting' => 'generic'    
-    );
-
-    
     // get available languages
     public static function getAvailableLanguages(){
-        return self::getInstance()->_supportedLanguageKeys;
+        return Enlighter\LanguageManager::getLanguages();
     }
     
     // get available themes
     public static function getAvailableThemes(){
-        $themes = self::getInstance()->_themeManager->getThemes();
-
-        // run filter to enable user specific themes
-        return apply_filter('enlighter_themes', $themes);
+        return self::getInstance()->_themeManager->getThemes();
     }
 
     public function _wp_init(){
@@ -91,13 +55,16 @@ class Enlighter{
         // loader to fetch user themes
         $this->_themeManager = new Enlighter\ThemeManager($this->_cacheManager);
 
+        // fetch languages
+        $languages = Enlighter\LanguageManager::getLanguages();
+
         // load language files
         if ($this->_settingsUtility->getOption('enableTranslation')){
             load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
         }
         
         // create new resource loader
-        $this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_cacheManager, $this->_themeManager, $this->_supportedLanguageKeys);
+        $this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_cacheManager, $this->_themeManager, $languages);
 
         // enable EnlighterJS html attributes for Author's and Contributor's
         add_filter('wp_kses_allowed_html', array($this, 'ksesAllowHtmlCodeAttributes'), 100, 2);
@@ -120,14 +87,14 @@ class Enlighter{
             // legacy (WordPress based) shortcode handling ?
             if ($this->_settingsUtility->getOption('shortcodeMode') == 'legacy') {
                 // create new shortcode handler, register all used shortcodes
-                $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $this->_supportedLanguageKeys);
+                $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);
 
             // shortcode handling disabled ?
             }else if ($this->_settingsUtility->getOption('shortcodeMode') == 'disabled'){
 
             // default - custom shortcode handling
             }else{
-                $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $this->_supportedLanguageKeys);
+                $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $languages);
             }
 
             // frontend resources & extensions

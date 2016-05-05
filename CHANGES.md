@@ -7,6 +7,7 @@
 * Added: global constant `ENLIGHTER_PLUGIN_URL` - pre-processed version of `plugins_url('/enlighter/')`
 * Added: local enqueue wrappers to the `ResourceLoader.php`
 * Added: Event `enlighter_init` which is triggered on plugin initialization complete
+* Added: Filter `enlighter_themes` to modify the internal theme list - ability to **add** and/or **remove** themes
 * Changed: The EnlighterJS Config object is now populated as `EnlighterJS_Config` to enable third-party integrations/plugins
 * Changed: Moved [Cryptex](https://wordpress.org/plugins/cryptex/) Settings from `Options` to `Extensions`
 * Changed: External Plugins (colorpicker, jquery.cookie) are moved from `extern/` to `resources/extern`

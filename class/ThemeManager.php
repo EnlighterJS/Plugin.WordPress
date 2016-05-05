@@ -55,7 +55,7 @@ class ThemeManager{
 
     // get a list of all available themes
     public function getThemes(){
-        return array_merge($this->getBuildInThemes(), $this->getUserThemes());
+        return $this->getThemeList();
     }
 
     // fetch the build-in theme list (EnlighterJS)
@@ -66,23 +66,26 @@ class ThemeManager{
     // get a list of all available themes (build-in + user)
     public function getThemeList(){
         // generate the theme list
-        $themeList = array(
+        $themes = array(
             'WPCustom' => 'wpcustom'
         );
 
         // add build-in themes
         foreach (self::$_supportedThemes as $t => $v){
-            $themeList[$t] = strtolower($t);
+            $themes[$t] = strtolower($t);
         }
 
         // add external user themes with prefix
         foreach ($this->getUserThemes() as $t => $source){
-            $themeList[$t.'/ext'] = strtolower($t);
+            $themes[$t.'/ext'] = strtolower($t);
         }
 
-        return $themeList;
+        // run filter to enable user specific themes
+        return apply_filters('enlighter_themes', $themes);
     }
-    
+
+    // fetch user themes
+    // Enlighter Themes which are stored a directory named `enlighter/` of the current active theme
     public function getUserThemes(){
         // cached data available ?
         if ($this->_cachedData === false){

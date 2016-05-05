@@ -3,7 +3,7 @@
     Plugin Name: Enlighter - Customizable Syntax Highlighter
     Plugin URI: http://enlighterjs.org
     Description: Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor.
-    Version: 3.1-BETA4
+    Version: 3.1-BETA5
     Author: Andi Dittrich
     Author URI: http://andidittrich.de
     License: MIT X11-License
@@ -22,7 +22,7 @@
 */
 
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '3.1-BETA4');
+define('ENLIGHTER_VERSION', '3.1-BETA5');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
 define('ENLIGHTER_PLUGIN_URL', plugins_url('/enlighter/'));
 
@@ -39,6 +39,7 @@ if (version_compare(phpversion(), '5.3', '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/ResourceManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/SimpleTemplate.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/CacheManager.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/class/LanguageManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/ThemeGenerator.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/ThemeManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/TinyMCE.php');
@@ -46,7 +47,7 @@ if (version_compare(phpversion(), '5.3', '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/ConfigGenerator.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/GoogleWebfontResources.php');
     
-    // run enlighter
+    // enlighter startup - NEVER CALL IT OUTSIDE THIS FILE !!
     Enlighter::run(__FILE__);
 }else{
     // add admin menu handler
