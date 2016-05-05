@@ -1,6 +1,10 @@
 Filter Hooks
 ===============================================
 
+The following filters enables an additional plugin customization by adding/removing languages and themes.
+
+**NOTICE** The filters only affects the UI components (dropdowns, ..) and **not** the resources!
+
 
 FILTER::enlighter_themes
 -----------------------------------------------
@@ -79,4 +83,21 @@ function mm_add_custom_ejs_lang() {
     wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/custom_ejs_language.js');
 }
 add_action('wp_enqueue_scripts', 'mm_add_custom_ejs_lang');
+```
+
+
+FILTER::enlighter_resource_url
+-----------------------------------------------
+
+**Description:** Filter to modify the resource url
+
+#### Example 1 - Move Resources to CDN ####
+
+```php
+function mm_ejs_resources($resourceName){
+    return 'https://mycdn.mydomain.tld/wp-enlighter/' . $resourceName;
+}
+
+// add a custom filter to modify the resource url's
+add_filter('enlighter_resource_url', 'mm_ejs_resources');
 ```
