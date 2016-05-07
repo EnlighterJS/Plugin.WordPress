@@ -26,15 +26,20 @@ class ResourceManager{
     }
 
     // generate the resource url for ALL enlighter related public files
-    public static function getResourceUrl($filename){
+    public static function getResourceUrl($filename, $version=null){
         // strip whitespaces
         $filename = trim($filename);
 
         // apply resource filter
-        $url = apply_filters('enlighter_resource_url', $filename, ENLIGHTER_PLUGIN_URL);
+        $url = apply_filters('enlighter_resource_url', $filename, ENLIGHTER_PLUGIN_URL, $version);
 
         // filename not changed and relative url ? prepend plugin url, keep absolute path
         if ($filename == $url && preg_match('#^(?:/|[a-z]:/).*$#i', $filename) === 0){
+            // append version ?
+            if ($version){
+                $filename .= '?' . $version;
+            }
+
             // cache file ?
             if (preg_match('#^cache/.*$#', $filename) === 1){
                 $url = ENLIGHTER_PLUGIN_URL . $filename;

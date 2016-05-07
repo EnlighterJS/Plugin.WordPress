@@ -346,9 +346,12 @@ provides: [Enlighter]
 				title: node.getAttribute('data-enlighter-title')
 			};
 		}
-		
+
+
 		// listen on NodeChange Event to show/hide the toolbar
 		editor.on('NodeChange', function(e){
+            e.stopPropagation();
+
 			// get current node
 			var node = editor.selection.getNode();
 			
@@ -370,7 +373,7 @@ provides: [Enlighter]
 				}
 			}
         });
-		
+
 		// is the given node a enlighter codeblock ?
 		function isEnlighterCodeblock(node){
 			// enlighter element ?

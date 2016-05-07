@@ -199,7 +199,7 @@ class TinyMCE{
 
     public function loadEditorCSS($mce_css){
         // add hash from last settings update to force a cache update
-        $url = ResourceManager::getResourceUrl('cache/TinyMCE.css');
+        $url = ResourceManager::getResourceUrl('cache/TinyMCE.css', ENLIGHTER_VERSION);
 
         // other styles loaded ?
         if (empty($mce_css)){
@@ -213,7 +213,7 @@ class TinyMCE{
 
     public function loadPlugin($mce_plugins){
         // TinyMCE plugin js
-        $mce_plugins['enlighter'] = ResourceManager::getResourceUrl('editor/TinyMCE.js');
+        $mce_plugins['enlighter'] = ResourceManager::getResourceUrl('editor/TinyMCE.js', ENLIGHTER_VERSION);
         return $mce_plugins;
     }
 }
