@@ -1,7 +1,8 @@
-Filter Hooks
+Enlighter Filter Hooks
 ===============================================
 
 The following filters enables an additional plugin customization by adding/removing languages and themes.
+You can add the filter hooks within your Theme's [functions.php](https://codex.wordpress.org/Functions_File_Explained) file or a [custom plugin](https://codex.wordpress.org/Writing_a_Plugin).
 
 **NOTICE** The filters only affects the UI components (dropdowns, ..) and **not** the resources!
 

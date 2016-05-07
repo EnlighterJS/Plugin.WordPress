@@ -144,7 +144,7 @@ class Enlighter{
         $this->_resourceLoader->frontendEnlighter();
 
         // check frontend user privileges
-        $canEdit = is_user_logged_in() && current_user_can('edit_posts') && current_user_can('edit_pages');
+        $canEdit = is_user_logged_in() && (current_user_can('edit_posts') || current_user_can('edit_pages'));
         if ($canEdit){
             $this->_resourceLoader->frontendEditor();
         }
