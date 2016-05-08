@@ -76,7 +76,7 @@ class ConfigGenerator{
     }
 
     public function getEditorPluginConfig(){
-        $c = 'Enlighter_EditorConfig = ';
+        $c = 'EnlighterJS_EditorConfig = ';
 
         // create config object
         $c .= json_encode(array(

@@ -17,12 +17,13 @@ requires:
 // domready wrapper
 jQuery(function(jq){
 
-    var _enlighter = Enlighter_EditorConfig;
-
     // dependencies loaded ?
-    if (typeof _enlighter == 'undefined' || typeof QTags == 'undefined'){
+    if (typeof EnlighterJS_EditorConfig == 'undefined' || typeof QTags == 'undefined'){
         return;
     }
+
+    // shortcut
+    var _enlighter = EnlighterJS_EditorConfig;
 
     // add quicktags ?
     if (_enlighter.config.quicktagMode != 'disabled'){

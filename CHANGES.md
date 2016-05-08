@@ -10,17 +10,22 @@
 * Added: Filter `enlighter_themes` to modify the internal theme list - ability to **add** and/or **remove** themes
 * Added: Filter `enlighter_languages` to modify the internal language list - ability to **add** and/or **remove** languages
 * Added: Filter `enlighter_resource_url` to modify the domain/protocol of related Enlighter resources
+* Added: Minified Versions of the TinyMCE Plugin
 * Changed: The EnlighterJS Config object is now populated as `EnlighterJS_Config` to enable third-party integrations/plugins
 * Changed: Moved [Cryptex](https://wordpress.org/plugins/cryptex/) Settings from `Options` to `Extensions`
 * Changed: External Plugins (colorpicker, jquery.cookie) are moved from `extern/` to `resources/extern`
 * Changed: toolbar button link to http://enlighterjs.org
 * Changed: The Plugin is now initialized [on init](https://codex.wordpress.org/Plugin_API/Action_Reference/init) to enable users to hook-in
+* Changed: Renamed the Visual Editor configuration object to `EnlighterJS_EditorConfig`
+* Changed: Renamed the TinyMCE plugin from `enlighter` to `enlighterjs`
+* Changed: Renamed the TinyMCE plugin files to `EnlighterJS.TinyMCE.min.js`, `EnlighterJS.TinyMCE.min.css`
 * Bugfix: The special-line color of the Atomic theme was too dark. changed to 0x392d3b - thanks to [CraigMcKenna on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/24)
 * Bugfix: Users with role `author` and `contributor` were not able to set language, theme or other options in Editor Mode (html attributes were stripped by the [KSES filter](http://codex.wordpress.org/Function_Reference/wp_kses_allowed_html))
 * Bugfix: Codegroup title cannot be set manually caused by wrong attribute name - thanks to [PixelT on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/34)
 * Bugfix: Codeblock edit button does not work in WP 4.5 caused by cross-plugin event-propagation
 * Bugfix: Users with role `author` and `contributor` were not able to use the frontend-editor-extension because of missing privileges to edit pages. Condition is changed to `IS_LOGGED_IN AND (CAN_EDIT_POSTS OR CAN_EDIT_PAGES)` - thanks to [Petr on WordPress Forums](https://wordpress.org/support/topic/tinymce-btn-on-frontend-for-non-admin?replies=4#post-8374924)
 * Cleaned up the internal Plugin Structure
+* Visual Editor (TinyMCE) Plugin is outsourced as [own project](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)
 
 ### 3.0 ###
 * Added: New robust and fault-tolerant `LowLevel Shortcode Handler` to avoid issues with wpautop filter and unescaped html characters (text mode)

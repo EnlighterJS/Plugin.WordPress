@@ -169,7 +169,7 @@ class TinyMCE{
     // generate the editor css
     public function generateCSS(){
         // load base styles
-        $styles = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/editor/TinyMCE.css');
+        $styles = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/editor/EnlighterJS.TinyMCE.min.css');
 
         // inline editor styles
         $customizer = array(
@@ -213,7 +213,7 @@ class TinyMCE{
 
     public function loadPlugin($mce_plugins){
         // TinyMCE plugin js
-        $mce_plugins['enlighter'] = ResourceManager::getResourceUrl('editor/TinyMCE.js', ENLIGHTER_VERSION);
+        $mce_plugins['enlighterjs'] = ResourceManager::getResourceUrl('editor/EnlighterJS.TinyMCE.min.js', ENLIGHTER_VERSION);
         return $mce_plugins;
     }
 }
