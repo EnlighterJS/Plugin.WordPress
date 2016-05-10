@@ -181,7 +181,7 @@ class TinyMCE{
         );
 
         // Custom TinyMCE Styling
-        $styles .= 'code.EnlighterJSRAW, pre.EnlighterJSRAW{' . implode(';', $customizer) . '}</style>';
+        $styles .= 'code.EnlighterJSRAW, pre.EnlighterJSRAW{' . implode(';', $customizer) . '}';
 
         // generate language titles
         foreach ($this->_supportedLanguageKeys as $name => $lang){

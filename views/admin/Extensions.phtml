@@ -16,9 +16,25 @@
     </div>
 </div>
 
+<!-- BB Press -->
+<div class="postbox">
+    <h3 class="hndle"><span><?php _e('bbPress Forums Plugin', 'enlighter'); ?></span></h3>
+    <div class="inside EnlighterBlockcontent">
+
+        <p><?php _e('These options are related to the popular <a href="https://de.wordpress.org/plugins/bbpress/" target="_blank">bbPress Forums Plugin</a>.', 'enlighter'); ?></p>
+
+        <h4><?php _e('bbPress', 'enlighter'); ?></h4>
+
+        <!-- enable shortcode support !-->
+        <p><?php _e('Enable Shortcode support within bbPress topics and replies. Note: this feature requires the LowLevel Shortcode Processor!', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Enlighter Shortcode', 'enlighter'), 'bbpressShortcode') ?>
+
+    </div>
+</div>
+
 <!-- Cryptex -->
 <div class="postbox">
-    <h3 class="hndle"><span><?php _e('Cryptex Email Obfuscation Plugin', 'enlighter'); ?></span></h3>
+    <h3 class="hndle"><span><?php _e('Cryptex E-Mail Obfuscation Plugin', 'enlighter'); ?></span></h3>
     <div class="inside EnlighterBlockcontent">
 
         <p><?php _e('These options are related to the <a href="https://wordpress.org/plugins/cryptex/" target="_blank">Cryptex E-Mail Address Obfuscation plugin</a>. It can protect E-Mail Addresses within your highlighted sourcecode.', 'enlighter'); ?><br />

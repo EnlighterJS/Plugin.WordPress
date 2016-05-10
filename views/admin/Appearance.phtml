@@ -15,7 +15,7 @@
 	<?php $this->_settingsUtility->displaySelect(__('Theme', 'enlighter'), 'defaultTheme', $themeList); ?>
     
     <!-- Language -->
-	<?php $this->_settingsUtility->displaySelect(__('Default Language', 'enlighter'), 'defaultLanguage', $this->_supportedLanguageKeys); ?>
+	<?php $this->_settingsUtility->displaySelect(__('Default Language', 'enlighter'), 'defaultLanguage', Enlighter::getAvailableLanguages()); ?>
 
 	<!-- Indent -->
     <?php $this->_settingsUtility->displaySelect(__('Code-Indent', 'enlighter'), 'indent', array(__('No modification (keep tabs)', 'enlighter') => -1, __('1 Space', 'enlighter') => 1, '2 '.__('Spaces', 'enlighter') => 2, '3 '.__('Spaces', 'enlighter') => 3, '4 '.__('Spaces', 'enlighter') => 4, '5 '.__('Spaces', 'enlighter') => 5, '6 '.__('Spaces', 'enlighter') => 6, '7 '.__('Spaces', 'enlighter') => 7)); ?>

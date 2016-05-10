@@ -98,26 +98,34 @@ class ResourceLoader{
 
     // Load the Frontend Editor Resources
     public function frontendEditor(){
+        // Inline Editor Configuration (Themes...)
+        add_action('wp_head', array($this, 'appendInlineEditorConfig'));
+
         // apply editor modifications
         if ($this->_config['enableFrontendTinyMceIntegration']) {
             $this->_tinymce->integrate();
         }
 
-        // Inline Editor Configuration (Themes...)
-        add_action('wp_head', array($this, 'appendInlineEditorConfig'));
-        add_action('wp_enqueue_scripts', array($this, 'appendEditorJS'));
+        // load text editor ?
+        if ($this->_config['enableQuicktagFrontendIntegration']){
+            add_action('wp_enqueue_scripts', array($this, 'appendTextEditorJS'));
+        }
     }
 
     // Load the Backend Editor Resources
     public function backendEditor(){
+        // Inline Editor Configuration (Themes...)
+        add_action('admin_print_scripts', array($this, 'appendInlineEditorConfig'));
+
         // apply editor modifications
         if ($this->_config['enableTinyMceIntegration']) {
             $this->_tinymce->integrate();
         }
 
-        // Inline Editor Configuration (Themes...)
-        add_action('admin_print_scripts', array($this, 'appendInlineEditorConfig'));
-        add_action('admin_enqueue_scripts', array($this, 'appendEditorJS'));
+        // load text editor ?
+        if ($this->_config['enableQuicktagBackendIntegration']){
+            add_action('admin_enqueue_scripts', array($this, 'appendTextEditorJS'));
+        }
     }
 
     // Load the Backend Settings Resources
@@ -156,7 +164,7 @@ class ResourceLoader{
         echo '<script type="text/javascript">/* <![CDATA[ */', $script, ';/* ]]> */</script>';
     }
 
-    public function appendEditorJS(){
+    public function appendTextEditorJS(){
         // text editor plugin
         $this->enqueueScript('enlighter-texteditor', 'editor/TextEditor.js', array('jquery'));
     }

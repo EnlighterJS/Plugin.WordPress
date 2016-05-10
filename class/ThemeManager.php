@@ -42,7 +42,7 @@ class ThemeManager{
         'Twilight' => true
     );
 
-    public function __construct($cacheManager){
+    public function __construct(){
         // try to load cached data
         $this->_cachedData = get_transient('enlighter_userthemes');
     }

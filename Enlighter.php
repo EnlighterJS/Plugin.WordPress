@@ -46,6 +46,7 @@ if (version_compare(phpversion(), '5.3', '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/ContextualHelp.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/ConfigGenerator.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/GoogleWebfontResources.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/class/BBPress.php');
     
     // enlighter startup - NEVER CALL IT OUTSIDE THIS FILE !!
     Enlighter::run(__FILE__);

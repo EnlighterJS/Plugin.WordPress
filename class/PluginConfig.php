@@ -70,6 +70,9 @@ class PluginConfig{
         'enableTranslation' => true,
         'enableTinyMceIntegration' => true,
         'enableFrontendTinyMceIntegration' => false,
+        'enableQuicktagBackendIntegration' => false,
+        'enableQuicktagFrontendIntegration' => false,
+        
         'rawButton' => true,
         'windowButton' => true,
         'infoButton' => true,
@@ -81,7 +84,7 @@ class PluginConfig{
 
         'extJetpackInfiniteScroll' => false,
 
-        'bbpresShortcode' => false
+        'bbpressShortcode' => false
     );
     
     public static function getDefaults(){

@@ -44,17 +44,20 @@ class Enlighter{
         return self::getInstance()->_themeManager->getThemes();
     }
 
-    public function _wp_init(){
-
+    // basic plugin initialization
+    public function __construct(){
         // create new settings utility class
         $this->_settingsUtility = new Enlighter\SettingsUtil('enlighter-', \Enlighter\PluginConfig::getDefaults());
-        
+
         // create new cache manager instance
         $this->_cacheManager = new Enlighter\CacheManager($this->_settingsUtility);
-        
-        // loader to fetch user themes
-        $this->_themeManager = new Enlighter\ThemeManager($this->_cacheManager);
 
+        // loader to fetch user themes
+        $this->_themeManager = new Enlighter\ThemeManager();
+    }
+
+    // initialized on init
+    public function _wp_init(){
         // fetch languages
         $languages = Enlighter\LanguageManager::getLanguages();
 
@@ -95,6 +98,11 @@ class Enlighter{
             // default - custom shortcode handling
             }else{
                 $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $languages);
+
+                // enable bb_press shortcode extension ?
+                if ($this->_settingsUtility->getOption('bbpressShortcode')){
+                    Enlighter\BBPress::enableShortcodeFilter($this->_shortcodeHandler);
+                }
             }
 
             // frontend resources & extensions
@@ -246,7 +254,16 @@ class Enlighter{
 
     }
 
+    public function _wp_plugin_upgrade($currentVersion){
+        // invalidate cache on upgrade!
+        $this->_cacheManager->clearCache();
+
+        return true;
+    }
+
+
 //!WP::SKELETON
+
     // static entry/initialize singleton instance
     public static function run($pluginName){
         // check if singleton instance is available
@@ -258,6 +275,18 @@ class Enlighter{
             register_activation_hook($pluginName, array($i, '_wp_plugin_activate'));
             register_deactivation_hook($pluginName, array($i, '_wp_plugin_deactivate'));
             add_action('init', array($i, '_wp_init'));
+
+            // fetch plugin version
+            $version = get_option('enlighter-version', '0.0.0');
+
+            // plugin upgraded ?
+            if (version_compare(ENLIGHTER_VERSION, $version, '>')){
+                // run upgrade hook
+                if ($i->_wp_plugin_upgrade($version)){
+                    // store new version
+                    update_option('enlighter-version', ENLIGHTER_VERSION);
+                }
+            }
         }
     }
 

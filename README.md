@@ -21,8 +21,9 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Support for all common used languages including powerful generic highlighting
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
+* [bbPress](https://bbpress.org/) shortcode support
 * **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
-* Easy to use Text-Editor mode through the use of Shortcodes
+* Easy to use Text-Editor mode through the use of Shortcodes and QuickTags
 * Advanced configuration options (CDN usage, ..) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
 * Extensible language and theme engines - add your own one.

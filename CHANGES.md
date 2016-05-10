@@ -6,6 +6,8 @@
 * Added: Experimental Support for [Jetpack Infinite Scroll](https://jetpack.me/support/infinite-scroll/) - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/not-working-when-infinite-scroll-is-enabled)
 * Added: global constant `ENLIGHTER_PLUGIN_URL` - pre-processed version of `plugins_url('/enlighter/')`
 * Added: local enqueue wrappers to the `ResourceLoader.php`
+* Added: Options to enable/disable the Editor Quicktags on the Frontend as well as Backend
+* Added: [bbPress](https://bbpress.org/) Shortcode support - feature requested by [DevynCJohnson on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/33)
 * Added: Event `enlighter_init` which is triggered on plugin initialization complete
 * Added: Filter `enlighter_themes` to modify the internal theme list - ability to **add** and/or **remove** themes
 * Added: Filter `enlighter_languages` to modify the internal language list - ability to **add** and/or **remove** languages
@@ -24,6 +26,7 @@
 * Bugfix: Codegroup title cannot be set manually caused by wrong attribute name - thanks to [PixelT on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/34)
 * Bugfix: Codeblock edit button does not work in WP 4.5 caused by cross-plugin event-propagation
 * Bugfix: Users with role `author` and `contributor` were not able to use the frontend-editor-extension because of missing privileges to edit pages. Condition is changed to `IS_LOGGED_IN AND (CAN_EDIT_POSTS OR CAN_EDIT_PAGES)` - thanks to [Petr on WordPress Forums](https://wordpress.org/support/topic/tinymce-btn-on-frontend-for-non-admin?replies=4#post-8374924)
+* Bugfix: HTML Code Fragment within the generated `cache/TinyMCE.css` file caused CSS validation error
 * Cleaned up the internal Plugin Structure
 * Visual Editor (TinyMCE) Plugin is outsourced as [own project](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)
 
