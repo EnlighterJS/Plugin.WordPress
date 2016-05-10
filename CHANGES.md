@@ -1,6 +1,6 @@
 ## Changelog ##
 
-### 3.1-BETA2 ###
+### 3.1 ###
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)
 * Added: New Options Page `Extensions` for Enlighter related third-party plugin integration
 * Added: Experimental Support for [Jetpack Infinite Scroll](https://jetpack.me/support/infinite-scroll/) - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/not-working-when-infinite-scroll-is-enabled)

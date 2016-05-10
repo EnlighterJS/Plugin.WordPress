@@ -208,7 +208,7 @@ class LowlLevelShortcodeProcessor{
 
             // auto grouping ?
             if ($fragment['group']){
-                $htmlAttributes['data-enlighter-group'] = $fragment['group'];
+                $htmlAttributes['data-enlighter-group'] = trim($fragment['group']);
 
             // manual grouping ?
             }else if ($shortcodeAttributes['group']){
