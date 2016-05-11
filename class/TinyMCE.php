@@ -98,12 +98,15 @@ class TinyMCE{
         if (isset($tinyMceConfigData['style_formats'])){
             $styles = json_decode($tinyMceConfigData['style_formats'], true);
         }
-        
+
+        // do not allow additional formatting within pre/code tags!
+        $disallowedChildTags = '-code[code|pre|strong|em|del|span|a|table|sub|sup],-pre[code|pre|strong|em|del|span|a|table|sub|sup]';
+
         // valid html tgas
         if (isset($tinyMceConfigData['valid_children'])){
-            $tinyMceConfigData['valid_children'] .= '-code[code]';
+            $tinyMceConfigData['valid_children'] .= $disallowedChildTags;
         }else{
-            $tinyMceConfigData['valid_children'] = '-code[code]';
+            $tinyMceConfigData['valid_children'] = $disallowedChildTags;
         }
         
         // create new "Enlighter Codeblocks" item

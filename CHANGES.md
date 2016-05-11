@@ -4,10 +4,11 @@
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)
 * Added: New Options Page `Extensions` for Enlighter related third-party plugin integration
 * Added: Experimental Support for [Jetpack Infinite Scroll](https://jetpack.me/support/infinite-scroll/) - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/not-working-when-infinite-scroll-is-enabled)
+* Added: Experimental [bbPress](https://bbpress.org/) Shortcode support - feature requested by [DevynCJohnson on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/33)
 * Added: global constant `ENLIGHTER_PLUGIN_URL` - pre-processed version of `plugins_url('/enlighter/')`
 * Added: local enqueue wrappers to the `ResourceLoader.php`
 * Added: Options to enable/disable the Editor Quicktags on the Frontend as well as Backend
-* Added: [bbPress](https://bbpress.org/) Shortcode support - feature requested by [DevynCJohnson on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/33)
+* Added: HTML Tag restrictions to Visual Editor: disallows any kind of formatting elements (strong, span, em, ..) within code-blocks
 * Added: Event `enlighter_init` which is triggered on plugin initialization complete
 * Added: Filter `enlighter_themes` to modify the internal theme list - ability to **add** and/or **remove** themes
 * Added: Filter `enlighter_languages` to modify the internal language list - ability to **add** and/or **remove** languages
