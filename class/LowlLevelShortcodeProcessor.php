@@ -40,25 +40,32 @@ class LowlLevelShortcodeProcessor{
             $this->_languageTags .= '|' . implode('|', $languageShortcodes);
         }
 
-        // setup sections to filter
+        // array of sections which will be filtered
+        $sections = array();
+
+        // setup sections to filter based on plugin configuration
         if ($this->_config['shortcodeFilterContent']){
-            $this->registerFilterTarget('the_content');
+            $sections[] = 'the_content';
         }
-
         if ($this->_config['shortcodeFilterExcerpt']){
-            $this->registerFilterTarget('get_the_excerpt');
+            $sections[] = 'get_the_excerpt';
         }
-
         if ($this->_config['shortcodeFilterComments']){
-            $this->registerFilterTarget('get_comment_text');
+            $sections[] = 'get_comment_text';
         }
-
         if ($this->_config['shortcodeFilterCommentsExcerpt']){
-            $this->registerFilterTarget('get_comment_excerpt');
+            $sections[] = 'get_comment_excerpt';
+        }
+        if ($this->_config['shortcodeFilterWidgetText']){
+            $sections[] = 'widget_text';
         }
 
-        if ($this->_config['shortcodeFilterWidgetText']){
-            $this->registerFilterTarget('widget_text');
+        // apply filter hook to allow users to modify the list/add additional filters
+        $sections = array_unique(apply_filters('enlighter_shortcode_filters', $sections));
+
+        // register filter targets
+        foreach ($sections as $section){
+            $this->registerFilterTarget($section);
         }
     }
 

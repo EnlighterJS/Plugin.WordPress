@@ -13,6 +13,7 @@
 * Added: Filter `enlighter_themes` to modify the internal theme list - ability to **add** and/or **remove** themes
 * Added: Filter `enlighter_languages` to modify the internal language list - ability to **add** and/or **remove** languages
 * Added: Filter `enlighter_resource_url` to modify the domain/protocol of related Enlighter resources
+* Added: Filter `enlighter_shortcode_filters` to enable shortcodes in specific sections by hooking into 3rd party filters
 * Added: Minified Versions of the TinyMCE Plugin
 * Changed: The EnlighterJS Config object is now populated as `EnlighterJS_Config` to enable third-party integrations/plugins
 * Changed: Moved [Cryptex](https://wordpress.org/plugins/cryptex/) Settings from `Options` to `Extensions`
