@@ -40,8 +40,26 @@ class LowlLevelShortcodeProcessor{
             $this->_languageTags .= '|' . implode('|', $languageShortcodes);
         }
 
-        // set "the_content" as default filter target
-        $this->registerFilterTarget('the_content');
+        // setup sections to filter
+        if ($this->_config['shortcodeFilterContent']){
+            $this->registerFilterTarget('the_content');
+        }
+
+        if ($this->_config['shortcodeFilterExcerpt']){
+            $this->registerFilterTarget('get_the_excerpt');
+        }
+
+        if ($this->_config['shortcodeFilterComments']){
+            $this->registerFilterTarget('get_comment_text');
+        }
+
+        if ($this->_config['shortcodeFilterCommentsExcerpt']){
+            $this->registerFilterTarget('get_comment_excerpt');
+        }
+
+        if ($this->_config['shortcodeFilterWidgetText']){
+            $this->registerFilterTarget('widget_text');
+        }
     }
 
     public function registerFilterTarget($name){

@@ -103,6 +103,8 @@ class Enlighter{
                 if ($this->_settingsUtility->getOption('bbpressShortcode')){
                     Enlighter\BBPress::enableShortcodeFilter($this->_shortcodeHandler);
                 }
+
+                Enlighter\BuddyPress::enableShortcodeFilter($this->_shortcodeHandler);
             }
 
             // frontend resources & extensions

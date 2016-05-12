@@ -30,14 +30,21 @@ class PluginConfig{
         'jsPosition' => 'header',
         'defaultTheme' => 'enlighter',
         'defaultLanguage' => 'generic',
-        'languageShortcode' => true,
-        'shortcodeMode' => 'modern',
         'indent' => 2,
         'linenumbers' => 'true',
         'hoverClass' => 'hoverEnabled',
         'selector' => 'pre.EnlighterJSRAW',
         'selectorInline' => 'code.EnlighterJSRAW',
 
+        'languageShortcode' => true,
+        'shortcodeMode' => 'modern',
+        'shortcodeFilterContent' => true,
+        'shortcodeFilterExcerpt' => false,
+        'shortcodeFilterComments' => false,
+        'shortcodeFilterCommentsExcerpt' => false,
+        'shortcodeFilterWidgetText' => false,
+                
+        
         'editorFontFamily' => '"Source Code Pro", "Liberation Mono", "Courier New", Courier, monospace',
         'editorFontSize' => '0.7em',
         'editorLineHeight' => '0.9em',
