@@ -7,6 +7,8 @@
 * Added: Experimental [bbPress](https://bbpress.org/) Shortcode support - feature requested by [DevynCJohnson on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/33)
 * Added: global constant `ENLIGHTER_PLUGIN_URL` - pre-processed version of `plugins_url('/enlighter/')`
 * Added: local enqueue wrappers to the `ResourceLoader.php`
+* Added: Enlighter Shortcode support for Text-Widgets
+* Added: Enlighter Shortcode support for User Comments
 * Added: Options to enable/disable the Editor Quicktags on the Frontend as well as Backend
 * Added: HTML Tag restrictions to Visual Editor: disallows any kind of formatting elements (strong, span, em, ..) within code-blocks
 * Added: Event `enlighter_init` which is triggered on plugin initialization complete
@@ -23,6 +25,7 @@
 * Changed: Renamed the Visual Editor configuration object to `EnlighterJS_EditorConfig`
 * Changed: Renamed the TinyMCE plugin from `enlighter` to `enlighterjs`
 * Changed: Renamed the TinyMCE plugin files to `EnlighterJS.TinyMCE.min.js`, `EnlighterJS.TinyMCE.min.css`
+* Changed: Removed the "Advanced" page - settings are moved to "Options"
 * Bugfix: The special-line color of the Atomic theme was too dark. changed to 0x392d3b - thanks to [CraigMcKenna on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/24)
 * Bugfix: Users with role `author` and `contributor` were not able to set language, theme or other options in Editor Mode (html attributes were stripped by the [KSES filter](http://codex.wordpress.org/Function_Reference/wp_kses_allowed_html))
 * Bugfix: Codegroup title cannot be set manually caused by wrong attribute name - thanks to [PixelT on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/34)

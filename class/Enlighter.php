@@ -87,24 +87,27 @@ class Enlighter{
             $this->_resourceLoader->backendEditor();
         }else{
 
-            // legacy (WordPress based) shortcode handling ?
-            if ($this->_settingsUtility->getOption('shortcodeMode') == 'legacy') {
-                // create new shortcode handler, register all used shortcodes
-                $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);
+            // enable bb_press shortcode extension ?
+            if ($this->_settingsUtility->getOption('bbpressShortcode')){
+                Enlighter\BBPress::enableShortcodeFilter();
+            }
 
-            // shortcode handling disabled ?
-            }else if ($this->_settingsUtility->getOption('shortcodeMode') == 'disabled'){
+            // initialize the shortcode handler
+            switch ($this->_settingsUtility->getOption('shortcodeMode')){
 
-            // default - custom shortcode handling
-            }else{
-                $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $languages);
+                // legacy (WordPress based) shortcode handling ?
+                case 'legacy':
+                    $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);
+                    break;
 
-                // enable bb_press shortcode extension ?
-                if ($this->_settingsUtility->getOption('bbpressShortcode')){
-                    Enlighter\BBPress::enableShortcodeFilter($this->_shortcodeHandler);
-                }
+                // do nothing
+                case 'disabled':
+                    break;
 
-                Enlighter\BuddyPress::enableShortcodeFilter($this->_shortcodeHandler);
+                // default : Low Level Processor
+                default:
+                    $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $languages);
+                    break;
             }
 
             // frontend resources & extensions

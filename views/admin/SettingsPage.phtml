@@ -30,7 +30,6 @@
     <a data-tab="EnlighterTabWebfonts" class="nav-tab"><?php _e('Webfonts', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabExtensions" class="nav-tab"><?php _e('Extensions', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabOptions" class="nav-tab"><?php _e('Options', 'enlighter'); ?></a>
-	<a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
 </h2>
 
 <!-- Main Title -->
@@ -81,11 +80,7 @@ if (!$this->_cacheManager->isCacheAccessable()){
 		<div id="EnlighterTabOptions">
 		<?php require ('Options.phtml'); ?>
 		</div>
-		
-		<div id="EnlighterTabAdvanced">
-		<?php require ('Advanced.phtml'); ?>
-		</div>
-		
+
 		<!-- submit !-->
 	    <?php submit_button(); ?>
 

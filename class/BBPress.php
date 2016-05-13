@@ -19,8 +19,15 @@ namespace Enlighter;
 
 class BBPress{
 
-    public static function enableShortcodeFilter($shortcodeProcessor){
-        $shortcodeProcessor->registerFilterTarget('bbp_get_reply_content');
-        $shortcodeProcessor->registerFilterTarget('bbp_get_topic_content');
+    public static function enableShortcodeFilter(){
+        // add filter to hook into the section post-processing
+        // user defined filters will have prio 10 by default
+        add_filter('enlighter_shortcode_filters', function($sections){
+            // add BuddyPress Sections
+            $sections[] = 'bbp_get_reply_content';
+            $sections[] = 'bbp_get_topic_content';
+
+            return $sections;
+        }, 5);
     }
 }
