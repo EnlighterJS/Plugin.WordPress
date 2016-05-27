@@ -2,6 +2,7 @@
 
 ### 3.1 ###
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)
+* Added: About/News Page which is shown on plugin activation/upgrade
 * Added: New Options Page `Extensions` for Enlighter related third-party plugin integration
 * Added: Experimental Support for [Jetpack Infinite Scroll](https://jetpack.me/support/infinite-scroll/) - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/not-working-when-infinite-scroll-is-enabled)
 * Added: Experimental [bbPress](https://bbpress.org/) Shortcode support - feature requested by [DevynCJohnson on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/33)
@@ -33,7 +34,7 @@
 * Bugfix: Users with role `author` and `contributor` were not able to use the frontend-editor-extension because of missing privileges to edit pages. Condition is changed to `IS_LOGGED_IN AND (CAN_EDIT_POSTS OR CAN_EDIT_PAGES)` - thanks to [Petr on WordPress Forums](https://wordpress.org/support/topic/tinymce-btn-on-frontend-for-non-admin?replies=4#post-8374924)
 * Bugfix: HTML Code Fragment within the generated `cache/TinyMCE.css` file caused CSS validation error
 * Cleaned up the internal Plugin Structure
-* Visual Editor (TinyMCE) Plugin is outsourced as [own project](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)
+* Visual Editor (TinyMCE) Plugin is outsourced to [AndiDittrich/EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)
 
 ### 3.0 ###
 * Added: New robust and fault-tolerant `LowLevel Shortcode Handler` to avoid issues with wpautop filter and unescaped html characters (text mode)

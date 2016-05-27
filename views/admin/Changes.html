@@ -1,0 +1,51 @@
+<ul>
+<li>Added: <a href="http://enlighterjs.org/">EnlighterJS v2.10.1</a>
+</li>
+<li>Added: About/News Page which is shown on plugin activation/upgrade</li>
+<li>Added: New Options Page <code>Extensions</code> for Enlighter related third-party plugin integration</li>
+<li>Added: Experimental Support for <a href="https://jetpack.me/support/infinite-scroll/">Jetpack Infinite Scroll</a> - feature requested on <a href="https://wordpress.org/support/topic/not-working-when-infinite-scroll-is-enabled">WordPress.org Forums</a>
+</li>
+<li>Added: Experimental <a href="https://bbpress.org/">bbPress</a> Shortcode support - feature requested by <a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues/33">DevynCJohnson on GitHub</a>
+</li>
+<li>Added: global constant <code>ENLIGHTER_PLUGIN_URL</code> - pre-processed version of <code>plugins_url('/enlighter/')</code>
+</li>
+<li>Added: local enqueue wrappers to the <code>ResourceLoader.php</code>
+</li>
+<li>Added: Enlighter Shortcode support for Text-Widgets</li>
+<li>Added: Enlighter Shortcode support for User Comments</li>
+<li>Added: Options to enable/disable the Editor Quicktags on the Frontend as well as Backend</li>
+<li>Added: HTML Tag restrictions to Visual Editor: disallows any kind of formatting elements (strong, span, em, ..) within code-blocks</li>
+<li>Added: Event <code>enlighter_init</code> which is triggered on plugin initialization complete</li>
+<li>Added: Filter <code>enlighter_themes</code> to modify the internal theme list - ability to <strong>add</strong> and/or <strong>remove</strong> themes</li>
+<li>Added: Filter <code>enlighter_languages</code> to modify the internal language list - ability to <strong>add</strong> and/or <strong>remove</strong> languages</li>
+<li>Added: Filter <code>enlighter_resource_url</code> to modify the domain/protocol of related Enlighter resources</li>
+<li>Added: Filter <code>enlighter_shortcode_filters</code> to enable shortcodes in specific sections by hooking into 3rd party filters</li>
+<li>Added: Minified Versions of the TinyMCE Plugin</li>
+<li>Changed: The EnlighterJS Config object is now populated as <code>EnlighterJS_Config</code> to enable third-party integrations/plugins</li>
+<li>Changed: Moved <a href="https://wordpress.org/plugins/cryptex/">Cryptex</a> Settings from <code>Options</code> to <code>Extensions</code>
+</li>
+<li>Changed: External Plugins (colorpicker, jquery.cookie) are moved from <code>extern/</code> to <code>resources/extern</code>
+</li>
+<li>Changed: toolbar button link to <a href="http://enlighterjs.org">http://enlighterjs.org</a>
+</li>
+<li>Changed: The Plugin is now initialized <a href="https://codex.wordpress.org/Plugin_API/Action_Reference/init">on init</a> to enable users to hook-in</li>
+<li>Changed: Renamed the Visual Editor configuration object to <code>EnlighterJS_EditorConfig</code>
+</li>
+<li>Changed: Renamed the TinyMCE plugin from <code>enlighter</code> to <code>enlighterjs</code>
+</li>
+<li>Changed: Renamed the TinyMCE plugin files to <code>EnlighterJS.TinyMCE.min.js</code>, <code>EnlighterJS.TinyMCE.min.css</code>
+</li>
+<li>Changed: Removed the "Advanced" page - settings are moved to "Options"</li>
+<li>Bugfix: The special-line color of the Atomic theme was too dark. changed to 0x392d3b - thanks to <a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues/24">CraigMcKenna on GitHub</a>
+</li>
+<li>Bugfix: Users with role <code>author</code> and <code>contributor</code> were not able to set language, theme or other options in Editor Mode (html attributes were stripped by the <a href="http://codex.wordpress.org/Function_Reference/wp_kses_allowed_html">KSES filter</a>)</li>
+<li>Bugfix: Codegroup title cannot be set manually caused by wrong attribute name - thanks to <a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues/34">PixelT on GitHub</a>
+</li>
+<li>Bugfix: Codeblock edit button does not work in WP 4.5 caused by cross-plugin event-propagation</li>
+<li>Bugfix: Users with role <code>author</code> and <code>contributor</code> were not able to use the frontend-editor-extension because of missing privileges to edit pages. Condition is changed to <code>IS_LOGGED_IN AND (CAN_EDIT_POSTS OR CAN_EDIT_PAGES)</code> - thanks to <a href="https://wordpress.org/support/topic/tinymce-btn-on-frontend-for-non-admin?replies=4#post-8374924">Petr on WordPress Forums</a>
+</li>
+<li>Bugfix: HTML Code Fragment within the generated <code>cache/TinyMCE.css</code> file caused CSS validation error</li>
+<li>Cleaned up the internal Plugin Structure</li>
+<li>Visual Editor (TinyMCE) Plugin is outsourced to <a href="https://github.com/AndiDittrich/EnlighterJS.TinyMCE">AndiDittrich/EnlighterJS.TinyMCE</a>
+</li>
+</ul>

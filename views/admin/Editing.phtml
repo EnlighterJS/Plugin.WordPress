@@ -9,11 +9,10 @@
         <p><?php _e('WordPress provides a build-in Shortcode-API to process shortcodes used by third-party plugins. This function may can cause issues when using it in Text-Editor-Mode with unescaped html characters - especially when posting source-code!', 'enlighter'); ?>
             <?php _e('To avoid such issues, Enlighter provides its own, fault tolerant, Shortcode processor (only affects Enlighter shortcodes!).', 'enlighter'); ?><br />
             <?php _e('If you do not need shortcodes (use the Visual-Editor-Integration instead) it is possible to disable the shortcode processing for performance reasons.', 'enlighter'); ?></p>
-        <p><?php _e('<strong>Notice</strong>: the LowLevel Shortcode Processor is only added to <a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a> filter hook - it is <strong>not invoked</strong> by the <a href="https://developer.wordpress.org/reference/functions/do_shortcode/">do_shortcode</a> function! If you need shortcode processing in other content section, you should consider to use the legacy version.', 'enlighter'); ?></p>
+        <p><?php _e('<strong>Notice</strong>: the LowLevel Shortcode Processor is <strong>not invoked</strong> by the <a href="https://developer.wordpress.org/reference/functions/do_shortcode/">do_shortcode</a> function! If you need shortcode processing in other content section, you should consider to use the legacy version or add custom filters!', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displaySelect(__('Processor', 'enlighter'), 'shortcodeMode', array(__('Enlighter Low-Level (default)', 'enlighter') => 'modern', __('Legacy (WordPress based)', 'enlighter') => 'legacy', __('Disable Shortcodes', 'enlighter') => 'disabled')); ?>
 
-
-        <h4><?php _e('Filter Targets', 'enlighter'); ?></h4>
+        <h4><?php _e('Filter Targets - LowLevel Shortcode Processor', 'enlighter'); ?></h4>
         <p><?php _e('Choose the content-sections to which the shortcode processor should be applied.', 'cryptex'); ?></p>
         <!-- Enable the_content filter -->
         <?php $this->_settingsUtility->displayCheckbox(__('Enable the_content', 'enlighter'), 'shortcodeFilterContent'); ?>

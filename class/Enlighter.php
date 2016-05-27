@@ -74,6 +74,18 @@ class Enlighter{
 
         // frontend or dashboard area ?
         if (is_admin()){
+            // plugin upgrade ? show about page
+            if (get_option('enlighter-activation-redirect', false)){
+                // remove flag
+                delete_option('enlighter-activation-redirect');
+
+                // ignore bulk actions
+                if (!isset($_GET['activate-multi'])){
+                    wp_redirect('admin.php?page=Enlighter-About');
+                    exit;
+                }
+            }
+
             // add admin menu handler
             add_action('admin_menu', array($this, 'setupBackend'));
 
@@ -162,11 +174,15 @@ class Enlighter{
             $this->_resourceLoader->frontendEditor();
         }
     }
-    
+
+    // register pages
     public function setupBackend(){
         if (current_user_can('manage_options')){
             // add options page
             $optionsPage = add_menu_page(__('Enlighter - Customizable Syntax Highlighter', 'enlighter'), 'Enlighter', 'administrator', 'Enlighter', array($this, 'settingsPage'), 'dashicons-editor-code');
+
+            // add about page
+            $aboutPage = add_submenu_page('__enlighter_invalid_page', 'About Enlighter', 'About Enlighter', 'administrator', 'Enlighter-About', array($this, 'aboutPage'));
 
             // add links
             add_filter('plugin_action_links', array($this, 'addPluginPageSettingsLink'), 10, 2);
@@ -174,6 +190,7 @@ class Enlighter{
 
             // settings page resources
             add_filter('load-'.$optionsPage, array($this->_resourceLoader, 'backendSettings'));
+            add_filter('load-'.$aboutPage, array($this->_resourceLoader, 'backendAboutPage'));
 
             // call register settings function
             add_action('admin_init', array($this->_settingsUtility, 'registerSettings'));
@@ -182,6 +199,12 @@ class Enlighter{
             $ch = new Enlighter\ContextualHelp($this->_settingsUtility);
             add_filter('load-'.$optionsPage, array($ch, 'contextualHelp'));
         }
+    }
+
+    // render the about page
+    public function aboutPage(){
+        // include news page
+        include(ENLIGHTER_PLUGIN_PATH.'/views/admin/About.phtml');
     }
 
     // links to the plugin website & author's twitter channel ()
@@ -200,6 +223,7 @@ class Enlighter{
         // current plugin ?
         if ($file == 'enlighter/Enlighter.php'){
             $links[] = '<a href="'.admin_url('admin.php?page=Enlighter').'">'.__('Settings', 'enlighter').'</a>';
+            $links[] = '<a href="'.admin_url('admin.php?page=Enlighter-About').'">'.__('About', 'enlighter').'</a>';
         }
 
         return $links;
@@ -252,7 +276,8 @@ class Enlighter{
     }
 
     public function _wp_plugin_activate(){
-
+        // set activation flag
+        add_option('enlighter-activation-redirect', true);
     }
 
     public function _wp_plugin_deactivate(){

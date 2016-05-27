@@ -6,6 +6,17 @@
 	margin: 15px 0px 15px 0px;
 }
 
+#EnlighterTitleBadge{
+    display: inline-block;
+    padding: 0px 10px 0px 0px;
+    width: 35px;
+    height: 29px;
+    vertical-align: middle;
+    background-image: url(badge35.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
 #EnlighterSettings #post-body-content ul{
 	padding-left: 30px;
 	list-style: square;

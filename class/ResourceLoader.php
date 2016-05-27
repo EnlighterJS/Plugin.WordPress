@@ -128,6 +128,19 @@ class ResourceLoader{
         }
     }
 
+    // Load the Backend About Page Resources
+    public function backendAboutPage(){
+        add_action('admin_enqueue_scripts', array($this, 'appendAboutPageResources'));
+    }
+
+    public function appendAboutPageResources(){
+        // new UI styles
+        $this->enqueueStyle('enlighter-about', 'admin/About.css');
+
+        // settings init script
+        $this->enqueueScript('enlighter-about', 'admin/About.js', array('jquery'));
+    }
+
     // Load the Backend Settings Resources
     public function backendSettings(){
         add_action('admin_enqueue_scripts', array($this, 'appendAdminResources'));

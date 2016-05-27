@@ -2,7 +2,7 @@
 
 <project name="Enlighter" default="devcopy" basedir=".">
 
-    <target name="full" depends="potgen, readme, webfonts, themes, devcopy" />
+    <target name="full" depends="potgen, readme, changelog, webfonts, themes, devcopy" />
 
 	<!-- Plugin Test - DEVELOPMENT ONLY -->
 	<target name="devcopy">
@@ -38,6 +38,11 @@
     <!-- Webfonts code generation !-->
     <target name="webfonts">
         <exec executable="php"><arg value="util/WebfontsGenerator.php" /></exec>
+    </target>
+
+    <!-- Changelog html generation !-->
+    <target name="changelog">
+        <exec executable="php"><arg value="util/extract-changes.php" /></exec>
     </target>
 
 	<!-- Theme Fetching !-->
