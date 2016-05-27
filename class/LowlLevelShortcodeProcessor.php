@@ -195,13 +195,13 @@ class LowlLevelShortcodeProcessor{
 
         // html tag standard attributes
         $htmlAttributes = array(
-                'data-enlighter-language' => $fragment['lang'],
+                'data-enlighter-language' => InputFilter::filterLanguage($fragment['lang']),
                 'class' => 'EnlighterJSRAW'
         );
         
         // force theme ?
         if ($shortcodeAttributes['theme']){
-            $htmlAttributes['data-enlighter-theme'] = trim($shortcodeAttributes['theme']);
+            $htmlAttributes['data-enlighter-theme'] = InputFilter::filterTheme($shortcodeAttributes['theme']);
         }
                 
         // handle as inline code ?
@@ -218,7 +218,7 @@ class LowlLevelShortcodeProcessor{
             
             // line offset ?
             if ($shortcodeAttributes['offset']){
-                $htmlAttributes['data-enlighter-lineoffset'] = intval($shortcodeAttributes['offset']);
+                $htmlAttributes['data-enlighter-lineoffset'] = InputFilter::filterInteger($shortcodeAttributes['offset']);
             }
             
             // force linenumber visibility ?

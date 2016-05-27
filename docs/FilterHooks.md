@@ -102,3 +102,23 @@ function mm_ejs_resources($resourceName){
 // add a custom filter to modify the resource url's
 add_filter('enlighter_resource_url', 'mm_ejs_resources');
 ```
+
+
+FILTER::enlighter_shortcode_filters
+-----------------------------------------------
+
+**Description:** Filter to modify the content sections to which the shortcode processor will be applied (other filters)
+
+#### Example 1 - Add Custom Content Section ####
+
+```php
+function mm_ejs_buddypress($filters){
+    // add buddypress activity - enable shortcodes here
+    $filters[] = 'bp_get_activity_content';
+    
+    return $filters;
+}
+
+// add a custom filter to add a custom content section
+add_filter('enlighter_shortcode_filters', 'mm_ejs_buddypress');
+```

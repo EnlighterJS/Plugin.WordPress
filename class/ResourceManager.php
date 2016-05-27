@@ -19,12 +19,6 @@ namespace Enlighter;
 
 class ResourceManager{
 
-
-
-    public function registerCachedResource($name, $generator){
-
-    }
-
     // generate the resource url for ALL enlighter related public files
     public static function getResourceUrl($filename, $version=null){
         // strip whitespaces

@@ -1,6 +1,6 @@
 <?php
 /**
-	BuddyPress Shortcode Plugin
+	Input Filter
 	Version: 1.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
@@ -17,35 +17,19 @@
 */
 namespace Enlighter;
 
-class BuddyPress{
-
-    public static function enableShortcodeFilter(){
-        // add filter to hook into the section post-processing
-        // user defined filters will have prio 10 by default
-        add_filter('enlighter_shortcode_filters', function($sections){
-            // add BuddyPress Sections
-
-            // last update message of current user (on top)
-            // override the stripping!
-            //$sections[] = array('bp_get_activity_latest_update_excerpt', 'bp_get_activity_latest_update');
-
-            // all other activities in list
-            //$sections[] =  array('bp_get_activity_content_body', 'bp_get_the_topic_post_content');
+class InputFilter{
 
 
-            // activity comments - bp_get_activity_comment_content()
-            // problem: 2 different filters are invoked !
-            //$sections[] = array('bp_get_activity_content', 'bp_activity_comment_content');
-
-            //$sections[] = 'bp_get_activity_content';
-
-            // user comments on activities
-            //$sections[] = 'bp_activity_comment_content';
-
-            //$sections[] = 'bp_get_the_topic_post_content';
-            //$sections[] = 'bp_get_the_thread_message_content';
-
-            return $sections;
-        }, 5);
+    public static function filterTheme($v){
+        return preg_replace('/[^a-z0-9]/', '', strtolower($v));
     }
+
+    public static function filterLanguage($v){
+        return preg_replace('/[^a-z0-9]/', '', strtolower($v));
+    }
+
+    public static function filterInteger($v){
+        return intval($v);
+    }
+
 }
