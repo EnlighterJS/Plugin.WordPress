@@ -58,6 +58,12 @@ class Enlighter{
 
     // initialized on init
     public function _wp_init(){
+        // run startup filter to disable Enlighter by third Party Plugins
+        $startup = apply_filters('enlighter_startup', true);
+        if ($startup === false){
+            return;
+        }
+
         // fetch languages
         $languages = Enlighter\LanguageManager::getLanguages();
 

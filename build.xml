@@ -66,5 +66,8 @@
             <fileset dir="." includes="**/*.php" excludes="util/**"/>
         </apply>
     </target>
+
+    <!-- WP Release Copy !-->
+    <target name="wp-release"></target>
 	
 </project>

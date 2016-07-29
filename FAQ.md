@@ -42,6 +42,9 @@ You have to enable the frontend editing function: `Enlighter Settings Page -> Ad
 If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
 **Note:** EnlighterJS requires MooTools > 1.4
 
+### Can Enlighter by disabled on selected pages? ###
+Of course, the filter hook [enlighter_startup](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/FilterHooks.md) can be used to terminate the plugin initialization
+
 ### Security Vulnerabilities ###
 In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.de/contact) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
 

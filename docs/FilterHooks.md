@@ -122,3 +122,22 @@ function mm_ejs_buddypress($filters){
 // add a custom filter to add a custom content section
 add_filter('enlighter_shortcode_filters', 'mm_ejs_buddypress');
 ```
+
+FILTER::enlighter_startup
+-----------------------------------------------
+
+**Description:** Filter to disable Enlighter on selected pages
+
+**Note:** This filter is executed on an early setup stage (on WordPress [init](https://codex.wordpress.org/Plugin_API/Action_Reference/init)) - therefore lot of global objects like `wpquery` are not populated yet!
+
+#### Example 1 - Disable Enlighter Plugin by URL ####
+
+```php
+function mm_ejs_disable_enlighter($enabled){
+      // compare uri
+      return ($_SERVER['REQUEST_URI'] != '/codegroup-shortcode.html');
+}
+
+// add startup filter
+add_filter('enlighter_startup', 'mm_ejs_disable_enlighter');
+```
