@@ -1,7 +1,8 @@
 ## Changelog ##
 
 ### 3.2-BETA1 ###
-* Added: Filter hook to disable Enlighter on selected pages - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/best-way-to-dequeue-enlighter-plugin?replies=2) #43
+* Added: Filter hook `enlighter_startup` to disable Enlighter on selected pages - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/best-way-to-dequeue-enlighter-plugin?replies=2) #43
+* Added: Filter `enlighter_inline_javascript` - applied to inline javascript which is injected into the page
 
 ### 3.1 ###
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)

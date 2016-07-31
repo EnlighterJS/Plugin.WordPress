@@ -141,3 +141,21 @@ function mm_ejs_disable_enlighter($enabled){
 // add startup filter
 add_filter('enlighter_startup', 'mm_ejs_disable_enlighter');
 ```
+
+
+FILTER::enlighter_inline_javascript
+-----------------------------------------------
+
+**Description:** Applied to inline javascript which is injected into the page (mostly used for configuration data)
+
+#### Example 1 - Remove all Inline Scripts ####
+
+```php
+function mm_ejs_inline_script($script){
+      // return empty string
+      return '';
+}
+
+// add filter
+add_filter('enlighter_inline_javascript', 'mm_ejs_inline_script');
+```

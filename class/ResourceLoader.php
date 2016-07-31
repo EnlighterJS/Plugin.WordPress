@@ -174,7 +174,16 @@ class ResourceLoader{
 
     // helper function to print inline javascript
     private function inlineScript($script){
-        echo '<script type="text/javascript">/* <![CDATA[ */', $script, ';/* ]]> */</script>';
+        // apply inline filter - useful to remove inline scripts
+        $script = apply_filters('enlighter_inline_javascript', $script);
+
+        // remove leading/trailing whitespaces
+        $script = trim($script);
+
+        // output script
+        if (strlen($script) > 0){
+            echo '<script type="text/javascript">/* <![CDATA[ */', $script, ';/* ]]> */</script>';
+        }
     }
 
     public function appendTextEditorJS(){
