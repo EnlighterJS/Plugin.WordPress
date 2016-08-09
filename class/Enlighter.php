@@ -171,12 +171,17 @@ class Enlighter{
     }
 
     public function setupFrontend(){
-        // load frontend css+js resources
+        // load frontend css+js resources - highlighting engine
         $this->_resourceLoader->frontendEnlighter();
 
         // check frontend user privileges
         $canEdit = is_user_logged_in() && (current_user_can('edit_posts') || current_user_can('edit_pages'));
-        if ($canEdit){
+
+        // apply filter
+        $canEdit = apply_filters('enlighter_frontend_editing', $canEdit);
+
+        // editor enabled ?
+        if ($canEdit === true){
             $this->_resourceLoader->frontendEditor();
         }
     }

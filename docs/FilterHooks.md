@@ -159,3 +159,23 @@ function mm_ejs_inline_script($script){
 // add filter
 add_filter('enlighter_inline_javascript', 'mm_ejs_inline_script');
 ```
+
+
+FILTER::enlighter_frontend_editing
+-----------------------------------------------
+
+**Description:** Forced enabling/disabling of the frontend editing functions. The default value is created by the condition `USER_LOGGED_IN AND (CAN_EDIT_POSTS OR CAN_EDIT_PAGES)`. Useful to bind editing capabilities to special users/groups 
+
+#### Example 1 - Limit editing functions to admin users ####
+
+```php
+function mm_ejs_frontend_editing($allowed){
+      return ($allowed && current_user_can('manage_options'));
+}
+
+// add filter
+add_filter('enlighter_frontend_editing', 'mm_ejs_frontend_editing');
+```
+
+
+
