@@ -177,5 +177,16 @@ function mm_ejs_frontend_editing($allowed){
 add_filter('enlighter_frontend_editing', 'mm_ejs_frontend_editing');
 ```
 
+#### Example 2 - Allow all users to use the editing extensions ####
+
+```php
+function mm_ejs_frontend_editing($allowed){
+      return is_user_logged_in();
+}
+
+// add filter
+add_filter('enlighter_frontend_editing', 'mm_ejs_frontend_editing');
+```
+
 
 
