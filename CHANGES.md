@@ -1,6 +1,7 @@
 ## Changelog ##
 
-### 3.2-BETA2 ###
+### 3.2 ###
+* Added: Environment Check to ensure Enlighter is working in a well configured environment
 * Added: Filter hook `enlighter_startup` to disable Enlighter on selected pages - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/best-way-to-dequeue-enlighter-plugin?replies=2) #43
 * Added: Filter `enlighter_inline_javascript` - applied to inline javascript which is injected into the page
 * Added: Filter `enlighter_frontend_editing`- forced enabling/disabling of the frontend editing functions

@@ -257,6 +257,8 @@ class Enlighter{
 
         // get webfont list
         $webfonts = \Enlighter\GoogleWebfontResources::getMonospaceFonts();
+
+        print_r(\Enlighter\EnvironmentCheck::check());
                 
         // include admin page
         include(ENLIGHTER_PLUGIN_PATH.'/views/admin/SettingsPage.phtml');
