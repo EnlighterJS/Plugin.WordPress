@@ -5,7 +5,8 @@
 * Added: Filter hook `enlighter_startup` to disable Enlighter on selected pages - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/best-way-to-dequeue-enlighter-plugin?replies=2) #43
 * Added: Filter `enlighter_inline_javascript` - applied to inline javascript which is injected into the page
 * Added: Filter `enlighter_frontend_editing`- forced enabling/disabling of the frontend editing functions
-* Replaced: PHP-Version-Errorpage by global admin_notice - ensure that **PHP 5.3 or greater** is used to avoid weird errors 
+* Replaced: PHP-Version-Errorpage by global admin_notice - ensure that **PHP 5.3 or greater** is used to avoid weird errors
+* Bugfix: PHP Error message was thrown in case a the cache was not writable and a file operation failed
 
 ### 3.1 ###
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)

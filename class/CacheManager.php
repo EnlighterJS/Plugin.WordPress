@@ -39,9 +39,9 @@ class CacheManager{
 
     // file_put_contents wrapper
     public function writeFile($filename, $content){
-        // cache directory available ?
-        if (!is_dir($this->_cachePath)){
-            mkdir($this->_cachePath);
+        // ensure that the cache is accessible
+        if (!$this->isCacheAccessible()){
+            return false;
         }
 
         // write file - prepend absolute cache path
@@ -80,7 +80,7 @@ class CacheManager{
     }
 
     public function isCacheAccessible(){
-        return is_writeable($this->_cachePath);
+        return is_writeable($this->_cachePath) && is_executable($this->_cachePath);
     }
     
     public function getCachePath(){

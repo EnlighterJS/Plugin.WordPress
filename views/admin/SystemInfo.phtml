@@ -1,48 +1,49 @@
 <?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
 
 <div class="postbox">
-<h3 class="hndle"><?php _e('System Info', 'enlighter'); ?></h3>
-<div class="inside">
-<!-- Metabox-Content -->
-   <ul> 
-    	<?php 
-   		echo '<li>', __('PHP Version:', 'enlighter'), ' <span class="EnlighterTRUE">', phpversion() , '</span></li>';
-    	
-    	// server os
-    	echo '<li>', __('Server Software:', 'enlighter'), ' <span class="EnlighterTRUE">', PHP_OS, '</span></li>';
-    	
-    	// enlighter version
-    	echo '<li>', __('Enlighter Plugin Version:', 'enlighter'), ' <span class="EnlighterTRUE">', ENLIGHTER_VERSION, '</span></li>';
+    <h3 class="hndle"><?php _e('System Info', 'enlighter'); ?></h3>
+    <div class="inside">
+        <!-- Metabox-Content -->
+        <ul>
+            <?php
+            echo '<li>', __('PHP Version:', 'enlighter'), ' <span class="EnlighterTRUE">', phpversion(), '</span></li>';
 
-        // enlighterjs version
-        echo '<li>', __('EnlighterJS Version:', 'enlighter'), ' <span class="EnlighterTRUE">', self::getEnlighterJSVersion(), '</span></li>';
-    	
-    	// plugin cache path writeable ?
-    	if ($this->_cacheManager->isCacheAccessable()){
-    		echo '<li>', __('Cache writeable', 'enlighter'),': <span class="EnlighterTRUE">', __('true', 'enlighter'), '</span></li>';
-    	}else{
-    		echo '<li>', __('Cache writeable', 'enlighter'),': <span class="EnlighterFALSE">', __('false', 'enlighter'), '</span></li>';
-    	}
-    	
-    	// json encoding available ?
-    	if (function_exists('json_encode')){
-			echo '<li>', __('JSON Extension', 'enlighter'),': <span class="EnlighterTRUE">', __('installed', 'enlighter'), '</span></li>';
-		}else{
-			echo '<li>', __('JSON Extension', 'enlighter'),': <span class="EnlighterFALSE">', __('not installed', 'enlighter'), '</span></li>';
-		}
+            // server os
+            echo '<li>', __('Server Software:', 'enlighter'), ' <span class="EnlighterTRUE">', PHP_OS, '</span></li>';
 
-        // shortcode processor type
-        $shortcodeProcessorType = $this->_settingsUtility->getOption('shortcodeMode');
-        if ($shortcodeProcessorType == 'disabled'){
-            echo '<li>', __('Shortcode Processor', 'enlighter'),': <span class="EnlighterFALSE">', __('disabled', 'enlighter'), '</span></li>';
-        }else if ($shortcodeProcessorType == 'legacy'){
-            echo '<li>', __('Shortcode Processor', 'enlighter'),': <span class="EnlighterTRUE">', __('WordPress internal', 'enlighter'), '</span></li>';
-        }else{
-            echo '<li>', __('Shortcode Processor', 'enlighter'),': <span class="EnlighterTRUE">', __('Enlighter low-level', 'enlighter'), '</span></li>';
-        }
+            // enlighter version
+            echo '<li>', __('Enlighter Plugin Version:', 'enlighter'), ' <span class="EnlighterTRUE">', ENLIGHTER_VERSION, '</span></li>';
 
-    	?>
-   </ul>	
+            // enlighterjs version
+            echo '<li>', __('EnlighterJS Version:', 'enlighter'), ' <span class="EnlighterTRUE">', self::getEnlighterJSVersion(), '</span></li>';
 
-<!-- // Metabox-Content -->
-</div></div>
+            // plugin cache path writeable ?
+            if ($this->_cacheManager->isCacheAccessible()) {
+                echo '<li>', __('Cache writeable', 'enlighter'), ': <span class="EnlighterTRUE">', __('true', 'enlighter'), '</span></li>';
+            } else {
+                echo '<li>', __('Cache writeable', 'enlighter'), ': <span class="EnlighterFALSE">', __('false', 'enlighter'), '</span></li>';
+            }
+
+            // json encoding available ?
+            if (function_exists('json_encode')) {
+                echo '<li>', __('JSON Extension', 'enlighter'), ': <span class="EnlighterTRUE">', __('installed', 'enlighter'), '</span></li>';
+            } else {
+                echo '<li>', __('JSON Extension', 'enlighter'), ': <span class="EnlighterFALSE">', __('not installed', 'enlighter'), '</span></li>';
+            }
+
+            // shortcode processor type
+            $shortcodeProcessorType = $this->_settingsUtility->getOption('shortcodeMode');
+            if ($shortcodeProcessorType == 'disabled') {
+                echo '<li>', __('Shortcode Processor', 'enlighter'), ': <span class="EnlighterFALSE">', __('disabled', 'enlighter'), '</span></li>';
+            } else if ($shortcodeProcessorType == 'legacy') {
+                echo '<li>', __('Shortcode Processor', 'enlighter'), ': <span class="EnlighterTRUE">', __('WordPress internal', 'enlighter'), '</span></li>';
+            } else {
+                echo '<li>', __('Shortcode Processor', 'enlighter'), ': <span class="EnlighterTRUE">', __('Enlighter low-level', 'enlighter'), '</span></li>';
+            }
+
+            ?>
+        </ul>
+
+        <!-- // Metabox-Content -->
+    </div>
+</div>
