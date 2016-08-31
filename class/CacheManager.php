@@ -79,7 +79,7 @@ class CacheManager{
         chmod($this->_cachePath, $mode);
     }
 
-    public function isCacheAccessable(){
+    public function isCacheAccessible(){
         return is_writeable($this->_cachePath);
     }
     

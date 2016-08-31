@@ -62,7 +62,7 @@ class EnvironmentCheck{
         }
 
         // cache accessible ?
-        if (!$this->_cacheManager->isCacheAccessable()){
+        if (!$this->_cacheManager->isCacheAccessible()){
             $errors[] = __('The cache-directory <code>', $this->_cacheManager->getCachePath(), '</code> is not writable! Please change the directory permission (chmod <code>0644</code> or <code>0777</code>) to use the ThemeCustomizer (the generated stylesheets are stored there). - <a href="options-general.php?page=enlighter/class/Enlighter.php&cache-permission-fix=true">Autoset Permissions</a>');
 
             // fix successful ?
