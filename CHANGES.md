@@ -7,6 +7,7 @@
 * Added: Filter `enlighter_frontend_editing`- forced enabling/disabling of the frontend editing functions
 * Replaced: PHP-Version-Errorpage by global admin_notice - ensure that **PHP 5.3 or greater** is used to avoid weird errors
 * Bugfix: PHP Error message was thrown in case a the cache was not writable and a file operation failed
+* Bugfix: The cache check did not checked if the directory was accessible
 
 ### 3.1 ###
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)

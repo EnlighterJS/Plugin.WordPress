@@ -66,17 +66,11 @@ class CacheManager{
     }
     
     public function autosetPermissions(){
-        // get directory permissions - use mask to ignore filesystem info
-        $mode = fileperms($this->_cachePath) & 0x1FF;
-    
-        // add owner +w
-        $mode |= 0x0080;
-    
-        // add group +w
-        $mode |= 0x0010;
-    
         // change permissions
-        chmod($this->_cachePath, $mode);
+        // owner +rwx
+        // group +rwx
+        // world +r
+        chmod($this->_cachePath, 0774);
     }
 
     public function isCacheAccessible(){
@@ -105,5 +99,4 @@ class CacheManager{
             }
         }
     }
-
 }
