@@ -34,6 +34,9 @@ class Enlighter{
     // theme loader/manager
     private $_themeManager;
 
+    // environment check
+    private $_envCheck;
+
     // get available languages
     public static function getAvailableLanguages(){
         return Enlighter\LanguageManager::getLanguages();
@@ -54,6 +57,9 @@ class Enlighter{
 
         // loader to fetch user themes
         $this->_themeManager = new Enlighter\ThemeManager();
+
+        // environment check/notifier
+        $this->_envCheck = new Enlighter\EnvironmentCheck($this->_cacheManager);
     }
 
     // initialized on init
@@ -258,8 +264,9 @@ class Enlighter{
         // get webfont list
         $webfonts = \Enlighter\GoogleWebfontResources::getMonospaceFonts();
 
-        print_r(\Enlighter\EnvironmentCheck::check());
-                
+        // throw notifications
+        $this->_envCheck->throwNotifications();
+
         // include admin page
         include(ENLIGHTER_PLUGIN_PATH.'/views/admin/SettingsPage.phtml');
     }
