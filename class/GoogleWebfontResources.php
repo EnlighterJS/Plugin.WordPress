@@ -16,6 +16,7 @@ return array (
   'Roboto Mono' => 'Roboto+Mono:regular,italic,700,700italic',
   'Share Tech Mono' => 'Share+Tech+Mono:regular',
   'Source Code Pro' => 'Source+Code+Pro:regular,700',
+  'Space Mono' => 'Space+Mono:regular,italic,700,700italic',
   'Ubuntu Mono' => 'Ubuntu+Mono:regular,italic,700,700italic',
   'VT323' => 'VT323:regular',
 );

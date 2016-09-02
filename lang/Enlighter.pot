@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2016-05-27 14:57:50+00:00\n"
+"POT-Creation-Date: 2016-08-31 16:51:44+00:00\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  3.1\n"
+"Project-Id-Version: Enlighter  3.2-BETA3\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -33,20 +33,32 @@ msgstr ""
 msgid "Enlighter - Customizable Syntax Highlighter"
 msgstr ""
 
-#: class/Enlighter.php:214
+#: class/Enlighter.php:231
 msgid "News & Updates"
 msgstr ""
 
-#: class/Enlighter.php:215
+#: class/Enlighter.php:232
 msgid "EnlighterJS Website"
 msgstr ""
 
-#: class/Enlighter.php:225
+#: class/Enlighter.php:242
 msgid "Settings"
 msgstr ""
 
-#: class/Enlighter.php:226
+#: class/Enlighter.php:243
 msgid "About"
+msgstr ""
+
+#: class/EnvironmentCheck.php:56
+msgid "Option <code>use_balanceTags</code> is enabled - this option is <strong>DEPRECATED</strong>. Might cause a weired behaviour by inserting random closing html tags into your code."
+msgstr ""
+
+#: class/EnvironmentCheck.php:61
+msgid "Plugin \"Crayon Syntax Highlighter\" is enabled - it may take over the Enlighter pre elements - highlighting will not work!"
+msgstr ""
+
+#: class/EnvironmentCheck.php:70
+msgid "Autoset Permissions failed - Please change the directory permission (chmod <code>0644</code> or <code>0777</code>) manually!"
 msgstr ""
 
 #: class/TinyMCE.php:131
@@ -360,10 +372,6 @@ msgstr ""
 msgid "Disable QuickTags"
 msgstr ""
 
-#: views/admin/EnvironmentError.phtml:40
-msgid "Environment Error"
-msgstr ""
-
 #: views/admin/Extensions.phtml:5
 msgid "Jetpack Plugin"
 msgstr ""
@@ -652,24 +660,24 @@ msgstr ""
 msgid "Select the content you want to highlight and Enlighter takes care of the rest."
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:108
+#: views/admin/SettingsPage.phtml:97
 msgid "is developed by"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:109
+#: views/admin/SettingsPage.phtml:98
 msgid "It`s released under the terms of the %s. "
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:109
+#: views/admin/SettingsPage.phtml:98
 msgid "MIT X11 License"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:110 views/admin/SettingsPage.phtml:111
-#: views/admin/SettingsPage.phtml:112
+#: views/admin/SettingsPage.phtml:99 views/admin/SettingsPage.phtml:100
+#: views/admin/SettingsPage.phtml:101
 msgid "License"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:111 views/admin/SettingsPage.phtml:112
+#: views/admin/SettingsPage.phtml:100 views/admin/SettingsPage.phtml:101
 msgid "by"
 msgstr ""
 

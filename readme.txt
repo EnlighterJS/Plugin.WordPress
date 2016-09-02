@@ -3,8 +3,8 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.5
-Stable tag: 3.1
+Tested up to: 4.6
+Stable tag: 3.2
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -245,12 +245,26 @@ You have to enable the frontend editing function: `Enlighter Settings Page -> Ad
 If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
 **Note:** EnlighterJS requires MooTools > 1.4
 
+= Can Enlighter by disabled on selected pages? =
+Of course, the filter hook [enlighter_startup](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/FilterHooks.md) can be used to terminate the plugin initialization
+
 = Security Vulnerabilities =
 In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.de/contact) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
 
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
+
+= 3.2 =
+* Added: Environment Check to ensure Enlighter is working in a well configured environment
+* Added: Filter hook `enlighter_startup` to disable Enlighter on selected pages - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/best-way-to-dequeue-enlighter-plugin?replies=2) #43
+* Added: Filter `enlighter_inline_javascript` - applied to inline javascript which is injected into the page
+* Added: Filter `enlighter_frontend_editing`- forced enabling/disabling of the frontend editing functions
+* Replaced: PHP-Version-Errorpage by global admin_notice - ensure that **PHP 5.3 or greater** is used to avoid weird errors
+* Changed: The autofix permission helper will set the cache directory permissions to **0774**
+* Bugfix: PHP Error message was thrown in case a the cache was not writable and a file operation failed
+* Bugfix: The cache check did not checked if the directory was accessible
+* Bugfix: The autoset permission link was broken since v3.0
 
 = 3.1 =
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)

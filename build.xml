@@ -2,20 +2,21 @@
 
 <project name="Enlighter" default="devcopy" basedir=".">
 
-    <target name="full" depends="potgen, readme, changelog, webfonts, themes, devcopy" />
+    <target name="full" depends="potgen, readme, changelog, webfonts, themes, devcopy"/>
 
-	<!-- Plugin Test - DEVELOPMENT ONLY -->
-	<target name="devcopy">
+    <!-- Plugin Test - DEVELOPMENT ONLY -->
+    <target name="devcopy">
         <!-- Credentials, Host Settings !-->
-        <loadproperties srcFile=".credentials/account.conf" prefix="dev" />
+        <loadproperties srcFile=".credentials/account.conf" prefix="dev"/>
 
         <!-- transfer deploy plugin !-->
-        <echo message="Uploading files" />
+        <echo message="Uploading files"/>
 
-        <scp todir="${dev.user}@${dev.host}:${dev.path}" trust="true" port="${dev.port}" keyfile="${user.home}/${dev.keyfile}" >
-            <fileset dir="." />
+        <scp todir="${dev.user}@${dev.host}:${dev.path}" trust="true" port="${dev.port}"
+             keyfile="${user.home}/${dev.keyfile}">
+            <fileset dir="."/>
         </scp>
-	</target>
+    </target>
 
     <!-- GitHub readme + changes => WordPress transformation !-->
     <target name="readme">
@@ -25,38 +26,44 @@
         </concat>
 
         <!-- replace headings !-->
-        <replaceregexp file="readme.txt" match="^###(.*)###" replace="=\1=" byline="true"	/>
-        <replaceregexp file="readme.txt" match="^##(.*)##" replace="==\1==" byline="true"	/>
-        <replaceregexp file="readme.txt" match="^#(.*)#" replace="===\1===" byline="true"	/>
+        <replaceregexp file="readme.txt" match="^###(.*)###" replace="=\1=" byline="true"/>
+        <replaceregexp file="readme.txt" match="^##(.*)##" replace="==\1==" byline="true"/>
+        <replaceregexp file="readme.txt" match="^#(.*)#" replace="===\1===" byline="true"/>
     </target>
 
-	<!-- POT file generation !-->
-	<target name="potgen">
-		<exec executable="php"><arg value="util/GeneratePOT.php" /></exec>
-	</target>
+    <!-- POT file generation !-->
+    <target name="potgen">
+        <exec executable="php">
+            <arg value="util/GeneratePOT.php"/>
+        </exec>
+    </target>
 
     <!-- Webfonts code generation !-->
     <target name="webfonts">
-        <exec executable="php"><arg value="util/WebfontsGenerator.php" /></exec>
+        <exec executable="php">
+            <arg value="util/WebfontsGenerator.php"/>
+        </exec>
     </target>
 
     <!-- Changelog html generation !-->
     <target name="changelog">
-        <exec executable="php"><arg value="util/extract-changes.php" /></exec>
+        <exec executable="php">
+            <arg value="util/extract-changes.php"/>
+        </exec>
     </target>
 
-	<!-- Theme Fetching !-->
-	<target name="themes">
-		<!-- Cleanup Dir -->
-		<delete dir="views/themes" />
-		<mkdir dir="views/themes"/>
-		
-		<!-- Run Theme Fetcher !-->
-		<exec executable="php">
-			<arg value="util/ThemeFetcher.php" />
-			<arg value="views/themes" />
-		</exec>
-	</target>
+    <!-- Theme Fetching !-->
+    <target name="themes">
+        <!-- Cleanup Dir -->
+        <delete dir="views/themes"/>
+        <mkdir dir="views/themes"/>
+
+        <!-- Run Theme Fetcher !-->
+        <exec executable="php">
+            <arg value="util/ThemeFetcher.php"/>
+            <arg value="views/themes"/>
+        </exec>
+    </target>
 
     <!-- Static Code Check !-->
     <target name="lint">
@@ -68,6 +75,9 @@
     </target>
 
     <!-- WP Release Copy !-->
-    <target name="wp-release"></target>
-	
+    <target name="wp-release" depends="themes, webfonts, potgen, readme, changelog">
+
+
+    </target>
+
 </project>
