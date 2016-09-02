@@ -21,6 +21,9 @@ class Enlighter{
 
     // shortcode handler instance
     private $_shortcodeHandler;
+
+    // content processor instance (gfm, shortcode)
+    private $_contentProcessor;
     
     // resource loader instamce
     private $_resourceLoader;
@@ -116,23 +119,13 @@ class Enlighter{
                 Enlighter\BBPress::enableShortcodeFilter();
             }
 
-            // initialize the shortcode handler
-            switch ($this->_settingsUtility->getOption('shortcodeMode')){
-
-                // legacy (WordPress based) shortcode handling ?
-                case 'legacy':
-                    $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);
-                    break;
-
-                // do nothing
-                case 'disabled':
-                    break;
-
-                // default : Low Level Processor
-                default:
-                    $this->_shortcodeHandler =  new Enlighter\LowlLevelShortcodeProcessor($this->_settingsUtility, $languages);
-                    break;
+            // initialize the classic shortcode handler
+            if ($this->_settingsUtility->getOption('shortcodeMode') == 'legacy'){
+                $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);
             }
+
+            // initialize content processor (shortcode, gfm)
+            $this->_contentProcessor = new Enlighter\ContentProcessor($this->_settingsUtility, $languages);
 
             // frontend resources & extensions
             $this->setupFrontend();

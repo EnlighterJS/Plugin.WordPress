@@ -17,7 +17,7 @@
 */
 namespace Enlighter;
 
-class LowlLevelShortcodeProcessor{
+class ContentProcessor{
     
     // stores the plugin config
     private $_config;
@@ -43,21 +43,24 @@ class LowlLevelShortcodeProcessor{
         // array of sections which will be filtered
         $sections = array();
 
-        // setup sections to filter based on plugin configuration
-        if ($this->_config['shortcodeFilterContent']){
-            $sections[] = 'the_content';
-        }
-        if ($this->_config['shortcodeFilterExcerpt']){
-            $sections[] = 'get_the_excerpt';
-        }
-        if ($this->_config['shortcodeFilterComments']){
-            $sections[] = 'get_comment_text';
-        }
-        if ($this->_config['shortcodeFilterCommentsExcerpt']){
-            $sections[] = 'get_comment_excerpt';
-        }
-        if ($this->_config['shortcodeFilterWidgetText']){
-            $sections[] = 'widget_text';
+        // use modern shortcode handler ?
+        if ($this->_config['shortcodeMode'] == 'modern'){
+            // setup sections to filter based on plugin configuration
+            if ($this->_config['shortcodeFilterContent']){
+                $sections[] = 'the_content';
+            }
+            if ($this->_config['shortcodeFilterExcerpt']){
+                $sections[] = 'get_the_excerpt';
+            }
+            if ($this->_config['shortcodeFilterComments']){
+                $sections[] = 'get_comment_text';
+            }
+            if ($this->_config['shortcodeFilterCommentsExcerpt']){
+                $sections[] = 'get_comment_excerpt';
+            }
+            if ($this->_config['shortcodeFilterWidgetText']){
+                $sections[] = 'widget_text';
+            }
         }
 
         // apply filter hook to allow users to modify the list/add additional filters
@@ -69,6 +72,7 @@ class LowlLevelShortcodeProcessor{
         }
     }
 
+    // add content filter (strip + restore) to the given content section
     public function registerFilterTarget($name){
         // add content filter to first position - replaces all enlighter shortcodes with placeholders
         add_filter($name, array($this, 'stripCodeFragments'), 0, 1);
