@@ -43,7 +43,13 @@ class PluginConfig{
         'shortcodeFilterComments' => false,
         'shortcodeFilterCommentsExcerpt' => false,
         'shortcodeFilterWidgetText' => false,
-                
+
+        'gfmDefaultLanguage' => 'generic',
+        'gfmFilterContent' => true,
+        'gfmFilterExcerpt' => false,
+        'gfmFilterComments' => false,
+        'gfmFilterCommentsExcerpt' => false,
+        'gfmFilterWidgetText' => false,
         
         'editorFontFamily' => '"Source Code Pro", "Liberation Mono", "Courier New", Courier, monospace',
         'editorFontSize' => '0.7em',

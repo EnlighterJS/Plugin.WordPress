@@ -38,6 +38,7 @@ class ContentProcessor{
 
         // array of sections which will be filtered
         $shortcodeSections = array();
+        $gfmSections = array();
 
         // use modern shortcode handler ?
         if ($this->_config['shortcodeMode'] == 'modern'){
@@ -67,7 +68,30 @@ class ContentProcessor{
             $this->registerShortcodeFilterTarget($section);
         }
 
-        $this->registerGfmFilterTarget('the_content');
+        // use gfm in the default sections ?
+        if ($this->_config['gfmFilterContent']){
+            $gfmSections[] = 'the_content';
+        }
+        if ($this->_config['gfmFilterExcerpt']){
+            $gfmSections[] = 'get_the_excerpt';
+        }
+        if ($this->_config['gfmFilterComments']){
+            $gfmSections[] = 'get_comment_text';
+        }
+        if ($this->_config['gfmFilterCommentsExcerpt']){
+            $gfmSections[] = 'get_comment_excerpt';
+        }
+        if ($this->_config['gfmFilterWidgetText']){
+            $gfmSections[] = 'widget_text';
+        }
+
+        // apply filter hook to allow users to modify the list/add additional filters
+        $gfmSections = array_unique(apply_filters('enlighter_gfm_filters', $gfmSections));
+
+        // register filter targets
+        foreach ($gfmSections as $section){
+            $this->registerGfmFilterTarget($section);
+        }
     }
 
     // add content filter (strip + restore) to the given content section
