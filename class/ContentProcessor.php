@@ -21,246 +21,70 @@ class ContentProcessor{
     
     // stores the plugin config
     private $_config;
-    
-    // store registered shortcodes
-    private $_languageTags;
 
-    // cached code content
-    private $_codeFragments = array();
+    // GFM Filter instance
+    private $_gfmFilter;
+
+    // short code filter instance
+    private $_shortcodeFilter;
 
     public function __construct($settingsUtil, $languageShortcodes){
         // store local plugin config
         $this->_config = $settingsUtil->getOptions();
 
-        // default shortcodes
-        $this->_languageTags = 'enlighter';
-
-        // enable language shortcodes ?
-        if ($this->_config['languageShortcode']){
-            $this->_languageTags .= '|' . implode('|', $languageShortcodes);
-        }
+        // setup filters
+        $this->_gfmFilter = new GfmFilter($settingsUtil);
+        $this->_shortcodeFilter = new ShortcodeFilter($settingsUtil, $languageShortcodes);
 
         // array of sections which will be filtered
-        $sections = array();
+        $shortcodeSections = array();
 
         // use modern shortcode handler ?
         if ($this->_config['shortcodeMode'] == 'modern'){
             // setup sections to filter based on plugin configuration
             if ($this->_config['shortcodeFilterContent']){
-                $sections[] = 'the_content';
+                $shortcodeSections[] = 'the_content';
             }
             if ($this->_config['shortcodeFilterExcerpt']){
-                $sections[] = 'get_the_excerpt';
+                $shortcodeSections[] = 'get_the_excerpt';
             }
             if ($this->_config['shortcodeFilterComments']){
-                $sections[] = 'get_comment_text';
+                $shortcodeSections[] = 'get_comment_text';
             }
             if ($this->_config['shortcodeFilterCommentsExcerpt']){
-                $sections[] = 'get_comment_excerpt';
+                $shortcodeSections[] = 'get_comment_excerpt';
             }
             if ($this->_config['shortcodeFilterWidgetText']){
-                $sections[] = 'widget_text';
+                $shortcodeSections[] = 'widget_text';
             }
         }
 
         // apply filter hook to allow users to modify the list/add additional filters
-        $sections = array_unique(apply_filters('enlighter_shortcode_filters', $sections));
+        $shortcodeSections = array_unique(apply_filters('enlighter_shortcode_filters', $shortcodeSections));
 
         // register filter targets
-        foreach ($sections as $section){
-            $this->registerFilterTarget($section);
+        foreach ($shortcodeSections as $section){
+            $this->registerShortcodeFilterTarget($section);
         }
+
+        $this->registerGfmFilterTarget('the_content');
     }
 
     // add content filter (strip + restore) to the given content section
-    public function registerFilterTarget($name){
+    public function registerShortcodeFilterTarget($name){
         // add content filter to first position - replaces all enlighter shortcodes with placeholders
-        add_filter($name, array($this, 'stripCodeFragments'), 0, 1);
+        add_filter($name, array($this->_shortcodeFilter, 'stripCodeFragments'), 0, 1);
 
         // add restore filter to the end of filter chain - placeholders are replaced with rendered html
-        add_filter($name, array($this, 'renderFragments'), 9998, 1);
+        add_filter($name, array($this->_shortcodeFilter, 'renderFragments'), 9998, 1);
     }
 
-    // run shortcode directly (may required for external usage - NOT used by Enlighter)
-    public function doShortcode($content){
-        $content = $this->stripCodeFragments($content);
-        $content = $this->findShortcodes($content);
+    // add content filter (strip + restore) to the given content section
+    public function registerGfmFilterTarget($name){
+        // add content filter to first position - replaces all enlighter shortcodes with placeholders
+        add_filter($name, array($this->_gfmFilter, 'stripCodeFragments'), 0, 1);
 
-        return $content;
-    }
-
-    private function getShortcodeRegex($shortcodes){
-        // opening tag based on enabled shortcodes
-        return '/\[(' . $shortcodes . ')\s*' .
-
-        // shortcode attributes (optional)
-        '(.*)?' .
-
-        // close opening tag
-        '\s*\]' .
-
-        // arbitrary multi-line content
-        '([\S\s]*)' .
-
-        // closing tag using opening tag back reference
-        '\[\/\1\]' .
-
-        // ungreedy, case insensitive
-        '/Ui';
-    }
-
-    // internal handler to insert the content
-    public function renderFragments($content){
-
-        // replace placeholders by html
-        foreach ($this->_codeFragments as $index => $fragment){
-            $content = str_replace('{{EJS-' . ($index + 1) . '}}', $this->renderFragment($fragment), $content);
-        }
-
-        return $content;
-    }
-
-    // internal regex function to replace shortcodes with placeholders
-    // scoped to use it standalone as well as within shortcodes as second stage
-    public function findShortcodes($content, $group = null){
-        // process enlighter & language shortcodes
-        return preg_replace_callback($this->getShortcodeRegex($this->_languageTags), function ($match) use ($group){
-
-            // wordpress internal shortcode attribute parsing
-            $attb = shortcode_parse_atts($match[2]);
-
-            // language identifier (tagname)
-            $lang = $match[1];
-
-            // generic shortcode ?
-            if (strtolower($match[1]) == 'enlighter') {
-                // set language
-                if ($attb['lang']) {
-                    $lang = $attb['lang'];
-                }
-            }
-
-            // generate code fragment
-            $this->_codeFragments[] = array(
-                // the language identifier
-                'lang' => $lang,
-
-                // shortcode attributes
-                'attb' => $attb,
-
-                // code to highlight
-                'code' => $match[3],
-
-                // auto codegroup
-                'group' => $group
-            );
-
-            // replace it with a placeholder
-            return '{{EJS-' . count($this->_codeFragments) . '}}';
-        }, $content);
-    }
-
-    // internal shortcode processor - replace enlighter shortcodes by placeholder
-    public function stripCodeFragments($content){
-
-        // PHP 5.3 compatibility
-        $T = $this;
-
-        // STAGE 1
-        // process codegroup shortcodes
-        $content = preg_replace_callback($this->getShortcodeRegex('codegroup'), function ($match) use ($T){
-
-            // create unique group identifier
-            $group = uniqid('ejsg');
-
-            // replace it with inner content an parse the shortcodes
-            return $T->findShortcodes($match[3], $group);
-        }, $content);
-
-        // STAGE 2
-        // process non grouped shortcodes
-        $content = $this->findShortcodes($content);
-
-        return $content;
-    }
-
-    // process shortcode attributes and generate html
-    private function renderFragment($fragment){
-        // default attribute settings
-        $shortcodeAttributes = shortcode_atts(
-                array(
-                        'theme' => null,
-                        'group' => false,
-                        'tab' => null,
-                        'highlight' => null,
-                        'offset' => null,
-                        'linenumbers' => null
-                ), $fragment['attb']);
-
-        // html tag standard attributes
-        $htmlAttributes = array(
-                'data-enlighter-language' => InputFilter::filterLanguage($fragment['lang']),
-                'class' => 'EnlighterJSRAW'
-        );
-        
-        // force theme ?
-        if ($shortcodeAttributes['theme']){
-            $htmlAttributes['data-enlighter-theme'] = InputFilter::filterTheme($shortcodeAttributes['theme']);
-        }
-                
-        // handle as inline code ?
-        if ($this->_config['enableInlineHighlighting'] && strpos($fragment['code'], "\n") === false){
-            // generate html output
-            return $this->generateCodeblock($htmlAttributes, $fragment['code'], 'code');
-            
-        // linebreaks found -> block code    
-        }else{
-            // highlight specific lines of code ?
-            if ($shortcodeAttributes['highlight']){
-                $htmlAttributes['data-enlighter-highlight'] = trim($shortcodeAttributes['highlight']);
-            }
-            
-            // line offset ?
-            if ($shortcodeAttributes['offset']){
-                $htmlAttributes['data-enlighter-lineoffset'] = InputFilter::filterInteger($shortcodeAttributes['offset']);
-            }
-            
-            // force linenumber visibility ?
-            if ($shortcodeAttributes['linenumbers']){
-                $htmlAttributes['data-enlighter-linenumbers'] = (strtolower($shortcodeAttributes['linenumbers']) === 'true' ? 'true' : 'false');
-            }
-            
-            // tab-name available ?
-            if ($shortcodeAttributes['tab']){
-                $htmlAttributes['data-enlighter-title'] = trim($shortcodeAttributes['tab']);
-            }
-
-            // auto grouping ?
-            if ($fragment['group']){
-                $htmlAttributes['data-enlighter-group'] = trim($fragment['group']);
-
-            // manual grouping ?
-            }else if ($shortcodeAttributes['group']){
-                $htmlAttributes['data-enlighter-group'] = trim($shortcodeAttributes['group']);
-            }
-            
-            // generate html output
-            return $this->generateCodeblock($htmlAttributes, $fragment['code']);
-        }
-    }
-
-    
-    /**
-     * Generate HTML output (code within "pre"/"code"-tag including options)
-     */
-    private function generateCodeblock($attributes, $content, $tagname = 'pre'){
-        // generate "pre" wrapped html output
-        $html = HtmlUtil::generateTag($tagname, $attributes, false);
-
-        // strip specialchars
-        $content = esc_html($content);
-                
-        // add closing tag
-        return $html.$content.'</'.$tagname.'>';
+        // add restore filter to the end of filter chain - placeholders are replaced with rendered html
+        add_filter($name, array($this->_gfmFilter, 'renderFragments'), 9998, 1);
     }
 }
