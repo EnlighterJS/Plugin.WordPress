@@ -119,6 +119,11 @@ class Enlighter{
                 Enlighter\BBPress::enableShortcodeFilter();
             }
 
+            // enable bb_press markdown extension ?
+            if (true || $this->_settingsUtility->getOption('bbpressMarkdown')){
+                Enlighter\BBPress::enableMarkdownFilter();
+            }
+
             // initialize the classic shortcode handler
             if ($this->_settingsUtility->getOption('shortcodeMode') == 'legacy'){
                 $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);

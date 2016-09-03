@@ -97,7 +97,8 @@ class PluginConfig{
 
         'extJetpackInfiniteScroll' => false,
 
-        'bbpressShortcode' => false
+        'bbpressShortcode' => false,
+        'bbpressMarkdown' => false
     );
     
     public static function getDefaults(){
