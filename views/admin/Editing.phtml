@@ -43,6 +43,39 @@
      </div>
 </div>
 
+<!-- Markdown Processing -->
+<div class="postbox">
+    <h3 class="hndle"><span><?php _e('Markdown', 'enlighter'); ?></span></h3>
+    <div class="inside EnlighterBlockcontent">
+
+        <h4><?php _e('Fenced Code Blocks', 'enlighter'); ?></h4>
+        <p><?php _e('Markdown Fanatic ? Enlighter also supports <a href="https://help.github.com/articles/creating-and-highlighting-code-blocks/">GFM style</a> fenced code blocks. In case no language identifier is given, choose the default behaviour.', 'enlighter'); ?>
+
+        <?php $this->_settingsUtility->displaySelect(__('Generic Code Blocks', 'enlighter'), 'gfmDefaultLanguage', array(__('Generic Highlighting', 'enlighter') => 'generic', __('No Highlighting (RAW)', 'enlighter') => 'raw')); ?>
+
+        <h4><?php _e('Filter Targets', 'enlighter'); ?></h4>
+        <p><?php _e('Choose the content-sections to which the markdown processor should be applied.', 'enlighter'); ?></p>
+
+        <!-- Enable the_content filter -->
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable the_content', 'enlighter'), 'gfmFilterContent'); ?>
+
+        <!-- Enable the_excerpt filter -->
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable the_excerpt', 'enlighter'), 'gfmFilterExcerpt'); ?>
+
+        <!-- Enable comment-text filter -->
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable comments', 'enlighter'), 'gfmFilterComments'); ?>
+
+        <!-- Enable comment-excerpt filter -->
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable comments-excerpt', 'enlighter'), 'gfmFilterCommentsExcerpt'); ?>
+
+        <!-- Enable Widget-text filter -->
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable widget-text', 'enlighter'), 'gfmFilterWidgetText'); ?>
+
+
+    </div>
+</div>
+
+
 <!-- Visual Editor -->
 <div class="postbox">
 	<h3 class="hndle"><span><?php _e('Visual Editor (TinyMCE 4)', 'enlighter'); ?></span></h3>

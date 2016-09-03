@@ -120,7 +120,7 @@ class Enlighter{
             }
 
             // enable bb_press markdown extension ?
-            if (true || $this->_settingsUtility->getOption('bbpressMarkdown')){
+            if ($this->_settingsUtility->getOption('bbpressMarkdown')){
                 Enlighter\BBPress::enableMarkdownFilter();
             }
 

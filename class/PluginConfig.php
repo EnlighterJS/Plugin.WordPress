@@ -45,7 +45,7 @@ class PluginConfig{
         'shortcodeFilterWidgetText' => false,
 
         'gfmDefaultLanguage' => 'generic',
-        'gfmFilterContent' => true,
+        'gfmFilterContent' => false,
         'gfmFilterExcerpt' => false,
         'gfmFilterComments' => false,
         'gfmFilterCommentsExcerpt' => false,

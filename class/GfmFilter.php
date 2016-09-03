@@ -19,14 +19,14 @@ namespace Enlighter;
 
 class GfmFilter{
     
-    // stores the plugin config
-    private $_config;
+    // default fallback language
+    private $_defaultLanguaage;
 
     // cached code content
     private $_codeFragments = array();
 
     public function __construct($settingsUtil){
-
+        $this->_defaultLanguaage = $settingsUtil->getOption('gfmDefaultLanguage');
     }
 
     private function getGfmRegex(){
@@ -60,6 +60,11 @@ class GfmFilter{
 
             // language identifier (tagname)
             $lang = $match[1];
+
+            // language given ? otherwise use default highlighting method
+            if (strlen($lang) == 0){
+                $lang = $T->_defaultLanguaage;
+            }
 
             // generate code fragment
             $T->_codeFragments[] = array(

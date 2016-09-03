@@ -26,8 +26,12 @@
         <h4><?php _e('bbPress', 'enlighter'); ?></h4>
 
         <!-- enable shortcode support !-->
-        <p><?php _e('Enable Shortcode support within bbPress topics and replies. <strong>Note: this feature requires the LowLevel Shortcode Processor!</strong>', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable Enlighter Shortcode', 'enlighter'), 'bbpressShortcode') ?>
+        <p><?php _e('Enable Shortcode support within bbPress topics and replies.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enlighter Shortcodes', 'enlighter'), 'bbpressShortcode') ?>
+
+        <!-- enable markdown support !-->
+        <p><?php _e('Enable Markdown style fenced code blocks within bbPress topics and replies.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Markdown Code-Blocks', 'enlighter'), 'bbpressMarkdown') ?>
 
     </div>
 </div>
