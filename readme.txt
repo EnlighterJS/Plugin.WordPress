@@ -22,7 +22,8 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
-* [bbPress](https://bbpress.org/) shortcode support
+* Markdown fenced code blocks
+* [bbPress](https://bbpress.org/) shortcode + markdown code blocks support
 * Shortcodes within content, comments and widgets
 * Easy to use Text-Editor mode through the use of Shortcodes and QuickTags
 * Advanced configuration options (CDN usage, ..) are available within the options page.
@@ -256,6 +257,8 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 == Changelog ==
 
 = 3.2 =
+* Added: [GFM](https://help.github.com/articles/creating-and-highlighting-code-blocks/) style Markdown support for fenced code blocks
+* Added: Markdown fenced code blocks bbPress support
 * Added: Environment Check to ensure Enlighter is working in a well configured environment
 * Added: Filter hook `enlighter_startup` to disable Enlighter on selected pages - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/best-way-to-dequeue-enlighter-plugin?replies=2) #43
 * Added: Filter `enlighter_inline_javascript` - applied to inline javascript which is injected into the page
@@ -265,6 +268,7 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 * Bugfix: PHP Error message was thrown in case a the cache was not writable and a file operation failed
 * Bugfix: The cache check did not checked if the directory was accessible
 * Bugfix: The autoset permission link was broken since v3.0
+* Bugfix: Backtick style code elements of bbPress will break the highlighting
 
 = 3.1 =
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)

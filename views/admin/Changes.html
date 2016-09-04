@@ -1,4 +1,6 @@
 <ul>
+<li>Added: <a href="https://help.github.com/articles/creating-and-highlighting-code-blocks/">GFM</a> style Markdown support for fenced code blocks</li>
+<li>Added: Markdown fenced code blocks bbPress support</li>
 <li>Added: Environment Check to ensure Enlighter is working in a well configured environment</li>
 <li>Added: Filter hook <code>enlighter_startup</code> to disable Enlighter on selected pages - feature requested on <a href="https://wordpress.org/support/topic/best-way-to-dequeue-enlighter-plugin?replies=2">WordPress.org Forums</a> <a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues/43" class="issue-link js-issue-link" data-url="https://github.com/AndiDittrich/WordPress.Enlighter/issues/43" data-id="168396788" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#43</a>
 </li>
@@ -10,4 +12,5 @@
 <li>Bugfix: PHP Error message was thrown in case a the cache was not writable and a file operation failed</li>
 <li>Bugfix: The cache check did not checked if the directory was accessible</li>
 <li>Bugfix: The autoset permission link was broken since v3.0</li>
+<li>Bugfix: Backtick style code elements of bbPress will break the highlighting</li>
 </ul>
