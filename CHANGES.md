@@ -12,6 +12,7 @@
 * Bugfix: PHP Error message was thrown in case a the cache was not writable and a file operation failed
 * Bugfix: The cache check did not checked if the directory was accessible
 * Bugfix: The autoset permission link was broken since v3.0
+* Bugfix: Backtick style code elements of bbPress will break the highlighting
 
 ### 3.1 ###
 * Added: [EnlighterJS v2.10.1](http://enlighterjs.org/)

@@ -124,7 +124,12 @@ class Enlighter{
                 Enlighter\BBPress::enableMarkdownFilter();
             }
 
-            // initialize the classic shortcode handler
+            // disable the backtick code filter ?
+            if ($this->_settingsUtility->getOption('bbpressShortcode') || $this->_settingsUtility->getOption('bbpressMarkdown')){
+                Enlighter\BBPress::disableCodeFilter();
+            }
+
+            // initialize the classic shortcode handler ?
             if ($this->_settingsUtility->getOption('shortcodeMode') == 'legacy'){
                 $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);
             }
