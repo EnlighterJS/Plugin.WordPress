@@ -28,6 +28,17 @@ class ContextualHelp{
     public function contextualHelp(){
         // load screen
         $screen = get_current_screen();
+
+        $screen->add_help_tab(array(
+            'id' => 'enlighter_ch_usage',
+            'title'    => __('General Usage'),
+            'callback' => array($this, 'generalUsage')
+        ));
+        $screen->add_help_tab(array(
+            'id' => 'enlighter_ch_markdown',
+            'title'    => __('Markdown'),
+            'callback' => array($this, 'markdown')
+        ));
     
         // shortcode help
         $screen->add_help_tab(array(
@@ -79,5 +90,13 @@ class ContextualHelp{
     
     public function externalthemes(){
         include(ENLIGHTER_PLUGIN_PATH.'/views/help/'.'externalthemes.en_EN.phtml');
+    }
+
+    public function generalUsage(){
+        include(ENLIGHTER_PLUGIN_PATH.'/views/help/'.'usage.en_EN.phtml');
+    }
+
+    public function markdown(){
+        include(ENLIGHTER_PLUGIN_PATH.'/views/help/'.'markdown.en_EN.phtml');
     }
 }

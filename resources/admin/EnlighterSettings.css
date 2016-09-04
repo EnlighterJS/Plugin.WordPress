@@ -139,7 +139,19 @@
     cursor: pointer;
 }
 
+/* Contextual Help
+-------------------------------- */
+
 /* Fix the Contextual Help Link */
 #screen-meta-links, #contextual-help-link-wrap, #contextual-help-link {
     z-index: 100 !important;
 }
+
+/* Highlight pre tags like code tags */
+.contextual-help-tabs-wrap pre{
+    background: rgba(0,0,0,0.07) !important;
+    padding: 5px;
+    display: inline-block;
+    margin: 0px !important;
+}
+
