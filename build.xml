@@ -2,6 +2,9 @@
 
 <project name="Enlighter" default="devcopy" basedir=".">
 
+    <!-- ANT-contrib !-->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
     <target name="full" depends="potgen, readme, changelog, webfonts, themes, devcopy"/>
 
     <!-- Plugin Test - DEVELOPMENT ONLY -->
@@ -76,7 +79,38 @@
 
     <!-- WP Release Copy !-->
     <target name="wp-release" depends="themes, webfonts, potgen, readme, changelog">
+        <input message="Enter release version" addproperty="release.version"/>
 
+        <!-- Set Tag path !-->
+        <property name="svn.tag.path" value="../svn/tags/${release.version}" />
+
+        <if>
+            <available file="${svn.tag.path}" type="dir"/>
+            <then>
+                <fail message="SVN Tag ${release.version} already exists!"/>
+            </then>
+            <else>
+                <echo message="Creating new SVN Tag"/>
+
+                <!-- Create Tag !-->
+                <mkdir dir="${svn.tag.path}"/>
+
+                <!-- Copy Plugin !-->
+                <copy todir="${svn.tag.path}">
+                    <fileset dir=".">
+                        <include name="cache/**" />
+                        <include name="class/**" />
+                        <include name="docs/**" />
+                        <include name="lang/**" />
+                        <include name="resources/**" />
+                        <include name="views/**" />
+                        <include name="Enlighter.php" />
+                        <include name="readme.txt" />
+                        <include name="LICENSE" />
+                    </fileset>
+                </copy>
+            </else>
+        </if>
 
     </target>
 
