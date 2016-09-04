@@ -30,7 +30,7 @@ class GfmFilter{
     }
 
     private function getGfmRegex(){
-        // opening tag based on enabled shortcodes
+        // opening tag
         return '/^```' .
 
         // language identifier (optional)
@@ -49,6 +49,22 @@ class GfmFilter{
         '/Uim';
     }
 
+    private function getInlineGfmRegex(){
+        // opening tag
+        return '/`' .
+
+        // arbitrary single-line content
+        '([^`]*)' .
+
+        // closing tag
+        '`' .
+
+        // ungreedy, case insensitive
+        '/Ui';
+    }
+
+
+
     // strip the content
     // internal regex function to replace gfm code sections with placeholders
     public function stripCodeFragments($content){
@@ -56,7 +72,8 @@ class GfmFilter{
         // PHP 5.3 compatibility
         $T = $this;
 
-        return preg_replace_callback($this->getGfmRegex(), function ($match) use ($T){
+        // Block Code
+        $content = preg_replace_callback($this->getGfmRegex(), function ($match) use ($T){
 
             // language identifier (tagname)
             $lang = $match[1];
@@ -72,7 +89,32 @@ class GfmFilter{
                 'lang' => $lang,
 
                 // code to highlight
-                'code' => $match[2]
+                'code' => $match[2],
+
+                // no inline
+                'inline' => false
+            );
+
+            // replace it with a placeholder
+            return '{{EJS1-' . count($T->_codeFragments) . '}}';
+        }, $content);
+
+        // Inline Code
+        return preg_replace_callback($this->getInlineGfmRegex(), function ($match) use ($T){
+
+            // use default highlighting method
+            $lang = $T->_defaultLanguaage;
+
+            // generate code fragment
+            $T->_codeFragments[] = array(
+                // the language identifier
+                'lang' => $lang,
+
+                // code to highlight
+                'code' => $match[1],
+
+                // inline
+                'inline' => true
             );
 
             // replace it with a placeholder
@@ -92,8 +134,14 @@ class GfmFilter{
                 'class' => 'EnlighterJSRAW'
             );
 
-            // generate html output
-            $html = $this->generateCodeblock($htmlAttributes, $fragment['code']);
+            if ($fragment['inline']){
+                // generate html output
+                $html = $this->generateCodeblock($htmlAttributes, $fragment['code'], 'code');
+            }else{
+                // generate html output
+                $html = $this->generateCodeblock($htmlAttributes, $fragment['code']);
+            }
+
 
             // replace placeholder with rendered content
             $content = str_replace('{{EJS1-' . ($index + 1) . '}}', $html, $content);
