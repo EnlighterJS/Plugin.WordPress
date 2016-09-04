@@ -2,26 +2,34 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2016-09-04 08:38:31+00:00\n"
+"POT-Creation-Date: 2016-09-04 16:47:36+00:00\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  3.2-BETA5\n"
+"Project-Id-Version: Enlighter  3.2\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
+
+#: class/ContextualHelp.php:34
+msgid "General Usage"
+msgstr ""
+
+#: views/admin/Editing.phtml:50
+msgid "Markdown"
+msgstr ""
 
 #: views/admin/Editing.phtml:5
 msgid "Shortcodes"
 msgstr ""
 
-#: class/ContextualHelp.php:40
+#: class/ContextualHelp.php:51
 msgid "Shortcode-Options"
 msgstr ""
 
-#: class/ContextualHelp.php:45
+#: class/ContextualHelp.php:56
 msgid "Generic-Shortcode"
 msgstr ""
 
-#: class/ContextualHelp.php:50
+#: class/ContextualHelp.php:61
 msgid "Codegroups"
 msgstr ""
 
@@ -185,139 +193,135 @@ msgstr ""
 msgid "Disable Shortcodes"
 msgstr ""
 
-#: views/admin/Editing.phtml:15
+#: views/admin/Editing.phtml:16
 msgid "Filter Targets - LowLevel Shortcode Processor"
 msgstr ""
 
-#: views/admin/Editing.phtml:16
+#: views/admin/Editing.phtml:17
 msgid "Choose the content-sections to which the shortcode processor should be applied."
 msgstr ""
 
-#: views/admin/Editing.phtml:18 views/admin/Editing.phtml:60
+#: views/admin/Editing.phtml:19 views/admin/Editing.phtml:62
 msgid "Enable the_content"
 msgstr ""
 
-#: views/admin/Editing.phtml:21 views/admin/Editing.phtml:63
+#: views/admin/Editing.phtml:22 views/admin/Editing.phtml:65
 msgid "Enable the_excerpt"
 msgstr ""
 
-#: views/admin/Editing.phtml:24 views/admin/Editing.phtml:66
+#: views/admin/Editing.phtml:25 views/admin/Editing.phtml:68
 msgid "Enable comments"
 msgstr ""
 
-#: views/admin/Editing.phtml:27 views/admin/Editing.phtml:69
+#: views/admin/Editing.phtml:28 views/admin/Editing.phtml:71
 msgid "Enable comments-excerpt"
 msgstr ""
 
-#: views/admin/Editing.phtml:30 views/admin/Editing.phtml:72
+#: views/admin/Editing.phtml:31 views/admin/Editing.phtml:74
 msgid "Enable widget-text"
 msgstr ""
 
-#: views/admin/Editing.phtml:33
+#: views/admin/Editing.phtml:35
 msgid "Language Shortcodes"
 msgstr ""
 
-#: views/admin/Editing.phtml:34
+#: views/admin/Editing.phtml:36
 msgid "Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!"
 msgstr ""
 
-#: views/admin/Editing.phtml:35
+#: views/admin/Editing.phtml:37
 msgid "Enable Language Shortcodes"
 msgstr ""
 
-#: views/admin/Editing.phtml:38
+#: views/admin/Editing.phtml:40
 msgid "Inline Syntax Highlighting"
 msgstr ""
 
-#: views/admin/Editing.phtml:39
+#: views/admin/Editing.phtml:41
 msgid "Should shortcodes without linebreaks insinde handled as inline-code ?"
 msgstr ""
 
-#: views/admin/Editing.phtml:40
+#: views/admin/Editing.phtml:42
 msgid "Enable Inline Syntax Highlighting"
 msgstr ""
 
-#: views/admin/Editing.phtml:48
-msgid "Markdown"
-msgstr ""
-
-#: views/admin/Editing.phtml:51
+#: views/admin/Editing.phtml:53
 msgid "Fenced Code Blocks"
 msgstr ""
 
-#: views/admin/Editing.phtml:52
+#: views/admin/Editing.phtml:54
 msgid "Markdown Fanatic ? Enlighter also supports <a href=\"https://help.github.com/articles/creating-and-highlighting-code-blocks/\">GFM style</a> fenced code blocks. In case no language identifier is given, choose the default behaviour."
 msgstr ""
 
-#: views/admin/Editing.phtml:54
+#: views/admin/Editing.phtml:56
 msgid "Generic Code Blocks"
 msgstr ""
 
-#: views/admin/Editing.phtml:54
+#: views/admin/Editing.phtml:56
 msgid "Generic Highlighting"
 msgstr ""
 
-#: views/admin/Editing.phtml:54
+#: views/admin/Editing.phtml:56
 msgid "No Highlighting (RAW)"
 msgstr ""
 
-#: views/admin/Editing.phtml:56
+#: views/admin/Editing.phtml:58
 msgid "Filter Targets"
 msgstr ""
 
-#: views/admin/Editing.phtml:57
+#: views/admin/Editing.phtml:59
 msgid "Choose the content-sections to which the markdown processor should be applied."
 msgstr ""
 
-#: views/admin/Editing.phtml:81
+#: views/admin/Editing.phtml:83
 msgid "Visual Editor (TinyMCE 4)"
 msgstr ""
 
-#: views/admin/Editing.phtml:85
+#: views/admin/Editing.phtml:87
 msgid "Visual Editor Integration"
 msgstr ""
 
-#: views/admin/Editing.phtml:86
+#: views/admin/Editing.phtml:88
 msgid "Enlighter provides a full Visual Editor integration. You can turn it off if you only want to use shortcodes."
 msgstr ""
 
-#: views/admin/Editing.phtml:87 views/admin/Editing.phtml:136
+#: views/admin/Editing.phtml:89 views/admin/Editing.phtml:138
 msgid "Enable Backend Integration"
 msgstr ""
 
-#: views/admin/Editing.phtml:89
+#: views/admin/Editing.phtml:91
 msgid "Do you want to use the Visual Editor extensions in your frontend (website) ? May required for frontend editing plugins."
 msgstr ""
 
-#: views/admin/Editing.phtml:90 views/admin/Editing.phtml:139
+#: views/admin/Editing.phtml:92 views/admin/Editing.phtml:141
 msgid "Enable Frontend Integration"
 msgstr ""
 
-#: views/admin/Editing.phtml:93
+#: views/admin/Editing.phtml:95
 msgid "Tweaks"
 msgstr ""
 
-#: views/admin/Editing.phtml:94
+#: views/admin/Editing.phtml:96
 msgid "WordPress Limits the Editor-Width to ~600px. You can disable this limit - might be useful for posting source-code!"
 msgstr ""
 
-#: views/admin/Editing.phtml:95
+#: views/admin/Editing.phtml:97
 msgid "Automatic Width (max)"
 msgstr ""
 
-#: views/admin/Editing.phtml:97
+#: views/admin/Editing.phtml:99
 msgid "In addition to the code-insert button, Enlighter can add a set formats to the editor."
 msgstr ""
 
-#: views/admin/Editing.phtml:98
+#: views/admin/Editing.phtml:100
 msgid "Add Editor Formats"
 msgstr ""
 
-#: views/admin/Editing.phtml:101
+#: views/admin/Editing.phtml:103
 msgid "Code-Block Styles"
 msgstr ""
 
-#: views/admin/Editing.phtml:102
+#: views/admin/Editing.phtml:104
 msgid "It is also possible to influence the code-block styles of the Visual-Editor. Maybe you like another background color or font-family."
 msgstr ""
 
@@ -326,7 +330,7 @@ msgstr ""
 msgid "Font-Family"
 msgstr ""
 
-#: views/admin/Editing.phtml:107
+#: views/admin/Editing.phtml:109
 msgid "e.g. \"Source Code Pro\", \"Liberation Mono\", \"Courier New\", Courier, monospace"
 msgstr ""
 
@@ -335,7 +339,7 @@ msgstr ""
 msgid "Font-Size"
 msgstr ""
 
-#: views/admin/Editing.phtml:110
+#: views/admin/Editing.phtml:112
 msgid "e.g. 0.7em"
 msgstr ""
 
@@ -343,7 +347,7 @@ msgstr ""
 msgid "Line height"
 msgstr ""
 
-#: views/admin/Editing.phtml:113
+#: views/admin/Editing.phtml:115
 msgid "e.g. 1.4em"
 msgstr ""
 
@@ -352,7 +356,7 @@ msgstr ""
 msgid "Font-Color"
 msgstr ""
 
-#: views/admin/Editing.phtml:116
+#: views/admin/Editing.phtml:118
 msgid "e.g. #565b60"
 msgstr ""
 
@@ -360,47 +364,47 @@ msgstr ""
 msgid "Background-Color"
 msgstr ""
 
-#: views/admin/Editing.phtml:119
+#: views/admin/Editing.phtml:121
 msgid "e.g. #f7f7f7"
 msgstr ""
 
-#: views/admin/Editing.phtml:122
+#: views/admin/Editing.phtml:124
 msgid "Restore defaults"
 msgstr ""
 
-#: views/admin/Editing.phtml:129
+#: views/admin/Editing.phtml:131
 msgid "Text/HTML Editor"
 msgstr ""
 
-#: views/admin/Editing.phtml:132
+#: views/admin/Editing.phtml:134
 msgid "QuickTags"
 msgstr ""
 
-#: views/admin/Editing.phtml:133
+#: views/admin/Editing.phtml:135
 msgid "QuickTags are used to simplify the editing process when working in text/html mode. A bunch of QuickTags (all registered languages) can be added to the Text/HTML Editor Toolbar."
 msgstr ""
 
-#: views/admin/Editing.phtml:138
+#: views/admin/Editing.phtml:140
 msgid "Do you want to use the QuickTags extensions in your frontend (website)?"
 msgstr ""
 
-#: views/admin/Editing.phtml:141
+#: views/admin/Editing.phtml:143
 msgid "HTML Tags are fully compatible with the Visual Editor Mode."
 msgstr ""
 
-#: views/admin/Editing.phtml:142
+#: views/admin/Editing.phtml:144
 msgid "QuickTag Mode"
 msgstr ""
 
-#: views/admin/Editing.phtml:142
+#: views/admin/Editing.phtml:144
 msgid "Print HTML Tags (default)"
 msgstr ""
 
-#: views/admin/Editing.phtml:142
+#: views/admin/Editing.phtml:144
 msgid "Print Shortcode Tags"
 msgstr ""
 
-#: views/admin/Editing.phtml:142
+#: views/admin/Editing.phtml:144
 msgid "Disable QuickTags"
 msgstr ""
 
