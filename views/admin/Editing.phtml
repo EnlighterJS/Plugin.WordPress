@@ -12,6 +12,7 @@
         <p><?php _e('<strong>Notice</strong>: the LowLevel Shortcode Processor is <strong>not invoked</strong> by the <a href="https://developer.wordpress.org/reference/functions/do_shortcode/">do_shortcode</a> function! If you need shortcode processing in other content section, you should consider to use the legacy version or add custom filters!', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displaySelect(__('Processor', 'enlighter'), 'shortcodeMode', array(__('Enlighter Low-Level (default)', 'enlighter') => 'modern', __('Legacy (WordPress based)', 'enlighter') => 'legacy', __('Disable Shortcodes', 'enlighter') => 'disabled')); ?>
 
+        <div id="EnlighterShortcodeFilters">
         <h4><?php _e('Filter Targets - LowLevel Shortcode Processor', 'enlighter'); ?></h4>
         <p><?php _e('Choose the content-sections to which the shortcode processor should be applied.', 'cryptex'); ?></p>
         <!-- Enable the_content filter -->
@@ -28,6 +29,7 @@
 
         <!-- Enable Widget-text filter -->
         <?php $this->_settingsUtility->displayCheckbox(__('Enable widget-text', 'enlighter'), 'shortcodeFilterWidgetText'); ?>
+        </div>
 
         <!-- Language Shortcodes -->
         <h4><?php _e('Language Shortcodes', 'enlighter'); ?></h4>
