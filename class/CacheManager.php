@@ -7,7 +7,7 @@
     Plugin URI: http://andidittrich.de/go/enlighterjs
     License: MIT X11-License
     
-    Copyright (c) 2014, Andi Dittrich
+    Copyright (c) 2014-2016, Andi Dittrich
     
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
     
@@ -27,11 +27,24 @@ class CacheManager{
 
     // update hash
     private $_uhash;
+
+    // file prefix
+    private $_prefix;
+
+    // static url (provides simple access to getUrl())
+    private static $_url;
     
     public function __construct($settingsUtil){
+
+        // mu site ? generate prefix based on blog ID
+        $this->_prefix = (is_multisite() ? 'X' . get_current_blog_id() . '_' : '');
+
         // default cache
         $this->_cachePath = ENLIGHTER_PLUGIN_PATH.'/cache/';
         $this->_cacheUrl = plugins_url('/enlighter/cache/');
+
+        // generate static url
+        self::$_url = $this->_cacheUrl . $this->_prefix;
 
         // get last update hash
         $this->_uhash = get_option('enlighter-settingsupdate-hash', '0A0B0C');
@@ -45,7 +58,7 @@ class CacheManager{
         }
 
         // write file - prepend absolute cache path
-        file_put_contents($this->_cachePath . $filename, $content);
+        file_put_contents($this->_cachePath . $this->_prefix . $filename, $content);
     }
 
     // caches file available ?
@@ -85,9 +98,12 @@ class CacheManager{
         return $this->_cacheUrl;
     }
 
-    /**
-     * Remove all files within the given directory (non recursive)
-     */ 
+    // instance-less access to pre-generated url
+    public static function getFileUrl($filename){
+        return self::$_url . $filename;
+    }
+
+    // Remove all files within the given directory (non recursive)
     private function rmdir($dir){
         // remove cached files
         if (is_dir($dir)){

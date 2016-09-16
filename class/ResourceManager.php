@@ -35,8 +35,9 @@ class ResourceManager{
             }
 
             // cache file ?
-            if (preg_match('#^cache/.*$#', $filename) === 1){
-                $url = ENLIGHTER_PLUGIN_URL . $filename;
+            if (preg_match('#^cache/(.*)$#', $filename, $matches) === 1){
+                // retrieve cache file url (add blog id)
+                $url = CacheManager::getFileUrl($matches[1]);
 
                 // default: resource file
             }else{
