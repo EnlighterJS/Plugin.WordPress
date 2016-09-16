@@ -110,7 +110,16 @@ class CacheManager{
             $files = scandir($dir);
             foreach ($files as $file){
                 if ($file!='.' && $file!='..' && is_file($dir.$file)){
-                    unlink($dir.$file);
+                    // MU prefix set ?
+                    if (strlen($this->_prefix) > 0){
+                        // file starts with prefix ?
+                        if (substr($file, 0, strlen($this->_prefix)) == $this->_prefix){
+                            unlink($dir.$file);
+                        }
+                    }else{
+                        unlink($dir.$file);
+                    }
+
                 }
             }
         }

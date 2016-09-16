@@ -19,6 +19,10 @@
              keyfile="${user.home}/${dev.keyfile}">
             <fileset dir="."/>
         </scp>
+        <scp todir="${dev.user}@${dev.host}:${dev.mupath}" trust="true" port="${dev.port}"
+             keyfile="${user.home}/${dev.keyfile}">
+            <fileset dir="."/>
+        </scp>
     </target>
 
     <!-- GitHub readme + changes => WordPress transformation !-->
