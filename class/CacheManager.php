@@ -87,7 +87,11 @@ class CacheManager{
     }
 
     public function isCacheAccessible(){
-        return is_writeable($this->_cachePath) && is_executable($this->_cachePath);
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            return is_writeable($this->_cachePath);
+        }else{
+            return is_writeable($this->_cachePath) && is_executable($this->_cachePath);
+        }
     }
     
     public function getCachePath(){
