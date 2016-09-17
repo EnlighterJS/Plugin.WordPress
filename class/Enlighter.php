@@ -2,7 +2,7 @@
 
 /**
     Enlighter Class
-    Version: 3.1
+    Version: 3.3
     Author: Andi Dittrich
     Author URI: http://andidittrich.de
     Plugin URI: http://enlighterjs.org

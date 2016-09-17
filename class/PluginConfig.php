@@ -27,7 +27,7 @@ class PluginConfig{
 
         'mootoolsSource' => 'local',
         'jsType' => 'inline',
-        'jsPosition' => 'header',
+        'jsPosition' => 'footer',
         'defaultTheme' => 'enlighter',
         'defaultLanguage' => 'generic',
         'indent' => 2,
