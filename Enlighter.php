@@ -36,7 +36,7 @@ function Enlighter_PhpEnvironmentError(){
 }
 
 // check php version
-if (version_compare(phpversion(), '5.3', '>=')){
+if (version_compare(phpversion(), '15.3', '>=')){
     // load classes
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/Enlighter.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/class/HtmlUtil.php');
@@ -66,5 +66,6 @@ if (version_compare(phpversion(), '5.3', '>=')){
 }else{
     // add admin message handler
     add_action('admin_notices', 'Enlighter_PhpEnvironmentError');
+    add_action('network_admin_notices', 'Enlighter_PhpEnvironmentError');
 }
 
