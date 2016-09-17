@@ -66,12 +66,10 @@ class CacheManager{
         return file_exists($this->_cachePath . $filename);
     }
 
-    /**
-     * drop cache items
-     */
-    public function clearCache(){
+    // drop cache items
+    public function clearCache($clearAll = false){
         // cache dir
-        $this->rmdir($this->_cachePath);
+        $this->rmdir($this->_cachePath, $clearAll);
 
         // store last settings update time (unique hash to avoid caching)
         $hash = substr(sha1(microtime(true) . uniqid()), 0, 10);
@@ -108,18 +106,24 @@ class CacheManager{
     }
 
     // Remove all files within the given directory (non recursive)
-    private function rmdir($dir){
+    private function rmdir($dir, $clearAll){
         // remove cached files
         if (is_dir($dir)){
+            // get file list
             $files = scandir($dir);
+
+            // process files
             foreach ($files as $file){
+
+                // regular file ?
                 if ($file!='.' && $file!='..' && is_file($dir.$file)){
                     // MU prefix set ?
-                    if (strlen($this->_prefix) > 0){
+                    if ($clearAll === false && strlen($this->_prefix) > 0){
                         // file starts with prefix ?
                         if (substr($file, 0, strlen($this->_prefix)) == $this->_prefix){
                             unlink($dir.$file);
                         }
+                    // drop all cache files
                     }else{
                         unlink($dir.$file);
                     }

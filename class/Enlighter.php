@@ -309,7 +309,7 @@ class Enlighter{
 
     public function _wp_plugin_upgrade($currentVersion){
         // invalidate cache on upgrade!
-        $this->_cacheManager->clearCache();
+        $this->_cacheManager->clearCache(true);
 
         return true;
     }
