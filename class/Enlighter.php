@@ -101,17 +101,23 @@ class Enlighter{
                 }
             }
 
-            // add admin menu handler
-            add_action('admin_menu', array($this, 'setupBackend'));
+            // super admin (about page + links)
+            if (is_multisite() && is_super_admin()){
+                add_action('network_admin_menu', array($this, 'setupNetworkBackend'));
 
-            // add plugin upgrade notification
-            add_action('in_plugin_update_message-enlighter/Enlighter.php', array($this, 'showUpgradeNotification'), 10, 2);
+            // single site admin menus
+            }else{
+                add_action('admin_menu', array($this, 'setupBackend'));
 
-            // force theme cache reload
-            $this->_themeManager->forceReload();
+                // add plugin upgrade notification
+                add_action('in_plugin_update_message-enlighter/Enlighter.php', array($this, 'showUpgradeNotification'), 10, 2);
 
-            // editor
-            $this->_resourceLoader->backendEditor();
+                // force theme cache reload
+                $this->_themeManager->forceReload();
+
+                // editor
+                $this->_resourceLoader->backendEditor();
+            }
         }else{
 
             // enable bb_press shortcode extension ?
@@ -192,6 +198,20 @@ class Enlighter{
         // editor enabled ?
         if ($canEdit === true){
             $this->_resourceLoader->frontendEditor();
+        }
+    }
+
+    // register pages
+    public function setupNetworkBackend(){
+        if (current_user_can('manage_options')){
+             // add about page
+            $aboutPage = add_submenu_page('__enlighter_invalid_page', 'About Enlighter', 'About Enlighter', 'administrator', 'Enlighter-About', array($this, 'aboutPage'));
+
+            // add links
+            add_filter('plugin_row_meta', array($this, 'addPluginMetaLinks'), 10, 2);
+
+            // settings page resources
+            add_filter('load-'.$aboutPage, array($this->_resourceLoader, 'backendAboutPage'));
         }
     }
 
