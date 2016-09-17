@@ -102,22 +102,22 @@ class Enlighter{
             }
 
             // super admin (about page + links)
-            if (is_multisite() && is_super_admin()){
+            if (is_multisite() && is_super_admin()) {
                 add_action('network_admin_menu', array($this, 'setupNetworkBackend'));
+            }
 
             // single site admin menus
-            }else{
-                add_action('admin_menu', array($this, 'setupBackend'));
+            add_action('admin_menu', array($this, 'setupBackend'));
 
-                // add plugin upgrade notification
-                add_action('in_plugin_update_message-enlighter/Enlighter.php', array($this, 'showUpgradeNotification'), 10, 2);
+            // add plugin upgrade notification
+            add_action('in_plugin_update_message-enlighter/Enlighter.php', array($this, 'showUpgradeNotification'), 10, 2);
 
-                // force theme cache reload
-                $this->_themeManager->forceReload();
+            // force theme cache reload
+            $this->_themeManager->forceReload();
 
-                // editor
-                $this->_resourceLoader->backendEditor();
-            }
+            // editor
+            $this->_resourceLoader->backendEditor();
+
         }else{
 
             // enable bb_press shortcode extension ?
