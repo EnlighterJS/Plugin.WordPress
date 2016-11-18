@@ -23,7 +23,7 @@
 	<!-- embed MooTools !-->
 	<h4><?php _e('MooTools Framework Source', 'enlighter'); ?></h4>
 	<p><?php _e('The required MooTools-Framework can be hosted by a public CDN provider or by your own.', 'enlighter'); ?></p>
-	<?php $this->_settingsUtility->displaySelect(__('MooTools Framework Source', 'enlighter'), 'mootoolsSource', array(__('Your WordPress Site', 'enlighter') => 'local', __('Google CDN', 'enlighter') => 'google', __('CDNJS (Cloudfare)', 'enlighter') => 'cdnjs', __('Not include', 'enlighter') => 'none')); ?>
+	<?php $this->_settingsUtility->displaySelect(__('MooTools Framework Source', 'enlighter'), 'mootoolsSource', array(__('Your WordPress Site', 'enlighter') => 'local', __('Google CDN', 'enlighter') => 'google', __('CDNJS (Cloudfare)', 'enlighter') => 'cdnjs', __('JSDELIVR', 'enlighter') => 'jsdelivr', __('Not include', 'enlighter') => 'none')); ?>
 
 	<!-- Inline/External JS Settings -->
 	<h4><?php _e('Initialization', 'enlighter'); ?></h4>
@@ -41,6 +41,7 @@
 		<li>MooTools-Local: <code><?php echo Enlighter\ResourceLoader::$cdnLocations['mootools-local']; ?></code></li>
 		<li>MooTools-Google: <code><?php echo Enlighter\ResourceLoader::$cdnLocations['mootools-google']; ?></code></li>
 		<li>MooTools-CDNJS: <code><?php echo Enlighter\ResourceLoader::$cdnLocations['mootools-cdnjs']; ?></code></li>
+        <li>MooTools-JSDELIVR: <code><?php echo Enlighter\ResourceLoader::$cdnLocations['mootools-jsdelivr']; ?></code></li>
 	</ul>
 	
 	</div>

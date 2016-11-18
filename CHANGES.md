@@ -1,5 +1,10 @@
 ## Changelog ##
 
+### 3.3 ###
+* Added: [WordPress Multisite](https://codex.wordpress.org/Create_A_Network) support 
+* Added: [JSDELIVR](https://www.jsdelivr.com/?query=mootools) as MooTools CDN Source - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/request-enable-cdn-jsdelivr/)
+* Bugfix: The new cache accessibility check (v3.2) did not work on WIN platform
+
 ### 3.2 ###
 * Added: [GFM](https://help.github.com/articles/creating-and-highlighting-code-blocks/) style Markdown support for fenced code blocks
 * Added: bbPress support for Markdown fenced code blocks 
