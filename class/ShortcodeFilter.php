@@ -64,8 +64,11 @@ class ShortcodeFilter{
     // internal regex function to replace shortcodes with placeholders
     // scoped to use it standalone as well as within shortcodes as second stage
     public function findShortcodes($content, $group = null){
+        // PHP 5.3 compatibility
+        $T = $this;
+
         // process enlighter & language shortcodes
-        return preg_replace_callback($this->getShortcodeRegex($this->_languageTags), function ($match) use ($group){
+        return preg_replace_callback($this->getShortcodeRegex($this->_languageTags), function ($match) use ($T, $group){
 
             // wordpress internal shortcode attribute parsing
             $attb = shortcode_parse_atts($match[2]);
@@ -82,7 +85,7 @@ class ShortcodeFilter{
             }
 
             // generate code fragment
-            $this->_codeFragments[] = array(
+            $T->_codeFragments[] = array(
                 // the language identifier
                 'lang' => $lang,
 
@@ -97,14 +100,13 @@ class ShortcodeFilter{
             );
 
             // replace it with a placeholder
-            return '{{EJS0-' . count($this->_codeFragments) . '}}';
+            return '{{EJS0-' . count($T->_codeFragments) . '}}';
         }, $content);
     }
 
     // strip the content
     // internal shortcode processor - replace enlighter shortcodes by placeholder
     public function stripCodeFragments($content){
-
         // PHP 5.3 compatibility
         $T = $this;
 
