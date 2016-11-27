@@ -26,7 +26,9 @@ class ShortcodeFilter{
     private $_languageTags;
 
     // cached code content
-    private $_codeFragments = array();
+    // public visibility required for PHP5.3 compatibility (lambda functions)
+    // @TODO set to private in next major release (requires PHP5.4)
+    public $_codeFragments = array();
 
     public function __construct($settingsUtil, $languageShortcodes){
         // store local plugin config
