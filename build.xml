@@ -9,9 +9,13 @@
 
     <!-- "Compile" po language support files !-->
     <target name="language">
-
-
-
+        <apply executable="msgfmt" dest="lang" parallel="false">
+            <srcfile/>
+            <arg value="-o"/>
+            <targetfile/>
+            <fileset dir="lang" includes="*.po"/>
+            <mapper type="glob" from="*.po" to="*.mo"/>
+        </apply>
     </target>
 
     <!-- Plugin Test - DEVELOPMENT ONLY -->
