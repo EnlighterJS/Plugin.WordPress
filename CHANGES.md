@@ -3,6 +3,7 @@
 ### 3.3 ###
 * Added: [WordPress Multisite](https://codex.wordpress.org/Create_A_Network) support 
 * Added: [JSDELIVR](https://www.jsdelivr.com/?query=mootools) as MooTools CDN Source - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/request-enable-cdn-jsdelivr/)
+* Added: Additional check to the About-Page redirection (triggered on plugin activation) to avoid infinite redirects in case of a broken 3rd party options-caching plugin
 * Bugfix: The new cache accessibility check (v3.2) did not work on WIN platform
 * Bugfix: PHP 5.3 Compatibility within the LowLevel Shortcode Filter - thanks to [crislv90 on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/52)
 

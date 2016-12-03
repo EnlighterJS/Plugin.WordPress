@@ -89,13 +89,15 @@ class Enlighter{
 
         // frontend or dashboard area ?
         if (is_admin()){
-            // plugin upgrade ? show about page
-            if (get_option('enlighter-activation-redirect', false)){
-                // remove flag
-                delete_option('enlighter-activation-redirect');
 
-                // ignore bulk actions
-                if (!isset($_GET['activate-multi'])){
+            // plugin upgrade ? show about page
+            if (get_option('enlighter-activation-redirect', '') == 'about-page'){
+                // remove redirect flag - do it twice to avoid infinite redirect issues with broken caching plugins!
+                $deleted = update_option('enlighter-activation-redirect', '') && delete_option('enlighter-activation-redirect');
+
+                // ignore bulk actions - additional redirect check
+                // current page has to be the plugin update dialog!
+                if ($deleted && !isset($_GET['activate-multi'])){
                     wp_redirect('admin.php?page=Enlighter-About');
                     exit;
                 }
@@ -320,7 +322,7 @@ class Enlighter{
 
     public function _wp_plugin_activate(){
         // set activation flag
-        add_option('enlighter-activation-redirect', true);
+        add_option('enlighter-activation-redirect', 'about-page');
     }
 
     public function _wp_plugin_deactivate(){
