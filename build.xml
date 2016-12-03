@@ -7,6 +7,13 @@
 
     <target name="full" depends="potgen, readme, changelog, webfonts, themes, devcopy"/>
 
+    <!-- "Compile" po language support files !-->
+    <target name="language">
+
+
+
+    </target>
+
     <!-- Plugin Test - DEVELOPMENT ONLY -->
     <target name="devcopy">
         <!-- Credentials, Host Settings !-->
