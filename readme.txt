@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.6
-Stable tag: 3.2
+Stable tag: 3.3
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -177,6 +177,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://enlighterjs.org)
 
 == Upgrade Notice ==
 
+= 3.3 =
+PHP 5.3 Backward Compatibility
+
 = 3.0 =
 New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Editing -> Shortcode
 
@@ -260,6 +263,7 @@ Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dit
 * Added: [WordPress Multisite](https://codex.wordpress.org/Create_A_Network) support 
 * Added: [JSDELIVR](https://www.jsdelivr.com/?query=mootools) as MooTools CDN Source - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/request-enable-cdn-jsdelivr/)
 * Added: Additional check to the About-Page redirection (triggered on plugin activation) to avoid infinite redirects in case of a broken 3rd party options-caching plugin
+* Added: Brazilian Portuguese localization (pt_BR) - thanks to [rafajaques on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/pull/50) #50 
 * Bugfix: The new cache accessibility check (v3.2) did not work on WIN platform
 * Bugfix: PHP 5.3 Compatibility within the LowLevel Shortcode Filter - thanks to [crislv90 on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/52)
 

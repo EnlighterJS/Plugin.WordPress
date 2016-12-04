@@ -5,10 +5,10 @@
     <!-- ANT-contrib !-->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 
-    <target name="full" depends="potgen, readme, changelog, webfonts, themes, devcopy"/>
+    <target name="full" depends="potgen, readme, changelog, webfonts, themes, languages, devcopy"/>
 
     <!-- "Compile" po language support files !-->
-    <target name="language">
+    <target name="languages">
         <apply executable="msgfmt" dest="lang" parallel="false">
             <srcfile/>
             <arg value="-o"/>
