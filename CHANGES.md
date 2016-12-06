@@ -1,5 +1,8 @@
 ## Changelog ##
 
+### 3.4 ###
+* Improved: WP Version information is removed from MooTools CDN Sources to avoid additional downloads - thanks to [sixer on WordPress.org Forums](https://wordpress.org/support/topic/query-string-for-jsdelivr/#post-8517461)
+
 ### 3.3 ###
 * Added: [WordPress Multisite](https://codex.wordpress.org/Create_A_Network) support 
 * Added: [JSDELIVR](https://www.jsdelivr.com/?query=mootools) as MooTools CDN Source - feature requested on [WordPress.org Forums](https://wordpress.org/support/topic/request-enable-cdn-jsdelivr/)

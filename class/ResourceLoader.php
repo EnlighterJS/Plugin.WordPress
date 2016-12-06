@@ -268,25 +268,25 @@ class ResourceLoader{
         // include mootools from local source ?
         if ($this->_config['mootoolsSource'] == 'local'){
             // include local mootools
-            $this->enqueueScript('mootools-local', self::$cdnLocations['mootools-local'], array(), false);
+            $this->enqueueScript('mootools-local', self::$cdnLocations['mootools-local'], array());
         }
     
         // include mootools from google cdn ?
         if ($this->_config['mootoolsSource'] == 'google'){
             // include local mootools hosted by google's cdn
-            $this->enqueueScript('mootools-google-cdn', self::$cdnLocations['mootools-google'], array(), false);
+            $this->enqueueScript('mootools-google-cdn', self::$cdnLocations['mootools-google'], array(), null);
         }
         
         // include mootools from cloudfare cdn ?
         if ($this->_config['mootoolsSource'] == 'cdnjs'){
             // include local mootools hosted by cloudfares's cdn
-            $this->enqueueScript('mootools-cloudfare-cdn', self::$cdnLocations['mootools-cdnjs'], array(), false);
+            $this->enqueueScript('mootools-cloudfare-cdn', self::$cdnLocations['mootools-cdnjs'], array(), null);
         }
 
         // include mootools from jsdelivr cdn ?
         if ($this->_config['mootoolsSource'] == 'jsdelivr'){
             // include local mootools hosted by cloudfares's cdn
-            $this->enqueueScript('mootools-jsdelivr-cdn', self::$cdnLocations['mootools-jsdelivr'], array(), false);
+            $this->enqueueScript('mootools-jsdelivr-cdn', self::$cdnLocations['mootools-jsdelivr'], array(), null);
         }
     
         // only include EnlighterJS js if enabled
