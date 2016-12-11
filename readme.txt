@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: 3.3
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
@@ -176,9 +176,6 @@ Generally Enlighter (which javascript part [EnlighterJS](http://enlighterjs.org)
 12. Theme Customizer - Live Preview-Mode
 
 == Upgrade Notice ==
-
-= 3.3 =
-PHP 5.3 Backward Compatibility
 
 = 3.0 =
 New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Editing -> Shortcode

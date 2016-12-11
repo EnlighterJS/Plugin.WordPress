@@ -100,20 +100,20 @@ class TinyMCE{
         }
 
         // do not allow additional formatting within pre/code tags!
-        $disallowedChildTags = '-code[code|pre|strong|em|del|span|a|table|sub|sup],-pre[code|pre|strong|em|del|span|a|table|sub|sup]';
+        $validChildTags = '-code[strong|em|del|a|table|sub|sup],-pre[strong|em|del|a|table|sub|sup]';
 
-        // valid html tgas
+        // valid html tags
         if (isset($tinyMceConfigData['valid_children'])){
-            $tinyMceConfigData['valid_children'] .= $disallowedChildTags;
+            $tinyMceConfigData['valid_children'] .= ',' . $validChildTags;
         }else{
-            $tinyMceConfigData['valid_children'] = $disallowedChildTags;
+            $tinyMceConfigData['valid_children'] = $validChildTags;
         }
         
         // create new "Enlighter Codeblocks" item
         $blockstyles = array();
         
         // add all supported languages as Enlighter Style
-        foreach ($this->_supportedLanguageKeys as $name => $lang){                
+        foreach ($this->_supportedLanguageKeys as $name => $lang){
             // define new enlighter style formats
             $blockstyles[] = array(
                     'title' => ''.$name,
@@ -129,7 +129,7 @@ class TinyMCE{
         // add block styles
         $styles[] = array(
             'title' => __('Enlighter Codeblocks', 'enlighter'),
-            'items' => $blockstyles                
+            'items' => $blockstyles
         );
         
         // inline highlighting enabled ?
