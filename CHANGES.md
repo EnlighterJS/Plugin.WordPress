@@ -8,6 +8,7 @@
 * Changed: Removed the "Sourcecode" Label from Code-Insert-Dialog Textarea to provide a larger input area
 * Improved: WP Version information is removed from MooTools CDN Sources to avoid additional downloads - thanks to [sixer on WordPress.org Forums](https://wordpress.org/support/topic/query-string-for-jsdelivr/#post-8517461)
 * Bugfix: Copy+Paste within a codeblock (Visual Editor) caused a seperation of the selected block
+* Bugfix: External JS Components (jetpack-plugin, Startup Code) are not loaded in case EnlighterJS javascript file is excluded
 
 ### 3.3 ###
 * Added: [WordPress Multisite](https://codex.wordpress.org/Create_A_Network) support 

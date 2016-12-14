@@ -288,23 +288,29 @@ class ResourceLoader{
             // include local mootools hosted by cloudfares's cdn
             $this->enqueueScript('mootools-jsdelivr-cdn', self::$cdnLocations['mootools-jsdelivr'], array(), null);
         }
+
+        // dependencies
+        $ejsDependencies = array();
     
         // only include EnlighterJS js if enabled
         if ($this->_config['embedEnlighterJS']){
             // include local css file
             $this->enqueueScript('enlighter-local', 'EnlighterJS.min.js');
+
+            // Script required by other components
+            $ejsDependencies = array('enlighter-local');
         }
         
         // only include EnlighterJS config if enabled
         if ($this->_config['jsType'] == 'external'){
             // include local css file
-            $this->enqueueScript('enlighter-config', 'cache/EnlighterJS.init.js', array('enlighter-local'), $this->_uhash);
+            $this->enqueueScript('enlighter-config', 'cache/EnlighterJS.init.js', $ejsDependencies, $this->_uhash);
         }
 
         // jetpack InfiniteScroll Extension enabled ?
         if ($this->_config['extJetpackInfiniteScroll']){
             // include local css file
-            $this->enqueueScript('enlighter-jetpack-infinitescroll', 'plugin/JetpackInfiniteScroll.js', array('enlighter-local'),$this->_uhash);
+            $this->enqueueScript('enlighter-jetpack-infinitescroll', 'plugin/JetpackInfiniteScroll.js', $ejsDependencies, $this->_uhash);
         }
     }
 }
