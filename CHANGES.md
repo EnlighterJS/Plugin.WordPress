@@ -1,7 +1,8 @@
 ## Changelog ##
 
 ### 3.4 ###
-* Added: Visual Editor ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) Plugin **v3.2.0**
+* Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) **v3.2.0**
+* Added: Fault tolerant initialization code including debug messages (`console.log` output) - this will also avoid javascript initialization errors
 * Added: Option to the Code-Edit-Dialog to switch between Inline and Block mode - feature requested [on WordPress.org Forums](https://wordpress.org/support/topic/no-way-to-switch-from-codeblock-to-inline/#post-8539755)
 * Changed: The Code-Insert-Dialog size is changed to the current editor viewport size (will cover the whole editor area)
 * Changed: Removed the "Sourcecode" Label from Code-Insert-Dialog Textarea to provide a larger input area

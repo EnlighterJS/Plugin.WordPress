@@ -61,12 +61,9 @@ class ConfigGenerator{
         // global config
         $c = $this->getEnlighterJSConfig();
 
-        // initialization
-        $c .= 'window.addEvent(\'domready\', function(){';
-        $c .= 'if (typeof EnlighterJS == "undefined"){return;};';
-        $c .= 'EnlighterJS.Util.Init(EnlighterJS_Config.selector.block, EnlighterJS_Config.selector.inline, EnlighterJS_Config);';
-        $c .= '});';
-        
+        // initialization code
+        $c .= file_get_contents(ENLIGHTER_PLUGIN_PATH . '/resources/EnlighterJS.Startup.min.js');
+
         return $c;
     }
     
