@@ -1,9 +1,9 @@
 === Enlighter - Customizable Syntax Highlighter ===
-Contributors: Andi Dittrich
+Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.7
+Tested up to: 4.6
 Stable tag: 3.3
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
@@ -177,6 +177,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://enlighterjs.org)
 
 == Upgrade Notice ==
 
+= 3.3 =
+PHP 5.3 Backward Compatibility
+
 = 3.0 =
 New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Editing -> Shortcode
 
@@ -255,6 +258,16 @@ In case you found a security issue in this plugin - please write a message **dir
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
+
+= 3.4 =
+* Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) **v3.2.0**
+* Added: Fault tolerant initialization code including debug messages (`console.log` output) - this will also avoid javascript initialization errors
+* Added: Option to the Code-Edit-Dialog to switch between Inline and Block mode - feature requested [on WordPress.org Forums](https://wordpress.org/support/topic/no-way-to-switch-from-codeblock-to-inline/#post-8539755)
+* Changed: The Code-Insert-Dialog size is changed to the current editor viewport size (will cover the whole editor area)
+* Changed: Removed the "Sourcecode" Label from Code-Insert-Dialog Textarea to provide a larger input area
+* Improved: WP Version information is removed from MooTools CDN Sources to avoid additional downloads - thanks to [sixer on WordPress.org Forums](https://wordpress.org/support/topic/query-string-for-jsdelivr/#post-8517461)
+* Bugfix: Copy+Paste within a codeblock (Visual Editor) caused a seperation of the selected block
+* Bugfix: External JS Components (jetpack-plugin, Startup Code) are not loaded in case EnlighterJS javascript file is excluded
 
 = 3.3 =
 * Added: [WordPress Multisite](https://codex.wordpress.org/Create_A_Network) support 
