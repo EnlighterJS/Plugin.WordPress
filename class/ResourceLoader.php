@@ -237,9 +237,10 @@ class ResourceLoader{
         
         // load user themes ?
         if ($this->_config['embedExternalThemes']) {
+
             // embed available external themes
             foreach ($this->_themeManager->getUserThemes() as $theme => $sources) {
-                $this->enqueueStyle('enlighter-external-' . strtolower($theme), $sources[1]);
+                $this->enqueueStyle('enlighter-external-' . strtolower($theme), $sources[1], array(), $this->_uhash);
             }
         }
 

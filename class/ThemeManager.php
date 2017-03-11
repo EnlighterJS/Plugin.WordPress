@@ -98,14 +98,14 @@ class ThemeManager{
             
             // load enlighter-themes from current child-theme (if used)
             if ($childDir != $themeDir){
-                $themeFiles = array_merge($themeFiles, $this->getCssFilesFromDirectory($childDir, get_stylesheet_directory_uri()));    
+                $themeFiles = array_merge($themeFiles, $this->getCssFilesFromDirectory($childDir, get_stylesheet_directory_uri()));
             }
             
             // store data; 1day cache expire
             set_transient('enlighter_userthemes', $themeFiles, DAY_IN_SECONDS);
             $this->_cachedData = $themeFiles;
         }
-                
+
         return $this->_cachedData;
     }
     

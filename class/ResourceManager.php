@@ -28,7 +28,8 @@ class ResourceManager{
         $url = apply_filters('enlighter_resource_url', $filename, ENLIGHTER_PLUGIN_URL, $version);
 
         // filename not changed and relative url ? prepend plugin url, keep absolute path
-        if ($filename == $url && preg_match('#^(?:/|[a-z]:/).*$#i', $filename) === 0){
+        if ($filename == $url && preg_match('#^(?:/|[a-z]+:/).*$#i', $filename) === 0){
+
             // append version ?
             if ($version){
                 $filename .= '?' . $version;
@@ -39,7 +40,7 @@ class ResourceManager{
                 // retrieve cache file url (add blog id)
                 $url = CacheManager::getFileUrl($matches[1]);
 
-                // default: resource file
+            // default: static resource file
             }else{
                 $url = ENLIGHTER_PLUGIN_URL . 'resources/' . $filename;
             }

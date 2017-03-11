@@ -6,9 +6,11 @@
 * Added: Option to the Code-Edit-Dialog to switch between Inline and Block mode - feature requested [on WordPress.org Forums](https://wordpress.org/support/topic/no-way-to-switch-from-codeblock-to-inline/#post-8539755)
 * Changed: The Code-Insert-Dialog size is changed to the current editor viewport size (will cover the whole editor area)
 * Changed: Removed the "Sourcecode" Label from Code-Insert-Dialog Textarea to provide a larger input area
+* Changed: Added Settings-Update hash to external themes as URL parameter instead of current plugin version (invalidates browser cache by updating the settings)
 * Improved: WP Version information is removed from MooTools CDN Sources to avoid additional downloads - thanks to [sixer on WordPress.org Forums](https://wordpress.org/support/topic/query-string-for-jsdelivr/#post-8517461)
 * Bugfix: Copy+Paste within a codeblock (Visual Editor) caused a seperation of the selected block
 * Bugfix: External JS Components (jetpack-plugin, Startup Code) are not loaded in case EnlighterJS javascript file is excluded
+* Bugfix: External Themes won't work because of invalid URLs - thanks to [eliottrobson on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/61)
 
 ### 3.3 ###
 * Added: [WordPress Multisite](https://codex.wordpress.org/Create_A_Network) support 
