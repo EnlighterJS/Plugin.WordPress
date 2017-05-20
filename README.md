@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 3.3
+Stable tag: 3.4
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 

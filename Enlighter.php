@@ -1,11 +1,11 @@
 <?php
 /**
     Plugin Name: Enlighter - Customizable Syntax Highlighter
-    Plugin URI: http://enlighterjs.org
+    Plugin URI: https://enlighterjs.org
     Description: Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor.
-    Version: 3.4-BETA5
+    Version: 3.4
     Author: Andi Dittrich
-    Author URI: http://andidittrich.de
+    Author URI: https://andidittrich.de
     License: MIT X11-License
     
     Copyright (c) 2013-2017, Andi Dittrich
@@ -22,7 +22,7 @@
 */
 
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '3.4-BETA5');
+define('ENLIGHTER_VERSION', '3.4');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
 define('ENLIGHTER_PLUGIN_URL', plugins_url('/enlighter/'));
 

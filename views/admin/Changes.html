@@ -1,8 +1,12 @@
 <ul>
-<li>Added: <a href="https://codex.wordpress.org/Create_A_Network">WordPress Multisite</a> support</li>
-<li>Added: <a href="https://www.jsdelivr.com/?query=mootools">JSDELIVR</a> as MooTools CDN Source - feature requested on <a href="https://wordpress.org/support/topic/request-enable-cdn-jsdelivr/">WordPress.org Forums</a></li>
-<li>Added: Additional check to the About-Page redirection (triggered on plugin activation) to avoid infinite redirects in case of a broken 3rd party options-caching plugin</li>
-<li>Added: Brazilian Portuguese localization (pt_BR) - thanks to <a href="https://github.com/AndiDittrich/WordPress.Enlighter/pull/50">rafajaques on GitHub</a> <a href="https://github.com/AndiDittrich/WordPress.Enlighter/pull/50" class="issue-link js-issue-link" data-url="https://github.com/AndiDittrich/WordPress.Enlighter/issues/50" data-id="183091165" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#50</a></li>
-<li>Bugfix: The new cache accessibility check (v3.2) did not work on WIN platform</li>
-<li>Bugfix: PHP 5.3 Compatibility within the LowLevel Shortcode Filter - thanks to <a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues/52">crislv90 on GitHub</a></li>
+<li>Added: Visual Editor Plugin (<a href="https://github.com/AndiDittrich/EnlighterJS.TinyMCE">EnlighterJS.TinyMCE</a>) <strong>v3.2.0</strong></li>
+<li>Added: Fault tolerant initialization code including debug messages (<code>console.log</code> output) - this will also avoid javascript initialization errors</li>
+<li>Added: Option to the Code-Edit-Dialog to switch between Inline and Block mode - feature requested <a href="https://wordpress.org/support/topic/no-way-to-switch-from-codeblock-to-inline/#post-8539755">on WordPress.org Forums</a></li>
+<li>Changed: The Code-Insert-Dialog size is changed to the current editor viewport size (will cover the whole editor area)</li>
+<li>Changed: Removed the "Sourcecode" Label from Code-Insert-Dialog Textarea to provide a larger input area</li>
+<li>Changed: Added Settings-Update hash to external themes as URL parameter instead of current plugin version (invalidates browser cache by updating the settings)</li>
+<li>Improved: WP Version information is removed from MooTools CDN Sources to avoid additional downloads - thanks to <a href="https://wordpress.org/support/topic/query-string-for-jsdelivr/#post-8517461">sixer on WordPress.org Forums</a></li>
+<li>Bugfix: Copy+Paste within a codeblock (Visual Editor) caused a seperation of the selected block</li>
+<li>Bugfix: External JS Components (jetpack-plugin, Startup Code) are not loaded in case EnlighterJS javascript file is excluded</li>
+<li>Bugfix: External Themes won't work because of invalid URLs - thanks to <a href="https://github.com/AndiDittrich/WordPress.Enlighter/issues/61">eliottrobson on GitHub</a></li>
 </ul>
