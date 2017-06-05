@@ -1,5 +1,9 @@
 ## Changelog ##
 
+### 3.5 ###
+* Added: [EnlighterJS v2.11.0](http://enlighterjs.org/)
+* Added: Kotlin Language Support
+
 ### 3.4 ###
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) **v3.2.0**
 * Added: Fault tolerant initialization code including debug messages (`console.log` output) - this will also avoid javascript initialization errors

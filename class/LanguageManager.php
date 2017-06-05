@@ -22,6 +22,7 @@ class LanguageManager{
     // list of build-in languages
     // Format: Description => Name
     private static $_languages = array(
+        'Generic Highlighting' => 'generic',
         'CSS (Cascading Style Sheets)' => 'css',
         'HTML (Hypertext Markup Language)' => 'html',
         'Java' => 'java',
@@ -45,11 +46,11 @@ class LanguageManager{
         'VHDL' => 'vhdl',
         'Avr Assembly' => 'avrasm',
         'Generic Assembly' => 'asm',
+        'Kotline' => 'kotlin',
         'Squirrel' => 'squirrel',
         'Ini/Conf Syntax' => 'ini',
         'RAW Code' => 'raw',
-        'No Highlighting' => 'no-highlight',
-        'Generic Highlighting' => 'generic'
+        'No Highlighting' => 'no-highlight'
     );
 
     // fetch the language list
