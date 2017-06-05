@@ -46,7 +46,7 @@ class LanguageManager{
         'VHDL' => 'vhdl',
         'Avr Assembly' => 'avrasm',
         'Generic Assembly' => 'asm',
-        'Kotline' => 'kotlin',
+        'Kotlin' => 'kotlin',
         'Squirrel' => 'squirrel',
         'Ini/Conf Syntax' => 'ini',
         'RAW Code' => 'raw',
