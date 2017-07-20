@@ -1,8 +1,9 @@
 ## Changelog ##
 
 ### 3.5 ###
-* Added: [EnlighterJS v2.11.0](http://enlighterjs.org/)
+* Added: [EnlighterJS v2.11.1](http://enlighterjs.org/)
 * Added: Kotlin Language Support
+* Bugfix: Underscore not allowed in xml tags - thanks to [higginbg on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/72)
 
 ### 3.4 ###
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) **v3.2.0**
