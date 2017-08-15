@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.8
-Stable tag: 3.4
+Stable tag: 3.5
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -22,6 +22,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
+* Tab-Indentation mode to align code with the `tab` key (single line and block selection)
 * Markdown fenced code blocks
 * [bbPress](https://bbpress.org/) shortcode + markdown code blocks support
 * Shortcodes within content, comments and widgets
@@ -51,6 +52,7 @@ Click to view Language/Theme Examples
 * [JSON](http://enlighterjs.org/Language.JSON.html)
 * [Java](http://enlighterjs.org/Language.Java.html)
 * [Javascript](http://enlighterjs.org/Language.Javascript.html)
+* [Kotlin](https://enlighterjs.org/Language.Kotlin.html)
 * [LUA](http://enlighterjs.org/Language.LUA.html)
 * [MarkDown](http://enlighterjs.org/Language.MarkDown.html)
 * [Matlab](http://enlighterjs.org/Language.Matlab.html)

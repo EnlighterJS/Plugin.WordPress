@@ -164,7 +164,7 @@ class TinyMCE{
         $tinyMceConfigData['style_formats'] = json_encode($styles);
         
         // tab indentation mode enabled ?
-        if ($this->_config['editorTabIndendation']){
+        if ($this->_config['editorTabIndentation']){
             // remove tabfocus plugin
             $tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
         }
