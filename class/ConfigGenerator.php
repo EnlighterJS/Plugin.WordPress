@@ -84,6 +84,7 @@ class ConfigGenerator{
                 'language' => $this->_config['defaultLanguage'],
                 'linenumbers' => ($this->_config['linenumbers'] ? true : false),
                 'indent' => intval($this->_config['indent']),
+                'tabIndendation' => ($this->_config['editorTabIndendation'] ? true : false),
                 'quicktagMode' => $this->_config['editorQuicktagMode'],
                 'languageShortcode' => ($this->_config['languageShortcode'] ? true : false)
             )

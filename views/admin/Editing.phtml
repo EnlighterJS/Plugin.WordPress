@@ -99,10 +99,13 @@
         <p><?php _e('In addition to the code-insert button, Enlighter can add a set formats to the editor.', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displayCheckbox(__('Add Editor Formats', 'enlighter'), 'editorAddStyleFormats'); ?>
 
+        <?php _e('By default, the <kbd>tab</kbd> button does not add indentation to the content. Enlighter comes with its own editing plugin which allows you to use tabs within the Editor to align code.', 'enlighter'); ?><br />
+        <?php _e('This option disables the <strong>tabfocus plugin</strong> and requires that the Enlighter <code>indent</code> option has been set to spaces!', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Tab Indentation', 'enlighter'), 'editorTabIndendation'); ?>
+
         <!-- Codeblock Font Styles -->
         <h4><?php _e('Code-Block Styles', 'enlighter'); ?></h4>
         <p><?php _e('It is also possible to influence the code-block styles of the Visual-Editor. Maybe you like another background color or font-family.', 'enlighter'); ?></p>
-
 
         <?php
         // font family

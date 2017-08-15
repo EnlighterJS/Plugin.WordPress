@@ -164,7 +164,7 @@ class TinyMCE{
         $tinyMceConfigData['style_formats'] = json_encode($styles);
         
         // remove tabfocus plugin
-        //$tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
+        $tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
         
         return $tinyMceConfigData;
     }

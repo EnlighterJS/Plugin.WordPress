@@ -1,8 +1,10 @@
 ## Changelog ##
 
 ### 3.5 ###
-* Added: [EnlighterJS v2.11.1](http://enlighterjs.org/)
+* Added: [EnlighterJS v2.11.1](https://enlighterjs.org/)
+* Added: [EnlighterJS.TinyMCE Plugin v3.3.0](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)
 * Added: Kotlin Language Support
+* Added: Optional Tab-Indentation Mode to the Visual Editor to align content with the `tab` button
 * Bugfix: Underscore not allowed in xml tags - thanks to [higginbg on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/72)
 
 ### 3.4 ###
