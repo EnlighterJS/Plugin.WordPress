@@ -163,9 +163,12 @@ class TinyMCE{
         // apply modified style data
         $tinyMceConfigData['style_formats'] = json_encode($styles);
         
-        // remove tabfocus plugin
-        $tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
-        
+        // tab indentation mode enabled ?
+        if ($this->_config['editorTabIndendation']){
+            // remove tabfocus plugin
+            $tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
+        }
+
         return $tinyMceConfigData;
     }
 
