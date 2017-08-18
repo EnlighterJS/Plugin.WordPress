@@ -134,6 +134,7 @@ Please keep in mind that not all translations are up to date. You are welcome to
 * **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
 ### Related Links ###
+* [Enlighter Plugin Docs + Tutorials](https://github.com/AndiDittrich/WordPress.Enlighter/docs)
 * [Enlighter Plugin on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
 * [EnlighterJS Documentation](http://enlighterjs.org)
 
