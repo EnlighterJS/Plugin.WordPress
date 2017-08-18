@@ -35,6 +35,10 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
 * Webfont Loader to add missing Monospace Fonts to your website
 
+### Tutorials and Examples ###
+
+* [Enlighter Visual Editor Usage](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
+
 ### Supported Languages (build-in) ###
 Click to view Language/Theme Examples
 

@@ -1,7 +1,8 @@
-Enlighter Plugin HowTo
+Enlighter Visual Editor Tutorial
 =====================================
 
 > The important things first: please use the **Visual Editor Plugin** whenever possible - its **not recommended to use shortcodes** in the Visual Editor!
+> 
 > Shortcodes are designed to be used with the **Text Editor (HTML)** only!
 
 
@@ -98,3 +99,19 @@ this settings are available after the code-snippet has been added to the editor 
 7. Highlight a special line
 8. Click **OK**
 9. Publish your post!
+
+Codegroups
+------------------------------------------------------
+
+In some cases, your code example rely on a several different languages. For example **HTML**, **CSS** and **Javascript**. It can be helpful to group this snippets together.
+
+### Example ###
+
+![Define Codegoups](assets/enlighter_codegroup.gif)
+
+### Steps ###
+
+1. Add some code snippets to your post
+2. Click on the `Enlighter Code Settings` Button to edit a codeblock
+3. Add a `Codegroup Identifier` to each codeblock you want to group together (has to be **unique** for each group)
+4. Add an optional `Codegroup Title` to each codeblock - its used as the tabname
