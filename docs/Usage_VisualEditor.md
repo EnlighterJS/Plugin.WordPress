@@ -46,10 +46,13 @@ Sometime you already have some code within your posts you want to highlight. In 
 Align your code with <kbd>tab</kbd> key
 ------------------------------------------------------
 
-Enlighter 3.5 comes with its own tab-alignment addon which allows you to align your code directly within the editor.
+Enlighter 3.5 comes with its own tab-alignment addon which allows you to align your code directly within the editor (optional feature).
+
+**Requirement**: Set `Enlighter -> Editing -> Visual Editor -> Tweaks -> Enable Tab Indentation`
 
 * Move Right: Select code + press <kbd>tab</kbd> key
 * Move Left: Select code + press <kbd>shift</kbd>+<kbd>tab</kbd> key
+
 
 ![Highlight existing Code](assets/enlighter_tabindent.gif)
 

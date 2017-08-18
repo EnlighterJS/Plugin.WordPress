@@ -5,6 +5,8 @@ Tutorials
 ---------------------------------
 
 * [Enlighter Visual Editor Usage](Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
+* [Enlighter Markdown Usage](Usage_Markdown.md) - Use [GFM]() style fenced codeblocks
+* [Enlighter Visual Editor Live-Demo](https://tinymce.enlighterjs.org/)
 
 Developer Docs
 -----------------------

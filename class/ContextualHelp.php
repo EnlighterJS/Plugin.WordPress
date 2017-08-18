@@ -30,6 +30,12 @@ class ContextualHelp{
         $screen = get_current_screen();
 
         $screen->add_help_tab(array(
+            'id' => 'enlighter_ch_tutorials',
+            'title'    => __('Tutorials'),
+            'callback' => array($this, 'tutorials')
+        ));
+
+        $screen->add_help_tab(array(
             'id' => 'enlighter_ch_usage',
             'title'    => __('General Usage'),
             'callback' => array($this, 'generalUsage')
@@ -98,5 +104,8 @@ class ContextualHelp{
 
     public function markdown(){
         include(ENLIGHTER_PLUGIN_PATH.'/views/help/'.'markdown.en_EN.phtml');
+    }
+    public function tutorials(){
+        include(ENLIGHTER_PLUGIN_PATH.'/views/help/'.'tutorials.en_EN.phtml');
     }
 }

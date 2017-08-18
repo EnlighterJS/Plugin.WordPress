@@ -20,13 +20,13 @@ namespace Enlighter;
 class GfmFilter{
     
     // default fallback language
-    private $_defaultLanguaage;
+    private $_defaultLanguage;
 
     // cached code content
     private $_codeFragments = array();
 
     public function __construct($settingsUtil){
-        $this->_defaultLanguaage = $settingsUtil->getOption('gfmDefaultLanguage');
+        $this->_defaultLanguage = $settingsUtil->getOption('gfmDefaultLanguage');
     }
 
     private function getGfmRegex(){
@@ -57,13 +57,14 @@ class GfmFilter{
         '([^`]*)' .
 
         // closing tag
-        '`' .
+        '`'.
+        
+        // optional language identifier (non gfm standard)
+        '(?:([a-z]+)\b)?' .
 
         // ungreedy, case insensitive
-        '/Ui';
+        '/i';
     }
-
-
 
     // strip the content
     // internal regex function to replace gfm code sections with placeholders
@@ -80,7 +81,7 @@ class GfmFilter{
 
             // language given ? otherwise use default highlighting method
             if (strlen($lang) == 0){
-                $lang = $T->_defaultLanguaage;
+                $lang = $T->_defaultLanguage;
             }
 
             // generate code fragment
@@ -102,8 +103,13 @@ class GfmFilter{
         // Inline Code
         return preg_replace_callback($this->getInlineGfmRegex(), function ($match) use ($T){
 
-            // use default highlighting method
-            $lang = $T->_defaultLanguaage;
+            // default language
+            $lang = $T->_defaultLanguage;
+
+            // language given ? otherwise use default highlighting method
+            if (isset($match[2]) && strlen($match[2]) > 0){
+                $lang = $match[2];
+            }
 
             // generate code fragment
             $T->_codeFragments[] = array(
