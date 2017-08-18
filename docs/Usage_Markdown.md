@@ -13,23 +13,19 @@ Fenced Codeblocks are separated by **three backticks**. You can set the codebloc
 
 **Example**
 
-```markdown
+    `` ``` ``php
+    // generate code fragment
+    $T->_codeFragments[] = array(
+        // the language identifier
+        'lang' => $lang,
 
-`` ` ```` ` ```` ` ``php
-// generate code fragment
-$T->_codeFragments[] = array(
-    // the language identifier
-    'lang' => $lang,
+        // code to highlight
+        'code' => $match[1],
 
-    // code to highlight
-    'code' => $match[1],
-
-    // inline
-    'inline' => true
-);
-`` ` ```` ` ```` ` ``
-
-```
+        // inline
+        'inline' => true
+    );
+    `` ``` ``
 
 Standard Inline Code
 -------------------------------------
