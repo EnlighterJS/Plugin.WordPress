@@ -13,9 +13,9 @@ Fenced Codeblocks are separated by **three backticks**. You can set the codebloc
 
 **Example**
 
-```markdown
+`` ```markdown
 
-\`\`\`php
+```php
 // generate code fragment
 $T->_codeFragments[] = array(
     // the language identifier
@@ -27,9 +27,9 @@ $T->_codeFragments[] = array(
     // inline
     'inline' => true
 );
-\`\`\`
-
 ```
+
+``` ``
 
 Standard Inline Code
 -------------------------------------
