@@ -3,8 +3,8 @@ Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.7
-Stable tag: 3.4
+Tested up to: 4.8
+Stable tag: 3.5
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -22,6 +22,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
+* Tab-Indentation mode to align code with the `tab` key (single line and block selection)
 * Markdown fenced code blocks
 * [bbPress](https://bbpress.org/) shortcode + markdown code blocks support
 * Shortcodes within content, comments and widgets
@@ -33,6 +34,12 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Integrated CSS file caching (suitable for high traffic sites)
 * Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
 * Webfont Loader to add missing Monospace Fonts to your website
+
+= Tutorials and Examples =
+
+* [Enlighter Visual Editor Usage](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
+* [Enlighter Markdown Usage](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_Markdown.md) - Howto use Markdown fenced codeblocks
+* [Enlighter Visual Editor Live-Demo](https://tinymce.enlighterjs.org/)
 
 = Supported Languages (build-in) =
 Click to view Language/Theme Examples
@@ -51,6 +58,7 @@ Click to view Language/Theme Examples
 * [JSON](http://enlighterjs.org/Language.JSON.html)
 * [Java](http://enlighterjs.org/Language.Java.html)
 * [Javascript](http://enlighterjs.org/Language.Javascript.html)
+* [Kotlin](https://enlighterjs.org/Language.Kotlin.html)
 * [LUA](http://enlighterjs.org/Language.LUA.html)
 * [MarkDown](http://enlighterjs.org/Language.MarkDown.html)
 * [Matlab](http://enlighterjs.org/Language.Matlab.html)
@@ -132,6 +140,7 @@ Please keep in mind that not all translations are up to date. You are welcome to
 * **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
 = Related Links =
+* [Enlighter Plugin Docs + Tutorials](https://github.com/AndiDittrich/WordPress.Enlighter/docs)
 * [Enlighter Plugin on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
 * [EnlighterJS Documentation](http://enlighterjs.org)
 
@@ -258,6 +267,16 @@ In case you found a security issue in this plugin - please write a message **dir
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
+
+= 3.5 =
+* Added: Tab-Indentation Mode to the Visual Editor to align content with the `tab` key
+* Added: Kotlin Language Support
+* Added: GFM Markdown Inline language identifier syntax
+* Added: [EnlighterJS v2.11.1](https://enlighterjs.org/)
+* Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) **v3.3.1**
+* Added: [Tutorials](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs) and Developer docs
+* Bugfix: Underscore not allowed in xml tags - thanks to [higginbg on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/72)
+* Bugfix: Fixed invalid external links of the help section
 
 = 3.4 =
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) **v3.2.0**
