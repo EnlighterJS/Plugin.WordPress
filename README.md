@@ -38,6 +38,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 ### Tutorials and Examples ###
 
 * [Enlighter Visual Editor Usage](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
+* [Enlighter Markdown Usage](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_Markdown.md) - Howto use Markdown fenced codeblocks
 * [Enlighter Visual Editor Live-Demo](https://tinymce.enlighterjs.org/)
 
 ### Supported Languages (build-in) ###

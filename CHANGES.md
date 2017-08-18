@@ -6,7 +6,7 @@
 * Added: GFM Markdown Inline language identifier syntax
 * Added: [EnlighterJS v2.11.1](https://enlighterjs.org/)
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/AndiDittrich/EnlighterJS.TinyMCE)) **v3.3.1**
-* Added: [Tutorials](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_VisualEditor.md) and Developer docs
+* Added: [Tutorials](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs) and Developer docs
 * Bugfix: Underscore not allowed in xml tags - thanks to [higginbg on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/72)
 * Bugfix: Fixed invalid external links of the help section
 
