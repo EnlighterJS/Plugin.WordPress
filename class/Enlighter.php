@@ -103,7 +103,7 @@ class Enlighter{
                     nocache_headers();
 
                     // redirect to About Page
-                    wp_redirect('admin.php?page=Enlighter-About', 307);
+                    wp_redirect(admin_url('admin.php?page=Enlighter-About'), 307);
                     
                     exit;
                 }
