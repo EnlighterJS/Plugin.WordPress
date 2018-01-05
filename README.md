@@ -3,7 +3,7 @@ Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: 3.5
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT

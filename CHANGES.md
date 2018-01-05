@@ -1,5 +1,8 @@
 ## Changelog ##
 
+### 3.6-BETA 1 ###
+* Bugfix: **About-Page** redirect on plugin upgrade/activation may be cached by browsers - added nocache header; changed status code to `http-307`
+
 ### 3.5 ###
 * Added: Tab-Indentation Mode to the Visual Editor to align content with the `tab` key
 * Added: Kotlin Language Support
