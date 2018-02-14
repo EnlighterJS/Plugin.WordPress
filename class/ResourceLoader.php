@@ -216,6 +216,18 @@ class ResourceLoader{
         }
     }
 
+    // disable frontend scripts (in footer; resource optimization)
+    public function disableFrontendScripts(){
+        wp_dequeue_script('mootools-local');
+        wp_dequeue_script('mootools-google-cdn');
+        wp_dequeue_script('mootools-cloudfare-cdn');
+        wp_dequeue_script('mootools-jsdelivr-cdn');
+        wp_dequeue_script('enlighter-local');
+        wp_dequeue_script('enlighter-config');
+        wp_dequeue_script('enlighter-jetpack-infinitescroll');        
+        remove_action('wp_footer', array($this, 'appendInlineEnlighterConfig'), 30);
+    }
+
     // append javascript based config
     public function appendInlineEnlighterConfig(){
         $this->inlineScript($this->_jsConfigGenerator->getInitializationConfig());

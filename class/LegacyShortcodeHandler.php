@@ -27,6 +27,9 @@ class LegacyShortcodeHandler{
     
     // currently active codegroup
     private $_activeCodegroup;
+
+    // flag to indicate if shortcodes have been applied
+    public $_hasContent = false;
     
     public function __construct($settingsUtil, $languageShortcodes){
         // store local plugin config
@@ -161,6 +164,9 @@ class LegacyShortcodeHandler{
      * Generate HTML output (code within "pre"/"code"-tag including options)
      */
     private function generateCodeblock($attributes, $content, $tagname = 'pre'){
+        // set flag
+        $this->_hasContent = true;
+
         // generate "pre" wrapped html output
         $html = HtmlUtil::generateTag($tagname, $attributes, false);
         
@@ -193,5 +199,10 @@ class LegacyShortcodeHandler{
             // fallback: remove added tags - will work on most cases
             return str_replace(array('<br />', '<p>', '</p>'), array('', '', "\n"), $content);
         }
+    }
+
+    // check if shortcode have been applied
+    public function hasContent(){
+        return $this->_hasContent;
     }
 }

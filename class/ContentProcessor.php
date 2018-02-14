@@ -28,6 +28,9 @@ class ContentProcessor{
     // short code filter instance
     private $_shortcodeFilter;
 
+    // flag to indicate if shortcodes have been applied
+    public $_hasContent = false;
+
     public function __construct($settingsUtil, $languageShortcodes){
         // store local plugin config
         $this->_config = $settingsUtil->getOptions();
@@ -92,6 +95,20 @@ class ContentProcessor{
         foreach ($gfmSections as $section){
             $this->registerGfmFilterTarget($section);
         }
+
+        // dynamics resource incovation active ?
+        if ($this->_config['dynamicResourceInvocation']){
+            // PHP 5.3 compatibility
+            $T = $this;
+
+            // EnlighterJS Code detection
+            add_filter('the_content', function($content) use ($T){
+                // contains enlighterjs codeblocks ?
+                $T->_hasContent = (strpos($content, 'EnlighterJSRAW') !== false);
+
+                return $content;
+            }, 9999, 1);
+        }
     }
 
     // add content filter (strip + restore) to the given content section
@@ -110,5 +127,10 @@ class ContentProcessor{
 
         // add restore filter to the end of filter chain - placeholders are replaced with rendered html
         add_filter($name, array($this->_gfmFilter, 'renderFragments'), 9998, 1);
+    }
+
+    // check if shortcode have been applied
+    public function hasContent(){
+        return $this->_hasContent;
     }
 }

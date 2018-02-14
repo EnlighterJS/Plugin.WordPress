@@ -168,4 +168,5 @@ class GfmFilter{
         // add closing tag
         return $html.$content.'</'.$tagname.'>';
     }
+
 }

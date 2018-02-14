@@ -1,6 +1,7 @@
 ## Changelog ##
 
-### 3.6-BETA 1 ###
+### 3.6-BETA 2 ###
+* Added: Dynamics-Resource-Invocation (exprimental option) - Enlighter javascript dependencies are only loaded in case they are needed - features [requested on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/80)
 * Bugfix: **About-Page** redirect on plugin upgrade/activation may be cached by browsers - added nocache header; changed status code to `http-307`
 
 ### 3.5 ###

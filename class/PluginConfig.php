@@ -99,7 +99,9 @@ class PluginConfig{
         'extJetpackInfiniteScroll' => false,
 
         'bbpressShortcode' => false,
-        'bbpressMarkdown' => false
+        'bbpressMarkdown' => false,
+
+        'dynamicResourceInvocation' => false
     );
     
     public static function getDefaults(){

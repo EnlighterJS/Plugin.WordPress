@@ -197,6 +197,23 @@ class Enlighter{
         // load frontend css+js resources - highlighting engine
         $this->_resourceLoader->frontendEnlighter();
 
+        // frontend resource optimization ?
+        if ($this->_settingsUtility->getOption('dynamicResourceInvocation')){
+            // php 5.3 compatibility
+            $T = $this;
+
+            // deregister footer scripts
+            add_action('wp_footer', function() use ($T){
+                // enlighter codeblocks active within current page ?
+                $enlighterCodeFound = $T->_contentProcessor->hasContent() || ($T->_shortcodeHandler !== null && $T->_shortcodeHandler->hasContent());
+
+                // disable
+                if ($enlighterCodeFound === false){
+                    $T->_resourceLoader->disableFrontendScripts();
+                }
+            }, 1);
+        }
+
         // check frontend user privileges
         $canEdit = is_user_logged_in() && (current_user_can('edit_posts') || current_user_can('edit_pages'));
 
