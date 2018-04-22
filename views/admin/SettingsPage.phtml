@@ -24,11 +24,13 @@
 
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="EnlighterTabNav">
-	<a data-tab="EnlighterTabAppearance" class="nav-tab"><?php _e('Appearance', 'enlighter'); ?></a>
-	<a data-tab="EnlighterTabThemeCustomizer" class="nav-tab" id="EnlighterTabhandleThemeCustomizer"><?php _e('Theme Customizer', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabEditing" class="nav-tab"><?php _e('Editing', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabAppearance" class="nav-tab"><?php _e('Appearance', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabThemeCustomizer" class="nav-tab" id="EnlighterTabhandleThemeCustomizer"><?php _e('Theme Customizer', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabVisualEditing" class="nav-tab"><?php _e('Visual Editor', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTextEditing" class="nav-tab"><?php _e('Text Editor', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabWebfonts" class="nav-tab"><?php _e('Webfonts', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabExtensions" class="nav-tab"><?php _e('Extensions', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabCompatibility" class="nav-tab"><?php _e('Compatibility', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabOptions" class="nav-tab"><?php _e('Options', 'enlighter'); ?></a>
 </h2>
 
@@ -38,51 +40,59 @@
 
 <!-- settings !-->
 <form method="post" action="options.php">
-	<?php settings_fields('enlighter-settings-group' ); ?>
-	<!-- #poststuff -->
-	<div id="poststuff">
+    <?php settings_fields('enlighter-settings-group' ); ?>
+    <!-- #poststuff -->
+    <div id="poststuff">
 
 <!-- 2 Column Layout -->
 <div id="post-body" class="metabox-holder columns-2">
-	<div id="post-body-content">
-	 
-		<div id="EnlighterTabAppearance">
-		<?php require ('Appearance.phtml'); ?>
-		</div>
-		
-		<div id="EnlighterTabThemeCustomizer">
-		<?php require ('ThemeCustomizer.phtml'); ?>
-		</div>
+    <div id="post-body-content">
+     
+        <div id="EnlighterTabAppearance">
+        <?php require ('Appearance.phtml'); ?>
+        </div>
+        
+        <div id="EnlighterTabThemeCustomizer">
+        <?php require ('ThemeCustomizer.phtml'); ?>
+        </div>
 
         <div id="EnlighterTabWebfonts">
             <?php require ('Webfonts.phtml'); ?>
         </div>
 
-        <div id="EnlighterTabEditing">
-            <?php require ('Editing.phtml'); ?>
+        <div id="EnlighterTabVisualEditing">
+            <?php require ('VisualEditing.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabTextEditing">
+            <?php require ('TextEditing.phtml'); ?>
         </div>
 
         <div id="EnlighterTabExtensions">
             <?php require ('Extensions.phtml'); ?>
         </div>
 
-		<div id="EnlighterTabOptions">
-		<?php require ('Options.phtml'); ?>
-		</div>
+        <div id="EnlighterTabCompatibility">
+            <?php require ('Compatibility.phtml'); ?>
+        </div>
 
-		<!-- submit !-->
-	    <?php submit_button(); ?>
+        <div id="EnlighterTabOptions">
+        <?php require ('Options.phtml'); ?>
+        </div>
+
+        <!-- submit !-->
+        <?php submit_button(); ?>
 
     </div>
     <!-- // MAIN COLUMN -->
-	
-	<!-- Right Column -->
-	<div id="postbox-container-1" class="postbox-container">
-		<?php require('SystemInfo.phtml'); ?>
-		<?php require('Related.phtml'); ?>
-	</div>
-	<!-- // Right Column -->
-	
+    
+    <!-- Right Column -->
+    <div id="postbox-container-1" class="postbox-container">
+        <?php require('SystemInfo.phtml'); ?>
+        <?php require('Related.phtml'); ?>
+    </div>
+    <!-- // Right Column -->
+    
 </div>
 <!-- // 2 Column Layout -->
 
@@ -94,7 +104,7 @@
 <hr />
 
 <p class="credits">
-<a href="http://enlighterjs.org">The Enlighter Plugin</a> <?php _e('is developed by', 'enlighter'); ?> <a href="http://andidittrich.de">Andi Dittrich</a>.
+<a href="https://enlighterjs.org">The Enlighter Plugin</a> <?php _e('is developed by', 'enlighter'); ?> <a href="https://andidittrich.de">Andi Dittrich</a>.
 <?php printf(__('It`s released under the terms of the %s. ', 'enlighter'), '<a href="#TB_inline?width=800&height=550&inlineId=enlighter-license" class="thickbox">'.__('MIT X11 License', 'enlighter').'</a>'); ?> | 
 Includes: <a href="http://mootools.net">MooTools Javascript Framework</a> - MIT <?php _e('License', 'enlighter'); ?>;
 <a href="http://www.eyecon.ro/colorpicker/">Colorpicker</a> <?php _e('by', 'enlighter'); ?> <a href="http://www.eyecon.ro">Stefan Petre</a> - MIT/GPL <?php _e('License', 'enlighter'); ?>; 

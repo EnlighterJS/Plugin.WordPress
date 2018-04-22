@@ -1,8 +1,10 @@
 ## Changelog ##
 
-### 3.6-BETA 2 ###
+### 3.6-BETA 3 ###
 * Added: Dynamics-Resource-Invocation (exprimental option) - Enlighter javascript dependencies are only loaded in case they are needed - features [requested on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/80)
+* Added: Compatibility Mode to convert legacy codeblocks (e.g. Jetpack Markdown) to Enlighter recognizable code
 * Bugfix: **About-Page** redirect on plugin upgrade/activation may be cached by browsers - added nocache header; changed status code to `http-307`
+* Changed: splitted the settings page (editing section) into visual-editor and text-editor
 
 ### 3.5 ###
 * Added: Tab-Indentation Mode to the Visual Editor to align content with the `tab` key
