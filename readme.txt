@@ -3,7 +3,7 @@ Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: http://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: 3.5
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
@@ -267,6 +267,14 @@ In case you found a security issue in this plugin - please write a message **dir
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
 == Changelog ==
+
+= 3.6 =
+* Added: Dynamics-Resource-Invocation (exprimental option) - Enlighter javascript dependencies are only loaded in case they are needed - features [requested on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/80)
+* Added: Compatibility Mode to convert legacy codeblocks (e.g. Jetpack Markdown) to Enlighter recognizable code
+* Added: [EnlighterJS v2.12.0](http://enlighterjs.org/)
+* Added: language domain path to plugin entry file (used by the WordPress plugin registry)
+* Bugfix: **About-Page** redirect on plugin upgrade/activation may be cached by browsers - added nocache header; changed status code to `http-307`
+* Changed: splitted the settings page (editing section) into visual-editor and text-editor
 
 = 3.5 =
 * Added: Tab-Indentation Mode to the Visual Editor to align content with the `tab` key

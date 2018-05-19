@@ -1,8 +1,10 @@
 ## Changelog ##
 
-### 3.6-BETA 3 ###
+### 3.6 ###
 * Added: Dynamics-Resource-Invocation (exprimental option) - Enlighter javascript dependencies are only loaded in case they are needed - features [requested on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues/80)
 * Added: Compatibility Mode to convert legacy codeblocks (e.g. Jetpack Markdown) to Enlighter recognizable code
+* Added: [EnlighterJS v2.12.0](http://enlighterjs.org/)
+* Added: language domain path to plugin entry file (used by the WordPress plugin registry)
 * Bugfix: **About-Page** redirect on plugin upgrade/activation may be cached by browsers - added nocache header; changed status code to `http-307`
 * Changed: splitted the settings page (editing section) into visual-editor and text-editor
 
