@@ -32,6 +32,7 @@ class LanguageManager{
         'PHP' => 'php',
         'Python' => 'python',
         'Ruby' => 'ruby',
+        'Batch MS-DOS' => 'msdos',
         'Shell Script' => 'shell',
         'SQL' => 'sql',
         'XML' => 'xml',

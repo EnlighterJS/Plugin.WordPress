@@ -94,7 +94,7 @@
     </target>
 
     <!-- WP Release Copy !-->
-    <target name="wp-release" depends="themes, webfonts, potgen, readme, changelog">
+    <target name="wp-release">
         <input message="Enter release version" addproperty="release.version"/>
 
         <!-- Set Tag path !-->
@@ -128,7 +128,9 @@
                 </copy>
 
                 <!-- copy readme to trunk !-->
-                <copy file="readme.txt" todir="${svn.tag.path}" />
+                <copy file="readme.txt" todir="${svn.trunk.path}" />
+
+                <!-- add tag to svn --- svn add --parents   !->
             </else>
         </if>
 
