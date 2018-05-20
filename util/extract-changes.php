@@ -18,7 +18,7 @@ if (count($matches) != 2){
 }
 
 // render html using the GitHub GFM API
-$html = renderGFM($matches[1], 'AndiDittrich/WordPress.Enlighter');
+$html = renderGFM($matches[1], 'EnlighterJS/Plugin.WordPress');
 
 // store content
 file_put_contents('views/admin/Changes.html', $html);

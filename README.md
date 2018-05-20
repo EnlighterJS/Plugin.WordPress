@@ -1,10 +1,10 @@
 # Enlighter - Customizable Syntax Highlighter #
 Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
-Donate link: http://enlighterjs.org
+Donate link: https://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.9
-Stable tag: 3.5
+Stable tag: 3.6
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -37,8 +37,8 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 
 ### Tutorials and Examples ###
 
-* [Enlighter Visual Editor Usage](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
-* [Enlighter Markdown Usage](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/Usage_Markdown.md) - Howto use Markdown fenced codeblocks
+* [Enlighter Visual Editor Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
+* [Enlighter Markdown Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_Markdown.md) - Howto use Markdown fenced codeblocks
 * [Enlighter Visual Editor Live-Demo](https://tinymce.enlighterjs.org/)
 
 ### Supported Languages (build-in) ###
@@ -140,8 +140,8 @@ Please keep in mind that not all translations are up to date. You are welcome to
 * **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
 ### Related Links ###
-* [Enlighter Plugin Docs + Tutorials](https://github.com/AndiDittrich/WordPress.Enlighter/docs)
-* [Enlighter Plugin on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter)
+* [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/Plugin.WordPress/docs)
+* [Enlighter Plugin on GitHub](https://github.com/EnlighterJS/Plugin.WordPress)
 * [EnlighterJS Documentation](http://enlighterjs.org)
 
 ## Compatibility ##

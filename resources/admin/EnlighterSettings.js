@@ -17,7 +17,7 @@
     jQuery(document).ready(function () {
         // show developer message
         if (c.info) {
-            c.info('You like to look under the hood? Enlighter is OpenSource, you are welcome to contribute! https://github.com/AndiDittrich/WordPress.Enlighter');
+            c.info('You like to look under the hood? Enlighter is OpenSource, you are welcome to contribute! https://github.com/EnlighterJS/Plugin.WordPress');
         }
 
         // initialize tooltipps

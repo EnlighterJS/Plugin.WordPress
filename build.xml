@@ -99,6 +99,7 @@
 
         <!-- Set Tag path !-->
         <property name="svn.tag.path" value="../svn/tags/${release.version}" />
+        <property name="svn.trunk.path" value="../svn/trunk" />
 
         <if>
             <available file="${svn.tag.path}" type="dir"/>
@@ -125,6 +126,9 @@
                         <include name="LICENSE" />
                     </fileset>
                 </copy>
+
+                <!-- copy readme to trunk !-->
+                <copy file="readme.txt" todir="${svn.tag.path}" />
             </else>
         </if>
 

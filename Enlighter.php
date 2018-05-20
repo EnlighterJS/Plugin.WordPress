@@ -4,7 +4,7 @@
     Plugin URI: https://enlighterjs.org
     Domain Path: /lang
     Description: Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor.
-    Version: 3.6-BETA4
+    Version: 3.6
     Author: Andi Dittrich
     Author URI: https://andidittrich.de
     License: MIT X11-License
@@ -23,7 +23,7 @@
 */
 
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '3.6-BETA4');
+define('ENLIGHTER_VERSION', '3.6');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
 define('ENLIGHTER_PLUGIN_URL', plugins_url('/enlighter/'));
 

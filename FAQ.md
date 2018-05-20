@@ -43,10 +43,10 @@ If you are already using MooTools on your page, you have to disable the automati
 **Note:** EnlighterJS requires MooTools > 1.4
 
 ### Can Enlighter by disabled on selected pages? ###
-Of course, the filter hook [enlighter_startup](https://github.com/AndiDittrich/WordPress.Enlighter/blob/master/docs/FilterHooks.md) can be used to terminate the plugin initialization
+Of course, the filter hook [enlighter_startup](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/FilterHooks.md) can be used to terminate the plugin initialization
 
 ### Security Vulnerabilities ###
 In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.de/contact) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
 
 ### I miss some features / I found a bug ###
-Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/AndiDittrich/WordPress.Enlighter/issues)
+Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
