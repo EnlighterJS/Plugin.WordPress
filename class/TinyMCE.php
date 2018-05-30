@@ -197,9 +197,9 @@ class TinyMCE{
 
             // generate codeblock title name
             $title = apply_filters('enlighter_codeblock_title', $defaultTitle, $lang, $name);
-
+            
             // generate css rule
-            $styles .= 'pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before{content: "'. $title .'"}';
+            $styles .= 'pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before{content: "'. addslashes($title) .'"}';
         }
 
         // Automatic Editor width
