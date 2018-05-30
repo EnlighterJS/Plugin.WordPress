@@ -1,12 +1,13 @@
 ## Changelog ##
 
-### 3.7 ###
+### 3.7-BETA3 ###
 
 * Added: msdos language support (EnlighterJS v2.12.0) - thanks to [audioscavenger on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/33/commits)
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)) **v3.4.0**
 * Added: EnlighterJS label to codeblocks (bottom-right)
 * Added: EnlighterJS.TinyMCE version to the settings page
 * Added: filter `enlighter_codeblock_title` to set custom codeblock titles - requested by [w3215 on WordPress.org Forums](https://wordpress.org/support/topic/remove-branding-on-toolbar/)
+* Added: environment warning in case smileys are enabled (wordpress core option `use_smilies`) - thanks to [barmen on WordPress.org Forums](https://wordpress.org/support/topic/problem-add-smile-and-url/#post-10341049)
 * Changed: Renamed the toolbar-button labels (`Code Insert`, `Code Settings`) - requested by [w3215 on WordPress.org Forums](https://wordpress.org/support/topic/remove-branding-on-toolbar/)
 * Changed: Renamed the dialog window titles - requested by [w3215 on WordPress.org Forums](https://wordpress.org/support/topic/remove-branding-on-toolbar/)
 * Bugfix: code edit button on codeblocks was broken (settings not saved) - thanks to [Sarah1101 on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/101)
