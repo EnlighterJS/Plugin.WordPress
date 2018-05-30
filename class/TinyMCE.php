@@ -191,7 +191,15 @@ class TinyMCE{
 
         // generate language titles
         foreach ($this->_supportedLanguageKeys as $name => $lang){
-            $styles .= 'pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before{content: "Enlighter: '. $name .'"}';
+
+            // default title
+            $defaultTitle = 'Enlighter: ' . $name;
+
+            // generate codeblock title name
+            $title = apply_filters('enlighter_codeblock_title', $defaultTitle, $lang, $name);
+
+            // generate css rule
+            $styles .= 'pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before{content: "'. $title .'"}';
         }
 
         // Automatic Editor width
