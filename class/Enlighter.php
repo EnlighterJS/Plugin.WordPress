@@ -334,6 +334,21 @@ class Enlighter{
         }
     }
 
+    // gets the current EnlighterJS.TinyMCE version from js file
+    public static function getEnlighterJSTinyMCEVersion(){
+        $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/editor/EnlighterJS.TinyMCE.min.js');
+
+        // extract version
+        $r = preg_match('#^[\S\s]+ (\d.\d+.\d+)#U', $content, $matches);
+
+        // valid result ?
+        if ($r!==1){
+            return 'NaN';
+        }else{
+            return $matches[1];
+        }
+    }
+
     // plugin upgrade notification
     public function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
         // check "upgrade_notice"

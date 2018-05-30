@@ -129,8 +129,6 @@
 
                 <!-- copy readme to trunk !-->
                 <copy file="readme.txt" todir="${svn.trunk.path}" />
-
-                <!-- add tag to svn --- svn add --parents   !->
             </else>
         </if>
 
