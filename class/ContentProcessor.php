@@ -135,6 +135,9 @@ class ContentProcessor{
             $this->registerCompatibilityFilterTarget($section);
         }
 
+        // ------------------------------------
+        // ---------- DRI DETECTOR  -----------
+
         // dynamics resource incovation active ?
         if ($this->_config['dynamicResourceInvocation']){
             // PHP 5.3 compatibility
@@ -168,7 +171,7 @@ class ContentProcessor{
         add_filter($name, array($this->_gfmFilter, 'renderFragments'), 9998, 1);
     }
 
-    // add content filter (strip + restore) to the given content section
+    // add content filter to the given content section
     public function registerCompatibilityFilterTarget($name){
         // add content filter to first position - replaces all enlighter shortcodes with placeholders
         add_filter($name, array($this->_compatFilter, 'stripCodeFragments'), 0, 1);

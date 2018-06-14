@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: https://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.9
-Stable tag: 3.6
+Stable tag: 3.7
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -15,7 +15,7 @@ Simple post syntax-highlighted code using the EnlighterJS Javascript Plugin.
 Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. It's build in PHP and uses the MooTools(Javascript) based [EnlighterJS](http://enlighterjs.org) to provide a beautiful code-appearance.
 Using it can be as simple as selecting an editor style or adding shortcode around your scripts which you want to highlight and Enlighter takes care of the rest. An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-[Theme Demo](http://enlighterjs.org/Theme.Enlighter.html "EnlighterJS Theme Browser") - [Language Examples](http://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
+[Theme Demo](https://enlighterjs.org/Theme.Enlighter.html "EnlighterJS Theme Browser") - [Language Examples](https://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
 
 = Plugin Features =
 * Support for all common used languages including powerful generic highlighting
@@ -44,35 +44,35 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 = Supported Languages (build-in) =
 Click to view Language/Theme Examples
 
-* [AVR Assembly](http://enlighterjs.org/Language.AVR-Assembly.html)
-* [Generic Assembly](http://enlighterjs.org/Language.Assembly.html)
-* [C](http://enlighterjs.org/Language.C.html)
-* [CSS](http://enlighterjs.org/Language.CSS.html)
-* [C#](http://enlighterjs.org/Language.CSharp.html)
-* [C++](http://enlighterjs.org/Language.Cpp.html)
-* [Cython](http://enlighterjs.org/Language.Cython.html)
-* [Diff](http://enlighterjs.org/Language.Diff.html)
-* [Generic](http://enlighterjs.org/Language.Generic.html)
-* [HTML](http://enlighterjs.org/Language.HTML.html)
-* [Ini](http://enlighterjs.org/Language.Ini.html)
-* [JSON](http://enlighterjs.org/Language.JSON.html)
-* [Java](http://enlighterjs.org/Language.Java.html)
-* [Javascript](http://enlighterjs.org/Language.Javascript.html)
+* [AVR Assembly](https://enlighterjs.org/Language.AVR-Assembly.html)
+* [Generic Assembly](https://enlighterjs.org/Language.Assembly.html)
+* [C](https://enlighterjs.org/Language.C.html)
+* [CSS](https://enlighterjs.org/Language.CSS.html)
+* [C#](https://enlighterjs.org/Language.CSharp.html)
+* [C++](https://enlighterjs.org/Language.Cpp.html)
+* [Cython](https://enlighterjs.org/Language.Cython.html)
+* [Diff](https://enlighterjs.org/Language.Diff.html)
+* [Generic](https://enlighterjs.org/Language.Generic.html)
+* [HTML](https://enlighterjs.org/Language.HTML.html)
+* [Ini](https://enlighterjs.org/Language.Ini.html)
+* [JSON](https://enlighterjs.org/Language.JSON.html)
+* [Java](https://enlighterjs.org/Language.Java.html)
+* [Javascript](https://enlighterjs.org/Language.Javascript.html)
 * [Kotlin](https://enlighterjs.org/Language.Kotlin.html)
-* [LUA](http://enlighterjs.org/Language.LUA.html)
-* [MarkDown](http://enlighterjs.org/Language.MarkDown.html)
-* [Matlab](http://enlighterjs.org/Language.Matlab.html)
-* [NSIS](http://enlighterjs.org/Language.NSIS.html)
-* [PHP](http://enlighterjs.org/Language.PHP.html)
-* [Python](http://enlighterjs.org/Language.Python.html)
-* [RAW](http://enlighterjs.org/Language.RAW.html)
-* [Ruby](http://enlighterjs.org/Language.Ruby.html)
-* [Rust](http://enlighterjs.org/Language.Rust.html)
-* [SQL](http://enlighterjs.org/Language.SQL.html)
-* [Squirrel](http://enlighterjs.org/Language.Squirrel.html)
-* [Shell](http://enlighterjs.org/Language.Shell.html)
-* [VHDL](http://enlighterjs.org/Language.VHDL.html)
-* [XML](http://enlighterjs.org/Language.XML.html)
+* [LUA](https://enlighterjs.org/Language.LUA.html)
+* [MarkDown](https://enlighterjs.org/Language.MarkDown.html)
+* [Matlab](https://enlighterjs.org/Language.Matlab.html)
+* [NSIS](https://enlighterjs.org/Language.NSIS.html)
+* [PHP](https://enlighterjs.org/Language.PHP.html)
+* [Python](https://enlighterjs.org/Language.Python.html)
+* [RAW](https://enlighterjs.org/Language.RAW.html)
+* [Ruby](https://enlighterjs.org/Language.Ruby.html)
+* [Rust](https://enlighterjs.org/Language.Rust.html)
+* [SQL](https://enlighterjs.org/Language.SQL.html)
+* [Squirrel](https://enlighterjs.org/Language.Squirrel.html)
+* [Shell](https://enlighterjs.org/Language.Shell.html)
+* [VHDL](https://enlighterjs.org/Language.VHDL.html)
+* [XML](https://enlighterjs.org/Language.XML.html)
 
 = Shortcode Quickstart Example =
 Highlight javascript code (theme defined on your settings page)
@@ -200,7 +200,7 @@ Bugfix Release (TinyMCE and EnlighterJS Core)
 
 = 2.6 =
 Renamed the EnlighterJS files to `EnlighterJS.min.css` and `EnlighterJS.min.js`. In case you have applied custom modifications these changes may broke your setup and you need to change it!
-Added [EnlighterJS v2.5](http://enlighterjs.org/) with some optimization.
+Added [EnlighterJS v2.5](https://enlighterjs.org/) with some optimization.
 
 = 2.4 =
 Removed WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 including TinyMCE 4
@@ -267,6 +267,18 @@ In case you found a security issue in this plugin - please write a message **dir
 = I miss some features / I found a bug =
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
 == Changelog ==
+
+= 3.7 =
+
+* Added: msdos language support (EnlighterJS v2.12.0) - thanks to [audioscavenger on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/33/commits)
+* Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)) **v3.4.0**
+* Added: EnlighterJS label to codeblocks (bottom-right)
+* Added: EnlighterJS.TinyMCE version to the settings page
+* Added: filter `enlighter_codeblock_title` to set custom codeblock titles - requested by [w3215 on WordPress.org Forums](https://wordpress.org/support/topic/remove-branding-on-toolbar/)
+* Added: environment warning in case smileys are enabled (wordpress core option `use_smilies`) - thanks to [barmen on WordPress.org Forums](https://wordpress.org/support/topic/problem-add-smile-and-url/#post-10341049)
+* Changed: Renamed the toolbar-button labels (`Code Insert`, `Code Settings`) - requested by [w3215 on WordPress.org Forums](https://wordpress.org/support/topic/remove-branding-on-toolbar/)
+* Changed: Renamed the dialog window titles - requested by [w3215 on WordPress.org Forums](https://wordpress.org/support/topic/remove-branding-on-toolbar/)
+* Bugfix: code edit button on codeblocks was broken (settings not saved) - thanks to [Sarah1101 on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/101)
 
 = 3.6 =
 * Added: Dynamics-Resource-Invocation (exprimental option) - Enlighter javascript dependencies are only loaded in case they are needed - features [requested on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/80)

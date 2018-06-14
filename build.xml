@@ -5,7 +5,7 @@
     <!-- ANT-contrib !-->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 
-    <target name="full" depends="potgen, readme, changelog, webfonts, themes, languages, devcopy"/>
+    <target name="full" depends="potgen, readme, changelog, webfonts, themes, languages, devcopy, dist"/>
 
     <!-- "Compile" po language support files !-->
     <target name="languages">
@@ -93,8 +93,46 @@
         </apply>
     </target>
 
+    <!-- run plugin within wordpress wpdev container !-->
+    <target name="dev" depends="dist">
+        <!-- Credentials, Host Settings !-->
+        <loadproperties srcFile=".credentials/wordpress.conf" prefix="WP"/>
+
+        <!-- Build Docker Image !-->
+        <exec executable="docker" failonerror="true">
+            <arg line="build -t enlighter-test -f Dockerfile ."/>
+        </exec>
+
+        <!-- Run Webserver !-->
+        <exec executable="docker" failonerror="true">
+            <arg line="run --name enlighter-test -p 8080:8080 --rm -e WP_DSN=${WP.DSN} --interactive enlighter-test"/>
+        </exec>
+    </target>
+
+    <!-- Create Dist copy !-->
+    <target name="dist">
+        <!-- cleanup !-->
+        <delete dir="dist"/>
+        <mkdir dir="dist"/>
+
+        <!-- Copy Plugin !-->
+        <copy todir="dist">
+            <fileset dir=".">
+                <include name="cache/**" />
+                <include name="class/**" />
+                <include name="docs/**" />
+                <include name="lang/**" />
+                <include name="resources/**" />
+                <include name="views/**" />
+                <include name="Enlighter.php" />
+                <include name="readme.txt" />
+                <include name="LICENSE" />
+            </fileset>
+        </copy>
+    </target>
+
     <!-- WP Release Copy !-->
-    <target name="wp-release">
+    <target name="wp-release" depends="dist">
         <input message="Enter release version" addproperty="release.version"/>
 
         <!-- Set Tag path !-->
@@ -112,19 +150,9 @@
                 <!-- Create Tag !-->
                 <mkdir dir="${svn.tag.path}"/>
 
-                <!-- Copy Plugin !-->
+                <!-- Copy Tag !-->
                 <copy todir="${svn.tag.path}">
-                    <fileset dir=".">
-                        <include name="cache/**" />
-                        <include name="class/**" />
-                        <include name="docs/**" />
-                        <include name="lang/**" />
-                        <include name="resources/**" />
-                        <include name="views/**" />
-                        <include name="Enlighter.php" />
-                        <include name="readme.txt" />
-                        <include name="LICENSE" />
-                    </fileset>
+                    <fileset dir="dist"/>
                 </copy>
 
                 <!-- copy readme to trunk !-->

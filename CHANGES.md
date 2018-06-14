@@ -1,6 +1,6 @@
 ## Changelog ##
 
-### 3.7-BETA3 ###
+### 3.7 ###
 
 * Added: msdos language support (EnlighterJS v2.12.0) - thanks to [audioscavenger on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/33/commits)
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)) **v3.4.0**

@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-05-20 11:22:52+00:00\n"
+"POT-Creation-Date: 2018-06-14 08:32:03+00:00\n"
 "PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  3.6\n"
+"Project-Id-Version: Enlighter  3.7\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -66,10 +66,14 @@ msgid "Option <code>use_balanceTags</code> is enabled - this option is <strong>D
 msgstr ""
 
 #: class/EnvironmentCheck.php:61
+msgid "Option <code>use_smilies</code> is enabled. Legacy smiley sequences like :) are replaced by images which also affects posted sourcecode."
+msgstr ""
+
+#: class/EnvironmentCheck.php:66
 msgid "Plugin \"Crayon Syntax Highlighter\" is enabled - it may take over the Enlighter pre elements - highlighting will not work!"
 msgstr ""
 
-#: class/EnvironmentCheck.php:70
+#: class/EnvironmentCheck.php:75
 msgid "Autoset Permissions failed - Please change the directory permission (chmod <code>0644</code> or <code>0777</code>) manually!"
 msgstr ""
 
@@ -598,44 +602,48 @@ msgstr ""
 msgid "EnlighterJS Version:"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:22 views/admin/SystemInfo.phtml:24
+#: views/admin/SystemInfo.phtml:21
+msgid "TinyMCE Extension:"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:25 views/admin/SystemInfo.phtml:27
 msgid "Cache writeable"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:22
+#: views/admin/SystemInfo.phtml:25
 msgid "true"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:24
+#: views/admin/SystemInfo.phtml:27
 msgid "false"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:29 views/admin/SystemInfo.phtml:31
+#: views/admin/SystemInfo.phtml:32 views/admin/SystemInfo.phtml:34
 msgid "JSON Extension"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:29
+#: views/admin/SystemInfo.phtml:32
 msgid "installed"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:31
+#: views/admin/SystemInfo.phtml:34
 msgid "not installed"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:37 views/admin/SystemInfo.phtml:39
-#: views/admin/SystemInfo.phtml:41
+#: views/admin/SystemInfo.phtml:40 views/admin/SystemInfo.phtml:42
+#: views/admin/SystemInfo.phtml:44
 msgid "Shortcode Processor"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:37
+#: views/admin/SystemInfo.phtml:40
 msgid "disabled"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:39
+#: views/admin/SystemInfo.phtml:42
 msgid "WordPress internal"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:41
+#: views/admin/SystemInfo.phtml:44
 msgid "Enlighter low-level"
 msgstr ""
 
