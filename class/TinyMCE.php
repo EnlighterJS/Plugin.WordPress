@@ -51,22 +51,26 @@ class TinyMCE{
         if (!version_compare(get_bloginfo('version'), '3.9', '>=')) {
             return;
         }
+
+        // filter priority
+        $priority = 101;
+
         // primary buttons (edit, insert) of the Visual Editor integration
-        add_filter('mce_buttons', array($this, 'addButtons1'), 101);
+        add_filter('mce_buttons', array($this, 'addButtons1'), $priority, 1);
 
         // load tinyMCE styles
-        add_filter('mce_css', array($this, 'loadEditorCSS'));
+        add_filter('mce_css', array($this, 'loadEditorCSS'), $priority, 1);
 
         // load tinyMCE enlighter plugin
-        add_filter('mce_external_plugins', array($this, 'loadPlugin'));
+        add_filter('mce_external_plugins', array($this, 'loadPlugin'), $priority, 1);
 
         // add pre-formatted styles ?
         if ($this->_config['editorAddStyleFormats']){
             // add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
-            add_filter('mce_buttons_2', array($this, 'addButtons2'), 101);
+            add_filter('mce_buttons_2', array($this, 'addButtons2'), $priority);
 
             // add filter to add custom formats (TinyMCE 4; requires WordPress 3.9) - low priority to avoid conflicts with other plugins which try to overwrite the settings
-            add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), 101);
+            add_filter('tiny_mce_before_init', array($this, 'insertFormats4'), $priority);
         }
     }
     

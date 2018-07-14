@@ -105,7 +105,7 @@
 
         <!-- Run Webserver !-->
         <exec executable="docker" failonerror="true">
-            <arg line="run --name enlighter-test -p 8080:8080 --rm -e WP_DSN=${WP.DSN} --interactive enlighter-test"/>
+            <arg line="run --name enlighter-test -p 8080:8080 --rm -e WP_DSN=${WP.DSN} -i enlighter-test"/>
         </exec>
     </target>
 
