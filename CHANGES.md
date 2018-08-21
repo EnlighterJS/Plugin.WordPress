@@ -1,5 +1,43 @@
 ## Changelog ##
 
+### 4.0 ###
+
+**Note: This release is NOT BACKWARD COMPATIBLE. Custom themes will be lost**
+
+**EnlighterJS v3 has been released - new themes + new highlighting engine**
+
+* Replaced MooTools Framework by native code - requires IE >= 10
+* **NEW Highlighting Engines** - every language support file has been rewritten
+* New Tokenizer Engine including a two stage analyzer
+* Excessive Performance Optimizations
+* Added: [EnlighterJS v3](https://enlighterjs.org/)
+* Added: docker based development mode
+* Added: ECMA6 Support to Javascript Engine
+* Added: Copy to clipboard button
+* Added: [YAML](http://docs.ansible.com/ansible/YAMLSyntax.html) Support
+* Added: [LESS](http://lesscss.org/) Support
+* Added: [SASS/SCSS](http://sass-lang.com/) Support
+* Added: [Dockerfile](https://docs.docker.com/engine/reference/builder/) Support
+* Added: [CSS Level3](http://www.w3schools.com/css/css3_intro.asp) Support
+* Added: [Powershell](https://msdn.microsoft.com/en-us/powershell/mt173057.aspx) Support
+* Added: [VisualBasic NET/Classic](https://msdn.microsoft.com/de-de/library/2x7h1hfk.aspx) Support
+* Added: [Swift](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html) Support
+* Added: Bootstrap4 Theme
+* Added: Dracula Theme (dark, following [draculatheme](https://draculatheme.com/) colors)
+* Changed: [WP-Skeleton](https://github.com/AndiDittrich/WP-Skeleton) is used as Plugin Backend Framework 
+* Changed: All settings are stored in serialized form in `enlighter-options` instead of single options
+* Changed: moved settings page to top-level menu
+* Changed: new settings page
+* Changed: sessionStorage is used to store the current active tab instead of cookies
+* Changed: updated the UI components
+* Changed: `wp-skltn` library updated to **0.14.0** - MPL 2.0 License
+* Bugfix: colorpicker sets wrong foreground color which caused unreadable input fields (color lightness calculation)
+* Cleaned up the internal Plugin Structure
+* Removed: `jquery-cookie` dependency
+* Removed: MooTools framework
+* Removed: Lighter.js legacy themes (Git, Mocha, MooTools, Panic, Tutti, Twilight)
+* Removed: most keyword lists from language files (direct regular expressions are used)
+
 ### 3.7 ###
 
 * Added: msdos language support (EnlighterJS v2.12.0) - thanks to [audioscavenger on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/33/commits)

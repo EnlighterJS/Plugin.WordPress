@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# passthrough
+~/Development/Wordpress/wp-skeleton/bin/wp-skeleton.js $@

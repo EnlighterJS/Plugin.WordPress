@@ -1,23 +1,6 @@
 <?php
 
-/**
-    Enlighter Class
-    Version: 3.3
-    Author: Andi Dittrich
-    Author URI: http://andidittrich.de
-    Plugin URI: http://enlighterjs.org
-    License: MIT X11-License
-    
-    Copyright (c) 2013-2018, Andi Dittrich
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-
-class Enlighter{
+class Enlighter extends \enlighter\skltn\Plugin{
 
     // shortcode handler instance
     private $_shortcodeHandler;
@@ -29,7 +12,7 @@ class Enlighter{
     private $_resourceLoader;
     
     // settings utility instance
-    private $_settingsUtility;
+    private $_settingsManager;
 
     // cache manager instance
     private $_cacheManager;
@@ -52,11 +35,17 @@ class Enlighter{
 
     // basic plugin initialization
     public function __construct(){
+        // Plugin PRE-INIT (CORE)
+        // ------------------------------------------------------------------
+
+        // fetch default config & validators
+        $pluginConfig = new Enlighter\skltn\PluginConfig();
+
         // create new settings utility class
-        $this->_settingsUtility = new Enlighter\SettingsUtil('enlighter-', \Enlighter\PluginConfig::getDefaults());
+        $this->_settingsManager = new Enlighter\skltn\SettingsManager($pluginConfig);
 
         // create new cache manager instance
-        $this->_cacheManager = new Enlighter\CacheManager($this->_settingsUtility);
+        $this->_cacheManager = new Enlighter\skltn\CacheManager();
 
         // loader to fetch user themes
         $this->_themeManager = new Enlighter\ThemeManager();
@@ -67,6 +56,9 @@ class Enlighter{
 
     // initialized on init
     public function _wp_init(){
+        // execute extended functions
+        parent::_wp_init();
+        
         // run startup filter to disable Enlighter by third Party Plugins
         $startup = apply_filters('enlighter_startup', true);
         if ($startup === false){
@@ -77,12 +69,12 @@ class Enlighter{
         $languages = Enlighter\LanguageManager::getLanguages();
 
         // load language files
-        if ($this->_settingsUtility->getOption('enableTranslation')){
+        if ($this->_settingsManager->getOption('enableTranslation')){
             load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
         }
         
         // create new resource loader
-        $this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsUtility, $this->_cacheManager, $this->_themeManager, $languages);
+        $this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsManager, $this->_cacheManager, $this->_themeManager, $languages);
 
         // enable EnlighterJS html attributes for Author's and Contributor's
         add_filter('wp_kses_allowed_html', array($this, 'ksesAllowHtmlCodeAttributes'), 100, 2);
@@ -128,6 +120,7 @@ class Enlighter{
 
         }else{
 
+            /*
             // enable bb_press shortcode extension ?
             if ($this->_settingsUtility->getOption('bbpressShortcode')){
                 Enlighter\BBPress::enableShortcodeFilter();
@@ -159,6 +152,8 @@ class Enlighter{
                 remove_filter('the_content', 'wpautop');
                 add_filter('the_content', 'wpautop' , 12);
             }
+
+            */
         }
 
         // trigger init hook
@@ -324,7 +319,7 @@ class Enlighter{
         $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.min.js');
 
         // extract version
-        $r = preg_match('#^[\S\s]+ (\d.\d+.\d+)#U', $content, $matches);
+        $r = preg_match('#^[\S\s]+ (\d\.\d+\.\d+(?:\w+)?\s#U', $content, $matches);
 
         // valid result ?
         if ($r!==1){
@@ -364,7 +359,6 @@ class Enlighter{
     }
 
     public function _wp_plugin_deactivate(){
-
     }
 
     public function _wp_plugin_upgrade($currentVersion){
@@ -373,40 +367,4 @@ class Enlighter{
 
         return true;
     }
-
-
-//!WP::SKELETON
-
-    // static entry/initialize singleton instance
-    public static function run($pluginName){
-        // check if singleton instance is available
-        if (self::$__instance==null){
-            // create new instance if not
-            $i = self::$__instance = new self();
-
-            // register plugin related hooks
-            register_activation_hook($pluginName, array($i, '_wp_plugin_activate'));
-            register_deactivation_hook($pluginName, array($i, '_wp_plugin_deactivate'));
-            add_action('init', array($i, '_wp_init'));
-
-            // fetch plugin version
-            $version = get_option('enlighter-version', '0.0.0');
-
-            // plugin upgraded ?
-            if (version_compare(ENLIGHTER_VERSION, $version, '>')){
-                // run upgrade hook
-                if ($i->_wp_plugin_upgrade($version)){
-                    // store new version
-                    update_option('enlighter-version', ENLIGHTER_VERSION);
-                }
-            }
-        }
-    }
-
-    // singleton instance
-    private static $__instance;
-    public static function getInstance(){
-        return self::$__instance;
-    }
-//!!WP::SKELETON
 }

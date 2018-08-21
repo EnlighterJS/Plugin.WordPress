@@ -2,10 +2,10 @@
 Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
-Requires at least: 3.9
+Requires at least: 4.8
 Tested up to: 4.9
-Stable tag: 3.7
-License: MIT X11-License
+Stable tag: 4.0
+License: GPL-2.0
 License URI: http://opensource.org/licenses/MIT
 
 Simple post syntax-highlighted code using the EnlighterJS Javascript Plugin.
@@ -142,23 +142,14 @@ Please keep in mind that not all translations are up to date. You are welcome to
 ### Related Links ###
 * [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/Plugin.WordPress/docs)
 * [Enlighter Plugin on GitHub](https://github.com/EnlighterJS/Plugin.WordPress)
-* [EnlighterJS Documentation](http://enlighterjs.org)
+* [EnlighterJS Documentation](https://enlighterjs.org)
 
 ## Compatibility ##
 
-All browsers supported by MooTools (enabled Javascript required) and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
-Generally Enlighter (which javascript part [EnlighterJS](http://enlighterjs.org) is based on [MooTools Javascript Framework](http://mootools.net/)) should work together with jQuery in [noConflict Mode](http://docs.jquery.com/Using_jQuery_with_Other_Libraries) - when you are using jQuery within your Wordpress Theme/Page you have to take care of it!
-
-* Chrome 10+
-* Safari 5+
-* Internet Explorer 6+
-* Firefox 2+
-* Opera 9+
-    
-## Installation ##
+All browsers modern browser like Firefox, Google Chrome, Edge as well as Internet Explorer 10+ are supported by EnlighterJS. Older browsers are not supported!
 
 ### System requirements ###
-* PHP 5.3, including `json` functions
+* PHP 5.4, including `json` functions
 * Webbrowser with enabled Javascript (required for highlighting)
 * Accessable cache directory (`/wp-content/plugins/enlighter/cache/`)
 
@@ -185,6 +176,9 @@ Generally Enlighter (which javascript part [EnlighterJS](http://enlighterjs.org)
 12. Theme Customizer - Live Preview-Mode
 
 ## Upgrade Notice ##
+
+### 4.0 ###
+Everything has been changed! New Highlighting Engine, New Themes, New UI - THIS RELEASE IS NOT BACKWARD COMPATIBLE -
 
 ### 3.3 ###
 PHP 5.3 Backward Compatibility

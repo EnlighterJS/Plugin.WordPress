@@ -1,21 +1,20 @@
-<?php 
-/**
-    Cache Path/Url Management
-    Version: 1.0
-    Author: Andi Dittrich
-    Author URI: http://andidittrich.de
-    Plugin URI: http://andidittrich.de/go/enlighterjs
-    License: MIT X11-License
-    
-    Copyright (c) 2014-2016, Andi Dittrich
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-namespace Enlighter;
+<?php
+// ---------------------------------------------------------------------------------------------------------------
+// -- WP-SKELETON AUTO GENERATED FILE - DO NOT EDIT !!!
+// --
+// -- Copyright (c) 2016-2018 Andi Dittrich
+// -- https://github.com/AndiDittrich/WP-Skeleton
+// --
+// ---------------------------------------------------------------------------------------------------------------
+// --
+// -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+// --
+// ---------------------------------------------------------------------------------------------------------------
+ 
+// Cache Path/Url Management
+
+namespace Enlighter\skltn;
 
 class CacheManager{
     
@@ -25,16 +24,16 @@ class CacheManager{
     // cache url (public accessible)
     private $_cacheUrl;
 
-    // update hash
-    private $_uhash;
-
     // file prefix
     private $_prefix;
 
+    // update hash to avoid caching of modified files
+    private static $__cacheHash = '0A0B0C';
+
     // static url (provides simple access to getUrl())
-    private static $_url;
+    private static $__url;
     
-    public function __construct($settingsUtil){
+    public function __construct(){
 
         // mu site ? generate prefix based on blog ID
         $this->_prefix = (is_multisite() ? 'X' . get_current_blog_id() . '_' : '');
@@ -44,10 +43,21 @@ class CacheManager{
         $this->_cacheUrl = plugins_url('/enlighter/cache/');
 
         // generate static url
-        self::$_url = $this->_cacheUrl . $this->_prefix;
+        self::$__url = $this->_cacheUrl . $this->_prefix;
 
         // get last update hash
-        $this->_uhash = get_option('enlighter-settingsupdate-hash', '0A0B0C');
+        self::$__cacheHash = get_option('enlighter-cache-hash', '0A0B0C');
+    }
+
+    // custm cache path/url
+    public function setCacheLocation($cachePath, $cacheUrl){
+        if (self::isPathAccessible($cachePath)){
+            $this->_cachePath = trailingslashit($cachePath);
+            $this->_cacheUrl = trailingslashit($cacheUrl);
+
+            // generate static url
+            self::$__url = $this->_cacheUrl . $this->_prefix;
+        }
     }
 
     // file_put_contents wrapper
@@ -69,11 +79,11 @@ class CacheManager{
     // drop cache items
     public function clearCache($clearAll = false){
         // cache dir
-        $this->rmdir($this->_cachePath, $clearAll);
+        $this->dropCacheFiles($this->_cachePath, $clearAll);
 
         // store last settings update time (unique hash to avoid caching)
-        $hash = substr(sha1(microtime(true) . uniqid()), 0, 10);
-        update_option('enlighter-settingsupdate-hash', $hash, true);
+        self::$__cacheHash = Hash::base64(microtime(true) . uniqid(), 15);
+        update_option('enlighter-cache-hash', self::$__cacheHash, true);
     }
     
     public function autosetPermissions(){
@@ -85,11 +95,7 @@ class CacheManager{
     }
 
     public function isCacheAccessible(){
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            return is_writeable($this->_cachePath);
-        }else{
-            return is_writeable($this->_cachePath) && is_executable($this->_cachePath);
-        }
+        return self::isPathAccessible($this->_cachePath);
     }
     
     public function getCachePath(){
@@ -101,12 +107,34 @@ class CacheManager{
     }
 
     // instance-less access to pre-generated url
-    public static function getFileUrl($filename){
-        return self::$_url . $filename;
+    public static function getFileUrl($filename, $useHash = false){
+        if ($useHash){
+            // append cache hash as query param
+            return self::$__url . $filename . '?'  . self::$__cacheHash;
+        }else{
+            return self::$__url . $filename;
+        }
+    }
+
+    // check path accessibility
+    public static function isPathAccessible($path){
+        // windows platforms
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
+            return is_writeable($path);
+
+        // linux
+        }else{
+            return is_writeable($path) && is_executable($path);
+        }
+    }
+
+    // retrieve current cache hash (useful to enqueue resources)
+    public static function getCacheHash(){
+        return self::$__cacheHash;
     }
 
     // Remove all files within the given directory (non recursive)
-    private function rmdir($dir, $clearAll){
+    private function dropCacheFiles($dir, $clearAll){
         // remove cached files
         if (is_dir($dir)){
             // get file list
