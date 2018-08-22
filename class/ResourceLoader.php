@@ -141,7 +141,7 @@ class ResourceLoader{
 
     public function loadGutenbergPlugin(){
         // gutenberg plugin - https://github.com/EnlighterJS/Plugin.Gutenberg
-        $this->enqueueScript('enlighter-gutenberg', 'gutenberg/enlighterjs.gutenberg.min.js', array('wp-blocks', 'wp-i18n', 'wp-element'));
+        $this->enqueueScript('enlighter-gutenberg', 'gutenberg/enlighterjs.gutenberg.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components'));
         $this->enqueueStyle('enlighter-gutenberg', 'gutenberg/enlighterjs.gutenberg.min.css', array());
     }
 
