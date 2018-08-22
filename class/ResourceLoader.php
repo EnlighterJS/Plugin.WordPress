@@ -111,6 +111,11 @@ class ResourceLoader{
         if ($this->_config['enableQuicktagFrontendIntegration']){
             add_action('wp_enqueue_scripts', array($this, 'appendTextEditorJS'));
         }
+
+        // load Gutenberg editor plugin ?
+        if ($this->_config['gutenbergSupport']){
+            add_action('enqueue_block_editor_assets', array($this, 'loadGutenbergPlugin'));
+        }
     }
 
     // Load the Backend Editor Resources
@@ -127,6 +132,17 @@ class ResourceLoader{
         if ($this->_config['enableQuicktagBackendIntegration']){
             add_action('admin_enqueue_scripts', array($this, 'appendTextEditorJS'));
         }
+
+        // load Gutenberg editor plugin ?
+        if ($this->_config['gutenbergSupport']){
+            add_action('enqueue_block_editor_assets', array($this, 'loadGutenbergPlugin'));
+        }
+    }
+
+    public function loadGutenbergPlugin(){
+        // gutenberg plugin - https://github.com/EnlighterJS/Plugin.Gutenberg
+        $this->enqueueScript('enlighter-gutenberg', 'gutenberg/enlighterjs.gutenberg.min.js', array('wp-blocks', 'wp-i18n', 'wp-element'));
+        $this->enqueueStyle('enlighter-gutenberg', 'gutenberg/enlighterjs.gutenberg.min.css', array());
     }
 
     // Load the Backend About Page Resources

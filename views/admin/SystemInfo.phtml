@@ -20,6 +20,9 @@
             // enlighterjs.tinymce version
             echo '<li>', __('TinyMCE Extension:', 'enlighter'), ' <span class="EnlighterTRUE">', self::getEnlighterJSTinyMCEVersion(), '</span></li>';
 
+             // enlighterjs.gutenberg version
+             echo '<li>', __('Gutenberg Extension:', 'enlighter'), ' <span class="EnlighterTRUE">', self::getEnlighterJSGutenbergVersion(), '</span></li>';
+
             // plugin cache path writeable ?
             if ($this->_cacheManager->isCacheAccessible()) {
                 echo '<li>', __('Cache writeable', 'enlighter'), ': <span class="EnlighterTRUE">', __('true', 'enlighter'), '</span></li>';

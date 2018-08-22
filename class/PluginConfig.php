@@ -108,7 +108,8 @@ class PluginConfig{
         'bbpressShortcode' => false,
         'bbpressMarkdown' => false,
 
-        'dynamicResourceInvocation' => false
+        'dynamicResourceInvocation' => false,
+        'gutenbergSupport' => false
     );
     
     public static function getDefaults(){

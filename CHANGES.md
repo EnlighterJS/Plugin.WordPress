@@ -1,5 +1,10 @@
 ## Changelog ##
 
+### 3.8 ###
+
+* Added: experimental Gutenberg editor integration - [EnlighterJS/Plugin.Gutenberg on GitHub](https://github.com/EnlighterJS/Plugin.Gutenberg)
+* Changed: moved experimental settings into panel "Beta"
+
 ### 3.7 ###
 
 * Added: msdos language support (EnlighterJS v2.12.0) - thanks to [audioscavenger on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/33/commits)
