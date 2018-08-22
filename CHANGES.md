@@ -4,6 +4,7 @@
 
 * Added: experimental Gutenberg editor integration - [EnlighterJS/Plugin.Gutenberg on GitHub](https://github.com/EnlighterJS/Plugin.Gutenberg)
 * Changed: moved experimental settings into panel "Beta"
+* Bugfix: styles of the "plugin upgrade notification" were broken
 
 ### 3.7 ###
 

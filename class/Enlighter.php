@@ -368,9 +368,9 @@ class Enlighter{
     public function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
         // check "upgrade_notice"
         if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
-            echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong> ';
-            echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
-       }
+            echo '<br /><span style="display: inline-block; background-color: #d54e21; padding: 5px 10px 5px 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong> ';
+            echo esc_html(strip_tags($newPluginMetadata->upgrade_notice)), '</span>';
+        }
     }
 
     public function _wp_plugin_activate(){
