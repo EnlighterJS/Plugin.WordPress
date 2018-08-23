@@ -21,6 +21,9 @@
         <p><?php _e('In addition to the code-insert button, Enlighter can add a set formats to the editor.', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displayCheckbox(__('Add Editor Formats', 'enlighter'), 'editorAddStyleFormats'); ?>
 
+        <p><?php _e('The default keyboard shortcut (shift+alt+x) action can be modified to convert the current selection into an Enlighter codeblock.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Enable Keyboard Shortcut', 'enlighter'), 'editorKeyboardShortcuts'); ?>
+
         <?php _e('By default, the <kbd>tab</kbd> button does not add indentation to the content. Enlighter comes with its own editing plugin which allows you to use tabs within the Editor to align code.', 'enlighter'); ?><br />
         <?php _e('This option disables the <strong>tabfocus plugin</strong> and requires that the Enlighter <code>indent</code> option has been set to spaces!', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displayCheckbox(__('Enable Tab Indentation', 'enlighter'), 'editorTabIndentation'); ?>

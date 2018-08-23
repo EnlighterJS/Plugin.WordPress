@@ -86,7 +86,8 @@ class ConfigGenerator{
                 'indent' => intval($this->_config['indent']),
                 'tabIndentation' => ($this->_config['editorTabIndentation'] ? true : false),
                 'quicktagMode' => $this->_config['editorQuicktagMode'],
-                'languageShortcode' => ($this->_config['languageShortcode'] ? true : false)
+                'languageShortcode' => ($this->_config['languageShortcode'] ? true : false),
+                'shortcuts' => ($this->_config['editorKeyboardShortcuts'] ? true : false)
             )
         ));
 

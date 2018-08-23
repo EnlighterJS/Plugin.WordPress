@@ -3,6 +3,8 @@
 ### 3.8 ###
 
 * Added: experimental Gutenberg editor integration - [EnlighterJS/Plugin.Gutenberg on GitHub](https://github.com/EnlighterJS/Plugin.Gutenberg)
+* Added: keyboard shortcut `+x` to highlight inline code - requested by [dahnark on WordPress.org Forums](https://wordpress.org/support/topic/override-theme-code-style/)
+* Added: EnlighterJS.TinyMCE Plugin `v3.5.0`
 * Changed: moved experimental settings into panel "Beta"
 * Bugfix: styles of the "plugin upgrade notification" were broken
 
