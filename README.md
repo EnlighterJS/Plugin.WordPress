@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: https://enlighterjs.org
 Requires at least: 3.9
 Tested up to: 4.9
-Stable tag: 3.7
+Stable tag: 3.8
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -19,6 +19,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 
 ### Plugin Features ###
 * Support for all common used languages including powerful generic highlighting
+* **Full** Gutenberg Editor Integration (currently experimental)
 * **Full** Visual-Editor (TinyMCE) Integration (Admin Panel + Frontend)
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
@@ -73,71 +74,6 @@ Click to view Language/Theme Examples
 * [Shell](https://enlighterjs.org/Language.Shell.html)
 * [VHDL](https://enlighterjs.org/Language.VHDL.html)
 * [XML](https://enlighterjs.org/Language.XML.html)
-
-### Shortcode Quickstart Example ###
-Highlight javascript code (theme defined on your settings page)
-
-	[js]
-	window.addEvent('domready', function(){
-		console.info('Hello Enlighter');
-	});	
-	[/js]
-
-### Inline Syntax Highlighting with Shortcode ###
-
-	Lorem ipsum dolor sit amet, [js]window.alert('Hello World');[/js] consetetur sadipscing elitr,
-	sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-
-### Codegroup Example ###
-Display multiple codes within a tab-pane. You can define a custom tab-pane title for each snippet if you want.
-
-	[codegroup]
-	 	[js tab="Javascript Message"]
-		window.addEvent('domready', function(){
-			// display string on console
-			console.info('Hello Enlighter');
-			
-			// show element
-			$('#myelement').show();
-		});	
-		[/js]
-		
-		[html]
-		<div id="myelement">
-		INITIALIZATION START
-		</div>		
-		[/html]
-		
-		[css tab="Styling"]
-		#myelement{
-			color: #cc2222;
-			padding: 15px;
-			font-size: 20px;
-			text-align: center;		
-		}		
-		[/css]	
-	[/codegroup]
-
-### Legacy Example ###
-It's also possible to use the plugin with legacy shortcode (disabled language shortcodes)
-
-	[enlighter lang="js"]
-	window.addEvent('domready', function(){
-		// display string on console
-		console.info('Hello Enlighter');
-		
-		// show element
-		$('#myelement').show();
-	});		
-	[/enlighter]
-
-
-### Translations (I18n) ###
-Please keep in mind that not all translations are up to date. You are welcome to contribute!
-
-* **English** (default)
-* **German** (de_DE by Andi Dittrich)
-* **Serbo-Croatian** (sr_RS by Borisa Djuraskovic from webhostinghub.com)
  
 ### Related Links ###
 * [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/Plugin.WordPress/docs)
