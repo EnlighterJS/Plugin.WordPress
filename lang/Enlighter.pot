@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-06-14 08:32:03+00:00\n"
+"POT-Creation-Date: 2018-09-06 12:47:14+00:00\n"
 "PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  3.7\n"
+"Project-Id-Version: Enlighter  3.8\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -41,7 +41,7 @@ msgstr ""
 msgid "External Themes"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:38
+#: views/admin/SettingsPage.phtml:39
 msgid "Enlighter - Customizable Syntax Highlighter"
 msgstr ""
 
@@ -75,6 +75,10 @@ msgstr ""
 
 #: class/EnvironmentCheck.php:75
 msgid "Autoset Permissions failed - Please change the directory permission (chmod <code>0644</code> or <code>0777</code>) manually!"
+msgstr ""
+
+#: class/EnvironmentCheck.php:81
+msgid "The plugin is located within an invalid path - the <code>enlighter/</code> directory name is <strong>mandatory</strong>"
 msgstr ""
 
 #: class/TinyMCE.php:131
@@ -163,6 +167,46 @@ msgstr ""
 
 #: views/admin/Appearance.phtml:42
 msgid "Info-button"
+msgstr ""
+
+#: views/admin/Beta.phtml:5
+msgid "BETA Features"
+msgstr ""
+
+#: views/admin/Beta.phtml:8
+msgid "Warning: These options are for advanced users only and subjected to change!"
+msgstr ""
+
+#: views/admin/Beta.phtml:11
+msgid "Dynamic Resource Invocation (DRI)"
+msgstr ""
+
+#: views/admin/Beta.phtml:12
+msgid "To optimize your website load-time it`s possible to load the EnlighterJS script dependencies only if they are required (requires script-position: footer)."
+msgstr ""
+
+#: views/admin/Beta.phtml:13
+msgid "In case it`s enable, the plugin will observer it`s invocation (visual editor, shortcodes, markdown)."
+msgstr ""
+
+#: views/admin/Beta.phtml:15
+msgid "Enable DRI"
+msgstr ""
+
+#: views/admin/Beta.phtml:18
+msgid "Gutenberg Editor Plugin"
+msgstr ""
+
+#: views/admin/Beta.phtml:19
+msgid "To use EnlighterJS within Gutenberg you can enable this feature. It loads the EnlighterJS Gutenberg.Plugin."
+msgstr ""
+
+#: views/admin/Beta.phtml:20
+msgid "Warning: Please keep in mind that this version of Enlighter Plugin.Gutenberg is still BETA software and may have some serious bugs!"
+msgstr ""
+
+#: views/admin/Beta.phtml:22
+msgid "Enable"
 msgstr ""
 
 #: views/admin/Compatibility.phtml:5
@@ -501,30 +545,6 @@ msgstr ""
 msgid "Enable I18n"
 msgstr ""
 
-#: views/admin/Options.phtml:83
-msgid "EXPERIMENTAL OPTIONS"
-msgstr ""
-
-#: views/admin/Options.phtml:86
-msgid "Warning: These options are for advanced users only and subjected to change!"
-msgstr ""
-
-#: views/admin/Options.phtml:89
-msgid "Dynamic Resource Invocation (DRI)"
-msgstr ""
-
-#: views/admin/Options.phtml:90
-msgid "To optimize your website load-time it`s possible to load the EnlighterJS script dependencies only if they are required (requires script-position: footer)."
-msgstr ""
-
-#: views/admin/Options.phtml:91
-msgid "In case it`s enable, the plugin will observer it`s invocation (visual editor, shortcodes, markdown)."
-msgstr ""
-
-#: views/admin/Options.phtml:93
-msgid "Enable DRI"
-msgstr ""
-
 #: views/admin/Related.phtml:4
 msgid "Enlighter Related"
 msgstr ""
@@ -557,29 +577,24 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:39
+#: views/admin/SettingsPage.phtml:35
+msgid "BETA"
+msgstr ""
+
+#: views/admin/SettingsPage.phtml:40
 msgid "Select the content you want to highlight and Enlighter takes care of the rest."
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:107
+#: views/admin/SettingsPage.phtml:112
 msgid "is developed by"
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:108
+#: views/admin/SettingsPage.phtml:113
 msgid "It`s released under the terms of the %s. "
 msgstr ""
 
-#: views/admin/SettingsPage.phtml:108
+#: views/admin/SettingsPage.phtml:113
 msgid "MIT X11 License"
-msgstr ""
-
-#: views/admin/SettingsPage.phtml:109 views/admin/SettingsPage.phtml:110
-#: views/admin/SettingsPage.phtml:111
-msgid "License"
-msgstr ""
-
-#: views/admin/SettingsPage.phtml:110 views/admin/SettingsPage.phtml:111
-msgid "by"
 msgstr ""
 
 #: views/admin/SystemInfo.phtml:4
@@ -590,60 +605,64 @@ msgstr ""
 msgid "PHP Version:"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:12
-msgid "Server Software:"
+#: views/admin/SystemInfo.phtml:13 views/admin/SystemInfo.phtml:15
+msgid "PHP JSON Extension"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:13
+msgid "available"
 msgstr ""
 
 #: views/admin/SystemInfo.phtml:15
-msgid "Enlighter Plugin Version:"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:18
-msgid "EnlighterJS Version:"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:21
-msgid "TinyMCE Extension:"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:25 views/admin/SystemInfo.phtml:27
-msgid "Cache writeable"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:25
-msgid "true"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:27
-msgid "false"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:32 views/admin/SystemInfo.phtml:34
-msgid "JSON Extension"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:32
-msgid "installed"
-msgstr ""
-
-#: views/admin/SystemInfo.phtml:34
 msgid "not installed"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:40 views/admin/SystemInfo.phtml:42
-#: views/admin/SystemInfo.phtml:44
-msgid "Shortcode Processor"
+#: views/admin/SystemInfo.phtml:19
+msgid "Server Software:"
 msgstr ""
 
-#: views/admin/SystemInfo.phtml:40
-msgid "disabled"
+#: views/admin/SystemInfo.phtml:29
+msgid "Enlighter Plugin Version:"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:32
+msgid "EnlighterJS Version:"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:35
+msgid "TinyMCE Extension:"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:38
+msgid "Gutenberg Extension:"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:42 views/admin/SystemInfo.phtml:44
+msgid "Cache writeable"
 msgstr ""
 
 #: views/admin/SystemInfo.phtml:42
-msgid "WordPress internal"
+msgid "true"
 msgstr ""
 
 #: views/admin/SystemInfo.phtml:44
+msgid "false"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:50 views/admin/SystemInfo.phtml:52
+#: views/admin/SystemInfo.phtml:54
+msgid "Shortcode Processor"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:50
+msgid "disabled"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:52
+msgid "WordPress internal"
+msgstr ""
+
+#: views/admin/SystemInfo.phtml:54
 msgid "Enlighter low-level"
 msgstr ""
 
@@ -795,7 +814,7 @@ msgstr ""
 msgid "Font Styles"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:34
+#: views/admin/VisualEditing.phtml:37
 msgid "Font-Family"
 msgstr ""
 
@@ -804,7 +823,7 @@ msgstr ""
 msgid "e.g. Monaco, Courier, Monospace"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:37
+#: views/admin/VisualEditing.phtml:40
 msgid "Font-Size"
 msgstr ""
 
@@ -812,7 +831,7 @@ msgstr ""
 msgid "e.g. 12px, 1.2em, 11pt"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:40
+#: views/admin/VisualEditing.phtml:43
 msgid "Line height"
 msgstr ""
 
@@ -820,7 +839,7 @@ msgstr ""
 msgid "e.g. 16px, 1.5em"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:43
+#: views/admin/VisualEditing.phtml:46
 msgid "Font-Color"
 msgstr ""
 
@@ -841,7 +860,7 @@ msgstr ""
 msgid "RAW Font Styles"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:46
+#: views/admin/VisualEditing.phtml:49
 msgid "Background-Color"
 msgstr ""
 
@@ -1018,46 +1037,54 @@ msgid "Add Editor Formats"
 msgstr ""
 
 #: views/admin/VisualEditing.phtml:24
-msgid "By default, the <kbd>tab</kbd> button does not add indentation to the content. Enlighter comes with its own editing plugin which allows you to use tabs within the Editor to align code."
+msgid "The default keyboard shortcut (shift+alt+x) action can be modified to convert the current selection into an Enlighter codeblock."
 msgstr ""
 
 #: views/admin/VisualEditing.phtml:25
+msgid "Enable Keyboard Shortcut"
+msgstr ""
+
+#: views/admin/VisualEditing.phtml:27
+msgid "By default, the <kbd>tab</kbd> button does not add indentation to the content. Enlighter comes with its own editing plugin which allows you to use tabs within the Editor to align code."
+msgstr ""
+
+#: views/admin/VisualEditing.phtml:28
 msgid "This option disables the <strong>tabfocus plugin</strong> and requires that the Enlighter <code>indent</code> option has been set to spaces!"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:26
+#: views/admin/VisualEditing.phtml:29
 msgid "Enable Tab Indentation"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:29
+#: views/admin/VisualEditing.phtml:32
 msgid "Code-Block Styles"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:30
+#: views/admin/VisualEditing.phtml:33
 msgid "It is also possible to influence the code-block styles of the Visual-Editor. Maybe you like another background color or font-family."
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:34
+#: views/admin/VisualEditing.phtml:37
 msgid "e.g. \"Source Code Pro\", \"Liberation Mono\", \"Courier New\", Courier, monospace"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:37
+#: views/admin/VisualEditing.phtml:40
 msgid "e.g. 0.7em"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:40
+#: views/admin/VisualEditing.phtml:43
 msgid "e.g. 1.4em"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:43
+#: views/admin/VisualEditing.phtml:46
 msgid "e.g. #565b60"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:46
+#: views/admin/VisualEditing.phtml:49
 msgid "e.g. #f7f7f7"
 msgstr ""
 
-#: views/admin/VisualEditing.phtml:49
+#: views/admin/VisualEditing.phtml:52
 msgid "Restore defaults"
 msgstr ""
 

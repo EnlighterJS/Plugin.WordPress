@@ -76,6 +76,11 @@ class EnvironmentCheck{
             }
         }
 
+        // plugin path wp-content/plugins/enlighter ?
+        if (strpos(__DIR__, 'enlighter/class') === false){
+            $errors[] = __('The plugin is located within an invalid path - the <code>enlighter/</code> directory name is <strong>mandatory</strong>', 'enlighter');
+        }
+
         return array(
             'errors' => $errors,
             'warnings' => $warnings

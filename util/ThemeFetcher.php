@@ -19,7 +19,7 @@ $outputDir = '../views/themes/';
 $themes = explode(' ', 'Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Minimal Atomic Rowhammer Git Mocha MooTools Panic Tutti Twilight');
 
 // github fetching url
-$gitHubURL = 'https://raw.githubusercontent.com/AndiDittrich/EnlighterJS/master/Source/Themes/';
+$gitHubURL = 'https://raw.githubusercontent.com/EnlighterJS/EnlighterJS/v2-legacy/Source/Themes/';
 
 // js Theme Template
 $ThemeStyles = array();

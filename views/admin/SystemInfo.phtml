@@ -8,8 +8,22 @@
             <?php
             echo '<li>', __('PHP Version:', 'enlighter'), ' <span class="EnlighterTRUE">', phpversion(), '</span></li>';
 
+            // json encoding available ?
+            if (function_exists('json_encode')) {
+                echo '<li>', __('PHP JSON Extension', 'enlighter'), ': <span class="EnlighterTRUE">', __('available', 'enlighter'), '</span></li>';
+            } else {
+                echo '<li>', __('PHP JSON Extension', 'enlighter'), ': <span class="EnlighterFALSE">', __('not installed', 'enlighter'), '</span></li>';
+            }
+
             // server os
             echo '<li>', __('Server Software:', 'enlighter'), ' <span class="EnlighterTRUE">', PHP_OS, '</span></li>';
+            ?>
+        </ul>
+
+        <hr />
+
+        <ul>
+            <?php
 
             // enlighter version
             echo '<li>', __('Enlighter Plugin Version:', 'enlighter'), ' <span class="EnlighterTRUE">', ENLIGHTER_VERSION, '</span></li>';
@@ -28,13 +42,6 @@
                 echo '<li>', __('Cache writeable', 'enlighter'), ': <span class="EnlighterTRUE">', __('true', 'enlighter'), '</span></li>';
             } else {
                 echo '<li>', __('Cache writeable', 'enlighter'), ': <span class="EnlighterFALSE">', __('false', 'enlighter'), '</span></li>';
-            }
-
-            // json encoding available ?
-            if (function_exists('json_encode')) {
-                echo '<li>', __('JSON Extension', 'enlighter'), ': <span class="EnlighterTRUE">', __('installed', 'enlighter'), '</span></li>';
-            } else {
-                echo '<li>', __('JSON Extension', 'enlighter'), ': <span class="EnlighterFALSE">', __('not installed', 'enlighter'), '</span></li>';
             }
 
             // shortcode processor type
