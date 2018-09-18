@@ -1,5 +1,9 @@
 ## Changelog ##
 
+### 3.8.1 ###
+
+* Bugfix: some development files (EnlighterJS v3 prelease) got into the release branch (lowercase filesnames) this may cause some issues during the plugin upgrade - I apologize for the inconvenience - thanks to [aguidrevitch](https://github.com/EnlighterJS/Plugin.WordPress/issues/119)
+
 ### 3.8 ###
 
 * Added: experimental Gutenberg editor integration - [EnlighterJS/Plugin.Gutenberg on GitHub](https://github.com/EnlighterJS/Plugin.Gutenberg)
