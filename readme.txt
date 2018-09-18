@@ -204,6 +204,11 @@ In case you found a security issue in this plugin - please write a message **dir
 Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
 == Changelog ==
 
+= 3.8.1 =
+
+* Changed: release scheme to [Semantic Versioning](https://semver.org/)
+* Bugfix: some development files (EnlighterJS v3 prelease) got into the release branch (lowercase filenames) this may cause some issues during the plugin upgrade - I apologize for the inconvenience - thanks to [aguidrevitch on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/119)
+
 = 3.8 =
 
 * Added: experimental Gutenberg editor integration - [EnlighterJS/Plugin.Gutenberg on GitHub](https://github.com/EnlighterJS/Plugin.Gutenberg)
