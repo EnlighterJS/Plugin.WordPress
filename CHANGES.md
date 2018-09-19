@@ -1,5 +1,12 @@
 ## Changelog ##
 
+### 3.9.0 ###
+
+* Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)) **v3.5.1**
+* Changed: moved TinyMCE editor resources (editor plugin) from `enlighter/resources/editor` to `enlighter/resources/tinymce`
+* Changed: moved text editor resources (quicktags from `enlighter/resources/editor` to `enlighter/resources/texteditor`
+* Bugfix: TinyMCE footer label may collide with editor content - added additional padding - thanks to [JavierSegoviaCordoba on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/120)
+
 ### 3.8.1 ###
 
 * Changed: release scheme to [Semantic Versioning](https://semver.org/)

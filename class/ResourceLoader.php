@@ -205,7 +205,7 @@ class ResourceLoader{
 
     public function appendTextEditorJS(){
         // text editor plugin
-        $this->enqueueScript('enlighter-texteditor', 'editor/TextEditor.js', array('jquery'));
+        $this->enqueueScript('enlighter-texteditor', 'texteditor/TextEditor.js', array('jquery'));
     }
 
     // initialzize the frontend
