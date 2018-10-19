@@ -240,7 +240,8 @@ class ResourceLoader{
         wp_dequeue_script('mootools-jsdelivr-cdn');
         wp_dequeue_script('enlighter-local');
         wp_dequeue_script('enlighter-config');
-        wp_dequeue_script('enlighter-jetpack-infinitescroll');        
+        wp_dequeue_script('enlighter-jetpack-infinitescroll');
+        wp_dequeue_script('enlighter-jquery-ajax');
         remove_action('wp_footer', array($this, 'appendInlineEnlighterConfig'), 30);
     }
 
@@ -340,6 +341,12 @@ class ResourceLoader{
         if ($this->_config['extJetpackInfiniteScroll']){
             // include local css file
             $this->enqueueScript('enlighter-jetpack-infinitescroll', 'plugin/JetpackInfiniteScroll.js', $ejsDependencies, $this->_uhash);
+        }
+
+        // jetpack InfiniteScroll Extension enabled ?
+        if ($this->_config['extJQueryAjax']){
+            // include local css file
+            $this->enqueueScript('enlighter-jquery-ajax', 'plugin/jQueryAjaxContent.js', $ejsDependencies, $this->_uhash);
         }
     }
 }

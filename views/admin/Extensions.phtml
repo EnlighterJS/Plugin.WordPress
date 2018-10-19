@@ -1,11 +1,11 @@
 <?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
 
-<!-- Jetpack -->
+<!-- jQuery -->
 <div class="postbox">
-    <h3 class="hndle"><span><?php _e('Jetpack Plugin', 'enlighter'); ?></span></h3>
+    <h3 class="hndle"><span><?php _e('Dynamic Content', 'enlighter'); ?></span></h3>
     <div class="inside EnlighterBlockcontent">
 
-        <p><?php _e('These options are related to the popular <a href="https://wordpress.org/plugins/jetpack/" target="_blank">Jetpack Plugin</a>.', 'enlighter'); ?></p>
+        <p><?php _e('Support for "load more" buttons. It is required to highlight code sections which are dynamically added to your page via AJAX/XHR!', 'enlighter'); ?></p>
 
         <h4><?php _e('Jetpack', 'enlighter'); ?></h4>
 
@@ -13,8 +13,16 @@
         <p><?php _e('If you use the <a href="https://jetpack.me/support/infinite-scroll/">InfiniteScroll Module</a>, enable this option to load the Enlighter.InfniteScroll extension. It is required to highlight code sections which are dynamically added to your page!', 'enlighter'); ?></p>
         <?php $this->_settingsUtility->displayCheckbox(__('Infinite Scroll', 'enlighter'), 'extJetpackInfiniteScroll') ?>
 
+
+        <h4><?php _e('jQuery AJAX', 'enlighter'); ?></h4>
+
+        <!-- enable ajaxComplete support !-->
+        <p><?php _e('This options adds a trigger to the <code>ajaxComplete</code> event used by jQuery.', 'enlighter'); ?></p>
+        <?php $this->_settingsUtility->displayCheckbox(__('Dynamic Ajax Content', 'enlighter'), 'extJQueryAjax') ?>
+
     </div>
 </div>
+
 
 <!-- BB Press -->
 <div class="postbox">

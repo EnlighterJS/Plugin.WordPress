@@ -3,6 +3,7 @@
 ### 3.9.0 ###
 
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)) **v3.5.1**
+* Added: Support for jQuery Ajax content (post load) - requested by [wassereimer86 on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/126)
 * Changed: moved TinyMCE editor resources (editor plugin) from `enlighter/resources/editor` to `enlighter/resources/tinymce`
 * Changed: moved text editor resources (quicktags from `enlighter/resources/editor` to `enlighter/resources/texteditor`
 * Bugfix: TinyMCE footer label may collide with editor content - added additional padding - thanks to [JavierSegoviaCordoba on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/120)

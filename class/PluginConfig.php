@@ -105,6 +105,7 @@ class PluginConfig{
         'cryptexFallbackEmail' => 'mail@example.tld',
 
         'extJetpackInfiniteScroll' => false,
+        'extJQueryAjax' => false,
 
         'bbpressShortcode' => false,
         'bbpressMarkdown' => false,
