@@ -34,14 +34,14 @@ class EnvironmentCheck{
         foreach ($results['errors'] as $err){
             // styling
             echo '<div class="notice notice-error enlighter-notice"><p><strong>Enlighter Plugin Error: </strong>', $err;
-            echo ' | <a href="https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md" target="_new">', __('help', 'enlighter'), '</a></p></div>';
+            echo ' - <a href="https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md" target="_new">', __('view help', 'enlighter'), '</a></p></div>';
         }
 
         // show warnings
         foreach ($results['warnings'] as $err){
             // styling
             echo '<div class="notice notice-warning enlighter-notice"><p><strong>Enlighter Plugin Warning: </strong>', $err;
-            echo ' | <a href="https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md" target="_new">', __('help', 'enlighter'), '</a></p></div>';
+            echo ' - <a href="https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md" target="_new">', __('view help', 'enlighter'), '</a></p></div>';
         }
     }
 
