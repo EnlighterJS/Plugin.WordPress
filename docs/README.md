@@ -1,12 +1,13 @@
 Enlighter WordPress Plugin
 =============================
 
-Tutorials
+Docs + Tutorials
 ---------------------------------
 
 * [Enlighter Visual Editor Usage](Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
 * [Enlighter Markdown Usage](Usage_Markdown.md) - Use [GFM](https://help.github.com/articles/creating-and-highlighting-code-blocks/) style fenced codeblocks
 * [Enlighter Visual Editor Live-Demo](https://tinymce.enlighterjs.org/)
+* [Enlighter Plugin Notifications](PluginNotifications.md) - Errors/Warnings thrown by Enlighter
 
 Developer Docs
 -----------------------
