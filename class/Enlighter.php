@@ -336,7 +336,7 @@ class Enlighter{
 
     // gets the current EnlighterJS.TinyMCE version from js file
     public static function getEnlighterJSTinyMCEVersion(){
-        $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/editor/EnlighterJS.TinyMCE.min.js');
+        $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/tinymce/EnlighterJS.TinyMCE.min.js');
 
         // extract version
         $r = preg_match('#^[\S\s]+ (\d.\d+.\d+)#U', $content, $matches);

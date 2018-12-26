@@ -36,10 +36,12 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Integrated CSS file caching (suitable for high traffic sites)
 * Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
 * Webfont Loader to add missing Monospace Fonts to your website
+* Transform legacy codeblocks to Enlighter Gutenberg Blocks
 
 ### Tutorials and Examples ###
 
-* [Enlighter Visual Editor Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages
+* [Enlighter Classic Editor Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_VisualEditor.md) - Howto add Code Snippets to your posts and pages with TinyMCE (Classic Editor)
+* [Enlighter Gutenberg Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_GutenbergEditor.md) - Howto add Code Snippets to your posts and pages with Gutenberg
 * [Enlighter Markdown Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_Markdown.md) - Howto use Markdown fenced codeblocks
 * [Enlighter Visual Editor Live-Demo](https://tinymce.enlighterjs.org/)
 

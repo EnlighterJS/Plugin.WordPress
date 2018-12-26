@@ -4,7 +4,7 @@
     Plugin URI: https://enlighterjs.org
     Domain Path: /lang
     Text Domain: enlighter
-    Description: Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor.
+    Description: All-in-one Syntax Highlighting solution. Full Gutenberg and Classic Editor integration. Graphical theme customizer. Based on EnlighterJS.
     Version: 3.9.0-BETA1
     Author: Andi Dittrich
     Author URI: https://andidittrich.de
