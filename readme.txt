@@ -182,10 +182,10 @@ Yes! since version 1.5 all shortcodes support the attribute ``highlight``.
 Shortcode Example: highlight the lines 2,3,4,8 of the codeblock `[js highlight="2-4,8"]....some code..[/js]`
 	
 = Are the uncompressed EnlighterJS Javasscript and CSS sources available ? =
-The complete EnlighterJS project can be found on [GitHub](https://github.com/AndiDittrich/EnlighterJS "EnligherJS Project")
+The complete EnlighterJS project can be found on [GitHub](https://github.com/EnlighterJS "EnligherJS Project")
 
 = Can i add custom Themes ? =
-Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify one of the standard themes. Finally create a directory named `enlighter` into your WordPress theme and put the css file into it.
+Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/EnlighterJS/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify one of the standard themes. Finally create a directory named `enlighter` into your WordPress theme and put the css file into it.
 
 = There are no Enlighter features visible within the Frontend Editor =
 You have to enable the frontend editing function: `Enlighter Settings Page -> Advanced -> TinyMCE Integration (Visual Editor) -> Enable Frontend Integration`. This feature also requires a logged-in user with `edit_posts` and/or `edit_pages` [privileges](http://codex.wordpress.org/Function_Reference/current_user_can) and is only available for the `wp_editor` function - no third party editors are supported!
@@ -198,11 +198,22 @@ If you are already using MooTools on your page, you have to disable the automati
 Of course, the filter hook [enlighter_startup](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/FilterHooks.md) can be used to terminate the plugin initialization
 
 = Security Vulnerabilities =
-In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.de/contact) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
+In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](https://about.andidittrich.com/contact.html) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
 
 = I miss some features / I found a bug =
-Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
+Write a message to [Andi Dittrich](https://about.andidittrich.com/contact.html) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
 == Changelog ==
+
+= 3.9.0 =
+
+* Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)) **v3.5.1**
+* Added: Support for jQuery Ajax content (post load) - requested by [wassereimer86 on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/126)
+* Added: Description of possible [Plugin Notficiations](https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md)
+* Changed: moved TinyMCE editor resources (editor plugin) from `enlighter/resources/editor` to `enlighter/resources/tinymce`
+* Changed: moved text editor resources (quicktags from `enlighter/resources/editor` to `enlighter/resources/texteditor`
+* Changed: moved Gutenberg Editor settings to "Visual Editor" Tab
+* Bugfix: TinyMCE footer label may collide with editor content - added additional padding - thanks to [JavierSegoviaCordoba on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/120)
+* Bugfix: On Windows platforms, the environment check throws the error message `plugin is located within an invalid path` - thanks to [ginaf40 on WordPress.org Forums](https://wordpress.org/support/topic/enlighter-plugin-error-the-plugin-is-located-within-an-invalid-path)
 
 = 3.8.1 =
 

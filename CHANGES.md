@@ -7,6 +7,7 @@
 * Added: Description of possible [Plugin Notficiations](https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md)
 * Changed: moved TinyMCE editor resources (editor plugin) from `enlighter/resources/editor` to `enlighter/resources/tinymce`
 * Changed: moved text editor resources (quicktags from `enlighter/resources/editor` to `enlighter/resources/texteditor`
+* Changed: moved Gutenberg Editor settings to "Visual Editor" Tab
 * Bugfix: TinyMCE footer label may collide with editor content - added additional padding - thanks to [JavierSegoviaCordoba on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/120)
 * Bugfix: On Windows platforms, the environment check throws the error message `plugin is located within an invalid path` - thanks to [ginaf40 on WordPress.org Forums](https://wordpress.org/support/topic/enlighter-plugin-error-the-plugin-is-located-within-an-invalid-path)
 

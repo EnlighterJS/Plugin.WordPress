@@ -6,7 +6,7 @@
         <!-- Metabox-Content -->
         
         <ul>
-            <li><strong>Environment</strong></li>
+            <li><strong>Server</strong></li>
             <?php
             echo '<li>', __('PHP Version:', 'enlighter'), ' <span class="EnlighterTRUE">', phpversion(), '</span></li>';
 
@@ -46,7 +46,7 @@
         <hr />
         
         <ul>
-            <li><strong>System</strong></li>
+            <li><strong>Environment</strong></li>
             <?php
             // plugin cache path writeable ?
             if ($this->_cacheManager->isCacheAccessible()) {
