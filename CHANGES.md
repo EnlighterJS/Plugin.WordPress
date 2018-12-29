@@ -4,12 +4,14 @@
 
 * Added: Visual Editor Plugin ([EnlighterJS.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)) **v3.5.1**
 * Added: Gutenberg Editor Plugin - [EnlighterJS/Plugin.Gutenberg on GitHub] **v0.4.0**
+* Added: [EnlighterJS v2.13.0](https://enlighterjs.org/)
 * Added: automatically transforms legacy Enlighter codeblocks (Classic Editor) to Gutenberg blocks in case the "Convert to Blocks" function is triggered
 * Added: Support for jQuery Ajax content (post load) - requested by [wassereimer86 on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/126)
 * Added: Description of possible [Plugin Notficiations](https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md)
 * Changed: moved TinyMCE editor resources (editor plugin) from `enlighter/resources/editor` to `enlighter/resources/tinymce`
 * Changed: moved text editor resources (quicktags from `enlighter/resources/editor` to `enlighter/resources/texteditor`
 * Changed: moved Gutenberg Editor settings to "Visual Editor" Tab
+* Changed: `data-enlighter-linenumbers` attribute is ignored in case it is not set (empty string) to be compatible with the new [Gutenberg Editor Plugin](https://github.com/EnlighterJS/Plugin.Gutenberg) - explicit true/false required
 * Bugfix: TinyMCE footer label may collide with editor content - added additional padding - thanks to [JavierSegoviaCordoba on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/120)
 * Bugfix: On Windows platforms, the environment check throws the error message `plugin is located within an invalid path` - thanks to [ginaf40 on WordPress.org Forums](https://wordpress.org/support/topic/enlighter-plugin-error-the-plugin-is-located-within-an-invalid-path)
 
