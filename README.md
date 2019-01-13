@@ -20,7 +20,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 ### Plugin Features ###
 
 * **Full Gutenberg Editor Integration** (currently beta)
-* **Full Classic Editor Integration** (TinyMCE) (Admin Panel + Frontend)
+* **Full Classic Editor Integration** (TinyMCE)
 * Support for all common used languages including powerful generic highlighting
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
@@ -37,6 +37,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
 * Webfont Loader to add missing Monospace Fonts to your website
 * Transform legacy codeblocks to Enlighter Gutenberg Blocks
+* **Full GPDR compliant** - no external resources are required, no data will be aggregated
 
 ### Tutorials and Examples ###
 

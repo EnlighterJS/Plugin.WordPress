@@ -5,12 +5,12 @@
     Domain Path: /lang
     Text Domain: enlighter
     Description: All-in-one Syntax Highlighting solution. Full Gutenberg and Classic Editor integration. Graphical theme customizer. Based on EnlighterJS.
-    Version: 3.9.0-BETA2
+    Version: 3.9.0
     Author: Andi Dittrich
     Author URI: https://andidittrich.de
     License: MIT X11-License
     
-    Copyright (c) 2013-2018, Andi Dittrich
+    Copyright (c) 2013-2019, Andi Dittrich
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
     
@@ -24,7 +24,7 @@
 */
 
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '3.9.0-BETA2');
+define('ENLIGHTER_VERSION', '3.9.0');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
 define('ENLIGHTER_PLUGIN_URL', plugins_url('/enlighter/'));
 
