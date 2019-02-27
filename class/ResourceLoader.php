@@ -75,7 +75,7 @@ class ResourceLoader{
         self::$cdnLocations['mootools-local'] = 'mootools-core-yc.js';
         self::$cdnLocations['mootools-google'] = '//ajax.googleapis.com/ajax/libs/mootools/1.6.0/mootools.min.js';
         self::$cdnLocations['mootools-cdnjs'] = '//cdnjs.cloudflare.com/ajax/libs/mootools/1.6.0/mootools-core.min.js';
-        self::$cdnLocations['mootools-jsdelivr'] = '//cdn.jsdelivr.net/mootools/1.5.0/mootools-core-nocompat.min.js';
+        self::$cdnLocations['mootools-jsdelivr'] = '//cdn.jsdelivr.net/gh/mootools/mootools-core@1.6.0/dist/mootools-core.min.js';
     }
 
     // local wrapper

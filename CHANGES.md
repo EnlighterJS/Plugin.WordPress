@@ -5,6 +5,7 @@
 
 * Added: french translation - thanks to [regisenguehard on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/pull/144)
 * Added: simplified chinese translation - thanks to [XFY9326 on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/pull/145)
+* Changed: jsdelivr mootools version pointed to `1.6.0`
 * Changed: the DRI detection is now limited to the condition `in_the_loop() && is_main_query()`
 * Bugfix: the experimental DRI feature failed in case `the_content` filter is called multiple times within a theme - thanks to [willstocks-tech on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/pull/153)
 
