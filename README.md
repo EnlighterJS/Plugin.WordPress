@@ -3,7 +3,7 @@ Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 5.0
+Tested up to: 5.1
 Stable tag: 3.9.0
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
@@ -19,25 +19,43 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 
 ### Plugin Features ###
 
-* **Full Gutenberg Editor Integration** (currently beta)
+* **Full Gutenberg Editor Integration**
 * **Full Classic Editor Integration** (TinyMCE)
-* Support for all common used languages including powerful generic highlighting
+* Support for all common used languages
+* Powerful generic highlighting engine for unknown languages
 * Theme Customizer including **LIVE Preview Mode**
 * Inline Syntax Highlighting
-* Tab-Indentation mode to align code with the `tab` key (single line and block selection)
-* Markdown fenced code blocks
 * [bbPress](https://bbpress.org/) shortcode + markdown code blocks support
-* Shortcodes within content, comments and widgets
-* Easy to use Text-Editor mode through the use of Shortcodes and QuickTags
 * Advanced configuration options (CDN usage, ..) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
-* Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
 * Webfont Loader to add missing Monospace Fonts to your website
-* Transform legacy codeblocks to Enlighter Gutenberg Blocks
 * **Full GPDR compliant** - no external resources are required, no data will be aggregated
+
+### Gutenberg Editor Integration ###
+* **Full Editor Integration** via "Enlighter Sourcecode" block
+* Transform legacy codeblocks to Enlighter Gutenberg Blocks
+* [Editor plugin repository](https://github.com/EnlighterJS/Plugin.Gutenberg)
+
+### Classic Editor (TinyMCE) Integration ###
+* **Full Editor Integration** via Enlighter buttons in the toolbar
+* Inline Syntax Highlighting
+* Tab-Indentation mode to align code with the `tab` key (single line and block selection)
+* [Editor plugin repository](https://github.com/EnlighterJS/Plugin.TinyMCE)
+
+### Markdown ###
+* Markdown fenced code blocks
+
+### Texteditor/Shortcodes (Legacy) ###
+
+Shortcodes are deprecated and should be used in **text editor mode only** - never use them within Gutenberg Editor or Classic Editor! 
+
+* Easy to use Text-Editor mode through the use of Shortcodes and QuickTags
+* Shortcodes within content, comments and widgets
+* Standalone Shortcode-Processor to avoid wpautop filter issues in Text-Editor Mode
+
 
 ### Tutorials and Examples ###
 

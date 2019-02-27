@@ -145,8 +145,12 @@ class ContentProcessor{
 
             // EnlighterJS Code detection
             add_filter('the_content', function($content) use ($T){
-                // contains enlighterjs codeblocks ?
-                $T->_hasContent = (strpos($content, 'EnlighterJSRAW') !== false);
+                // block overrides caused by multiple calls to the_content filter
+                // is the filter called regular to display the content ? 
+                if (!$T->_hasContent && in_the_loop() && is_main_query()){
+                    // contains enlighterjs codeblocks ?                   
+                    $T->_hasContent = (strpos($content, 'EnlighterJSRAW') !== false);
+                }
 
                 return $content;
             }, 9999, 1);
