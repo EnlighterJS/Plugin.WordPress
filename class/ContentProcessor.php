@@ -145,10 +145,10 @@ class ContentProcessor{
 
             // EnlighterJS Code detection
             add_filter('the_content', function($content) use ($T){
-                
-                if (in_array('get_the_excerpt', $GLOBALS['wp_current_filter']))
-                return $content;
-                
+                // check if the content is excerpt (e.g. for related posts), then just return the content.
+                if(in_array('get_the_excerpt', $GLOBALS['wp_current_filter'])){
+                    return $content;
+                } 
                 // contains enlighterjs codeblocks ?
                 $T->_hasContent = (strpos($content, 'EnlighterJSRAW') !== false);
 
