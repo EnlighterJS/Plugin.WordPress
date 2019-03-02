@@ -1,6 +1,10 @@
 
 ## Frequently Asked Questions ##
 
+### Autooptimize compatibility settings ###
+To use Enlighter together with **autooptimize** it's required to exclude the Enlighter resources from autooptimize (EnlighterJS is already optimized!)
+Goto `Settings / Autooptimize / Javascript options / Exclude scripts from Autoptimize` and add `enlighter/resources/` to the end of the comma separated list.
+
 ### Can i use Enlighter togehter with Crayon ? ###
 No, you can't use Enlighter together with the Crayon Syntax highlighter because it may take over the Enlighter elements.
 
