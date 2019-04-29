@@ -1,15 +1,7 @@
 <ul>
-<li>Added: Visual Editor Plugin (<a href="https://github.com/EnlighterJS/Plugin.TinyMCE">EnlighterJS.TinyMCE</a>) <strong>v3.5.1</strong></li>
-<li>Added: Gutenberg Editor Plugin - [EnlighterJS/Plugin.Gutenberg on GitHub] <strong>v0.4.0</strong></li>
-<li>Added: <a href="https://enlighterjs.org/" rel="nofollow">EnlighterJS v2.13.0</a></li>
-<li>Added: automatically transforms legacy Enlighter codeblocks (Classic Editor) to Gutenberg blocks in case the "Convert to Blocks" function is triggered</li>
-<li>Added: Support for jQuery Ajax content (post load) - requested by <a href="https://github.com/EnlighterJS/Plugin.WordPress/issues/126" data-hovercard-type="issue" data-hovercard-url="/EnlighterJS/Plugin.WordPress/issues/126/hovercard">wassereimer86 on GitHub</a></li>
-<li>Added: Description of possible <a href="https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md">Plugin Notficiations</a></li>
-<li>Changed: moved TinyMCE editor resources (editor plugin) from <code>enlighter/resources/editor</code> to <code>enlighter/resources/tinymce</code></li>
-<li>Changed: moved text editor resources (quicktags from <code>enlighter/resources/editor</code> to <code>enlighter/resources/texteditor</code></li>
-<li>Changed: moved Gutenberg Editor settings to "Visual Editor" Tab</li>
-<li>Changed: <code>data-enlighter-linenumbers</code> attribute is ignored in case it is not set (empty string) to be compatible with the new <a href="https://github.com/EnlighterJS/Plugin.Gutenberg">Gutenberg Editor Plugin</a> - explicit true/false required</li>
-<li>Changed: Gutenberg Plugin is enabled by default</li>
-<li>Bugfix: TinyMCE footer label may collide with editor content - added additional padding - thanks to <a href="https://github.com/EnlighterJS/Plugin.WordPress/issues/120" data-hovercard-type="issue" data-hovercard-url="/EnlighterJS/Plugin.WordPress/issues/120/hovercard">JavierSegoviaCordoba on GitHub</a></li>
-<li>Bugfix: On Windows platforms, the environment check throws the error message <code>plugin is located within an invalid path</code> - thanks to <a href="https://wordpress.org/support/topic/enlighter-plugin-error-the-plugin-is-located-within-an-invalid-path" rel="nofollow">ginaf40 on WordPress.org Forums</a></li>
+<li>Added: french translation - thanks to <a href="https://github.com/EnlighterJS/Plugin.WordPress/pull/144" data-hovercard-type="pull_request" data-hovercard-url="/EnlighterJS/Plugin.WordPress/pull/144/hovercard">regisenguehard on GitHub</a></li>
+<li>Added: simplified chinese translation - thanks to <a href="https://github.com/EnlighterJS/Plugin.WordPress/pull/145" data-hovercard-type="pull_request" data-hovercard-url="/EnlighterJS/Plugin.WordPress/pull/145/hovercard">XFY9326 on GitHub</a></li>
+<li>Changed: jsdelivr mootools version pointed to <code>1.6.0</code></li>
+<li>Changed: the DRI detection is now limited to the condition <code>in_the_loop() &amp;&amp; is_main_query()</code></li>
+<li>Bugfix: the experimental DRI feature failed in case <code>the_content</code> filter is called multiple times within a theme - thanks to <a href="https://github.com/EnlighterJS/Plugin.WordPress/pull/153" data-hovercard-type="pull_request" data-hovercard-url="/EnlighterJS/Plugin.WordPress/pull/153/hovercard">willstocks-tech on GitHub</a></li>
 </ul>

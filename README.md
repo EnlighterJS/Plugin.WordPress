@@ -3,7 +3,7 @@ Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 5.1
+Tested up to: 5.2
 Stable tag: 3.10.0
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
@@ -13,9 +13,12 @@ All-in-one Syntax Highlighting solution. Full Gutenberg and Classic Editor integ
 ## Description ##
 
 Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. Highlighting is powered by the [EnlighterJS](http://enlighterjs.org) javascript library to provide a beautiful code-appearance.
+
 Using it can be as simple as adding a new Enlighter Sourcecode block (Gutenberg) and insert the code which you want to highlight: Enlighter takes care of the rest!
+
 An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
+
 [Theme Demo](https://enlighterjs.org/Theme.Enlighter.html "EnlighterJS Theme Browser") - [Language Examples](https://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
 
 ### Plugin Features ###

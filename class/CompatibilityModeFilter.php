@@ -7,7 +7,7 @@
     Plugin URI: http://andidittrich.de/go/enlighterjs
     License: MIT X11-License
     
-    Copyright (c) 2018, Andi Dittrich
+    Copyright (c) 2018-2019, Andi Dittrich
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
     
@@ -29,7 +29,8 @@ class CompatibilityModeFilter{
         $this->_defaultLanguage = $settingsUtil->getOption('compatDefaultLanguage');
     }
     
-    private function getCompatRegex(){
+    // used by e.g. JetPack markdown
+    private function getCompatRegexType1(){
         // opening tag, language identifier (optional)
         return '/<pre><code(?:\s+class="([a-z]+)")?>' .
 
@@ -43,6 +44,30 @@ class CompatibilityModeFilter{
         '/Uim';
     }
 
+    // used by e.g. Gutenberg Codeblock
+    private function getCompatRegexType2(){
+        // opening tag - no language identifier
+        return '/<pre(?:[^>]+?)?><code>' .
+
+        // arbitrary multi-line content
+        '([\S\s]*)' .
+
+        // closing tags
+        '\s*<\/code>\s*<\/pre>\s*' .
+
+        // ungreedy, case insensitive, multiline
+        '/Uim';
+    }
+
+    // used by e.g. Crayon
+    private function getCompatRegexType3(){
+        // opening tag, language identifier (optional)
+        return '/<pre\s+class="lang:([a-z]+?)([^"]*)"\s*>' .
+
+        // case insensitive, multiline
+        '/im';
+    }
+
 
     // strip the content
     // internal regex function to replace gfm code sections with placeholders
@@ -52,7 +77,7 @@ class CompatibilityModeFilter{
         $T = $this;
 
         // Block Code
-        return preg_replace_callback($this->getCompatRegex(), function ($match) use ($T){
+        return preg_replace_callback($this->getCompatRegexType1(), function ($match) use ($T){
 
             // language identifier (tagname)
             $lang = $match[1];
