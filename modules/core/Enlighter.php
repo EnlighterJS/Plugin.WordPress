@@ -1,48 +1,26 @@
 <?php
 
-class Enlighter extends \enlighter\skltn\Plugin{
+class Enlighter 
+    extends \Enlighter\skltn\Plugin{
 
     // shortcode handler instance
-    private $_shortcodeHandler;
+    protected $_shortcodeHandler;
 
     // content processor instance (gfm, shortcode)
-    private $_contentProcessor;
+    protected $_contentProcessor;
     
     // resource loader instamce
-    private $_resourceLoader;
-    
-    // settings utility instance
-    private $_settingsManager;
+    protected $_resourceLoader;
 
     // cache manager instance
-    private $_cacheManager;
+    protected $_cacheManager;
     
     // theme loader/manager
-    private $_themeManager;
-
-    // environment check
-    private $_envCheck;
-
-    // get available languages
-    public static function getAvailableLanguages(){
-        return Enlighter\LanguageManager::getLanguages();
-    }
-    
-    // get available themes
-    public static function getAvailableThemes(){
-        return self::getInstance()->_themeManager->getThemes();
-    }
+    protected $_themeManager;
 
     // basic plugin initialization
     public function __construct(){
-        // Plugin PRE-INIT (CORE)
-        // ------------------------------------------------------------------
-
-        // fetch default config & validators
-        $pluginConfig = new Enlighter\skltn\PluginConfig();
-
-        // create new settings utility class
-        $this->_settingsManager = new Enlighter\skltn\SettingsManager($pluginConfig);
+        parent::__construct();
 
         // create new cache manager instance
         $this->_cacheManager = new Enlighter\skltn\CacheManager();
@@ -50,8 +28,21 @@ class Enlighter extends \enlighter\skltn\Plugin{
         // loader to fetch user themes
         $this->_themeManager = new Enlighter\ThemeManager();
 
-        // environment check/notifier
-        $this->_envCheck = new Enlighter\EnvironmentCheck($this->_cacheManager);
+        // use custom cache path/url ?
+        if ($this->_settingsManager->getOption('cache-custom')){
+            $this->_cacheManager->setCacheLocation($this->_settingsManager->getOption('cache-path'), $this->_settingsManager->getOption('cache-url'));
+        }
+
+        // set default settings page
+        $this->_pluginMetaSettingsPage = 'appearance';
+        $this->_pluginMetaAboutPage = 'about';
+
+        // plugin meta links
+        $this->_pluginMetaLinks = array(
+            'https://twitter.com/andidittrich' => __('News & Updates', 'enligther'),
+            'https://github.com/EnlighterJS/Plugin.WordPress/issues' => __('Report Bugs', 'enligther'),
+            'https://enlighterjs.org' => __('EnlighterJS Website', 'enligther')
+        );
     }
 
     // initialized on init
@@ -69,7 +60,7 @@ class Enlighter extends \enlighter\skltn\Plugin{
         $languages = Enlighter\LanguageManager::getLanguages();
 
         // load language files
-        if ($this->_settingsManager->getOption('enableTranslation')){
+        if ($this->_settingsManager->getOption('translation-enabled')){
             load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
         }
         
@@ -82,41 +73,11 @@ class Enlighter extends \enlighter\skltn\Plugin{
         // frontend or dashboard area ?
         if (is_admin()){
 
-            // plugin upgrade ? show about page
-            if (get_option('enlighter-activation-redirect', '') == 'about-page'){
-                // remove redirect flag - do it twice to avoid infinite redirect issues with broken caching plugins!
-                $deleted = update_option('enlighter-activation-redirect', '') && delete_option('enlighter-activation-redirect');
-
-                // ignore bulk actions - additional redirect check
-                // current page has to be the plugin update dialog!
-                if ($deleted && !isset($_GET['activate-multi'])){
-
-                    // disable browser caching
-                    nocache_headers();
-
-                    // redirect to About Page
-                    wp_redirect(admin_url('admin.php?page=Enlighter-About'), 307);
-                    
-                    exit;
-                }
-            }
-
-            // super admin (about page + links)
-            if (is_multisite() && is_super_admin()) {
-                add_action('network_admin_menu', array($this, 'setupNetworkBackend'));
-            }
-
-            // single site admin menus
-            add_action('admin_menu', array($this, 'setupBackend'));
-
-            // add plugin upgrade notification
-            add_action('in_plugin_update_message-enlighter/Enlighter.php', array($this, 'showUpgradeNotification'), 10, 2);
-
             // force theme cache reload
-            $this->_themeManager->forceReload();
+            //$this->_themeManager->forceReload();
 
             // editor
-            $this->_resourceLoader->backendEditor();
+            //$this->_resourceLoader->backendEditor();
 
         }else{
 
@@ -143,21 +104,73 @@ class Enlighter extends \enlighter\skltn\Plugin{
 
             // initialize content processor (shortcode, gfm)
             $this->_contentProcessor = new Enlighter\ContentProcessor($this->_settingsUtility, $languages);
-
+            */
+            
             // frontend resources & extensions
             $this->setupFrontend();
 
-            // change wpauto filter priority ?
-            if ($this->_settingsUtility->getOption('wpAutoPFilterPriority')!='default'){
-                remove_filter('the_content', 'wpautop');
-                add_filter('the_content', 'wpautop' , 12);
-            }
 
-            */
+            
         }
 
         // trigger init hook
         do_action('enlighter_init', $this);
+    }
+
+    // backend menu structure
+    protected function getBackendMenu(){
+        // menu group + first entry
+        return array(
+            'pagetitle' => ENLIGHTER_PLUGIN_TITLE,
+            'title' => 'Enlighter',
+            'title2' => 'Appearance',
+            'slug' => 'enlighter-appearance',
+            'icon' => 'dashicons-editor-code',
+            'template' => 'appearance/AppearancePage',
+            'resources' => array($this->_resourceLoader, 'backendSettings'),
+            'render' => array($this, 'settingsPage'),
+            'help' => array('Enlighter\Admin\ContextualHelp', 'settings'),
+            'items' => array(
+                // theme Customizer
+                array(
+                    'pagetitle' => ENLIGHTER_PLUGIN_TITLE,
+                    'title' => 'Theme Customizer',
+                    'slug' => 'enlighter-customizer',
+                    'template' => 'customizer/CustomizerPage',
+                    'resources' => array($this->_resourceLoader, 'backendSettings'),
+                    'render' => array($this, 'settingsPage'),
+                    'help' => array('Enlighter\Admin\ContextualHelp', 'settings')
+                ),
+                // editing options
+                array(
+                    'pagetitle' => ENLIGHTER_PLUGIN_TITLE,
+                    'title' => 'Editing',
+                    'slug' => 'enlighter-editing',
+                    'template' => 'editing/EditingPage',
+                    'resources' => array($this->_resourceLoader, 'backendSettings'),
+                    'render' => array($this, 'settingsPage'),
+                    'help' => array('Enlighter\Admin\ContextualHelp', 'settings')
+                ),
+                // advanced options
+                array(
+                    'pagetitle' => ENLIGHTER_PLUGIN_TITLE,
+                    'title' => 'Options',
+                    'slug' => 'enlighter-options',
+                    'template' => 'options/OptionsPage',
+                    'resources' => array($this->_resourceLoader, 'backendSettings'),
+                    'render' => array($this, 'settingsPage'),
+                    'help' => array('Enlighter\Admin\ContextualHelp', 'settings')
+                ),
+                // about
+                array(
+                    'pagetitle' => ENLIGHTER_PLUGIN_TITLE,
+                    'title' => 'About',
+                    'slug' => 'enlighter-about',
+                    'template' => 'about/AboutPage',
+                    'resources' => array($this->_resourceLoader, 'backendSettings')
+                )
+            )
+        );
     }
 
     // enable EnlighterJS html attributes for Authors and Contributors
@@ -192,6 +205,7 @@ class Enlighter extends \enlighter\skltn\Plugin{
         // load frontend css+js resources - highlighting engine
         $this->_resourceLoader->frontendEnlighter();
 
+        /*
         // frontend resource optimization ?
         if ($this->_settingsUtility->getOption('dynamicResourceInvocation')){
             // php 5.3 compatibility
@@ -208,6 +222,7 @@ class Enlighter extends \enlighter\skltn\Plugin{
                 }
             }, 1);
         }
+        */
 
         // check frontend user privileges
         $canEdit = is_user_logged_in() && (current_user_can('edit_posts') || current_user_can('edit_pages'));
@@ -221,74 +236,6 @@ class Enlighter extends \enlighter\skltn\Plugin{
         }
     }
 
-    // register pages
-    public function setupNetworkBackend(){
-        if (current_user_can('manage_options')){
-             // add about page
-            $aboutPage = add_submenu_page('__enlighter_invalid_page', 'About Enlighter', 'About Enlighter', 'administrator', 'Enlighter-About', array($this, 'aboutPage'));
-
-            // add links
-            add_filter('plugin_row_meta', array($this, 'addPluginMetaLinks'), 10, 2);
-
-            // settings page resources
-            add_filter('load-'.$aboutPage, array($this->_resourceLoader, 'backendAboutPage'));
-        }
-    }
-
-    // register pages
-    public function setupBackend(){
-        if (current_user_can('manage_options')){
-            // add options page
-            $optionsPage = add_menu_page(__('Enlighter - Customizable Syntax Highlighter', 'enlighter'), 'Enlighter', 'administrator', 'Enlighter', array($this, 'settingsPage'), 'dashicons-editor-code');
-
-            // add about page
-            $aboutPage = add_submenu_page('__enlighter_invalid_page', 'About Enlighter', 'About Enlighter', 'administrator', 'Enlighter-About', array($this, 'aboutPage'));
-
-            // add links
-            add_filter('plugin_action_links', array($this, 'addPluginPageSettingsLink'), 10, 2);
-            add_filter('plugin_row_meta', array($this, 'addPluginMetaLinks'), 10, 2);
-
-            // settings page resources
-            add_filter('load-'.$optionsPage, array($this->_resourceLoader, 'backendSettings'));
-            add_filter('load-'.$aboutPage, array($this->_resourceLoader, 'backendAboutPage'));
-
-            // call register settings function
-            add_action('admin_init', array($this->_settingsUtility, 'registerSettings'));
-            
-            // contextual help
-            $ch = new Enlighter\ContextualHelp($this->_settingsUtility);
-            add_filter('load-'.$optionsPage, array($ch, 'contextualHelp'));
-        }
-    }
-
-    // render the about page
-    public function aboutPage(){
-        // include news page
-        include(ENLIGHTER_PLUGIN_PATH.'/views/admin/About.phtml');
-    }
-
-    // links to the plugin website & author's twitter channel ()
-    public function addPluginMetaLinks($links, $file){
-        // current plugin ?
-        if ($file == 'enlighter/Enlighter.php'){
-            $links[] = '<a target="_blank" href="https://twitter.com/andidittrich">'.__('News & Updates', 'enlighter').'</a>';
-            $links[] = '<a target="_blank" href="http://enlighterjs.org">'.__('EnlighterJS Website', 'enlighter').'</a>';
-        }
-        
-        return $links;
-    }
-
-    // links on the plugin page
-    public function addPluginPageSettingsLink($links, $file){
-        // current plugin ?
-        if ($file == 'enlighter/Enlighter.php'){
-            $links[] = '<a href="'.admin_url('admin.php?page=Enlighter').'">'.__('Settings', 'enlighter').'</a>';
-            $links[] = '<a href="'.admin_url('admin.php?page=Enlighter-About').'">'.__('About', 'enlighter').'</a>';
-        }
-
-        return $links;
-    }
-    
     // options page
     public function settingsPage(){
         // well...is there no action hook for updating settings in wp ?
@@ -301,67 +248,29 @@ class Enlighter extends \enlighter\skltn\Plugin{
             $this->_cacheManager->autosetPermissions();
         }
 
-        // fetch the theme list
-        $themeList = $this->_themeManager->getThemeList();
-
-        // get webfont list
-        $webfonts = \Enlighter\GoogleWebfontResources::getMonospaceFonts();
-
         // throw notifications
-        $this->_envCheck->throwNotifications();
+        $envCheck = new \Enlighter\EnvironmentCheck($this->_cacheManager);
+        $envCheck->throwNotifications();
 
-        // include admin page
-        include(ENLIGHTER_PLUGIN_PATH.'/views/admin/SettingsPage.phtml');
+        return array(
+            'themes' => $this->_themeManager->getThemeList(),
+            'webfonts' => array()
+        );
     }
-
-    // gets the current EnlighterJS version from js file
-    public static function getEnlighterJSVersion(){
-        $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/EnlighterJS.min.js');
-
-        // extract version
-        $r = preg_match('#^[\S\s]+ (\d\.\d+\.\d+(?:\w+)?\s#U', $content, $matches);
-
-        // valid result ?
-        if ($r!==1){
-            return 'NaN';
-        }else{
-            return $matches[1];
-        }
-    }
-
-    // gets the current EnlighterJS.TinyMCE version from js file
-    public static function getEnlighterJSTinyMCEVersion(){
-        $content = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/editor/EnlighterJS.TinyMCE.min.js');
-
-        // extract version
-        $r = preg_match('#^[\S\s]+ (\d.\d+.\d+)#U', $content, $matches);
-
-        // valid result ?
-        if ($r!==1){
-            return 'NaN';
-        }else{
-            return $matches[1];
-        }
-    }
-
-    // plugin upgrade notification
-    public function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
-        // check "upgrade_notice"
-        if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
-            echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong> ';
-            echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
-       }
-    }
-
-    public function _wp_plugin_activate(){
-        // set activation flag
-        add_option('enlighter-activation-redirect', 'about-page');
-    }
-
-    public function _wp_plugin_deactivate(){
-    }
-
+ 
     public function _wp_plugin_upgrade($currentVersion){
+        // upgrade from < 4.0 ? use v3.99 condition to ensure that beta versions are not altered!
+        if (version_compare($currentVersion, '3.99', '<')){
+            // load upgrader
+            require_once(ENLIGHTER_PLUGIN_PATH.'/modules/upgrade/Upgrade_to_4_0_0.php');
+
+            // create upgrader instance
+            $upgrader = new Enlighter\Upgrade\Upgrade_to_4_0_0();
+
+            // run
+            $upgrader->run($currentVersion, ENLIGHTER_VERSION);
+        }
+        
         // invalidate cache on upgrade!
         $this->_cacheManager->clearCache(true);
 

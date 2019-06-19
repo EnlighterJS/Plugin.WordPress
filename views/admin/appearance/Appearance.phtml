@@ -1,0 +1,72 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Appearance', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+    <p>
+        <?php _e('Most settings can be overridden on per-codeblock base. The default settings will be used in case no individual changes were made.', 'enlighter'); ?>
+    </p>
+
+    <!-- Theme -->
+    <?php $this->_settingsUtility->displaySelect(__('Theme', 'enlighter'), 'enlighterjs-theme', 
+        array(
+            '{at}' => '{at}', 
+            '/AT/' => '/AT/'
+        ),
+        array(
+            'description' => __('The default theme. Used in case no block specific theme is selected.', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Indent -->
+    <?php $this->_settingsUtility->displaySelect(__('Code indentation', 'enlighter'), 'enlighterjs-indent', 
+        array(
+            -1 => __('No modification (keep tabs)', 'enlighter'), 
+            1 => __('1 Space', 'enlighter'),
+            2 => '2 '.__('Spaces', 'enlighter'),
+            3 => '3 '.__('Spaces', 'enlighter'),
+            4 => '4 '.__('Spaces', 'enlighter'),
+            5 => '5 '.__('Spaces', 'enlighter'),
+            6 => '6 '.__('Spaces', 'enlighter'),
+            7 => '7 '.__('Spaces', 'enlighter')
+        ),
+        array(
+            'description' => __('Replace each tab at the beginning of a line with a selectable number of space-characters. Recommend for cross-browser-compatibility', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Line numbering !-->
+    <?php $this->_settingsUtility->displayCheckbox(__('Line-numbering', 'enlighter'), 'enlighterjs-linenumbers', 
+        array(
+            'label' => 'Enable',
+            'description' => __('Should linenumbers be shown on codeblocks?', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Line hover !-->
+    <?php $this->_settingsUtility->displayCheckbox(__('Line-hovereffect', 'enlighter'), 'enlighterjs-linehover', 
+        array(
+            'label' => 'Enable',
+            'description' => __('Display hover effects on each line.', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Change to RAW Code on DBClick -->
+    <?php $this->_settingsUtility->displayCheckbox(__('RAW-Code on doubleclick', 'enlighter'), 'enlighterjs-rawcodedbclick', 
+        array(
+            'label' => 'Enable',
+            'description' => __('Show raw-code without highlighting on double-click.', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Change to RAW Code on DBClick -->
+    <?php $this->_settingsUtility->displayCheckbox(__('Ampersand cleanup', 'enlighter'), 'enlighterjs-ampersandcleanup', 
+        array(
+            'label' => 'Enable',
+            'description' => __('Replace the ampersand html escape sequence with the character.', 'enlighter')
+        )
+    ); ?>
+
+
+</div></div>

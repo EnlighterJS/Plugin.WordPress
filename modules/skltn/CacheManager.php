@@ -2,7 +2,7 @@
 // ---------------------------------------------------------------------------------------------------------------
 // -- WP-SKELETON AUTO GENERATED FILE - DO NOT EDIT !!!
 // --
-// -- Copyright (c) 2016-2018 Andi Dittrich
+// -- Copyright (c) 2016-2019 Andi Dittrich
 // -- https://github.com/AndiDittrich/WP-Skeleton
 // --
 // ---------------------------------------------------------------------------------------------------------------
@@ -131,6 +131,33 @@ class CacheManager{
     // retrieve current cache hash (useful to enqueue resources)
     public static function getCacheHash(){
         return self::$__cacheHash;
+    }
+
+    // retrieve the number of cached files
+    public function getNumFiles(){
+        // remove cached files
+        if (is_dir($this->_cachePath)){
+
+            // file counter
+            $counter = 0;
+
+            // get file list
+            $files = scandir($this->_cachePath);
+
+            // process files
+            foreach ($files as $file){
+
+                // regular file ?
+                if ($file !== '.' && $file !== '..' && is_file($this->_cachePath.$file)){
+                    $counter++;
+                }
+            }
+
+            return $counter;
+        }
+
+        // cannot retrieve files
+        return -1;
     }
 
     // Remove all files within the given directory (non recursive)

@@ -1,45 +1,26 @@
 <?php
-/**
-    Try to load User-Themes from the `enlighter` directory of current selected Theme
-    Version: 1.0
-    Author: Andi Dittrich
-    Author URI: http://andidittrich.de
-    Plugin URI: http://andidittrich.de/go/enlighterjs
-    License: MIT X11-License
-    
-    Copyright (c) 2014-2016, Andi Dittrich
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
 namespace Enlighter;
 
 class ThemeManager{
     
     private $_cachedData = null;
 
-    // list of supported themes
-    // Enlighter Godzilla Beyond Classic MooTwo Eclipse Droide Git Mocha MooTools Panic Tutti Twilight
+    // list of build-in themes
     private static $_supportedThemes = array(
-        'Enlighter' => true,
-        'Godzilla' => true,
-        'Beyond' => true,
-        'Classic' => true,
-        'MooTwo' => true,
-        'Eclipse' => true,
-        'Droide' => true,
-        'Minimal' => true,
-        'Atomic' => true,
-        'Rowhammer' => true,
-        'Git' => true,
-        'Mocha' => true,
-        'MooTools' => true,
-        'Panic' => true,
-        'Tutti' => true,
-        'Twilight' => true
+        'Enlighter' => 'enlighter',
+        'Godzilla' => 'godzilla',
+        'Beyond' => 'beyond',
+        'Classic' => 'classic',
+        'MooTwo' => 'mowtoo',
+        'Eclipse' => 'eclipse',
+        'Droide' => 'droide',
+        'Minimal' => 'minimal',
+        'Atomic' => 'atomic',
+        'Rowhammer' => 'rowhammer',
+        'Bootstrap4' => 'boootstrap4',
+        'Dracula'=> 'dracula',
+        'Monokai' => 'monokai'
     );
 
     public function __construct(){

@@ -1,0 +1,46 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Toolbar', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+    <h4><?php _e('Button Toolbar', 'enlighter'); ?></h4>
+    <p><?php _e('Enable/Disable specific toolbar buttons.', 'enlighter'); ?></p>
+
+    <!-- Behaviour -->
+    <?php $this->_settingsUtility->displaySelect(__('Visibility', 'enlighter'), 'toolbar-visibility', 
+        array(
+            'default' => __('Show toolbar on mouseover (default)', 'enlighter'), 
+            'hide' => __('Always hide the toolbar', 'enlighter'),
+            'show' => __('Always show the toolbar', 'enlighter')
+        ),
+        array(
+            'description' => __('Change the visiblity of the top-toolbar containing the buttons.', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Raw Code Button -->
+    <?php $this->_settingsUtility->displayCheckbox(__('Raw code button', 'enlighter'), 'toolbar-button-raw', 
+        array(
+            'label' => 'Enable',
+            'description' => __('Show the raw code button: switches highlighted code with the origin codeblock.', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Window Button -->
+    <?php $this->_settingsUtility->displayCheckbox(__('New window button', 'enlighter'), 'toolbar-button-window', 
+        array(
+            'label' => 'Enable',
+            'description' => __('Open the origin code (without highlighting) in a new browser window.', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Copy Button !-->
+    <?php $this->_settingsUtility->displayCheckbox(__('Copy-to-clipboard button', 'enlighter'), 'toolbar-button-copy', 
+        array(
+            'label' => 'Enable',
+            'description' => __('Show the copy-to-clipboard button. Works within all modern web-browsers.', 'enlighter')
+        )
+    ); ?>
+
+</div></div>

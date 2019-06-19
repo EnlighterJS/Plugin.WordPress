@@ -13,5 +13,8 @@
         "author": "Andi Dittrich",
         "authorUrl": "https://andidittrich.de"
     },
-    "skltnVersion": "0.16.0"
+    "skltnVersion": "0.18.0",
+    "modules": {
+        "exclude": ["upgrade"]
+    }
 }

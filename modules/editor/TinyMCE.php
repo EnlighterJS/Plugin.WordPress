@@ -1,21 +1,8 @@
 <?php
-/**
-    TinyMCE Editor Addons
-    Version: 1.2
-    Author: Andi Dittrich
-    Author URI: http://andidittrich.de
-    Plugin URI: http://andidittrich.de/go/enlighterjs
-    License: MIT X11-License
-    
-    Copyright (c) 2014, Andi Dittrich
+namespace Enlighter\editor;
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-namespace Enlighter;
+use Enlighter\skltn\ResourceManager;
+use Enlighter\skltn\CssBuilder;
 
 class TinyMCE{
     
@@ -26,7 +13,7 @@ class TinyMCE{
     private $_supportedLanguageKeys;
 
     // cache manager
-    private $_cacheFilename = 'TinyMCE.css';
+    private $_cacheFilename = 'tinymce.css';
     private $_cacheManager;
     
     public function __construct($settingsUtil, $cacheManager, $languageKeys){
@@ -40,18 +27,13 @@ class TinyMCE{
         $this->_cacheManager = $cacheManager;
 
         // css cached ? otherwise regenerate it
-        if (!$this->_cacheManager->fileExists('TinyMCE.css')){
+        if (!$this->_cacheManager->fileExists($this->_cacheFilename)){
             $this->generateCSS();
         }
     }
 
     // run integration
     public function integrate(){
-        // TinyMCE 4 required !
-        if (!version_compare(get_bloginfo('version'), '3.9', '>=')) {
-            return;
-        }
-
         // filter priority
         $priority = 101;
 
@@ -65,7 +47,7 @@ class TinyMCE{
         add_filter('mce_external_plugins', array($this, 'loadPlugin'), $priority, 1);
 
         // add pre-formatted styles ?
-        if ($this->_config['editorAddStyleFormats']){
+        if ($this->_config['tinymce-formats']){
             // add filter to enable the custom style menu - low priority to avoid conflicts with other plugins which try to overwrite the settings
             add_filter('mce_buttons_2', array($this, 'addButtons2'), $priority);
 
@@ -178,20 +160,20 @@ class TinyMCE{
 
     // generate the editor css
     public function generateCSS(){
+
+        $builder = new CssBuilder();
+
         // load base styles
-        $styles = file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/editor/EnlighterJS.TinyMCE.min.css');
+        $builder->addRaw(file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/tinymce/enlighterjs.tinymce.min.css'));
 
-        // inline editor styles
-        $customizer = array(
-            'font-family:' . $this->_config['editorFontFamily'] . ' !important',
-            'font-size:' . $this->_config['editorFontSize'] . ' !important',
-            'line-height:' . $this->_config['editorLineHeight'] . ' !important',
-            'color:' . $this->_config['editorFontColor'] . ' !important',
-            'background-color:' . $this->_config['editorBackgroundColor'] . ' !important',
-        );
-
-        // Custom TinyMCE Styling
-        $styles .= 'code.EnlighterJSRAW, pre.EnlighterJSRAW{' . implode(';', $customizer) . '}';
+        // add editor styles
+        $builder->add('code.EnlighterJSRAW, pre.EnlighterJSRAW', array(
+            'font-family'       => $this->_config['editorFontFamily'] . ' !important',
+            'font-size'         => $this->_config['editorFontSize'] . ' !important',
+            'line-height'       => $this->_config['editorLineHeight'] . ' !important',
+            'color'             => $this->_config['editorFontColor'] . ' !important',
+            'background-color'  => $this->_config['editorBackgroundColor'] . ' !important',
+        ));
 
         // generate language titles
         foreach ($this->_supportedLanguageKeys as $name => $lang){
@@ -203,21 +185,25 @@ class TinyMCE{
             $title = apply_filters('enlighter_codeblock_title', $defaultTitle, $lang, $name);
             
             // generate css rule
-            $styles .= 'pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before{content: "'. addslashes($title) .'"}';
+            $builder->add('pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before', array(
+                'content' => '"' . addslashes($title) . '"'
+            ));
         }
 
         // Automatic Editor width
-        if ($this->_config['editorAutowidth']){
-            $styles .= '.mceContentBody { max-width: none !important;}';
+        if ($this->_config['tinymce-autowidth']){
+            $builder->add('.mceContentBody', array(
+                'max-width' => 'none !important'
+            ));
         }
 
         // store generated styles
-        $this->_cacheManager->writeFile($this->_cacheFilename, $styles);
+        $this->_cacheManager->writeFile($this->_cacheFilename, $builder->render());
     }
 
     public function loadEditorCSS($mce_css){
         // add hash from last settings update to force a cache update
-        $url = ResourceManager::getResourceUrl('cache/TinyMCE.css', ENLIGHTER_VERSION);
+        $url = ResourceManager::getResourceUrl('cache/' . $this->_cacheFilename, ENLIGHTER_VERSION);
 
         // other styles loaded ?
         if (empty($mce_css)){
@@ -231,7 +217,7 @@ class TinyMCE{
 
     public function loadPlugin($mce_plugins){
         // TinyMCE plugin js
-        $mce_plugins['enlighterjs'] = ResourceManager::getResourceUrl('editor/EnlighterJS.TinyMCE.min.js', ENLIGHTER_VERSION);
+        $mce_plugins['enlighterjs'] = ResourceManager::getResourceUrl('tinymce/enlighterjs.tinymce.min.js', ENLIGHTER_VERSION);
         return $mce_plugins;
     }
 }

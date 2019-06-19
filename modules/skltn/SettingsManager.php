@@ -2,7 +2,7 @@
 // ---------------------------------------------------------------------------------------------------------------
 // -- WP-SKELETON AUTO GENERATED FILE - DO NOT EDIT !!!
 // --
-// -- Copyright (c) 2016-2018 Andi Dittrich
+// -- Copyright (c) 2016-2019 Andi Dittrich
 // -- https://github.com/AndiDittrich/WP-Skeleton
 // --
 // ---------------------------------------------------------------------------------------------------------------
@@ -28,7 +28,11 @@ class SettingsManager{
     private $_configValidators = array();
     
     // initialize global plugin config
-    public function __construct($pluginConfig){
+    public function __construct(){
+
+        // initialize plugin config
+        $pluginConfig = new PluginConfig();
+
         // store default config
         $this->_defaultConfig = $pluginConfig->getDefaults();
 
@@ -47,21 +51,21 @@ class SettingsManager{
     // sanitize callback
     public function validateSettings($settings){
 
-        // is array ? if not invalid data is passed to the function, use secure default values!
+        // is array ? if not invalid data is passed to the function, use secure values!
         if (!is_array($settings)){
-            return $this->_defaultConfig;
+            return $this->_config;
         }
 
         // new values
         $filteredValues = array();
 
         // filter values
-        foreach ($this->_defaultConfig as $key => $value){
+        foreach ($this->_defaultConfig as $key => $defaultValue){
 
             // key exists ?
             if (!isset($settings[$key])){
                 // use default value
-                $filteredValues[$key] = $value;
+                $filteredValues[$key] = $this->_config[$key];
                 continue;
             }
 
@@ -71,7 +75,7 @@ class SettingsManager{
             // invalid value ? only scalar option types are supported
             if (!is_scalar($v)){
                 // use defaults
-                $filteredValues[$key] = $value;
+                $filteredValues[$key] = $this->_config[$key];
                 continue;
             }
 
@@ -100,7 +104,7 @@ class SettingsManager{
 
                     // default value
                 }else{
-                    $filteredValues[$key] = $value;
+                    $filteredValues[$key] = $this->_config[$key];
                 }
 
             // numeric float value
@@ -110,7 +114,7 @@ class SettingsManager{
 
                 // default value
                 }else{
-                    $filteredValues[$key] = $value;
+                    $filteredValues[$key] = $this->_config[$key];
                 }
 
             // default: string

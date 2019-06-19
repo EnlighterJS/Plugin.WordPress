@@ -2,30 +2,13 @@
 
 namespace Enlighter;
 
-class EnvironmentCheck{
+class EnvironmentCheck
+    extends \Enlighter\skltn\EnvironmentCheck{
 
     private $_cacheManager;
 
     public function __construct($cacheManager){
         $this->_cacheManager = $cacheManager;
-    }
-
-    // external triggered as admin_notices
-    public function throwNotifications(){
-        // trigger check
-        $results = self::check();
-
-        // show errors
-        foreach ($results['errors'] as $err){
-            // styling
-            echo '<div class="notice notice-error enlighter-notice"><p><strong>Enlighter Plugin Error: </strong>', $err, '</p></div>';
-        }
-
-        // show warnings
-        foreach ($results['warnings'] as $err){
-            // styling
-            echo '<div class="notice notice-warning enlighter-notice"><p><strong>Enlighter Plugin Warning: </strong>', $err, '</p></div>';
-        }
     }
 
     // check for common environment errors
@@ -59,6 +42,11 @@ class EnvironmentCheck{
             if (isset($_GET['cache-permission-fix'])){
                 $errors[] = __('Autoset Permissions failed - Please change the directory permission (chmod <code>0644</code> or <code>0777</code>) manually!');
             }
+        }
+
+        // plugin path wp-content/plugins/enlighter ?
+        if (strpos(__DIR__, 'enlighter'.DIRECTORY_SEPARATOR.'modules') === false){
+            $errors[] = __('The plugin is located within an invalid path - the <code>enlighter/</code> directory name is <strong>mandatory</strong>', 'enlighter');
         }
 
         return array(

@@ -1,0 +1,63 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+<?php add_thickbox(); ?>
+
+<!-- EnlighterSettings:wrap -->
+<div class="wrap" id="enlighter-settings" data-enlighter-page="appearance">
+
+<!-- Settings Tabs -->
+<h2 class="nav-tab-wrapper" id="enlighter-tabnav">
+    <a data-tab="EnlighterTabAppearance" class="nav-tab"><?php _e('Appearance', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabToolbar" class="nav-tab"><?php _e('Toolbar', 'enlighter'); ?></a>
+</h2>
+
+<!-- Main Title -->
+<h1 class="maintitle"><span class="enlighter-title-badge"></span><?php _e('Enlighter - Customizable Syntax Highlighter', 'enlighter'); ?></h1>
+<p><?php _e('Select the content you want to highlight and Enlighter takes care of the rest.', 'enlighter'); ?></p>
+
+<!-- settings !-->
+<form method="post" action="options.php">
+    <?php settings_fields('enlighter-settings-group' ); ?>
+    <!-- #poststuff -->
+    <div id="poststuff">
+
+<!-- 2 Column Layout -->
+<div id="post-body" class="metabox-holder columns-2">
+    <div id="post-body-content" class="enlighter-tab-container">
+     
+        <div id="EnlighterTabAppearance">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/appearance/Appearance.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabToolbar">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/appearance/Toolbar.phtml'); ?>
+        </div>
+
+        <!-- submit !-->
+        <?php submit_button(); ?>
+
+    </div>
+    <!-- // MAIN COLUMN -->
+    
+    <!-- Right Column -->
+    <div id="postbox-container-1" class="postbox-container">
+        <?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/SystemInfo.phtml'); ?>
+        <?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/Related.phtml'); ?>
+    </div>
+    <!-- // Right Column -->
+    
+</div>
+<!-- // 2 Column Layout -->
+
+</div>
+<!-- // #poststuff -->
+
+</form>
+<div class="clear"></div>
+
+<?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/Credits.phtml'); ?>
+<?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/License.phtml'); ?>
+
+</div>
+<!-- // EnlighterSettings:wrap -->
+
+<div class="clear"></div>

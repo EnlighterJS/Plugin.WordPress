@@ -16,7 +16,7 @@
 // AUTO GENERATED CODE - DO NOT EDIT !!!
 define('ENLIGHTER_INIT', true);
 define('ENLIGHTER_VERSION', '4.0');
-define('ENLIGHTER_WPSKLTN_VERSION', '0.16.0');
+define('ENLIGHTER_WPSKLTN_VERSION', '0.19.0');
 define('ENLIGHTER_PLUGIN_TITLE', 'Enlighter - Customizable Syntax Highlighter');
 define('ENLIGHTER_PLUGIN_HEADLINE', 'Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
@@ -35,36 +35,40 @@ function Enlighter_PhpEnvironmentError(){
 // check php version
 if (version_compare(phpversion(), '5.4', '>=')){
     // load classes
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/CacheManager.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/CssBuilder.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/EnvironmentCheck.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/Hash.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/HtmlUtil.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/Plugin.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/PluginConfig.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/ResourceManager.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/RewriteRuleHelper.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/SettingsManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/SettingsViewHelper.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/CacheManager.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/ResourceManager.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/PluginConfig.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/CssBuilder.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/Hash.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/VirtualPageManager.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/RewriteRuleHelper.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/Plugin.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/BBPress.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/CompatibilityModeFilter.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/addons/BBPress.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/addons/GoogleWebfontResources.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/admin/ContextualHelp.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ConfigGenerator.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ContentProcessor.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ContextualHelp.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/Enlighter.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/EnlighterJSConfig.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/EnlighterJS.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/EnvironmentCheck.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/GfmFilter.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/GoogleWebfontResources.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/InputFilter.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/Fonts.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/LanguageManager.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/LegacyShortcodeHandler.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ResourceLoader.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ShortcodeFilter.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/SimpleTemplate.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ThemeGenerator.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ThemeManager.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/TinyMCE.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/Versions.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/Gutenberg.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/TinyMCE.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/CompatibilityModeFilter.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/ContentProcessor.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/GfmFilter.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/InputFilter.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/LegacyShortcodeHandler.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/ShortcodeFilter.php');
+if (defined('WP_CLI') && WP_CLI){
+}
 
     
     // startup - NEVER CALL IT OUTSIDE THIS FILE !!
@@ -74,4 +78,3 @@ if (version_compare(phpversion(), '5.4', '>=')){
     add_action('admin_notices', 'Enlighter_PhpEnvironmentError');
     add_action('network_admin_notices', 'Enlighter_PhpEnvironmentError');
 }
-

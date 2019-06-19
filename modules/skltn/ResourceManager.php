@@ -2,7 +2,7 @@
 // ---------------------------------------------------------------------------------------------------------------
 // -- WP-SKELETON AUTO GENERATED FILE - DO NOT EDIT !!!
 // --
-// -- Copyright (c) 2016-2018 Andi Dittrich
+// -- Copyright (c) 2016-2019 Andi Dittrich
 // -- https://github.com/AndiDittrich/WP-Skeleton
 // --
 // ---------------------------------------------------------------------------------------------------------------
@@ -73,27 +73,16 @@ class ResourceManager{
         }
     }
 
-    // cache
-    private static $__dynamicScriptBuffer = false;
-    private static $__dynamicStyleBuffer = false;
-
     // enqueue dynamics scripts
-    public static function enqueueDynamicScript($script){
-        // initialized ?
-        if (self::$__dynamicScriptBuffer === false){
-            // hook into footer print script action
-            add_action('wp_footer', function(){
-                echo '<script type="text/javascript">/* <![CDATA[ */', self::$__dynamicScriptBuffer ,' /* ]]> */</script>';
-            });
+    public static function enqueueDynamicScript($code, $dependencie=null){
 
-            // clear buffer
-            self::$__dynamicScriptBuffer = '';
-        }
-
-        // append
-        self::$__dynamicScriptBuffer .= $script;
+        // use build-in wordpress hook
+        wp_add_inline_script($dependencie, $code);
     }
 
+    // cache
+    private static $__dynamicStyleBuffer = false;
+    
     // enqueue dynamics styles
     public static function enqueueDynamicStyle($style){
         // initialized ?

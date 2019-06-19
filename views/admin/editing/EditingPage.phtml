@@ -1,0 +1,78 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+<?php add_thickbox(); ?>
+
+<!-- EnlighterSettings:wrap -->
+<div class="wrap" id="enlighter-settings" data-enlighter-page="editing">
+
+<!-- Settings Tabs -->
+<h2 class="nav-tab-wrapper" id="enlighter-tabnav">
+    <a data-tab="EnlighterTabGutenberg" class="nav-tab"><?php _e('Gutenberg Editor', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTinyMCE" class="nav-tab"><?php _e('TinyMCE Editor', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabMarkdown" class="nav-tab"><?php _e('Markdown', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabShortcodes" class="nav-tab"><?php _e('Shortcodes', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabRAW" class="nav-tab"><?php _e('Text/RAW Editor', 'enlighter'); ?></a>
+</h2>
+
+<!-- Main Title -->
+<h1 class="maintitle"><span class="enlighter-title-badge"></span><?php _e('Enlighter - Customizable Syntax Highlighter', 'enlighter'); ?></h1>
+<p><?php _e('Select the content you want to highlight and Enlighter takes care of the rest.', 'enlighter'); ?></p>
+
+<!-- settings !-->
+<form method="post" action="options.php">
+    <?php settings_fields('enlighter-settings-group' ); ?>
+    <!-- #poststuff -->
+    <div id="poststuff">
+
+<!-- 2 Column Layout -->
+<div id="post-body" class="metabox-holder columns-2">
+    <div id="post-body-content" class="enlighter-tab-container">
+     
+        <div id="EnlighterTabGutenberg">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/editing/Gutenberg.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabTinyMCE">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/editing/TinyMCE.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabMarkdown">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/editing/Markdown.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabShortcodes">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/editing/Shortcodes.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabRAW">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/editing/TextEditing.phtml'); ?>
+        </div>
+
+        <!-- submit !-->
+        <?php submit_button(); ?>
+
+    </div>
+    <!-- // MAIN COLUMN -->
+    
+    <!-- Right Column -->
+    <div id="postbox-container-1" class="postbox-container">
+        <?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/SystemInfo.phtml'); ?>
+        <?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/Related.phtml'); ?>
+    </div>
+    <!-- // Right Column -->
+    
+</div>
+<!-- // 2 Column Layout -->
+
+</div>
+<!-- // #poststuff -->
+
+</form>
+<div class="clear"></div>
+
+<?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/Credits.phtml'); ?>
+<?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/License.phtml'); ?>
+
+</div>
+<!-- // EnlighterSettings:wrap -->
+
+<div class="clear"></div>
