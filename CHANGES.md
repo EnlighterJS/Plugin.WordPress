@@ -6,6 +6,8 @@
 
 **EnlighterJS v3 has been released - new themes + new highlighting engine**
 
+* Added: Gutenberg editor plugin v1.0.0
+
 * Replaced MooTools Framework by native code - requires IE >= 10
 * **NEW Highlighting Engines** - every language support file has been rewritten
 * New Tokenizer Engine including a two stage analyzer

@@ -1,0 +1,68 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- Enlighter JS Resources !-->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('EnlighterJS Resources', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+        <h4><?php _e('Assets', 'enlighter'); ?></h4>
+
+        <!-- EnlighterJS library !-->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('EnlighterJS library', 'enlighter'), 
+            'enlighterjs-assets-js',
+            array(
+                'label' => 'Include',
+                'description' => __('Add the EnlighterJS javascript library to your site.', 'enlighter')
+            ));
+        ?>
+
+        <!-- build-in themes !-->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('EnlighterJS themes', 'enlighter'), 
+            'enlighterjs-assets-themes',
+            array(
+                'label' => 'Include',
+                'description' => __('Add the EnlighterJS stylesheet including all themes to your site.', 'enlighter')
+            ));
+        ?>
+
+        <!-- User themes !-->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('External themes', 'enlighter'), 
+            'enlighterjs-assets-themes-external',
+            array(
+                'label' => 'Include',
+                'description' => __('Custom/external themes located into your themes directory can be automatically loaded.', 'enlighter')
+            ));
+        ?>
+
+        <h4><?php _e('Initialization', 'enlighter'); ?></h4>
+
+        <?php
+        // font family
+        $this->_settingsUtility->displaySelect(
+            __('Initialization code', 'enlighter'),
+            'enlighterjs-init',
+            array(
+                'inline' => __('Add inline code to wp_footer (default)', 'enlighter'),
+                'disabled' => __('Do not include (for manual usage only)', 'enlighter'),
+            ),
+            array(
+                'description' => __('EnlighterJS has be initialized by a small code snippet which will be added as inline code after the EnlighterJS library.', 'enlighter')
+            )
+        );
+        ?>
+
+        <h4><?php _e('Optimization', 'enlighter'); ?></h4>
+
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Dynamic Resource Invocation (DRI)', 'enlighter'), 
+            'dynamic-resource-invocation',
+            array(
+                'label' => 'Enable',
+                'description' => __('To optimize your website load-time it`s possible to load the EnlighterJS library only if codeblocks are used on the current page. In case it`s enable, the plugin will observer it`s invocation (visual editor, shortcodes, markdown).', 'enlighter')
+            ));
+        ?>
+    </div>
+</div>

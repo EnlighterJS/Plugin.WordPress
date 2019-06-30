@@ -4,54 +4,60 @@ namespace Enlighter;
 
 class LanguageManager{
 
+    private $_cachedData = null;
+
     // list of build-in languages
-    // Format: Description => Name
-    private static $_languages = array(
-        'Generic Highlighting' => 'generic',
-        'Avr Assembly' => 'avrasm',
-        'Generic Assembly' => 'asm',
-        'C' => 'c',
-        'C++' => 'cpp',
-        'C#' => 'csharp',
-        'CSS' => 'css',
-        'Cython' => 'cython',
-        'CordPro' => 'cordpro',
-        'Diff' => 'diff',
-        'Dockerfile' => 'dockerfile',
-        'Groovy' => 'groovy',
-        'Go' => 'golang',
-        'HTML' => 'html',
-        'Ini/Conf Syntax' => 'ini',
-        'Java' => 'java',
-        'Javascript' => 'js',
-        'JSON' => 'json',
-        'Kotlin' => 'kotlin',
-        'LESS' => 'less',
-        'LUA' => 'lua',
-        'Markdown' => 'md',
-        'Matlab/Octave' => 'matlab',
-        'NSIS' => 'nsis',
-        'PHP' => 'php',
-        'PowerShell' => 'powershell',
-        'Prolog' => 'prolog',
-        'Python' => 'python',
-        'Ruby' => 'ruby',
-        'Rust' => 'rust',
-        'SCSS' => 'scss',
-        'Shellscript' => 'shell',
-        'SQL' => 'sql',
-        'Squirrel' => 'squirrel',
-        'Swift' => 'swift',
-        'TypeScript' => 'typescript',
-        'VHDL' => 'vhdl',
-        'VisualBasic' => 'visualbasic',
-        'XML' => 'xml',
-        'YAML' => 'yaml',
-        'RAW Code' => 'raw'
+    const LANGUAGES = array(
+        'generic' => 'Generic Highlighting',
+        'avrasm' => 'Avr Assembly',
+        'asm' => 'Generic Assembly',
+        'c' => 'C',
+        'cpp' => 'C++',
+        'csharp' => 'C#',
+        'css' => 'CSS',
+        'cython' => 'Cython',
+        'cordpro' => 'CordPro',
+        'diff' => 'Diff',
+        'dockerfile' => 'Dockerfile',
+        'groovy' => 'Groovy',
+        'golang' => 'Go',
+        'html' => 'HTML',
+        'ini' => 'Ini/Conf Syntax',
+        'java' => 'Java',
+        'js' => 'Javascript',
+        'json' => 'JSON',
+        'kotlin' => 'Kotlin',
+        'less' => 'LESS',
+        'lua' => 'LUA',
+        'md' => 'Markdown',
+        'matlab' => 'Matlab/Octave',
+        'nsis' => 'NSIS',
+        'php' => 'PHP',
+        'powershell' => 'PowerShell',
+        'prolog' => 'Prolog',
+        'python' => 'Python',
+        'ruby' => 'Ruby',
+        'rust' => 'Rust',
+        'scss' => 'SCSS',
+        'shell' => 'Shellscript',
+        'sql' => 'SQL',
+        'squirrel' => 'Squirrel',
+        'swift' => 'Swift',
+        'typescript' => 'TypeScript',
+        'vhdl' => 'VHDL',
+        'visualbasic' => 'VisualBasic',
+        'xml' => 'XML',
+        'yaml' => 'YAML',
+        'raw' => 'RAW Code'
     );
 
     // fetch the language list
-    public static function getLanguages(){
-        return apply_filters('enlighter_languages', self::$_languages);
+    public function getLanguages(){
+        // cached ?
+        if ($this->_cachedData === null){
+            $this->_cachedData = apply_filters('enlighter_languages', self::LANGUAGES);
+        }
+
+        return $this->_cachedData;
     }
 }

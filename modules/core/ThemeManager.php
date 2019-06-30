@@ -7,87 +7,81 @@ class ThemeManager{
     private $_cachedData = null;
 
     // list of build-in themes
-    private static $_supportedThemes = array(
-        'Enlighter' => 'enlighter',
-        'Godzilla' => 'godzilla',
-        'Beyond' => 'beyond',
-        'Classic' => 'classic',
-        'MooTwo' => 'mowtoo',
-        'Eclipse' => 'eclipse',
-        'Droide' => 'droide',
-        'Minimal' => 'minimal',
-        'Atomic' => 'atomic',
-        'Rowhammer' => 'rowhammer',
-        'Bootstrap4' => 'boootstrap4',
-        'Dracula'=> 'dracula',
-        'Monokai' => 'monokai'
+    const THEMES = array(
+        'enlighter' => 'Enlighter',
+        'godzilla' => 'Godzilla',
+        'beyond' => 'Beyond',
+        'classic' => 'Classic',
+        'mowtoo' => 'MooTwo',
+        'eclipse' => 'Eclipse',
+        'droide' => 'Droide',
+        'minimal' => 'Minimal',
+        'atomic' => 'Atomic',
+        'rowhammer' => 'Rowhammer',
+        'bootstrap4' => 'Bootstrap4',
+        'dracula'=> 'Dracula',
+        'monokai' => 'Monokai',
+        'wpcustom' => 'Theme Customizer'
     );
 
     public function __construct(){
-        // try to load cached data
-        $this->_cachedData = get_transient('enlighter_userthemes');
-    }
-    
-    // drop cache content and remove cache file
-    public function forceReload(){
-        //$this->_cache->clear();
-        delete_transient('enlighter_userthemes');
-    }
-
-    // get a list of all available themes
-    public function getThemes(){
-        return $this->getThemeList();
-    }
-
-    // fetch the build-in theme list (EnlighterJS)
-    public function getBuildInThemes(){
-        return self::$_supportedThemes;
     }
 
     // get a list of all available themes (build-in + user)
-    public function getThemeList(){
-        // generate the theme list
-        $themes = array(
-            'WPCustom' => 'wpcustom'
-        );
+    public function getThemes(){
+
+        // cached ?
+        if ($this->_cachedData !== null){
+            return $this->_cachedData;
+        }
+        
+        // generate empty themes list
+        $themes = array();
 
         // add build-in themes
-        foreach (self::$_supportedThemes as $t => $v){
-            $themes[$t] = strtolower($t);
+        foreach (self::THEMES as $slug => $name){
+            $themes[$slug] = $name;
         }
 
         // add external user themes with prefix
-        foreach ($this->getUserThemes() as $t => $source){
-            $themes[$t.'/ext'] = strtolower($t);
+        foreach ($this->getUserThemes() as $slug => $source){
+            $themes[$slug.'/ext'] = strtolower($t);
         }
 
         // run filter to enable user specific themes
-        return apply_filters('enlighter_themes', $themes);
+        $this->_cachedData = apply_filters('enlighter_themes', $themes);
+
+        return $this->_cachedData;
     }
 
     // fetch user themes
     // Enlighter Themes which are stored a directory named `enlighter/` of the current active theme
     public function getUserThemes(){
-        // cached data available ?
-        if ($this->_cachedData === false){
-            // get template directories
-            $childDir = get_stylesheet_directory();
-            $themeDir = get_template_directory();
-            
-            // load enlighter-themes from current theme
-            $themeFiles = $this->getCssFilesFromDirectory($themeDir, get_template_directory_uri());
-            
-            // load enlighter-themes from current child-theme (if used)
-            if ($childDir != $themeDir){
-                $themeFiles = array_merge($themeFiles, $this->getCssFilesFromDirectory($childDir, get_stylesheet_directory_uri()));
-            }
-            
-            // store data; 1day cache expire
-            set_transient('enlighter_userthemes', $themeFiles, DAY_IN_SECONDS);
-            $this->_cachedData = $themeFiles;
+
+        // user themes in cache ?
+        $themeFiles = get_transient('enlighter_userthemes');
+
+        // cached
+        if ($themeFiles !== false){
+            return $themeFiles;
         }
 
-        return $this->_cachedData;
+        // get template directories
+        $childDir = get_stylesheet_directory();
+        $themeDir = get_template_directory();
+        
+        // load enlighter-themes from current theme
+        $themeFiles = $this->getCssFilesFromDirectory($themeDir, get_template_directory_uri());
+        
+        // load enlighter-themes from current child-theme (if used)
+        if ($childDir != $themeDir){
+            $themeFiles = array_merge($themeFiles, $this->getCssFilesFromDirectory($childDir, get_stylesheet_directory_uri()));
+        }
+        
+        // store data; 1day cache expire
+        set_transient('enlighter_userthemes', $themeFiles, DAY_IN_SECONDS);
+
+        return $themeFiles;
     }
     
     private function getCssFilesFromDirectory($dir, $uri){
@@ -108,8 +102,8 @@ class ThemeManager{
         
         // filter css files
         foreach($files as $file){
-            if ($file != '.' && $file != '..'){
-                if (substr($file, -3) == 'css'){
+            if ($file !== '.' && $file !== '..'){
+                if (substr($file, -3) === 'css'){
                     // absolute path + uri for external themes
                     $themes[basename($file, '.css')] = array(
                             $dir.$file,
@@ -121,5 +115,11 @@ class ThemeManager{
         
         return $themes;
     }
-    
+
+    // drop cache content and remove cache file
+    public function forceReload(){
+        $this->_cachedData = null;
+        delete_transient('enlighter_userthemes');
+    }
+ 
 }

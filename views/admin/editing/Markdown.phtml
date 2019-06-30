@@ -1,32 +1,101 @@
 <?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
 
 <!-- Markdown Processing -->
-<div class="postbox">
+<div class="postbox enlighter-postbox">
     <h3 class="hndle"><span><?php _e('Markdown', 'enlighter'); ?></span></h3>
-    <div class="inside EnlighterBlockcontent">
+    <div class="inside enlighter-setting-section">
 
         <h4><?php _e('Fenced Code Blocks', 'enlighter'); ?></h4>
-        <p><?php _e('Markdown Fanatic ? Enlighter also supports <a href="https://help.github.com/articles/creating-and-highlighting-code-blocks/">GFM style</a> fenced code blocks. In case no language identifier is given, choose the default behaviour.', 'enlighter'); ?></p>
 
-        <?php $this->_settingsUtility->displaySelect(__('Generic Code Blocks', 'enlighter'), 'gfmDefaultLanguage', array(__('Generic Highlighting', 'enlighter') => 'generic', __('No Highlighting (RAW)', 'enlighter') => 'raw')); ?>
+        <!-- Enable support -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Markdown support (GFM)', 'enlighter'),
+            'gfm-enabled',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'readmore' => 'https://help.github.com/articles/creating-and-highlighting-code-blocks/',
+                'description' => __('Markdown Fanatic ? Enlighter also supports GFM style fenced code blocks.', 'enlighter')
+            )); 
+        ?>
 
-        <h4><?php _e('Filter Targets', 'enlighter'); ?></h4>
+        <!-- default languages !-->
+        <?php 
+            $this->_settingsUtility->displaySelect(
+                __('Generic codeblocks', 'enlighter'),
+                'gfm-language',
+                array(
+                    'raw' => __('No highlighting (lang=raw)', 'enlighter'),
+                    'generic' => __('Generic Highlighting (lang=generic)', 'enlighter') 
+                ),
+                array(
+                    'description' => __('In case no language identifier is given, choose the default behaviour.', 'enlighter')
+                )
+            );
+        ?>
+
+    </div>
+</div>
+
+<!-- Markdown Processing -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Filter targets', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
         <p><?php _e('Choose the content-sections to which the markdown processor should be applied.', 'enlighter'); ?></p>
 
         <!-- Enable the_content filter -->
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable the_content', 'enlighter'), 'gfmFilterContent'); ?>
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('the_content', 'enlighter'),
+            'gfm-filter-content',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Function_Reference/get_the_content'
+            )); 
+        ?>
 
         <!-- Enable the_excerpt filter -->
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable the_excerpt', 'enlighter'), 'gfmFilterExcerpt'); ?>
-
-        <!-- Enable comment-text filter -->
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable comments', 'enlighter'), 'gfmFilterComments'); ?>
-
-        <!-- Enable comment-excerpt filter -->
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable comments-excerpt', 'enlighter'), 'gfmFilterCommentsExcerpt'); ?>
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('the_excerpt', 'enlighter'),
+            'gfm-filter-excerpt',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://developer.wordpress.org/reference/functions/the_excerpt/'
+            )); 
+        ?>
 
         <!-- Enable Widget-text filter -->
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable widget-text', 'enlighter'), 'gfmFilterWidgetText'); ?>
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('widget_text', 'enlighter'),
+            'gfm-filter-widget',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text'
+            )); 
+        ?>
 
+        <!-- Enable comment-text filter -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('comment_text', 'enlighter'),
+            'gfm-filter-comment',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Function_Reference/comment_text'
+            )); 
+        ?>
+
+        <!-- Enable comment-excerpt filter -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('comment_excerpt', 'enlighter'),
+            'gfm-filter-commentexcerpt',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Function_Reference/comment_excerpt'
+            )); 
+        ?>
+        
     </div>
 </div>

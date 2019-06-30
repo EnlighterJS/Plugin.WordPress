@@ -15,8 +15,14 @@ class Enlighter
     // cache manager instance
     protected $_cacheManager;
     
-    // theme loader/manager
+    // theme manager (build in + user themes)
     protected $_themeManager;
+
+    // language manager (build-in)
+    protected $_languageManager;
+
+    // handle fonts
+    protected $_fontManager;
 
     // basic plugin initialization
     public function __construct(){
@@ -27,6 +33,12 @@ class Enlighter
 
         // loader to fetch user themes
         $this->_themeManager = new Enlighter\ThemeManager();
+
+        // handle language files
+        $this->_languageManager = new Enlighter\LanguageManager();
+
+        // handle fonts for theme customizer + tinymce editor
+        $this->_fontManager = new Enlighter\FontManager();
 
         // use custom cache path/url ?
         if ($this->_settingsManager->getOption('cache-custom')){
@@ -56,16 +68,19 @@ class Enlighter
             return;
         }
 
-        // fetch languages
-        $languages = Enlighter\LanguageManager::getLanguages();
-
         // load language files
         if ($this->_settingsManager->getOption('translation-enabled')){
             load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
         }
         
         // create new resource loader
-        $this->_resourceLoader = new Enlighter\ResourceLoader($this->_settingsManager, $this->_cacheManager, $this->_themeManager, $languages);
+        $this->_resourceLoader = new Enlighter\ResourceLoader(
+                $this->_settingsManager, 
+                $this->_cacheManager, 
+                $this->_languageManager, 
+                $this->_themeManager,
+                $this->_fontManager
+        );
 
         // enable EnlighterJS html attributes for Author's and Contributor's
         add_filter('wp_kses_allowed_html', array($this, 'ksesAllowHtmlCodeAttributes'), 100, 2);
@@ -74,10 +89,10 @@ class Enlighter
         if (is_admin()){
 
             // force theme cache reload
-            //$this->_themeManager->forceReload();
+            $this->_themeManager->forceReload();
 
             // editor
-            //$this->_resourceLoader->backendEditor();
+            $this->_resourceLoader->backendEditor();
 
         }else{
 
@@ -253,7 +268,7 @@ class Enlighter
         $envCheck->throwNotifications();
 
         return array(
-            'themes' => $this->_themeManager->getThemeList(),
+            'themes' => $this->_themeManager->getThemes(),
             'webfonts' => array()
         );
     }

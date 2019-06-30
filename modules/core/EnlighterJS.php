@@ -44,13 +44,13 @@ class EnlighterJS{
         $jsDependencies = array();
         
         // add EnlighterJS themes ?
-        if ($this->_config['enlighterjs-resources-themes']){
+        if ($this->_config['enlighterjs-assets-themes']){
             // include local css file
             ResourceManager::enqueueStyle('enlighterjs', 'enlighterjs/enlighterjs.min.css', array(), ENLIGHTER_VERSION);
         }
 
         // only include EnlighterJS js if enabled
-        if ($this->_config['enlighterjs-resources-js']){
+        if ($this->_config['enlighterjs-assets-js']){
             // include local css file
             ResourceManager::enqueueScript('enlighterjs', 'enlighterjs/enlighterjs.min.js', array(), ENLIGHTER_VERSION);
 
@@ -59,7 +59,7 @@ class EnlighterJS{
         }
 
         // add initialization code ?
-        if ($this->_config['enlighterjs-init']){
+        if ($this->_config['enlighterjs-init'] === 'inline'){
             ResourceManager::enqueueDynamicScript($this->getInitializationCode(), 'enlighterjs');
         }
     }

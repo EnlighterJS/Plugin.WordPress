@@ -6,20 +6,21 @@ use \Enlighter\skltn\ResourceManager as ResourceManager;
 use \Enlighter\editor\EditorConfig;
 use \Enlighter\editor\Gutenberg as GutenbergEditor;
 use \Enlighter\editor\TinyMCE as TinyMCEEditor;
+use \Enlighter\editor\QuickTags as QuickTagsEditor;
 
 class ResourceLoader{
-    
-    // available language keys
-    private $_languageKeys;
     
     // stores the plugin config
     private $_config;
     
-    // list of external themes
-    private $_themeManager;
-
     // tinymce editor
     private $_tinymce;
+
+    // gutenberg editor
+    private $_gutenbergEditor;
+
+    // quicktag editor support
+    private $_quicktagsEditor;
 
     // update hash
     private $_uhash;
@@ -33,18 +34,30 @@ class ResourceLoader{
     // editor config
     private $_editorConfig;
 
-    public function __construct($settingsUtil, $cacheManager, $themeManager, $languageKeys){
+    // theme manager (build in + user themes)
+    protected $_themeManager;
+
+    // language manager (build-in)
+    protected $_languageManager;
+
+    public function __construct($settingsUtil, $cacheManager, $languageManager, $themeManager, $fontManager){
         // store local plugin config
         $this->_config = $settingsUtil->getOptions();
 
         // store language keys
-        //$this->_languageKeys = $languageKeys;
+        $this->_languageManager = $languageManager;
 
         // local theme manager instance (required for external themes)
-        //$this->_themeManager = $themeManager;
+        $this->_themeManager = $themeManager;
 
         // visual editor integration
-        //$this->_tinymce = new TinyMCE($settingsUtil, $cacheManager, $languageKeys);
+        $this->_tinymce = new TinyMCEEditor($this->_config, $cacheManager, $languageManager, $fontManager);
+
+        // gutenberg editor integration
+        $this->_gutenbergEditor = new GutenbergEditor();
+
+        // quicktags integration
+        $this->_quicktagsEditor = new QuickTagsEditor();
 
         // get last update hash
         //$this->_uhash = get_option('enlighter-settingsupdate-hash', '0A0B0C');
@@ -59,45 +72,43 @@ class ResourceLoader{
         $this->_enlighterjs = new EnlighterJS($this->_config);
 
         // editor config generator
-        $this->_editorConfig = new EditorConfig($this->_config);
+        $this->_editorConfig = new EditorConfig($this->_config, $this->_enlighterjs, $languageManager, $themeManager);
     }
 
     // Load the Frontend Editor Resources
     public function frontendEditor(){
-        // Inline Editor Configuration (Themes...)
-        //add_action('wp_head', array($this, 'appendInlineEditorConfig'));
+        // add config object to header to avoid missing dependencies
+        ResourceManager::enqueueDynamicScript($this->_editorConfig->getEditorConfigCode(), null, 'header');
 
         // apply editor modifications
-        //if ($this->_config['enableFrontendTinyMceIntegration']) {
-        //    $this->_tinymce->integrate();
-        //}
-
-        // load text editor ?
-        //if ($this->_config['enableQuicktagFrontendIntegration']){
-        //    add_action('wp_enqueue_scripts', array($this, 'appendTextEditorJS'));
-        //}
-
-
-    }
-
-    // Load the Backend Editor Resources
-    public function backendEditor(){
-        // Inline Editor Configuration (Themes...)
-        add_action('admin_print_scripts', array($this, 'appendInlineEditorConfig'));
-
-        // apply editor modifications
-        if ($this->_config['enableTinyMceIntegration']) {
+        if ($this->_config['tinymce-frontend']){
             $this->_tinymce->integrate();
         }
 
         // load text editor ?
-        if ($this->_config['enableQuicktagBackendIntegration']){
-            add_action('admin_enqueue_scripts', array($this, 'appendTextEditorJS'));
+        if ($this->_config['quicktag-frontend']){
+            add_action('admin_enqueue_scripts', array($this->_quicktagsEditor, 'integrate'));
+        }
+    }
+
+    // Load the Backend Editor Resources
+    public function backendEditor(){
+        // add config object to header to avoid missing dependencies
+        ResourceManager::enqueueDynamicScript($this->_editorConfig->getEditorConfigCode(), null, 'header');
+
+        // apply editor modifications
+        if ($this->_config['tinymce-backend']){
+            $this->_tinymce->integrate();
+        }
+
+        // load text editor ?
+        if ($this->_config['quicktag-backend']){
+            add_action('admin_enqueue_scripts', array($this->_quicktagsEditor, 'integrate'));
         }
 
         // load Gutenberg editor plugin ?
-        if ($this->_config['gutenbergSupport']){
-            add_action('enqueue_block_editor_assets', array($this, 'loadGutenbergPlugin'));
+        if ($this->_config['gutenberg-backend']){
+            add_action('enqueue_block_editor_assets', array($this->_gutenbergEditor, 'integrate'));
         }
     }
 
@@ -108,21 +119,11 @@ class ResourceLoader{
             ResourceManager::enqueueStyle('enlighter-settings', 'admin/skltn.css');
 
             // theme data
-            //$this->enqueueScript('enlighter-themes', 'admin/ThemeStyles.js');
+            //$this->enqueueScript('enlighter-theme s', 'admin/ThemeStyles.js');
 
             // settings init script
             ResourceManager::enqueueScript('enlighter-settings', 'admin/skltn.js', array('jquery', 'wp-color-picker'));
         });
-    }
-
-    // append the Enlighter Editor/Settings Config
-    public function appendInlineEditorConfig(){
-        ResourceManager::enqueueDynamicScript($this->_jsConfigGenerator->getEditorPluginConfig());
-    }
-
-    public function appendTextEditorJS(){
-        // text editor plugin
-        $this->enqueueScript('enlighter-texteditor', 'editor/TextEditor.js', array('jquery'));
     }
 
     // initialzize the frontend
@@ -131,12 +132,4 @@ class ResourceLoader{
         // load enlighterjs resources
         add_action('wp_enqueue_scripts', array($this->_enlighterjs, 'enqueue'), 50);
     }
-
-    // disable frontend scripts (in footer; resource optimization)
-    public function disableFrontendScripts(){
-        wp_dequeue_script('enlighter-local');
-        wp_dequeue_script('enlighter-config');
-        wp_dequeue_script('enlighter-jetpack-infinitescroll');
-        remove_action('wp_footer', array($this, 'appendInlineEnlighterConfig'), 30);
-    }  
 }

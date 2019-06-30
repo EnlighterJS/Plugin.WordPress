@@ -2,11 +2,19 @@
 
 <!-- Visual Editor -->
 <div class="postbox enlighter-postbox">
-    <h3 class="hndle"><span><?php _e('Visual Editor (TinyMCE 4)', 'enlighter'); ?></span></h3>
+    <h3 class="hndle"><span><?php _e('Gutenberg Editor Extension', 'enlighter'); ?></span></h3>
     <div class="inside enlighter-setting-section">
 
-        <p><?php _e('To use EnlighterJS within Gutenberg you can enable this feature. It loads the EnlighterJS Gutenberg.Plugin.', 'enlighter'); ?><br />
+        <h4><?php _e('Visual Editor Integration', 'enlighter'); ?></h4>
+        <p><?php _e('Use EnlighterJS within Gutenberg Editor.', 'enlighter'); ?><br />
         </p>
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable', 'enlighter'), 'gutenbergSupport'); ?>
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Backend Integration', 'enlighter'),
+            'gutenberg-backend',
+            array(
+                'label' => 'Enable',
+                'description' => __('Full Gutenberg Editor integration including "Enlighter Sourcecode" block.', 'enlighter')
+            )
+        ); ?>
     </div>
 </div>

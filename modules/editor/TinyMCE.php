@@ -8,32 +8,38 @@ class TinyMCE{
     
     // stores the plugin config
     private $_config;
-    
-    // plugin supported languages
-    private $_supportedLanguageKeys;
 
     // cache manager
     private $_cacheFilename = 'tinymce.css';
     private $_cacheManager;
+
+    // language manager (build-in)
+    protected $_languageManager;
+
+    // fonts
+    protected $_fontManager;
     
-    public function __construct($settingsUtil, $cacheManager, $languageKeys){
+    public function __construct($config, $cacheManager, $languageManager, $fontManager){
         // store local plugin config
-        $this->_config = $settingsUtil->getOptions();
-        
-        // store languages
-        $this->_supportedLanguageKeys = $languageKeys;
+        $this->_config = $config;
 
         // store cache manager
         $this->_cacheManager = $cacheManager;
 
-        // css cached ? otherwise regenerate it
-        if (!$this->_cacheManager->fileExists($this->_cacheFilename)){
-            $this->generateCSS();
-        }
+        // language manager to fetch build-in languages
+        $this->_languageManager = $languageManager;
+
+        // store font manager
+        $this->_fontManager = $fontManager;
     }
 
     // run integration
     public function integrate(){
+        // css cached ? otherwise regenerate it
+        if (!$this->_cacheManager->fileExists($this->_cacheFilename)){
+            $this->generateCSS();
+        }
+        
         // filter priority
         $priority = 101;
 
@@ -94,12 +100,15 @@ class TinyMCE{
         }else{
             $tinyMceConfigData['valid_children'] = $validChildTags;
         }
+
+        // get language list
+        $languages = $this->_languageManager->getLanguages();
         
         // create new "Enlighter Codeblocks" item
         $blockstyles = array();
         
         // add all supported languages as Enlighter Style
-        foreach ($this->_supportedLanguageKeys as $name => $lang){
+        foreach ($languages as $slug => $name){
             // define new enlighter style formats
             $blockstyles[] = array(
                     'title' => ''.$name,
@@ -107,7 +116,7 @@ class TinyMCE{
                     'classes' => 'EnlighterJSRAW',
                     'wrapper' => false,
                     'attributes' => array(
-                        'data-enlighter-language' => $lang
+                        'data-enlighter-language' => $slug
                     )
             );
         }
@@ -119,29 +128,27 @@ class TinyMCE{
         );
         
         // inline highlighting enabled ?
-        if ($this->_config['enableInlineHighlighting']){
-            $inlinestyles = array();
-            
-            foreach ($this->_supportedLanguageKeys as $name => $lang){
-                // define new enlighter inline style formats
-                $inlinestyles[] =    array(
-                        'title' => ''.$name,
-                        'inline' => 'code',
-                        'classes' => 'EnlighterJSRAW',
-                        'wrapper' => false,
-                        'selector' => '',
-                        'attributes' => array(
-                                'data-enlighter-language' => $lang
-                        )
-                );
-            }
-            
-            // add inline styles
-            $styles[] = array(
-                    'title' => __('Enlighter Inline', 'enlighter'),
-                    'items' => $inlinestyles
+        $inlinestyles = array();
+        
+        foreach ($languages as $slug => $name){
+            // define new enlighter inline style formats
+            $inlinestyles[] =    array(
+                    'title' => ''.$name,
+                    'inline' => 'code',
+                    'classes' => 'EnlighterJSRAW',
+                    'wrapper' => false,
+                    'selector' => '',
+                    'attributes' => array(
+                        'data-enlighter-language' => $slug
+                    )
             );
         }
+        
+        // add inline styles
+        $styles[] = array(
+                'title' => __('Enlighter Inline', 'enlighter'),
+                'items' => $inlinestyles
+        );
         
         // dont overwrite all settings
         $tinyMceConfigData['style_formats_merge'] = true;
@@ -150,7 +157,7 @@ class TinyMCE{
         $tinyMceConfigData['style_formats'] = json_encode($styles);
         
         // tab indentation mode enabled ?
-        if ($this->_config['editorTabIndentation']){
+        if ($this->_config['tinymce-tabindentation']){
             // remove tabfocus plugin
             $tinyMceConfigData['plugins'] = str_replace('tabfocus,', '', $tinyMceConfigData['plugins']);
         }
@@ -168,24 +175,24 @@ class TinyMCE{
 
         // add editor styles
         $builder->add('code.EnlighterJSRAW, pre.EnlighterJSRAW', array(
-            'font-family'       => $this->_config['editorFontFamily'] . ' !important',
-            'font-size'         => $this->_config['editorFontSize'] . ' !important',
-            'line-height'       => $this->_config['editorLineHeight'] . ' !important',
-            'color'             => $this->_config['editorFontColor'] . ' !important',
-            'background-color'  => $this->_config['editorBackgroundColor'] . ' !important',
+            'font-family'       => $this->_fontManager->getFontByName($this->_config['tinymce-font']) . ' !important',
+            'font-size'         => $this->_config['tinymce-fontsize'] . ' !important',
+            'line-height'       => $this->_config['tinymce-lineheight'] . ' !important',
+            'color'             => $this->_config['tinymce-color'] . ' !important',
+            'background-color'  => $this->_config['tinymce-bgcolor'] . ' !important',
         ));
 
         // generate language titles
-        foreach ($this->_supportedLanguageKeys as $name => $lang){
+        foreach ($this->_languageManager->getLanguages() as $slug => $name){
 
             // default title
             $defaultTitle = 'Enlighter: ' . $name;
 
             // generate codeblock title name
-            $title = apply_filters('enlighter_codeblock_title', $defaultTitle, $lang, $name);
+            $title = apply_filters('enlighter_codeblock_title', $defaultTitle, $slug, $name);
             
             // generate css rule
-            $builder->add('pre.EnlighterJSRAW[data-enlighter-language="' . $lang . '"]:before', array(
+            $builder->add('pre.EnlighterJSRAW[data-enlighter-language="' . $slug . '"]:before', array(
                 'content' => '"' . addslashes($title) . '"'
             ));
         }

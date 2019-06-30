@@ -6,7 +6,7 @@ use \Enlighter\skltn\ResourceManager as ResourceManager;
 
 class Gutenberg{
 
-    public static function enqueue(){
+    public function integrate(){
         // gutenberg plugin - https://github.com/EnlighterJS/Plugin.Gutenberg
         ResourceManager::enqueueScript(
             'enlighter-gutenberg', 

@@ -2,32 +2,43 @@
 
 namespace Enlighter\editor;
 
-class ConfigGenerator{
-    
+class EditorConfig{
+
+    // plugin/editor config
     private $_config;
+
+    private $_enlighterjs;
+
+    // theme manager (build in + user themes)
+    protected $_themeManager;
+
+    // language manager (build-in)
+    protected $_languageManager;
     
-    public function __construct($settingsUtil){
-        $this->_config = $settingsUtil->getOptions();
+    public function __construct($config, $ejs, $languageManager, $themeManager){
+        $this->_config = $config;
+        $this->_enlighterjs = $ejs;
+
+        // store language keys
+        $this->_languageManager = $languageManager;
+
+        // local theme manager instance (required for external themes)
+        $this->_themeManager = $themeManager;
     }
 
-    public function getEditorPluginConfig(){
-        $c = 'Enlighter_EditorConfig = ';
-
+    public function getEditorConfigCode(){
         // create config object
-        $c .= json_encode(array(
-            'languages' => \Enlighter::getAvailableLanguages(),
-            'themes' => \Enlighter::getAvailableThemes(),
-            'config' => array(
-                'theme' => $this->_config['defaultTheme'],
-                'language' => $this->_config['defaultLanguage'],
-                'linenumbers' => ($this->_config['linenumbers'] ? true : false),
-                'indent' => intval($this->_config['indent']),
-                'tabIndentation' => ($this->_config['editorTabIndentation'] ? true : false),
-                'quicktagMode' => $this->_config['editorQuicktagMode'],
-                'languageShortcode' => ($this->_config['languageShortcode'] ? true : false)
+        return 'EnlighterJS_EditorConfig = ' . json_encode(array(
+            'languages' => $this->_languageManager->getLanguages(),
+            'themes' => $this->_themeManager->getThemes(),
+            'config' => $this->_enlighterjs->getConfig(),
+            'tinymce' => array(
+                'tabIndentation' => $this->_config['tinymce-tabindentation'],
+                'keyboardShortcuts' => $this->_config['tinymce-keyboardshortcuts']
+            ),
+            'text' => array(
+                'quicktags' => $this->_config['quicktag-mode']
             )
-        ));
-
-        return $c;
+        )) . ';';
     }
 }

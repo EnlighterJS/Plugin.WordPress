@@ -10,12 +10,9 @@
 
     <!-- Theme -->
     <?php $this->_settingsUtility->displaySelect(__('Theme', 'enlighter'), 'enlighterjs-theme', 
+        $V_themes,
         array(
-            '{at}' => '{at}', 
-            '/AT/' => '/AT/'
-        ),
-        array(
-            'description' => __('The default theme. Used in case no block specific theme is selected.', 'enlighter')
+            'description' => __('The standard theme. Used in case no block specific theme is selected.', 'enlighter')
         )
     ); ?>
 
@@ -33,6 +30,17 @@
         ),
         array(
             'description' => __('Replace each tab at the beginning of a line with a selectable number of space-characters. Recommend for cross-browser-compatibility', 'enlighter')
+        )
+    ); ?>
+
+    <!-- Text overflow -->
+    <?php $this->_settingsUtility->displaySelect(__('Text overflow', 'enlighter'), 'enlighterjs-textoverflow', 
+        array(
+            'break' => 'Break line',
+            'scroll' => 'Add scrollbar'
+        ),
+        array(
+            'description' => __('Set the text/word wrapping behaviour: break line or scroll.', 'enlighter')
         )
     ); ?>
 
@@ -67,6 +75,5 @@
             'description' => __('Replace the ampersand html escape sequence with the character.', 'enlighter')
         )
     ); ?>
-
 
 </div></div>

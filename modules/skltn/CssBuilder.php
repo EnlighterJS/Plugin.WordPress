@@ -63,9 +63,7 @@ class CssBuilder{
         }
 
         // add raw css
-        $css .= $this->_rawBuffer;
-
-        return $css;
+        return $this->_rawBuffer . $css;
     }
     
 }

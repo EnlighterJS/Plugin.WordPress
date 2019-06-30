@@ -73,22 +73,68 @@ class ResourceManager{
         }
     }
 
-    // enqueue dynamics scripts
-    public static function enqueueDynamicScript($code, $dependencie=null){
+    // cache
+    private static $__dynamicScriptBufferHeader = false;
+    private static $__dynamicScriptBufferFooter = false;
+    private static $__dynamicStyleBuffer = false;
 
-        // use build-in wordpress hook
-        wp_add_inline_script($dependencie, $code);
+    // enqueue dynamics scripts
+    public static function enqueueDynamicScript($script, $dependencie=null, $position='footer'){
+
+        // dependencie set ?
+        if ($dependencie !== null){
+            // use build-in wordpress hook
+            wp_add_inline_script($dependencie, $script);
+            return;
+        }
+
+        // position footer or header ?
+        if ($position === 'header'){
+            // initialized ?
+            if (self::$__dynamicScriptBufferHeader === false){
+                // admin or frontend ?
+                $hook = (is_admin() ? 'admin_print_scripts' : 'wp_head');
+
+                // hook into footer print script action
+                add_action($hook, function(){
+                    echo '<script type="text/javascript">/* <![CDATA[ */', self::$__dynamicScriptBufferHeader ,' /* ]]> */</script>';
+                });
+
+                // clear buffer
+                self::$__dynamicScriptBufferHeader = '';
+            }
+
+            // append content to buffer
+            self::$__dynamicScriptBufferHeader .= $script;
+        }else{
+            // initialized ?
+            if (self::$__dynamicScriptBufferFooter === false){
+                // admin or frontend ?
+                $hook = (is_admin() ? 'admin_footer' : 'wp_footer');
+
+                // hook into footer print script action
+                add_action($hook, function(){
+                    echo '<script type="text/javascript">/* <![CDATA[ */', self::$__dynamicScriptBufferFooter ,' /* ]]> */</script>';
+                });
+
+                // clear buffer
+                self::$__dynamicScriptBufferFooter = '';
+            }
+
+            // append content to buffer
+            self::$__dynamicScriptBufferFooter .= $script;
+        }
     }
 
-    // cache
-    private static $__dynamicStyleBuffer = false;
-    
     // enqueue dynamics styles
     public static function enqueueDynamicStyle($style){
         // initialized ?
         if (self::$__dynamicStyleBuffer === false){
+            // admin or frontend ?
+            $hook = (is_admin() ? 'admin_print_scripts' : 'wp_head');
+
             // hook into header to print styles
-            add_action('wp_head', function(){
+            add_action($hook, function(){
                 echo '<style type="text/css">', self::$__dynamicStyleBuffer ,'</style>';
             });
 
