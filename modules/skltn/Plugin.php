@@ -205,6 +205,11 @@ class Plugin{
         return null;
     }
 
+    // retrieve plugin config
+    protected function getPluginConfig(){
+        return $this->_settingsManager->getConfig();
+    }
+
     // links to the plugin website & author's twitter channel ()
     public function addPluginMetaLinks($links, $file){
         // current plugin ?

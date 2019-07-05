@@ -32,7 +32,7 @@
 * Changed: new settings page
 * Changed: sessionStorage is used to store the current active tab instead of cookies
 * Changed: updated the UI components
-* Changed: `wp-skltn` library updated to **0.14.0** - MPL 2.0 License
+* Changed: `wp-skltn` library updated to **0.19.0** - MPL 2.0 License
 * Bugfix: colorpicker sets wrong foreground color which caused unreadable input fields (color lightness calculation)
 * Cleaned up the internal Plugin Structure
 * Removed: `jquery-cookie` dependency

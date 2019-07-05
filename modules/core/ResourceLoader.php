@@ -7,6 +7,8 @@ use \Enlighter\editor\EditorConfig;
 use \Enlighter\editor\Gutenberg as GutenbergEditor;
 use \Enlighter\editor\TinyMCE as TinyMCEEditor;
 use \Enlighter\editor\QuickTags as QuickTagsEditor;
+use \Enlighter\extensions\Jetpack as JetpackExtension;
+use \Enlighter\extensions\JQuery as JQueryExtension;
 
 class ResourceLoader{
     
@@ -21,12 +23,6 @@ class ResourceLoader{
 
     // quicktag editor support
     private $_quicktagsEditor;
-
-    // update hash
-    private $_uhash;
-
-    // theme generator
-    private $_themeGenerator;
 
     // enlighterjs resource manager
     private $_enlighterjs;
@@ -59,15 +55,6 @@ class ResourceLoader{
         // quicktags integration
         $this->_quicktagsEditor = new QuickTagsEditor();
 
-        // get last update hash
-        //$this->_uhash = get_option('enlighter-settingsupdate-hash', '0A0B0C');
-
-        // create new js config generator
-        //$this->_jsConfigGenerator = new ConfigGenerator($settingsUtil, $cacheManager);
-
-        // create new theme generator instance
-        //$this->_themeGenerator = new ThemeGenerator($settingsUtil, $cacheManager);
-
         // enlighterjs resource initializtion
         $this->_enlighterjs = new EnlighterJS($this->_config);
 
@@ -77,38 +64,53 @@ class ResourceLoader{
 
     // Load the Frontend Editor Resources
     public function frontendEditor(){
-        // add config object to header to avoid missing dependencies
-        ResourceManager::enqueueDynamicScript($this->_editorConfig->getEditorConfigCode(), null, 'header');
+        // flag
+        $editorLoaded = false;
 
         // apply editor modifications
         if ($this->_config['tinymce-frontend']){
             $this->_tinymce->integrate();
+            $editorLoaded = true;
         }
 
         // load text editor ?
         if ($this->_config['quicktag-frontend']){
-            add_action('admin_enqueue_scripts', array($this->_quicktagsEditor, 'integrate'));
+            add_action('wp_enqueue_scripts', array($this->_quicktagsEditor, 'integrate'));
+            $editorLoaded = true;
+        }
+
+        if ($editorLoaded){
+            // add config object to header to avoid missing dependencies
+            ResourceManager::enqueueDynamicScript($this->_editorConfig->getEditorConfigCode(), null, 'header');
         }
     }
 
     // Load the Backend Editor Resources
     public function backendEditor(){
-        // add config object to header to avoid missing dependencies
-        ResourceManager::enqueueDynamicScript($this->_editorConfig->getEditorConfigCode(), null, 'header');
+        // flag
+        $editorLoaded = false;
 
         // apply editor modifications
         if ($this->_config['tinymce-backend']){
             $this->_tinymce->integrate();
+            $editorLoaded = true;
         }
 
         // load text editor ?
         if ($this->_config['quicktag-backend']){
             add_action('admin_enqueue_scripts', array($this->_quicktagsEditor, 'integrate'));
+            $editorLoaded = true;
         }
 
         // load Gutenberg editor plugin ?
         if ($this->_config['gutenberg-backend']){
             add_action('enqueue_block_editor_assets', array($this->_gutenbergEditor, 'integrate'));
+            $editorLoaded = true;
+        }
+
+        if ($editorLoaded){
+            // add config object to header to avoid missing dependencies
+            ResourceManager::enqueueDynamicScript($this->_editorConfig->getEditorConfigCode(), null, 'header');
         }
     }
 
@@ -117,19 +119,43 @@ class ResourceLoader{
         add_action('admin_enqueue_scripts', function(){
             // new UI styles
             ResourceManager::enqueueStyle('enlighter-settings', 'admin/skltn.css');
-
-            // theme data
-            //$this->enqueueScript('enlighter-theme s', 'admin/ThemeStyles.js');
-
+            
             // settings init script
             ResourceManager::enqueueScript('enlighter-settings', 'admin/skltn.js', array('jquery', 'wp-color-picker'));
         });
     }
 
     // initialzize the frontend
-    public function frontendEnlighter(){
+    public function frontendEnlighter($contentProcessor){
 
         // load enlighterjs resources
         add_action('wp_enqueue_scripts', array($this->_enlighterjs, 'enqueue'), 50);
+
+        // load user themes ?
+        if ($this->_config['enlighterjs-assets-themes-external']){
+            add_action('wp_enqueue_scripts', array($this->_themeManager, 'enqueue'));
+        }
+
+        // load infinite scroll extension ?
+        if ($this->_config['ext-infinite-scroll']){
+            ResourceManager::enqueueDynamicScript(JetpackExtension::getInfiniteScrollCode(), 'enlighterjs');
+        }
+
+        // load infinite scroll extension ?
+        if ($this->_config['ext-ajaxcomplete']){
+            ResourceManager::enqueueDynamicScript(JQueryExtension::getAjaxcompleteCode(), 'enlighterjs');
+        }
+
+        // frontend resource optimization ?
+        if ($this->_config['dynamic-resource-invocation']){
+            // deregister footer scripts
+            add_action('wp_footer', function(){
+                // enlighter codeblocks active within current page ?
+                if ($contentProcessor->hasContent()){
+                    // dequeue scripts
+                    remove_action('wp_enqueue_scripts', array($this->_enlighterjs, 'enqueue'), 50);
+                }
+            }, 1);
+        }
     }
 }

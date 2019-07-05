@@ -2,15 +2,13 @@
 <?php add_thickbox(); ?>
 
 <!-- EnlighterSettings:wrap -->
-<div class="wrap" id="enlighter-settings" data-enlighter-page="options">
+<div class="wrap" id="enlighter-settings" data-enlighter-page="customizer">
 
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
-    <a data-tab="EnlighterTabResources" class="nav-tab"><?php _e('Resources', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabExtensions" class="nav-tab"><?php _e('Extensions', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabCompatibility" class="nav-tab"><?php _e('Compatibility', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabBeta" class="nav-tab"><?php _e('Beta', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabFonts" class="nav-tab"><?php _e('Fonts', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokens" class="nav-tab"><?php _e('Token Styles', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabRAW" class="nav-tab"><?php _e('RAW Code', 'enlighter'); ?></a>
 </h2>
 
 <!-- Main Title -->
@@ -27,24 +25,13 @@
 <div id="post-body" class="metabox-holder columns-2">
     <div id="post-body-content" class="enlighter-tab-container">
      
-        <div id="EnlighterTabResources">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Resources.phtml'); ?>
+        <div id="EnlighterTabFonts">
         </div>
 
-        <div id="EnlighterTabExtensions">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Extensions.phtml'); ?>
+        <div id="EnlighterTabTokens">
         </div>
 
-        <div id="EnlighterTabCompatibility">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Compatibility.phtml'); ?>
-        </div>
-
-        <div id="EnlighterTabAdvanced">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Advanced.phtml'); ?>
-        </div>
-
-        <div id="EnlighterTabBeta">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Beta.phtml'); ?>
+        <div id="EnlighterTabRAW">
         </div>
 
         <!-- submit !-->

@@ -63,40 +63,4 @@ class EnlighterJS{
             ResourceManager::enqueueDynamicScript($this->getInitializationCode(), 'enlighterjs');
         }
     }
-
-
-    // append css
-    public function appendEnlighterCSS(){
-        // only include css if enabled
-        if ($this->_config['enlighterjs-resources-themes']){
-            // include generated css ?
-            if ($this->_config['defaultTheme']=='wpcustom'){
-                $this->enqueueStyle('enlighter-wpcustom', 'cache/EnlighterJS.custom.css', array(), $this->_uhash);
-
-            }else{
-                // include standard css file ?
-                $this->enqueueStyle('enlighter-local', 'EnlighterJS.min.css');
-            }
-        }
-        
-        // load user themes ?
-        if ($this->_config['embedExternalThemes']) {
-
-            // embed available external themes
-            foreach ($this->_themeManager->getUserThemes() as $theme => $sources) {
-                $this->enqueueStyle('enlighter-external-' . strtolower($theme), $sources[1], array(), $this->_uhash);
-            }
-        }
-
-    }
-    
-    // append js
-    public function appendEnlighterJS(){
-
-        // jetpack InfiniteScroll Extension enabled ?
-        if ($this->_config['extJetpackInfiniteScroll']){
-            // include local css file
-            $this->enqueueScript('enlighter-jetpack-infinitescroll', 'plugin/JetpackInfiniteScroll.js', array('enlighterjs'), $this->_uhash);
-        }
-    }
 }

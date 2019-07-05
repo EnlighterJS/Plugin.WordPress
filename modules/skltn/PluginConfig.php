@@ -73,7 +73,8 @@ class PluginConfig{
         'cache-path' => '',
         'cache-url' => '',
         'dynamic-resource-invocation' => false,
-        'jetpack-infinite-scroll' => false,
+        'ext-infinite-scroll' => false,
+        'ext-ajaxcomplete' => false,
         'bbpress-shortcode' => false,
         'bbpress-markdown' => false
     );
@@ -133,7 +134,8 @@ class PluginConfig{
         'cache-path' => 'string',
         'cache-url' => 'string',
         'dynamic-resource-invocation' => 'boolean',
-        'jetpack-infinite-scroll' => 'boolean',
+        'ext-infinite-scroll' => 'boolean',
+        'ext-ajaxcomplete' => 'boolean',
         'bbpress-shortcode' => 'boolean',
         'bbpress-markdown' => 'boolean'
     );

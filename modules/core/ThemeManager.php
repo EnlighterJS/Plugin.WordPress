@@ -2,6 +2,8 @@
 
 namespace Enlighter;
 
+use Enlighter\skltn\ResourceManager;
+
 class ThemeManager{
     
     private $_cachedData = null;
@@ -27,6 +29,14 @@ class ThemeManager{
     public function __construct(){
     }
 
+    // enqueue user themes
+    public function enqueue(){
+        // embed available external themes
+        foreach ($this->getUserThemes() as $theme => $sources) {
+            ResourceManager::enqueueStyle('enlighter-theme-' . strtolower($theme), $sources[1], array());
+        }
+    }
+
     // get a list of all available themes (build-in + user)
     public function getThemes(){
 
@@ -45,7 +55,7 @@ class ThemeManager{
 
         // add external user themes with prefix
         foreach ($this->getUserThemes() as $slug => $source){
-            $themes[$slug.'/ext'] = strtolower($t);
+            $themes[$slug] = $slug.' ('.$source[2].')';
         }
 
         // run filter to enable user specific themes
@@ -86,8 +96,8 @@ class ThemeManager{
     
     private function getCssFilesFromDirectory($dir, $uri){
         // enlighter subdirectory
-        $dir .= '/enlighter/';
-        $uri .= '/enlighter/';
+        $dir .= '/enlighter';
+        $uri .= '/enlighter';
         
         // available ?
         if (!is_dir($dir)){
@@ -99,6 +109,9 @@ class ThemeManager{
         
         // theme buffers
         $themes = array();
+
+        // source directory name
+        $sourcedirName = basename(dirname($dir));
         
         // filter css files
         foreach($files as $file){
@@ -106,8 +119,9 @@ class ThemeManager{
                 if (substr($file, -3) === 'css'){
                     // absolute path + uri for external themes
                     $themes[basename($file, '.css')] = array(
-                            $dir.$file,
-                            $uri.$file
+                            $dir.'/'.$file,
+                            $uri.'/'.$file,
+                            $sourcedirName
                     );
                 }
             }
@@ -117,7 +131,7 @@ class ThemeManager{
     }
 
     // drop cache content and remove cache file
-    public function forceReload(){
+    public function clearCache(){
         $this->_cachedData = null;
         delete_transient('enlighter_userthemes');
     }

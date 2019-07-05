@@ -9,6 +9,7 @@
     License: GPL-2.0
     Text Domain: enlighter
     Domain Path: /lang
+    Requires PHP: 5.6
 */
 
 
@@ -16,7 +17,8 @@
 // AUTO GENERATED CODE - DO NOT EDIT !!!
 define('ENLIGHTER_INIT', true);
 define('ENLIGHTER_VERSION', '4.0');
-define('ENLIGHTER_WPSKLTN_VERSION', '0.19.0');
+define('ENLIGHTER_WPSKLTN_VERSION', '0.21.0');
+define('ENLIGHTER_PHP_VERSION', '5.6');
 define('ENLIGHTER_PLUGIN_TITLE', 'Enlighter - Customizable Syntax Highlighter');
 define('ENLIGHTER_PLUGIN_HEADLINE', 'Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));
@@ -33,7 +35,7 @@ function Enlighter_PhpEnvironmentError(){
 }
 
 // check php version
-if (version_compare(phpversion(), '5.4', '>=')){
+if (version_compare(phpversion(), ENLIGHTER_PHP_VERSION, '>=')){
     // load classes
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/CacheManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/CssBuilder.php');
@@ -47,13 +49,12 @@ if (version_compare(phpversion(), '5.4', '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/SettingsManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/SettingsViewHelper.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/VirtualPageManager.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/addons/BBPress.php');
-    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/addons/GoogleWebfontResources.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/admin/ContextualHelp.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/Enlighter.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/EnlighterJS.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/EnvironmentCheck.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/FontManager.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/KSES.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/LanguageManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ResourceLoader.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ThemeManager.php');
@@ -62,6 +63,9 @@ if (version_compare(phpversion(), '5.4', '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/Gutenberg.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/QuickTags.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/TinyMCE.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/extensions/BBPress.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/extensions/JQuery.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/extensions/Jetpack.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/CompatibilityModeFilter.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/ContentProcessor.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/GfmFilter.php');

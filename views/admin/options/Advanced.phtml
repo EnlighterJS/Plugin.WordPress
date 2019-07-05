@@ -78,7 +78,7 @@
             <!-- local cache directory !-->
             <?php 
                 $customCachePath = $this->_settingsManager->getOption('cache-path');
-                if (\Enlighter\skltn\CacheManager::isPathAccessible($customCachePath) != true){
+                if (\Enlighter\skltn\CacheManager::isPathAccessible($customCachePath) !== true){
                     echo '<p class="enlighter-text-false">', __('Warning: cache-path is not accessible! the default values will be used!', 'enlighter'), '</p>';
                 }
             ?>

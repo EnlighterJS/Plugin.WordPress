@@ -11,6 +11,7 @@ class EnvironmentCheck
         $this->_cacheManager = $cacheManager;
     }
 
+    // @TODO replace self url
     // check for common environment errors
     public function check(){
 

@@ -1,25 +1,46 @@
 <?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
 
-<!-- Jetpack -->
-<div class="postbox">
-    <h3 class="hndle"><span><?php _e('Jetpack Plugin', 'enlighter'); ?></span></h3>
-    <div class="inside EnlighterBlockcontent">
+<!-- jQuery -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Dynamic Content', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
 
-        <p><?php _e('These options are related to the popular <a href="https://wordpress.org/plugins/jetpack/" target="_blank">Jetpack Plugin</a>.', 'enlighter'); ?></p>
+        <p><?php _e('Support for "load more" buttons. It is required to highlight code sections which are dynamically added to your page via AJAX/XHR!', 'enlighter'); ?></p>
 
         <h4><?php _e('Jetpack', 'enlighter'); ?></h4>
 
         <!-- enable infninite scroll support !-->
-        <p><?php _e('If you use the <a href="https://jetpack.me/support/infinite-scroll/">InfiniteScroll Module</a>, enable this option to load the Enlighter.InfniteScroll extension. It is required to highlight code sections which are dynamically added to your page!', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displayCheckbox(__('Infinite Scroll', 'enlighter'), 'extJetpackInfiniteScroll') ?>
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Infinite Scroll', 'enlighter'),
+            'ext-infinite-scroll',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'readmore' => 'https://jetpack.me/support/infinite-scroll/',
+                'description' => __('If you use the InfiniteScroll Module, enable this option to load the Enlighter.InfniteScroll extension. It is required to highlight code sections which are dynamically added to your page!', 'enlighter')
+            )
+        ); ?>
+
+        <h4><?php _e('jQuery AJAX', 'enlighter'); ?></h4>
+
+        <!-- enable ajaxComplete support !-->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Dynamic Ajax Content', 'enlighter'),
+            'ext-ajaxcomplete',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'readmore' => 'https://api.jquery.com/ajaxcomplete/',
+                'description' => __('This options adds a trigger to the ajaxComplete event used by jQuery', 'enlighter')
+            )
+        ); ?>
 
     </div>
 </div>
 
+
 <!-- BB Press -->
-<div class="postbox">
+<div class="postbox enlighter-postbox">
     <h3 class="hndle"><span><?php _e('bbPress Forums Plugin', 'enlighter'); ?></span></h3>
-    <div class="inside EnlighterBlockcontent">
+    <div class="inside enlighter-setting-section">
 
         <p><?php _e('These options are related to the popular <a href="https://wordpress.org/plugins/bbpress/" target="_blank">bbPress Forums Plugin</a>.', 'enlighter'); ?><br />
             <?php _e('<strong>Note: </strong> Backtick style code-elements of bbPress will be disabled when enabling one of the extensions to avoid conflicts!', 'enlighter'); ?>
@@ -28,32 +49,24 @@
         <h4><?php _e('bbPress', 'enlighter'); ?></h4>
 
         <!-- enable shortcode support !-->
-        <p><?php _e('Enable Shortcode support within bbPress topics and replies.', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displayCheckbox(__('Enlighter Shortcodes', 'enlighter'), 'bbpressShortcode') ?>
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Enlighter shortcodes', 'enlighter'),
+            'bbpress-shortcode',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('Enable Shortcode support within bbPress topics and replies.', 'enlighter')
+            )
+        ); ?>
 
         <!-- enable markdown support !-->
-        <p><?php _e('Enable Markdown style fenced code blocks within bbPress topics and replies.', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displayCheckbox(__('Markdown Code-Blocks', 'enlighter'), 'bbpressMarkdown') ?>
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Markdown fenced codeblocks', 'enlighter'),
+            'bbpress-markdown',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('Enable Markdown style fenced code blocks within bbPress topics and replies.', 'enlighter')
+            )
+        ); ?>
 
-    </div>
-</div>
-
-<!-- Cryptex -->
-<div class="postbox">
-    <h3 class="hndle"><span><?php _e('Cryptex E-Mail Obfuscation Plugin', 'enlighter'); ?></span></h3>
-    <div class="inside EnlighterBlockcontent">
-
-        <p><?php _e('These options are related to the <a href="https://wordpress.org/plugins/cryptex/" target="_blank">Cryptex E-Mail Address Obfuscation plugin</a>. It can protect E-Mail Addresses within your highlighted sourcecode.', 'enlighter'); ?><br />
-            <strong><?php _e('Requires Cryptex 5.0 with enabled hyperlinks.', 'enlighter'); ?></strong>
-        </p>
-
-        <h4><?php _e('Cryptex', 'enlighter'); ?></h4>
-
-        <!-- enable support !-->
-        <?php $this->_settingsUtility->displayCheckbox(__('Enable Cryptex Support', 'enlighter'), 'cryptexEnabled') ?>
-
-        <!-- disabled hyperlink fallback !-->
-        <p><?php _e('The default Email address which will be shown if the hyperlinks are disabled into the cryptex plugin ', 'enlighter'); ?></p>
-        <?php $this->_settingsUtility->displayInput(__('Fallback EMail Address', 'enlighter'), 'cryptexFallbackEmail', __('can be any kind of text', 'enlighter')); ?>
     </div>
 </div>

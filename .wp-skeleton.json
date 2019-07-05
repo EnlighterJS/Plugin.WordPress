@@ -6,6 +6,7 @@
     "license": "GPL-2.0",
     "licenseFile": "LICENSE.txt",
     "constants": {},
+    "phpVersion": "5.6",
     "plugin": {
         "name": "Enlighter - Customizable Syntax Highlighter",
         "description": "Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor",

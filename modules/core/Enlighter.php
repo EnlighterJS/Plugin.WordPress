@@ -3,9 +3,6 @@
 class Enlighter 
     extends \Enlighter\skltn\Plugin{
 
-    // shortcode handler instance
-    protected $_shortcodeHandler;
-
     // content processor instance (gfm, shortcode)
     protected $_contentProcessor;
     
@@ -83,49 +80,34 @@ class Enlighter
         );
 
         // enable EnlighterJS html attributes for Author's and Contributor's
-        add_filter('wp_kses_allowed_html', array($this, 'ksesAllowHtmlCodeAttributes'), 100, 2);
+        add_filter('wp_kses_allowed_html', array('\Enlighter\KSES', 'allowHtmlCodeAttributes'), 100, 2);
 
         // frontend or dashboard area ?
         if (is_admin()){
 
             // force theme cache reload
-            $this->_themeManager->forceReload();
+            $this->_themeManager->clearCache();
 
             // editor
             $this->_resourceLoader->backendEditor();
 
         }else{
 
-            /*
-            // enable bb_press shortcode extension ?
-            if ($this->_settingsUtility->getOption('bbpressShortcode')){
-                Enlighter\BBPress::enableShortcodeFilter();
-            }
+            // initialize bb_press extension
+            Enlighter\extensions\BBPress::init(
+                $this->_settingsUtility->getOption('bbpress-markdown'),
+                $this->_settingsUtility->getOption('bbpress-shortcode')
+            );
 
-            // enable bb_press markdown extension ?
-            if ($this->_settingsUtility->getOption('bbpressMarkdown')){
-                Enlighter\BBPress::enableMarkdownFilter();
-            }
-
-            // disable the backtick code filter ?
-            if ($this->_settingsUtility->getOption('bbpressShortcode') || $this->_settingsUtility->getOption('bbpressMarkdown')){
-                Enlighter\BBPress::disableCodeFilter();
-            }
-
-            // initialize the classic shortcode handler ?
-            if ($this->_settingsUtility->getOption('shortcodeMode') == 'legacy'){
-                $this->_shortcodeHandler = new Enlighter\LegacyShortcodeHandler($this->_settingsUtility, $languages);
-            }
-
-            // initialize content processor (shortcode, gfm)
-            $this->_contentProcessor = new Enlighter\ContentProcessor($this->_settingsUtility, $languages);
-            */
+             // initialize content processor (shortcode, gfm)
+            $this->_contentProcessor = new Enlighter\ContentProcessor(
+                $this->_settingsManager,
+                $this->_languageManager,
+                $this->_themeManager
+            );
             
             // frontend resources & extensions
             $this->setupFrontend();
-
-
-            
         }
 
         // trigger init hook
@@ -188,56 +170,9 @@ class Enlighter
         );
     }
 
-    // enable EnlighterJS html attributes for Authors and Contributors
-    public function ksesAllowHtmlCodeAttributes($data, $context){
-        // only apply filter on post-context
-        if ($context === 'post'){
-
-            // list of all available enlighterjs attributes
-            $allowedAttributes = array(
-                'data-enlighter-language' => true,
-                'data-enlighter-theme' => true,
-                'data-enlighter-group' => true,
-                'data-enlighter-title' => true,
-                'data-enlighter-linenumbers' => true,
-                'data-enlighter-highlight' => true,
-                'data-enlighter-lineoffset' => true
-            );
-
-            // apply to pre and code tags
-            if (isset($data['pre'])){
-                $data['pre'] = array_merge($data['pre'], $allowedAttributes);
-            }
-            if (isset($data['code'])){
-                $data['code'] = array_merge($data['code'], $allowedAttributes);
-            }
-        }
-
-        return $data;
-    }
-
     public function setupFrontend(){
         // load frontend css+js resources - highlighting engine
-        $this->_resourceLoader->frontendEnlighter();
-
-        /*
-        // frontend resource optimization ?
-        if ($this->_settingsUtility->getOption('dynamicResourceInvocation')){
-            // php 5.3 compatibility
-            $T = $this;
-
-            // deregister footer scripts
-            add_action('wp_footer', function() use ($T){
-                // enlighter codeblocks active within current page ?
-                $enlighterCodeFound = $T->_contentProcessor->hasContent() || ($T->_shortcodeHandler !== null && $T->_shortcodeHandler->hasContent());
-
-                // disable
-                if ($enlighterCodeFound === false){
-                    $T->_resourceLoader->disableFrontendScripts();
-                }
-            }, 1);
-        }
-        */
+        $this->_resourceLoader->frontendEnlighter($this->_contentProcessor);
 
         // check frontend user privileges
         $canEdit = is_user_logged_in() && (current_user_can('edit_posts') || current_user_can('edit_pages'));
