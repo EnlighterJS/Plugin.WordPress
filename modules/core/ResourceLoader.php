@@ -149,11 +149,11 @@ class ResourceLoader{
         // frontend resource optimization ?
         if ($this->_config['dynamic-resource-invocation']){
             // deregister footer scripts
-            add_action('wp_footer', function(){
+            add_action('wp_footer', function() use ($contentProcessor){
                 // enlighter codeblocks active within current page ?
-                if ($contentProcessor->hasContent()){
+                if (!$contentProcessor->hasContent()){
                     // dequeue scripts
-                    remove_action('wp_enqueue_scripts', array($this->_enlighterjs, 'enqueue'), 50);
+                    $this->_enlighterjs->dequeue();
                 }
             }, 1);
         }

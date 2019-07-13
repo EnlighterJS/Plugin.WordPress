@@ -1,6 +1,8 @@
 <?php
 
-namespace Enlighter;
+namespace Enlighter\filter;
+
+use Enlighter\skltn\HtmlUtil;
 
 class LegacyShortcodeHandler{
     
@@ -8,32 +10,38 @@ class LegacyShortcodeHandler{
     private $_config;
     
     // store registered shortcodes
-    private $_registeredShortcodes;
+    private $_registeredShortcodes = array();
     
     // currently active codegroup
-    private $_activeCodegroup;
+    private $_activeCodegroup = null;
 
     // flag to indicate if shortcodes have been applied
     public $_hasContent = false;
     
-    public function __construct($settingsUtil, $languageShortcodes){
+    public function __construct($config, $languageManager){
         // store local plugin config
-        $this->_config = $settingsUtil->getOptions();
-        
-        // store registered shortcodes
-        $this->_registeredShortcodes = array_merge($languageShortcodes, array('enlighter', 'codegroup'));
-        
+        $this->_config = $config;
+
         // add texturize filter
         add_filter('no_texturize_shortcodes', array($this, 'texturizeHandler'));
 
-        // add shotcode handlers
-        add_shortcode('enlighter', array($this, 'genericShortcodeHandler'));
-        add_shortcode('codegroup', array($this, 'codegroupShortcodeHandler'));
+        // enable generic shortcode ?
+        if ($this->_config['shortcode-type-generic']){
+            add_shortcode('enlighter', array($this, 'genericShortcodeHandler'));
+            $this->_registeredShortcodes[] = 'enlighter';
+        }
+
+        // enable codegroup shortcode ?
+        if ($this->_config['shortcode-type-group']){
+            add_shortcode('codegroup', array($this, 'codegroupShortcodeHandler'));
+            $this->_registeredShortcodes[] = 'codegroup';
+        }
 
         // enable language shortcodes ?
-        if ($this->_config['languageShortcode']){
-            foreach ($languageShortcodes as $lang){
+        if ($this->_config['shortcode-type-language']){
+            foreach ($languageManager->getLanguages() as $lang => $name){
                 add_shortcode($lang, array($this, 'microShortcodeHandler'));
+                $this->_registeredShortcodes[] = $lang;
             }
         }
     }
@@ -43,7 +51,7 @@ class LegacyShortcodeHandler{
         // default attribute settings
         $shortcodeAttributes = shortcode_atts(
                 array(
-                    'theme' => $this->_config['defaultTheme']
+                    'theme' => $this->_config['enlighterjs-theme']
                 ), $shortcodeAttributes);
     
         // html "pre"-tag attributes
@@ -94,7 +102,7 @@ class LegacyShortcodeHandler{
         }
                 
         // handle as inline code ?
-        if ($this->_config['enableInlineHighlighting'] && strpos($content, "\n") === false){
+        if ($this->_config['shortcode-inline'] && strpos($content, "\n") === false){
             // generate html output
             return $this->generateCodeblock($htmlAttributes, $content, 'code');
             
@@ -121,7 +129,7 @@ class LegacyShortcodeHandler{
             }
             
             // codegroup active ?
-            if ($this->_activeCodegroup != NULL){
+            if ($this->_activeCodegroup !== NULL){
                 // overwrite settings
                 $htmlAttributes['data-enlighter-group'] = $this->_activeCodegroup['data-enlighter-group'];
             }else{
@@ -139,15 +147,13 @@ class LegacyShortcodeHandler{
     // handle wp shortcode [enlighter ..] ... [/enlighter] - generic handling
     public function genericShortcodeHandler($shortcodeAttributes=NULL, $content='', $tagname=''){
         // default language
-        $language = (isset($shortcodeAttributes['lang']) ? $shortcodeAttributes['lang'] : $this->_config['defaultLanguage']);
+        $language = (isset($shortcodeAttributes['lang']) ? $shortcodeAttributes['lang'] : 'generic');
     
         // run micro shortcode handler with given language key
         return $this->microShortcodeHandler($shortcodeAttributes, $content, $language);
     }
     
-    /**
-     * Generate HTML output (code within "pre"/"code"-tag including options)
-     */
+    // Generate HTML output (code within "pre"/"code"-tag including options)
     private function generateCodeblock($attributes, $content, $tagname = 'pre'){
         // set flag
         $this->_hasContent = true;
@@ -165,25 +171,15 @@ class LegacyShortcodeHandler{
         return $html.$content.'</'.$tagname.'>';
     }
 
-    /**
-     * Removes wordpress auto-texturize handler from used shortcodes
-     */
+    // Removes wordpress auto-texturize handler from used shortcodes
     public function texturizeHandler($shortcodes) {
         return array_merge($shortcodes, $this->_registeredShortcodes);
     }
     
-    /**
-     * Removes automatic generated html editor tags (from wpautop()) and restores linebreaks
-     */
+    // Removes automatic generated html editor tags (from wpautop()) and restores linebreaks
     private function removeWpAutoP($content){
-        // wpautop priority changed ?
-        if ($this->_config['wpAutoPFilterPriority']!='default'){
-            // no modification needed
-            return $content;
-        }else{
-            // fallback: remove added tags - will work on most cases
-            return str_replace(array('<br />', '<p>', '</p>'), array('', '', "\n"), $content);
-        }
+        // fallback: remove added tags - will work on most cases
+        return str_replace(array('<br />', '<p>', '</p>'), array('', '', "\n"), $content);
     }
 
     // check if shortcode have been applied

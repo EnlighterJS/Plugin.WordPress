@@ -1,6 +1,6 @@
 <?php
 
-namespace Enlighter\editor;
+namespace Enlighter;
 
 // @see https://codex.wordpress.org/Function_Reference/wp_kses
 class KSES{

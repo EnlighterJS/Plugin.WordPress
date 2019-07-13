@@ -38,23 +38,31 @@
 
         <!-- Geneirc Shortcodes -->
         <?php $this->_settingsUtility->displayCheckbox(
-            __('Generic shortcodes', 'enlighter'),
+            __('Generic shortcode', 'enlighter'),
             'shortcode-type-generic',
             array(
                 'label' => __('Enable', 'enlighter'),
-                'description' =>  __('Do you want to use generic [enlighter] shortcode?', 'enlighter'),
-                'readmore' => 'https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text'
+                'description' =>  __('Do you want to use generic [enlighter] shortcode?', 'enlighter')
             )); 
         ?>
 
         <!-- Language Shortcodes -->
         <?php $this->_settingsUtility->displayCheckbox(
-            __('Language Shortcodes', 'enlighter'),
+            __('Language shortcodes', 'enlighter'),
             'shortcode-type-language',
             array(
                 'label' => __('Enable', 'enlighter'),
-                'description' =>  __('Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!', 'enlighter'),
-                'readmore' => 'https://codex.wordpress.org/Function_Reference/comment_text'
+                'description' =>  __('Do you want to use language shortcodes like [js] ? Disable it when your using other plugins which uses such shortcodes!', 'enlighter')
+            )); 
+        ?>
+
+         <!-- Language Shortcodes -->
+         <?php $this->_settingsUtility->displayCheckbox(
+            __('Codegroup shortcode', 'enlighter'),
+            'shortcode-type-group',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' =>  __('The [codegroup] shortcode allows you to group multiple shortcodes to be displayed as tabs inside enlighter.', 'enlighter')
             )); 
         ?>
 

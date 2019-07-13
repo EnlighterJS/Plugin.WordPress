@@ -68,6 +68,7 @@ if (version_compare(phpversion(), ENLIGHTER_PHP_VERSION, '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/extensions/Jetpack.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/CompatibilityModeFilter.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/ContentProcessor.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/FragmentBuffer.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/GfmFilter.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/InputFilter.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/filter/LegacyShortcodeHandler.php');

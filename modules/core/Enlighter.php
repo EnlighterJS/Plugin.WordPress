@@ -95,12 +95,12 @@ class Enlighter
 
             // initialize bb_press extension
             Enlighter\extensions\BBPress::init(
-                $this->_settingsUtility->getOption('bbpress-markdown'),
-                $this->_settingsUtility->getOption('bbpress-shortcode')
+                $this->_settingsManager->getOption('bbpress-markdown'),
+                $this->_settingsManager->getOption('bbpress-shortcode')
             );
 
              // initialize content processor (shortcode, gfm)
-            $this->_contentProcessor = new Enlighter\ContentProcessor(
+            $this->_contentProcessor = new Enlighter\filter\ContentProcessor(
                 $this->_settingsManager,
                 $this->_languageManager,
                 $this->_themeManager

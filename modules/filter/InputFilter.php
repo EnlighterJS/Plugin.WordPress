@@ -1,6 +1,6 @@
 <?php
 
-namespace Enlighter;
+namespace Enlighter\filter;
 
 class InputFilter{
 

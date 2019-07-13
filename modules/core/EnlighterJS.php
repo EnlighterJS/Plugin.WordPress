@@ -63,4 +63,10 @@ class EnlighterJS{
             ResourceManager::enqueueDynamicScript($this->getInitializationCode(), 'enlighterjs');
         }
     }
+
+    // dequeue resources
+    public function dequeue(){
+        wp_dequeue_script('enlighterjs');
+        wp_dequeue_style('enlighterjs');
+    }
 }
