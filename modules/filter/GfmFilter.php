@@ -1,18 +1,24 @@
 <?php
 
-namespace Enlighter;
+namespace Enlighter\filter;
+
+use Enlighter\skltn\HtmlUtil;
 
 class GfmFilter{
+
+    // stores the plugin config
+    private $_config;
     
-    // default fallback language
-    private $_defaultLanguage;
+    // internal fragment buffer to store code
+    private $_fragmentBuffer;
 
-    // cached code content
-    private $_codeFragments = array();
+    public function __construct($config, $fragmentBuffer){
+        // store local plugin config
+        $this->_config = $config;
 
-    public function __construct($settingsUtil){
-        $this->_defaultLanguage = $settingsUtil->getOption('gfmDefaultLanguage');
-    }
+        // store fragment buffer
+        $this->_fragmentBuffer = $fragmentBuffer;
+     }
 
     private function getGfmRegex(){
         // opening tag
@@ -55,92 +61,61 @@ class GfmFilter{
     // internal regex function to replace gfm code sections with placeholders
     public function stripCodeFragments($content){
 
-        // PHP 5.3 compatibility
-        $T = $this;
-
         // Block Code
-        $content = preg_replace_callback($this->getGfmRegex(), function ($match) use ($T){
+        $content = preg_replace_callback($this->getGfmRegex(), function ($match){
 
             // language identifier (tagname)
             $lang = $match[1];
 
             // language given ? otherwise use default highlighting method
             if (strlen($lang) == 0){
-                $lang = $T->_defaultLanguage;
+                $lang = $this->_config['gfm-language'];
             }
 
-            // generate code fragment
-            $T->_codeFragments[] = array(
-                // the language identifier
-                'lang' => $lang,
+            // generate code
+            $code = $this->renderFragment($match[2], $lang, false);
 
-                // code to highlight
-                'code' => $match[2],
+            // generate code; retrieve placeholder
+            return $this->_fragmentBuffer->storeFragment($code);
 
-                // no inline
-                'inline' => false
-            );
-
-            // replace it with a placeholder
-            return '{{EJS1-' . count($T->_codeFragments) . '}}';
         }, $content);
 
         // Inline Code
-        return preg_replace_callback($this->getInlineGfmRegex(), function ($match) use ($T){
+        if ($this->_config['gfm-inline']){
+            $content = preg_replace_callback($this->getInlineGfmRegex(), function ($match){
 
-            // default language
-            $lang = $T->_defaultLanguage;
+                // default language
+                $lang = $this->_config['gfm-language'];
 
-            // language given ? otherwise use default highlighting method
-            if (isset($match[2]) && strlen($match[2]) > 0){
-                $lang = $match[2];
-            }
+                // language given ? otherwise use default highlighting method
+                if (isset($match[2]) && strlen($match[2]) > 0){
+                    $lang = $match[2];
+                }
 
-            // generate code fragment
-            $T->_codeFragments[] = array(
-                // the language identifier
-                'lang' => $lang,
+                // generate code
+                $code = $this->renderFragment($match[1], $lang, true);
 
-                // code to highlight
-                'code' => $match[1],
+                // generate code; retrieve placeholder
+                return $this->_fragmentBuffer->storeFragment($code);
 
-                // inline
-                'inline' => true
-            );
-
-            // replace it with a placeholder
-            return '{{EJS1-' . count($T->_codeFragments) . '}}';
-        }, $content);
-    }
-
-
-    // internal handler to insert the content
-    public function renderFragments($content){
-
-        // replace placeholders by html
-        foreach ($this->_codeFragments as $index => $fragment){
-            // html tag standard attributes
-            $htmlAttributes = array(
-                'data-enlighter-language' => InputFilter::filterLanguage($fragment['lang']),
-                'class' => 'EnlighterJSRAW'
-            );
-
-            if ($fragment['inline']){
-                // generate html output
-                $html = $this->generateCodeblock($htmlAttributes, $fragment['code'], 'code');
-            }else{
-                // generate html output
-                $html = $this->generateCodeblock($htmlAttributes, $fragment['code']);
-            }
-
-
-            // replace placeholder with rendered content
-            $content = str_replace('{{EJS1-' . ($index + 1) . '}}', $html, $content);
+            }, $content);
         }
 
         return $content;
     }
 
+    // internal handler to insert the content
+    public function renderFragment($code, $lang, $isInline=false){
+
+        // html tag standard attributes
+        $htmlAttributes = array(
+            'data-enlighter-language' => InputFilter::filterLanguage($lang),
+            'class' => 'EnlighterJSRAW'
+        );
+
+        // generate html output
+        return $this->generateCodeblock($htmlAttributes, $code, ($isInline ? 'code' : 'pre'));
+    }
 
     // Generate HTML output (code within "pre"/"code"-tag including options)
     private function generateCodeblock($attributes, $content, $tagname = 'pre'){

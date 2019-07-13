@@ -18,6 +18,16 @@
             )); 
         ?>
 
+        <!-- Enable inline support -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Inline code', 'enlighter'),
+            'gfm-inline',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('Handle code within single backticks as inline code. Trailing language attributes are supported.', 'enlighter')
+            )); 
+        ?>
+
         <!-- default languages !-->
         <?php 
             $this->_settingsUtility->displaySelect(

@@ -38,8 +38,7 @@ class ContentProcessor{
         //$this->_compatFilter = new CompatibilityModeFilter($settingsUtil);
 
         // array of sections which will be filtered
-        $shortcodeSections = array();
-        $gfmSections = array();
+        
         $compatSections = array();
 
         // ------------------------------------
@@ -89,9 +88,16 @@ class ContentProcessor{
 
         // ------------------------------------
         // ---------- GFM ---------------------
-        /*
+
         // gfm enabled ?
         if ($this->_config['gfm-enabled']){
+
+            // setup filter
+            $this->_gfmFilter = new GfmFilter($this->_config, $this->_fragmentBuffer);
+
+            // list of sections which will be filtered
+            $gfmSections = array();
+
             // use gfm in the default sections ?
             if ($this->_config['gfm-filter-content']){
                 $gfmSections[] = 'the_content';
@@ -115,9 +121,9 @@ class ContentProcessor{
 
         // register filter targets
         foreach ($gfmSections as $section){
-            $this->registerGfmFilterTarget($section);
+            $this->registerFilterTarget($this->_gfmFilter, $section);
         }
-        */
+
 
         // ------------------------------------
         // ---------- COMPATIBILITY MODE  -----
