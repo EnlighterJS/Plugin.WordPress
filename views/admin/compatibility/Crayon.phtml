@@ -1,0 +1,36 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- Crayon Processing -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Crayon Syntax Highlighter', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+        
+        <p>
+        <?php _e('Enlighter can convert regular Crayon <code>pre</code> tags into EnlighterJS <code>pre</code> tags on the fly.', 'enlighter'); ?><br />
+        </p>
+
+        <h4><?php _e('Supported attributes', 'enlighter'); ?></h4>
+        <p><?php _e('The following Crayon specific attributes will be recognized and converted to EnlighterJS equivalents.', 'enlighter'); ?></p>
+        <ul>
+            <li>lang</li> 
+            <li>start-line</li>
+            <li>nums</li>
+            <li>mark</li>
+            <li>title</li>
+        </ul>
+
+        <h4><?php _e('Compatibility mode', 'enlighter'); ?></h4>
+
+        <!-- Crayon support -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Crayon', 'enlighter'),
+            'compat-crayon',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('', 'enlighter')
+            )); 
+        ?>
+
+    </div>
+</div>

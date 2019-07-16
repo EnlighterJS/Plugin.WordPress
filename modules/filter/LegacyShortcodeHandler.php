@@ -157,18 +157,12 @@ class LegacyShortcodeHandler{
     private function generateCodeblock($attributes, $content, $tagname = 'pre'){
         // set flag
         $this->_hasContent = true;
-
-        // generate "pre" wrapped html output
-        $html = HtmlUtil::generateTag($tagname, $attributes, false);
         
         // remove automatic generated html editor tags (from wpautop())
         $content = $this->removeWpAutoP($content);
-        
-        // strip specialchars
-        $content = esc_html($content);//htmlspecialchars($content, ENT_COMPAT | ENT_XHTML, 'UTF-8', false);
-                
+   
         // add closing tag
-        return $html.$content.'</'.$tagname.'>';
+        return HtmlUtil::generateTag($tagname, $attributes, false, $content);
     }
 
     // Removes wordpress auto-texturize handler from used shortcodes

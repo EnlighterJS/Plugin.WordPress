@@ -148,6 +148,16 @@ class Enlighter
                     'render' => array($this, 'settingsPage'),
                     'help' => array('Enlighter\Admin\ContextualHelp', 'settings')
                 ),
+                // compatibility options
+                array(
+                    'pagetitle' => ENLIGHTER_PLUGIN_TITLE,
+                    'title' => 'Compatibility',
+                    'slug' => 'enlighter-compatibility',
+                    'template' => 'compatibility/CompatibilityPage',
+                    'resources' => array($this->_resourceLoader, 'backendSettings'),
+                    'render' => array($this, 'settingsPage'),
+                    'help' => array('Enlighter\Admin\ContextualHelp', 'settings')
+                ),
                 // advanced options
                 array(
                     'pagetitle' => ENLIGHTER_PLUGIN_TITLE,

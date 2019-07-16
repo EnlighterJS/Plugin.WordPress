@@ -1,0 +1,54 @@
+<strong>Lang Attribute</strong>
+<pre class="lang:js">
+// the following code is inlined via EnlighterJS.php
+(function(_window, _console){
+    // EnlighterJS library loaded ?
+    if (typeof EnlighterJS == 'undefined'){
+        var log = (_console && (_console.error || _console.log)) || function(){};
+        log('Error: EnlighterJS resources not loaded yet!');
+        return;
+    }
+
+    // code injection
+    (_window.EnlighterJSINIT = function(){
+        EJS_INIT();
+    })();
+})(window,console);
+</pre>
+
+<strong>Lang Attribute + Title</strong>
+<pre class="lang:js" title="something">
+// the following code is inlined via EnlighterJS.php
+(function(_window, _console){
+    // EnlighterJS library loaded ?
+    if (typeof EnlighterJS == 'undefined'){
+        var log = (_console && (_console.error || _console.log)) || function(){};
+        log('Error: EnlighterJS resources not loaded yet!');
+        return;
+    }
+
+    // code injection
+    (_window.EnlighterJSINIT = function(){
+        EJS_INIT();
+    })();
+})(window,console);
+</pre>
+
+<strong>Full Attributes</strong>
+
+<pre class="lang:js nums:false    theme:twilight mark:1,2-4" title="something">
+// the following code is inlined via EnlighterJS.php
+(function(_window, _console){
+    // EnlighterJS library loaded ?
+    if (typeof EnlighterJS == 'undefined'){
+        var log = (_console && (_console.error || _console.log)) || function(){};
+        log('Error: EnlighterJS resources not loaded yet!');
+        return;
+    }
+
+    // code injection
+    (_window.EnlighterJSINIT = function(){
+        EJS_INIT();
+    })();
+})(window,console);
+</pre>

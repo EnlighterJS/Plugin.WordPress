@@ -32,15 +32,6 @@ class ContentProcessor{
         // initialize new fragment buffer
         $this->_fragmentBuffer = new FragmentBuffer();
 
-        
-        
-        //$this->_gfmFilter = new GfmFilter($settingsUtil);
-        //$this->_compatFilter = new CompatibilityModeFilter($settingsUtil);
-
-        // array of sections which will be filtered
-        
-        $compatSections = array();
-
         // ------------------------------------
         // ---------- SHORTCODE ---------------
 
@@ -114,44 +105,53 @@ class ContentProcessor{
             if ($this->_config['gfm-filter-widget']){
                 $gfmSections[] = 'widget_text';
             }
+
+            // apply filter hook to allow users to modify the list/add additional filters
+            $gfmSections = array_unique(apply_filters('enlighter_gfm_filters', $gfmSections));
+
+            // register filter targets
+            foreach ($gfmSections as $section){
+                $this->registerFilterTarget($this->_gfmFilter, $section);
+            }
         }
-
-        // apply filter hook to allow users to modify the list/add additional filters
-        $gfmSections = array_unique(apply_filters('enlighter_gfm_filters', $gfmSections));
-
-        // register filter targets
-        foreach ($gfmSections as $section){
-            $this->registerFilterTarget($this->_gfmFilter, $section);
-        }
-
 
         // ------------------------------------
         // ---------- COMPATIBILITY MODE  -----
-        /*
-        // use gfm in the default sections ?
-        if ($this->_config['compatFilterContent']){
-            $compatSections[] = 'the_content';
-        }
-        if ($this->_config['compatFilterExcerpt']){
-            $compatSections[] = 'get_the_excerpt';
-        }
-        if ($this->_config['compatFilterComments']){
-            $compatSections[] = 'get_comment_text';
-        }
-        if ($this->_config['compatFilterCommentsExcerpt']){
-            $compatSections[] = 'get_comment_excerpt';
-        }
-        if ($this->_config['compatFilterWidgetText']){
-            $compatSections[] = 'widget_text';
-        }
+        
+        // compat mode enabled
+        if ($this->_config['compat-enabled']){
 
-        // apply filter hook to allow users to modify the list/add additional filters
-        $compatSections = array_unique(apply_filters('enlighter_compat_filters', $compatSections));
+            // setup filter
+            $this->_compatFilter = new CompatibilityModeFilter($this->_config, $this->_fragmentBuffer);
 
-        // register filter targets
-        foreach ($compatSections as $section){
-            $this->registerCompatibilityFilterTarget($section);
-        }*/
+            // list of sections which will be filtered
+            $compatSections = array();
+
+            // use gfm in the default sections ?
+            if ($this->_config['compat-filter-content']){
+                $compatSections[] = 'the_content';
+            }
+            if ($this->_config['compat-filter-excerpt']){
+                $compatSections[] = 'get_the_excerpt';
+            }
+            if ($this->_config['compat-filter-comment']){
+                $compatSections[] = 'get_comment_text';
+            }
+            if ($this->_config['compat-filter-commentexcerpt']){
+                $compatSections[] = 'get_comment_excerpt';
+            }
+            if ($this->_config['compat-filter-widget']){
+                $compatSections[] = 'widget_text';
+            }
+
+            // apply filter hook to allow users to modify the list/add additional filters
+            $compatSections = array_unique(apply_filters('enlighter_compat_filters', $compatSections));
+
+            // register filter targets
+            foreach ($compatSections as $section){
+                $this->registerFilterTarget($this->_compatFilter, $section);
+            }
+        }
 
         // ------------------------------------
         // ---------- RESTORE  ----------------

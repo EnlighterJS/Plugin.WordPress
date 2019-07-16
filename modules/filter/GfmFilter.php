@@ -114,19 +114,6 @@ class GfmFilter{
         );
 
         // generate html output
-        return $this->generateCodeblock($htmlAttributes, $code, ($isInline ? 'code' : 'pre'));
+        return HtmlUtil::generateTag(($isInline ? 'code' : 'pre'), $htmlAttributes, true, $code);
     }
-
-    // Generate HTML output (code within "pre"/"code"-tag including options)
-    private function generateCodeblock($attributes, $content, $tagname = 'pre'){
-        // generate "pre" wrapped html output
-        $html = HtmlUtil::generateTag($tagname, $attributes, false);
-
-        // strip special-chars
-        $content = esc_html($content);
-
-        // add closing tag
-        return $html.$content.'</'.$tagname.'>';
-    }
-
 }

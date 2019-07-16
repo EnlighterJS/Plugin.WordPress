@@ -2,14 +2,13 @@
 <?php add_thickbox(); ?>
 
 <!-- EnlighterSettings:wrap -->
-<div class="wrap" id="enlighter-settings" data-enlighter-page="options">
+<div class="wrap" id="enlighter-settings" data-enlighter-page="compatibility">
 
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
-    <a data-tab="EnlighterTabResources" class="nav-tab"><?php _e('Resources', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabCompatibility" class="nav-tab"><?php _e('Compatibility', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabCrayon" class="nav-tab"><?php _e('Crayon', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabExtensions" class="nav-tab"><?php _e('Extensions', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabBeta" class="nav-tab"><?php _e('Beta', 'enlighter'); ?></a>
 </h2>
 
 <!-- Main Title -->
@@ -26,20 +25,12 @@
 <div id="post-body" class="metabox-holder columns-2">
     <div id="post-body-content" class="enlighter-tab-container">
      
-        <div id="EnlighterTabResources">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Resources.phtml'); ?>
+        <div id="EnlighterTabCompatibility">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/compatibility/Compatibility.phtml'); ?>
         </div>
 
-        <div id="EnlighterTabExtensions">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Extensions.phtml'); ?>
-        </div>
-
-        <div id="EnlighterTabAdvanced">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Advanced.phtml'); ?>
-        </div>
-
-        <div id="EnlighterTabBeta">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Beta.phtml'); ?>
+        <div id="EnlighterTabCrayon">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/compatibility/Crayon.phtml'); ?>
         </div>
 
         <!-- submit !-->

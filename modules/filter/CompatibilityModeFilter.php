@@ -1,20 +1,27 @@
 <?php
 
-namespace Enlighter;
+namespace Enlighter\filter;
+
+use Enlighter\skltn\HtmlUtil;
+use Enlighter\compatibility\Crayon as CrayonCompat;
 
 class CompatibilityModeFilter{
+    // stores the plugin config
+    private $_config;
     
-    // default fallback language
-    private $_defaultLanguage;
+    // internal fragment buffer to store code
+    private $_fragmentBuffer;
 
-    // cached code content
-    private $_codeFragments = array();
+    public function __construct($config, $fragmentBuffer){
+        // store local plugin config
+        $this->_config = $config;
 
-    public function __construct($settingsUtil){
-        $this->_defaultLanguage = $settingsUtil->getOption('compatDefaultLanguage');
+        // store fragment buffer
+        $this->_fragmentBuffer = $fragmentBuffer;
     }
     
-    private function getCompatRegex(){
+    // used by e.g. JetPack markdown
+    private function getCompatRegexType1(){
         // opening tag, language identifier (optional)
         return '/<pre><code(?:\s+class="([a-z]+)")?>' .
 
@@ -27,73 +34,61 @@ class CompatibilityModeFilter{
         // ungreedy, case insensitive, multiline
         '/Uim';
     }
+    
+    // used by e.g. Gutenberg Codeblock
+    private function getCompatRegexType2(){
+        // opening tag - no language identifier
+        return '/<pre(?:[^>]+?)?><code>' .
+
+        // arbitrary multi-line content
+        '([\S\s]*)' .
+
+        // closing tags
+        '\s*<\/code>\s*<\/pre>\s*' .
+
+        // ungreedy, case insensitive, multiline
+        '/Uim';
+    }
+
+    /*
+           // language identifier (tagname)
+                $lang = $match[1];
+    
+                // language given ? otherwise use default highlighting method
+                if (strlen($lang) == 0){
+                    $lang = $T->_defaultLanguage;
+                }
+    
+                // generate code
+                $code = $this->renderFragment($match[2], $lang, $attb);
+                */
+
 
 
     // strip the content
     // internal regex function to replace gfm code sections with placeholders
     public function stripCodeFragments($content){
 
-        // PHP 5.3 compatibility
-        $T = $this;
+        // crayon compat mode ?
+        if ($this->_config['compat-crayon']){
+            $content = preg_replace_callback(CrayonCompat::getRegex(), function($match){
 
-        // Block Code
-        return preg_replace_callback($this->getCompatRegex(), function ($match) use ($T){
+                // run convert
+                $code = CrayonCompat::convert($match);
 
-            // language identifier (tagname)
-            $lang = $match[1];
-
-            // language given ? otherwise use default highlighting method
-            if (strlen($lang) == 0){
-                $lang = $T->_defaultLanguage;
-            }
-
-            // generate code fragment
-            $T->_codeFragments[] = array(
-                // the language identifier
-                'lang' => $lang,
-
-                // code to highlight
-                'code' => $match[2]
-            );
-
-            // replace it with a placeholder
-            return '{{EJS2-' . count($T->_codeFragments) . '}}';
-        }, $content);
-    }
-
-
-    // internal handler to insert the content
-    public function renderFragments($content){
-
-        // replace placeholders by html
-        foreach ($this->_codeFragments as $index => $fragment){
-            // html tag standard attributes
-            $htmlAttributes = array(
-                'data-enlighter-language' => InputFilter::filterLanguage($fragment['lang']),
-                'class' => 'EnlighterJSRAW'
-            );
-
-            // generate html output
-            $html = $this->generateCodeblock($htmlAttributes, $fragment['code']);
-
-            // replace placeholder with rendered content
-            $content = str_replace('{{EJS2-' . ($index + 1) . '}}', $html, $content);
+                // generate code; retrieve placeholder
+                return $this->_fragmentBuffer->storeFragment($code);
+                
+            }, $content);
         }
+
+        // generic compat mode
+
 
         return $content;
     }
 
 
-    // Generate HTML output (code within "pre"/"code"-tag including options)
-    private function generateCodeblock($attributes, $content, $tagname = 'pre'){
-        // generate "pre" wrapped html output
-        $html = HtmlUtil::generateTag($tagname, $attributes, false);
 
-        // strip special-chars
-        $content = esc_html($content);
-
-        // add closing tag
-        return $html.$content.'</'.$tagname.'>';
-    }
 
 }

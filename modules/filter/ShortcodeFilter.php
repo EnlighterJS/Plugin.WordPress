@@ -133,7 +133,7 @@ class ShortcodeFilter{
         // handle as inline code ?
         if ($this->_config['shortcode-inline'] && strpos($code, "\n") === false){
             // generate html output
-            return $this->generateCodeblock($htmlAttributes, $code, 'code');
+            return HtmlUtil::generateTag('code', $htmlAttributes, true, $code);
             
         // line-breaks found -> block code
         }else{
@@ -167,20 +167,8 @@ class ShortcodeFilter{
             }
             
             // generate html output
-            return $this->generateCodeblock($htmlAttributes, $code);
+            return HtmlUtil::generateTag('pre', $htmlAttributes, true, $code);
         }
-    }
-
-    // Generate HTML output (code within "pre"/"code"-tag including options)
-    private function generateCodeblock($attributes, $content, $tagname = 'pre'){
-        // generate "pre" wrapped html output
-        $html = HtmlUtil::generateTag($tagname, $attributes, false);
-
-        // strip specialchars
-        $content = esc_html($content);
-
-        // add closing tag
-        return $html.$content.'</'.$tagname.'>';
     }
 
     // interface method to be compatible with legacy shortcode handler

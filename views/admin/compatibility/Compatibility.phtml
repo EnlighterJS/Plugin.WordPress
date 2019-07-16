@@ -1,0 +1,95 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- Legacy Code Processing -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Compatibility Mode / 3rd Party Migration', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+        <p>
+        <?php _e('Do you use plugins which did not support Enlighter directly? In this case the compatibility mode converts the legacy code (desgined for other syntax highlighting plugins) into Enlighter codeblocks on the fly.', 'enlighter'); ?><br />
+        </p>
+        
+        <p>
+        <?php _e('This feature allows you to migrate to Enlighter without altering your old posts.', 'enlighter'); ?>
+        </p>
+
+        <p>
+        <strong><?php _e('Note: all compatibility filters are applied on-the-fly and do not modify any content withn the database!', 'enlighter'); ?></strong>
+        </p>
+
+        <!-- Enable support -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Compatibility mode', 'enlighter'),
+            'compat-enabled',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('This option has be enabled to use any of the compatibility modes!', 'enlighter')
+            )); 
+        ?>
+
+    </div>
+</div>
+
+<!-- Processing -->
+<div class="postbox enlighter-postbox enlighter-selective-section" data-trigger="#enlighter-compat-enabled" data-condition="checked">
+    <h3 class="hndle"><span><?php _e('Filter targets', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+        <p><?php _e('Choose the content-sections to which the compatibility processor should be applied.', 'enlighter'); ?></p>
+
+        <!-- Enable the_content filter -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('the_content', 'enlighter'),
+            'compat-filter-content',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Function_Reference/get_the_content'
+            )); 
+        ?>
+
+        <!-- Enable the_excerpt filter -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('the_excerpt', 'enlighter'),
+            'compat-filter-excerpt',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://developer.wordpress.org/reference/functions/the_excerpt/'
+            )); 
+        ?>
+
+        <!-- Enable Widget-text filter -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('widget_text', 'enlighter'),
+            'compat-filter-widget',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text'
+            )); 
+        ?>
+
+        <!-- Enable comment-text filter -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('comment_text', 'enlighter'),
+            'compat-filter-comment',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Function_Reference/comment_text'
+            )); 
+        ?>
+
+        <!-- Enable comment-excerpt filter -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('comment_excerpt', 'enlighter'),
+            'compat-filter-commentexcerpt',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('x', 'enlighter'),
+                'readmore' => 'https://codex.wordpress.org/Function_Reference/comment_excerpt'
+            )); 
+        ?>
+        
+    </div>
+</div>
