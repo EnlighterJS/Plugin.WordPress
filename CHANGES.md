@@ -4,19 +4,20 @@
 
 **Note: This release is NOT BACKWARD COMPATIBLE. Custom themes will be lost**
 
-**EnlighterJS v3 has been released - new themes + new highlighting engine**
-
 * Added: Gutenberg editor plugin v1.0.0
 
+* Added: [EnlighterJS v3](https://enlighterjs.org/)
 * Replaced MooTools Framework by native code - requires IE >= 10
 * **NEW Highlighting Engines** - every language support file has been rewritten
 * New Tokenizer Engine including a two stage analyzer
 * Excessive Performance Optimizations
-* Added: [EnlighterJS v3](https://enlighterjs.org/)
-* Added: docker based development mode
 * Added: ECMA6 Support to Javascript Engine
 * Added: Copy to clipboard button
+* Added: horizontal scroll option
 * Added: [YAML](http://docs.ansible.com/ansible/YAMLSyntax.html) Support
+* Added: [Kotlin](https://kotlinlang.org) support
+* Added: [TypeScript](https://www.typescriptlang.org/) support
+* Added: [Groovy](http://groovy-lang.org) support
 * Added: [LESS](http://lesscss.org/) Support
 * Added: [SASS/SCSS](http://sass-lang.com/) Support
 * Added: [Dockerfile](https://docs.docker.com/engine/reference/builder/) Support
@@ -24,8 +25,13 @@
 * Added: [Powershell](https://msdn.microsoft.com/en-us/powershell/mt173057.aspx) Support
 * Added: [VisualBasic NET/Classic](https://msdn.microsoft.com/de-de/library/2x7h1hfk.aspx) Support
 * Added: [Swift](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html) Support
+* Added: [QML](https://doc.qt.io/qt-5/qtqml-syntax-basics.html) Support
+* Added: Prolog Support (simple)
 * Added: Bootstrap4 Theme
 * Added: Dracula Theme (dark, following [draculatheme](https://draculatheme.com/) colors)
+* Added: Monokai Theme (dark)
+* Added: Crayon compatibility/migration mode
+* Added: docker based development mode
 * Changed: [WP-Skeleton](https://github.com/AndiDittrich/WP-Skeleton) is used as Plugin Backend Framework 
 * Changed: All settings are stored in serialized form in `enlighter-options` instead of single options
 * Changed: moved settings page to top-level menu

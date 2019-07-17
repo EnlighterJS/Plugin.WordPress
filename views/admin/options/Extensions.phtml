@@ -7,6 +7,10 @@
 
         <p><?php _e('Support for "load more" buttons. It is required to highlight code sections which are dynamically added to your page via AJAX/XHR!', 'enlighter'); ?></p>
 
+        <p><strong>
+        <?php _e('Note: these features are not compatible with Dynamic Resource Invocation (DRI) mode! Disable DRI in case you want to use AJAX based content!', 'enlighter'); ?>
+        </strong></p>
+
         <h4><?php _e('Jetpack', 'enlighter'); ?></h4>
 
         <!-- enable infninite scroll support !-->
@@ -54,7 +58,7 @@
             'bbpress-shortcode',
             array(
                 'label' => __('Enable', 'enlighter'),
-                'description' => __('Enable Shortcode support within bbPress topics and replies.', 'enlighter')
+                'description' => __('Enable Shortcode support within bbPress topics and replies. Requires enabled shortcode editing mode!', 'enlighter')
             )
         ); ?>
 
@@ -64,7 +68,7 @@
             'bbpress-markdown',
             array(
                 'label' => __('Enable', 'enlighter'),
-                'description' => __('Enable Markdown style fenced code blocks within bbPress topics and replies.', 'enlighter')
+                'description' => __('Enable Markdown style fenced code blocks within bbPress topics and replies. Requires enabled markdown editing mode!', 'enlighter')
             )
         ); ?>
 

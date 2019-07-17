@@ -10,8 +10,8 @@ class Crayon{
     // used by Crayon
     // note: full filtering is used to avoid wpautop issues!
     public static function getRegex(){
-        // opening tag, language identifier (optional)
-        return '/<pre\s+class="([^"]+)"\s*(?:title="([^"]+)")?\s*>' .
+        // opening tag, language identifier (required), additional attributes (optional)
+        return '/<pre\s+class="(.*lang:.+)"\s*(?:title="(.+)")?\s*>' .
 
         // arbitrary multi-line content
         '([\S\s]*)' .

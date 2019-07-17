@@ -51,6 +51,8 @@ if (version_compare(phpversion(), ENLIGHTER_PHP_VERSION, '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/VirtualPageManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/admin/ContextualHelp.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/compatibility/Crayon.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/compatibility/GenericType1.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/compatibility/GenericType2.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/Enlighter.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/EnlighterJS.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/EnvironmentCheck.php');

@@ -30,17 +30,13 @@ Yes! since version 1.5 all shortcodes support the attribute ``highlight``.
 Shortcode Example: highlight the lines 2,3,4,8 of the codeblock `[js highlight="2-4,8"]....some code..[/js]`
 	
 ### Are the uncompressed EnlighterJS Javasscript and CSS sources available ? ###
-The complete EnlighterJS project can be found on [GitHub](https://github.com/AndiDittrich/EnlighterJS "EnligherJS Project")
+The complete EnlighterJS project can be found on [GitHub](https://github.com/EnlighterJS/EnlighterJS "EnligherJS Project")
 
 ### Can i add custom Themes ? ###
 Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify one of the standard themes. Finally create a directory named `enlighter` into your WordPress theme and put the css file into it.
 
 ### There are no Enlighter features visible within the Frontend Editor ###
 You have to enable the frontend editing function: `Enlighter Settings Page -> Advanced -> TinyMCE Integration (Visual Editor) -> Enable Frontend Integration`. This feature also requires a logged-in user with `edit_posts` and/or `edit_pages` [privileges](http://codex.wordpress.org/Function_Reference/current_user_can) and is only available for the `wp_editor` function - no third party editors are supported!
-
-### I'am already using MooTools and my page throws Javascript-Errors ###
-If you are already using MooTools on your page, you have to disable the automatic inclusion of MooTools by Enlighter. Goto the Enlighter options page -> Advanced and select "Not include" as MooTools source. 
-**Note:** EnlighterJS requires MooTools > 1.4
 
 ### Can Enlighter by disabled on selected pages? ###
 Of course, the filter hook [enlighter_startup](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/FilterHooks.md) can be used to terminate the plugin initialization
@@ -49,4 +45,4 @@ Of course, the filter hook [enlighter_startup](https://github.com/EnlighterJS/Pl
 In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.de/contact) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
 
 ### I miss some features / I found a bug ###
-Write a message to [Andi Dittrich](http://andidittrich.de/contact) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
+Write a message to [Andi Dittrich](https://andidittrich.de/contact) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)

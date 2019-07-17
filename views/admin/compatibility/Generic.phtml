@@ -1,0 +1,59 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- Generic Processing -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Generic Type 1 Compatibility', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+    <p><strong>Description:</strong> <code>pre</code> tag without attributes and inner <code>code</code> tag with optional <code>class</code> attribute used as language identifier.</p>
+    
+    <p><strong>Example:</strong></p>
+<pre>&lt;pre&gt;&lt;code class=":lang:"&gt;
+..content..
+&lt;/code&gt;&lt;/pre&gt;
+</pre>
+<p><strong>Scope:</strong> Jetpack markdown fenced codeblocks or any third party code.</p>
+
+    <h4><?php _e('Compatibility', 'enlighter'); ?></h4>
+
+    <!-- Type1 support -->
+    <?php $this->_settingsUtility->displayCheckbox(
+        __('Generic type 1', 'enlighter'),
+        'compat-type1',
+        array(
+            'label' => __('Enable', 'enlighter'),
+            'description' => __('', 'enlighter')
+        )); 
+    ?>
+</div>
+</div>
+
+
+<!-- Generic Processing -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Generic Type 2 Compatibility', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+    <p><strong>Description:</strong> <code>pre</code> tag with arbitrary attributes and inner <code>code</code> tag. Without language attributes.</p>
+
+    <p><strong>Example:</strong></p>
+    <pre>&lt;pre ...&gt;&lt;code&gt;
+    ..content..
+    &lt;/code&gt;&lt;/pre&gt;
+    </pre>
+    <p><strong>Scope:</strong> Gutenberg standard codeblocks with custom classes or any third party code.</p>
+
+    <h4><?php _e('Compatibility', 'enlighter'); ?></h4>
+
+    <!-- Type2 support -->
+    <?php $this->_settingsUtility->displayCheckbox(
+        __('Generic type 2 ', 'enlighter'),
+        'compat-type2',
+        array(
+            'label' => __('Enable', 'enlighter'),
+            'description' => __('', 'enlighter')
+        )); 
+    ?>
+
+</div>
+</div>

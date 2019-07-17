@@ -6,9 +6,10 @@
 
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
-    <a data-tab="EnlighterTabCompatibility" class="nav-tab"><?php _e('Compatibility', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabCompatibility" class="nav-tab"><?php _e('Compatibility Mode', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabGeneric" class="nav-tab"><?php _e('Generic', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabCrayon" class="nav-tab"><?php _e('Crayon', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabExtensions" class="nav-tab"><?php _e('Extensions', 'enlighter'); ?></a>
+    
 </h2>
 
 <!-- Main Title -->
@@ -27,6 +28,10 @@
      
         <div id="EnlighterTabCompatibility">
         <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/compatibility/Compatibility.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabGeneric">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/compatibility/Generic.phtml'); ?>
         </div>
 
         <div id="EnlighterTabCrayon">

@@ -1,0 +1,73 @@
+<strong>Type1 - No Attribute</strong>
+<pre><code>
+// the following code is inlined via EnlighterJS.php
+(function(_window, _console){
+    // EnlighterJS library loaded ?
+    if (typeof EnlighterJS == 'undefined'){
+        var log = (_console && (_console.error || _console.log)) || function(){};
+        log('Error: EnlighterJS resources not loaded yet!');
+        return;
+    }
+
+    // code injection
+    (_window.EnlighterJSINIT = function(){
+        EJS_INIT();
+    })();
+})(window,console);
+</code></pre>
+
+<strong>Type1 - Lang Attribute</strong>
+<pre><code class="js">
+// the following code is inlined via EnlighterJS.php
+(function(_window, _console){
+    // EnlighterJS library loaded ?
+    if (typeof EnlighterJS == 'undefined'){
+        var log = (_console && (_console.error || _console.log)) || function(){};
+        log('Error: EnlighterJS resources not loaded yet!');
+        return;
+    }
+
+    // code injection
+    (_window.EnlighterJSINIT = function(){
+        EJS_INIT();
+    })();
+})(window,console);
+</code></pre>
+
+<hr />
+
+<strong>Type2 - No Attribute</strong>
+<pre><code>
+// the following code is inlined via EnlighterJS.php
+(function(_window, _console){
+    // EnlighterJS library loaded ?
+    if (typeof EnlighterJS == 'undefined'){
+        var log = (_console && (_console.error || _console.log)) || function(){};
+        log('Error: EnlighterJS resources not loaded yet!');
+        return;
+    }
+
+    // code injection
+    (_window.EnlighterJSINIT = function(){
+        EJS_INIT();
+    })();
+})(window,console);
+</code></pre>
+
+<strong>Type2 - Arbitrary Attribute</strong>
+<pre class="xyz" title="test"><code>
+// the following code is inlined via EnlighterJS.php
+(function(_window, _console){
+    // EnlighterJS library loaded ?
+    if (typeof EnlighterJS == 'undefined'){
+        var log = (_console && (_console.error || _console.log)) || function(){};
+        log('Error: EnlighterJS resources not loaded yet!');
+        return;
+    }
+
+    // code injection
+    (_window.EnlighterJSINIT = function(){
+        EJS_INIT();
+    })();
+})(window,console);
+</code></pre>
