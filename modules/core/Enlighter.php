@@ -21,6 +21,12 @@ class Enlighter
     // handle fonts
     protected $_fontManager;
 
+    // theme generator
+    protected $_themeGenerator;
+
+    // theme customizer
+    protected $_themeCustomizer;
+
     // basic plugin initialization
     public function __construct(){
         parent::__construct();
@@ -78,6 +84,9 @@ class Enlighter
                 $this->_themeManager,
                 $this->_fontManager
         );
+
+        // initialize theme customizer (generated the enlighterjs.css file!)
+        $this->_themeCustomizer = new Enlighter\customizer\ThemeCustomizer($this->_settingsManager, $this->_cacheManager);
 
         // enable EnlighterJS html attributes for Author's and Contributor's
         add_filter('wp_kses_allowed_html', array('\Enlighter\KSES', 'allowHtmlCodeAttributes'), 100, 2);
@@ -154,6 +163,16 @@ class Enlighter
                     'title' => 'Compatibility',
                     'slug' => 'enlighter-compatibility',
                     'template' => 'compatibility/CompatibilityPage',
+                    'resources' => array($this->_resourceLoader, 'backendSettings'),
+                    'render' => array($this, 'settingsPage'),
+                    'help' => array('Enlighter\Admin\ContextualHelp', 'settings')
+                ),
+                // extensions
+                array(
+                    'pagetitle' => ENLIGHTER_PLUGIN_TITLE,
+                    'title' => 'Extensions',
+                    'slug' => 'enlighter-extensions',
+                    'template' => 'extensions/ExtensionsPage',
                     'resources' => array($this->_resourceLoader, 'backendSettings'),
                     'render' => array($this, 'settingsPage'),
                     'help' => array('Enlighter\Admin\ContextualHelp', 'settings')

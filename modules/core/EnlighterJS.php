@@ -46,7 +46,7 @@ class EnlighterJS{
         // add EnlighterJS themes ?
         if ($this->_config['enlighterjs-assets-themes']){
             // include local css file
-            ResourceManager::enqueueStyle('enlighterjs', 'enlighterjs/enlighterjs.min.css', array(), ENLIGHTER_VERSION);
+            ResourceManager::enqueueStyle('enlighterjs', 'cache/enlighterjs.min.css', array(), ENLIGHTER_VERSION);
         }
 
         // only include EnlighterJS js if enabled

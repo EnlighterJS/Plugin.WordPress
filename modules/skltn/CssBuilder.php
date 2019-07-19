@@ -43,10 +43,15 @@ class CssBuilder{
         $this->_rawBuffer .= "\n" . $css;
     }
 
+    // add raw css from file
+    public function addFile($filename){
+        $this->_rawBuffer .= file_get_contents($filename) . "\n" ;
+    }
+
     // render ruleset
     public function render(){
         // local output buffer
-        $css = '/* Enlighter dynamic generated stylesheet - DO NOT EDIT */';
+        $css = "\n\n/* Enlighter dynamic generated stylesheet - DO NOT EDIT */";
 
         // get rulesets
         foreach ($this->_buffer as $selector => $rules){

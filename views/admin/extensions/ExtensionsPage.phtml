@@ -2,13 +2,12 @@
 <?php add_thickbox(); ?>
 
 <!-- EnlighterSettings:wrap -->
-<div class="wrap" id="enlighter-settings" data-enlighter-page="options">
+<div class="wrap" id="enlighter-settings" data-enlighter-page="extensions">
 
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
-    <a data-tab="EnlighterTabResources" class="nav-tab"><?php _e('Resources', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabBeta" class="nav-tab"><?php _e('Beta', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabDynamic" class="nav-tab"><?php _e('Dynamic Content', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabBBPress" class="nav-tab"><?php _e('bbPress', 'enlighter'); ?></a>
 </h2>
 
 <!-- Main Title -->
@@ -25,16 +24,12 @@
 <div id="post-body" class="metabox-holder columns-2">
     <div id="post-body-content" class="enlighter-tab-container">
      
-        <div id="EnlighterTabResources">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Resources.phtml'); ?>
+        <div id="EnlighterTabDynamic">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/extensions/DynamicContent.phtml'); ?>
         </div>
 
-        <div id="EnlighterTabAdvanced">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Advanced.phtml'); ?>
-        </div>
-
-        <div id="EnlighterTabBeta">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Beta.phtml'); ?>
+        <div id="EnlighterTabBBPress">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/extensions/BBPress.phtml'); ?>
         </div>
 
         <!-- submit !-->

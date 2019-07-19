@@ -17,7 +17,7 @@
 // AUTO GENERATED CODE - DO NOT EDIT !!!
 define('ENLIGHTER_INIT', true);
 define('ENLIGHTER_VERSION', '4.0');
-define('ENLIGHTER_WPSKLTN_VERSION', '0.21.0');
+define('ENLIGHTER_WPSKLTN_VERSION', '0.22.0');
 define('ENLIGHTER_PHP_VERSION', '5.6');
 define('ENLIGHTER_PLUGIN_TITLE', 'Enlighter - Customizable Syntax Highlighter');
 define('ENLIGHTER_PLUGIN_HEADLINE', 'Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor');
@@ -62,6 +62,8 @@ if (version_compare(phpversion(), ENLIGHTER_PHP_VERSION, '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ResourceLoader.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ThemeManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/Versions.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/customizer/ThemeCustomizer.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/customizer/Toolbar.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/EditorConfig.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/Gutenberg.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/QuickTags.php');
