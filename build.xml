@@ -18,6 +18,11 @@
         </apply>
     </target>
 
+    <!-- beta releases as tar archive !-->
+    <target name="beta" depends="dist">
+        <tar destfile=".hidden/enlighter-beta.tar" basedir="dist/"/>
+    </target>
+
     <!-- Plugin Test - DEVELOPMENT ONLY -->
     <target name="devcopy" depends="dist">
         <!-- Credentials, Host Settings !-->

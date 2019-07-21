@@ -2,7 +2,7 @@
     "slug": "enlighter",
     "name": "Enlighter",
     "namespace": "Enlighter",
-    "version": "4.0",
+    "version": "4.0-BETA1",
     "license": "GPL-2.0",
     "licenseFile": "LICENSE.txt",
     "constants": {},
@@ -14,7 +14,7 @@
         "author": "Andi Dittrich",
         "authorUrl": "https://andidittrich.de"
     },
-    "skltnVersion": "0.18.0",
+    "skltnVersion": "0.22.0",
     "modules": {
         "exclude": ["upgrade"]
     }
