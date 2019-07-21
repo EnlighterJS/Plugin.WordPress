@@ -241,10 +241,10 @@ class Enlighter
         // upgrade from < 4.0 ? use v3.99 condition to ensure that beta versions are not altered!
         if (version_compare($currentVersion, '3.99', '<')){
             // load upgrader
-            require_once(ENLIGHTER_PLUGIN_PATH.'/modules/upgrade/Upgrade_to_4_0_0.php');
+            require_once(ENLIGHTER_PLUGIN_PATH.'/modules/upgrade/Upgrade_to_v4.php');
 
             // create upgrader instance
-            $upgrader = new Enlighter\Upgrade\Upgrade_to_4_0_0();
+            $upgrader = new Enlighter\upgrade\Upgrade_to_v4();
 
             // run
             $upgrader->run($currentVersion, ENLIGHTER_VERSION);
