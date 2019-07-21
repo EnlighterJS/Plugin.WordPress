@@ -3,6 +3,7 @@
 namespace Enlighter;
 
 use Enlighter\skltn\ResourceManager;
+use Enlighter\skltn\CacheManager;
 
 class EnlighterJS{
 
@@ -21,7 +22,8 @@ class EnlighterJS{
             'rawcodeDbclick' =>     $this->_config['enlighterjs-rawcodedbclick'],
             'textOverflow' =>       $this->_config['enlighterjs-textoverflow'],
             'linenumbers' =>        $this->_config['enlighterjs-linenumbers'],
-            'theme' =>              $this->_config['enlighterjs-theme']
+            'theme' =>              $this->_config['enlighterjs-theme'],
+            'retainCssClasses' =>   $this->_config['enlighterjs-retaincss']
         );
     }
 
@@ -45,8 +47,8 @@ class EnlighterJS{
         
         // add EnlighterJS themes ?
         if ($this->_config['enlighterjs-assets-themes']){
-            // include local css file
-            ResourceManager::enqueueStyle('enlighterjs', 'cache/enlighterjs.min.css', array(), ENLIGHTER_VERSION);
+            // include local css file - use cache hash!
+            ResourceManager::enqueueStyle('enlighterjs', 'cache/enlighterjs.min.css', array(), CacheManager::getCacheHash());
         }
 
         // only include EnlighterJS js if enabled

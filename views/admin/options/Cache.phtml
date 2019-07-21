@@ -1,0 +1,44 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- CACHE SETTINGS -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Cache Settings', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+        <p><?php _e('You can define a custom cache-directory which should be used to store the generated images and css files. This directory has to be web-accessable!', 'enlighter'); ?></p>
+
+        <!-- Enable Custom Path settings -->
+        <?php $this->_settingsUtility->displayCheckbox(__('Custom cache', 'enlighter'), 'cache-custom', array(
+            'label' => 'Enable'
+        )); ?>
+
+        <h4><?php _e('Current Settings', 'enlighter'); ?></h4>
+        <p>
+            <?php _e('Path: ', 'enlighter'); ?><code><?php echo $this->_cacheManager->getCachePath();?></code><br />
+            <?php _e('Url: ', 'enlighter'); ?><code><?php echo $this->_cacheManager->getCacheURL();?></code>
+        </p>
+    
+        <div class="enlighter-selective-section" data-trigger="#enlighter-cache-custom" data-condition="checked">
+            <h4><?php _e('Custom cache path/url', 'enlighter'); ?></h4>
+            <p class="enlighter-text-false"><strong><?php _e('Attention:', 'enlighter'); ?></strong> <?php _e('All files within the cache-path will be removed each time you update enlighter-settings!', 'enlighter'); ?>
+            
+            <!-- local cache directory !-->
+            <?php 
+                $customCachePath = $this->_settingsManager->getOption('cache-path');
+                if (\Enlighter\skltn\CacheManager::isPathAccessible($customCachePath) !== true){
+                    echo '<p class="enlighter-text-false">', __('Warning: cache-path is not accessible! the default values will be used!', 'enlighter'), '</p>';
+                }
+            ?>
+            <?php $this->_settingsUtility->displayInput(__('Store files in this directory', 'enlighter'), 'cache-path', array(
+                'label' => __('e.g. /home/user/wordpress/cache/', 'enlighter'),
+                'description' => __('Default: ', 'enlighter'). ENLIGHTER_PLUGIN_PATH.'/cache/'
+            )); ?>
+        
+            <!-- cache URL !-->
+            <?php $this->_settingsUtility->displayInput(__('Full URL path to files', 'enlighter'), 'cache-url', array(
+                'label' => __('e.g. http://cache.yourdomain.tld/i/', 'enlighter'),
+                'description' => __('Default: ', 'enlighter'). plugins_url('/enlighter/cache/')
+            )); ?>
+        </div>
+<!-- // CACHE SETTINGS -->
+</div></div>

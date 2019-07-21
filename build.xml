@@ -5,7 +5,7 @@
     <!-- ANT-contrib !-->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 
-    <target name="full" depends="potgen, readme, changelog, webfonts, themes, languages, devcopy, dist"/>
+    <target name="full" depends="dist"/>
 
     <!-- "Compile" po language support files !-->
     <target name="languages">
@@ -19,69 +19,38 @@
     </target>
 
     <!-- Plugin Test - DEVELOPMENT ONLY -->
-    <target name="devcopy">
+    <target name="devcopy" depends="dist">
         <!-- Credentials, Host Settings !-->
         <loadproperties srcFile=".credentials/account.conf" prefix="dev"/>
 
+        <!-- cleanup old plugin files !-->
+        <echo message="Removing old plugin files [Single Site]"/>
+        <sshexec host="${dev.host}" trust="true"
+            username="${dev.user}"
+            keyfile="${user.home}/${dev.keyfile}"
+            port="${dev.port}"
+            command="rm -rf ${dev.path}/*"
+        />
+
         <!-- transfer deploy plugin !-->
         <echo message="Uploading files [Single Site]"/>
-        <scp todir="${dev.user}@${dev.host}:${dev.path}" trust="true" port="${dev.port}"
+        <scp todir="${dev.user}@${dev.host}:${dev.path}" trust="true" port="${dev.port}" sftp="true"
              keyfile="${user.home}/${dev.keyfile}">
-            <fileset dir="."/>
-        </scp>
-
-        <echo message="Uploading files [MU Site]"/>
-        <scp todir="${dev.user}@${dev.host}:${dev.mupath}" trust="true" port="${dev.port}"
-             keyfile="${user.home}/${dev.keyfile}">
-            <fileset dir="."/>
+            <fileset dir="dist"/>
         </scp>
     </target>
 
     <!-- GitHub readme + changes => WordPress transformation !-->
     <target name="readme">
         <!-- merge readme + changes !-->
-        <concat destfile="readme.txt" append="false">
+        <concat destfile="dist/readme.txt" append="false">
             <filelist files="README.md, FAQ.md, CHANGES.md"/>
         </concat>
 
         <!-- replace headings !-->
-        <replaceregexp file="readme.txt" match="^###(.*)###" replace="=\1=" byline="true"/>
-        <replaceregexp file="readme.txt" match="^##(.*)##" replace="==\1==" byline="true"/>
-        <replaceregexp file="readme.txt" match="^#(.*)#" replace="===\1===" byline="true"/>
-    </target>
-
-    <!-- POT file generation !-->
-    <target name="potgen">
-        <exec executable="php">
-            <arg value="util/GeneratePOT.php"/>
-        </exec>
-    </target>
-
-    <!-- Webfonts code generation !-->
-    <target name="webfonts">
-        <exec executable="php">
-            <arg value="util/WebfontsGenerator.php"/>
-        </exec>
-    </target>
-
-    <!-- Changelog html generation !-->
-    <target name="changelog">
-        <exec executable="php">
-            <arg value="util/extract-changes.php"/>
-        </exec>
-    </target>
-
-    <!-- Theme Fetching !-->
-    <target name="themes">
-        <!-- Cleanup Dir -->
-        <delete dir="views/themes"/>
-        <mkdir dir="views/themes"/>
-
-        <!-- Run Theme Fetcher !-->
-        <exec executable="php">
-            <arg value="util/ThemeFetcher.php"/>
-            <arg value="views/themes"/>
-        </exec>
+        <replaceregexp file="dist/readme.txt" match="^###(.*)###" replace="=\1=" byline="true"/>
+        <replaceregexp file="dist/readme.txt" match="^##(.*)##" replace="==\1==" byline="true"/>
+        <replaceregexp file="dist/readme.txt" match="^#(.*)#" replace="===\1===" byline="true"/>
     </target>
 
     <!-- Static Code Check !-->
@@ -109,24 +78,26 @@
         </exec>
     </target>
 
-    <!-- Create Dist copy !-->
-    <target name="dist">
+    <!-- Dist clean !-->
+    <target name="dist-cleanup">
         <!-- cleanup !-->
         <delete dir="dist"/>
         <mkdir dir="dist"/>
+    </target>
+
+    <!-- Create Dist copy !-->
+    <target name="dist" depends="dist-cleanup, readme">
 
         <!-- Copy Plugin !-->
         <copy todir="dist">
             <fileset dir=".">
                 <include name="cache/**" />
-                <include name="class/**" />
-                <include name="docs/**" />
+                <include name="modules/**" />
                 <include name="lang/**" />
                 <include name="resources/**" />
                 <include name="views/**" />
                 <include name="Enlighter.php" />
-                <include name="readme.txt" />
-                <include name="LICENSE" />
+                <include name="LICENSE.txt" />
             </fileset>
         </copy>
     </target>

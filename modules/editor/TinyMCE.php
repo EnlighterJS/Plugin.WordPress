@@ -171,7 +171,7 @@ class TinyMCE{
         $builder = new CssBuilder();
 
         // load base styles
-        $builder->addRaw(file_get_contents(ENLIGHTER_PLUGIN_PATH.'/resources/tinymce/enlighterjs.tinymce.min.css'));
+        $builder->addFile(ENLIGHTER_PLUGIN_PATH.'/resources/tinymce/enlighterjs.tinymce.min.css');
 
         // add editor styles
         $builder->add('code.EnlighterJSRAW, pre.EnlighterJSRAW', array(
@@ -210,7 +210,7 @@ class TinyMCE{
 
     public function loadEditorCSS($mce_css){
         // add hash from last settings update to force a cache update
-        $url = ResourceManager::getResourceUrl('cache/' . $this->_cacheFilename, ENLIGHTER_VERSION);
+        $url = ResourceManager::getResourceUrl('cache/' . $this->_cacheFilename, true);
 
         // other styles loaded ?
         if (empty($mce_css)){

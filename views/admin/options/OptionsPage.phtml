@@ -7,6 +7,7 @@
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
     <a data-tab="EnlighterTabResources" class="nav-tab"><?php _e('Resources', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabCache" class="nav-tab"><?php _e('Cache', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabAdvanced" class="nav-tab"><?php _e('Advanced', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabBeta" class="nav-tab"><?php _e('Beta', 'enlighter'); ?></a>
 </h2>
@@ -27,6 +28,10 @@
      
         <div id="EnlighterTabResources">
         <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Resources.phtml'); ?>
+        </div>
+
+        <div id="EnlighterTabCache">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/options/Cache.phtml'); ?>
         </div>
 
         <div id="EnlighterTabAdvanced">

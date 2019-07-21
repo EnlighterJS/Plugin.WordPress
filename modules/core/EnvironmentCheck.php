@@ -50,6 +50,11 @@ class EnvironmentCheck
             $errors[] = __('The plugin is located within an invalid path - the <code>enlighter/</code> directory name is <strong>mandatory</strong>', 'enlighter');
         }
 
+        // Experimental Compat Plugin enabled ?
+        if (defined('ENLIGHTERJS3_COMPAT_VERSION')){
+            $errors[] = __('Plugin "EnlighterJS3 Compatibility" is enabled - please disable it to use Enlighter v4! ', 'enlighter');
+        }
+
         return array(
             'errors' => $errors,
             'warnings' => $warnings

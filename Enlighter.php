@@ -62,6 +62,7 @@ if (version_compare(phpversion(), ENLIGHTER_PHP_VERSION, '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ResourceLoader.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/ThemeManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/core/Versions.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/customizer/Fonts.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/customizer/ThemeCustomizer.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/customizer/Toolbar.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/editor/EditorConfig.php');

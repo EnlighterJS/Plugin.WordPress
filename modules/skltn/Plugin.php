@@ -206,8 +206,8 @@ class Plugin{
     }
 
     // retrieve plugin config
-    protected function getPluginConfig(){
-        return $this->_settingsManager->getConfig();
+    public function getPluginConfig(){
+        return $this->_settingsManager->getOptions();
     }
 
     // links to the plugin website & author's twitter channel ()
