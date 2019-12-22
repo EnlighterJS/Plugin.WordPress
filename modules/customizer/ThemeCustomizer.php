@@ -35,6 +35,46 @@ class ThemeCustomizer{
         }
     }
 
+    // register settings
+    public function registerSettings(){
+        register_setting('enlighter-settings-group', 'enlighter-customizer', array($this, 'storeSettings'));
+    }
+
+    // process settings -> raw css
+    public function storeSettings($settings){
+        // type string ?
+        if (!is_string($settings)){
+            return $this->loadCustomizerConfig();
+        }
+        
+        // strip whitespaces
+        $settings = trim($settings);
+
+        // content set ?
+        if (strlen($settings) < 10){
+            return $this->loadCustomizerConfig();
+        }
+
+        return $settings;
+    }
+
+    // load settings
+    public function loadCustomizerConfig(){
+        // try to load options
+        $options = get_option('enlighter-customizer', null);
+
+        // option not available
+        if ($options === null){
+            // create empty option with autoload=false
+            add_option('enlighter-customizer', '.enlighter-default{}', '', false);
+
+            // return empty string
+            return '';
+        }
+
+        return $options;
+    }
+
     // re-generate theme
     public function generate(){
 
@@ -43,6 +83,9 @@ class ThemeCustomizer{
 
         // add enlighterjs base styles
         $this->_cssGenerator->addFile(ENLIGHTER_PLUGIN_PATH . '/resources/enlighterjs/enlighterjs.min.css');
+
+        // append customizer config
+        $this->_cssGenerator->addRaw($this->loadCustomizerConfig());
 
         // generate + store file
         $this->_cacheManager->writeFile(self::CSS_FILENAME, $this->_cssGenerator->render());

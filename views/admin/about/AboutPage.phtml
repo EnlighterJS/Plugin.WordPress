@@ -39,14 +39,20 @@
 
         <!-- Debug Tab !-->
         <div id="enlighter-tab-debug">
-            <h3 class="changelog-title">DEBUG Informations</h3>
+            <h3 class="changelog-title">DEBUG informations</h3>
 
             <p>Please attach the following informations to your issue/bug report!</p>
 
-            <p><strong>Plugin Configuration</strong></p>
+            <p><strong>Plugin configuration</strong></p>
             <p>
                 <?php
                     echo '<pre>', esc_html(json_encode($this->_settingsManager->getOptions(), JSON_PRETTY_PRINT)), '</pre>';
+                ?>
+            </p>
+            <p><strong>Custom theme configuration</strong></p>
+            <p>
+                <?php
+                    echo '<pre>', esc_html($this->_themeCustomizer->loadCustomizerConfig()), '</pre>';
                 ?>
             </p>
         </div>

@@ -2,11 +2,11 @@
     "slug": "enlighter",
     "name": "Enlighter",
     "namespace": "Enlighter",
-    "version": "4.0-BETA1",
+    "version": "4.0-BETA2",
     "license": "GPL-2.0",
     "licenseFile": "LICENSE.txt",
     "constants": {},
-    "phpVersion": "5.6",
+    "phpVersion": "7.0",
     "plugin": {
         "name": "Enlighter - Customizable Syntax Highlighter",
         "description": "Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor",

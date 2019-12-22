@@ -100,6 +100,9 @@ class Enlighter
             // editor
             $this->_resourceLoader->backendEditor();
 
+            // theme customizer settings
+            add_action('admin_init', array($this->_themeCustomizer, 'registerSettings'));
+
         }else{
 
             // initialize bb_press extension
