@@ -86,13 +86,18 @@ class ShortcodeFilter{
             // wordpress internal shortcode attribute parsing
             $attb = shortcode_parse_atts($match[2]);
 
+            // shortcode_parse_atts return empty string in case no attributes were parsed...
+            if (is_string($attb)){
+                $attb = array();
+            }
+
             // language identifier (tagname)
             $lang = $match[1];
 
             // generic shortcode ?
             if (strtolower($match[1]) == 'enlighter') {
                 // set language
-                if ($attb['lang']) {
+                if (isset($attb['lang'])) {
                     $lang = $attb['lang'];
                 }
             }
