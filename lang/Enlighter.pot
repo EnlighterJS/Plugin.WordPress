@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-29 11:32:44+00:00\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2020-03-01 13:21:25+00:00\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: Enlighter  3.10.0\n"
+"Project-Id-Version: Enlighter  3.11.0\n"
 "Report-Msgid-Bugs-To: andi DOT dittrich AT a3non DOT org\n"
 "Last-Translator:  Andi Dittrich\n"
 
@@ -65,23 +65,23 @@ msgstr ""
 msgid "view help"
 msgstr ""
 
-#: class/EnvironmentCheck.php:58
+#: class/EnvironmentCheck.php:65
 msgid "Option <code>use_balanceTags</code> is enabled - this option is <strong>DEPRECATED</strong>. Might cause a weired behaviour by inserting random closing html tags into your code."
 msgstr ""
 
-#: class/EnvironmentCheck.php:63
+#: class/EnvironmentCheck.php:70
 msgid "Option <code>use_smilies</code> is enabled. Legacy smiley sequences like :) are replaced by images which also affects posted sourcecode."
 msgstr ""
 
-#: class/EnvironmentCheck.php:68
+#: class/EnvironmentCheck.php:75
 msgid "Plugin \"Crayon Syntax Highlighter\" is enabled - it may take over the Enlighter pre elements - highlighting will not work!"
 msgstr ""
 
-#: class/EnvironmentCheck.php:77
+#: class/EnvironmentCheck.php:84
 msgid "Autoset Permissions failed - Please change the directory permission (chmod <code>0644</code> or <code>0777</code>) manually!"
 msgstr ""
 
-#: class/EnvironmentCheck.php:83
+#: class/EnvironmentCheck.php:90
 msgid "The plugin is located within an invalid path - the <code>enlighter/</code> directory name is <strong>mandatory</strong>"
 msgstr ""
 

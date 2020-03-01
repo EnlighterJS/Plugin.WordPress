@@ -3,8 +3,8 @@ Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
 Requires at least: 3.9
-Tested up to: 5.2
-Stable tag: 3.10.0
+Tested up to: 5.3
+Stable tag: 3.11.0
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -42,7 +42,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * **Full Editor Integration** via "Enlighter Sourcecode" block
 * Automatic transformations for classic editor posts (codeblocks converted to Enlighter Sourcecode block)
 * Transform legacy codeblocks to Enlighter Gutenberg Blocks (manual transformation)
-* [Docs and Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_GutenbergEditor.md)
+* [Docs and Usage](https://github.com/EnlighterJS/documentation/blob/master/editing/Gutenberg.md)
 * [Editor plugin repository](https://github.com/EnlighterJS/Plugin.Gutenberg)
 
 = Classic Editor (TinyMCE) Integration =
@@ -50,14 +50,14 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Inline Syntax Highlighting
 * Tab-Indentation mode to align code with the `tab` key (single line and block selection)
 * Editor formats to highlight existing code
-* [Docs and Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_VisualEditor.md)
+* [Docs and Usage](https://github.com/EnlighterJS/documentation/blob/master/editing/TinyMCE.md)
 * [Editor plugin repository](https://github.com/EnlighterJS/Plugin.TinyMCE)
 * [Classic Editor Live-Demo](https://tinymce.enlighterjs.org/)
 
 = Markdown =
 * Markdown fenced code blocks
 * Inline Syntax Highlighting via backtick code (including language specific addon)
-* [Docs and Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_Markdown.md)
+* [Docs and Usage](https://github.com/EnlighterJS/documentation/blob/master/editing/Markdown.md)
 
 = Texteditor/Shortcodes (Legacy) =
 
@@ -69,6 +69,7 @@ Shortcodes are deprecated and should be used in **text editor mode only** - neve
 
 = Supported Languages (build-in) =
 
+Enlighter v3 syntax highlighting is powered by EnlighterJS v2.
 In case your language is not available try the **Generic Mode** which covers a lot of programming languages - or request a new language on [GitHub](https://github.com/EnlighterJS/EnlighterJS/issues)
 
 Click to view Language/Theme Examples
@@ -104,14 +105,14 @@ Click to view Language/Theme Examples
 * [XML](https://enlighterjs.org/Language.XML.html)
  
 = Related Links =
-* [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/Plugin.WordPress/docs)
+* [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/documentation)
 * [Enlighter Plugin on GitHub](https://github.com/EnlighterJS/Plugin.WordPress)
-* [EnlighterJS Documentation](http://enlighterjs.org)
+* [EnlighterJS Documentation](https://enlighterjs.org)
 
 == Compatibility ==
 
 All browsers supported by MooTools (enabled Javascript required) and with HTML5 capabilities for "data-" attributes are compatible with Enlighter. It's possible that it may work with earlier/other browsers.
-Generally Enlighter (which javascript part [EnlighterJS](https://enlighterjs.org) is based on [MooTools Javascript Framework](http://mootools.net/)) should work together with jQuery in [noConflict Mode](http://docs.jquery.com/Using_jQuery_with_Other_Libraries) - when you are using jQuery within your Wordpress Theme/Page you have to take care of it!
+Generally Enlighter (which javascript part [EnlighterJS](https://enlighterjs.org) is based on [MooTools Javascript Framework](https://mootools.net/)) should work together with jQuery in [noConflict Mode](http://docs.jquery.com/Using_jQuery_with_Other_Libraries) - when you are using jQuery within your Wordpress Theme/Page you have to take care of it!
 
 * Chrome 10+
 * Safari 5+
@@ -236,6 +237,10 @@ In case you found a security issue in this plugin - please write a message **dir
 Write a message to [Andi Dittrich](https://about.andidittrich.com/contact.html) (andi DOT dittrich AT a3non DOT O R G) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
 == Changelog ==
 
+= 3.11.0 =
+
+* Added: notification of next major release ( Enlighter v4)
+* Changed: the documentation links are now pointing to the global documentation repository
 
 = 3.10.0 =
 

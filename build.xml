@@ -5,7 +5,7 @@
     <!-- ANT-contrib !-->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 
-    <target name="full" depends="potgen, readme, changelog, webfonts, themes, languages, devcopy, dist"/>
+    <target name="full" depends="potgen, readme, changelog, webfonts, themes, languages"/>
 
     <!-- "Compile" po language support files !-->
     <target name="languages">
@@ -16,25 +16,6 @@
             <fileset dir="lang" includes="*.po"/>
             <mapper type="glob" from="*.po" to="*.mo"/>
         </apply>
-    </target>
-
-    <!-- Plugin Test - DEVELOPMENT ONLY -->
-    <target name="devcopy">
-        <!-- Credentials, Host Settings !-->
-        <loadproperties srcFile=".credentials/account.conf" prefix="dev"/>
-
-        <!-- transfer deploy plugin !-->
-        <echo message="Uploading files [Single Site]"/>
-        <scp todir="${dev.user}@${dev.host}:${dev.path}" trust="true" port="${dev.port}"
-             keyfile="${user.home}/${dev.keyfile}">
-            <fileset dir="."/>
-        </scp>
-
-        <echo message="Uploading files [MU Site]"/>
-        <scp todir="${dev.user}@${dev.host}:${dev.mupath}" trust="true" port="${dev.port}"
-             keyfile="${user.home}/${dev.keyfile}">
-            <fileset dir="."/>
-        </scp>
     </target>
 
     <!-- GitHub readme + changes => WordPress transformation !-->

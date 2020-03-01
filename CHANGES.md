@@ -1,5 +1,9 @@
 ## Changelog ##
 
+### 3.11.0 ###
+
+* Added: notification of next major release ( Enlighter v4)
+* Changed: the documentation links are now pointing to the global documentation repository
 
 ### 3.10.0 ###
 

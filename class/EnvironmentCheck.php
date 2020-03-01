@@ -34,14 +34,20 @@ class EnvironmentCheck{
         foreach ($results['errors'] as $err){
             // styling
             echo '<div class="notice notice-error enlighter-notice"><p><strong>Enlighter Plugin Error: </strong>', $err;
-            echo ' - <a href="https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md" target="_new">', __('view help', 'enlighter'), '</a></p></div>';
+            echo ' - <a href="https://github.com/EnlighterJS/documentation/blob/master/wordpress/PluginNotifications.md" target="_new">', __('view help', 'enlighter'), '</a></p></div>';
         }
 
         // show warnings
         foreach ($results['warnings'] as $err){
             // styling
             echo '<div class="notice notice-warning enlighter-notice"><p><strong>Enlighter Plugin Warning: </strong>', $err;
-            echo ' - <a href="https://github.com/EnlighterJS/Plugin.WordPress/tree/master/docs/PluginNotifications.md" target="_new">', __('view help', 'enlighter'), '</a></p></div>';
+            echo ' - <a href="https://github.com/EnlighterJS/documentation/blob/master/wordpress/PluginNotifications.md" target="_new">', __('view help', 'enlighter'), '</a></p></div>';
+        }
+
+        // show notifications
+        foreach ($results['notes'] as $err){
+            // styling
+            echo '<div class="notice notice-warning enlighter-notice"><p>', $err, '</p></div>';
         }
     }
 
@@ -51,6 +57,7 @@ class EnvironmentCheck{
         // list of errors
         $errors = array();
         $warnings = array();
+        $notifications = array();
 
         // bad xhtml fixing has been removed from WordPress v2, but sometime it is still enabled, only the setting is removed from the settings page !
         // see https://core.trac.wordpress.org/changeset/3223
@@ -83,9 +90,18 @@ class EnvironmentCheck{
             $errors[] = __('The plugin is located within an invalid path - the <code>enlighter/</code> directory name is <strong>mandatory</strong>', 'enlighter');
         }
 
+        // notifications
+        $upgradeNotice = '<strong><em>Enlighter v4 is coming soon - including a new highlighting engine, languages and theme.</em></strong></p><p>';
+        $upgradeNotice .= 'Sadly..there is no full-automatic upgrade path available caused by its new architecture.<br />Custom themes, css modifications and most of the settings have to be <em>manually converted</em>!';
+        $upgradeNotice .= 'Please take some time for testing before applying the v4 release to your website! I apologize for the inconvenience.</p><p>';
+        $upgradeNotice .= 'Enlighter v4-beta1 is already <a href="https://github.com/EnlighterJS/Plugin.WordPress/releases" target="_new">available on GitHub for testing</a> - have fun!';
+
+        $notifications[] = $upgradeNotice;
+
         return array(
             'errors' => $errors,
-            'warnings' => $warnings
+            'warnings' => $warnings,
+            'notes' => $notifications
         );
     }
 }
