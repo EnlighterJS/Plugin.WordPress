@@ -6,9 +6,20 @@
 
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
+    <a data-tab="EnlighterTabSettings" class="nav-tab"><?php _e('Base theme', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabFonts" class="nav-tab"><?php _e('Fonts', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabTokens" class="nav-tab"><?php _e('Token Styles', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabRAW" class="nav-tab"><?php _e('RAW Code', 'enlighter'); ?></a>
+
+    <a data-tab="EnlighterTabTokenComments" class="nav-tab"><?php _e('Comments', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenExpressions" class="nav-tab"><?php _e('Expressions', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenGeneric" class="nav-tab"><?php _e('Generic', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenKeywords" class="nav-tab"><?php _e('Keywords', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenLanguages" class="nav-tab"><?php _e('Languages', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenMethods" class="nav-tab"><?php _e('Methods', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenNumbers" class="nav-tab"><?php _e('Numbers', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenStrings" class="nav-tab"><?php _e('Strings', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabTokenText" class="nav-tab"><?php _e('Text', 'enlighter'); ?></a>
+
+    <a data-tab="EnlighterTabStylesheet" class="nav-tab"><?php _e('Stylesheet', 'enlighter'); ?></a>
 </h2>
 
 <!-- Main Title -->
@@ -16,27 +27,137 @@
 <p><?php _e('Select the content you want to highlight and Enlighter takes care of the rest.', 'enlighter'); ?></p>
 
 <!-- settings !-->
-<form method="post" action="options.php">
-    <?php settings_fields('enlighter-settings-group' ); ?>
+
     <!-- #poststuff -->
     <div id="poststuff">
 
 <!-- 2 Column Layout -->
 <div id="post-body" class="metabox-holder columns-2">
-    <div id="post-body-content" class="enlighter-tab-container">
+    <div id="post-body-content">
      
-        <div id="EnlighterTabFonts">
-        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/customizer/Fonts.phtml'); ?>
+        <div class="enlighter-tab" id="EnlighterTabSettings">
+
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Extended theme', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Theme-Customizer takes the basic styles of a selected theme and applies your modifications (theme will be extended).<br />
+                    To load the default theme settings into the customizer, just click on the <kbd>load base theme</kbd> button.</p>
+                    <p>Note: this modifications are <strong>do not alter existing themes</strong> - only the special theme <code>Theme Customizer</code> is affected!</p>
+                    <div id="enlighterjs-customizer-settings"></div>
+                </div>
+            </div>
         </div>
 
-        <div id="EnlighterTabTokens">
+        <div class="enlighter-tab" id="EnlighterTabFonts">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Fonts', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                <p>Change font related settings of the theme.</p>
+                    <div id="enlighterjs-customizer-fonts"></div>
+                </div>
+            </div>
         </div>
 
-        <div id="EnlighterTabRAW">
+        <div class="enlighter-tab" id="EnlighterTabTokenComments">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Comments', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-comments"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenExpressions">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Expressions', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-expressions"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenGeneric">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Generic', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-generic"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenKeywords">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Keywords', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-keywords"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenLanguages">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Languages', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-languages"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenMethods">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Methods', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-methods"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenNumbers">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Numbers', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-numbers"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenStrings">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Strings', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-strings"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabTokenText">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Text', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                    <p>The Highlighting-Engine is based on syntactic tokens. Tokens are organized in logical groups, e.g. comments, numbers, keywords.</p>
+                    <div id="enlighterjs-tokens-text"></div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" action="options.php">
+        <?php settings_fields('enlighter-settings-group' ); ?>
+
+        <div class="enlighter-tab" id="EnlighterTabStylesheet">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/customizer/Stylesheet.phtml'); ?>
         </div>
 
         <!-- submit !-->
         <?php submit_button(); ?>
+        </form>
 
     </div>
     <!-- // MAIN COLUMN -->
@@ -53,8 +174,6 @@
 
 </div>
 <!-- // #poststuff -->
-
-</form>
 <div class="clear"></div>
 
 <?php require(ENLIGHTER_PLUGIN_PATH.'/views/admin/Credits.phtml'); ?>

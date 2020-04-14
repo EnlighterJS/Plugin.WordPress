@@ -13,7 +13,7 @@
 // Plugin Settings Page Functions
 jQuery(document).ready(function(jq){
     // try to fetch session storage
-    const storage = window.sessionStorage || null;
+    var storage = window.sessionStorage || null;
 
     // Tabs/Sections
     // --------------------------------------------------------
@@ -23,7 +23,7 @@ jQuery(document).ready(function(jq){
         var pageName = jq('.wrap').attr('data-enlighter-page') || 'enlighter';
 
         // hide containers
-        jq('.enlighter-tab-container > div').hide();
+        jq('.enlighter-tab').hide();
 
         // try to restore last tab
         var recentSelectedTabID = storage.getItem('enlighter-' + pageName);

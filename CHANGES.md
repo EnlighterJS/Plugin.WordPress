@@ -5,11 +5,11 @@
 **Note: This release is NOT BACKWARD COMPATIBLE. Custom themes will be lost**
 
 * Added: Gutenberg editor plugin v1.0.0
-
 * Added: [EnlighterJS v3](https://enlighterjs.org/)
 * Replaced MooTools Framework by native code - requires IE >= 10
 * **NEW Highlighting Engines** - every language support file has been rewritten
 * New Tokenizer Engine including a two stage analyzer
+* New Theme Customizer to allow much more changes
 * Excessive Performance Optimizations
 * Added: ECMA6 Support to Javascript Engine
 * Added: Copy to clipboard button
@@ -43,13 +43,17 @@
 * Changed: new settings page
 * Changed: sessionStorage is used to store the current active tab instead of cookies
 * Changed: updated the UI components
-* Changed: `wp-skltn` library updated to **0.19.0** - MPL 2.0 License
+* Changed: `wp-skltn` library updated to **0.23.0** - MPL 2.0 License
 * Bugfix: colorpicker sets wrong foreground color which caused unreadable input fields (color lightness calculation)
 * Cleaned up the internal Plugin Structure
 * Removed: `jquery-cookie` dependency
 * Removed: MooTools framework
 * Removed: Lighter.js legacy themes (Git, Mocha, MooTools, Panic, Tutti, Twilight)
 * Removed: most keyword lists from language files (direct regular expressions are used)
+
+### 3.11.0 ###
+
+
 
 ### 3.10.0 ###
 

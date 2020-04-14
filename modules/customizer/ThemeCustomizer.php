@@ -2,6 +2,7 @@
 
 namespace Enlighter\customizer;
 
+use Enlighter\skltn\ResourceManager;
 use Enlighter\skltn\CssBuilder;
 
 class ThemeCustomizer{
@@ -89,5 +90,47 @@ class ThemeCustomizer{
 
         // generate + store file
         $this->_cacheManager->writeFile(self::CSS_FILENAME, $this->_cssGenerator->render());
+    }
+
+    // generate the EnlighterJS related config object
+    public function getConfig(){
+        return array(
+            'themeURL' => ENLIGHTER_PLUGIN_URL . '/resources/enlighterjs/enlighterjs.min.css',
+            'themeName' => 'wpcustom',
+            'fonts'=> '#enlighterjs-customizer-fonts',
+            'settings'=> '#enlighterjs-customizer-settings',
+            'formExchange'=> '#enlighterjs-customizer-exchange',
+            'tokens' => array(
+                'comments' => '#enlighterjs-tokens-comments',
+                'expressions'=> '#enlighterjs-tokens-expressions',
+                'generic'=> '#enlighterjs-tokens-generic',
+                'keywords'=> '#enlighterjs-tokens-keywords',
+                'languages'=> '#enlighterjs-tokens-languages',
+                'methods'=> '#enlighterjs-tokens-methods',
+                'numbers'=> '#enlighterjs-tokens-numbers',
+                'strings'=> '#enlighterjs-tokens-strings',
+                'text'=> '#enlighterjs-tokens-text'
+            )
+        );
+    }
+
+    // generate EnlighterJS initilization code including wrapper
+    public function getInitializationCode(){
+        // @see resources/init/enlighterjs.init.js
+        $wrapper = '!function(n,o){"undefined"!=typeof EnlighterJS_Customizer?(n.EnlighterJSCustomizerINIT=function(){';
+        $wrapper .= 'EnlighterJS_Customizer.init('.
+                        json_encode($this->getConfig()) .
+                    ')';
+        $wrapper .= '})():(o&&(o.error||o.log)||function(){})("Error: EnlighterJS Theme-Customizer resources not loaded yet!")}(window,console);';
+        return $wrapper;
+    }
+
+    // enqueue resources
+    public function enqueue(){
+        // include customizer compoinent
+        ResourceManager::enqueueScript('enlighterjs-customizer', 'customizer/enlighterjs.customizer.min.js', array(), ENLIGHTER_VERSION);
+
+        // add initialization code ?
+        ResourceManager::enqueueDynamicScript($this->getInitializationCode(), 'enlighterjs-customizer');
     }
 }

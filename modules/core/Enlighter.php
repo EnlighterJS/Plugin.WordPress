@@ -75,6 +75,9 @@ class Enlighter
         if ($this->_settingsManager->getOption('translation-enabled')){
             load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
         }
+
+        // initialize theme customizer (generated the enlighterjs.css file!)
+        $this->_themeCustomizer = new Enlighter\customizer\ThemeCustomizer($this->_settingsManager, $this->_cacheManager);
         
         // create new resource loader
         $this->_resourceLoader = new Enlighter\ResourceLoader(
@@ -82,11 +85,9 @@ class Enlighter
                 $this->_cacheManager, 
                 $this->_languageManager, 
                 $this->_themeManager,
-                $this->_fontManager
+                $this->_fontManager,
+                $this->_themeCustomizer
         );
-
-        // initialize theme customizer (generated the enlighterjs.css file!)
-        $this->_themeCustomizer = new Enlighter\customizer\ThemeCustomizer($this->_settingsManager, $this->_cacheManager);
 
         // enable EnlighterJS html attributes for Author's and Contributor's
         add_filter('wp_kses_allowed_html', array('\Enlighter\KSES', 'allowHtmlCodeAttributes'), 100, 2);
@@ -146,7 +147,7 @@ class Enlighter
                     'title' => 'Theme Customizer',
                     'slug' => 'enlighter-customizer',
                     'template' => 'customizer/CustomizerPage',
-                    'resources' => array($this->_resourceLoader, 'backendSettings'),
+                    'resources' => array($this->_resourceLoader, 'backendSettingsCustomizer'),
                     'render' => array($this, 'settingsPage'),
                     'help' => array('Enlighter\Admin\ContextualHelp', 'settings')
                 ),

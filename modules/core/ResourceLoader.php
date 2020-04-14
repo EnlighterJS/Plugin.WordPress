@@ -36,7 +36,10 @@ class ResourceLoader{
     // language manager (build-in)
     protected $_languageManager;
 
-    public function __construct($settingsUtil, $cacheManager, $languageManager, $themeManager, $fontManager){
+    // theme customizer
+    private $_themeCustomizer;
+
+    public function __construct($settingsUtil, $cacheManager, $languageManager, $themeManager, $fontManager, $themeCustomizer){
         // store local plugin config
         $this->_config = $settingsUtil->getOptions();
 
@@ -45,6 +48,9 @@ class ResourceLoader{
 
         // local theme manager instance (required for external themes)
         $this->_themeManager = $themeManager;
+
+        // local theme customizer instance
+        $this->_themeCustomizer = $themeCustomizer;
 
         // visual editor integration
         $this->_tinymce = new TinyMCEEditor($this->_config, $cacheManager, $languageManager, $fontManager);
@@ -125,7 +131,16 @@ class ResourceLoader{
         });
     }
 
-    // initialzize the frontend
+    // Load the Backend Theme Customizer
+    public function backendSettingsCustomizer(){
+        // trigger regular dependencies
+        $this->backendSettings();
+
+        // load customizer library
+        add_action('admin_enqueue_scripts', array($this->_themeCustomizer, 'enqueue'));
+    }
+
+    // initialize the frontend
     public function frontendEnlighter($contentProcessor){
 
         // load enlighterjs resources

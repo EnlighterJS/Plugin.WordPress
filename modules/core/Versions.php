@@ -37,4 +37,9 @@ class Versions{
     public static function getGutenbergPluginVersion(){
         return self::extractVersionString('gutenberg/enlighterjs.gutenberg.min.js');
     }
+
+    // gets the current EnlighterJS.ThemeCustomizer version from js file
+    public static function getThemeCustomizerPluginVersion(){
+        return self::extractVersionString('customizer/enlighterjs.customizer.min.js');
+    }
 }
