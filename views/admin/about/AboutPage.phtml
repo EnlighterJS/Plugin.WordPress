@@ -23,12 +23,12 @@
     <div class="enlighter-tab-container">
 
         <!-- News Tab !-->
-        <div id="enlighter-tab-news">
+        <div id="enlighter-tab-news" class="enlighter-tab">
         <?php include(ENLIGHTER_PLUGIN_PATH.'/views/admin/about/News.phtml'); ?>
         </div>
 
         <!-- Changelog Tab !-->
-        <div id="enlighter-tab-changelog">
+        <div id="enlighter-tab-changelog" class="enlighter-tab">
             <h3 class="changelog-title">What have been changed in <?php echo ENLIGHTER_VERSION ?></h3>
 
             <?php include(ENLIGHTER_PLUGIN_PATH.'/views/admin/about/Changelog.html'); ?>
@@ -38,7 +38,7 @@
         </div>
 
         <!-- Debug Tab !-->
-        <div id="enlighter-tab-debug">
+        <div id="enlighter-tab-debug" class="enlighter-tab">
             <h3 class="changelog-title">DEBUG informations</h3>
 
             <p>Please attach the following informations to your issue/bug report!</p>
