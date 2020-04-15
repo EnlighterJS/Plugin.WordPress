@@ -2,17 +2,17 @@
     "slug": "enlighter",
     "name": "Enlighter",
     "namespace": "Enlighter",
-    "version": "4.0-BETA3",
+    "version": "4.0",
     "license": "GPL-2.0",
     "licenseFile": "LICENSE.txt",
     "constants": {},
     "phpVersion": "5.6",
     "plugin": {
         "name": "Enlighter - Customizable Syntax Highlighter",
-        "description": "Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor",
+        "description": "all-in-one syntax highlighting solution",
         "url": "https://enlighterjs.org",
         "author": "Andi Dittrich",
-        "authorUrl": "https://andidittrich.de"
+        "authorUrl": "https://andidittrich.com"
     },
     "skltnVersion": "0.22.0",
     "modules": {

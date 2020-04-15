@@ -2,7 +2,7 @@
 // ---------------------------------------------------------------------------------------------------------------
 // -- WP-SKELETON AUTO GENERATED FILE - DO NOT EDIT !!!
 // --
-// -- Copyright (c) 2016-2019 Andi Dittrich
+// -- Copyright (c) 2016-2020 Andi Dittrich
 // -- https://github.com/AndiDittrich/WP-Skeleton
 // --
 // ---------------------------------------------------------------------------------------------------------------
@@ -271,7 +271,7 @@ class Plugin{
     public function showUpgradeMessage(){
         // styling
         echo '<div class="notice notice-success is-dismissible"><p>';
-        echo '<strong>Enlighter Plugin Upgrade:</strong> The Plugin has been upgraded to <strong>4.0-BETA3</strong>';
+        echo '<strong>Enlighter Plugin Upgrade:</strong> The Plugin has been upgraded to <strong>4.0</strong>';
         echo '</p></div>';
     }
 
@@ -300,14 +300,14 @@ class Plugin{
             // plugin installed ?
             if ($version == '0.0.0'){
                 // store new version
-                update_option('enlighter-version', '4.0-BETA3');
+                update_option('enlighter-version', '4.0');
 
             // plugin upgraded ?
-            }else if (version_compare('4.0-BETA3', $version, '>')){
+            }else if (version_compare('4.0', $version, '>')){
                 // run upgrade hook
                 if ($i->_wp_plugin_upgrade($version)){
                     // store new version
-                    update_option('enlighter-version', '4.0-BETA3');
+                    update_option('enlighter-version', '4.0');
 
                     // set flag (string!)
                     update_option('enlighter-upgrade', 'true');

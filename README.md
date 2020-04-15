@@ -19,6 +19,10 @@ Using it can be as simple as adding a new Enlighter Sourcecode block (Gutenberg)
 An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
 
+* [Upgrade Guide](https://github.com/EnlighterJS/documentation/blob/master/wordpress/upgrade/v4.md) for Enlighter v4
+* [Theme Compatibility](https://github.com/EnlighterJS/documentation/blob/master/wordpress/WPThemeCompatibility.md)
+* [Enlighter WordPress Plugin Docs](https://github.com/EnlighterJS/documentation/tree/master/wordpress)
+
 ### Plugin Features ###
 
 * **Full Gutenberg Editor Integration**
@@ -78,9 +82,10 @@ Shortcodes are deprecated and should be used in **text editor mode only** - neve
 In case your language is not available try the **Generic Mode** which covers a lot of programming languages - or request a new language on [GitHub](https://github.com/EnlighterJS/EnlighterJS/issues)
 
 ### Related Links ###
-* [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/Plugin.WordPress/docs)
+
+* [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/documentation/tree/master/wordpress)
 * [Enlighter Plugin on GitHub](https://github.com/EnlighterJS/Plugin.WordPress)
-* [EnlighterJS Documentation](http://enlighterjs.org)
+* [EnlighterJS Documentation](https://github.com/EnlighterJS/documentation)
 
 ## Compatibility ##
 
