@@ -99,6 +99,7 @@ class ThemeCustomizer{
             'themeName' => 'wpcustom',
             'fonts'=> '#enlighterjs-customizer-fonts',
             'settings'=> '#enlighterjs-customizer-settings',
+            'lines' => '#enlighterjs-customizer-lines',
             'formExchange'=> '#enlighterjs-customizer-exchange',
             'tokens' => array(
                 'comments' => '#enlighterjs-tokens-comments',
