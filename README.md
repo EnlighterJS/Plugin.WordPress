@@ -3,7 +3,7 @@ Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquery, customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
 Requires at least: 5.0
-Tested up to: 5.2
+Tested up to: 5.4
 Stable tag: 4.0.0
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
@@ -12,14 +12,12 @@ All-in-one Syntax Highlighting solution. Full Gutenberg and Classic Editor integ
 
 ## Description ##
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. Highlighting is powered by the [EnlighterJS](http://enlighterjs.org) javascript library to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. Highlighting is powered by the [EnlighterJS](https://enlighterjs.org) javascript library to provide a beautiful code-appearance.
 
 Using it can be as simple as adding a new Enlighter Sourcecode block (Gutenberg) and insert the code which you want to highlight: Enlighter takes care of the rest!
 
 An easy to use Theme-Customizer is included to modify the build-in themes **without any css knowlegde!**
 It also supports the automatic creation of tab-panes to display code-groups together (useful for multi-language examples - e.g. html+css+js)
-
-[Theme Demo](https://enlighterjs.org/Theme.Enlighter.html "EnlighterJS Theme Browser") - [Language Examples](https://enlighterjs.org/Language.Javascript.html "EnlighterJS Language Example")
 
 ### Plugin Features ###
 
@@ -27,21 +25,20 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * **Full Classic Editor Integration** (TinyMCE)
 * Support for all common used languages
 * Powerful generic highlighting engine for unknown languages
-* Theme Customizer including **LIVE Preview Mode**
+* Theme Customizer
 * Inline Syntax Highlighting
 * Advanced configuration options (CDN usage, ..) are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
-* Webfont Loader to add missing Monospace Fonts to your website
 * **Full GPDR compliant** - no external resources are required, no data will be aggregated
 
 ### Gutenberg Editor Integration ###
 * **Full Editor Integration** via "Enlighter Sourcecode" block
 * Automatic transformations for classic editor posts (codeblocks converted to Enlighter Sourcecode block)
 * Transform legacy codeblocks to Enlighter Gutenberg Blocks (manual transformation)
-* [Docs and Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_GutenbergEditor.md)
+* [Docs and Usage](https://github.com/EnlighterJS/documentation/blob/master/editing/Gutenberg.md)
 * [Editor plugin repository](https://github.com/EnlighterJS/Plugin.Gutenberg)
 
 ### Classic Editor (TinyMCE) Integration ###
@@ -49,14 +46,14 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Inline Syntax Highlighting
 * Tab-Indentation mode to align code with the `tab` key (single line and block selection)
 * Editor formats to highlight existing code
-* [Docs and Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_VisualEditor.md)
+* [Docs and Usage](https://github.com/EnlighterJS/documentation/blob/master/editing/TinyMCE.md)
 * [Editor plugin repository](https://github.com/EnlighterJS/Plugin.TinyMCE)
 * [Classic Editor Live-Demo](https://tinymce.enlighterjs.org/)
 
 ### Markdown ###
 * Markdown fenced code blocks
 * Inline Syntax Highlighting via backtick code (including language specific addon)
-* [Docs and Usage](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/Usage_Markdown.md)
+* [Docs and Usage](https://github.com/EnlighterJS/documentation/blob/master/editing/Markdown.md)
 
 ### Compatibility/Migration
 * Crayon compatibility mode (use EnlighterJS highlighting for legacy Crayon `pre` codeblocks)
@@ -80,10 +77,6 @@ Shortcodes are deprecated and should be used in **text editor mode only** - neve
 
 In case your language is not available try the **Generic Mode** which covers a lot of programming languages - or request a new language on [GitHub](https://github.com/EnlighterJS/EnlighterJS/issues)
 
-Click to view Language/Theme Examples
-
-
-
 ### Related Links ###
 * [Enlighter Plugin Docs + Tutorials](https://github.com/EnlighterJS/Plugin.WordPress/docs)
 * [Enlighter Plugin on GitHub](https://github.com/EnlighterJS/Plugin.WordPress)
@@ -101,7 +94,8 @@ All modern webbrowsers with enabled Javascript and HTML5 capabilities for "data-
 ## Installation ##
 
 ### System requirements ###
-* PHP 5.6, including `json` functions
+* WordPress `5.0`
+* PHP `7.0`, including `json` functions
 * Modern webbrowser with enabled Javascript (required for highlighting)
 * Accessable cache directory (`/wp-content/plugins/enlighter/cache/`)
 
@@ -130,7 +124,7 @@ All modern webbrowsers with enabled Javascript and HTML5 capabilities for "data-
 ## Upgrade Notice ##
 
 ### 4.0 ###
-Everything has been changed! New Highlighting Engine, New Themes, New UI - THIS RELEASE IS NOT BACKWARD COMPATIBLE -
+Everything has been changed - read enlighterjs.org/wp-v4 before upgrading - THIS RELEASE IS NOT BACKWARD COMPATIBLE 
 
 ### 3.3 ###
 PHP 5.3 Backward Compatibility

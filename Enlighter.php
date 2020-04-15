@@ -3,22 +3,22 @@
     Plugin Name: Enlighter - Customizable Syntax Highlighter
     Plugin URI: https://enlighterjs.org
     Description: Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor
-    Version: 4.0
+    Version: 4.0-BETA3
     Author: Andi Dittrich
     Author URI: https://andidittrich.de
     License: GPL-2.0
     Text Domain: enlighter
     Domain Path: /lang
-    Requires PHP: 7.0
+    Requires PHP: 5.6
 */
 
 
 // Plugin Bootstrap Operation
 // AUTO GENERATED CODE - DO NOT EDIT !!!
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '4.0-BETA2');
+define('ENLIGHTER_VERSION', '4.0-BETA3');
 define('ENLIGHTER_WPSKLTN_VERSION', '0.23.0');
-define('ENLIGHTER_PHP_VERSION', '7.0');
+define('ENLIGHTER_PHP_VERSION', '5.6');
 define('ENLIGHTER_PLUGIN_TITLE', 'Enlighter - Customizable Syntax Highlighter');
 define('ENLIGHTER_PLUGIN_HEADLINE', 'Enlighter is a free, easy-to-use, syntax highlighting tool with a build-in theme editor');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));

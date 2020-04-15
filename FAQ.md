@@ -7,9 +7,6 @@ No, you can't use Enlighter together with the Crayon Syntax highlighter because 
 ### Should i use Shortcode`s or the Visual-Editor Integration ? ###
 If possible, use the VisualEditpr mode! The use of Shortcode is only recommended when working in Text-Mode. By switching to the Visual-Editor-Mode whitespaces (linebreaks, indents, ..) within the shortcode will get removed by the editor - using Visual-Editor mode will avoid such problems.
 
-### I am using shortcodes and random p/br tags are added to my code ###
-This problem is caused by WordPress' `wpAutoP` filter - to fix this issue, go to "Enlighter Settings -> Advanced -> WpAutoP Filter Priority" and change this value to "Priority 12 (after shortcode). For cross-plugin-compatibility this feature is disabled by default.
-
 ### I can't see any style options within the Visual-Editor-Toolbar ###
 You have to enable the full toolbar by clicking on the **Show/Hide Kitchen Sink** button (last icon on the toolbar)
 
@@ -32,17 +29,11 @@ Shortcode Example: highlight the lines 2,3,4,8 of the codeblock `[js highlight="
 ### Are the uncompressed EnlighterJS Javasscript and CSS sources available ? ###
 The complete EnlighterJS project can be found on [GitHub](https://github.com/EnlighterJS/EnlighterJS "EnligherJS Project")
 
-### Can i add custom Themes ? ###
-Yes you can! - The simplest way is to download the [EnlighterJS CSS sources](https://github.com/AndiDittrich/EnlighterJS/tree/master/Source/Themes "EnligherJS Project") and modify one of the standard themes. Finally create a directory named `enlighter` into your WordPress theme and put the css file into it.
-
-### There are no Enlighter features visible within the Frontend Editor ###
-You have to enable the frontend editing function: `Enlighter Settings Page -> Advanced -> TinyMCE Integration (Visual Editor) -> Enable Frontend Integration`. This feature also requires a logged-in user with `edit_posts` and/or `edit_pages` [privileges](http://codex.wordpress.org/Function_Reference/current_user_can) and is only available for the `wp_editor` function - no third party editors are supported!
-
 ### Can Enlighter by disabled on selected pages? ###
 Of course, the filter hook [enlighter_startup](https://github.com/EnlighterJS/Plugin.WordPress/blob/master/docs/FilterHooks.md) can be used to terminate the plugin initialization
 
 ### Security Vulnerabilities ###
-In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.de/contact) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
+In case you found a security issue in this plugin - please write a message **directly** to [Andi Dittrich](http://andidittrich.com/contact) - __**DO NOT POST THIS ISSUE ON GITHUB OR WORDPRESS.ORG**__ - the issue will be public released if it is fixed!
 
 ### I miss some features / I found a bug ###
-Write a message to [Andi Dittrich](https://andidittrich.de/contact) or open a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)
+Please pen a [New Issue on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues)

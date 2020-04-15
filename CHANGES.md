@@ -40,6 +40,7 @@
 * Changed: [WP-Skeleton](https://github.com/AndiDittrich/WP-Skeleton) is used as Plugin Backend Framework 
 * Changed: All settings are stored in serialized form in `enlighter-options` instead of single options
 * Changed: moved settings page to top-level menu
+* Changed: settings are stored as serialized object in the database (single row) instead if row-per-option - major performance enhancement
 * Changed: new settings page
 * Changed: sessionStorage is used to store the current active tab instead of cookies
 * Changed: updated the UI components
@@ -53,7 +54,8 @@
 
 ### 3.11.0 ###
 
-
+* Added: notification of next major release ( Enlighter v4)
+* Changed: the documentation links are now pointing to the global documentation repository
 
 ### 3.10.0 ###
 
