@@ -241,7 +241,17 @@ class Enlighter
             'webfonts' => array()
         );
     }
- 
+
+    // retrieve themes
+    public function getThemes(){
+        return $this->_themeManager->getThemes();
+    }
+
+    // retrieve languages
+    public function getLanguages(){
+        return $this->_languageManager->getLanguages();
+    }
+
     public function _wp_plugin_upgrade($currentVersion){
         // upgrade from < 4.0 ? use v3.99 condition to ensure that beta versions are not altered!
         if (version_compare($currentVersion, '3.99', '<')){
