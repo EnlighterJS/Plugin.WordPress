@@ -34,6 +34,14 @@
 
     <h4><?php _e('EnlighterJS options', 'enlighter'); ?></h4>
 
+    <!-- Fallback language -->
+    <?php $this->_settingsUtility->displaySelect(__('Fallback language', 'enlighter'), 'enlighterjs-language', 
+        $V_languages,
+        array(
+            'description' => __('For legacy compatibility only! The selected language is used in case that no language property of a codeblock has been set.', 'enlighter')
+        )
+    ); ?>
+
     <!-- Ampersand escape sequence handling -->
     <?php $this->_settingsUtility->displayCheckbox(__('Ampersand cleanup', 'enlighter'), 'enlighterjs-ampersandcleanup', 
         array(

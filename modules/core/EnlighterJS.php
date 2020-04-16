@@ -23,7 +23,12 @@ class EnlighterJS{
             'textOverflow' =>       $this->_config['enlighterjs-textoverflow'],
             'linenumbers' =>        $this->_config['enlighterjs-linenumbers'],
             'theme' =>              $this->_config['enlighterjs-theme'],
-            'retainCssClasses' =>   $this->_config['enlighterjs-retaincss']
+            'language' =>           $this->_config['enlighterjs-language'],
+            'retainCssClasses' =>   $this->_config['enlighterjs-retaincss'],
+            'collapse' => false,
+            'toolbarOuter' => '',
+            'toolbarTop' => '{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}',
+            'toolbarBottom' => ''
         );
     }
 

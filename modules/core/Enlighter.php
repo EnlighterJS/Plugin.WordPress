@@ -237,6 +237,7 @@ class Enlighter
 
         return array(
             'themes' => $this->_themeManager->getThemes(),
+            'languages' => $this->_languageManager->getLanguages(),
             'webfonts' => array()
         );
     }
