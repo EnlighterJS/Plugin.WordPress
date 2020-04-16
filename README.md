@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: https://enlighterjs.org
 Requires at least: 5.0
 Tested up to: 5.4
-Stable tag: 4.0.0
+Stable tag: 4.1.0
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
 
@@ -127,6 +127,9 @@ All modern webbrowsers with enabled Javascript and HTML5 capabilities for "data-
 12. Theme Customizer - Live Preview-Mode
 
 ## Upgrade Notice ##
+
+### 4.1 ###
+Everything has been changed - read enlighterjs.org/wp-v4 before upgrading - THIS RELEASE IS NOT BACKWARD COMPATIBLE 
 
 ### 4.0 ###
 Everything has been changed - read enlighterjs.org/wp-v4 before upgrading - THIS RELEASE IS NOT BACKWARD COMPATIBLE 

@@ -2,7 +2,20 @@
 
 ### 4.1.0 ###
 
+* Added: EnlighterJS `v3.2.0`
+* Added: EnlighterJS Theme-Customizer `v2.1.0`
+* Added: verilog support - thanks to [t123yh on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/86)
+* Added: integer highlighting for sql
+* Added: additional usage notes to the theme customizer
+* Added: added option to hide EnlighterJS website link/button
+* Added: browser based tooltips to the buttons (title attribute)
+* Added: fallback language option for backward compatibility (`Enlighter -> Options -> Advanced -> EnlighterJS`)
+* Added: additional description to the base theme settings
+* Added: methods to retrieve theme+language list from singleton instance
 * Changed: removed the `use_smilies` environment check - it has been fixed in WordPress core
+* Changed: empty values within customizer take presendence over base theme (empty values cause the css rule to be deleted if exist)
+* Bugfix: powershell commands can also expressed lowercase (camel-case not required) - thanks to [krysiekBP on GitHub](https://github.com/EnlighterJS/EnlighterJS/issues/88)
+* Bugfix: sql `--` styles comments ignored due to invalid regex - thanks to [petr-hybler on GitHub](https://github.com/EnlighterJS/EnlighterJS/issues/97)
 
 ### 4.0.0 ###
 
