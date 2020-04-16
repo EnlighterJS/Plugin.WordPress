@@ -41,9 +41,21 @@
             <div class="postbox enlighter-postbox">
                 <h3 class="hndle"><span><?php _e('Extended theme', 'enlighter'); ?></span></h3>
                 <div class="inside enlighter-setting-section">
+                    <h4><?php _e('How it works', 'enlighter'); ?></h4>
                     <p>The Theme-Customizer takes the basic styles of a selected theme and applies your modifications (theme will be extended).<br />
-                    To load the default theme settings into the customizer, just click on the <kbd>load base theme</kbd> button.</p>
-                    <p>Note: this modifications are <strong>do not alter existing themes</strong> - only the special theme <code>Theme Customizer</code> is affected!</p>
+                    To load the default theme settings into the customizer, just click on the <kbd>load</kbd> button.</p>
+                    <p class="enlighter-text-false">Note: this modifications <strong>do not alter existing themes</strong> - only the special theme <code>Theme Customizer</code> is affected!</p>
+
+                    <h4><?php _e('Usage', 'enlighter'); ?></h4>
+                    <ol>
+                        <li>Select the <code>base theme</code> from the dropdown.</li>
+                        <li>Click on the <kbd>load</kbd> button to load the default styles of the selected theme into the customizer.<br />
+                            <strong>This step is important, otherwise it won't work because you've created an "empty" theme!</strong></li>
+                        <li>Apply changes to the theme.</li>
+                        <li>Click on <kbd>save changes</kbd> to save the theme/css.</li>
+                        <li>Use the theme <code>Theme Customizer</code> as default setting or for individual codeblocks</li>
+                    </ol>
+                    
                     <div id="enlighterjs-customizer-settings"></div>
                 </div>
             </div>
