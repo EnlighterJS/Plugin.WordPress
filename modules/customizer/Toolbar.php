@@ -45,5 +45,11 @@ class Toolbar{
             ));
         }
 
+        // enlighterjs webseite button
+        if (!$config['toolbar-button-enlighterjs']){
+            $css->add('.enlighter-default .enlighter-btn-website', array(
+                'display' => 'none'
+            ));
+        }
     }
 }
