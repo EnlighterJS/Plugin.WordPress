@@ -41,6 +41,7 @@ class Upgrade_to_v4{
             'enlighterjs-linenumbers'               => $this->getBoolean('linenumbers', true),
             'enlighterjs-indent'                    => $this->getNumber('indent', 4),
             'enlighterjs-theme'                     => $this->getString('defaultTheme', 'enlighter'),
+            'enlighterjs-language'                  => $this->getString('defaultLanguage', 'enlighter'),
             'dynamic-resource-invocation'           => $this->getBoolean('dynamicResourceInvocation', false),
             'ext-infinite-scroll'                   => $this->getBoolean('extJetpackInfiniteScroll', false),
             'ext-ajaxcomplete'                      => $this->getBoolean('extJQueryAjax', false),
