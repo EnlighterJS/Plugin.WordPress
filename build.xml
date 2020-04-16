@@ -132,7 +132,7 @@
                 </copy>
 
                 <!-- copy readme to trunk !-->
-                <copy file="readme.txt" todir="${svn.trunk.path}" />
+                <copy file="dist/readme.txt" todir="${svn.trunk.path}" />
             </else>
         </if>
 

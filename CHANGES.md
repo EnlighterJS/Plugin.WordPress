@@ -1,6 +1,10 @@
 ## Changelog ##
 
-### 4.0 ###
+### 4.1.0 ###
+
+* Changed: removed the `use_smilies` environment check - it has been fixed in WordPress core
+
+### 4.0.0 ###
 
 **Note: This release is NOT BACKWARD COMPATIBLE. Custom themes will be lost**
 

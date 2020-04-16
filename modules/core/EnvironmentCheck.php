@@ -25,11 +25,6 @@ class EnvironmentCheck
             $warnings[] = __('Option <code>use_balanceTags</code> is enabled - this option is <strong>DEPRECATED</strong>. Might cause a weired behaviour by inserting random closing html tags into your code.', 'enlighter');
         }
 
-        // Smilies shouldn't render within sourcecode
-        if (get_option('use_smilies') != 0){
-            $warnings[] = __('Option <code>use_smilies</code> is enabled. Legacy smiley sequences like :) are replaced by images which also affects posted sourcecode.', 'enlighter');
-        }
-
         // Crayon Syntax highlighter may take over the Enlighter <pre> elements
         if (is_plugin_active('crayon-syntax-highlighter/crayon_wp.class.php')){
             $errors[] = __('Plugin "Crayon Syntax Highlighter" is enabled - it may take over the Enlighter pre elements - highlighting will not work!', 'enlighter');
