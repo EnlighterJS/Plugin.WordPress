@@ -1,0 +1,44 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- CodeColorer Processing -->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('CodeColorer', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+        <p>
+        <?php _e('Enlighter can convert regular CodeColorer <code>[cc]</code> shortcodes into EnlighterJS <code>pre</code> tags on the fly.', 'enlighter'); ?><br />
+        <?php _e('This mode should only be used for legacy compatibility of old post/pages - NEVER USE THE CODECOLORER SYNTAX FOR NEW POSTS!', 'enlighter'); ?>
+        </p>
+
+        <h4><?php _e('Supported short attributes', 'enlighter'); ?></h4>
+        <p>Syntax: <code>[ccM_LANG]</code></p>
+
+        <ul>
+            <li><code>i</code> - inline</li> 
+            <li><code>n</code> - line numbers</li> 
+        </ul>
+
+        <h4><?php _e('Supported shortcode attributes', 'enlighter'); ?></h4>
+        <p><?php _e('The following specific attributes will be recognized and converted to EnlighterJS equivalents.', 'enlighter'); ?></p>
+        <ul>
+            <li><code>lang</code> - language identifier</li>
+            <li><code>first_line</code> - line offset</li> 
+            <li><code>highlight</code> - special lines to highlight</li> 
+            <li><code>line_numbers</code> - enable/disable line numbering</li>
+            <li><code>inline</code> - enable/disable inline mode</li>
+        </ul>
+
+        <h4><?php _e('Compatibility mode', 'enlighter'); ?></h4>
+
+        <!-- CodeColorer support -->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('CodeColorer', 'enlighter'),
+            'compat-codecolorer',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('', 'enlighter')
+            )); 
+        ?>
+
+    </div>
+</div>

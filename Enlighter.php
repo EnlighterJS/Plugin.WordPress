@@ -3,7 +3,7 @@
     Plugin Name: Enlighter - Customizable Syntax Highlighter
     Plugin URI: https://enlighterjs.org
     Description: all-in-one syntax highlighting solution
-    Version: 4.1
+    Version: 4.2-BETA1
     Author: Andi Dittrich
     Author URI: https://andidittrich.com
     License: GPL-2.0
@@ -16,7 +16,7 @@
 // Plugin Bootstrap Operation
 // AUTO GENERATED CODE - DO NOT EDIT !!!
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '4.1');
+define('ENLIGHTER_VERSION', '4.2-BETA1');
 define('ENLIGHTER_WPSKLTN_VERSION', '0.23.0');
 define('ENLIGHTER_PHP_VERSION', '5.6');
 define('ENLIGHTER_PLUGIN_TITLE', 'Enlighter - Customizable Syntax Highlighter');
@@ -50,6 +50,7 @@ if (version_compare(phpversion(), ENLIGHTER_PHP_VERSION, '>=')){
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/SettingsViewHelper.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/skltn/VirtualPageManager.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/admin/ContextualHelp.php');
+    require_once(ENLIGHTER_PLUGIN_PATH.'/modules/compatibility/CodeColorer.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/compatibility/Crayon.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/compatibility/GenericType1.php');
     require_once(ENLIGHTER_PLUGIN_PATH.'/modules/compatibility/GenericType2.php');

@@ -36,7 +36,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
 * Integrated CSS file caching (suitable for high traffic sites)
-* **Full GPDR compliant** - no external resources are required, no data will be aggregated
+* **Full GDPR compliant** - no external resources are required, no data will be aggregated
 
 ### Gutenberg Editor Integration ###
 * **Full Editor Integration** via "Enlighter Sourcecode" block

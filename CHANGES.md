@@ -1,5 +1,14 @@
 ## Changelog ##
 
+### 4.2.0 ###
+
+* Added: EnlighterJS `v3.3.0`
+* Added: `purebasic` support - thanks to [gphilippot on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/96)
+* Added: compatbility mode for [CodeColorer](https://wordpress.org/support/plugin/codecolorer/) . features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/222)
+* Changed: theme font sizes + line-height are based on relative `em` values - only the font size of the outer wrapper is set explicitly
+* Changed: removed "function" highlighting regex from `sql`
+* Bugfix: added missing languages to the list (abap,scala,qml,verilog)
+
 ### 4.1.0 ###
 
 * Added: EnlighterJS `v3.2.0`

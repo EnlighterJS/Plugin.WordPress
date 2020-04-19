@@ -9,7 +9,7 @@
     <a data-tab="EnlighterTabCompatibility" class="nav-tab"><?php _e('Compatibility Mode', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabGeneric" class="nav-tab"><?php _e('Generic', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabCrayon" class="nav-tab"><?php _e('Crayon', 'enlighter'); ?></a>
-    
+    <a data-tab="EnlighterTabCodeColorer" class="nav-tab"><?php _e('CodeColorer', 'enlighter'); ?></a>
 </h2>
 
 <!-- Main Title -->
@@ -36,6 +36,10 @@
 
         <div class="enlighter-tab" id="EnlighterTabCrayon">
         <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/compatibility/Crayon.phtml'); ?>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabCodeColorer">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/compatibility/CodeColorer.phtml'); ?>
         </div>
 
         <!-- submit !-->

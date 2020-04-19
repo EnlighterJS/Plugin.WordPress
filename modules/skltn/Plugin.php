@@ -271,7 +271,7 @@ class Plugin{
     public function showUpgradeMessage(){
         // styling
         echo '<div class="notice notice-success is-dismissible"><p>';
-        echo '<strong>Enlighter Plugin Upgrade:</strong> The Plugin has been upgraded to <strong>4.1</strong>';
+        echo '<strong>Enlighter Plugin Upgrade:</strong> The Plugin has been upgraded to <strong>4.2-BETA1</strong>';
         echo '</p></div>';
     }
 
@@ -300,14 +300,14 @@ class Plugin{
             // plugin installed ?
             if ($version == '0.0.0'){
                 // store new version
-                update_option('enlighter-version', '4.1');
+                update_option('enlighter-version', '4.2-BETA1');
 
             // plugin upgraded ?
-            }else if (version_compare('4.1', $version, '>')){
+            }else if (version_compare('4.2-BETA1', $version, '>')){
                 // run upgrade hook
                 if ($i->_wp_plugin_upgrade($version)){
                     // store new version
-                    update_option('enlighter-version', '4.1');
+                    update_option('enlighter-version', '4.2-BETA1');
 
                     // set flag (string!)
                     update_option('enlighter-upgrade', 'true');

@@ -4,6 +4,7 @@ namespace Enlighter\filter;
 
 use Enlighter\skltn\HtmlUtil;
 use Enlighter\compatibility\Crayon as CrayonCompat;
+use Enlighter\compatibility\CodeColorer as CodeColorerCompat;
 use Enlighter\compatibility\GenericType1 as GenericType1Compat;
 use Enlighter\compatibility\GenericType2 as GenericType2Compat;
 
@@ -58,6 +59,19 @@ class CompatibilityModeFilter{
 
                 // run convert
                 $code = CrayonCompat::convert($match);
+
+                // generate code; retrieve placeholder
+                return $this->_fragmentBuffer->storeFragment($code);
+                
+            }, $content);
+        }
+
+        // code colorer compat mode ?
+        if ($this->_config['compat-codecolorer']){
+            $content = preg_replace_callback(CodeColorerCompat::getRegex(), function($match){
+
+                // run convert
+                $code = CodeColorerCompat::convert($match);
 
                 // generate code; retrieve placeholder
                 return $this->_fragmentBuffer->storeFragment($code);
