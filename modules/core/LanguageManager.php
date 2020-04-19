@@ -9,8 +9,9 @@ class LanguageManager{
     // list of build-in languages
     const LANGUAGES = array(
         'generic' => 'Generic Highlighting',
-        'avrasm' => 'Avr Assembly',
+        'abap' => 'ABAP',
         'asm' => 'Generic Assembly',
+        'avrasm' => 'Avr Assembly',
         'c' => 'C',
         'cpp' => 'C++',
         'csharp' => 'C#',
@@ -36,8 +37,12 @@ class LanguageManager{
         'powershell' => 'PowerShell',
         'prolog' => 'Prolog',
         'python' => 'Python',
+        'purebasic' => 'Purebasic',
+        'qml' => 'QML',
+        'raw' => 'RAW Code',
         'ruby' => 'Ruby',
         'rust' => 'Rust',
+        'scala' => 'SCALA',
         'scss' => 'SCSS',
         'shell' => 'Shellscript',
         'sql' => 'SQL',
@@ -46,9 +51,9 @@ class LanguageManager{
         'typescript' => 'TypeScript',
         'vhdl' => 'VHDL',
         'visualbasic' => 'VisualBasic',
+        'verilog' => 'Verilog',
         'xml' => 'XML',
-        'yaml' => 'YAML',
-        'raw' => 'RAW Code'
+        'yaml' => 'YAML'
     );
 
     // fetch the language list
