@@ -7,8 +7,12 @@
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
     <a data-tab="EnlighterTabSettings" class="nav-tab"><?php _e('Base theme', 'enlighter'); ?></a>
-    <a data-tab="EnlighterTabFonts" class="nav-tab"><?php _e('Fonts', 'enlighter'); ?></a>
+
+    <a data-tab="EnlighterTabDefaults" class="nav-tab"><?php _e('Defaults', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabLines" class="nav-tab"><?php _e('Lines', 'enlighter'); ?></a>
+
+    <a data-tab="EnlighterTabButtons" class="nav-tab"><?php _e('Buttons', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabRaw" class="nav-tab"><?php _e('Raw', 'enlighter'); ?></a>
 
     <a data-tab="EnlighterTabTokenComments" class="nav-tab"><?php _e('Comments', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabTokenExpressions" class="nav-tab"><?php _e('Expressions', 'enlighter'); ?></a>
@@ -61,12 +65,12 @@
             </div>
         </div>
 
-        <div class="enlighter-tab" id="EnlighterTabFonts">
+        <div class="enlighter-tab" id="EnlighterTabDefaults">
             <div class="postbox enlighter-postbox">
-                <h3 class="hndle"><span><?php _e('Fonts', 'enlighter'); ?></span></h3>
+                <h3 class="hndle"><span><?php _e('Defaults', 'enlighter'); ?></span></h3>
                 <div class="inside enlighter-setting-section">
-                <p>Change font related settings of the theme.</p>
-                    <div id="enlighterjs-customizer-fonts"></div>
+                <p>Global settings of the theme.</p>
+                    <div id="enlighterjs-customizer-defaults"></div>
                 </div>
             </div>
         </div>
@@ -77,6 +81,26 @@
                 <div class="inside enlighter-setting-section">
                 <p>Change line settings.</p>
                     <div id="enlighterjs-customizer-lines"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabButtons">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('Buttons', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                <p>Change button settings.</p>
+                    <div id="enlighterjs-customizer-buttons"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabRaw">
+            <div class="postbox enlighter-postbox">
+                <h3 class="hndle"><span><?php _e('RAW code pane', 'enlighter'); ?></span></h3>
+                <div class="inside enlighter-setting-section">
+                <p>Change raw code pane settings.</p>
+                    <div id="enlighterjs-customizer-rawcode"></div>
                 </div>
             </div>
         </div>

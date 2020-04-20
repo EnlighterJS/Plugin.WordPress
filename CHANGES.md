@@ -3,11 +3,23 @@
 ### 4.2.0 ###
 
 * Added: EnlighterJS `v3.3.0`
+* Added: EnlighterJS Theme-Customizer `v2.2.0`
 * Added: `purebasic` support - thanks to [gphilippot on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/96)
 * Added: compatbility mode for [CodeColorer](https://wordpress.org/support/plugin/codecolorer/) . features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/222)
 * Changed: theme font sizes + line-height are based on relative `em` values - only the font size of the outer wrapper is set explicitly
 * Changed: removed "function" highlighting regex from `sql`
 * Bugfix: added missing languages to the list (abap,scala,qml,verilog)
+
+
+* Added: option to customize the raw code pane
+* Added: option to set the token base styles inlcuding font-size - feature requested [on GitHub](https://github.com/EnlighterJS/Plugin.ThemeCustomizer/issues/6)
+* Added: option to set button background-color and line-height
+* Added: tab `defaults` to change global settings
+* Changed: moved button related settings to tab `buttons`
+* Changed: moved line-number settings to tab `lines`
+* Changed: removed tab "fonts"
+* Bugfix: highlighted-line hover selector was invalid -> selection of `background-color:hover` was not possible - thanks to [ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.ThemeCustomizer/issues/4) #4
+
 
 ### 4.1.0 ###
 

@@ -97,9 +97,11 @@ class ThemeCustomizer{
         return array(
             'themeURL' => ENLIGHTER_PLUGIN_URL . '/resources/enlighterjs/enlighterjs.min.css',
             'themeName' => 'wpcustom',
-            'fonts'=> '#enlighterjs-customizer-fonts',
+            'defaults'=> '#enlighterjs-customizer-defaults',
             'settings'=> '#enlighterjs-customizer-settings',
             'lines' => '#enlighterjs-customizer-lines',
+            'rawcode' => '#enlighterjs-customizer-rawcode',
+            'buttons' => '#enlighterjs-customizer-buttons',
             'formExchange'=> '#enlighterjs-customizer-exchange',
             'tokens' => array(
                 'comments' => '#enlighterjs-tokens-comments',
