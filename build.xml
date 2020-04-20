@@ -49,7 +49,7 @@
     <target name="readme">
         <!-- merge readme + changes !-->
         <concat destfile="dist/readme.txt" append="false">
-            <filelist files="README.md, FAQ.md, CHANGES.md"/>
+            <filelist files="README.md, CHANGES.md"/>
         </concat>
 
         <!-- replace headings !-->
