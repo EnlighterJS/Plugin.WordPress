@@ -4,11 +4,16 @@
 
 * Added: EnlighterJS `v3.3.0`
 * Added: EnlighterJS Theme-Customizer `v2.2.0`
-* Added: `purebasic` support - thanks to [gphilippot on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/96)
 * Added: compatbility mode for [CodeColorer](https://wordpress.org/support/plugin/codecolorer/) . features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/222)
+* Bugfix: added missing languages to the list (abap,scala,qml,verilog)
+
+* Added: [apachehttpd/htaccess](https://httpd.apache.org/docs/2.4/configuring.html) support
+* Added: [lighttpd](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_Configuration) support
+* Added: [nginx](https://www.nginx.com/resources/wiki/start/topics/examples/full/) support
+* Added: [purebasic](https://www.purebasic.com/) support - thanks to [gphilippot on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/96)
+* Added: minimal latex/tex support
 * Changed: theme font sizes + line-height are based on relative `em` values - only the font size of the outer wrapper is set explicitly
 * Changed: removed "function" highlighting regex from `sql`
-* Bugfix: added missing languages to the list (abap,scala,qml,verilog)
 
 
 * Added: option to customize the raw code pane
