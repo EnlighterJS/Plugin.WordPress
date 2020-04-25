@@ -27,10 +27,16 @@ class EditorConfig{
     }
 
     public function getEditorConfigCode(){
+        // filtered languages 
+        $languages = apply_filters('enlighter_editor_languages', $this->_languageManager->getLanguages());
+
+        // filtered themes 
+        $themes = apply_filters('enlighter_editor_themes', $this->_themeManager->getThemes());
+        
         // create config object
-        return 'EnlighterJS_EditorConfig = ' . json_encode(array(
-            'languages' => $this->_languageManager->getLanguages(),
-            'themes' => $this->_themeManager->getThemes(),
+        $config = array(
+            'languages' => $languages,
+            'themes' => $themes,
             'config' => $this->_enlighterjs->getConfig(),
             'tinymce' => array(
                 'tabIndentation' => $this->_config['tinymce-tabindentation'],
@@ -39,6 +45,12 @@ class EditorConfig{
             'text' => array(
                 'quicktags' => $this->_config['quicktag-mode']
             )
-        )) . ';';
+        );
+        
+        // apply config
+        $config = apply_filters('enlighter_editor_config', $config);
+
+        // create config object
+        return 'EnlighterJS_EditorConfig = ' . json_encode($config) . ';';
     }
 }

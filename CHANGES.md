@@ -5,6 +5,7 @@
 * Added: EnlighterJS `v3.3.0`
 * Added: EnlighterJS Theme-Customizer `v2.2.0`
 * Added: compatbility mode for [CodeColorer](https://wordpress.org/support/plugin/codecolorer/) . features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/222)
+* Added: filters to alter the editor config (Gutenberg+TinyMCE) - features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/251)
 * Bugfix: added missing languages to the list (abap,scala,qml,verilog)
 
 * Added: [apachehttpd/htaccess](https://httpd.apache.org/docs/2.4/configuring.html) support
@@ -24,6 +25,8 @@
 * Changed: moved line-number settings to tab `lines`
 * Changed: removed tab "fonts"
 * Bugfix: highlighted-line hover selector was invalid -> selection of `background-color:hover` was not possible - thanks to [ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.ThemeCustomizer/issues/4) #4
+
+* Bugfix: removed typos in code edit dialog - thanks to [ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.TinyMCE/issues/10)
 
 
 ### 4.1.0 ###

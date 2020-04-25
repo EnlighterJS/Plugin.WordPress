@@ -4,7 +4,7 @@ Tags: syntax highlighting, javascript, code, coding, sourcecode, mootools, jquer
 Donate link: https://enlighterjs.org
 Requires at least: 5.0
 Tested up to: 5.4
-Stable tag: 4.1.0
+Stable tag: 4.2.0
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
 
@@ -31,7 +31,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * Powerful generic highlighting engine for unknown languages
 * Theme Customizer
 * Inline Syntax Highlighting
-* Advanced configuration options (CDN usage, ..) are available within the options page.
+* Advanced configuration options are available within the options page.
 * Supports code-groups (displays multiple code-blocks within a tab-pane)
 * Extensible language and theme engines - add your own one.
 * Simple CSS based themes
@@ -130,40 +130,6 @@ All modern webbrowsers with enabled Javascript and HTML5 capabilities for "data-
 
 ### 4.2 ###
 Everything has been changed - read enlighterjs.org/wp-v4 before upgrading - THIS RELEASE IS NOT BACKWARD COMPATIBLE 
-
-### 4.1 ###
-Everything has been changed - read enlighterjs.org/wp-v4 before upgrading - THIS RELEASE IS NOT BACKWARD COMPATIBLE 
-
-### 4.0 ###
-Everything has been changed - read enlighterjs.org/wp-v4 before upgrading - THIS RELEASE IS NOT BACKWARD COMPATIBLE 
-
-### 3.3 ###
-PHP 5.3 Backward Compatibility
-
-### 3.0 ###
-New fault-tolerant Shortcode-Processor is integrated. You can switch back to the old one on the Enlighter Settings Page -> Editing -> Shortcode
-
-### 2.11 ###
-Bugfix Release (initialization may fail when upgrading to 2.10)
-
-### 2.9 ###
-Bugfix Release (TinyMCE and EnlighterJS Core)
-
-### 2.6 ###
-Renamed the EnlighterJS files to `EnlighterJS.min.css` and `EnlighterJS.min.js`. In case you have applied custom modifications these changes may broke your setup and you need to change it!
-Added [EnlighterJS v2.5](https://enlighterjs.org/) with some optimization.
-
-### 2.4 ###
-Removed WordPress 3.8 Visual Editor compatibility - Enlighter now requires WordPress >= 3.9 including TinyMCE 4
-
-### 2.2 ###
-Full Visual-Editor (TinyMCE4) Integration including codeblock-settings (WordPress >= 3.9 required)
-
-### 2.0 ###
-Added Inline-Syntax-Highlighting as well as some other cool feature - please go to the settings page and click "Apply Settings"
-
-### 1.8 ###
-Added Visual-Editor (TinyMCE) Integration (will avoid auto-whitespace-removing issues)
 
 ## Frequently Asked Questions ##
 
