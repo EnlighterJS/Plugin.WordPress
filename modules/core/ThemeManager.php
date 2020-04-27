@@ -33,7 +33,7 @@ class ThemeManager{
     public function enqueue(){
         // embed available external themes
         foreach ($this->getUserThemes() as $theme => $sources) {
-            ResourceManager::enqueueStyle('enlighter-theme-' . strtolower($theme), $sources[1], array());
+            ResourceManager::enqueueStyle('enlighter-theme-' . strtolower($theme), $sources[1], array('enlighterjs'), null);
         }
     }
 

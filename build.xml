@@ -23,28 +23,6 @@
         <tar destfile=".hidden/enlighter-beta.tar" basedir="dist/"/>
     </target>
 
-    <!-- Plugin Test - DEVELOPMENT ONLY -->
-    <target name="devcopy" depends="dist">
-        <!-- Credentials, Host Settings !-->
-        <loadproperties srcFile=".credentials/account.conf" prefix="dev"/>
-
-        <!-- cleanup old plugin files !-->
-        <echo message="Removing old plugin files [Single Site]"/>
-        <sshexec host="${dev.host}" trust="true"
-            username="${dev.user}"
-            keyfile="${user.home}/${dev.keyfile}"
-            port="${dev.port}"
-            command="rm -rf ${dev.path}/*"
-        />
-
-        <!-- transfer deploy plugin !-->
-        <echo message="Uploading files [Single Site]"/>
-        <scp todir="${dev.user}@${dev.host}:${dev.path}" trust="true" port="${dev.port}" sftp="true"
-             keyfile="${user.home}/${dev.keyfile}">
-            <fileset dir="dist"/>
-        </scp>
-    </target>
-
     <!-- GitHub readme + changes => WordPress transformation !-->
     <target name="readme">
         <!-- merge readme + changes !-->
@@ -79,7 +57,7 @@
 
         <!-- Run Webserver !-->
         <exec executable="docker" failonerror="true">
-            <arg line="run --name enlighter-test -p 8080:8080 --rm -e WP_DSN=${WP.DSN} -i enlighter-test"/>
+            <arg line="run --name enlighter-test -p 8080:8080 --rm -e WP_DSN=${WP.DSN} -i -v ${basedir}/.wpcontent/themes:/srv/app/public/wp-content/themes enlighter-test"/>
         </exec>
     </target>
 

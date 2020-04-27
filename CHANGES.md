@@ -6,6 +6,9 @@
 * Added: EnlighterJS Theme-Customizer `v2.2.0`
 * Added: compatbility mode for [CodeColorer](https://wordpress.org/support/plugin/codecolorer/) . features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/222)
 * Added: filters to alter the editor config (Gutenberg+TinyMCE) - features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/251)
+* Added: documentation how to use external themes (linked within contextual help)
+* Changed: external themes requires `enlighterjs` as css dependency to avoid styling issues
+* Changed: removed Enlighter version string from external themes
 * Bugfix: added missing languages to the list (abap,scala,qml,verilog)
 
 * Added: [apachehttpd/htaccess](https://httpd.apache.org/docs/2.4/configuring.html) support
