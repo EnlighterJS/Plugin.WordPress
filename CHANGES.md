@@ -10,7 +10,6 @@
 * Changed: external themes requires `enlighterjs` as css dependency to avoid styling issues
 * Changed: removed Enlighter version string from external themes
 * Bugfix: added missing languages to the list (abap,scala,qml,verilog)
-
 * Added: [apachehttpd/htaccess](https://httpd.apache.org/docs/2.4/configuring.html) support
 * Added: [lighttpd](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_Configuration) support
 * Added: [nginx](https://www.nginx.com/resources/wiki/start/topics/examples/full/) support
@@ -18,8 +17,6 @@
 * Added: minimal latex/tex support
 * Changed: theme font sizes + line-height are based on relative `em` values - only the font size of the outer wrapper is set explicitly
 * Changed: removed "function" highlighting regex from `sql`
-
-
 * Added: option to customize the raw code pane
 * Added: option to set the token base styles inlcuding font-size - feature requested [on GitHub](https://github.com/EnlighterJS/Plugin.ThemeCustomizer/issues/6)
 * Added: option to set button background-color and line-height
@@ -28,7 +25,6 @@
 * Changed: moved line-number settings to tab `lines`
 * Changed: removed tab "fonts"
 * Bugfix: highlighted-line hover selector was invalid -> selection of `background-color:hover` was not possible - thanks to [ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.ThemeCustomizer/issues/4) #4
-
 * Bugfix: removed typos in code edit dialog - thanks to [ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.TinyMCE/issues/10)
 
 

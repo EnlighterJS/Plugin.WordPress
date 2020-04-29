@@ -61,6 +61,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 
 ### Compatibility/Migration
 * Crayon compatibility mode (use EnlighterJS highlighting for legacy Crayon `pre` codeblocks)
+* CodeColorer compatibility mode (use EnlighterJS highlighting for legacy CodeColorer shortcodes)
 * Jetpack markdown compatibility mode (generic or raw highlighting)
 * Gutenberg standard codeblock compatibility mode (no language attributes)
 
