@@ -4,13 +4,35 @@ namespace Enlighter;
 
 use Enlighter\skltn\ResourceManager;
 use Enlighter\skltn\CacheManager;
+use Enlighter\skltn\JsBuilder;
 
 class EnlighterJS{
 
+
+    // css cache filename
+    const CSS_FILENAME = 'enlighterjs.min.css';
+    
+    // js cache filename
+    const JS_FILENAME = 'enlighterjs.min.js';
+
+    // plugin config
     private $_config;
 
-    public function __construct($config){
+    // cache manager instance
+    private $_cacheManager;
+
+    // theme customizer
+    private $_themeCustomizer;
+
+    public function __construct($config, $cacheManager, $themeCustomizer){
+        // store plugin config
         $this->_config = $config;
+
+        // store cache manager
+        $this->_cacheManager = $cacheManager;
+
+        // store theme customizer instance
+        $this->_themeCustomizer = $themeCustomizer;
     }
 
     // generate the EnlighterJS related config object
@@ -47,25 +69,30 @@ class EnlighterJS{
 
     // enqueue resources
     public function enqueue(){
-        // dependencies
-        $jsDependencies = array();
-        
-        // add EnlighterJS themes ?
+
+        // load EnlighterJS themes ?
         if ($this->_config['enlighterjs-assets-themes']){
+            // cache file exists ?
+            if (!$this->_cacheManager->fileExists(self::CSS_FILENAME)){
+                $this->_themeCustomizer->generateCSS();
+            }
+            
             // include local css file - use cache hash!
-            ResourceManager::enqueueStyle('enlighterjs', 'cache/enlighterjs.min.css', array(), CacheManager::getCacheHash());
+            ResourceManager::enqueueStyle('enlighterjs', 'cache/' . self::CSS_FILENAME, array(), CacheManager::getCacheHash());
         }
 
-        // only include EnlighterJS js if enabled
+        // load EnlighterJS library ?
         if ($this->_config['enlighterjs-assets-js']){
-            // include local css file
-            ResourceManager::enqueueScript('enlighterjs', 'enlighterjs/enlighterjs.min.js', array(), ENLIGHTER_VERSION);
-
-            // Script required by other components
-            $jsDependencies = array('enlighterjs');
+            // cache file exists ?
+            if (!$this->_cacheManager->fileExists(self::JS_FILENAME)){
+                $this->generateJS();
+            }
+            
+            // include merged js file - use cache hash!
+            ResourceManager::enqueueScript('enlighterjs', 'cache/' . self::JS_FILENAME, array(), CacheManager::getCacheHash());
         }
 
-        // add initialization code ?
+        // add inline initialization code ?
         if ($this->_config['enlighterjs-init'] === 'inline'){
             ResourceManager::enqueueDynamicScript($this->getInitializationCode(), 'enlighterjs');
         }
@@ -75,5 +102,24 @@ class EnlighterJS{
     public function dequeue(){
         wp_dequeue_script('enlighterjs');
         wp_dequeue_style('enlighterjs');
+    }
+
+    // generate js file
+    public function generateJS(){
+
+        // initialize js generator
+        $jsGenerator = new JsBuilder();
+
+        // add enlighterjs library
+        $jsGenerator->addFile(ENLIGHTER_PLUGIN_PATH . '/resources/enlighterjs/enlighterjs.min.js');
+
+        // merged initialization code ?
+        if ($this->_config['enlighterjs-init'] === 'merged'){
+            // append init code
+            $jsGenerator->addRaw($this->getInitializationCode());
+        }
+        
+        // generate + store file
+        $this->_cacheManager->writeFile(self::JS_FILENAME, $jsGenerator->render());
     }
 }

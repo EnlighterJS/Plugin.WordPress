@@ -39,6 +39,11 @@
 
         <h4><?php _e('Initialization', 'enlighter'); ?></h4>
 
+        <p>In case you're using optimization plugins which are invoking scripts via <code>defer</code> or <code>async</code> mode <strong>have to</strong>
+        use the <code>single file</code> mode - otherwise is initialization is triggered before the library has been loaded.<br />
+        As a disadvantage, by changing the Enlighter settings the external javascript file needs to be regenerated which forces the web-browser to reload the whole file (caching).
+        This shouldn't have any impact to normal websites.</p>
+
         <?php
         // font family
         $this->_settingsUtility->displaySelect(
@@ -46,10 +51,11 @@
             'enlighterjs-init',
             array(
                 'inline' => __('Add inline code to wp_footer (default)', 'enlighter'),
-                'disabled' => __('Do not include (for manual usage only)', 'enlighter'),
+                'merged' => __('Add code to the library (single file)', 'enlighter'),
+                'disabled' => __('Do not include (for manual usage only)', 'enlighter')
             ),
             array(
-                'description' => __('EnlighterJS has be initialized by a small code snippet which will be added as inline code after the EnlighterJS library.', 'enlighter')
+                'description' => __('EnlighterJS requires to be initialized by a small code snippet which will be added as inline code after the EnlighterJS library.', 'enlighter')
             )
         );
         ?>

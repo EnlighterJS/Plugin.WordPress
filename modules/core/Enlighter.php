@@ -76,7 +76,7 @@ class Enlighter
             load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
         }
 
-        // initialize theme customizer (generated the enlighterjs.css file!)
+        // initialize theme customizer (generates the enlighterjs.css file!)
         $this->_themeCustomizer = new Enlighter\customizer\ThemeCustomizer($this->_settingsManager, $this->_cacheManager);
         
         // create new resource loader

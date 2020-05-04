@@ -1,10 +1,17 @@
 ## Changelog ##
 
+### 4.3.0 ###
+
+* Added: compatibility for `async/defer` script loading (configuration code is merged with the library) (optional)- feature requested [on WordPress.org Forums](https://wordpress.org/support/topic/enlighterjs-resources-not-loaded-yet/)
+* Changed: EnlighterJS library (js) is loaded via cache file `cache/enlighterjs.min.js`
+* Changed: js/css cache file generation is bound to `enqueue` hook (performance)
+* Changed: `wp-skltn` library updated to **0.24.0**
+
 ### 4.2.0 ###
 
 * Added: EnlighterJS `v3.3.0`
 * Added: EnlighterJS Theme-Customizer `v2.2.0`
-* Added: compatbility mode for [CodeColorer](https://wordpress.org/support/plugin/codecolorer/) . features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/222)
+* Added: compatbility mode for [CodeColorer](https://wordpress.org/support/plugin/codecolorer/) - features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/222)
 * Added: filters to alter the editor config (Gutenberg+TinyMCE) - features requested [by ajtruckle on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/251)
 * Added: documentation how to use external themes (linked within contextual help)
 * Changed: external themes requires `enlighterjs` as css dependency to avoid styling issues

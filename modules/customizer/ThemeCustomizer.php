@@ -2,16 +2,11 @@
 
 namespace Enlighter\customizer;
 
+use Enlighter\EnlighterJS;
 use Enlighter\skltn\ResourceManager;
 use Enlighter\skltn\CssBuilder;
 
 class ThemeCustomizer{
-
-    // css cache filename
-    const CSS_FILENAME = 'enlighterjs.min.css';
-
-    // css builder instance
-    private $_cssGenerator;
 
     // cache manage instance
     private $_cacheManager;
@@ -26,15 +21,7 @@ class ThemeCustomizer{
 
         // store cache manager
         $this->_cacheManager = $cacheManager;
-
-        // create new generator instance
-        $this->_cssGenerator = new CssBuilder();
-
-        // cache file exists ?
-        if (!$cacheManager->fileExists(self::CSS_FILENAME)){
-            $this->generate();
-        }
-    }
+   }
 
     // register settings
     public function registerSettings(){
@@ -77,19 +64,22 @@ class ThemeCustomizer{
     }
 
     // re-generate theme
-    public function generate(){
+    public function generateCSS(){
+
+        // create new generator instance
+        $cssGenerator = new CssBuilder();
 
         // toolbar styles (Appearance::Toolbar)
-        Toolbar::customize($this->_config, $this->_cssGenerator);
+        Toolbar::customize($this->_config, $cssGenerator);
 
         // add enlighterjs base styles
-        $this->_cssGenerator->addFile(ENLIGHTER_PLUGIN_PATH . '/resources/enlighterjs/enlighterjs.min.css');
+        $cssGenerator->addFile(ENLIGHTER_PLUGIN_PATH . '/resources/enlighterjs/enlighterjs.min.css');
 
         // append customizer config
-        $this->_cssGenerator->addRaw($this->loadCustomizerConfig());
+        $cssGenerator->addRaw($this->loadCustomizerConfig());
 
         // generate + store file
-        $this->_cacheManager->writeFile(self::CSS_FILENAME, $this->_cssGenerator->render());
+        $this->_cacheManager->writeFile(EnlighterJS::CSS_FILENAME, $cssGenerator->render());
     }
 
     // generate the EnlighterJS related config object

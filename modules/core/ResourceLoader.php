@@ -62,7 +62,7 @@ class ResourceLoader{
         $this->_quicktagsEditor = new QuickTagsEditor();
 
         // enlighterjs resource initializtion
-        $this->_enlighterjs = new EnlighterJS($this->_config);
+        $this->_enlighterjs = new EnlighterJS($this->_config, $cacheManager, $themeCustomizer);
 
         // editor config generator
         $this->_editorConfig = new EditorConfig($this->_config, $this->_enlighterjs, $languageManager, $themeManager);
