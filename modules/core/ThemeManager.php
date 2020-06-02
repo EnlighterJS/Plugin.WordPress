@@ -14,7 +14,7 @@ class ThemeManager{
         'godzilla' => 'Godzilla',
         'beyond' => 'Beyond',
         'classic' => 'Classic',
-        'mowtwo' => 'MooTwo',
+        'mowtwo' => 'MowTwo',
         'eclipse' => 'Eclipse',
         'droide' => 'Droide',
         'minimal' => 'Minimal',
