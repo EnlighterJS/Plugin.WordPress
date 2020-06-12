@@ -40,8 +40,12 @@ class Crayon{
         // parse
         foreach ($options as $opt){
             $parts = explode(':', $opt);
-            $key = preg_replace('/[^a-z]/', '_', $parts[0]);
-            $crayonAttributes[$key] = $parts[1];
+
+            // key:value pair provided ?
+            if (count($parts) === 2){
+                $key = preg_replace('/[^a-z]/', '_', $parts[0]);
+                $crayonAttributes[$key] = $parts[1];
+            }
         }
 
         // supported attributes
