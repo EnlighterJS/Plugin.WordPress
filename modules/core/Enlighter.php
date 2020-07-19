@@ -95,9 +95,6 @@ class Enlighter
         // frontend or dashboard area ?
         if (is_admin()){
 
-            // force theme cache reload
-            $this->_themeManager->clearCache();
-
             // editor
             $this->_resourceLoader->backendEditor();
 
@@ -221,8 +218,13 @@ class Enlighter
 
     // options page
     public function settingsPage(){
+
+        // force theme cache reload
+        $this->_themeManager->clearCache();
+        
         // well...is there no action hook for updating settings in wp ?
         if (isset($_GET['settings-updated'])){
+            // drop cached files
             $this->_cacheManager->clearCache();
         }
         
