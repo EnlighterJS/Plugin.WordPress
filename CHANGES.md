@@ -3,10 +3,17 @@
 ### 4.3.0 ###
 
 * Added: EnlighterJS `v3.4.0`
-
+* Added: EnlighterJS Theme-Customizer `v2.3.0`
 * Added: compatibility for `async/defer` script loading (configuration code is merged with the library) (optional)- feature requested [on WordPress.org Forums](https://wordpress.org/support/topic/enlighterjs-resources-not-loaded-yet/)
 * Added: javascript based dynamic-resource-invocation to load the EnlighterJS assets dynamically when needed (client side)
 * Added: dri compatibility for bbpress and dynamic content (jquery load, jetpack infinity scroll)
+* Added: keyword `k11` for annotations
+* Added: keyword `x16` for css element selectors
+* Added: contextual keywords to csharp - thanks to [mabako on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/112)
+* Added: kotlin string template support
+* Added: `r` language support (covered by generic ruleset)
+* Added: MikroTik `RouterOS` language support (ros/mikrotik/switchos/routeros/mt)
+* Added: pound style comment support to `php`
 * Changed: renamed the "raw code" language label to "Plain text"
 * Changed: EnlighterJS library (js) is loaded via cache file `cache/enlighterjs.min.js`
 * Changed: js/css cache file generation is bound to `enqueue` hook (performance)
@@ -15,15 +22,6 @@
 * Changed: full semantic versioning tag is used to display the plugin version (may used by additional tools) - thanks to [roy-bongers on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/262)
 * Changed: theme cache is only reloaded on Enlighter settings pages (performance) - thanks to [gdragon on Wordpress forums](https://wordpress.org/support/topic/problem-with-_transient_enlighter_userthemes-option/)
 * Changed: EnlighterJS::getConfig has been changed to multidimension object to allow additional payloads (this also affects the initialization code)
-* Removed: `EnlighterJS::dequeue` function (deprecated due to new DRI implementation)
-
-* Added: keyword `k11` for annotations
-* Added: keyword `x16` for css element selectors
-* Added: contextual keywords to csharp - thanks to [mabako on GitHub](https://github.com/EnlighterJS/EnlighterJS/pull/112)
-* Added: kotlin string template support
-* Added: `r` language support (covered by generic ruleset)
-* Added: MikroTik `RouterOS` language support (ros/mikrotik/switchos/routeros/mt)
-* Added: pound style comment support to `php`
 * Changed: css selector fragment highlighting is limited to the selector itself
 * Changed: enhanced css unit parsing
 * Changed: `java`, `scala`, `cpp` annotation token changed to `k11`
@@ -32,12 +30,14 @@
 * Changed: `ampersandCleanup` is performed after html escape sequences to eliminate issues related to double unquoting #109
 * Changed: toggle raw code label to "Plain text"
 * Changed: allowed utf8 characters in `php` variable and function names (side effect of the php parser)
+* Removed: `EnlighterJS::dequeue` function (deprecated due to new DRI implementation)
 * Bugfix: vhdl single bit highlighting collided with attribute syntax - thanks to [tyriun on GitHub](https://github.com/EnlighterJS/EnlighterJS/issues/106)
 * Bugfix: css classnames/ids with hyphens were not recognized
 * Bugfix: XML mixins of single/double quotes in attributes failed #108
 * Bugfix: dot char within XML attribute names not recognized
 * Bugfix: kotlin raw string where not correctly parsed (wrong rule priority)
 * Bugfix: highlighting color of `classic` theme not applied due to invalid selectors - thanks to [woolseyj on GitHub](https://github.com/EnlighterJS/EnlighterJS/issues/117)
+* Bugfix: EnlighterJS codeblock css selectors cannot contain quotes due to initialization code sanitizing (replace with serialized object)
 
 
 ### 4.2.0 ###
