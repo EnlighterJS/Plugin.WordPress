@@ -43,9 +43,4 @@ class FragmentBuffer{
 
         }, $content);
     }
-
-    // content available within buffer ?
-    public function hasContent(){
-        return count($this->_codeFragments) > 0;
-    }
 }

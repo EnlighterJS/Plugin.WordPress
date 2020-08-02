@@ -175,10 +175,4 @@ class ShortcodeFilter{
             return HtmlUtil::generateTag('pre', $htmlAttributes, true, $code);
         }
     }
-
-    // interface method to be compatible with legacy shortcode handler
-    // detection is handled within FragmentBuffer
-    public function hasContent(){
-        return false;
-    }
 }

@@ -9,6 +9,7 @@ use \Enlighter\editor\TinyMCE as TinyMCEEditor;
 use \Enlighter\editor\QuickTags as QuickTagsEditor;
 use \Enlighter\extensions\Jetpack as JetpackExtension;
 use \Enlighter\extensions\JQuery as JQueryExtension;
+use \Enlighter\DynamicResourceInvocation;
 
 class ResourceLoader{
     
@@ -143,34 +144,43 @@ class ResourceLoader{
     // initialize the frontend
     public function frontendEnlighter($contentProcessor){
 
-        // load enlighterjs resources
-        add_action('wp_enqueue_scripts', array($this->_enlighterjs, 'enqueue'), 50);
+        // dependency for extensions
+        $extensionDependency = 'enlighterjs';
+
+        // dynamic resource incovation active ?
+        if ($this->_config['dynamic-resource-invocation']){
+
+            // initialize DRI
+            $dri = new DynamicResourceInvocation($this->_config, $this->_enlighterjs);
+
+            // load enlighterjs resources loader
+            add_action('wp_enqueue_scripts', array($dri, 'enqueue'), 50);
+
+            // disable dependencies
+            $extensionDependency = null;
+            
+        // standard wordpress assets loading via enqueue
+        }else{
+            // load enlighterjs resources
+            add_action('wp_enqueue_scripts', array($this->_enlighterjs, 'enqueue'), 50);
+        }
 
         // load user themes ?
         if ($this->_config['enlighterjs-assets-themes-external']){
             add_action('wp_enqueue_scripts', array($this->_themeManager, 'enqueue'));
         }
 
-        // load infinite scroll extension ?
-        if ($this->_config['ext-infinite-scroll']){
-            ResourceManager::enqueueDynamicScript(JetpackExtension::getInfiniteScrollCode(), 'enlighterjs');
-        }
+        add_action('wp_enqueue_scripts', function() use ($extensionDependency){
+            // load infinite scroll extension ?
+            if ($this->_config['ext-infinite-scroll']){
+                ResourceManager::enqueueDynamicScript(JetpackExtension::getInfiniteScrollCode(), $extensionDependency);
+            }
 
-        // load infinite scroll extension ?
-        if ($this->_config['ext-ajaxcomplete']){
-            ResourceManager::enqueueDynamicScript(JQueryExtension::getAjaxcompleteCode(), 'enlighterjs');
-        }
+            // load infinite scroll extension ?
+            if ($this->_config['ext-ajaxcomplete']){
+                ResourceManager::enqueueDynamicScript(JQueryExtension::getAjaxcompleteCode(), $extensionDependency);
+            }
+        }, 51);
 
-        // frontend resource optimization ?
-        if ($this->_config['dynamic-resource-invocation']){
-            // deregister footer scripts
-            add_action('wp_footer', function() use ($contentProcessor){
-                // enlighter codeblocks active within current page ?
-                if (!$contentProcessor->hasContent()){
-                    // dequeue scripts
-                    $this->_enlighterjs->dequeue();
-                }
-            }, 1);
-        }
     }
 }

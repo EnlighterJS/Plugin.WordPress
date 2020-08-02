@@ -15,9 +15,6 @@ class LegacyShortcodeHandler{
     // currently active codegroup
     private $_activeCodegroup = null;
 
-    // flag to indicate if shortcodes have been applied
-    public $_hasContent = false;
-    
     public function __construct($config, $languageManager){
         // store local plugin config
         $this->_config = $config;
@@ -155,8 +152,6 @@ class LegacyShortcodeHandler{
     
     // Generate HTML output (code within "pre"/"code"-tag including options)
     private function generateCodeblock($attributes, $content, $tagname = 'pre'){
-        // set flag
-        $this->_hasContent = true;
         
         // remove automatic generated html editor tags (from wpautop())
         $content = $this->removeWpAutoP($content);
@@ -176,8 +171,4 @@ class LegacyShortcodeHandler{
         return str_replace(array('<br />', '<p>', '</p>'), array('', '', "\n"), $content);
     }
 
-    // check if shortcode have been applied
-    public function hasContent(){
-        return $this->_hasContent;
-    }
 }

@@ -9,6 +9,7 @@ class LanguageManager{
     // list of build-in languages
     const LANGUAGES = array(
         'generic' => 'Generic Highlighting',
+        'raw' => 'Plain text',
         'abap' => 'ABAP',
         'asm' => 'Generic Assembly',
         'apache' => 'Apache httpd',
@@ -43,7 +44,8 @@ class LanguageManager{
         'python' => 'Python',
         'purebasic' => 'Purebasic',
         'qml' => 'QML',
-        'raw' => 'RAW Code',
+        'r' => 'R',
+        'routeros' => 'RouterOS',
         'ruby' => 'Ruby',
         'rust' => 'Rust',
         'scala' => 'SCALA',

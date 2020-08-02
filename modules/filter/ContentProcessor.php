@@ -3,9 +3,6 @@
 namespace Enlighter\filter;
 
 class ContentProcessor{
-
-    // flag to indicate if shortcodes have been applied
-    public $_hasContent = false;
     
     // list of active filters
     private $_filters = array();
@@ -160,23 +157,6 @@ class ContentProcessor{
         foreach ($this->_filters as $filter){
             $this->_fragmentBuffer->registerRestoreFilter($filter);
         }
-
-        // ------------------------------------
-        // ---------- DRI DETECTOR  -----------
-
-        // dynamic resource incovation active ?
-        if ($this->_config['dynamic-resource-invocation']){
-            // EnlighterJS Code detection
-            add_filter('the_content', function($content){
-                // block overrides caused by multiple calls to the_content filter
-                // is the filter called regular to display the content ? 
-                if (!$this->_hasContent && in_the_loop() && is_main_query()){
-                    // contains enlighterjs codeblocks ?
-                    $this->_hasContent = (strpos($content, 'EnlighterJSRAW') !== false);
-                }
-                return $content;
-            }, 9999, 1);
-        }
     }
 
     // add content filter (strip + restore) to the given content section
@@ -188,10 +168,5 @@ class ContentProcessor{
         if (!isset($this->_filters[$name])){
             $this->_filters[] = $name;
         }
-    }
-
-    // check if shortcodes, gfm or raw enlighterjs tags have been applied
-    public function hasContent(){
-        return ($this->_hasContent || ($this->_shortcodeFilter !== null && $this->_shortcodeFilter->hasContent()));
     }
 }

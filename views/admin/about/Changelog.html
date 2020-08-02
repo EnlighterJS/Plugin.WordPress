@@ -1,6 +1,70 @@
 <ul>
-<li>Added: compatibility for <code>async/defer</code> script loading (configuration code is merged with the library) (optional)- feature requested <a href="https://wordpress.org/support/topic/enlighterjs-resources-not-loaded-yet/">on WordPress.org Forums</a></li>
-<li>Changed: EnlighterJS library (js) is loaded via cache file <code>cache/enlighterjs.min.js</code></li>
-<li>Changed: js/css cache file generation is bound to <code>enqueue</code> hook (performance)</li>
-<li>Changed: <code>wp-skltn</code> library updated to <strong>0.24.0</strong></li>
+<li><p>Added: EnlighterJS <code>v3.4.0</code></p>
+</li>
+<li><p>Added: compatibility for <code>async/defer</code> script loading (configuration code is merged with the library) (optional)- feature requested <a href="https://wordpress.org/support/topic/enlighterjs-resources-not-loaded-yet/">on WordPress.org Forums</a></p>
+</li>
+<li><p>Added: javascript based dynamic-resource-invocation to load the EnlighterJS assets dynamically when needed (client side)</p>
+</li>
+<li><p>Added: dri compatibility for bbpress and dynamic content (jquery load, jetpack infinity scroll)</p>
+</li>
+<li><p>Changed: renamed the &quot;raw code&quot; language label to &quot;Plain text&quot;</p>
+</li>
+<li><p>Changed: EnlighterJS library (js) is loaded via cache file <code>cache/enlighterjs.min.js</code></p>
+</li>
+<li><p>Changed: js/css cache file generation is bound to <code>enqueue</code> hook (performance)</p>
+</li>
+<li><p>Changed: <code>wp-skltn</code> library updated to <strong>0.24.0</strong></p>
+</li>
+<li><p>Changed: for compatibility reasons, the language-shortcodes are disabled by default (this only affects new installations)</p>
+</li>
+<li><p>Changed: full semantic versioning tag is used to display the plugin version (may used by additional tools) - thanks to <a href="https://github.com/EnlighterJS/Plugin.WordPress/issues/262">roy-bongers on GitHub</a></p>
+</li>
+<li><p>Changed: theme cache is only reloaded on Enlighter settings pages (performance) - thanks to <a href="https://wordpress.org/support/topic/problem-with-_transient_enlighter_userthemes-option/">gdragon on Wordpress forums</a></p>
+</li>
+<li><p>Changed: EnlighterJS::getConfig has been changed to multidimension object to allow additional payloads (this also affects the initialization code)</p>
+</li>
+<li><p>Removed: <code>EnlighterJS::dequeue</code> function (deprecated due to new DRI implementation)</p>
+</li>
+<li><p>Added: keyword <code>k11</code> for annotations</p>
+</li>
+<li><p>Added: keyword <code>x16</code> for css element selectors</p>
+</li>
+<li><p>Added: contextual keywords to csharp - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/pull/112">mabako on GitHub</a></p>
+</li>
+<li><p>Added: kotlin string template support</p>
+</li>
+<li><p>Added: <code>r</code> language support (covered by generic ruleset)</p>
+</li>
+<li><p>Added: MikroTik <code>RouterOS</code> language support (ros/mikrotik/switchos/routeros/mt)</p>
+</li>
+<li><p>Added: pound style comment support to <code>php</code></p>
+</li>
+<li><p>Changed: css selector fragment highlighting is limited to the selector itself</p>
+</li>
+<li><p>Changed: enhanced css unit parsing</p>
+</li>
+<li><p>Changed: <code>java</code>, <code>scala</code>, <code>cpp</code> annotation token changed to <code>k11</code></p>
+</li>
+<li><p>Changed: added token <code>k11</code> to themes</p>
+</li>
+<li><p>Changed: moved generic highlighting rules to <code>lang/rulesets/generic</code></p>
+</li>
+<li><p>Changed: <code>ampersandCleanup</code> is performed after html escape sequences to eliminate issues related to double unquoting #109</p>
+</li>
+<li><p>Changed: toggle raw code label to &quot;Plain text&quot;</p>
+</li>
+<li><p>Changed: allowed utf8 characters in <code>php</code> variable and function names (side effect of the php parser)</p>
+</li>
+<li><p>Bugfix: vhdl single bit highlighting collided with attribute syntax - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/106">tyriun on GitHub</a></p>
+</li>
+<li><p>Bugfix: css classnames/ids with hyphens were not recognized</p>
+</li>
+<li><p>Bugfix: XML mixins of single/double quotes in attributes failed #108</p>
+</li>
+<li><p>Bugfix: dot char within XML attribute names not recognized</p>
+</li>
+<li><p>Bugfix: kotlin raw string where not correctly parsed (wrong rule priority)</p>
+</li>
+<li><p>Bugfix: highlighting color of <code>classic</code> theme not applied due to invalid selectors - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/117">woolseyj on GitHub</a></p>
+</li>
 </ul>

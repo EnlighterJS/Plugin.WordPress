@@ -39,10 +39,11 @@
 
         <h4><?php _e('Initialization', 'enlighter'); ?></h4>
 
-        <p>In case you're using optimization plugins which are invoking scripts via <code>defer</code> or <code>async</code> mode <strong>have to</strong>
+        <p>In case you're using optimization plugins which are invoking scripts via <code>defer</code> or <code>async</code>, <strong>you have to</strong>
         use the <code>single file</code> mode - otherwise is initialization is triggered before the library has been loaded.<br />
         As a disadvantage, by changing the Enlighter settings the external javascript file needs to be regenerated which forces the web-browser to reload the whole file (caching).
         This shouldn't have any impact to normal websites.</p>
+        <p>This option has no effect when <code>Dynamic-Resource-Invocation</code> has been enabled!</p>
 
         <?php
         // font family
@@ -61,6 +62,9 @@
         ?>
 
         <h4><?php _e('Optimization', 'enlighter'); ?></h4>
+
+        <p>The <code>Dynamic-Resource-Invocation</code> features adds a small javascript observer (~1KB) to your website which invokes the EnlighterJS assets loading (styles+scripts) automatically when
+        codeblocks with matching CSS selectors have been found. It also works with the dynamic content extension as well as with third party optimization plugins.</p>
 
         <?php $this->_settingsUtility->displayCheckbox(
             __('Dynamic Resource Invocation (DRI)', 'enlighter'), 

@@ -59,7 +59,7 @@ class PluginConfig{
         'shortcode-mode' => 'disabled',
         'shortcode-inline' => true,
         'shortcode-type-generic' => true,
-        'shortcode-type-language' => true,
+        'shortcode-type-language' => false,
         'shortcode-type-group' => false,
         'shortcode-filter-content' => true,
         'shortcode-filter-excerpt' => true,

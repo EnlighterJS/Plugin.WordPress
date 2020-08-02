@@ -1,12 +1,17 @@
 // scope
 (function(_window){
-    // enlighterJS available ?
-    if (typeof EnlighterJSINIT === "undefined" || typeof jQuery === "undefined"){
+    // jquery available ?
+    if (typeof jQuery === "undefined"){
         return;
     };
 
     // content update event
     jQuery(document).on('ajaxComplete', function(){
+        // enlighterJS available ?
+        if (typeof EnlighterJSINIT === "undefined"){
+            return;
+        }
+
         // delay action to allow event handlers to be added
         _window.setTimeout(function(){
             EnlighterJSINIT.apply(_window);
