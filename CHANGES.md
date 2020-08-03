@@ -1,5 +1,9 @@
 ## Changelog ##
 
+### 4.3.1 ###
+
+* Bugfix: due to changes in the initialization code in `4.3.0` the global config couldn't be retrieved by the editing plugins
+
 ### 4.3.0 ###
 
 * Added: EnlighterJS `v3.4.0`

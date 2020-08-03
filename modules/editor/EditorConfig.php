@@ -32,12 +32,15 @@ class EditorConfig{
 
         // filtered themes 
         $themes = apply_filters('enlighter_editor_themes', $this->_themeManager->getThemes());
+
+        // retrieve enlighterjs default config
+        $enlighterjsConfig = $this->_enlighterjs->getConfig();
         
         // create config object
         $config = array(
             'languages' => $languages,
             'themes' => $themes,
-            'config' => $this->_enlighterjs->getConfig(),
+            'config' => $enlighterjsConfig['options'],
             'tinymce' => array(
                 'tabIndentation' => $this->_config['tinymce-tabindentation'],
                 'keyboardShortcuts' => $this->_config['tinymce-keyboardshortcuts']
