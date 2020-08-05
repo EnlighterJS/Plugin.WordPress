@@ -1,5 +1,11 @@
 ## Changelog ##
 
+### 4.4.0 ###
+
+* Changed: trailing slash from global constant `ENLIGHTER_PLUGIN_URL` has been removed
+* Changed: wp-skeleton updated to `v0.25.0`
+* Bugfix: double slashes are used in the paths of `DRI` and theme customizer resources
+
 ### 4.3.1 ###
 
 * Bugfix: due to changes in the initialization code in `4.3.0` the global config couldn't be retrieved by the editing plugins

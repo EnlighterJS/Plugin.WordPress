@@ -4,7 +4,7 @@ Tags: syntax highlighting, syntax highlighter, highlighter, highlighting, classi
 Donate link: https://enlighterjs.org
 Requires at least: 5.0
 Tested up to: 5.5
-Stable tag: 4.3.0
+Stable tag: 4.3.1
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
 

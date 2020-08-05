@@ -44,7 +44,7 @@ class ResourceManager{
 
                 // default: resource file
             }else{
-                $url = ENLIGHTER_PLUGIN_URL . 'resources/' . $filename;
+                $url = ENLIGHTER_PLUGIN_URL . '/resources/' . $filename;
             }
         }
 
