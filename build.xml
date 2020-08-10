@@ -23,19 +23,6 @@
         <tar destfile=".hidden/enlighter-beta.tar" basedir="dist/"/>
     </target>
 
-    <!-- GitHub readme + changes => WordPress transformation !-->
-    <target name="readme">
-        <!-- merge readme + changes !-->
-        <concat destfile="dist/readme.txt" append="false">
-            <filelist files="README.md, CHANGES.md"/>
-        </concat>
-
-        <!-- replace headings !-->
-        <replaceregexp file="dist/readme.txt" match="^###(.*)###" replace="=\1=" byline="true"/>
-        <replaceregexp file="dist/readme.txt" match="^##(.*)##" replace="==\1==" byline="true"/>
-        <replaceregexp file="dist/readme.txt" match="^#(.*)#" replace="===\1===" byline="true"/>
-    </target>
-
     <!-- Static Code Check !-->
     <target name="lint">
         <apply executable="php">
@@ -69,7 +56,7 @@
     </target>
 
     <!-- Create Dist copy !-->
-    <target name="dist" depends="dist-cleanup, readme">
+    <target name="dist" depends="dist-cleanup">
 
         <!-- Copy Plugin !-->
         <copy todir="dist">
