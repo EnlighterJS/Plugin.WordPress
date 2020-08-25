@@ -17,7 +17,7 @@
 // AUTO GENERATED CODE - DO NOT EDIT !!!
 define('ENLIGHTER_INIT', true);
 define('ENLIGHTER_VERSION', '4.4.0-BETA1');
-define('ENLIGHTER_WPSKLTN_VERSION', '0.25.0');
+define('ENLIGHTER_WPSKLTN_VERSION', '0.26.0');
 define('ENLIGHTER_PHP_VERSION', '5.6');
 define('ENLIGHTER_PLUGIN_TITLE', 'Enlighter - Customizable Syntax Highlighter');
 define('ENLIGHTER_PLUGIN_HEADLINE', 'all-in-one syntax highlighting solution');
