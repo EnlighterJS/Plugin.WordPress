@@ -85,7 +85,7 @@ class ThemeCustomizer{
     // generate the EnlighterJS related config object
     public function getConfig(){
         return array(
-            'themeURL' => ENLIGHTER_PLUGIN_URL . '/resources/enlighterjs/enlighterjs.min.css',
+            'themeURL' => ResourceManager::getResourceURL('enlighterjs/enlighterjs.min.css'),
             'themeName' => 'wpcustom',
             'defaults'=> '#enlighterjs-customizer-defaults',
             'settings'=> '#enlighterjs-customizer-settings',

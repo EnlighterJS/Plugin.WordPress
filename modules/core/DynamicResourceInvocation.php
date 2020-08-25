@@ -44,7 +44,7 @@ class DynamicResourceInvocation{
         if ($this->_config['enlighterjs-assets-js']){
 
             // include plain js file
-            $resources[] = ENLIGHTER_PLUGIN_URL . '/resources/enlighterjs/enlighterjs.min.js';
+            $resources[] = ResourceManager::getResourceUrl('enlighterjs/enlighterjs.min.js');
         }
 
         // add resource links
