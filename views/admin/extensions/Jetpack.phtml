@@ -1,0 +1,36 @@
+<?php if (!defined('ENLIGHTER_INIT')) die('DIRECT ACCESS PROHIBITED'); ?>
+
+<!-- Jetpack-->
+<div class="postbox enlighter-postbox">
+    <h3 class="hndle"><span><?php _e('Jetpack Plugin', 'enlighter'); ?></span></h3>
+    <div class="inside enlighter-setting-section">
+
+        <p><?php _e('These options are related to the popular <a href="https://wordpress.org/plugins/jetpack/" target="_blank">Jetpack Plugin</a>.', 'enlighter'); ?></p>
+
+        <h4><?php _e('Dynamic Content', 'enlighter'); ?></h4>
+
+        <!-- enable infninite scroll support !-->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Infinite Scroll', 'enlighter'),
+            'ext-infinite-scroll',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'readmore' => 'https://jetpack.me/support/infinite-scroll/',
+                'description' => __('If you use the InfiniteScroll Module, enable this option to load the Enlighter.InfniteScroll extension. It is required to highlight code sections which are dynamically added to your page!', 'enlighter')
+            )
+        ); ?>
+
+        <h4><?php _e('Markdown', 'enlighter'); ?></h4>
+
+        <!-- enable markdown support !-->
+        <?php $this->_settingsUtility->displayCheckbox(
+            __('Markdown codeblocks', 'enlighter'),
+            'jetpack-gfm-code',
+            array(
+                'label' => __('Enable', 'enlighter'),
+                'description' => __('Enable Markdown style codeblocks (fenced+inline) for Jetpack Markdown. Requires enabled markdown editing mode!', 'enlighter')
+            )
+        ); ?>
+
+    </div>
+</div>

@@ -89,6 +89,7 @@ class PluginConfig{
         'cache-url' => '',
         'dynamic-resource-invocation' => false,
         'ext-infinite-scroll' => false,
+        'jetpack-gfm-code' => false,
         'ext-ajaxcomplete' => false,
         'bbpress-shortcode' => false,
         'bbpress-markdown' => false
@@ -165,6 +166,7 @@ class PluginConfig{
         'cache-url' => 'string',
         'dynamic-resource-invocation' => 'boolean',
         'ext-infinite-scroll' => 'boolean',
+        'jetpack-gfm-code' => 'boolean',
         'ext-ajaxcomplete' => 'boolean',
         'bbpress-shortcode' => 'boolean',
         'bbpress-markdown' => 'boolean'

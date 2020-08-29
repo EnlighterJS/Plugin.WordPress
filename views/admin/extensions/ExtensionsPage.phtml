@@ -7,6 +7,7 @@
 <!-- Settings Tabs -->
 <h2 class="nav-tab-wrapper" id="enlighter-tabnav">
     <a data-tab="EnlighterTabDynamic" class="nav-tab"><?php _e('Dynamic Content', 'enlighter'); ?></a>
+    <a data-tab="EnlighterTabJetpack" class="nav-tab"><?php _e('Jetpack', 'enlighter'); ?></a>
     <a data-tab="EnlighterTabBBPress" class="nav-tab"><?php _e('bbPress', 'enlighter'); ?></a>
 </h2>
 
@@ -26,6 +27,10 @@
      
         <div class="enlighter-tab" id="EnlighterTabDynamic">
         <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/extensions/DynamicContent.phtml'); ?>
+        </div>
+
+        <div class="enlighter-tab" id="EnlighterTabJetpack">
+        <?php require (ENLIGHTER_PLUGIN_PATH.'/views/admin/extensions/Jetpack.phtml'); ?>
         </div>
 
         <div class="enlighter-tab" id="EnlighterTabBBPress">

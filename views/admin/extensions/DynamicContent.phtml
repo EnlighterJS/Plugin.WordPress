@@ -7,19 +7,6 @@
 
         <p><?php _e('Support for "load more" buttons. It is required to highlight code sections which are dynamically added to your page via AJAX/XHR!', 'enlighter'); ?></p>
 
-        <h4><?php _e('Jetpack', 'enlighter'); ?></h4>
-
-        <!-- enable infninite scroll support !-->
-        <?php $this->_settingsUtility->displayCheckbox(
-            __('Infinite Scroll', 'enlighter'),
-            'ext-infinite-scroll',
-            array(
-                'label' => __('Enable', 'enlighter'),
-                'readmore' => 'https://jetpack.me/support/infinite-scroll/',
-                'description' => __('If you use the InfiniteScroll Module, enable this option to load the Enlighter.InfniteScroll extension. It is required to highlight code sections which are dynamically added to your page!', 'enlighter')
-            )
-        ); ?>
-
         <h4><?php _e('jQuery AJAX', 'enlighter'); ?></h4>
 
         <!-- enable ajaxComplete support !-->

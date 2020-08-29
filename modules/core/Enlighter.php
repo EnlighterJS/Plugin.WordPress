@@ -92,6 +92,11 @@ class Enlighter
         // enable EnlighterJS html attributes for Author's and Contributor's
         add_filter('wp_kses_allowed_html', array('\Enlighter\KSES', 'allowHtmlCodeAttributes'), 100, 2);
 
+        // initialize jetpack extension (frontend+backend)
+        Enlighter\extensions\Jetpack::init(
+            $this->_settingsManager->getOption('jetpack-gfm-code'),
+        );
+        
         // frontend or dashboard area ?
         if (is_admin()){
 
@@ -109,7 +114,7 @@ class Enlighter
                 $this->_settingsManager->getOption('bbpress-shortcode')
             );
 
-             // initialize content processor (shortcode, gfm)
+            // initialize content processor (shortcode, gfm)
             $this->_contentProcessor = new Enlighter\filter\ContentProcessor(
                 $this->_settingsManager,
                 $this->_languageManager,
