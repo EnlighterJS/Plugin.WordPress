@@ -22,12 +22,16 @@
 
         <h4><?php _e('Markdown', 'enlighter'); ?></h4>
 
+        <p><?php _e('Note: this feature forces the Jetpack markdown renderer to exclude codeblocks from rendering (Enlighter renders the codeblocks during page delivery).', 'enlighter'); ?><br />
+        <?php _e('By disabling Enlighter or Jetpack later the codeblocks will still expressed in markdown and not as pre/code tag!', 'enlighter'); ?></p>
+
         <!-- enable markdown support !-->
         <?php $this->_settingsUtility->displayCheckbox(
             __('Markdown codeblocks', 'enlighter'),
             'jetpack-gfm-code',
             array(
                 'label' => __('Enable', 'enlighter'),
+                'readmore' => 'https://github.com/EnlighterJS/documentation/blob/master/wordpress/FAQ.md#jetpack-markdown-codeblocks-not-working',
                 'description' => __('Enable Markdown style codeblocks (fenced+inline) for Jetpack Markdown. Requires enabled markdown editing mode!', 'enlighter')
             )
         ); ?>

@@ -13,7 +13,7 @@ class Jetpack{
             // preserve gfm style codeblocks + extended inline codeblocks
             add_filter('jetpack_markdown_preserve_pattern', function ($patterns){
                 // exclude inline codeblocks (standard+extended)
-                $patterns[] = '/\s`[^`]+`\w*\s/U';
+                $patterns[] = '/(^|\s)`[^`]+`\w*(\s|$)/Um';
 
                 // exclude fenced codeblocks (GFM)
                 $patterns[] = '/^```[\S\s]+?```\s*$/m';
