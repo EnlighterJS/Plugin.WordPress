@@ -94,7 +94,7 @@ class Enlighter
 
         // initialize jetpack extension (frontend+backend)
         Enlighter\extensions\Jetpack::init(
-            $this->_settingsManager->getOption('jetpack-gfm-code'),
+            $this->_settingsManager->getOption('jetpack-gfm-code')
         );
         
         // frontend or dashboard area ?
