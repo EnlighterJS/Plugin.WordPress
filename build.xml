@@ -48,6 +48,22 @@
         </exec>
     </target>
 
+    <!-- run plugin within wordpress wpdev container !-->
+    <target name="dev-mu" depends="dist">
+        <!-- Credentials, Host Settings !-->
+        <loadproperties srcFile=".credentials/wordpress-mu.conf" prefix="WP"/>
+
+        <!-- Build Docker Image !-->
+        <exec executable="docker" failonerror="true">
+            <arg line="build -t enlighter-test -f Dockerfile ."/>
+        </exec>
+
+        <!-- Run Webserver !-->
+        <exec executable="docker" failonerror="true">
+            <arg line="run --name enlighter-test -p 8080:8080 --rm -e WP_MU=on -e WP_DSN=${WP.DSN} -i -v ${basedir}/.wpcontent/themes:/srv/app/public/wp-content/themes enlighter-test"/>
+        </exec>
+    </target>
+
     <!-- Dist clean !-->
     <target name="dist-cleanup">
         <!-- cleanup !-->

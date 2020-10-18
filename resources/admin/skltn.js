@@ -14,55 +14,57 @@
 jQuery(document).ready(function(jq){
     // try to fetch session storage
     var storage = window.sessionStorage || null;
+    var hasSessionStorage = (typeof storage === 'object');
 
     // Tabs/Sections
     // --------------------------------------------------------
-    if (typeof storage === 'object'){
-        // get query string as storage id
-        // required in case multiple admin pages are used
-        var pageName = jq('.wrap').attr('data-enlighter-page') || 'enlighter';
 
-        // hide containers
-        jq('.enlighter-tab').hide();
+    // get query string as storage id
+    // required in case multiple admin pages are used
+    var pageName = jq('.wrap').attr('data-enlighter-page') || 'enlighter';
 
-        // try to restore last tab
-        var recentSelectedTabID = storage.getItem('enlighter-' + pageName);
+    // hide containers
+    jq('.enlighter-tab').hide();
 
-        // get currently active tab
-        var currentTab = (recentSelectedTabID ? jq("#enlighter-tabnav a[data-tab='" + recentSelectedTabID + "']") : jq('#enlighter-tabnav a:first-child'));
+    // try to restore last tab
+    var recentSelectedTabID = (hasSessionStorage ? storage.getItem('enlighter-' + pageName) : false);
 
-        // add actions to each tabnav button
-        jq('#enlighter-tabnav a').each(function (){
-            // get current element
-            var el = jq(this);
+    // get currently active tab
+    var currentTab = (recentSelectedTabID && recentSelectedTabID !== 'undefined' ? jq("#enlighter-tabnav a[data-tab='" + recentSelectedTabID + "']") : jq('#enlighter-tabnav a:first-child'));
 
-            // click event
-            el.click(function () {
-                // remove highlight
-                currentTab.removeClass('nav-tab-active');
+    // add actions to each tabnav button
+    jq('#enlighter-tabnav a').each(function (){
+        // get current element
+        var el = jq(this);
 
-                // hide active container
-                jq('#' + currentTab.attr('data-tab')).hide();
+        // click event
+        el.click(function () {
+            // remove highlight
+            currentTab.removeClass('nav-tab-active');
 
-                // store current active tab
-                currentTab = el;
-                currentTab.addClass('nav-tab-active');
+            // hide active container
+            jq('#' + currentTab.attr('data-tab')).hide();
 
-                // show container
-                jq('#' + currentTab.attr('data-tab')).show();
+            // store current active tab
+            currentTab = el;
+            currentTab.addClass('nav-tab-active');
 
-                // store current tab
-                try{
+            // show container
+            jq('#' + currentTab.attr('data-tab')).show();
+
+            // store current tab
+            try{
+                if (hasSessionStorage && currentTab){
                     storage.setItem('enlighter-' + pageName, currentTab.attr('data-tab'));
-                // storage operation may fail (private browser mode; non free space)
-                }catch(e){
                 }
-            });
+            // storage operation may fail (private browser mode; non free space)
+            }catch(e){
+            }
         });
+    });
 
-        // show first container
-        currentTab.click();
-    }
+    // show first container
+    currentTab.click();
 
     // hide update message
     // --------------------------------------------------------
