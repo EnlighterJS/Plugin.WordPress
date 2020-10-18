@@ -4,7 +4,7 @@ Tags: syntax highlighting, syntax highlighter, highlighter, highlighting, classi
 Donate link: https://enlighterjs.org
 Requires at least: 5.0
 Tested up to: 5.5
-Stable tag: 4.3.1
+Stable tag: 4.4.0
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
 
@@ -40,6 +40,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 
 ### Gutenberg Editor Integration ###
 * **Full Editor Integration** via "Enlighter Sourcecode" block
+* Inline Syntax Highlighting
 * Automatic transformations for classic editor posts (codeblocks converted to Enlighter Sourcecode block)
 * Transform legacy codeblocks to Enlighter Gutenberg Blocks (manual transformation)
 * [Docs and Usage](https://github.com/EnlighterJS/documentation/blob/master/editing/Gutenberg.md)

@@ -84,6 +84,7 @@
                 <include name="views/**" />
                 <include name="Enlighter.php" />
                 <include name="LICENSE.txt" />
+                <include name="readme.txt" />
             </fileset>
         </copy>
     </target>
@@ -113,7 +114,7 @@
                 </copy>
 
                 <!-- copy readme to trunk !-->
-                <copy file="dist/readme.txt" todir="${svn.trunk.path}" />
+                <copy file="readme.txt" todir="${svn.trunk.path}" />
             </else>
         </if>
 
