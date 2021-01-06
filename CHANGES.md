@@ -1,6 +1,14 @@
 ## Changelog ##
 
+### 4.4.2 ###
+
+* Bugfix: Gutenberg `escapeEditableHTML` throws an error in case the block is empty (attributes.content returns `null`)
+
 ### 4.4.1 ###
+
+* Bugfix: a `comma` caused the plugin/wordpress to crash in legacy php `7.2` (lint checks of php 7.3 worked without any issues)
+
+### 4.4.0 ###
 
 * Added: Gutenberg inline highlighting support (RichText format)
 * Added: border around Enlighter Gutenberg codeblock (default theme)
@@ -14,7 +22,6 @@
 * Changed: removed contextual help content if favor of the [official documentation](https://github.com/EnlighterJS/documentation)
 * Bugfix: double slashes are used in the paths of `DRI` and theme customizer resources
 * Bugfix: escape sequence were transformed into their characters in recent Gutenberg releases
-* Bugfix: a `comma` caused the plugin/wordpress to crash in legacy php `7.2` (lint checks of php 7.3 worked without any issues)
 
 ### 4.3.1 ###
 

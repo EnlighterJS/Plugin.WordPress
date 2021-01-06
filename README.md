@@ -2,9 +2,9 @@
 Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, syntax highlighter, highlighter, highlighting, classic editor, gutenberg, javascript, code, coding, sourcecode,customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
-Requires at least: 5.0
+Requires at least: 5.5
 Tested up to: 5.5
-Stable tag: 4.4.1
+Stable tag: 4.4.2
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
 
