@@ -11,7 +11,7 @@ class Gutenberg{
         ResourceManager::enqueueScript(
             'enlighter-gutenberg', 
             'gutenberg/enlighterjs.gutenberg.min.js', 
-            array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components')
+            array('wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components')
         );
         ResourceManager::enqueueStyle(
             'enlighter-gutenberg', 
