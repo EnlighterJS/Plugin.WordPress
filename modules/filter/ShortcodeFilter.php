@@ -35,10 +35,10 @@ class ShortcodeFilter{
 
     private function getShortcodeRegex($shortcodes){
         // opening tag based on enabled shortcodes
-        return '/\[(' . implode('|', $shortcodes) . ')\s*' .
+        return '/\[(' . implode('|', $shortcodes) . ')' .
 
-        // shortcode attributes (optional)
-        '(.*)?' .
+        // shortcode attributes (optional), separated by spaces
+        '( .*)?' .
 
         // close opening tag
         '\s*\]' .
