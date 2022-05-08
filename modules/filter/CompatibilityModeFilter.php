@@ -82,7 +82,4 @@ class CompatibilityModeFilter{
         return $content;
     }
 
-
-
-
 }
