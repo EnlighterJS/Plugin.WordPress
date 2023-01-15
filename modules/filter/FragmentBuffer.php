@@ -16,7 +16,7 @@ class FragmentBuffer{
         $this->_codeFragments[] = $code;
 
         // get index of the top element
-        return '{{EJS' . (count($this->_codeFragments)-1) . '}}';
+        return '<pre>{{EJS' . (count($this->_codeFragments)-1) . '}}</pre>';
     }
 
     // add filter to content section to restore the fragments
@@ -29,7 +29,7 @@ class FragmentBuffer{
     public function renderFragments($content){
 
         // search for enlighter placeholders
-        return preg_replace_callback('/{{EJS(\d+)}}/U', function($match){
+        return preg_replace_callback('/<pre>{{EJS(\d+)}}<\/pre>/U', function($match){
 
             // get fragment id
             $fragmentID = intval($match[1]);
