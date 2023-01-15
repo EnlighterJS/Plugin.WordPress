@@ -28,6 +28,7 @@ class LanguageManager{
         'groovy' => 'Groovy',
         'golang' => 'Go',
         'html' => 'HTML',
+        'htaccess' => '.htaccess',
         'ini' => 'Ini/Conf Syntax',
         'java' => 'Java',
         'js' => 'Javascript',
