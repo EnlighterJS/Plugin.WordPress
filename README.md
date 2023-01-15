@@ -2,9 +2,9 @@
 Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, syntax highlighter, highlighter, highlighting, classic editor, gutenberg, javascript, code, coding, sourcecode,customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
-Requires at least: 5.8
-Tested up to: 6.0
-Stable tag: 4.5.0
+Requires at least: 6.0
+Tested up to: 6.1
+Stable tag: 4.6.0
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
 
@@ -28,7 +28,7 @@ It also supports the automatic creation of tab-panes to display code-groups toge
 * **Full Gutenberg Editor Integration**
 * **Full Classic Editor Integration** (TinyMCE)
 * Support for all common used languages
-* Powerful generic highlighting engine for unknown languages
+* Powerful generic highlighting engine for unknown/unsupported languages
 * Theme Customizer
 * Inline Syntax Highlighting
 * Advanced configuration options are available within the options page.
@@ -101,8 +101,8 @@ All modern webbrowsers with enabled Javascript and HTML5 capabilities for "data-
 ## Installation ##
 
 ### System requirements ###
-* WordPress `5.0`
-* PHP `7.0`, including `json` functions
+* WordPress `6.0`
+* PHP `7.4`, including `json` functions
 * Modern webbrowser with enabled Javascript (required for highlighting)
 * Accessable cache directory (`/wp-content/plugins/enlighter/cache/`)
 

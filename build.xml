@@ -28,7 +28,7 @@
         <apply executable="php">
             <arg value="-l"/>
 
-            <fileset dir="." includes="**/*.php" excludes="util/**"/>
+            <fileset dir="." includes="**/*.php" excludes="util/** .wpcontent/**"/>
         </apply>
     </target>
 

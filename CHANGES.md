@@ -1,5 +1,21 @@
 ## Changelog ##
 
+### 4.6.0 ###
+
+* Added: EnlighterJS `v3.6.0`
+* Added: css tooltips to the toolbar
+* Added: copy-to-clipboard success/error message via tooltip
+* Added: language identifier as css class to the outer wrapper `enlighter-l-<resolvedLanguage>`
+* Added: `htaccess` language alias to "Apache httpd"
+* Changed: WordPress `6.0` required
+* Changed: DOM structure has changed: each raw+highlighted code elements are wrapper into `enlighter-code` container
+* Changed: DOM structure has changed: removed `enlighter-codegroup-wrapper`
+* Changed: toolbar position is now persistent and not affected by horizontal/vertical scrolling
+* Bugfix: compatibility filters may cause malformed markup caused by `wpauto` filter. To avoid such issues the placeholders are wrapped into `<pre>` tags - thanks to [dmadison  on GitHub](https://github.com/EnlighterJS/EnlighterJS/issues/351)
+* Bugfix: `bash` pound style comment regex also matched variable substituions and special cases - thanks to [maidentaiwan on GitHub](https://github.com/EnlighterJS/EnlighterJS/issues/200)
+* Bugfix: `bash` single quoted strings not highlighted
+* Bugfix: language alias `js` was processed as `typescript` due to inheritance issue (missing override)
+
 ### 4.5.0 ###
 
 * Added: EnlighterJS `v3.5.0`

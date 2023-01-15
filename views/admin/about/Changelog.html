@@ -1,37 +1,16 @@
-<h3 id="450">4.5.0</h3>
+<h3 id="460">4.6.0</h3>
 <ul>
-<li>Added: EnlighterJS <code>v3.5.0</code></li>
-<li>Added: EnlighterJS Gutenberg editor plugin <code>v1.2.0</code></li>
-<li>Added: Gutenberg left-align-indentation formatting button</li>
-<li>Added: block transformation from SyntaxHighlighter Evolved</li>
-<li>Added: selected language as button text to the block toolbar</li>
-<li>Added: basic support for windows <code>batch</code> / <code>bat</code> file syntax</li>
-<li>Added: <code>dart</code> language support - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/pull/185">whiplashoo on GitHub</a></li>
-<li>Added: dedicated MariaDB/MySQL language support <code>mariadb</code></li>
-<li>Added: dedicated Oracle Database language support <code>oracledb</code> (no special rules yet)</li>
-<li>Added: dedicated MSSQL language support <code>mssql</code> (no special rules yet)</li>
-<li>Added: dedicated PostgreSQL language support <code>postgresql</code> (no special rules yet)</li>
-<li>Added: <code>constraints</code> to <code>sql</code></li>
-<li>Changed: WordPress version <code>&gt;=5.8</code> required!</li>
-<li>Changed: splitted sql language into several types/dialects for further extension</li>
-<li>Changed: removed pound style comments from generic <code>sql</code> support</li>
-<li>Changed: removed keywords <code>bigint</code> and <code>unsigned</code> from generic <code>sql</code> support</li>
-<li>Changed: <code>droide</code> theme color <code>#009999</code> to <code>#007f7f</code> for higher contrast (WCAG) - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/pull/117">aphelionz on GitHub</a></li>
-<li>Changed: in case of a tokenizer error, the tokenizer will silently fail (output to console) instead of throwing an error - code will still be displayed but related tokens are missing</li>
-<li>Bugfix: Gutenberg inline editing not working on Safari due to required <code>rangeCount</code> call - thanks to <a href="https://github.com/EnlighterJS/Plugin.Gutenberg/issues/36">phruse on GitHub</a></li>
-<li>Bugfix: Gutenberg inline popover window content is collapsed in recent Gutenberg releases</li>
-<li>Bugfix: Gutenberg editor deprecation warnings related to Toolbar elements</li>
-<li>Bugfix: fixed Gutenberg editor deprecation warning related to widget - thanks to <a href="https://github.com/EnlighterJS/Plugin.WordPress/issues/348"> Jolle775 on GitHub</a></li>
-<li>Bugfix: Enlighter low-level shortcode handler regex failure caused invalid content matching for language shortcodes - thanks to <a href="https://wordpress.org/support/topic/regex-bug/">michael8888 on WordPress.org Forums</a></li>
-<li>Bugfix: <code>yaml</code> integer numbers not highlighted</li>
-<li>Bugfix: <code>php</code> variable and function names followed by single/double quotes were interpreted as name - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/178">oleg-dk on GitHub</a></li>
-<li>Bugfix: <code>php</code> method names which equals a keyword were highlighted as keyword - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/181">oleg-dk on GitHub</a></li>
-<li>Bugfix: <code>php</code> method calls on variables were interpreted as variable name - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/182">oleg-dk on GitHub</a></li>
-<li>Bugfix: <code>latex</code> command on first line not recognized - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/169">MamounImadRajab on GitHub</a></li>
-<li>Bugfix: <code>javascript</code> regular expressions are match over multiple lines - thanks to <a href="https://wordpress.org/support/topic/problem-with-the-division-symbol/#post-15257942">mrdexters1 on Wordpress.org Forums</a></li>
-<li>Bugfix: tokenizer loop limit was calculated in total instead of per-rule</li>
-<li>Bugfix: keywords of <code>generic</code> language requires a word-boundary before+after instead of a non word character - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/129">Irwanda04 on GitHub</a></li>
-<li>Bugfix: allow any non-whitespace chars in sql column name literals</li>
-<li>Bugfix: added missing <code>string</code> keyword to <code>c#</code> type list</li>
-<li>Bugfix: pound and double-slash style comments also matched the last character before the comment</li>
+<li>Added: EnlighterJS <code>v3.6.0</code></li>
+<li>Added: css tooltips to the toolbar</li>
+<li>Added: copy-to-clipboard success/error message via tooltip</li>
+<li>Added: language identifier as css class to the outer wrapper <code>enlighter-l-&lt;resolvedLanguage&gt;</code></li>
+<li>Added: <code>htaccess</code> language alias to &quot;Apache httpd&quot;</li>
+<li>Changed: WordPress <code>6.0</code> required</li>
+<li>Changed: DOM structure has changed: each raw+highlighted code elements are wrapper into <code>enlighter-code</code> container</li>
+<li>Changed: DOM structure has changed: removed <code>enlighter-codegroup-wrapper</code></li>
+<li>Changed: toolbar position is now persistent and not affected by horizontal/vertical scrolling</li>
+<li>Bugfix: compatibility filters may cause malformed markup caused by <code>wpauto</code> filter. To avoid such issues the placeholders are wrapped into <code>&lt;pre&gt;</code> tags - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/351">dmadison  on GitHub</a></li>
+<li>Bugfix: <code>bash</code> pound style comment regex also matched variable substituions and special cases - thanks to <a href="https://github.com/EnlighterJS/EnlighterJS/issues/200">maidentaiwan on GitHub</a></li>
+<li>Bugfix: <code>bash</code> single quoted strings not highlighted</li>
+<li>Bugfix: language alias <code>js</code> was processed as <code>typescript</code> due to inheritance issue (missing override)</li>
 </ul>
