@@ -1,5 +1,9 @@
 ## Changelog ##
 
+### 4.6.1 ###
+
+* Bugfix: `pre` wrapper introduced in `v4.6.0` caused wpautop to handle inline code as block element which breaks the layout. Affected inline codeblocks of compatibility mode filters, markdown and shortcodes. Gutenberg/TinyMCE editors were not affected - thanks to [the community on GitHub](https://github.com/EnlighterJS/Plugin.WordPress/issues/363)
+
 ### 4.6.0 ###
 
 * Added: EnlighterJS `v3.6.0`

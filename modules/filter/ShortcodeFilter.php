@@ -102,17 +102,20 @@ class ShortcodeFilter{
                 }
             }
 
-            // generate code
-            $code = $this->renderShortcode($match[3], $lang, $attb, $group);
+            // inline code found ?
+            $isInline = $this->_config['shortcode-inline'] && strpos($match[3], "\n") === false;
 
-            // generate code; retrieve placeholder
-            return $this->_fragmentBuffer->storeFragment($code);
+            // generate code
+            $code = $this->renderShortcode($match[3], $lang, $attb, $group, $isInline);
+
+            // generate code; retrieve placeholder; check for inline code
+            return $this->_fragmentBuffer->storeFragment($code, $isInline);
 
         }, $content);
     }
 
     // process shortcode attributes and generate html
-    private function renderShortcode($code, $lang, $attb, $group){
+    private function renderShortcode($code, $lang, $attb, $group, $isInline){
         // default attribute settings
         $shortcodeAttributes = shortcode_atts(
                 array(

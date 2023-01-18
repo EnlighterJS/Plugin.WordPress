@@ -76,7 +76,7 @@ class GfmFilter{
             $code = $this->renderFragment($match[2], $lang, false);
 
             // generate code; retrieve placeholder
-            return $this->_fragmentBuffer->storeFragment($code);
+            return $this->_fragmentBuffer->storeFragment($code, false);
 
         }, $content);
 
@@ -96,7 +96,7 @@ class GfmFilter{
                 $code = $this->renderFragment($match[1], $lang, true);
 
                 // generate code; retrieve placeholder
-                return $this->_fragmentBuffer->storeFragment($code);
+                return $this->_fragmentBuffer->storeFragment($code, true);
 
             }, $content);
         }

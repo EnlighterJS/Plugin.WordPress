@@ -11,12 +11,15 @@ class FragmentBuffer{
     }
 
     // store code fragment within buffer
-    public function storeFragment($code){
+    public function storeFragment($code, $inlineCode=false){
         // push code on top of buffer
         $this->_codeFragments[] = $code;
 
+        // wrapper tag
+        $wrapper = ($inlineCode ? 'code' : 'pre');
+
         // get index of the top element
-        return '<pre>{{EJS' . (count($this->_codeFragments)-1) . '}}</pre>';
+        return '<'.$wrapper.'>{{EJS' . (count($this->_codeFragments)-1) . '}}</'.$wrapper.'>';
     }
 
     // add filter to content section to restore the fragments
@@ -29,10 +32,10 @@ class FragmentBuffer{
     public function renderFragments($content){
 
         // search for enlighter placeholders
-        return preg_replace_callback('/<pre>{{EJS(\d+)}}<\/pre>/U', function($match){
+        return preg_replace_callback('/<(pre|code)>{{EJS(\d+)}}<\/\1>/U', function($match){
 
             // get fragment id
-            $fragmentID = intval($match[1]);
+            $fragmentID = intval($match[2]);
 
             // fragment exists ?
             if (isset($this->_codeFragments[$fragmentID])){
