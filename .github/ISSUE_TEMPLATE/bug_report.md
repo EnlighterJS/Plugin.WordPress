@@ -11,7 +11,7 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **WordPress Editing Mode**
-Which WordPress editing mode you're using ?
+Which WordPress editing mode you're using ? This is one of the most important information!
 
 * Gutenberg
 * TinyMCE Visual
@@ -28,6 +28,9 @@ Does the issues occurs on your frontend or on the backend (WordPress admin area)
 **To Reproduce**
 Steps to reproduce the behavior:
 
+1.
+2.
+3.
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
