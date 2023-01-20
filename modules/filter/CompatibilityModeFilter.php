@@ -32,10 +32,10 @@ class CompatibilityModeFilter{
             $content = preg_replace_callback(GenericType1Compat::getRegex(), function($match){
 
                 // run convert
-                $code = GenericType1Compat::convert($match);
+                list($code, $isInline) = GenericType1Compat::convert($match);
 
                 // generate code; retrieve placeholder
-                return $this->_fragmentBuffer->storeFragment($code);
+                return $this->_fragmentBuffer->storeFragment($code, $isInline);
                 
             }, $content);
         }
@@ -45,10 +45,10 @@ class CompatibilityModeFilter{
             $content = preg_replace_callback(GenericType2Compat::getRegex(), function($match){
 
                 // run convert
-                $code = GenericType2Compat::convert($match);
+                list($code, $isInline) = GenericType2Compat::convert($match);
 
                 // generate code; retrieve placeholder
-                return $this->_fragmentBuffer->storeFragment($code);
+                return $this->_fragmentBuffer->storeFragment($code, $isInline);
                 
             }, $content);
         }
@@ -58,10 +58,10 @@ class CompatibilityModeFilter{
             $content = preg_replace_callback(CrayonCompat::getRegex(), function($match){
 
                 // run convert
-                $code = CrayonCompat::convert($match);
+                list($code, $isInline) = CrayonCompat::convert($match);
 
                 // generate code; retrieve placeholder
-                return $this->_fragmentBuffer->storeFragment($code);
+                return $this->_fragmentBuffer->storeFragment($code, $isInline);
                 
             }, $content);
         }
@@ -71,10 +71,10 @@ class CompatibilityModeFilter{
             $content = preg_replace_callback(CodeColorerCompat::getRegex(), function($match){
 
                 // run convert
-                $code = CodeColorerCompat::convert($match);
+                list($code, $isInline) = CodeColorerCompat::convert($match);
 
                 // generate code; retrieve placeholder
-                return $this->_fragmentBuffer->storeFragment($code);
+                return $this->_fragmentBuffer->storeFragment($code, $isInline);
                 
             }, $content);
         }

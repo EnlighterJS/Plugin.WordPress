@@ -81,6 +81,6 @@ class Crayon{
         }
 
         // generate new html tag
-        return HtmlUtil::generateTag('pre', $htmlAttributes, true, $match[3]);
+        return array(HtmlUtil::generateTag('pre', $htmlAttributes, true, $match[3]), false);
     }
 }

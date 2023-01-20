@@ -102,9 +102,9 @@ class CodeColorer{
 
         // generate new html tag
         if ($mode === 'block'){
-            return HtmlUtil::generateTag('pre', $htmlAttributes, true, $match[3]);
+            return array(HtmlUtil::generateTag('pre', $htmlAttributes, true, $match[3]), false);
         }else{
-            return HtmlUtil::generateTag('code', $htmlAttributes, true, $match[3]);
+            return array(HtmlUtil::generateTag('code', $htmlAttributes, true, $match[3]), true);
         }
     }
 }

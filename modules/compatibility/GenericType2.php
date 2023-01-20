@@ -31,7 +31,7 @@ class GenericType2{
         );
 
         // generate new html tag
-        return HtmlUtil::generateTag('pre', $htmlAttributes, true, $match[1]);
+        return array(HtmlUtil::generateTag('pre', $htmlAttributes, true, $match[1]), false);
     }
 
 }
