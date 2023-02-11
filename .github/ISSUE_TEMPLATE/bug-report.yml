@@ -67,7 +67,7 @@ body:
     id: what-happened
     attributes:
       label: What happened?
-      description: Also tell us, what did you expect to happen?
+      description: Also tell us, what did you expect to happen? Please provide a code snippets or a demo site how to reproduce the issue
       placeholder: Tell us what you see!
       value: "A bug happened! (not very useful..)"
     validations:
@@ -93,7 +93,7 @@ body:
     id: troubleshoot
     attributes:
       label: I've read the docs/troubleshooting guidelines
-      description: Before submitting any bugreport, make shure you've completed the [troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
+      description: Before submitting any bugreport, make sure you've completed the [troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
       options:
         - label: I confirm that i've completely read and followed the troubleshooting guide!
           required: true
@@ -101,7 +101,7 @@ body:
     id: cleanenv
     attributes:
       label: The bug/issues appears in a clean WordPress environment
-      description: Make shure you've validated the bug/issues with the Enlighter plugin standalone (absolute no other plugins enabled) using a WordPress standard theme (twentyXXX)
+      description: Validated the bug/issues with the Enlighter plugin standalone (absolute no other plugins enabled) using a WordPress standard theme (twentyXXX)
       options:
         - label: I confirm that the bug/issues happens within a clean WordPress enviroment!
           required: true
