@@ -10,17 +10,21 @@ body:
       value: |
         Thanks for taking the time to fill out this bug report!
 
-        **Please read and check the following notes carefully, otherwise your report will be closed without any comment.**
+        ### Please read and check the following notes carefully, otherwise your report will be closed without any comment.###
+
         ---------
         Historically about > `99%` of all "bug reports" are caused by third party plugins or themes and were not Enlighter/EnlighterJS related.
         Therefore you should validate the bug within a clean WordPress environment (e.g. spin up a container with default template and Enlighter as only enabled plugin).
         Styling issues (e.g. margins/paddings/scrollbars/mobile views) are mostly caused by your themes css - try another standard theme first! 
         Also a lot of "caching" / "optimization" plugins cause a lot of trouble because they don't handle the buildin css/js caching properly - disable them as first step.
         ---------
+        
         btw. we won't provide any community support for third party applications/themes nor debugging your website - it's up to you!
         please ask the related plugin authors/providers for assistance.
+        
         ---------
-        [Enlighter troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
+        Documentation: [Enlighter troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
+        ---------
 
   - type: input
     id: wpversion
