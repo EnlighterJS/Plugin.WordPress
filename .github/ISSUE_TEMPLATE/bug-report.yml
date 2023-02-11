@@ -18,8 +18,14 @@ body:
         > Also a lot of "caching" / "optimization" plugins cause a lot of trouble because they don't handle the buildin css/js caching properly - disable them as first step.
 
         #### btw. we won't provide any community support for third party applications/themes nor debugging your website - it's up to you! please ask the related plugin authors/providers for assistance.
+      
+        _____
 
-        Documentation: [Enlighter troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
+        * Documentation: [Enlighter troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
+        * Theme/Language requests: [EnlighterJS/EnlighterJS](https://github.com/EnlighterJS/EnlighterJS)
+        * Gutenberg block issues: [EnlighterJS/Plugin.Gutenberg](https://github.com/EnlighterJS/Plugin.Gutenberg)
+        * TinyMCE issues: [EnlighterJS/Plugin.TinyMCE](https://github.com/EnlighterJS/Plugin.TinyMCE)
+        * Theme customizer issues: [EnlighterJS/Plugin.ThemeCustomizer](https://github.com/EnlighterJS/Plugin.ThemeCustomizer)
         _____
 
   - type: input
