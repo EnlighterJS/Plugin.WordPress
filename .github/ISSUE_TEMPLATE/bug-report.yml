@@ -1,0 +1,101 @@
+name: Bug Report
+description: File a bug report
+title: "Bug / "
+labels: ["status/validation-pending"]
+assignees: 
+  - "AndiDittrich"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+        **Please read and check the following notes carefully, otherwise your report will be closed without any comment.**
+        ---------
+        Historically about > `99%` of all "bug reports" are caused by third party plugins or themes and were not Enlighter/EnlighterJS related.
+        Therefore you should validate the bug within a clean WordPress environment (e.g. spin up a container with default template and Enlighter as only enabled plugin).
+        Styling issues (e.g. margins/paddings/scrollbars/mobile views) are mostly caused by your themes css - try another standard theme first! 
+        Also a lot of "caching" / "optimization" plugins cause a lot of trouble because they don't handle the buildin css/js caching properly - disable them as first step.
+        ---------
+        btw. we won't provide any community support for third party applications/themes nor debugging your website - it's up to you!
+        please ask the related plugin authors/providers for assistance.
+        ---------
+        [Enlighter troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
+
+  - type: input
+    id: wpversion
+    attributes:
+      label: WordPress Version
+      description: your current wordpress version?
+      placeholder: ex. 6.1.1
+    validations:
+      required: true
+  - type: input
+    id: enlighterversion
+    attributes:
+      label: Enlighter Version
+      description: your current Enlighter plugin version?
+      placeholder: ex. 4.0.1
+    validations:
+      required: true
+  - type: dropdown
+    id: editing
+    attributes:
+      label: Editing method
+      description: Which editing mode you're using? Most issues are caused by shortcodes/markdown/directhtml modes!
+      options:
+        - Gutenberg Blocks
+        - TinyMCE
+        - TinyMCE html mode with shortcodes
+        - TinyMCE html mode with pre tags
+        - Text editor (e.g. comments)  with shortcodes
+        - Text editor (e.g. comments) with pre tags
+        - Shortcodes (not recommended)
+        - Markdown/GFM
+        - Compatibility modes
+        - Direct html tags within text mode
+        - Page Builders
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened! (not very useful..)"
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Backend issue
+  - type: textarea
+    id: debug
+    attributes:
+      label: Your settings (debug)
+      description: Please copy and paste the output from Enlighter->About->Debug
+      render: raw
+  - type: checkboxes
+    id: troubleshoot
+    attributes:
+      label: I've read the docs/troubleshooting guidelines
+      description: Before submitting any bugreport, make shure you've completed the [troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
+      options:
+        - label: I confirm that i've completely read and followed the troubleshooting guide!
+          required: true
+  - type: checkboxes
+    id: cleanenv
+    attributes:
+      label: The bug/issues appears in a clean WordPress environment
+      description: Make shure you've validated the bug/issues with the Enlighter plugin standalone (absolute no other plugins enabled) using a WordPress standard theme (twentyXXX)
+      options:
+        - label: I confirm that the bug/issues happens within a clean WordPress enviroment!
+          required: true
