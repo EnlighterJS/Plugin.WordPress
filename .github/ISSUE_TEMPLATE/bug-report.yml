@@ -17,11 +17,8 @@ body:
         > Styling issues (e.g. margins/paddings/scrollbars/mobile views) are mostly caused by your themes css - try another standard theme first! 
         > Also a lot of "caching" / "optimization" plugins cause a lot of trouble because they don't handle the buildin css/js caching properly - disable them as first step.
 
-        btw. we won't provide any community support for third party applications/themes nor debugging your website - it's up to you!
-        please ask the related plugin authors/providers for assistance.
-        
-        _____
-        
+        #### btw. we won't provide any community support for third party applications/themes nor debugging your website - it's up to you! please ask the related plugin authors/providers for assistance.
+
         Documentation: [Enlighter troubleshooting guidelines](https://github.com/EnlighterJS/documentation/blob/master/wordpress/Troubleshooting.md)
         _____
 
